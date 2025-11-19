@@ -1,4 +1,4 @@
-package __obf_721a4aff228e6809
+package __obf_a307862f84d54cc6
 
 import (
 	"bytes"
@@ -27,51 +27,51 @@ type Request struct {
 	TemplateParam string //必选	短信模板中的变量；数字需要转换为字符串；个人用户每个变量长度必须小于15个字符。 例如:短信模板为：“接受短信验证码${no}”,此参数传递{“no”:”123456”}，用户将接收到[短信签名]接受短信验证码123456
 }
 
-func (__obf_9df80c204293a127 *Request) ComposeUrl(__obf_2cb8e9a41b848248 string, __obf_3481be3dcb25fb5d string) string {
-	__obf_29ad5f87103cd17c := url.Values{}
-	__obf_29ad5f87103cd17c.Add("AccessKeyId", __obf_9df80c204293a127.AccessKeyId)
-	__obf_29ad5f87103cd17c.Add("Action", __obf_9df80c204293a127.Action)
-	__obf_29ad5f87103cd17c.Add("Format", __obf_9df80c204293a127.Format)
-	__obf_29ad5f87103cd17c.Add("PhoneNumbers", __obf_9df80c204293a127.PhoneNumbers)
-	__obf_29ad5f87103cd17c.Add("RegionId", __obf_9df80c204293a127.RegionId)
-	__obf_29ad5f87103cd17c.Add("SignName", __obf_9df80c204293a127.SignName)
-	__obf_29ad5f87103cd17c.Add("SignatureMethod", __obf_9df80c204293a127.SignatureMethod)
-	__obf_29ad5f87103cd17c.Add("SignatureNonce", __obf_9df80c204293a127.SignatureNonce)
-	__obf_29ad5f87103cd17c.Add("SignatureVersion", __obf_9df80c204293a127.SignatureVersion)
-	__obf_29ad5f87103cd17c.Add("TemplateCode", __obf_9df80c204293a127.TemplateCode)
-	__obf_29ad5f87103cd17c.Add("TemplateParam", __obf_9df80c204293a127.TemplateParam)
-	__obf_29ad5f87103cd17c.Add("Timestamp", __obf_9df80c204293a127.Timestamp)
-	__obf_29ad5f87103cd17c.Add("Version", __obf_9df80c204293a127.Version)
-	__obf_445dc85641e3552e := __obf_14d9c902120ed57d(__obf_29ad5f87103cd17c)
-	Signature := __obf_ec014832ed2718dc(__obf_7312697087077e2b(__obf_445dc85641e3552e, __obf_3481be3dcb25fb5d))
+func (__obf_4c76c53a33a5db4d *Request) ComposeUrl(__obf_7c0d63a339764d75 string, __obf_0d83fb6d65187b1d string) string {
+	__obf_db1bbfced8547939 := url.Values{}
+	__obf_db1bbfced8547939.Add("AccessKeyId", __obf_4c76c53a33a5db4d.AccessKeyId)
+	__obf_db1bbfced8547939.Add("Action", __obf_4c76c53a33a5db4d.Action)
+	__obf_db1bbfced8547939.Add("Format", __obf_4c76c53a33a5db4d.Format)
+	__obf_db1bbfced8547939.Add("PhoneNumbers", __obf_4c76c53a33a5db4d.PhoneNumbers)
+	__obf_db1bbfced8547939.Add("RegionId", __obf_4c76c53a33a5db4d.RegionId)
+	__obf_db1bbfced8547939.Add("SignName", __obf_4c76c53a33a5db4d.SignName)
+	__obf_db1bbfced8547939.Add("SignatureMethod", __obf_4c76c53a33a5db4d.SignatureMethod)
+	__obf_db1bbfced8547939.Add("SignatureNonce", __obf_4c76c53a33a5db4d.SignatureNonce)
+	__obf_db1bbfced8547939.Add("SignatureVersion", __obf_4c76c53a33a5db4d.SignatureVersion)
+	__obf_db1bbfced8547939.Add("TemplateCode", __obf_4c76c53a33a5db4d.TemplateCode)
+	__obf_db1bbfced8547939.Add("TemplateParam", __obf_4c76c53a33a5db4d.TemplateParam)
+	__obf_db1bbfced8547939.Add("Timestamp", __obf_4c76c53a33a5db4d.Timestamp)
+	__obf_db1bbfced8547939.Add("Version", __obf_4c76c53a33a5db4d.Version)
+	__obf_b6eb9d8a80bc2cb1 := __obf_47e75f2fdeec63af(__obf_db1bbfced8547939)
+	Signature := __obf_03c24bcdceda96ba(__obf_cdacf59f3a4d15f3(__obf_b6eb9d8a80bc2cb1, __obf_0d83fb6d65187b1d))
 
-	_url := "http://dysmsapi.aliyuncs.com/?Signature=" + Signature + "&" + __obf_445dc85641e3552e
+	_url := "http://dysmsapi.aliyuncs.com/?Signature=" + Signature + "&" + __obf_b6eb9d8a80bc2cb1
 
 	return _url
 }
 
-func __obf_14d9c902120ed57d(__obf_29ad5f87103cd17c url.Values) string {
-	var __obf_a4e1cb5211d93fe3 bytes.Buffer
-	__obf_496f8b8c5e614a25 := make([]string, 0, len(__obf_29ad5f87103cd17c))
-	for __obf_bc3b7cf0498b0789 := range __obf_29ad5f87103cd17c {
-		__obf_496f8b8c5e614a25 = append(__obf_496f8b8c5e614a25, __obf_bc3b7cf0498b0789)
+func __obf_47e75f2fdeec63af(__obf_db1bbfced8547939 url.Values) string {
+	var __obf_ed55315e422a93ba bytes.Buffer
+	__obf_265fba0806a78870 := make([]string, 0, len(__obf_db1bbfced8547939))
+	for __obf_35f1be3a8abc964a := range __obf_db1bbfced8547939 {
+		__obf_265fba0806a78870 = append(__obf_265fba0806a78870, __obf_35f1be3a8abc964a)
 	}
-	sort.Strings(__obf_496f8b8c5e614a25)
-	for _, __obf_bc3b7cf0498b0789 := range __obf_496f8b8c5e614a25 {
-		if __obf_a4e1cb5211d93fe3.Len() > 0 {
-			__obf_a4e1cb5211d93fe3.WriteString("&")
+	sort.Strings(__obf_265fba0806a78870)
+	for _, __obf_35f1be3a8abc964a := range __obf_265fba0806a78870 {
+		if __obf_ed55315e422a93ba.Len() > 0 {
+			__obf_ed55315e422a93ba.WriteString("&")
 		}
-		__obf_a4e1cb5211d93fe3.WriteString(__obf_ec014832ed2718dc(__obf_bc3b7cf0498b0789))
-		__obf_a4e1cb5211d93fe3.WriteString("=")
-		__obf_a4e1cb5211d93fe3.WriteString(__obf_ec014832ed2718dc(__obf_29ad5f87103cd17c.Get(__obf_bc3b7cf0498b0789)))
+		__obf_ed55315e422a93ba.WriteString(__obf_03c24bcdceda96ba(__obf_35f1be3a8abc964a))
+		__obf_ed55315e422a93ba.WriteString("=")
+		__obf_ed55315e422a93ba.WriteString(__obf_03c24bcdceda96ba(__obf_db1bbfced8547939.Get(__obf_35f1be3a8abc964a)))
 	}
-	return __obf_a4e1cb5211d93fe3.String()
+	return __obf_ed55315e422a93ba.String()
 }
 
-func __obf_ec014832ed2718dc(__obf_bbc97f6f2cd5931a string) string {
-	__obf_bbc97f6f2cd5931a = url.QueryEscape(__obf_bbc97f6f2cd5931a)
-	__obf_bbc97f6f2cd5931a = strings.ReplaceAll(__obf_bbc97f6f2cd5931a, "+", "%20")
-	__obf_bbc97f6f2cd5931a = strings.ReplaceAll(__obf_bbc97f6f2cd5931a, "*", "%2A")
-	__obf_bbc97f6f2cd5931a = strings.ReplaceAll(__obf_bbc97f6f2cd5931a, "%7E", "~")
-	return __obf_bbc97f6f2cd5931a
+func __obf_03c24bcdceda96ba(__obf_fb1d74ba34ce4b7e string) string {
+	__obf_fb1d74ba34ce4b7e = url.QueryEscape(__obf_fb1d74ba34ce4b7e)
+	__obf_fb1d74ba34ce4b7e = strings.ReplaceAll(__obf_fb1d74ba34ce4b7e, "+", "%20")
+	__obf_fb1d74ba34ce4b7e = strings.ReplaceAll(__obf_fb1d74ba34ce4b7e, "*", "%2A")
+	__obf_fb1d74ba34ce4b7e = strings.ReplaceAll(__obf_fb1d74ba34ce4b7e, "%7E", "~")
+	return __obf_fb1d74ba34ce4b7e
 }

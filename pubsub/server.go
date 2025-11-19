@@ -1,26 +1,25 @@
-package __obf_e2ef7a91a3555fad
+package __obf_fda006bc08c20e81
 
 import (
 	"encoding/json"
+	util "github.com/ArtisanHiram/go-pkg/util"
+	"github.com/gorilla/websocket"
 	"strings"
 	"sync"
 	"time"
-
-	util "github.com/ArtisanHiram/go-pkg/util"
-	"github.com/gorilla/websocket"
 )
 
 // constants for action type
 const (
 	// from client
-	__obf_3923868da733fc40 = "publish"
-	__obf_6b2674e8747ecfd2 = "subscribe"
-	__obf_07f6009aa575cda6 = "unsubscribe"
+	__obf_df0d54715a4c535f = "publish"
+	__obf_398c119f585cda7e = "subscribe"
+	__obf_2c9021b4df8a8db4 = "unsubscribe"
 	// to client
 	// data  = "data"
-	__obf_c300000a524f0ac6 = "kickout"
-	__obf_f5f0c148715276df = "throw"
-	__obf_a04cd2282e01f146 = "greet"
+	__obf_0e2f438ba048fc30 = "kickout"
+	__obf_e20dcf5adeb45bc7 = "throw"
+	__obf_d24486f98c63848a = "greet"
 	// popup = "popup"
 )
 
@@ -33,7 +32,7 @@ const (
 type Topic string
 
 // subscriber is a type for each string of topic and the clients that subscribe to it
-type __obf_7282d94ba42b919f map[Topic]Client
+type __obf_37ca54f725be081a map[Topic]Client
 
 type ClientID string
 
@@ -58,236 +57,236 @@ type Option struct {
 	MaxMessageSize int64 `yaml:"max-message-size"` // 512
 }
 
-type Handle func(ID ClientID, __obf_33593883a7613182 Topic, __obf_0f59921e2a2b409a string)
+type Handle func(ID ClientID, __obf_0a50140327f02ddc Topic, __obf_3d0896c2890aa16f string)
 
 // Server is the struct to handle the Server functions & manage the subscriber
 type Server struct {
 	Option
-	__obf_7beae969dc830b00 *sync.WaitGroup
-	__obf_f7e591f1dcab1417 *sync.RWMutex
-	__obf_ebe15b9f8fb713b2 *sync.RWMutex
-	__obf_7282d94ba42b919f __obf_7282d94ba42b919f
-	__obf_f9f17c492bc15196 map[string]Handle
+	__obf_c5a6aa2782f543d7 *sync.WaitGroup
+	__obf_79570a500aa0701a *sync.RWMutex
+	__obf_4e96be8ff1e25dbf *sync.RWMutex
+	__obf_37ca54f725be081a __obf_37ca54f725be081a
+	__obf_b4949e66449a9f3c map[string]Handle
 }
 
-func NewPubsub(__obf_b243066a46c37afc Option) *Server {
+func NewPubsub(__obf_ac9434c98a4452bf Option) *Server {
 	return &Server{
-		Option:                 __obf_b243066a46c37afc,
-		__obf_7beae969dc830b00: &sync.WaitGroup{},
-		__obf_f7e591f1dcab1417: &sync.RWMutex{},
-		__obf_ebe15b9f8fb713b2: &sync.RWMutex{},
-		__obf_7282d94ba42b919f: make(__obf_7282d94ba42b919f),
+		Option:                 __obf_ac9434c98a4452bf,
+		__obf_c5a6aa2782f543d7: &sync.WaitGroup{},
+		__obf_79570a500aa0701a: &sync.RWMutex{},
+		__obf_4e96be8ff1e25dbf: &sync.RWMutex{},
+		__obf_37ca54f725be081a: make(__obf_37ca54f725be081a),
 	}
 }
 
-func (__obf_3b8435971c7fa957 *Server) SetActionHandle(__obf_b0cfd848666e9e65 string, __obf_6e0827639b7d01de Handle) {
+func (__obf_2478267a0a2ff751 *Server) SetActionHandle(__obf_d69511bf2896b013 string, __obf_a8bf0b9515030b99 Handle) {
 
-	if __obf_3b8435971c7fa957.__obf_f9f17c492bc15196 == nil {
-		__obf_3b8435971c7fa957.__obf_f9f17c492bc15196 = map[string]Handle{
-			__obf_b0cfd848666e9e65: __obf_6e0827639b7d01de,
+	if __obf_2478267a0a2ff751.__obf_b4949e66449a9f3c == nil {
+		__obf_2478267a0a2ff751.__obf_b4949e66449a9f3c = map[string]Handle{
+			__obf_d69511bf2896b013: __obf_a8bf0b9515030b99,
 		}
 	} else {
-		__obf_3b8435971c7fa957.__obf_f9f17c492bc15196[__obf_b0cfd848666e9e65] = __obf_6e0827639b7d01de
+		__obf_2478267a0a2ff751.__obf_b4949e66449a9f3c[__obf_d69511bf2896b013] = __obf_a8bf0b9515030b99
 	}
 }
 
-func (__obf_3b8435971c7fa957 *Server) Onlines(__obf_b509d7d4759b6253 Topic) int {
-	return len(__obf_3b8435971c7fa957.__obf_7282d94ba42b919f[__obf_b509d7d4759b6253])
+func (__obf_2478267a0a2ff751 *Server) Onlines(__obf_dd1a6169b313a4d5 Topic) int {
+	return len(__obf_2478267a0a2ff751.__obf_37ca54f725be081a[__obf_dd1a6169b313a4d5])
 }
 
 // Send simply sends message to the websocket client
-func (__obf_3b8435971c7fa957 *Server) __obf_003d36d93eb75bfd(__obf_2686046e06db786d *websocket.Conn, __obf_b0cfd848666e9e65 string, __obf_0f59921e2a2b409a any) {
+func (__obf_2478267a0a2ff751 *Server) __obf_45022cf8cccf6baf(__obf_d971a8958298f1dd *websocket.Conn, __obf_d69511bf2896b013 string, __obf_3d0896c2890aa16f any) {
 	// send simple message
 
 	// conn.WriteJSON(Message{Action: action, Body: msg})
 
 	// bs, _ := tool.AnyToBytes(Message{Action: action, Body: msg})
 	// conn.WriteMessage(websocket.BinaryMessage, bs)
-	var __obf_99151bb402c1b0a1 []byte
-	__obf_99151bb402c1b0a1, _ = util.Encode(Message{Action: __obf_b0cfd848666e9e65, Body: __obf_0f59921e2a2b409a})
+	var __obf_9d147980afc482a8 []byte
+	__obf_9d147980afc482a8, _ = util.Encode(Message{Action: __obf_d69511bf2896b013, Body: __obf_3d0896c2890aa16f})
 
-	__obf_3b8435971c7fa957.__obf_f7e591f1dcab1417.Lock()
-	__obf_2686046e06db786d.WriteMessage(websocket.TextMessage, __obf_99151bb402c1b0a1)
-	__obf_3b8435971c7fa957.__obf_f7e591f1dcab1417.Unlock()
+	__obf_2478267a0a2ff751.__obf_79570a500aa0701a.Lock()
+	__obf_d971a8958298f1dd.WriteMessage(websocket.TextMessage, __obf_9d147980afc482a8)
+	__obf_2478267a0a2ff751.__obf_79570a500aa0701a.Unlock()
 }
 
-func (__obf_3b8435971c7fa957 *Server) GetConn(__obf_b509d7d4759b6253 Topic, __obf_8b0e4516a014d4e8 ClientID) *websocket.Conn {
-	__obf_a9b27ce9600bd5c6, __obf_768bc0899b98f1b8 := __obf_3b8435971c7fa957.__obf_7282d94ba42b919f[__obf_b509d7d4759b6253]
-	if !__obf_768bc0899b98f1b8 {
+func (__obf_2478267a0a2ff751 *Server) GetConn(__obf_dd1a6169b313a4d5 Topic, __obf_b1c87d8f10255f3d ClientID) *websocket.Conn {
+	__obf_641c65eca55701d8, __obf_bf04a8a0978b2743 := __obf_2478267a0a2ff751.__obf_37ca54f725be081a[__obf_dd1a6169b313a4d5]
+	if !__obf_bf04a8a0978b2743 {
 		return nil
 	}
 
-	var __obf_2686046e06db786d *websocket.Conn
-	if __obf_2686046e06db786d, __obf_768bc0899b98f1b8 = __obf_a9b27ce9600bd5c6[__obf_8b0e4516a014d4e8]; !__obf_768bc0899b98f1b8 {
+	var __obf_d971a8958298f1dd *websocket.Conn
+	if __obf_d971a8958298f1dd, __obf_bf04a8a0978b2743 = __obf_641c65eca55701d8[__obf_b1c87d8f10255f3d]; !__obf_bf04a8a0978b2743 {
 		return nil
 	}
-	return __obf_2686046e06db786d
+	return __obf_d971a8958298f1dd
 }
 
-func (__obf_3b8435971c7fa957 *Server) SendTo(__obf_b509d7d4759b6253 Topic, __obf_8b0e4516a014d4e8 ClientID, __obf_b0cfd848666e9e65 string, __obf_0f59921e2a2b409a any) {
-	__obf_2686046e06db786d := __obf_3b8435971c7fa957.GetConn(__obf_b509d7d4759b6253, __obf_8b0e4516a014d4e8)
-	if __obf_2686046e06db786d != nil {
-		__obf_3b8435971c7fa957.__obf_003d36d93eb75bfd(__obf_2686046e06db786d, __obf_b0cfd848666e9e65, __obf_0f59921e2a2b409a)
+func (__obf_2478267a0a2ff751 *Server) SendTo(__obf_dd1a6169b313a4d5 Topic, __obf_b1c87d8f10255f3d ClientID, __obf_d69511bf2896b013 string, __obf_3d0896c2890aa16f any) {
+	__obf_d971a8958298f1dd := __obf_2478267a0a2ff751.GetConn(__obf_dd1a6169b313a4d5, __obf_b1c87d8f10255f3d)
+	if __obf_d971a8958298f1dd != nil {
+		__obf_2478267a0a2ff751.__obf_45022cf8cccf6baf(__obf_d971a8958298f1dd, __obf_d69511bf2896b013, __obf_3d0896c2890aa16f)
 	}
 }
 
 // SendWithWait sends message to the websocket client using wait group, allowing usage with goroutines
-func (__obf_3b8435971c7fa957 *Server) SendWithWait(__obf_2686046e06db786d *websocket.Conn, __obf_b0cfd848666e9e65 string, __obf_0f59921e2a2b409a any) {
+func (__obf_2478267a0a2ff751 *Server) SendWithWait(__obf_d971a8958298f1dd *websocket.Conn, __obf_d69511bf2896b013 string, __obf_3d0896c2890aa16f any) {
 	// send simple message
 	// conn.WriteMessage(websocket.TextMessage, []byte(tool.EncodeString(msg)))
-	__obf_3b8435971c7fa957.__obf_003d36d93eb75bfd(__obf_2686046e06db786d, __obf_b0cfd848666e9e65, __obf_0f59921e2a2b409a)
+	__obf_2478267a0a2ff751.__obf_45022cf8cccf6baf(__obf_d971a8958298f1dd, __obf_d69511bf2896b013, __obf_3d0896c2890aa16f)
 
 	// set the task as done
-	__obf_3b8435971c7fa957.__obf_7beae969dc830b00.Done()
+	__obf_2478267a0a2ff751.__obf_c5a6aa2782f543d7.Done()
 }
 
-func (__obf_3b8435971c7fa957 *Server) SendGreet(__obf_2686046e06db786d *websocket.Conn, __obf_0f59921e2a2b409a any) {
-	__obf_3b8435971c7fa957.__obf_003d36d93eb75bfd(__obf_2686046e06db786d, __obf_a04cd2282e01f146, __obf_0f59921e2a2b409a)
+func (__obf_2478267a0a2ff751 *Server) SendGreet(__obf_d971a8958298f1dd *websocket.Conn, __obf_3d0896c2890aa16f any) {
+	__obf_2478267a0a2ff751.__obf_45022cf8cccf6baf(__obf_d971a8958298f1dd, __obf_d24486f98c63848a, __obf_3d0896c2890aa16f)
 }
 
-func (__obf_3b8435971c7fa957 *Server) SendWithAction(__obf_2686046e06db786d *websocket.Conn, __obf_b0cfd848666e9e65 string, __obf_0f59921e2a2b409a any) {
-	__obf_3b8435971c7fa957.__obf_003d36d93eb75bfd(__obf_2686046e06db786d, __obf_b0cfd848666e9e65, __obf_0f59921e2a2b409a)
+func (__obf_2478267a0a2ff751 *Server) SendWithAction(__obf_d971a8958298f1dd *websocket.Conn, __obf_d69511bf2896b013 string, __obf_3d0896c2890aa16f any) {
+	__obf_2478267a0a2ff751.__obf_45022cf8cccf6baf(__obf_d971a8958298f1dd, __obf_d69511bf2896b013, __obf_3d0896c2890aa16f)
 }
 
 // func (s *Server) SendData(conn *websocket.Conn, msg any) {
 // 	s.send(conn, data, msg)
 // }
 
-func (__obf_3b8435971c7fa957 *Server) ThrowError(__obf_2686046e06db786d *websocket.Conn, __obf_4e555280590a47e8 string) {
-	__obf_3b8435971c7fa957.__obf_003d36d93eb75bfd(__obf_2686046e06db786d, __obf_f5f0c148715276df, __obf_4e555280590a47e8)
+func (__obf_2478267a0a2ff751 *Server) ThrowError(__obf_d971a8958298f1dd *websocket.Conn, __obf_92845df685cfc9c8 string) {
+	__obf_2478267a0a2ff751.__obf_45022cf8cccf6baf(__obf_d971a8958298f1dd, __obf_e20dcf5adeb45bc7, __obf_92845df685cfc9c8)
 }
 
 // RemoveClient removes the clients from the server subscription map
-func (__obf_3b8435971c7fa957 *Server) RemoveClient(__obf_8b0e4516a014d4e8 ClientID) {
-	__obf_3b8435971c7fa957.__obf_ebe15b9f8fb713b2.Lock()
-	defer __obf_3b8435971c7fa957.__obf_ebe15b9f8fb713b2.Unlock()
+func (__obf_2478267a0a2ff751 *Server) RemoveClient(__obf_b1c87d8f10255f3d ClientID) {
+	__obf_2478267a0a2ff751.__obf_4e96be8ff1e25dbf.Lock()
+	defer __obf_2478267a0a2ff751.__obf_4e96be8ff1e25dbf.Unlock()
 	// loop all topics
-	for __obf_04d055bb934fd4ff := range __obf_3b8435971c7fa957.__obf_7282d94ba42b919f {
+	for __obf_2d620b44160a0afe := range __obf_2478267a0a2ff751.__obf_37ca54f725be081a {
 		// delete the client from all the topic's client map
-		delete(__obf_3b8435971c7fa957.__obf_7282d94ba42b919f[__obf_04d055bb934fd4ff], __obf_8b0e4516a014d4e8)
+		delete(__obf_2478267a0a2ff751.__obf_37ca54f725be081a[__obf_2d620b44160a0afe], __obf_b1c87d8f10255f3d)
 	}
 }
 
 // ProcessMessage handle message according to the action type
-func (__obf_3b8435971c7fa957 *Server) ProcessMessage(__obf_2686046e06db786d *websocket.Conn, __obf_8b0e4516a014d4e8 ClientID, __obf_0f59921e2a2b409a []byte) {
+func (__obf_2478267a0a2ff751 *Server) ProcessMessage(__obf_d971a8958298f1dd *websocket.Conn, __obf_b1c87d8f10255f3d ClientID, __obf_3d0896c2890aa16f []byte) {
 	// parse message
-	__obf_f4b5b70225df7b66 := Message{}
-	if __obf_4e555280590a47e8 := json.Unmarshal(__obf_0f59921e2a2b409a, &__obf_f4b5b70225df7b66); __obf_4e555280590a47e8 != nil {
-		__obf_3b8435971c7fa957.ThrowError(__obf_2686046e06db786d, ErrInvalidMessage)
+	__obf_64c00b9205499a30 := Message{}
+	if __obf_92845df685cfc9c8 := json.Unmarshal(__obf_3d0896c2890aa16f, &__obf_64c00b9205499a30); __obf_92845df685cfc9c8 != nil {
+		__obf_2478267a0a2ff751.ThrowError(__obf_d971a8958298f1dd, ErrInvalidMessage)
 		return
 	}
 
 	// convert all action to lowercase and remove whitespace
-	__obf_b0cfd848666e9e65 := strings.TrimSpace(strings.ToLower(__obf_f4b5b70225df7b66.Action))
+	__obf_d69511bf2896b013 := strings.TrimSpace(strings.ToLower(__obf_64c00b9205499a30.Action))
 
-	switch __obf_b0cfd848666e9e65 {
-	case __obf_3923868da733fc40:
-		__obf_3b8435971c7fa957.Publish(__obf_f4b5b70225df7b66.Topic, __obf_f4b5b70225df7b66.Body)
+	switch __obf_d69511bf2896b013 {
+	case __obf_df0d54715a4c535f:
+		__obf_2478267a0a2ff751.Publish(__obf_64c00b9205499a30.Topic, __obf_64c00b9205499a30.Body)
 
-	case __obf_6b2674e8747ecfd2:
-		__obf_3b8435971c7fa957.Subscribe(__obf_2686046e06db786d, __obf_8b0e4516a014d4e8, __obf_f4b5b70225df7b66.Topic)
-	case __obf_07f6009aa575cda6:
-		__obf_3b8435971c7fa957.Unsubscribe(__obf_8b0e4516a014d4e8, __obf_f4b5b70225df7b66.Topic)
+	case __obf_398c119f585cda7e:
+		__obf_2478267a0a2ff751.Subscribe(__obf_d971a8958298f1dd, __obf_b1c87d8f10255f3d, __obf_64c00b9205499a30.Topic)
+	case __obf_2c9021b4df8a8db4:
+		__obf_2478267a0a2ff751.Unsubscribe(__obf_b1c87d8f10255f3d, __obf_64c00b9205499a30.Topic)
 
 	default:
-		if __obf_ba89833a94db168e, __obf_47a34d5d4ec9c901 := __obf_3b8435971c7fa957.__obf_f9f17c492bc15196[__obf_b0cfd848666e9e65]; __obf_47a34d5d4ec9c901 {
-			__obf_ba89833a94db168e(__obf_8b0e4516a014d4e8, __obf_f4b5b70225df7b66.Topic, __obf_f4b5b70225df7b66.Body.(string))
+		if __obf_98b4690372ce927d, __obf_7f12278359712ef2 := __obf_2478267a0a2ff751.__obf_b4949e66449a9f3c[__obf_d69511bf2896b013]; __obf_7f12278359712ef2 {
+			__obf_98b4690372ce927d(__obf_b1c87d8f10255f3d, __obf_64c00b9205499a30.Topic, __obf_64c00b9205499a30.Body.(string))
 		} else {
-			__obf_3b8435971c7fa957.ThrowError(__obf_2686046e06db786d, ErrActionUnrecognizable)
+			__obf_2478267a0a2ff751.ThrowError(__obf_d971a8958298f1dd, ErrActionUnrecognizable)
 		}
 
 	}
 }
 
 // Publish sends a message to all subscribing clients of a topic
-func (__obf_3b8435971c7fa957 *Server) Publish(__obf_33593883a7613182 Topic, __obf_ca67c2911c040490 any) {
+func (__obf_2478267a0a2ff751 *Server) Publish(__obf_0a50140327f02ddc Topic, __obf_f668a68ae34c3a90 any) {
 
 	// if topic does not exist, stop the process
-	if _, __obf_768bc0899b98f1b8 := __obf_3b8435971c7fa957.__obf_7282d94ba42b919f[__obf_33593883a7613182]; !__obf_768bc0899b98f1b8 {
+	if _, __obf_bf04a8a0978b2743 := __obf_2478267a0a2ff751.__obf_37ca54f725be081a[__obf_0a50140327f02ddc]; !__obf_bf04a8a0978b2743 {
 		return
 	}
 
 	// if topic exist
-	__obf_a9b27ce9600bd5c6 := __obf_3b8435971c7fa957.__obf_7282d94ba42b919f[__obf_33593883a7613182]
+	__obf_641c65eca55701d8 := __obf_2478267a0a2ff751.__obf_37ca54f725be081a[__obf_0a50140327f02ddc]
 
 	// send the message to the clients
-	for _, __obf_2686046e06db786d := range __obf_a9b27ce9600bd5c6 {
+	for _, __obf_d971a8958298f1dd := range __obf_641c65eca55701d8 {
 		// add 1 job to wait group
-		__obf_3b8435971c7fa957.__obf_7beae969dc830b00.Add(1)
+		__obf_2478267a0a2ff751.__obf_c5a6aa2782f543d7.Add(1)
 
 		// send with goroutines
-		go __obf_3b8435971c7fa957.SendWithWait(__obf_2686046e06db786d, __obf_3923868da733fc40, __obf_ca67c2911c040490)
+		go __obf_2478267a0a2ff751.SendWithWait(__obf_d971a8958298f1dd, __obf_df0d54715a4c535f, __obf_f668a68ae34c3a90)
 	}
 
 	// wait until all goroutines jobs done
-	__obf_3b8435971c7fa957.__obf_7beae969dc830b00.Wait()
+	__obf_2478267a0a2ff751.__obf_c5a6aa2782f543d7.Wait()
 }
 
 // Kickout: kick the older session out
-func (__obf_3b8435971c7fa957 *Server) Kickout(__obf_b509d7d4759b6253 Topic, __obf_8b0e4516a014d4e8 ClientID) {
-	__obf_2686046e06db786d := __obf_3b8435971c7fa957.GetConn(__obf_b509d7d4759b6253, __obf_8b0e4516a014d4e8)
-	if __obf_2686046e06db786d != nil {
-		__obf_3b8435971c7fa957.__obf_003d36d93eb75bfd(__obf_2686046e06db786d, __obf_c300000a524f0ac6, nil)
-		__obf_2686046e06db786d.Close()
-		__obf_3b8435971c7fa957.__obf_ebe15b9f8fb713b2.Lock()
-		delete(__obf_3b8435971c7fa957.__obf_7282d94ba42b919f[__obf_b509d7d4759b6253], __obf_8b0e4516a014d4e8)
-		__obf_3b8435971c7fa957.__obf_ebe15b9f8fb713b2.Unlock()
+func (__obf_2478267a0a2ff751 *Server) Kickout(__obf_dd1a6169b313a4d5 Topic, __obf_b1c87d8f10255f3d ClientID) {
+	__obf_d971a8958298f1dd := __obf_2478267a0a2ff751.GetConn(__obf_dd1a6169b313a4d5, __obf_b1c87d8f10255f3d)
+	if __obf_d971a8958298f1dd != nil {
+		__obf_2478267a0a2ff751.__obf_45022cf8cccf6baf(__obf_d971a8958298f1dd, __obf_0e2f438ba048fc30, nil)
+		__obf_d971a8958298f1dd.Close()
+		__obf_2478267a0a2ff751.__obf_4e96be8ff1e25dbf.Lock()
+		delete(__obf_2478267a0a2ff751.__obf_37ca54f725be081a[__obf_dd1a6169b313a4d5], __obf_b1c87d8f10255f3d)
+		__obf_2478267a0a2ff751.__obf_4e96be8ff1e25dbf.Unlock()
 	}
 }
 
 // Subscribe adds a client to a topic's client map
-func (__obf_3b8435971c7fa957 *Server) Subscribe(__obf_2686046e06db786d *websocket.Conn, __obf_8b0e4516a014d4e8 ClientID, __obf_33593883a7613182 Topic) {
-	__obf_3b8435971c7fa957.__obf_ebe15b9f8fb713b2.Lock()
-	defer __obf_3b8435971c7fa957.__obf_ebe15b9f8fb713b2.Unlock()
+func (__obf_2478267a0a2ff751 *Server) Subscribe(__obf_d971a8958298f1dd *websocket.Conn, __obf_b1c87d8f10255f3d ClientID, __obf_0a50140327f02ddc Topic) {
+	__obf_2478267a0a2ff751.__obf_4e96be8ff1e25dbf.Lock()
+	defer __obf_2478267a0a2ff751.__obf_4e96be8ff1e25dbf.Unlock()
 	// if topic exist, check the client map
-	if _, __obf_768bc0899b98f1b8 := __obf_3b8435971c7fa957.__obf_7282d94ba42b919f[__obf_33593883a7613182]; __obf_768bc0899b98f1b8 {
-		__obf_a9b27ce9600bd5c6 := __obf_3b8435971c7fa957.__obf_7282d94ba42b919f[__obf_33593883a7613182]
+	if _, __obf_bf04a8a0978b2743 := __obf_2478267a0a2ff751.__obf_37ca54f725be081a[__obf_0a50140327f02ddc]; __obf_bf04a8a0978b2743 {
+		__obf_641c65eca55701d8 := __obf_2478267a0a2ff751.__obf_37ca54f725be081a[__obf_0a50140327f02ddc]
 
 		// if subbed, ok := s.actionHandle[subscribe]; ok {
 		// 	subbed(id, topic, "")
 		// }
 
-		__obf_a9b27ce9600bd5c6[__obf_8b0e4516a014d4e8] = __obf_2686046e06db786d
+		__obf_641c65eca55701d8[__obf_b1c87d8f10255f3d] = __obf_d971a8958298f1dd
 		return
 	}
 
 	// if topic does not exist, create a new topic
-	__obf_32074d47ca73c896 := make(Client)
-	__obf_3b8435971c7fa957.__obf_7282d94ba42b919f[__obf_33593883a7613182] = __obf_32074d47ca73c896
+	__obf_76a9cb033e9848a7 := make(Client)
+	__obf_2478267a0a2ff751.__obf_37ca54f725be081a[__obf_0a50140327f02ddc] = __obf_76a9cb033e9848a7
 
 	// add the client to the topic
-	__obf_3b8435971c7fa957.__obf_7282d94ba42b919f[__obf_33593883a7613182][__obf_8b0e4516a014d4e8] = __obf_2686046e06db786d
+	__obf_2478267a0a2ff751.__obf_37ca54f725be081a[__obf_0a50140327f02ddc][__obf_b1c87d8f10255f3d] = __obf_d971a8958298f1dd
 }
 
 // Unsubscribe removes a clients from a topic's client map
-func (__obf_3b8435971c7fa957 *Server) Unsubscribe(__obf_8b0e4516a014d4e8 ClientID, __obf_33593883a7613182 Topic) {
-	__obf_3b8435971c7fa957.__obf_ebe15b9f8fb713b2.Lock()
-	defer __obf_3b8435971c7fa957.__obf_ebe15b9f8fb713b2.Unlock()
+func (__obf_2478267a0a2ff751 *Server) Unsubscribe(__obf_b1c87d8f10255f3d ClientID, __obf_0a50140327f02ddc Topic) {
+	__obf_2478267a0a2ff751.__obf_4e96be8ff1e25dbf.Lock()
+	defer __obf_2478267a0a2ff751.__obf_4e96be8ff1e25dbf.Unlock()
 	// if topic exist, check the client map
-	if _, __obf_768bc0899b98f1b8 := __obf_3b8435971c7fa957.__obf_7282d94ba42b919f[__obf_33593883a7613182]; __obf_768bc0899b98f1b8 {
-		__obf_a9b27ce9600bd5c6 := __obf_3b8435971c7fa957.__obf_7282d94ba42b919f[__obf_33593883a7613182]
+	if _, __obf_bf04a8a0978b2743 := __obf_2478267a0a2ff751.__obf_37ca54f725be081a[__obf_0a50140327f02ddc]; __obf_bf04a8a0978b2743 {
+		__obf_641c65eca55701d8 := __obf_2478267a0a2ff751.__obf_37ca54f725be081a[__obf_0a50140327f02ddc]
 
 		// remove the client from the topic's client map
-		delete(__obf_a9b27ce9600bd5c6, __obf_8b0e4516a014d4e8)
+		delete(__obf_641c65eca55701d8, __obf_b1c87d8f10255f3d)
 	}
 }
 
 // Pump just do readDump and writePump
-func (__obf_3b8435971c7fa957 *Server) Pump(__obf_8b0e4516a014d4e8 ClientID, __obf_2686046e06db786d *websocket.Conn) {
+func (__obf_2478267a0a2ff751 *Server) Pump(__obf_b1c87d8f10255f3d ClientID, __obf_d971a8958298f1dd *websocket.Conn) {
 	// create channel to signal client health
-	__obf_1513f9112e06169f := make(chan struct{})
+	__obf_14b49b73906fed14 := make(chan struct{})
 
-	go __obf_3b8435971c7fa957.__obf_fcdb190d649dc077(__obf_2686046e06db786d, __obf_8b0e4516a014d4e8, __obf_1513f9112e06169f)
-	__obf_3b8435971c7fa957.__obf_d4a4114f45959e76(__obf_2686046e06db786d, __obf_8b0e4516a014d4e8, __obf_1513f9112e06169f)
+	go __obf_2478267a0a2ff751.__obf_b3175f834b15edbf(__obf_d971a8958298f1dd, __obf_b1c87d8f10255f3d, __obf_14b49b73906fed14)
+	__obf_2478267a0a2ff751.__obf_dbcd9d5a988e234f(__obf_d971a8958298f1dd, __obf_b1c87d8f10255f3d, __obf_14b49b73906fed14)
 }
 
 // readPump process incoming messages and set the settings
-func (__obf_3b8435971c7fa957 *Server) __obf_d4a4114f45959e76(__obf_2686046e06db786d *websocket.Conn, __obf_8b0e4516a014d4e8 ClientID, __obf_1513f9112e06169f chan<- struct{}) {
+func (__obf_2478267a0a2ff751 *Server) __obf_dbcd9d5a988e234f(__obf_d971a8958298f1dd *websocket.Conn, __obf_b1c87d8f10255f3d ClientID, __obf_14b49b73906fed14 chan<- struct{}) {
 	// set limit, deadline to read & pong handler
-	__obf_2686046e06db786d.SetReadLimit(__obf_3b8435971c7fa957.MaxMessageSize)
-	__obf_2686046e06db786d.SetReadDeadline(time.Now().Add(__obf_3b8435971c7fa957.PongWait * time.Second))
-	__obf_2686046e06db786d.SetPongHandler(func(string) error {
-		__obf_2686046e06db786d.SetReadDeadline(time.Now().Add(__obf_3b8435971c7fa957.PongWait * time.Second))
+	__obf_d971a8958298f1dd.SetReadLimit(__obf_2478267a0a2ff751.MaxMessageSize)
+	__obf_d971a8958298f1dd.SetReadDeadline(time.Now().Add(__obf_2478267a0a2ff751.PongWait * time.Second))
+	__obf_d971a8958298f1dd.SetPongHandler(func(string) error {
+		__obf_d971a8958298f1dd.SetReadDeadline(time.Now().Add(__obf_2478267a0a2ff751.PongWait * time.Second))
 		return nil
 	})
 	// conn.SetCloseHandler(func(code int, text string) error {
@@ -300,42 +299,42 @@ func (__obf_3b8435971c7fa957 *Server) __obf_d4a4114f45959e76(__obf_2686046e06db7
 	// message handling
 	for {
 		// read incoming message
-		_, __obf_0f59921e2a2b409a, __obf_4e555280590a47e8 := __obf_2686046e06db786d.ReadMessage()
+		_, __obf_3d0896c2890aa16f, __obf_92845df685cfc9c8 := __obf_d971a8958298f1dd.ReadMessage()
 		// if error occured
-		if __obf_4e555280590a47e8 != nil {
+		if __obf_92845df685cfc9c8 != nil {
 			// remove from the client
-			__obf_3b8435971c7fa957.RemoveClient(__obf_8b0e4516a014d4e8)
+			__obf_2478267a0a2ff751.RemoveClient(__obf_b1c87d8f10255f3d)
 			// set health status to unhealthy by closing channel
-			close(__obf_1513f9112e06169f)
+			close(__obf_14b49b73906fed14)
 			// stop process
 			break
 		}
 
 		// if no error, process incoming message
-		__obf_3b8435971c7fa957.ProcessMessage(__obf_2686046e06db786d, __obf_8b0e4516a014d4e8, __obf_0f59921e2a2b409a)
+		__obf_2478267a0a2ff751.ProcessMessage(__obf_d971a8958298f1dd, __obf_b1c87d8f10255f3d, __obf_3d0896c2890aa16f)
 	}
 }
 
 // writePump sends ping to the client
-func (__obf_3b8435971c7fa957 *Server) __obf_fcdb190d649dc077(__obf_2686046e06db786d *websocket.Conn, __obf_8b0e4516a014d4e8 ClientID, __obf_1513f9112e06169f <-chan struct{}) {
+func (__obf_2478267a0a2ff751 *Server) __obf_b3175f834b15edbf(__obf_d971a8958298f1dd *websocket.Conn, __obf_b1c87d8f10255f3d ClientID, __obf_14b49b73906fed14 <-chan struct{}) {
 	// create ping ticker
-	__obf_c8191df05df053c3 := time.NewTicker(__obf_3b8435971c7fa957.PingPeriod * time.Second)
-	defer __obf_c8191df05df053c3.Stop()
+	__obf_670a344344b0f5cb := time.NewTicker(__obf_2478267a0a2ff751.PingPeriod * time.Second)
+	defer __obf_670a344344b0f5cb.Stop()
 
 	for {
 		select {
-		case <-__obf_c8191df05df053c3.C:
+		case <-__obf_670a344344b0f5cb.C:
 			// send ping message
-			__obf_4e555280590a47e8 := __obf_2686046e06db786d.WriteControl(websocket.PingMessage, []byte{}, time.Now().Add(__obf_3b8435971c7fa957.WriteWait*time.Second))
+			__obf_92845df685cfc9c8 := __obf_d971a8958298f1dd.WriteControl(websocket.PingMessage, []byte{}, time.Now().Add(__obf_2478267a0a2ff751.WriteWait*time.Second))
 			// log.Println("-----------------send ping message： ", err)
-			if __obf_4e555280590a47e8 != nil {
+			if __obf_92845df685cfc9c8 != nil {
 				// log.Println("-----------------send ping err: ", err)
 				// if error sending ping, remove this client from the server
-				__obf_3b8435971c7fa957.RemoveClient(__obf_8b0e4516a014d4e8)
+				__obf_2478267a0a2ff751.RemoveClient(__obf_b1c87d8f10255f3d)
 				// stop sending ping
 				return
 			}
-		case <-__obf_1513f9112e06169f:
+		case <-__obf_14b49b73906fed14:
 			// if process is done, stop sending ping
 			return
 		}

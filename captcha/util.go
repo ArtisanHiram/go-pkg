@@ -1,4 +1,4 @@
-package __obf_85f036759f76ec38
+package __obf_e49f90b5aaf58063
 
 import (
 	"math/rand"
@@ -8,15 +8,15 @@ import (
 	"github.com/google/uuid"
 )
 
-func RandomStr(__obf_2fbce240c29d891e int) string {
-	__obf_afefc3afd8988867 := "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-	__obf_14aee239033ef89a := []byte(__obf_afefc3afd8988867)
-	__obf_c1b0a03f1491a7d4 := []byte{}
-	__obf_9f0cd3415eba4a85 := rand.New(rand.NewSource(time.Now().UnixNano()))
-	for range __obf_2fbce240c29d891e {
-		__obf_c1b0a03f1491a7d4 = append(__obf_c1b0a03f1491a7d4, __obf_14aee239033ef89a[__obf_9f0cd3415eba4a85.Intn(len(__obf_14aee239033ef89a))])
+func RandomStr(__obf_851d19e463cb709f int) string {
+	__obf_dcf3c5ed6748658f := "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+	__obf_4c0bb1a9ee1c072f := []byte(__obf_dcf3c5ed6748658f)
+	__obf_23dc79849b35112f := []byte{}
+	__obf_153e9b2c25ef2b10 := rand.New(rand.NewSource(time.Now().UnixNano()))
+	for range __obf_851d19e463cb709f {
+		__obf_23dc79849b35112f = append(__obf_23dc79849b35112f, __obf_4c0bb1a9ee1c072f[__obf_153e9b2c25ef2b10.Intn(len(__obf_4c0bb1a9ee1c072f))])
 	}
-	return string(__obf_c1b0a03f1491a7d4)
+	return string(__obf_23dc79849b35112f)
 }
 
 func StringUUID() string {

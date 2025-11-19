@@ -1,4 +1,4 @@
-package __obf_ab25ed2437cd567a
+package __obf_dc577bef9ac5c6b8
 
 import (
 	"bytes"
@@ -13,62 +13,62 @@ import (
 // type Handler func(any, io.Writer) error
 
 type Worker struct {
-	__obf_a501203efe32a7db Cache
-	__obf_f77c32471d383438 int
-	__obf_b130575b6ae10f38 chan struct{}
+	__obf_b964b68a70df3f8a Cache
+	__obf_2b0a27e1d6573003 int
+	__obf_770109f9d11f3c66 chan struct{}
 }
 
-func NewWorker(__obf_898122e6cdf30aad, __obf_f77c32471d383438 int, __obf_5671672528628a6a string) *Worker {
-	__obf_b130575b6ae10f38 := make(chan struct{}, __obf_898122e6cdf30aad)
-	for __obf_be8d4d616fa7a880 := __obf_898122e6cdf30aad; __obf_be8d4d616fa7a880 > 0; __obf_be8d4d616fa7a880-- {
-		__obf_b130575b6ae10f38 <- struct{}{}
+func NewWorker(__obf_f74f198b56530485, __obf_2b0a27e1d6573003 int, __obf_0047f6edb2231322 string) *Worker {
+	__obf_770109f9d11f3c66 := make(chan struct{}, __obf_f74f198b56530485)
+	for __obf_5e240e9841a5c237 := __obf_f74f198b56530485; __obf_5e240e9841a5c237 > 0; __obf_5e240e9841a5c237-- {
+		__obf_770109f9d11f3c66 <- struct{}{}
 	}
-	return &Worker{NewDirCache(__obf_5671672528628a6a), __obf_f77c32471d383438, __obf_b130575b6ae10f38}
+	return &Worker{NewDirCache(__obf_0047f6edb2231322), __obf_2b0a27e1d6573003, __obf_770109f9d11f3c66}
 }
 
 // TODO timeout & context
-func (__obf_8d3b3856596fc4f4 *Worker) Serve(__obf_7428e3ac679e65fe string, __obf_5b69e94b87fb5441 []string, __obf_98c2f72bee615664 io.Writer) error {
+func (__obf_fdd7931bd5a61fac *Worker) Serve(__obf_adceafa34032b65e string, __obf_2e8b43644037105e []string, __obf_39c0ed11835c4488 io.Writer) error {
 
-	__obf_9f32223e1acaa774 := sha1.New()
-	__obf_9f32223e1acaa774.Write([]byte(__obf_7428e3ac679e65fe))
-	for _, __obf_2172876de9966b00 := range __obf_5b69e94b87fb5441 {
-		__obf_9f32223e1acaa774.Write([]byte(__obf_2172876de9966b00))
+	__obf_37493f0bfb931271 := sha1.New()
+	__obf_37493f0bfb931271.Write([]byte(__obf_adceafa34032b65e))
+	for _, __obf_09a76bbb1dc54f81 := range __obf_2e8b43644037105e {
+		__obf_37493f0bfb931271.Write([]byte(__obf_09a76bbb1dc54f81))
 	}
-	__obf_f7b675362b70b512 := __obf_9f32223e1acaa774.Sum(nil)
-	__obf_10900f54d35c1067 := fmt.Sprintf("%x", __obf_f7b675362b70b512)
+	__obf_8a5de64853c61e81 := __obf_37493f0bfb931271.Sum(nil)
+	__obf_85503b8843d1609c := fmt.Sprintf("%x", __obf_8a5de64853c61e81)
 
-	__obf_2225771e74950257, __obf_9d170493b73636ca := __obf_8d3b3856596fc4f4.__obf_a501203efe32a7db.Get(context.Background(), __obf_10900f54d35c1067)
+	__obf_9ba61d882c7140dd, __obf_14a3b54d08bd697d := __obf_fdd7931bd5a61fac.__obf_b964b68a70df3f8a.Get(context.Background(), __obf_85503b8843d1609c)
 	// If error getting item, return not served with error
-	if __obf_9d170493b73636ca != nil {
-		return __obf_9d170493b73636ca
+	if __obf_14a3b54d08bd697d != nil {
+		return __obf_14a3b54d08bd697d
 	}
 	// If no item found, return not served with no error
-	if __obf_2225771e74950257 != nil {
+	if __obf_9ba61d882c7140dd != nil {
 		// If copying fails, return served with error
-		if _, __obf_9d170493b73636ca = io.Copy(__obf_98c2f72bee615664, bytes.NewReader(__obf_2225771e74950257)); __obf_9d170493b73636ca != nil {
-			return __obf_9d170493b73636ca
+		if _, __obf_14a3b54d08bd697d = io.Copy(__obf_39c0ed11835c4488, bytes.NewReader(__obf_9ba61d882c7140dd)); __obf_14a3b54d08bd697d != nil {
+			return __obf_14a3b54d08bd697d
 		}
 		// Everything worked, return served with no error
 		return nil
 	}
 
 	// Wait for token
-	__obf_8d5b84246c0c48cb := <-__obf_8d3b3856596fc4f4.__obf_b130575b6ae10f38
+	__obf_d1ac06ef8445e5e2 := <-__obf_fdd7931bd5a61fac.__obf_770109f9d11f3c66
 	defer func() {
-		__obf_8d3b3856596fc4f4.__obf_b130575b6ae10f38 <- __obf_8d5b84246c0c48cb
+		__obf_fdd7931bd5a61fac.__obf_770109f9d11f3c66 <- __obf_d1ac06ef8445e5e2
 	}()
 
-	__obf_0e8aa16629ed5bab := new(bytes.Buffer)
-	__obf_d71ce65cd2837717 := io.MultiWriter(__obf_0e8aa16629ed5bab, __obf_98c2f72bee615664)
+	__obf_76620fff066a9aae := new(bytes.Buffer)
+	__obf_48c8e05d734fc616 := io.MultiWriter(__obf_76620fff066a9aae, __obf_39c0ed11835c4488)
 
-	__obf_378e35ef817a6881, __obf_032b931ab588608d := context.WithTimeout(context.Background(), time.Duration(__obf_8d3b3856596fc4f4.__obf_f77c32471d383438)*time.Second)
-	defer __obf_032b931ab588608d()
+	__obf_5d1af4120f069bb9, __obf_22443b10029c5b8b := context.WithTimeout(context.Background(), time.Duration(__obf_fdd7931bd5a61fac.__obf_2b0a27e1d6573003)*time.Second)
+	defer __obf_22443b10029c5b8b()
 
-	__obf_6319c2b6d1f4ed90 := exec.CommandContext(__obf_378e35ef817a6881, __obf_7428e3ac679e65fe, __obf_5b69e94b87fb5441...)
+	__obf_e26c9c0f4ab57457 := exec.CommandContext(__obf_5d1af4120f069bb9, __obf_adceafa34032b65e, __obf_2e8b43644037105e...)
 
-	if __obf_9d170493b73636ca := ExecWriteStdout(__obf_6319c2b6d1f4ed90, __obf_d71ce65cd2837717); __obf_9d170493b73636ca != nil {
-		return __obf_9d170493b73636ca
+	if __obf_14a3b54d08bd697d := ExecWriteStdout(__obf_e26c9c0f4ab57457, __obf_48c8e05d734fc616); __obf_14a3b54d08bd697d != nil {
+		return __obf_14a3b54d08bd697d
 	}
 
-	return __obf_8d3b3856596fc4f4.__obf_a501203efe32a7db.Set(context.Background(), __obf_10900f54d35c1067, __obf_0e8aa16629ed5bab.Bytes())
+	return __obf_fdd7931bd5a61fac.__obf_b964b68a70df3f8a.Set(context.Background(), __obf_85503b8843d1609c, __obf_76620fff066a9aae.Bytes())
 }

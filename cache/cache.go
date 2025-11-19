@@ -1,10 +1,9 @@
-package __obf_f4d8558b35981340
+package __obf_62df4de078c8d208
 
 import (
 	"errors"
-	"time"
-
 	util "github.com/ArtisanHiram/go-pkg/util"
+	"time"
 )
 
 var (
@@ -25,21 +24,21 @@ type Expirable interface {
 // }
 
 type Cache interface {
-	Add(__obf_6208471da03258dd string, __obf_20a54be727e70f3c any) error
-	Set(__obf_6208471da03258dd string, __obf_20a54be727e70f3c any, __obf_1e67295112a2a62d time.Duration) error
-	Get(__obf_6208471da03258dd string) ([]byte, error)
-	Delete(__obf_1261d18b5941c6bd string)
-	Remove(__obf_6208471da03258dd string) error
+	Add(__obf_4aecf3c737bbe5e8 string, __obf_676d75836c094b83 any) error
+	Set(__obf_4aecf3c737bbe5e8 string, __obf_676d75836c094b83 any, __obf_24d92102aed9ce02 time.Duration) error
+	Get(__obf_4aecf3c737bbe5e8 string) ([]byte, error)
+	Delete(__obf_0c00b35780000392 string)
+	Remove(__obf_4aecf3c737bbe5e8 string) error
 	Clear() error
-	Has(__obf_6208471da03258dd string) bool
+	Has(__obf_4aecf3c737bbe5e8 string) bool
 }
 
-func Get[T any](__obf_16acb12ec004bad4 Cache, __obf_6208471da03258dd string) (__obf_75d2c979de8603cc T, __obf_06e4a4e6e9269bd7 error) {
-	var __obf_aa4cb039e7b11552 []byte
-	__obf_aa4cb039e7b11552, __obf_06e4a4e6e9269bd7 = __obf_16acb12ec004bad4.Get(__obf_6208471da03258dd)
-	if __obf_06e4a4e6e9269bd7 != nil {
+func Get[T any](__obf_eb6273cfd663c098 Cache, __obf_4aecf3c737bbe5e8 string) (__obf_dbf9fa51e995bfee T, __obf_68f2d1855583b558 error) {
+	var __obf_0eefc8c70e7b9364 []byte
+	__obf_0eefc8c70e7b9364, __obf_68f2d1855583b558 = __obf_eb6273cfd663c098.Get(__obf_4aecf3c737bbe5e8)
+	if __obf_68f2d1855583b558 != nil {
 		return
 	}
 
-	return util.BytesToAny[T](__obf_aa4cb039e7b11552)
+	return util.BytesToAny[T](__obf_0eefc8c70e7b9364)
 }

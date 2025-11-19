@@ -1,20 +1,20 @@
-package __obf_ab25ed2437cd567a
+package __obf_dc577bef9ac5c6b8
 
 import (
 	"fmt"
 	"io"
 )
 
-func (__obf_8d3b3856596fc4f4 *HlsServer) GetFrame(__obf_a09859f1d205ee4d string, __obf_cfc6c82f5436ba5e int, __obf_98c2f72bee615664 io.Writer) error {
-	__obf_3a7fd6afab4923e8 := []string{
+func (__obf_fdd7931bd5a61fac *HlsServer) GetFrame(__obf_1ff51571f6b70e49 string, __obf_90df74c8eee17939 int, __obf_39c0ed11835c4488 io.Writer) error {
+	__obf_89adfe3713e6bab9 := []string{
 		"-timelimit", "15",
 		"-loglevel", "error",
-		"-ss", fmt.Sprintf("%d.0", __obf_cfc6c82f5436ba5e),
-		"-i", __obf_a09859f1d205ee4d,
+		"-ss", fmt.Sprintf("%d.0", __obf_90df74c8eee17939),
+		"-i", __obf_1ff51571f6b70e49,
 		"-vf", "scale=320:-1",
 		"-frames:v", "1",
 		"-f", "image2",
 		"-",
 	}
-	return __obf_8d3b3856596fc4f4.__obf_4f68dab75aa13315.Serve(FFMpegPath, __obf_3a7fd6afab4923e8, __obf_98c2f72bee615664)
+	return __obf_fdd7931bd5a61fac.__obf_b69b54cbf0d766ab.Serve(FFMpegPath, __obf_89adfe3713e6bab9, __obf_39c0ed11835c4488)
 }

@@ -1,4 +1,4 @@
-package __obf_85f036759f76ec38
+package __obf_e49f90b5aaf58063
 
 import (
 	"fmt"
@@ -14,7 +14,7 @@ const (
 
 // Captcha represents a captcha service.
 type Captcha struct {
-	__obf_f9ab07d9fa6ca3a9 cache.Cache
+	__obf_57cfccd67b13108e cache.Cache
 	Width                  int     `yaml:"width"`
 	Height                 int     `yaml:"height"`
 	Length                 int     `yaml:"length"`
@@ -24,25 +24,25 @@ type Captcha struct {
 	ColorPalette           color.Palette
 }
 
-func (__obf_b28fa363ae71e592 *Captcha) Init(__obf_92a4a9bad6cbb69a cache.Cache) {
-	if __obf_b28fa363ae71e592.__obf_f9ab07d9fa6ca3a9 == nil {
-		__obf_b28fa363ae71e592.__obf_f9ab07d9fa6ca3a9 = __obf_92a4a9bad6cbb69a
+func (__obf_98f8d0c445e06488 *Captcha) Init(__obf_bdd8cc607d070139 cache.Cache) {
+	if __obf_98f8d0c445e06488.__obf_57cfccd67b13108e == nil {
+		__obf_98f8d0c445e06488.__obf_57cfccd67b13108e = __obf_bdd8cc607d070139
 	}
 }
 
 // create a new captcha id
-func (__obf_b28fa363ae71e592 *Captcha) Generate() (string, string) {
-	__obf_ee79d6821f7987e1 := StringUUID()
-	__obf_c5376c2e84331d8b := RandomStr(__obf_b28fa363ae71e592.Length)
-	__obf_b28fa363ae71e592.__obf_f9ab07d9fa6ca3a9.Set(fmt.Sprintf(CachePrefix, __obf_ee79d6821f7987e1), __obf_c5376c2e84331d8b, time.Duration(__obf_b28fa363ae71e592.Expiration)*time.Minute)
-	__obf_26cee9c7b1194c15 := Image{
-		Chars:   __obf_c5376c2e84331d8b,
-		Width:   __obf_b28fa363ae71e592.Width,
-		Height:  __obf_b28fa363ae71e592.Height,
-		Noises:  __obf_b28fa363ae71e592.Noises,
-		MaxSkew: __obf_b28fa363ae71e592.MaxSkew,
+func (__obf_98f8d0c445e06488 *Captcha) Generate() (string, string) {
+	__obf_55fe7235cf866948 := StringUUID()
+	__obf_10eafabe741c335e := RandomStr(__obf_98f8d0c445e06488.Length)
+	__obf_98f8d0c445e06488.__obf_57cfccd67b13108e.Set(fmt.Sprintf(CachePrefix, __obf_55fe7235cf866948), __obf_10eafabe741c335e, time.Duration(__obf_98f8d0c445e06488.Expiration)*time.Minute)
+	__obf_5ef5f278f950e167 := Image{
+		Chars:   __obf_10eafabe741c335e,
+		Width:   __obf_98f8d0c445e06488.Width,
+		Height:  __obf_98f8d0c445e06488.Height,
+		Noises:  __obf_98f8d0c445e06488.Noises,
+		MaxSkew: __obf_98f8d0c445e06488.MaxSkew,
 	}
-	return __obf_ee79d6821f7987e1, __obf_26cee9c7b1194c15.Base64()
+	return __obf_55fe7235cf866948, __obf_5ef5f278f950e167.Base64()
 }
 
 // verify from a request
@@ -52,14 +52,14 @@ func (__obf_b28fa363ae71e592 *Captcha) Generate() (string, string) {
 // }
 
 // direct verify id and challenge string
-func (__obf_b28fa363ae71e592 *Captcha) Verify(__obf_ee79d6821f7987e1 string, __obf_4f2ce9f47dbddb37 string) bool {
-	if len(__obf_4f2ce9f47dbddb37) == 0 || len(__obf_ee79d6821f7987e1) == 0 {
+func (__obf_98f8d0c445e06488 *Captcha) Verify(__obf_55fe7235cf866948 string, __obf_21e720384978b98d string) bool {
+	if len(__obf_21e720384978b98d) == 0 || len(__obf_55fe7235cf866948) == 0 {
 		return false
 	}
 
-	__obf_e161bbda129a05cf, __obf_bb2771e9267479a3 := cache.Get[string](__obf_b28fa363ae71e592.__obf_f9ab07d9fa6ca3a9, fmt.Sprintf(CachePrefix, __obf_ee79d6821f7987e1))
-	if __obf_bb2771e9267479a3 != nil {
+	__obf_9bae8b63c43448cc, __obf_fea6cef273213c03 := cache.Get[string](__obf_98f8d0c445e06488.__obf_57cfccd67b13108e, fmt.Sprintf(CachePrefix, __obf_55fe7235cf866948))
+	if __obf_fea6cef273213c03 != nil {
 		return false
 	}
-	return strings.EqualFold(__obf_4f2ce9f47dbddb37, __obf_e161bbda129a05cf)
+	return strings.EqualFold(__obf_21e720384978b98d, __obf_9bae8b63c43448cc)
 }

@@ -1,4 +1,4 @@
-package __obf_ab25ed2437cd567a
+package __obf_dc577bef9ac5c6b8
 
 import (
 	"bytes"
@@ -10,63 +10,63 @@ import (
 )
 
 type Cache interface {
-	Set(__obf_378e35ef817a6881 context.Context, __obf_10900f54d35c1067 string, __obf_d47816579d247f97 []byte) error
-	Get(__obf_378e35ef817a6881 context.Context, __obf_10900f54d35c1067 string) ([]byte, error)
+	Set(__obf_5d1af4120f069bb9 context.Context, __obf_85503b8843d1609c string, __obf_866a0608e4aff093 []byte) error
+	Get(__obf_5d1af4120f069bb9 context.Context, __obf_85503b8843d1609c string) ([]byte, error)
 }
 
 type DirCache struct {
-	__obf_77c0216d25f1382f string
+	__obf_ef682768d47e5b4e string
 }
 
-func NewDirCache(__obf_77c0216d25f1382f string) *DirCache {
-	return &DirCache{__obf_77c0216d25f1382f}
+func NewDirCache(__obf_ef682768d47e5b4e string) *DirCache {
+	return &DirCache{__obf_ef682768d47e5b4e}
 }
 
-func (__obf_a1d8fa5beaa156e6 *DirCache) __obf_dd89a7384a10e422(__obf_10900f54d35c1067 string) string {
-	return filepath.Join(__obf_a1d8fa5beaa156e6.__obf_77c0216d25f1382f, __obf_10900f54d35c1067)
+func (__obf_da693a20c0580a55 *DirCache) __obf_0434299a335e7440(__obf_85503b8843d1609c string) string {
+	return filepath.Join(__obf_da693a20c0580a55.__obf_ef682768d47e5b4e, __obf_85503b8843d1609c)
 }
 
-func (__obf_a1d8fa5beaa156e6 *DirCache) Get(__obf_378e35ef817a6881 context.Context, __obf_10900f54d35c1067 string) ([]byte, error) {
-	__obf_56707f240662d9aa, __obf_9d170493b73636ca := os.Open(__obf_a1d8fa5beaa156e6.__obf_dd89a7384a10e422(__obf_10900f54d35c1067))
-	if __obf_9d170493b73636ca != nil {
-		if os.IsNotExist(__obf_9d170493b73636ca) {
+func (__obf_da693a20c0580a55 *DirCache) Get(__obf_5d1af4120f069bb9 context.Context, __obf_85503b8843d1609c string) ([]byte, error) {
+	__obf_cf3312d5b91d1c43, __obf_14a3b54d08bd697d := os.Open(__obf_da693a20c0580a55.__obf_0434299a335e7440(__obf_85503b8843d1609c))
+	if __obf_14a3b54d08bd697d != nil {
+		if os.IsNotExist(__obf_14a3b54d08bd697d) {
 			return nil, nil
 		}
-		return nil, __obf_9d170493b73636ca
+		return nil, __obf_14a3b54d08bd697d
 	}
-	defer __obf_56707f240662d9aa.Close()
-	__obf_e097ea2782772156 := new(bytes.Buffer)
-	if _, __obf_9d170493b73636ca = io.Copy(__obf_e097ea2782772156, __obf_56707f240662d9aa); __obf_9d170493b73636ca != nil {
-		return nil, __obf_9d170493b73636ca
+	defer __obf_cf3312d5b91d1c43.Close()
+	__obf_f5cb3c85b79131f3 := new(bytes.Buffer)
+	if _, __obf_14a3b54d08bd697d = io.Copy(__obf_f5cb3c85b79131f3, __obf_cf3312d5b91d1c43); __obf_14a3b54d08bd697d != nil {
+		return nil, __obf_14a3b54d08bd697d
 	}
-	return __obf_e097ea2782772156.Bytes(), nil
+	return __obf_f5cb3c85b79131f3.Bytes(), nil
 }
 
-func (__obf_a1d8fa5beaa156e6 *DirCache) Set(__obf_378e35ef817a6881 context.Context, __obf_10900f54d35c1067 string, __obf_d47816579d247f97 []byte) error {
-	if __obf_9d170493b73636ca := os.MkdirAll(__obf_a1d8fa5beaa156e6.__obf_77c0216d25f1382f, 0777); __obf_9d170493b73636ca != nil {
-		log.Printf("Could not create cache dir %v: %v", __obf_a1d8fa5beaa156e6.__obf_77c0216d25f1382f, __obf_9d170493b73636ca)
-		return __obf_9d170493b73636ca
+func (__obf_da693a20c0580a55 *DirCache) Set(__obf_5d1af4120f069bb9 context.Context, __obf_85503b8843d1609c string, __obf_866a0608e4aff093 []byte) error {
+	if __obf_14a3b54d08bd697d := os.MkdirAll(__obf_da693a20c0580a55.__obf_ef682768d47e5b4e, 0777); __obf_14a3b54d08bd697d != nil {
+		log.Printf("Could not create cache dir %v: %v", __obf_da693a20c0580a55.__obf_ef682768d47e5b4e, __obf_14a3b54d08bd697d)
+		return __obf_14a3b54d08bd697d
 	}
-	__obf_0c3e7aaf7d329ee7, __obf_9d170493b73636ca := os.CreateTemp(__obf_a1d8fa5beaa156e6.__obf_77c0216d25f1382f, __obf_10900f54d35c1067+".*")
-	if __obf_9d170493b73636ca != nil {
-		log.Printf("Could not create cache file %v: %v", __obf_0c3e7aaf7d329ee7, __obf_9d170493b73636ca)
-		return __obf_9d170493b73636ca
+	__obf_d8ab4b546a1d7288, __obf_14a3b54d08bd697d := os.CreateTemp(__obf_da693a20c0580a55.__obf_ef682768d47e5b4e, __obf_85503b8843d1609c+".*")
+	if __obf_14a3b54d08bd697d != nil {
+		log.Printf("Could not create cache file %v: %v", __obf_d8ab4b546a1d7288, __obf_14a3b54d08bd697d)
+		return __obf_14a3b54d08bd697d
 	}
-	if _, __obf_9d170493b73636ca := io.Copy(__obf_0c3e7aaf7d329ee7, bytes.NewReader(__obf_d47816579d247f97)); __obf_9d170493b73636ca != nil {
-		log.Printf("Could not write cache file %v: %v", __obf_0c3e7aaf7d329ee7, __obf_9d170493b73636ca)
-		__obf_0c3e7aaf7d329ee7.Close()
-		os.Remove(__obf_0c3e7aaf7d329ee7.Name())
-		return __obf_9d170493b73636ca
+	if _, __obf_14a3b54d08bd697d := io.Copy(__obf_d8ab4b546a1d7288, bytes.NewReader(__obf_866a0608e4aff093)); __obf_14a3b54d08bd697d != nil {
+		log.Printf("Could not write cache file %v: %v", __obf_d8ab4b546a1d7288, __obf_14a3b54d08bd697d)
+		__obf_d8ab4b546a1d7288.Close()
+		os.Remove(__obf_d8ab4b546a1d7288.Name())
+		return __obf_14a3b54d08bd697d
 	}
-	if __obf_9d170493b73636ca = __obf_0c3e7aaf7d329ee7.Close(); __obf_9d170493b73636ca != nil {
-		log.Printf("Could not close cache file %v: %v", __obf_0c3e7aaf7d329ee7, __obf_9d170493b73636ca)
-		os.Remove(__obf_0c3e7aaf7d329ee7.Name())
-		return __obf_9d170493b73636ca
+	if __obf_14a3b54d08bd697d = __obf_d8ab4b546a1d7288.Close(); __obf_14a3b54d08bd697d != nil {
+		log.Printf("Could not close cache file %v: %v", __obf_d8ab4b546a1d7288, __obf_14a3b54d08bd697d)
+		os.Remove(__obf_d8ab4b546a1d7288.Name())
+		return __obf_14a3b54d08bd697d
 	}
-	if __obf_9d170493b73636ca = os.Rename(__obf_0c3e7aaf7d329ee7.Name(), __obf_a1d8fa5beaa156e6.__obf_dd89a7384a10e422(__obf_10900f54d35c1067)); __obf_9d170493b73636ca != nil {
-		log.Printf("Could not move cache file %v: %v", __obf_0c3e7aaf7d329ee7, __obf_9d170493b73636ca)
-		os.Remove(__obf_0c3e7aaf7d329ee7.Name())
-		return __obf_9d170493b73636ca
+	if __obf_14a3b54d08bd697d = os.Rename(__obf_d8ab4b546a1d7288.Name(), __obf_da693a20c0580a55.__obf_0434299a335e7440(__obf_85503b8843d1609c)); __obf_14a3b54d08bd697d != nil {
+		log.Printf("Could not move cache file %v: %v", __obf_d8ab4b546a1d7288, __obf_14a3b54d08bd697d)
+		os.Remove(__obf_d8ab4b546a1d7288.Name())
+		return __obf_14a3b54d08bd697d
 	}
 	return nil
 }

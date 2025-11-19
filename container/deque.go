@@ -1,100 +1,100 @@
-package __obf_76599ab96a208083
+package __obf_9861fa13140c30a3
 
 // minCapacity is the smallest capacity that deque may have.
 // Must be power of 2 for bitwise modulus: x % n == x & (n - 1).
-const __obf_54005283f515b2f3 = 16
+const __obf_cc95479c3d76dafd = 16
 
 // Deque represents a single instance of the deque data structure.
 type Deque struct {
-	__obf_9fe268d736364e9f []any
-	__obf_4d89c0af2f36d012 int
-	__obf_8bc2d90b334ac328 int
-	__obf_c5d600e67da7e0a9 int
-	__obf_0b2b4cb4a4eac34c int
+	__obf_22291ba8f5a063e8 []any
+	__obf_e7184c1cd4d9cb16 int
+	__obf_30d187ec07bc80ec int
+	__obf_7e6767c22d23f06d int
+	__obf_c3af9f3aa40e7102 int
 }
 
 // Len returns the number of elements currently stored in the queue.
-func (__obf_11028cff7d6f8d69 *Deque) Len() int {
-	return __obf_11028cff7d6f8d69.__obf_c5d600e67da7e0a9
+func (__obf_cccb1f17f448628f *Deque) Len() int {
+	return __obf_cccb1f17f448628f.__obf_7e6767c22d23f06d
 }
 
 // PushBack appends an element to the back of the queue.  Implements FIFO when
 // elements are removed with PopFront(), and LIFO when elements are removed
 // with PopBack().
-func (__obf_11028cff7d6f8d69 *Deque) PushBack(__obf_820b59466c6fe31c any) {
-	__obf_11028cff7d6f8d69.__obf_2013021a3470d347()
+func (__obf_cccb1f17f448628f *Deque) PushBack(__obf_1cfa18c298665e4b any) {
+	__obf_cccb1f17f448628f.__obf_5c24d5ef59e77124()
 
-	__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f[__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328] = __obf_820b59466c6fe31c
+	__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8[__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec] = __obf_1cfa18c298665e4b
 	// Calculate new tail position.
-	__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328 = __obf_11028cff7d6f8d69.__obf_b7a3ba8614d8f9d8(__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328)
-	__obf_11028cff7d6f8d69.__obf_c5d600e67da7e0a9++
+	__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec = __obf_cccb1f17f448628f.__obf_9c578e473cd91a70(__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec)
+	__obf_cccb1f17f448628f.__obf_7e6767c22d23f06d++
 }
 
 // PushFront prepends an element to the front of the queue.
-func (__obf_11028cff7d6f8d69 *Deque) PushFront(__obf_820b59466c6fe31c any) {
-	__obf_11028cff7d6f8d69.__obf_2013021a3470d347()
+func (__obf_cccb1f17f448628f *Deque) PushFront(__obf_1cfa18c298665e4b any) {
+	__obf_cccb1f17f448628f.__obf_5c24d5ef59e77124()
 
 	// Calculate new head position.
-	__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012 = __obf_11028cff7d6f8d69.__obf_6b94d13992080dfb(__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012)
-	__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f[__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012] = __obf_820b59466c6fe31c
-	__obf_11028cff7d6f8d69.__obf_c5d600e67da7e0a9++
+	__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16 = __obf_cccb1f17f448628f.__obf_9e64c21ddd522887(__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16)
+	__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8[__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16] = __obf_1cfa18c298665e4b
+	__obf_cccb1f17f448628f.__obf_7e6767c22d23f06d++
 }
 
 // PopFront removes and returns the element from the front of the queue.
 // Implements FIFO when used with PushBack().  If the queue is empty, the call
 // panics.
-func (__obf_11028cff7d6f8d69 *Deque) PopFront() any {
-	if __obf_11028cff7d6f8d69.__obf_c5d600e67da7e0a9 <= 0 {
+func (__obf_cccb1f17f448628f *Deque) PopFront() any {
+	if __obf_cccb1f17f448628f.__obf_7e6767c22d23f06d <= 0 {
 		panic("deque: PopFront() called on empty queue")
 	}
-	__obf_12bd3b3b2da39ede := __obf_11028cff7d6f8d69.__obf_9fe268d736364e9f[__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012]
-	__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f[__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012] = nil
+	__obf_960335ceca7c79b8 := __obf_cccb1f17f448628f.__obf_22291ba8f5a063e8[__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16]
+	__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8[__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16] = nil
 	// Calculate new head position.
-	__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012 = __obf_11028cff7d6f8d69.__obf_b7a3ba8614d8f9d8(__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012)
-	__obf_11028cff7d6f8d69.__obf_c5d600e67da7e0a9--
+	__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16 = __obf_cccb1f17f448628f.__obf_9c578e473cd91a70(__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16)
+	__obf_cccb1f17f448628f.__obf_7e6767c22d23f06d--
 
-	__obf_11028cff7d6f8d69.__obf_232fd657786529e3()
-	return __obf_12bd3b3b2da39ede
+	__obf_cccb1f17f448628f.__obf_e286abf03b28bd7a()
+	return __obf_960335ceca7c79b8
 }
 
 // PopBack removes and returns the element from the back of the queue.
 // Implements LIFO when used with PushBack().  If the queue is empty, the call
 // panics.
-func (__obf_11028cff7d6f8d69 *Deque) PopBack() any {
-	if __obf_11028cff7d6f8d69.__obf_c5d600e67da7e0a9 <= 0 {
+func (__obf_cccb1f17f448628f *Deque) PopBack() any {
+	if __obf_cccb1f17f448628f.__obf_7e6767c22d23f06d <= 0 {
 		panic("deque: PopBack() called on empty queue")
 	}
 
 	// Calculate new tail position
-	__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328 = __obf_11028cff7d6f8d69.__obf_6b94d13992080dfb(__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328)
+	__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec = __obf_cccb1f17f448628f.__obf_9e64c21ddd522887(__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec)
 
 	// Remove value at tail.
-	__obf_12bd3b3b2da39ede := __obf_11028cff7d6f8d69.__obf_9fe268d736364e9f[__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328]
-	__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f[__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328] = nil
-	__obf_11028cff7d6f8d69.__obf_c5d600e67da7e0a9--
+	__obf_960335ceca7c79b8 := __obf_cccb1f17f448628f.__obf_22291ba8f5a063e8[__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec]
+	__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8[__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec] = nil
+	__obf_cccb1f17f448628f.__obf_7e6767c22d23f06d--
 
-	__obf_11028cff7d6f8d69.__obf_232fd657786529e3()
-	return __obf_12bd3b3b2da39ede
+	__obf_cccb1f17f448628f.__obf_e286abf03b28bd7a()
+	return __obf_960335ceca7c79b8
 }
 
 // Front returns the element at the front of the queue.  This is the element
 // that would be returned by PopFront().  This call panics if the queue is
 // empty.
-func (__obf_11028cff7d6f8d69 *Deque) Front() any {
-	if __obf_11028cff7d6f8d69.__obf_c5d600e67da7e0a9 <= 0 {
+func (__obf_cccb1f17f448628f *Deque) Front() any {
+	if __obf_cccb1f17f448628f.__obf_7e6767c22d23f06d <= 0 {
 		panic("deque: Front() called when empty")
 	}
-	return __obf_11028cff7d6f8d69.__obf_9fe268d736364e9f[__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012]
+	return __obf_cccb1f17f448628f.__obf_22291ba8f5a063e8[__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16]
 }
 
 // Back returns the element at the back of the queue.  This is the element
 // that would be returned by PopBack().  This call panics if the queue is
 // empty.
-func (__obf_11028cff7d6f8d69 *Deque) Back() any {
-	if __obf_11028cff7d6f8d69.__obf_c5d600e67da7e0a9 <= 0 {
+func (__obf_cccb1f17f448628f *Deque) Back() any {
+	if __obf_cccb1f17f448628f.__obf_7e6767c22d23f06d <= 0 {
 		panic("deque: Back() called when empty")
 	}
-	return __obf_11028cff7d6f8d69.__obf_9fe268d736364e9f[__obf_11028cff7d6f8d69.__obf_6b94d13992080dfb(__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328)]
+	return __obf_cccb1f17f448628f.__obf_22291ba8f5a063e8[__obf_cccb1f17f448628f.__obf_9e64c21ddd522887(__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec)]
 }
 
 // At returns the element at index i in the queue without removing the element
@@ -109,12 +109,12 @@ func (__obf_11028cff7d6f8d69 *Deque) Back() any {
 // case of a fixed-size circular log buffer: A new entry is pushed onto one end
 // and when full the oldest is popped from the other end.  All the log entries
 // in the buffer must be readable without altering the buffer contents.
-func (__obf_11028cff7d6f8d69 *Deque) At(__obf_8d4edb68382a63c4 int) any {
-	if __obf_8d4edb68382a63c4 < 0 || __obf_8d4edb68382a63c4 >= __obf_11028cff7d6f8d69.__obf_c5d600e67da7e0a9 {
+func (__obf_cccb1f17f448628f *Deque) At(__obf_35fc60e92e4b05ba int) any {
+	if __obf_35fc60e92e4b05ba < 0 || __obf_35fc60e92e4b05ba >= __obf_cccb1f17f448628f.__obf_7e6767c22d23f06d {
 		panic("deque: At() called with index out of range")
 	}
 	// bitwise modulus
-	return __obf_11028cff7d6f8d69.__obf_9fe268d736364e9f[(__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012+__obf_8d4edb68382a63c4)&(len(__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f)-1)]
+	return __obf_cccb1f17f448628f.__obf_22291ba8f5a063e8[(__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16+__obf_35fc60e92e4b05ba)&(len(__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8)-1)]
 }
 
 // Clear removes all elements from the queue, but retains the current capacity.
@@ -122,60 +122,60 @@ func (__obf_11028cff7d6f8d69 *Deque) At(__obf_8d4edb68382a63c4 int) any {
 // GC during reuse.  The queue will not be resized smaller as long as items are
 // only added.  Only when items are removed is the queue subject to getting
 // resized smaller.
-func (__obf_11028cff7d6f8d69 *Deque) Clear() {
+func (__obf_cccb1f17f448628f *Deque) Clear() {
 	// bitwise modulus
-	__obf_c6970df5fc1f25be := len(__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f) - 1
-	for __obf_703df7aac448a8d0 := __obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012; __obf_703df7aac448a8d0 != __obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328; __obf_703df7aac448a8d0 = (__obf_703df7aac448a8d0 + 1) & __obf_c6970df5fc1f25be {
-		__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f[__obf_703df7aac448a8d0] = nil
+	__obf_cbf465f12a13d3c7 := len(__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8) - 1
+	for __obf_aceb1679325404db := __obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16; __obf_aceb1679325404db != __obf_cccb1f17f448628f.__obf_30d187ec07bc80ec; __obf_aceb1679325404db = (__obf_aceb1679325404db + 1) & __obf_cbf465f12a13d3c7 {
+		__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8[__obf_aceb1679325404db] = nil
 	}
-	__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012 = 0
-	__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328 = 0
-	__obf_11028cff7d6f8d69.__obf_c5d600e67da7e0a9 = 0
+	__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16 = 0
+	__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec = 0
+	__obf_cccb1f17f448628f.__obf_7e6767c22d23f06d = 0
 }
 
 // Rotate rotates the deque n steps front-to-back.  If n is negative, rotates
 // back-to-front.  Having Deque provide Rotate() avoids resizing that could
 // happen if implementing rotation using only Pop and Push methods.
-func (__obf_11028cff7d6f8d69 *Deque) Rotate(__obf_18a54e2632d73807 int) {
-	if __obf_11028cff7d6f8d69.__obf_c5d600e67da7e0a9 <= 1 {
+func (__obf_cccb1f17f448628f *Deque) Rotate(__obf_bdf68a51ae002dc2 int) {
+	if __obf_cccb1f17f448628f.__obf_7e6767c22d23f06d <= 1 {
 		return
 	}
 	// Rotating a multiple of q.count is same as no rotation.
-	__obf_18a54e2632d73807 %= __obf_11028cff7d6f8d69.__obf_c5d600e67da7e0a9
-	if __obf_18a54e2632d73807 == 0 {
+	__obf_bdf68a51ae002dc2 %= __obf_cccb1f17f448628f.__obf_7e6767c22d23f06d
+	if __obf_bdf68a51ae002dc2 == 0 {
 		return
 	}
 
-	__obf_c6970df5fc1f25be := len(__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f) - 1
+	__obf_cbf465f12a13d3c7 := len(__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8) - 1
 	// If no empty space in buffer, only move head and tail indexes.
-	if __obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012 == __obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328 {
+	if __obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16 == __obf_cccb1f17f448628f.__obf_30d187ec07bc80ec {
 		// Calculate new head and tail using bitwise modulus.
-		__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012 = (__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012 + __obf_18a54e2632d73807) & __obf_c6970df5fc1f25be
-		__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328 = (__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328 + __obf_18a54e2632d73807) & __obf_c6970df5fc1f25be
+		__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16 = (__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16 + __obf_bdf68a51ae002dc2) & __obf_cbf465f12a13d3c7
+		__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec = (__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec + __obf_bdf68a51ae002dc2) & __obf_cbf465f12a13d3c7
 		return
 	}
 
-	if __obf_18a54e2632d73807 < 0 {
+	if __obf_bdf68a51ae002dc2 < 0 {
 		// Rotate back to front.
-		for ; __obf_18a54e2632d73807 < 0; __obf_18a54e2632d73807++ {
+		for ; __obf_bdf68a51ae002dc2 < 0; __obf_bdf68a51ae002dc2++ {
 			// Calculate new head and tail using bitwise modulus.
-			__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012 = (__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012 - 1) & __obf_c6970df5fc1f25be
-			__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328 = (__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328 - 1) & __obf_c6970df5fc1f25be
+			__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16 = (__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16 - 1) & __obf_cbf465f12a13d3c7
+			__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec = (__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec - 1) & __obf_cbf465f12a13d3c7
 			// Put tail value at head and remove value at tail.
-			__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f[__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012] = __obf_11028cff7d6f8d69.__obf_9fe268d736364e9f[__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328]
-			__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f[__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328] = nil
+			__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8[__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16] = __obf_cccb1f17f448628f.__obf_22291ba8f5a063e8[__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec]
+			__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8[__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec] = nil
 		}
 		return
 	}
 
 	// Rotate front to back.
-	for ; __obf_18a54e2632d73807 > 0; __obf_18a54e2632d73807-- {
+	for ; __obf_bdf68a51ae002dc2 > 0; __obf_bdf68a51ae002dc2-- {
 		// Put head value at tail and remove value at head.
-		__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f[__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328] = __obf_11028cff7d6f8d69.__obf_9fe268d736364e9f[__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012]
-		__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f[__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012] = nil
+		__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8[__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec] = __obf_cccb1f17f448628f.__obf_22291ba8f5a063e8[__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16]
+		__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8[__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16] = nil
 		// Calculate new head and tail using bitwise modulus.
-		__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012 = (__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012 + 1) & __obf_c6970df5fc1f25be
-		__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328 = (__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328 + 1) & __obf_c6970df5fc1f25be
+		__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16 = (__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16 + 1) & __obf_cbf465f12a13d3c7
+		__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec = (__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec + 1) & __obf_cbf465f12a13d3c7
 	}
 }
 
@@ -186,58 +186,58 @@ func (__obf_11028cff7d6f8d69 *Deque) Rotate(__obf_18a54e2632d73807 int) {
 //
 // Setting a larger minimum capacity may be used to prevent resizing when the
 // number of stored items changes frequently across a wide range.
-func (__obf_11028cff7d6f8d69 *Deque) SetMinCapacity(__obf_acc83aca276429bf uint) {
-	if 1<<__obf_acc83aca276429bf > __obf_54005283f515b2f3 {
-		__obf_11028cff7d6f8d69.__obf_0b2b4cb4a4eac34c = 1 << __obf_acc83aca276429bf
+func (__obf_cccb1f17f448628f *Deque) SetMinCapacity(__obf_e436a0606c4ddaec uint) {
+	if 1<<__obf_e436a0606c4ddaec > __obf_cc95479c3d76dafd {
+		__obf_cccb1f17f448628f.__obf_c3af9f3aa40e7102 = 1 << __obf_e436a0606c4ddaec
 	} else {
-		__obf_11028cff7d6f8d69.__obf_0b2b4cb4a4eac34c = __obf_54005283f515b2f3
+		__obf_cccb1f17f448628f.__obf_c3af9f3aa40e7102 = __obf_cc95479c3d76dafd
 	}
 }
 
 // prev returns the previous buffer position wrapping around buffer.
-func (__obf_11028cff7d6f8d69 *Deque) __obf_6b94d13992080dfb(__obf_8d4edb68382a63c4 int) int {
-	return (__obf_8d4edb68382a63c4 - 1) & (len(__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f) - 1) // bitwise modulus
+func (__obf_cccb1f17f448628f *Deque) __obf_9e64c21ddd522887(__obf_35fc60e92e4b05ba int) int {
+	return (__obf_35fc60e92e4b05ba - 1) & (len(__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8) - 1) // bitwise modulus
 }
 
 // next returns the next buffer position wrapping around buffer.
-func (__obf_11028cff7d6f8d69 *Deque) __obf_b7a3ba8614d8f9d8(__obf_8d4edb68382a63c4 int) int {
-	return (__obf_8d4edb68382a63c4 + 1) & (len(__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f) - 1) // bitwise modulus
+func (__obf_cccb1f17f448628f *Deque) __obf_9c578e473cd91a70(__obf_35fc60e92e4b05ba int) int {
+	return (__obf_35fc60e92e4b05ba + 1) & (len(__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8) - 1) // bitwise modulus
 }
 
 // growIfFull resizes up if the buffer is full.
-func (__obf_11028cff7d6f8d69 *Deque) __obf_2013021a3470d347() {
-	if len(__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f) == 0 {
-		if __obf_11028cff7d6f8d69.__obf_0b2b4cb4a4eac34c == 0 {
-			__obf_11028cff7d6f8d69.__obf_0b2b4cb4a4eac34c = __obf_54005283f515b2f3
+func (__obf_cccb1f17f448628f *Deque) __obf_5c24d5ef59e77124() {
+	if len(__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8) == 0 {
+		if __obf_cccb1f17f448628f.__obf_c3af9f3aa40e7102 == 0 {
+			__obf_cccb1f17f448628f.__obf_c3af9f3aa40e7102 = __obf_cc95479c3d76dafd
 		}
-		__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f = make([]any, __obf_11028cff7d6f8d69.__obf_0b2b4cb4a4eac34c)
+		__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8 = make([]any, __obf_cccb1f17f448628f.__obf_c3af9f3aa40e7102)
 		return
 	}
-	if __obf_11028cff7d6f8d69.__obf_c5d600e67da7e0a9 == len(__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f) {
-		__obf_11028cff7d6f8d69.__obf_b364840a737f7895()
+	if __obf_cccb1f17f448628f.__obf_7e6767c22d23f06d == len(__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8) {
+		__obf_cccb1f17f448628f.__obf_5502207518564f83()
 	}
 }
 
 // shrinkIfExcess resize down if the buffer 1/4 full.
-func (__obf_11028cff7d6f8d69 *Deque) __obf_232fd657786529e3() {
-	if len(__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f) > __obf_11028cff7d6f8d69.__obf_0b2b4cb4a4eac34c && (__obf_11028cff7d6f8d69.__obf_c5d600e67da7e0a9<<2) == len(__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f) {
-		__obf_11028cff7d6f8d69.__obf_b364840a737f7895()
+func (__obf_cccb1f17f448628f *Deque) __obf_e286abf03b28bd7a() {
+	if len(__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8) > __obf_cccb1f17f448628f.__obf_c3af9f3aa40e7102 && (__obf_cccb1f17f448628f.__obf_7e6767c22d23f06d<<2) == len(__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8) {
+		__obf_cccb1f17f448628f.__obf_5502207518564f83()
 	}
 }
 
 // resize resizes the deque to fit exactly twice its current contents.  This is
 // used to grow the queue when it is full, and also to shrink it when it is
 // only a quarter full.
-func (__obf_11028cff7d6f8d69 *Deque) __obf_b364840a737f7895() {
-	__obf_9d02c6602c4d3519 := make([]any, __obf_11028cff7d6f8d69.__obf_c5d600e67da7e0a9<<1)
-	if __obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328 > __obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012 {
-		copy(__obf_9d02c6602c4d3519, __obf_11028cff7d6f8d69.__obf_9fe268d736364e9f[__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012:__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328])
+func (__obf_cccb1f17f448628f *Deque) __obf_5502207518564f83() {
+	__obf_075d33b74bf64552 := make([]any, __obf_cccb1f17f448628f.__obf_7e6767c22d23f06d<<1)
+	if __obf_cccb1f17f448628f.__obf_30d187ec07bc80ec > __obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16 {
+		copy(__obf_075d33b74bf64552, __obf_cccb1f17f448628f.__obf_22291ba8f5a063e8[__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16:__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec])
 	} else {
-		__obf_18a54e2632d73807 := copy(__obf_9d02c6602c4d3519, __obf_11028cff7d6f8d69.__obf_9fe268d736364e9f[__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012:])
-		copy(__obf_9d02c6602c4d3519[__obf_18a54e2632d73807:], __obf_11028cff7d6f8d69.__obf_9fe268d736364e9f[:__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328])
+		__obf_bdf68a51ae002dc2 := copy(__obf_075d33b74bf64552, __obf_cccb1f17f448628f.__obf_22291ba8f5a063e8[__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16:])
+		copy(__obf_075d33b74bf64552[__obf_bdf68a51ae002dc2:], __obf_cccb1f17f448628f.__obf_22291ba8f5a063e8[:__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec])
 	}
 
-	__obf_11028cff7d6f8d69.__obf_4d89c0af2f36d012 = 0
-	__obf_11028cff7d6f8d69.__obf_8bc2d90b334ac328 = __obf_11028cff7d6f8d69.__obf_c5d600e67da7e0a9
-	__obf_11028cff7d6f8d69.__obf_9fe268d736364e9f = __obf_9d02c6602c4d3519
+	__obf_cccb1f17f448628f.__obf_e7184c1cd4d9cb16 = 0
+	__obf_cccb1f17f448628f.__obf_30d187ec07bc80ec = __obf_cccb1f17f448628f.__obf_7e6767c22d23f06d
+	__obf_cccb1f17f448628f.__obf_22291ba8f5a063e8 = __obf_075d33b74bf64552
 }

@@ -1,4 +1,4 @@
-package __obf_ffc0a07870d97db2
+package __obf_9e2677cd4d2ebe52
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 	"os"
 )
 
-func Execute(__obf_c71c282f9b50a09e string, __obf_90cb55a21c2d3bae model.Payload) (__obf_729126e1762045d6 model.Result) {
+func Execute(__obf_beedc930bc2c66af string, __obf_9d1e9d10447ed20f model.Payload) (__obf_ae5481cd14005a1c model.Result) {
 	// payload := &model.Payload{}
 	// err := json.NewDecoder(os.Stdin).Decode(payload)
 
@@ -18,34 +18,34 @@ func Execute(__obf_c71c282f9b50a09e string, __obf_90cb55a21c2d3bae model.Payload
 	// }
 
 	// Ensure that we have at least one file
-	if len(__obf_90cb55a21c2d3bae.Files) == 0 {
-		__obf_729126e1762045d6.Error = "no files given"
+	if len(__obf_9d1e9d10447ed20f.Files) == 0 {
+		__obf_ae5481cd14005a1c.Error = "no files given"
 		return
 	}
 
 	// Check if we support given lang
-	if !lang.IsSupported(__obf_90cb55a21c2d3bae.Lang) {
-		__obf_729126e1762045d6.Error = fmt.Sprintf("lang '%s' is not supported", __obf_90cb55a21c2d3bae.Lang)
+	if !lang.IsSupported(__obf_9d1e9d10447ed20f.Lang) {
+		__obf_ae5481cd14005a1c.Error = fmt.Sprintf("lang '%s' is not supported", __obf_9d1e9d10447ed20f.Lang)
 		return
 	}
 
 	// Write files to disk
-	__obf_843708c7c305ee9e, __obf_34a1611fbe12752a, __obf_af5e6c2fb4f57e11 := util.WriteFiles(__obf_c71c282f9b50a09e, __obf_90cb55a21c2d3bae.Lang+"-", __obf_90cb55a21c2d3bae.Files)
-	if __obf_af5e6c2fb4f57e11 != nil {
-		__obf_729126e1762045d6.Error = fmt.Sprintf("failed to write file to disk (%s)", __obf_af5e6c2fb4f57e11.Error())
+	__obf_249891adcf5d16f1, __obf_09c55997fe650131, __obf_4ac45fa9bf0dfdf8 := util.WriteFiles(__obf_beedc930bc2c66af, __obf_9d1e9d10447ed20f.Lang+"-", __obf_9d1e9d10447ed20f.Files)
+	if __obf_4ac45fa9bf0dfdf8 != nil {
+		__obf_ae5481cd14005a1c.Error = fmt.Sprintf("failed to write file to disk (%s)", __obf_4ac45fa9bf0dfdf8.Error())
 		return
 	}
-	defer os.RemoveAll(__obf_843708c7c305ee9e)
+	defer os.RemoveAll(__obf_249891adcf5d16f1)
 
 	// Execute the given command or run the code with
 	// the lang runner if no command is given
-	if __obf_90cb55a21c2d3bae.Command == "" {
-		__obf_729126e1762045d6.Stdout, __obf_729126e1762045d6.Stderr, __obf_af5e6c2fb4f57e11 = lang.Run(__obf_90cb55a21c2d3bae.Lang, __obf_843708c7c305ee9e, __obf_90cb55a21c2d3bae.Stdin, __obf_34a1611fbe12752a)
+	if __obf_9d1e9d10447ed20f.Command == "" {
+		__obf_ae5481cd14005a1c.Stdout, __obf_ae5481cd14005a1c.Stderr, __obf_4ac45fa9bf0dfdf8 = lang.Run(__obf_9d1e9d10447ed20f.Lang, __obf_249891adcf5d16f1, __obf_9d1e9d10447ed20f.Stdin, __obf_09c55997fe650131)
 	} else {
-		__obf_729126e1762045d6.Stdout, __obf_729126e1762045d6.Stderr, __obf_af5e6c2fb4f57e11 = cmd.RunBashStdin(__obf_843708c7c305ee9e, __obf_90cb55a21c2d3bae.Command, __obf_90cb55a21c2d3bae.Stdin)
+		__obf_ae5481cd14005a1c.Stdout, __obf_ae5481cd14005a1c.Stderr, __obf_4ac45fa9bf0dfdf8 = cmd.RunBashStdin(__obf_249891adcf5d16f1, __obf_9d1e9d10447ed20f.Command, __obf_9d1e9d10447ed20f.Stdin)
 	}
-	if __obf_af5e6c2fb4f57e11 != nil {
-		__obf_729126e1762045d6.Error = __obf_af5e6c2fb4f57e11.Error()
+	if __obf_4ac45fa9bf0dfdf8 != nil {
+		__obf_ae5481cd14005a1c.Error = __obf_4ac45fa9bf0dfdf8.Error()
 	}
 	return
 }

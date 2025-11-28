@@ -1,4 +1,4 @@
-package __obf_52bdfa18dc226ac6
+package __obf_28053862c3d647b8
 
 import (
 	"encoding/json"
@@ -16,46 +16,46 @@ type Options struct {
 	TemplateCode string `yaml:"template-code"` //模板code
 }
 
-func (__obf_db4804dbf7dcf319 *Options) Send(__obf_a18109f6351b8d69 string, __obf_848f42953c385e91 string) error {
-	var __obf_f86a6142763355f6 Request
-	__obf_f86a6142763355f6.Format = "JSON"
-	__obf_f86a6142763355f6.Version = "2017-05-25"
-	__obf_f86a6142763355f6.AccessKeyId = __obf_db4804dbf7dcf319.AccessKeyID
-	__obf_f86a6142763355f6.SignatureMethod = "HMAC-SHA1"
-	__obf_f86a6142763355f6.Timestamp = time.Now().UTC().Format("2006-01-02T15:04:05Z")
-	__obf_f86a6142763355f6.SignatureVersion = "1.0"
-	__obf_f86a6142763355f6.SignatureNonce = __obf_126da17986d8b304()
+func (__obf_8f1c231dad50b2c0 *Options) Send(__obf_efc5054a806fd242 string, __obf_e76560b255687fd5 string) error {
+	var __obf_89afef2b0cffdadf Request
+	__obf_89afef2b0cffdadf.Format = "JSON"
+	__obf_89afef2b0cffdadf.Version = "2017-05-25"
+	__obf_89afef2b0cffdadf.AccessKeyId = __obf_8f1c231dad50b2c0.AccessKeyID
+	__obf_89afef2b0cffdadf.SignatureMethod = "HMAC-SHA1"
+	__obf_89afef2b0cffdadf.Timestamp = time.Now().UTC().Format("2006-01-02T15:04:05Z")
+	__obf_89afef2b0cffdadf.SignatureVersion = "1.0"
+	__obf_89afef2b0cffdadf.SignatureNonce = __obf_2a2a3aa08c34cdb2()
 
-	__obf_f86a6142763355f6.Action = "SendSms"
-	__obf_f86a6142763355f6.SignName = __obf_db4804dbf7dcf319.SignName
-	__obf_f86a6142763355f6.TemplateCode = __obf_db4804dbf7dcf319.TemplateCode
-	__obf_f86a6142763355f6.PhoneNumbers = __obf_a18109f6351b8d69
-	__obf_f86a6142763355f6.TemplateParam = __obf_848f42953c385e91
-	__obf_f86a6142763355f6.RegionId = "cn-hangzhou"
+	__obf_89afef2b0cffdadf.Action = "SendSms"
+	__obf_89afef2b0cffdadf.SignName = __obf_8f1c231dad50b2c0.SignName
+	__obf_89afef2b0cffdadf.TemplateCode = __obf_8f1c231dad50b2c0.TemplateCode
+	__obf_89afef2b0cffdadf.PhoneNumbers = __obf_efc5054a806fd242
+	__obf_89afef2b0cffdadf.TemplateParam = __obf_e76560b255687fd5
+	__obf_89afef2b0cffdadf.RegionId = "cn-hangzhou"
 
-	__obf_b868c106ee96eb5a := __obf_f86a6142763355f6.ComposeUrl("GET", __obf_db4804dbf7dcf319.AccessSecret)
-	var __obf_e32d8a9eb5361d17 *http.Response
-	var __obf_57475ef7e317f848 error
-	__obf_e32d8a9eb5361d17, __obf_57475ef7e317f848 = http.Get(__obf_b868c106ee96eb5a)
-	if __obf_57475ef7e317f848 != nil {
-		return __obf_57475ef7e317f848
+	__obf_de27e36b69203aea := __obf_89afef2b0cffdadf.ComposeUrl("GET", __obf_8f1c231dad50b2c0.AccessSecret)
+	var __obf_4c9f47b636adabcf *http.Response
+	var __obf_ae3b97aa1cdbe5ed error
+	__obf_4c9f47b636adabcf, __obf_ae3b97aa1cdbe5ed = http.Get(__obf_de27e36b69203aea)
+	if __obf_ae3b97aa1cdbe5ed != nil {
+		return __obf_ae3b97aa1cdbe5ed
 	}
-	var __obf_43f093a485273158 []byte
-	__obf_43f093a485273158, __obf_57475ef7e317f848 = io.ReadAll(__obf_e32d8a9eb5361d17.Body)
-	if __obf_57475ef7e317f848 != nil {
-		return __obf_57475ef7e317f848
+	var __obf_30bbdf520e0c12af []byte
+	__obf_30bbdf520e0c12af, __obf_ae3b97aa1cdbe5ed = io.ReadAll(__obf_4c9f47b636adabcf.Body)
+	if __obf_ae3b97aa1cdbe5ed != nil {
+		return __obf_ae3b97aa1cdbe5ed
 	}
 	_m := make(map[string](string))
-	__obf_57475ef7e317f848 = json.Unmarshal(__obf_43f093a485273158, &_m)
-	if __obf_57475ef7e317f848 != nil {
-		return __obf_57475ef7e317f848
+	__obf_ae3b97aa1cdbe5ed = json.Unmarshal(__obf_30bbdf520e0c12af, &_m)
+	if __obf_ae3b97aa1cdbe5ed != nil {
+		return __obf_ae3b97aa1cdbe5ed
 	}
-	__obf_5882d5fe519356f2, __obf_10359abf3efe2975 := _m["Message"]
-	if __obf_10359abf3efe2975 && strings.ToUpper(__obf_5882d5fe519356f2) == "OK" {
+	__obf_8a2ebed189fc955a, __obf_b0a6bc708b5ac22e := _m["Message"]
+	if __obf_b0a6bc708b5ac22e && strings.ToUpper(__obf_8a2ebed189fc955a) == "OK" {
 		return nil
 	}
-	if __obf_10359abf3efe2975 {
-		return errors.New(__obf_5882d5fe519356f2)
+	if __obf_b0a6bc708b5ac22e {
+		return errors.New(__obf_8a2ebed189fc955a)
 	}
 	return errors.New("send sms error")
 }

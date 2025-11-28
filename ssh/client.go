@@ -24,69 +24,69 @@ type SSHClient struct {
 }
 
 // NewConn returns new client and error if any.
-func NewSSHClient(__obf_fc341c76ad6d1fe3, __obf_1732d69a1d131857 string, __obf_73b9014009786972 *ssh.ClientConfig) (__obf_f6f05ebda427eff8 *SSHClient) {
+func NewSSHClient(__obf_06c42060b2c0c374, __obf_abf4e9548e3a9b2c string, __obf_712de178ead485e9 *ssh.ClientConfig) (__obf_948f47c64b517453 *SSHClient) {
 	// c.Client, err = Dial("tcp", addr, port)
 	return &SSHClient{
-		Addr:   net.JoinHostPort(__obf_fc341c76ad6d1fe3, __obf_1732d69a1d131857),
-		Config: __obf_73b9014009786972,
+		Addr:   net.JoinHostPort(__obf_06c42060b2c0c374, __obf_abf4e9548e3a9b2c),
+		Config: __obf_712de178ead485e9,
 	}
 }
 
-func (__obf_f6f05ebda427eff8 *SSHClient) __obf_20833a339d6814f3() error {
-	if __obf_f6f05ebda427eff8.Client == nil {
-		var __obf_aa4fb85c75454390 error
-		__obf_f6f05ebda427eff8.Client, __obf_aa4fb85c75454390 = ssh.Dial("tcp", __obf_f6f05ebda427eff8.Addr, __obf_f6f05ebda427eff8.Config)
-		if __obf_aa4fb85c75454390 != nil {
-			return __obf_aa4fb85c75454390
+func (__obf_948f47c64b517453 *SSHClient) __obf_8f2f239fa0f5f4a1() error {
+	if __obf_948f47c64b517453.Client == nil {
+		var __obf_6eb8d6029fd3be00 error
+		__obf_948f47c64b517453.Client, __obf_6eb8d6029fd3be00 = ssh.Dial("tcp", __obf_948f47c64b517453.Addr, __obf_948f47c64b517453.Config)
+		if __obf_6eb8d6029fd3be00 != nil {
+			return __obf_6eb8d6029fd3be00
 		}
 	}
 	return nil
 }
 
 // Run starts a new SSH session and runs the cmd, it returns CombinedOutput and err if any.
-func (__obf_f6f05ebda427eff8 SSHClient) Run(__obf_cfebcb1d85ece2a2 string) ([]byte, error) {
+func (__obf_948f47c64b517453 SSHClient) Run(__obf_b71fdb506a8909e5 string) ([]byte, error) {
 
-	var __obf_aa4fb85c75454390 = __obf_f6f05ebda427eff8.__obf_20833a339d6814f3()
-	if __obf_aa4fb85c75454390 != nil {
-		return nil, __obf_aa4fb85c75454390
+	var __obf_6eb8d6029fd3be00 = __obf_948f47c64b517453.__obf_8f2f239fa0f5f4a1()
+	if __obf_6eb8d6029fd3be00 != nil {
+		return nil, __obf_6eb8d6029fd3be00
 	}
 
-	var __obf_6a0d03e04c483a66 *ssh.Session
-	if __obf_6a0d03e04c483a66, __obf_aa4fb85c75454390 = __obf_f6f05ebda427eff8.NewSession(); __obf_aa4fb85c75454390 != nil {
-		return nil, __obf_aa4fb85c75454390
+	var __obf_a7c84478eb9c2947 *ssh.Session
+	if __obf_a7c84478eb9c2947, __obf_6eb8d6029fd3be00 = __obf_948f47c64b517453.NewSession(); __obf_6eb8d6029fd3be00 != nil {
+		return nil, __obf_6eb8d6029fd3be00
 	}
 
-	defer __obf_6a0d03e04c483a66.Close()
+	defer __obf_a7c84478eb9c2947.Close()
 
-	return __obf_6a0d03e04c483a66.CombinedOutput(__obf_cfebcb1d85ece2a2)
+	return __obf_a7c84478eb9c2947.CombinedOutput(__obf_b71fdb506a8909e5)
 }
 
 // NewSftp returns new sftp client and error if any.
-func (__obf_f6f05ebda427eff8 SSHClient) NewSftp(__obf_cf3710f7d8b8e96c ...sftp.ClientOption) (*sftp.Client, error) {
-	if __obf_aa4fb85c75454390 := __obf_f6f05ebda427eff8.__obf_20833a339d6814f3(); __obf_aa4fb85c75454390 != nil {
-		return nil, __obf_aa4fb85c75454390
+func (__obf_948f47c64b517453 SSHClient) NewSftp(__obf_de552880423f4c8b ...sftp.ClientOption) (*sftp.Client, error) {
+	if __obf_6eb8d6029fd3be00 := __obf_948f47c64b517453.__obf_8f2f239fa0f5f4a1(); __obf_6eb8d6029fd3be00 != nil {
+		return nil, __obf_6eb8d6029fd3be00
 	}
-	return sftp.NewClient(__obf_f6f05ebda427eff8.Client, __obf_cf3710f7d8b8e96c...)
+	return sftp.NewClient(__obf_948f47c64b517453.Client, __obf_de552880423f4c8b...)
 }
 
 // uploadFile a local file to remote server!
-func (__obf_f6f05ebda427eff8 SSHClient) __obf_8e3d96ea7f118307(__obf_74e0bab4d4e5f8e3 *sftp.Client, __obf_372b48c4b67f060a string, __obf_4dfc89523121de0c string) (__obf_aa4fb85c75454390 error) {
+func (__obf_948f47c64b517453 SSHClient) __obf_7572c18460bdf666(__obf_2b9ee3e623c3237f *sftp.Client, __obf_a4235e886f7e90d9 string, __obf_5b82ce4e631943d9 string) (__obf_6eb8d6029fd3be00 error) {
 
-	var __obf_13e932f137283837 *os.File
-	__obf_13e932f137283837, __obf_aa4fb85c75454390 = os.Open(__obf_372b48c4b67f060a)
-	if __obf_aa4fb85c75454390 != nil {
+	var __obf_838beb0c1955599c *os.File
+	__obf_838beb0c1955599c, __obf_6eb8d6029fd3be00 = os.Open(__obf_a4235e886f7e90d9)
+	if __obf_6eb8d6029fd3be00 != nil {
 		return
 	}
-	defer __obf_13e932f137283837.Close()
+	defer __obf_838beb0c1955599c.Close()
 
-	var __obf_19e636e44a7a89d8 *sftp.File
-	__obf_e3528e9556027c15 := path.Join(__obf_4dfc89523121de0c, filepath.Base(__obf_372b48c4b67f060a))
-	__obf_19e636e44a7a89d8, __obf_aa4fb85c75454390 = __obf_74e0bab4d4e5f8e3.Create(__obf_e3528e9556027c15)
-	if __obf_aa4fb85c75454390 != nil {
-		__obf_aa4fb85c75454390 = fmt.Errorf("[Create: %s] %w", __obf_e3528e9556027c15, __obf_aa4fb85c75454390)
+	var __obf_b9d3a70bdbc1c449 *sftp.File
+	__obf_f3a735d573dd9e2b := path.Join(__obf_5b82ce4e631943d9, filepath.Base(__obf_a4235e886f7e90d9))
+	__obf_b9d3a70bdbc1c449, __obf_6eb8d6029fd3be00 = __obf_2b9ee3e623c3237f.Create(__obf_f3a735d573dd9e2b)
+	if __obf_6eb8d6029fd3be00 != nil {
+		__obf_6eb8d6029fd3be00 = fmt.Errorf("[Create: %s] %w", __obf_f3a735d573dd9e2b, __obf_6eb8d6029fd3be00)
 		return
 	}
-	defer __obf_19e636e44a7a89d8.Close()
+	defer __obf_b9d3a70bdbc1c449.Close()
 
 	// size := len(s)
 	// info, err := local.Stat()
@@ -94,86 +94,86 @@ func (__obf_f6f05ebda427eff8 SSHClient) __obf_8e3d96ea7f118307(__obf_74e0bab4d4e
 	// 	return err
 	// }
 
-	var __obf_22f5b916eb86c4eb int64
-	__obf_22f5b916eb86c4eb, __obf_aa4fb85c75454390 = io.Copy(__obf_19e636e44a7a89d8, io.TeeReader(__obf_13e932f137283837, &WriteCounter{}))
-	fmt.Fprintf(os.Stdout, "Transferred %.2f kb\n", float64(__obf_22f5b916eb86c4eb/1024))
+	var __obf_4a2184a1397948a5 int64
+	__obf_4a2184a1397948a5, __obf_6eb8d6029fd3be00 = io.Copy(__obf_b9d3a70bdbc1c449, io.TeeReader(__obf_838beb0c1955599c, &WriteCounter{}))
+	fmt.Fprintf(os.Stdout, "Transferred %.2f kb\n", float64(__obf_4a2184a1397948a5/1024))
 	return
 }
 
 // Upload a local file or directory to remote server!
-func (__obf_f6f05ebda427eff8 SSHClient) Upload(__obf_372b48c4b67f060a string, __obf_4dfc89523121de0c string) (__obf_aa4fb85c75454390 error) {
+func (__obf_948f47c64b517453 SSHClient) Upload(__obf_a4235e886f7e90d9 string, __obf_5b82ce4e631943d9 string) (__obf_6eb8d6029fd3be00 error) {
 
 	//获取路径的属性
-	__obf_7eef5e2ba46b5876, __obf_aa4fb85c75454390 := os.Stat(__obf_372b48c4b67f060a)
-	if __obf_aa4fb85c75454390 != nil {
+	__obf_a3ba964874e0249b, __obf_6eb8d6029fd3be00 := os.Stat(__obf_a4235e886f7e90d9)
+	if __obf_6eb8d6029fd3be00 != nil {
 		return
 	}
 
-	__obf_e4febb5a30770f64, __obf_aa4fb85c75454390 := __obf_f6f05ebda427eff8.NewSftp()
-	if __obf_aa4fb85c75454390 != nil {
+	__obf_25c45af65c4abecf, __obf_6eb8d6029fd3be00 := __obf_948f47c64b517453.NewSftp()
+	if __obf_6eb8d6029fd3be00 != nil {
 		return
 	}
-	defer __obf_e4febb5a30770f64.Close()
+	defer __obf_25c45af65c4abecf.Close()
 
 	// 判断是否是文件夹
-	if __obf_7eef5e2ba46b5876.IsDir() {
-		var __obf_c153390023a03ce9 []os.DirEntry
-		__obf_c153390023a03ce9, __obf_aa4fb85c75454390 = os.ReadDir(__obf_372b48c4b67f060a)
-		if __obf_aa4fb85c75454390 != nil {
+	if __obf_a3ba964874e0249b.IsDir() {
+		var __obf_3b8bf59ce1f4e62b []os.DirEntry
+		__obf_3b8bf59ce1f4e62b, __obf_6eb8d6029fd3be00 = os.ReadDir(__obf_a4235e886f7e90d9)
+		if __obf_6eb8d6029fd3be00 != nil {
 			return
 		}
 		// 先创建最外层文件夹
-		__obf_4dfc89523121de0c = path.Join(__obf_4dfc89523121de0c, __obf_7eef5e2ba46b5876.Name())
-		__obf_aa4fb85c75454390 = __obf_e4febb5a30770f64.Mkdir(__obf_4dfc89523121de0c)
-		if __obf_aa4fb85c75454390 != nil {
-			return fmt.Errorf("[Mkdir] %s failed: %w", __obf_4dfc89523121de0c, __obf_aa4fb85c75454390)
+		__obf_5b82ce4e631943d9 = path.Join(__obf_5b82ce4e631943d9, __obf_a3ba964874e0249b.Name())
+		__obf_6eb8d6029fd3be00 = __obf_25c45af65c4abecf.Mkdir(__obf_5b82ce4e631943d9)
+		if __obf_6eb8d6029fd3be00 != nil {
+			return fmt.Errorf("[Mkdir] %s failed: %w", __obf_5b82ce4e631943d9, __obf_6eb8d6029fd3be00)
 		}
 		// 遍历文件夹内容
-		for _, __obf_9e7564c013f6df57 := range __obf_c153390023a03ce9 {
+		for _, __obf_11bb2e873fd37028 := range __obf_3b8bf59ce1f4e62b {
 			// 判断是否是文件,是文件直接上传.是文件夹,先远程创建文件夹,再递归复制内部文件
-			__obf_aa4fb85c75454390 = __obf_f6f05ebda427eff8.Upload(path.Join(__obf_372b48c4b67f060a, __obf_9e7564c013f6df57.Name()), __obf_4dfc89523121de0c)
-			if __obf_aa4fb85c75454390 != nil {
-				return fmt.Errorf("[Upload to: %s] %w", __obf_4dfc89523121de0c, __obf_aa4fb85c75454390)
+			__obf_6eb8d6029fd3be00 = __obf_948f47c64b517453.Upload(path.Join(__obf_a4235e886f7e90d9, __obf_11bb2e873fd37028.Name()), __obf_5b82ce4e631943d9)
+			if __obf_6eb8d6029fd3be00 != nil {
+				return fmt.Errorf("[Upload to: %s] %w", __obf_5b82ce4e631943d9, __obf_6eb8d6029fd3be00)
 			}
 		}
 	} else {
-		__obf_aa4fb85c75454390 = __obf_f6f05ebda427eff8.__obf_8e3d96ea7f118307(__obf_e4febb5a30770f64, __obf_372b48c4b67f060a, __obf_4dfc89523121de0c)
+		__obf_6eb8d6029fd3be00 = __obf_948f47c64b517453.__obf_7572c18460bdf666(__obf_25c45af65c4abecf, __obf_a4235e886f7e90d9, __obf_5b82ce4e631943d9)
 	}
 	return
 }
 
 // Download file from remote server!
-func (__obf_f6f05ebda427eff8 SSHClient) Download(__obf_e3528e9556027c15 string, __obf_372b48c4b67f060a string) error {
-	var __obf_98d1c0458ca3ea0c = path.Join(__obf_372b48c4b67f060a, filepath.Base(__obf_e3528e9556027c15))
-	_, __obf_aa4fb85c75454390 := os.Stat(__obf_98d1c0458ca3ea0c)
-	if __obf_aa4fb85c75454390 == nil {
+func (__obf_948f47c64b517453 SSHClient) Download(__obf_f3a735d573dd9e2b string, __obf_a4235e886f7e90d9 string) error {
+	var __obf_8af93cc10ba02fe0 = path.Join(__obf_a4235e886f7e90d9, filepath.Base(__obf_f3a735d573dd9e2b))
+	_, __obf_6eb8d6029fd3be00 := os.Stat(__obf_8af93cc10ba02fe0)
+	if __obf_6eb8d6029fd3be00 == nil {
 		return errors.New("file exists")
 	}
-	if os.IsNotExist(__obf_aa4fb85c75454390) {
-		__obf_13e932f137283837, __obf_aa4fb85c75454390 := os.Create(__obf_98d1c0458ca3ea0c)
-		if __obf_aa4fb85c75454390 != nil {
-			return fmt.Errorf("[Create: %s] %w", __obf_98d1c0458ca3ea0c, __obf_aa4fb85c75454390)
+	if os.IsNotExist(__obf_6eb8d6029fd3be00) {
+		__obf_838beb0c1955599c, __obf_6eb8d6029fd3be00 := os.Create(__obf_8af93cc10ba02fe0)
+		if __obf_6eb8d6029fd3be00 != nil {
+			return fmt.Errorf("[Create: %s] %w", __obf_8af93cc10ba02fe0, __obf_6eb8d6029fd3be00)
 		}
-		defer __obf_13e932f137283837.Close()
+		defer __obf_838beb0c1955599c.Close()
 
-		__obf_e4febb5a30770f64, __obf_aa4fb85c75454390 := __obf_f6f05ebda427eff8.NewSftp()
-		if __obf_aa4fb85c75454390 != nil {
+		__obf_25c45af65c4abecf, __obf_6eb8d6029fd3be00 := __obf_948f47c64b517453.NewSftp()
+		if __obf_6eb8d6029fd3be00 != nil {
 
-			return __obf_aa4fb85c75454390
+			return __obf_6eb8d6029fd3be00
 		}
-		defer __obf_e4febb5a30770f64.Close()
+		defer __obf_25c45af65c4abecf.Close()
 
-		__obf_19e636e44a7a89d8, __obf_aa4fb85c75454390 := __obf_e4febb5a30770f64.Open(__obf_e3528e9556027c15)
-		if __obf_aa4fb85c75454390 != nil {
-			return __obf_aa4fb85c75454390
+		__obf_b9d3a70bdbc1c449, __obf_6eb8d6029fd3be00 := __obf_25c45af65c4abecf.Open(__obf_f3a735d573dd9e2b)
+		if __obf_6eb8d6029fd3be00 != nil {
+			return __obf_6eb8d6029fd3be00
 		}
-		defer __obf_19e636e44a7a89d8.Close()
+		defer __obf_b9d3a70bdbc1c449.Close()
 
-		if _, __obf_aa4fb85c75454390 = io.Copy(__obf_13e932f137283837, __obf_19e636e44a7a89d8); __obf_aa4fb85c75454390 != nil {
-			return __obf_aa4fb85c75454390
+		if _, __obf_6eb8d6029fd3be00 = io.Copy(__obf_838beb0c1955599c, __obf_b9d3a70bdbc1c449); __obf_6eb8d6029fd3be00 != nil {
+			return __obf_6eb8d6029fd3be00
 		}
 
-		return __obf_13e932f137283837.Sync()
+		return __obf_838beb0c1955599c.Sync()
 	}
-	return __obf_aa4fb85c75454390
+	return __obf_6eb8d6029fd3be00
 }

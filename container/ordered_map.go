@@ -1,26 +1,26 @@
-package __obf_af42fb6cde2beed6
+package __obf_62eba4024f8fa381
 
 import (
 	"encoding/json"
 )
 
 type OrderedMap[V any] struct {
-	__obf_a5e6e278a2b2fda1 map[string]*Element[V]
-	__obf_4090089c7d247118 __obf_543c4aff1fda48f3[V]
+	__obf_3ca757edadb508a4 map[string]*Element[V]
+	__obf_2cee61f9518c65b8 __obf_40b36c6e023d30bc[V]
 }
 
 func NewOrderedMap[V any]() *OrderedMap[V] {
 	return &OrderedMap[V]{
-		__obf_a5e6e278a2b2fda1: make(map[string]*Element[V]),
+		__obf_3ca757edadb508a4: make(map[string]*Element[V]),
 	}
 }
 
 // Get returns the value for a key. If the key does not exist, the second return
 // parameter will be false and the value will be nil.
-func (__obf_88bdf57825ea07fa *OrderedMap[V]) Get(__obf_55cde42f6d47c5be string) (__obf_9ed1ee5d2b51057a V, __obf_021756766e1db5da bool) {
-	__obf_289dd915247ca25d, __obf_021756766e1db5da := __obf_88bdf57825ea07fa.__obf_a5e6e278a2b2fda1[__obf_55cde42f6d47c5be]
-	if __obf_021756766e1db5da {
-		__obf_9ed1ee5d2b51057a = __obf_289dd915247ca25d.Value
+func (__obf_ca09540de29917b3 *OrderedMap[V]) Get(__obf_df070ab4c712506c string) (__obf_dbc685b0ad464e4d V, __obf_b47c9f51c1edd10c bool) {
+	__obf_f69c1647001964ce, __obf_b47c9f51c1edd10c := __obf_ca09540de29917b3.__obf_3ca757edadb508a4[__obf_df070ab4c712506c]
+	if __obf_b47c9f51c1edd10c {
+		__obf_dbc685b0ad464e4d = __obf_f69c1647001964ce.Value
 	}
 
 	return
@@ -29,62 +29,62 @@ func (__obf_88bdf57825ea07fa *OrderedMap[V]) Get(__obf_55cde42f6d47c5be string) 
 // Set will set (or replace) a value for a key. If the key was new, then true
 // will be returned. The returned value will be false if the value was replaced
 // (even if the value was the same).
-func (__obf_88bdf57825ea07fa *OrderedMap[V]) Set(__obf_55cde42f6d47c5be string, __obf_9ed1ee5d2b51057a V) bool {
-	_, __obf_5e8979ecf9b9d2dc := __obf_88bdf57825ea07fa.__obf_a5e6e278a2b2fda1[__obf_55cde42f6d47c5be]
-	if __obf_5e8979ecf9b9d2dc {
-		__obf_88bdf57825ea07fa.__obf_a5e6e278a2b2fda1[__obf_55cde42f6d47c5be].Value = __obf_9ed1ee5d2b51057a
+func (__obf_ca09540de29917b3 *OrderedMap[V]) Set(__obf_df070ab4c712506c string, __obf_dbc685b0ad464e4d V) bool {
+	_, __obf_ebe2022fc001ac5f := __obf_ca09540de29917b3.__obf_3ca757edadb508a4[__obf_df070ab4c712506c]
+	if __obf_ebe2022fc001ac5f {
+		__obf_ca09540de29917b3.__obf_3ca757edadb508a4[__obf_df070ab4c712506c].Value = __obf_dbc685b0ad464e4d
 		return false
 	}
 
-	__obf_20aeab0189b186c0 := __obf_88bdf57825ea07fa.__obf_4090089c7d247118.PushBack(__obf_55cde42f6d47c5be, __obf_9ed1ee5d2b51057a)
-	__obf_88bdf57825ea07fa.__obf_a5e6e278a2b2fda1[__obf_55cde42f6d47c5be] = __obf_20aeab0189b186c0
+	__obf_b5a80c614a2f738f := __obf_ca09540de29917b3.__obf_2cee61f9518c65b8.PushBack(__obf_df070ab4c712506c, __obf_dbc685b0ad464e4d)
+	__obf_ca09540de29917b3.__obf_3ca757edadb508a4[__obf_df070ab4c712506c] = __obf_b5a80c614a2f738f
 	return true
 }
 
 // GetOrDefault returns the value for a key. If the key does not exist, returns
 // the default value instead.
-func (__obf_88bdf57825ea07fa *OrderedMap[V]) GetOrDefault(__obf_55cde42f6d47c5be string, __obf_9e442b6a8851748b V) V {
-	if __obf_9ed1ee5d2b51057a, __obf_021756766e1db5da := __obf_88bdf57825ea07fa.__obf_a5e6e278a2b2fda1[__obf_55cde42f6d47c5be]; __obf_021756766e1db5da {
-		return __obf_9ed1ee5d2b51057a.Value
+func (__obf_ca09540de29917b3 *OrderedMap[V]) GetOrDefault(__obf_df070ab4c712506c string, __obf_383ddce67550f7a1 V) V {
+	if __obf_dbc685b0ad464e4d, __obf_b47c9f51c1edd10c := __obf_ca09540de29917b3.__obf_3ca757edadb508a4[__obf_df070ab4c712506c]; __obf_b47c9f51c1edd10c {
+		return __obf_dbc685b0ad464e4d.Value
 	}
 
-	return __obf_9e442b6a8851748b
+	return __obf_383ddce67550f7a1
 }
 
 // GetElement returns the element for a key. If the key does not exist, the
 // pointer will be nil.
-func (__obf_88bdf57825ea07fa *OrderedMap[V]) GetElement(__obf_55cde42f6d47c5be string) *Element[V] {
-	__obf_20aeab0189b186c0, __obf_021756766e1db5da := __obf_88bdf57825ea07fa.__obf_a5e6e278a2b2fda1[__obf_55cde42f6d47c5be]
-	if __obf_021756766e1db5da {
-		return __obf_20aeab0189b186c0
+func (__obf_ca09540de29917b3 *OrderedMap[V]) GetElement(__obf_df070ab4c712506c string) *Element[V] {
+	__obf_b5a80c614a2f738f, __obf_b47c9f51c1edd10c := __obf_ca09540de29917b3.__obf_3ca757edadb508a4[__obf_df070ab4c712506c]
+	if __obf_b47c9f51c1edd10c {
+		return __obf_b5a80c614a2f738f
 	}
 
 	return nil
 }
 
 // Len returns the number of elements in the map.
-func (__obf_88bdf57825ea07fa *OrderedMap[V]) Len() int {
-	return len(__obf_88bdf57825ea07fa.__obf_a5e6e278a2b2fda1)
+func (__obf_ca09540de29917b3 *OrderedMap[V]) Len() int {
+	return len(__obf_ca09540de29917b3.__obf_3ca757edadb508a4)
 }
 
 // Keys returns all of the keys in the order they were inserted. If a key was
 // replaced it will retain the same position. To ensure most recently set keys
 // are always at the end you must always Delete before Set.
-func (__obf_88bdf57825ea07fa *OrderedMap[V]) Keys() (__obf_a0cee0a97b92008e []string) {
-	__obf_a0cee0a97b92008e = make([]string, 0, __obf_88bdf57825ea07fa.Len())
-	for __obf_91551c548d1b0a9e := __obf_88bdf57825ea07fa.Front(); __obf_91551c548d1b0a9e != nil; __obf_91551c548d1b0a9e = __obf_91551c548d1b0a9e.Next() {
-		__obf_a0cee0a97b92008e = append(__obf_a0cee0a97b92008e, __obf_91551c548d1b0a9e.Key)
+func (__obf_ca09540de29917b3 *OrderedMap[V]) Keys() (__obf_ea1c0c515eb08cda []string) {
+	__obf_ea1c0c515eb08cda = make([]string, 0, __obf_ca09540de29917b3.Len())
+	for __obf_606ad3c69469507e := __obf_ca09540de29917b3.Front(); __obf_606ad3c69469507e != nil; __obf_606ad3c69469507e = __obf_606ad3c69469507e.Next() {
+		__obf_ea1c0c515eb08cda = append(__obf_ea1c0c515eb08cda, __obf_606ad3c69469507e.Key)
 	}
-	return __obf_a0cee0a97b92008e
+	return __obf_ea1c0c515eb08cda
 }
 
 // Values returns all of the values in the order they were inserted.
-func (__obf_88bdf57825ea07fa *OrderedMap[V]) Values() (__obf_ecffc655bb698ea6 []V) {
-	__obf_ecffc655bb698ea6 = make([]V, 0, __obf_88bdf57825ea07fa.Len())
-	for __obf_91551c548d1b0a9e := __obf_88bdf57825ea07fa.Front(); __obf_91551c548d1b0a9e != nil; __obf_91551c548d1b0a9e = __obf_91551c548d1b0a9e.Next() {
-		__obf_ecffc655bb698ea6 = append(__obf_ecffc655bb698ea6, __obf_91551c548d1b0a9e.Value)
+func (__obf_ca09540de29917b3 *OrderedMap[V]) Values() (__obf_cfff6b37b91c3027 []V) {
+	__obf_cfff6b37b91c3027 = make([]V, 0, __obf_ca09540de29917b3.Len())
+	for __obf_606ad3c69469507e := __obf_ca09540de29917b3.Front(); __obf_606ad3c69469507e != nil; __obf_606ad3c69469507e = __obf_606ad3c69469507e.Next() {
+		__obf_cfff6b37b91c3027 = append(__obf_cfff6b37b91c3027, __obf_606ad3c69469507e.Value)
 	}
-	return __obf_ecffc655bb698ea6
+	return __obf_cfff6b37b91c3027
 }
 
 // MarshalJSON implements type json.Marshaler interface, so can be called in json.Marshal(om)
@@ -138,47 +138,47 @@ func (__obf_88bdf57825ea07fa *OrderedMap[V]) Values() (__obf_ecffc655bb698ea6 []
 
 // Delete will remove a key from the map. It will return true if the key was
 // removed (the key did exist).
-func (__obf_88bdf57825ea07fa *OrderedMap[V]) Delete(__obf_55cde42f6d47c5be string) (__obf_6934236d0776cd3a bool) {
-	__obf_20aeab0189b186c0, __obf_021756766e1db5da := __obf_88bdf57825ea07fa.__obf_a5e6e278a2b2fda1[__obf_55cde42f6d47c5be]
-	if __obf_021756766e1db5da {
-		__obf_88bdf57825ea07fa.__obf_4090089c7d247118.Remove(__obf_20aeab0189b186c0)
-		delete(__obf_88bdf57825ea07fa.__obf_a5e6e278a2b2fda1, __obf_55cde42f6d47c5be)
+func (__obf_ca09540de29917b3 *OrderedMap[V]) Delete(__obf_df070ab4c712506c string) (__obf_1ce39dd42c37bd04 bool) {
+	__obf_b5a80c614a2f738f, __obf_b47c9f51c1edd10c := __obf_ca09540de29917b3.__obf_3ca757edadb508a4[__obf_df070ab4c712506c]
+	if __obf_b47c9f51c1edd10c {
+		__obf_ca09540de29917b3.__obf_2cee61f9518c65b8.Remove(__obf_b5a80c614a2f738f)
+		delete(__obf_ca09540de29917b3.__obf_3ca757edadb508a4, __obf_df070ab4c712506c)
 	}
 
-	return __obf_021756766e1db5da
+	return __obf_b47c9f51c1edd10c
 }
 
 // Front will return the element that is the first (oldest Set element). If
 // there are no elements this will return nil.
-func (__obf_88bdf57825ea07fa *OrderedMap[V]) Front() *Element[V] {
-	return __obf_88bdf57825ea07fa.__obf_4090089c7d247118.Front()
+func (__obf_ca09540de29917b3 *OrderedMap[V]) Front() *Element[V] {
+	return __obf_ca09540de29917b3.__obf_2cee61f9518c65b8.Front()
 }
 
 // Back will return the element that is the last (most recent Set element). If
 // there are no elements this will return nil.
-func (__obf_88bdf57825ea07fa *OrderedMap[V]) Back() *Element[V] {
-	return __obf_88bdf57825ea07fa.__obf_4090089c7d247118.Back()
+func (__obf_ca09540de29917b3 *OrderedMap[V]) Back() *Element[V] {
+	return __obf_ca09540de29917b3.__obf_2cee61f9518c65b8.Back()
 }
 
 // Copy returns a new OrderedMap with the same elements.
 // Using Copy while there are concurrent writes may mangle the result.
-func (__obf_88bdf57825ea07fa *OrderedMap[V]) Copy() *OrderedMap[V] {
-	__obf_253bbe7abf639fb6 := NewOrderedMap[V]()
-	for __obf_91551c548d1b0a9e := __obf_88bdf57825ea07fa.Front(); __obf_91551c548d1b0a9e != nil; __obf_91551c548d1b0a9e = __obf_91551c548d1b0a9e.Next() {
-		__obf_253bbe7abf639fb6.Set(__obf_91551c548d1b0a9e.Key, __obf_91551c548d1b0a9e.Value)
+func (__obf_ca09540de29917b3 *OrderedMap[V]) Copy() *OrderedMap[V] {
+	__obf_e52cbcfde3d3e2da := NewOrderedMap[V]()
+	for __obf_606ad3c69469507e := __obf_ca09540de29917b3.Front(); __obf_606ad3c69469507e != nil; __obf_606ad3c69469507e = __obf_606ad3c69469507e.Next() {
+		__obf_e52cbcfde3d3e2da.Set(__obf_606ad3c69469507e.Key, __obf_606ad3c69469507e.Value)
 	}
-	return __obf_253bbe7abf639fb6
+	return __obf_e52cbcfde3d3e2da
 }
 
 // SetFromJson set element from json string
-func (__obf_88bdf57825ea07fa *OrderedMap[V]) SetFromJson(__obf_2f7f050797461426 string) (__obf_24456bd3f3e29186 error) {
-	__obf_e9274782a8b581db := make(map[string]V, 0)
-	__obf_24456bd3f3e29186 = json.Unmarshal([]byte(__obf_2f7f050797461426), &__obf_e9274782a8b581db)
-	if __obf_24456bd3f3e29186 != nil {
+func (__obf_ca09540de29917b3 *OrderedMap[V]) SetFromJson(__obf_1524bc1cc35c4ef3 string) (__obf_a4a3a0fe86b36626 error) {
+	__obf_b97f8243a437c987 := make(map[string]V, 0)
+	__obf_a4a3a0fe86b36626 = json.Unmarshal([]byte(__obf_1524bc1cc35c4ef3), &__obf_b97f8243a437c987)
+	if __obf_a4a3a0fe86b36626 != nil {
 		return
 	}
-	for __obf_43d363f3f5d57e86, __obf_289dd915247ca25d := range __obf_e9274782a8b581db {
-		__obf_88bdf57825ea07fa.Set(__obf_43d363f3f5d57e86, __obf_289dd915247ca25d)
+	for __obf_f067a403d3b1b52a, __obf_f69c1647001964ce := range __obf_b97f8243a437c987 {
+		__obf_ca09540de29917b3.Set(__obf_f067a403d3b1b52a, __obf_f69c1647001964ce)
 	}
 	return
 }

@@ -1,65 +1,128 @@
-package __obf_e49f90b5aaf58063
+package __obf_2004b1bd7dc9de5d
 
 import (
-	"fmt"
-	cache "github.com/ArtisanHiram/go-pkg/cache"
-	"image/color"
-	"strings"
-	"time"
+	click "github.com/ArtisanHiram/go-pkg/captcha/internal/click"
+	rotate "github.com/ArtisanHiram/go-pkg/captcha/internal/rotate"
+	slide "github.com/ArtisanHiram/go-pkg/captcha/internal/slide"
+	types "github.com/ArtisanHiram/go-pkg/captcha/types"
+
+	"golang.org/x/image/font"
 )
 
-const (
-	CachePrefix = "captcha_%s"
-)
+func NewClickCaptcha(__obf_6173758bab59b275 click.Option) *click.Captcha {
+	__obf_213ed4eb86123504 := &click.Options{
+		FontDPI:     72, // Increased to 200 for high quality rendering
+		FontHinting: font.HintingNone,
+		Primary: click.Primary{
+			Alpha:      1,
+			DotPadding: 10,
+			Size:       types.Size{Width: 400, Height: 340},
+			LenRange:   types.Range{Min: 3, Max: 6},
+			SizeRange:  types.Range{Min: 32, Max: 42},
+			AnglePosRange: []types.Range{
+				{Min: 20, Max: 35},
+				{Min: 35, Max: 45},
+				{Min: 45, Max: 60},
+				{Min: 290, Max: 305},
+				{Min: 305, Max: 325},
+				{Min: 325, Max: 330},
+			},
+		},
+		ShowShadow:  true,
+		ShadowPoint: types.Point{X: -1, Y: -1},
+		Secondary: click.Secondary{
+			BgDistort:      types.DistortLevel4,
+			BgCircles:      4,
+			BgSlimLines:    2,
+			DisturbAlpha:   1,
+			DotPadding:     0,
+			NonDeformAble:  true,
+			VerifyLenRange: types.Range{Min: 2, Max: 4},
+			Size:           types.Size{Width: 150, Height: 60},
+			SizeRange:      types.Range{Min: 32, Max: 42},
+		},
+	}
 
-// Captcha represents a captcha service.
-type Captcha struct {
-	__obf_57cfccd67b13108e cache.Cache
-	Width                  int     `yaml:"width"`
-	Height                 int     `yaml:"height"`
-	Length                 int     `yaml:"length"`
-	Noises                 int     `yaml:"noises"`
-	Expiration             int     `yaml:"expiration"` // minutes
-	MaxSkew                float64 `yaml:"max-skew"`
-	ColorPalette           color.Palette
+	if __obf_6173758bab59b275 != nil {
+		__obf_6173758bab59b275(__obf_213ed4eb86123504)
+	}
+
+	return click.NewCaptcha(__obf_213ed4eb86123504)
 }
 
-func (__obf_98f8d0c445e06488 *Captcha) Init(__obf_bdd8cc607d070139 cache.Cache) {
-	if __obf_98f8d0c445e06488.__obf_57cfccd67b13108e == nil {
-		__obf_98f8d0c445e06488.__obf_57cfccd67b13108e = __obf_bdd8cc607d070139
+func NewRotateCaptcha(__obf_6173758bab59b275 rotate.Option) *rotate.Captcha {
+	__obf_213ed4eb86123504 := &rotate.Options{
+		Primary: rotate.Primary{
+			Size:  220,
+			Alpha: 1,
+			AnglePosRange: []types.Range{
+				{Min: 30, Max: 330},
+			},
+		},
+		Secondary: rotate.Secondary{
+			Alpha:     1,
+			SizeRange: []int{140, 150, 160, 170},
+		},
 	}
+
+	if __obf_6173758bab59b275 != nil {
+		__obf_6173758bab59b275(__obf_213ed4eb86123504)
+	}
+	return rotate.NewCaptcha(__obf_213ed4eb86123504)
 }
 
-// create a new captcha id
-func (__obf_98f8d0c445e06488 *Captcha) Generate() (string, string) {
-	__obf_55fe7235cf866948 := StringUUID()
-	__obf_10eafabe741c335e := RandomStr(__obf_98f8d0c445e06488.Length)
-	__obf_98f8d0c445e06488.__obf_57cfccd67b13108e.Set(fmt.Sprintf(CachePrefix, __obf_55fe7235cf866948), __obf_10eafabe741c335e, time.Duration(__obf_98f8d0c445e06488.Expiration)*time.Minute)
-	__obf_5ef5f278f950e167 := Image{
-		Chars:   __obf_10eafabe741c335e,
-		Width:   __obf_98f8d0c445e06488.Width,
-		Height:  __obf_98f8d0c445e06488.Height,
-		Noises:  __obf_98f8d0c445e06488.Noises,
-		MaxSkew: __obf_98f8d0c445e06488.MaxSkew,
+func NewMoveCaptcha(__obf_6173758bab59b275 slide.Option) *slide.Captcha {
+	__obf_213ed4eb86123504 := &slide.Options{
+		Type: slide.Move,
+		Primary: slide.Primary{
+			Size:  types.Size{Width: 400, Height: 340},
+			Alpha: 1,
+		},
+		Secondary: slide.Secondary{
+			EnableVerticalRandom: false,
+			CountRange:           types.Range{Min: 1, Max: 5},
+			SizeRange:            types.Range{Min: 60, Max: 70},
+			AnglePosRange: []types.Range{
+				{Min: 0, Max: 0},
+			},
+			DeadZoneDirections: []slide.DeadZoneDirectionType{slide.DeadZoneDirectionTypeLeft},
+		},
 	}
-	return __obf_55fe7235cf866948, __obf_5ef5f278f950e167.Base64()
+
+	if __obf_6173758bab59b275 != nil {
+		__obf_6173758bab59b275(__obf_213ed4eb86123504)
+	}
+
+	return slide.NewCaptcha(__obf_213ed4eb86123504)
+
 }
 
-// verify from a request
-// func (c *Captcha) VerifyReq(req *http.Request) bool {
-// 	_ = req.ParseForm()
-// 	return c.Verify(req.Form.Get(c.FieldIdName), req.Form.Get(c.FieldCaptchaName))
-// }
-
-// direct verify id and challenge string
-func (__obf_98f8d0c445e06488 *Captcha) Verify(__obf_55fe7235cf866948 string, __obf_21e720384978b98d string) bool {
-	if len(__obf_21e720384978b98d) == 0 || len(__obf_55fe7235cf866948) == 0 {
-		return false
+func NewDragCaptcha(__obf_6173758bab59b275 slide.Option) *slide.Captcha {
+	__obf_213ed4eb86123504 := &slide.Options{
+		Type: slide.Drag,
+		Primary: slide.Primary{
+			Size:  types.Size{Width: 400, Height: 340},
+			Alpha: 1,
+		},
+		Secondary: slide.Secondary{
+			EnableVerticalRandom: true,
+			CountRange:           types.Range{Min: 1, Max: 5},
+			SizeRange:            types.Range{Min: 60, Max: 70},
+			AnglePosRange: []types.Range{
+				{Min: 0, Max: 0},
+			},
+			DeadZoneDirections: []slide.DeadZoneDirectionType{
+				slide.DeadZoneDirectionTypeLeft,
+				slide.DeadZoneDirectionTypeRight,
+				slide.DeadZoneDirectionTypeBottom,
+				slide.DeadZoneDirectionTypeTop,
+			},
+		},
 	}
 
-	__obf_9bae8b63c43448cc, __obf_fea6cef273213c03 := cache.Get[string](__obf_98f8d0c445e06488.__obf_57cfccd67b13108e, fmt.Sprintf(CachePrefix, __obf_55fe7235cf866948))
-	if __obf_fea6cef273213c03 != nil {
-		return false
+	if __obf_6173758bab59b275 != nil {
+		__obf_6173758bab59b275(__obf_213ed4eb86123504)
 	}
-	return strings.EqualFold(__obf_21e720384978b98d, __obf_9bae8b63c43448cc)
+
+	return slide.NewCaptcha(__obf_213ed4eb86123504)
 }

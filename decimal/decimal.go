@@ -14,7 +14,7 @@
 //	}
 //
 // Note: This can "only" represent numbers with a maximum of 2^31 digits after the decimal point.
-package __obf_ae16adf734cfe1aa
+package __obf_0962dc77c6b6239b
 
 import (
 	"database/sql/driver"
@@ -73,34 +73,34 @@ var ExpMaxIterations = 1000
 // Zero should never be compared with == or != directly, please use decimal.Equal or decimal.Cmp instead.
 var Zero = New(0, 1)
 
-var __obf_91bffcce19efb7d8 = big.NewInt(0)
-var __obf_6b7012530e205f39 = big.NewInt(1)
-var __obf_3338f87aa2a5f65a = big.NewInt(2)
-var __obf_7a3c2c07b99ffb48 = big.NewInt(4)
-var __obf_a02c1e3273085f0d = big.NewInt(5)
-var __obf_6e3308650b479548 = big.NewInt(10)
-var __obf_cc9bfe65d22c82e4 = big.NewInt(20)
+var __obf_1bb56bff7931ff30 = big.NewInt(0)
+var __obf_25f16531cde494de = big.NewInt(1)
+var __obf_3cbd576e784ed478 = big.NewInt(2)
+var __obf_e1dd4002d73ad6cd = big.NewInt(4)
+var __obf_dc2da84e9cc8100a = big.NewInt(5)
+var __obf_44ff59a8ed385a0e = big.NewInt(10)
+var __obf_3316a3319b2a8b33 = big.NewInt(20)
 
-var __obf_5004c7371a2d0179 = []Decimal{New(1, 0)}
+var __obf_b83126d172f97ebd = []Decimal{New(1, 0)}
 
 // Decimal represents a fixed-point decimal. It is immutable.
 // number = value * 10 ^ exp
 type Decimal struct {
-	__obf_6e5f77decbc21dea *big.Int
+	__obf_c36b36e18c228e7f *big.Int
 
 	// NOTE(vadim): this must be an int32, because we cast it to float64 during
 	// calculations. If exp is 64 bit, we might lose precision.
 	// If we cared about being able to represent every possible decimal, we
 	// could make exp a *big.Int but it would hurt performance and numbers
 	// like that are unrealistic.
-	__obf_1ef84065a6a49f43 int32
+	__obf_406325483a83b1fa int32
 }
 
 // New returns a new fixed-point decimal, value * 10 ^ exp.
-func New(__obf_6e5f77decbc21dea int64, __obf_1ef84065a6a49f43 int32) Decimal {
+func New(__obf_c36b36e18c228e7f int64, __obf_406325483a83b1fa int32) Decimal {
 	return Decimal{
-		__obf_6e5f77decbc21dea: big.NewInt(__obf_6e5f77decbc21dea),
-		__obf_1ef84065a6a49f43: __obf_1ef84065a6a49f43,
+		__obf_c36b36e18c228e7f: big.NewInt(__obf_c36b36e18c228e7f),
+		__obf_406325483a83b1fa: __obf_406325483a83b1fa,
 	}
 }
 
@@ -110,10 +110,10 @@ func New(__obf_6e5f77decbc21dea int64, __obf_1ef84065a6a49f43 int32) Decimal {
 //
 //	NewFromInt(123).String() // output: "123"
 //	NewFromInt(-10).String() // output: "-10"
-func NewFromInt(__obf_6e5f77decbc21dea int64) Decimal {
+func NewFromInt(__obf_c36b36e18c228e7f int64) Decimal {
 	return Decimal{
-		__obf_6e5f77decbc21dea: big.NewInt(__obf_6e5f77decbc21dea),
-		__obf_1ef84065a6a49f43: 0,
+		__obf_c36b36e18c228e7f: big.NewInt(__obf_c36b36e18c228e7f),
+		__obf_406325483a83b1fa: 0,
 	}
 }
 
@@ -123,10 +123,10 @@ func NewFromInt(__obf_6e5f77decbc21dea int64) Decimal {
 //
 //	NewFromInt(123).String() // output: "123"
 //	NewFromInt(-10).String() // output: "-10"
-func NewFromInt32(__obf_6e5f77decbc21dea int32) Decimal {
+func NewFromInt32(__obf_c36b36e18c228e7f int32) Decimal {
 	return Decimal{
-		__obf_6e5f77decbc21dea: big.NewInt(int64(__obf_6e5f77decbc21dea)),
-		__obf_1ef84065a6a49f43: 0,
+		__obf_c36b36e18c228e7f: big.NewInt(int64(__obf_c36b36e18c228e7f)),
+		__obf_406325483a83b1fa: 0,
 	}
 }
 
@@ -135,18 +135,18 @@ func NewFromInt32(__obf_6e5f77decbc21dea int32) Decimal {
 // Example:
 //
 //	NewFromUint64(123).String() // output: "123"
-func NewFromUint64(__obf_6e5f77decbc21dea uint64) Decimal {
+func NewFromUint64(__obf_c36b36e18c228e7f uint64) Decimal {
 	return Decimal{
-		__obf_6e5f77decbc21dea: new(big.Int).SetUint64(__obf_6e5f77decbc21dea),
-		__obf_1ef84065a6a49f43: 0,
+		__obf_c36b36e18c228e7f: new(big.Int).SetUint64(__obf_c36b36e18c228e7f),
+		__obf_406325483a83b1fa: 0,
 	}
 }
 
 // NewFromBigInt returns a new Decimal from a big.Int, value * 10 ^ exp
-func NewFromBigInt(__obf_6e5f77decbc21dea *big.Int, __obf_1ef84065a6a49f43 int32) Decimal {
+func NewFromBigInt(__obf_c36b36e18c228e7f *big.Int, __obf_406325483a83b1fa int32) Decimal {
 	return Decimal{
-		__obf_6e5f77decbc21dea: new(big.Int).Set(__obf_6e5f77decbc21dea),
-		__obf_1ef84065a6a49f43: __obf_1ef84065a6a49f43,
+		__obf_c36b36e18c228e7f: new(big.Int).Set(__obf_c36b36e18c228e7f),
+		__obf_406325483a83b1fa: __obf_406325483a83b1fa,
 	}
 }
 
@@ -159,14 +159,14 @@ func NewFromBigInt(__obf_6e5f77decbc21dea *big.Int, __obf_1ef84065a6a49f43 int32
 //	d2 := NewFromBigRat(big.NewRat(4, 5), 1)    // output: "0.8"
 //	d3 := NewFromBigRat(big.NewRat(1000, 3), 3) // output: "333.333"
 //	d4 := NewFromBigRat(big.NewRat(2, 7), 4)    // output: "0.2857"
-func NewFromBigRat(__obf_6e5f77decbc21dea *big.Rat, __obf_fb38b245d2cdb3ee int32) Decimal {
+func NewFromBigRat(__obf_c36b36e18c228e7f *big.Rat, __obf_7efed86618b2f272 int32) Decimal {
 	return Decimal{
-		__obf_6e5f77decbc21dea: new(big.Int).Set(__obf_6e5f77decbc21dea.Num()),
-		__obf_1ef84065a6a49f43: 0,
+		__obf_c36b36e18c228e7f: new(big.Int).Set(__obf_c36b36e18c228e7f.Num()),
+		__obf_406325483a83b1fa: 0,
 	}.DivRound(Decimal{
-		__obf_6e5f77decbc21dea: new(big.Int).Set(__obf_6e5f77decbc21dea.Denom()),
-		__obf_1ef84065a6a49f43: 0,
-	}, __obf_fb38b245d2cdb3ee)
+		__obf_c36b36e18c228e7f: new(big.Int).Set(__obf_c36b36e18c228e7f.Denom()),
+		__obf_406325483a83b1fa: 0,
+	}, __obf_7efed86618b2f272)
 }
 
 // NewFromString returns a new Decimal from a string representation.
@@ -177,74 +177,74 @@ func NewFromBigRat(__obf_6e5f77decbc21dea *big.Rat, __obf_fb38b245d2cdb3ee int32
 //	d, err := NewFromString("-123.45")
 //	d2, err := NewFromString(".0001")
 //	d3, err := NewFromString("1.47000")
-func NewFromString(__obf_6e5f77decbc21dea string) (Decimal, error) {
-	__obf_cc7cb376e25aa332 := __obf_6e5f77decbc21dea
-	var __obf_0ba2a9c4efd07969 string
-	var __obf_1ef84065a6a49f43 int64
+func NewFromString(__obf_c36b36e18c228e7f string) (Decimal, error) {
+	__obf_f4fe036c72616c63 := __obf_c36b36e18c228e7f
+	var __obf_fae6fc384188eff2 string
+	var __obf_406325483a83b1fa int64
 
 	// Check if number is using scientific notation
-	__obf_d0e3791be54e7bad := strings.IndexAny(__obf_6e5f77decbc21dea, "Ee")
-	if __obf_d0e3791be54e7bad != -1 {
-		__obf_123517f3c1fa834b, __obf_68bcf986f9cdf0c0 := strconv.ParseInt(__obf_6e5f77decbc21dea[__obf_d0e3791be54e7bad+1:], 10, 32)
-		if __obf_68bcf986f9cdf0c0 != nil {
-			if __obf_c1ef4fea8d3ecd63, __obf_1ef0d34491e1175a := __obf_68bcf986f9cdf0c0.(*strconv.NumError); __obf_1ef0d34491e1175a && __obf_c1ef4fea8d3ecd63.Err == strconv.ErrRange {
-				return Decimal{}, fmt.Errorf("can't convert %s to decimal: fractional part too long", __obf_6e5f77decbc21dea)
+	__obf_fb702628f4231304 := strings.IndexAny(__obf_c36b36e18c228e7f, "Ee")
+	if __obf_fb702628f4231304 != -1 {
+		__obf_59a5d6e7dc9ae100, __obf_c1d612f6bfc234d7 := strconv.ParseInt(__obf_c36b36e18c228e7f[__obf_fb702628f4231304+1:], 10, 32)
+		if __obf_c1d612f6bfc234d7 != nil {
+			if __obf_6b31de26b3f4abad, __obf_5a1cc71347798e7b := __obf_c1d612f6bfc234d7.(*strconv.NumError); __obf_5a1cc71347798e7b && __obf_6b31de26b3f4abad.Err == strconv.ErrRange {
+				return Decimal{}, fmt.Errorf("can't convert %s to decimal: fractional part too long", __obf_c36b36e18c228e7f)
 			}
-			return Decimal{}, fmt.Errorf("can't convert %s to decimal: exponent is not numeric", __obf_6e5f77decbc21dea)
+			return Decimal{}, fmt.Errorf("can't convert %s to decimal: exponent is not numeric", __obf_c36b36e18c228e7f)
 		}
-		__obf_6e5f77decbc21dea = __obf_6e5f77decbc21dea[:__obf_d0e3791be54e7bad]
-		__obf_1ef84065a6a49f43 = __obf_123517f3c1fa834b
+		__obf_c36b36e18c228e7f = __obf_c36b36e18c228e7f[:__obf_fb702628f4231304]
+		__obf_406325483a83b1fa = __obf_59a5d6e7dc9ae100
 	}
 
-	__obf_5ff66ef4e01e4d48 := -1
-	__obf_73d9032530b4dc24 := len(__obf_6e5f77decbc21dea)
-	for __obf_40720372b6d983c7 := 0; __obf_40720372b6d983c7 < __obf_73d9032530b4dc24; __obf_40720372b6d983c7++ {
-		if __obf_6e5f77decbc21dea[__obf_40720372b6d983c7] == '.' {
-			if __obf_5ff66ef4e01e4d48 > -1 {
-				return Decimal{}, fmt.Errorf("can't convert %s to decimal: too many .s", __obf_6e5f77decbc21dea)
+	__obf_8eb05059edeaaa5c := -1
+	__obf_53c198495e2c6dcf := len(__obf_c36b36e18c228e7f)
+	for __obf_a6733ea50196cc53 := 0; __obf_a6733ea50196cc53 < __obf_53c198495e2c6dcf; __obf_a6733ea50196cc53++ {
+		if __obf_c36b36e18c228e7f[__obf_a6733ea50196cc53] == '.' {
+			if __obf_8eb05059edeaaa5c > -1 {
+				return Decimal{}, fmt.Errorf("can't convert %s to decimal: too many .s", __obf_c36b36e18c228e7f)
 			}
-			__obf_5ff66ef4e01e4d48 = __obf_40720372b6d983c7
+			__obf_8eb05059edeaaa5c = __obf_a6733ea50196cc53
 		}
 	}
 
-	if __obf_5ff66ef4e01e4d48 == -1 {
+	if __obf_8eb05059edeaaa5c == -1 {
 		// There is no decimal point, we can just parse the original string as
 		// an int
-		__obf_0ba2a9c4efd07969 = __obf_6e5f77decbc21dea
+		__obf_fae6fc384188eff2 = __obf_c36b36e18c228e7f
 	} else {
-		if __obf_5ff66ef4e01e4d48+1 < __obf_73d9032530b4dc24 {
-			__obf_0ba2a9c4efd07969 = __obf_6e5f77decbc21dea[:__obf_5ff66ef4e01e4d48] + __obf_6e5f77decbc21dea[__obf_5ff66ef4e01e4d48+1:]
+		if __obf_8eb05059edeaaa5c+1 < __obf_53c198495e2c6dcf {
+			__obf_fae6fc384188eff2 = __obf_c36b36e18c228e7f[:__obf_8eb05059edeaaa5c] + __obf_c36b36e18c228e7f[__obf_8eb05059edeaaa5c+1:]
 		} else {
-			__obf_0ba2a9c4efd07969 = __obf_6e5f77decbc21dea[:__obf_5ff66ef4e01e4d48]
+			__obf_fae6fc384188eff2 = __obf_c36b36e18c228e7f[:__obf_8eb05059edeaaa5c]
 		}
-		__obf_123517f3c1fa834b := -len(__obf_6e5f77decbc21dea[__obf_5ff66ef4e01e4d48+1:])
-		__obf_1ef84065a6a49f43 += int64(__obf_123517f3c1fa834b)
+		__obf_59a5d6e7dc9ae100 := -len(__obf_c36b36e18c228e7f[__obf_8eb05059edeaaa5c+1:])
+		__obf_406325483a83b1fa += int64(__obf_59a5d6e7dc9ae100)
 	}
 
-	var __obf_75dd2f5b4248b696 *big.Int
+	var __obf_68e723775b28a699 *big.Int
 	// strconv.ParseInt is faster than new(big.Int).SetString so this is just a shortcut for strings we know won't overflow
-	if len(__obf_0ba2a9c4efd07969) <= 18 {
-		__obf_6138b75a3c5ef6ec, __obf_68bcf986f9cdf0c0 := strconv.ParseInt(__obf_0ba2a9c4efd07969, 10, 64)
-		if __obf_68bcf986f9cdf0c0 != nil {
-			return Decimal{}, fmt.Errorf("can't convert %s to decimal", __obf_6e5f77decbc21dea)
+	if len(__obf_fae6fc384188eff2) <= 18 {
+		__obf_57eef8a374887423, __obf_c1d612f6bfc234d7 := strconv.ParseInt(__obf_fae6fc384188eff2, 10, 64)
+		if __obf_c1d612f6bfc234d7 != nil {
+			return Decimal{}, fmt.Errorf("can't convert %s to decimal", __obf_c36b36e18c228e7f)
 		}
-		__obf_75dd2f5b4248b696 = big.NewInt(__obf_6138b75a3c5ef6ec)
+		__obf_68e723775b28a699 = big.NewInt(__obf_57eef8a374887423)
 	} else {
-		__obf_75dd2f5b4248b696 = new(big.Int)
-		_, __obf_1ef0d34491e1175a := __obf_75dd2f5b4248b696.SetString(__obf_0ba2a9c4efd07969, 10)
-		if !__obf_1ef0d34491e1175a {
-			return Decimal{}, fmt.Errorf("can't convert %s to decimal", __obf_6e5f77decbc21dea)
+		__obf_68e723775b28a699 = new(big.Int)
+		_, __obf_5a1cc71347798e7b := __obf_68e723775b28a699.SetString(__obf_fae6fc384188eff2, 10)
+		if !__obf_5a1cc71347798e7b {
+			return Decimal{}, fmt.Errorf("can't convert %s to decimal", __obf_c36b36e18c228e7f)
 		}
 	}
 
-	if __obf_1ef84065a6a49f43 < math.MinInt32 || __obf_1ef84065a6a49f43 > math.MaxInt32 {
+	if __obf_406325483a83b1fa < math.MinInt32 || __obf_406325483a83b1fa > math.MaxInt32 {
 		// NOTE(vadim): I doubt a string could realistically be this long
-		return Decimal{}, fmt.Errorf("can't convert %s to decimal: fractional part too long", __obf_cc7cb376e25aa332)
+		return Decimal{}, fmt.Errorf("can't convert %s to decimal: fractional part too long", __obf_f4fe036c72616c63)
 	}
 
 	return Decimal{
-		__obf_6e5f77decbc21dea: __obf_75dd2f5b4248b696,
-		__obf_1ef84065a6a49f43: int32(__obf_1ef84065a6a49f43),
+		__obf_c36b36e18c228e7f: __obf_68e723775b28a699,
+		__obf_406325483a83b1fa: int32(__obf_406325483a83b1fa),
 	}, nil
 }
 
@@ -262,13 +262,13 @@ func NewFromString(__obf_6e5f77decbc21dea string) (Decimal, error) {
 //
 //	r3 := regexp.MustCompile("[USD\\s]")
 //	d3, err := NewFromFormattedString("5000 USD", r3)
-func NewFromFormattedString(__obf_6e5f77decbc21dea string, __obf_4de269304e9eb3c6 *regexp.Regexp) (Decimal, error) {
-	__obf_a38f167b5062b0c0 := __obf_4de269304e9eb3c6.ReplaceAllString(__obf_6e5f77decbc21dea, "")
-	__obf_19a369452cd5fbde, __obf_68bcf986f9cdf0c0 := NewFromString(__obf_a38f167b5062b0c0)
-	if __obf_68bcf986f9cdf0c0 != nil {
-		return Decimal{}, __obf_68bcf986f9cdf0c0
+func NewFromFormattedString(__obf_c36b36e18c228e7f string, __obf_0a98142fb9fdee24 *regexp.Regexp) (Decimal, error) {
+	__obf_a22955a460c354ca := __obf_0a98142fb9fdee24.ReplaceAllString(__obf_c36b36e18c228e7f, "")
+	__obf_d09f058c0a390c93, __obf_c1d612f6bfc234d7 := NewFromString(__obf_a22955a460c354ca)
+	if __obf_c1d612f6bfc234d7 != nil {
+		return Decimal{}, __obf_c1d612f6bfc234d7
 	}
-	return __obf_19a369452cd5fbde, nil
+	return __obf_d09f058c0a390c93, nil
 }
 
 // RequireFromString returns a new Decimal from a string representation
@@ -278,12 +278,12 @@ func NewFromFormattedString(__obf_6e5f77decbc21dea string, __obf_4de269304e9eb3c
 //
 //	d := RequireFromString("-123.45")
 //	d2 := RequireFromString(".0001")
-func RequireFromString(__obf_6e5f77decbc21dea string) Decimal {
-	__obf_e8ecc3b172d7ce84, __obf_68bcf986f9cdf0c0 := NewFromString(__obf_6e5f77decbc21dea)
-	if __obf_68bcf986f9cdf0c0 != nil {
-		panic(__obf_68bcf986f9cdf0c0)
+func RequireFromString(__obf_c36b36e18c228e7f string) Decimal {
+	__obf_bc636ce96a8a7277, __obf_c1d612f6bfc234d7 := NewFromString(__obf_c36b36e18c228e7f)
+	if __obf_c1d612f6bfc234d7 != nil {
+		panic(__obf_c1d612f6bfc234d7)
 	}
-	return __obf_e8ecc3b172d7ce84
+	return __obf_bc636ce96a8a7277
 }
 
 // NewFromFloat converts a float64 to Decimal.
@@ -296,11 +296,11 @@ func RequireFromString(__obf_6e5f77decbc21dea string) Decimal {
 // For slightly faster conversion, use NewFromFloatWithExponent where you can specify the precision in absolute terms.
 //
 // NOTE: this will panic on NaN, +/-inf
-func NewFromFloat(__obf_6e5f77decbc21dea float64) Decimal {
-	if __obf_6e5f77decbc21dea == 0 {
+func NewFromFloat(__obf_c36b36e18c228e7f float64) Decimal {
+	if __obf_c36b36e18c228e7f == 0 {
 		return New(0, 0)
 	}
-	return __obf_b25cfa86d7c21099(__obf_6e5f77decbc21dea, math.Float64bits(__obf_6e5f77decbc21dea), &__obf_3201299bc3256294)
+	return __obf_428cf55ae033ae83(__obf_c36b36e18c228e7f, math.Float64bits(__obf_c36b36e18c228e7f), &__obf_b3a4121c853c30da)
 }
 
 // NewFromFloat32 converts a float32 to Decimal.
@@ -313,59 +313,59 @@ func NewFromFloat(__obf_6e5f77decbc21dea float64) Decimal {
 // For slightly faster conversion, use NewFromFloatWithExponent where you can specify the precision in absolute terms.
 //
 // NOTE: this will panic on NaN, +/-inf
-func NewFromFloat32(__obf_6e5f77decbc21dea float32) Decimal {
-	if __obf_6e5f77decbc21dea == 0 {
+func NewFromFloat32(__obf_c36b36e18c228e7f float32) Decimal {
+	if __obf_c36b36e18c228e7f == 0 {
 		return New(0, 0)
 	}
 	// XOR is workaround for https://github.com/golang/go/issues/26285
-	__obf_364e38cb96f1c266 := math.Float32bits(__obf_6e5f77decbc21dea) ^ 0x80808080
-	return __obf_b25cfa86d7c21099(float64(__obf_6e5f77decbc21dea), uint64(__obf_364e38cb96f1c266)^0x80808080, &__obf_a47ee567a13f3274)
+	__obf_5097a5efcc046ddc := math.Float32bits(__obf_c36b36e18c228e7f) ^ 0x80808080
+	return __obf_428cf55ae033ae83(float64(__obf_c36b36e18c228e7f), uint64(__obf_5097a5efcc046ddc)^0x80808080, &__obf_27426ff0b890a183)
 }
 
-func __obf_b25cfa86d7c21099(__obf_3fcee5abdf286e44 float64, __obf_ca6a2e6cd90372b0 uint64, __obf_f9f981b2fd2cf5a1 *__obf_94eeb44634f64ac2) Decimal {
-	if math.IsNaN(__obf_3fcee5abdf286e44) || math.IsInf(__obf_3fcee5abdf286e44, 0) {
-		panic(fmt.Sprintf("Cannot create a Decimal from %v", __obf_3fcee5abdf286e44))
+func __obf_428cf55ae033ae83(__obf_4c6accf7c36a21ec float64, __obf_0e017b837b95afdb uint64, __obf_8b0328b22b58eb64 *__obf_e46206765e5dbb45) Decimal {
+	if math.IsNaN(__obf_4c6accf7c36a21ec) || math.IsInf(__obf_4c6accf7c36a21ec, 0) {
+		panic(fmt.Sprintf("Cannot create a Decimal from %v", __obf_4c6accf7c36a21ec))
 	}
-	__obf_1ef84065a6a49f43 := int(__obf_ca6a2e6cd90372b0>>__obf_f9f981b2fd2cf5a1.__obf_5991f9c502ad3b8d) & (1<<__obf_f9f981b2fd2cf5a1.__obf_7361f35f98ac5740 - 1)
-	__obf_6a3e060d23caf99c := __obf_ca6a2e6cd90372b0 & (uint64(1)<<__obf_f9f981b2fd2cf5a1.__obf_5991f9c502ad3b8d - 1)
+	__obf_406325483a83b1fa := int(__obf_0e017b837b95afdb>>__obf_8b0328b22b58eb64.__obf_f89d4a69e09b5dc8) & (1<<__obf_8b0328b22b58eb64.__obf_44fa0a4671bd9290 - 1)
+	__obf_a54bc9ed25a8de66 := __obf_0e017b837b95afdb & (uint64(1)<<__obf_8b0328b22b58eb64.__obf_f89d4a69e09b5dc8 - 1)
 
-	switch __obf_1ef84065a6a49f43 {
+	switch __obf_406325483a83b1fa {
 	case 0:
 		// denormalized
-		__obf_1ef84065a6a49f43++
+		__obf_406325483a83b1fa++
 
 	default:
 		// add implicit top bit
-		__obf_6a3e060d23caf99c |= uint64(1) << __obf_f9f981b2fd2cf5a1.__obf_5991f9c502ad3b8d
+		__obf_a54bc9ed25a8de66 |= uint64(1) << __obf_8b0328b22b58eb64.__obf_f89d4a69e09b5dc8
 	}
-	__obf_1ef84065a6a49f43 += __obf_f9f981b2fd2cf5a1.__obf_bd6660fbe7220f81
+	__obf_406325483a83b1fa += __obf_8b0328b22b58eb64.__obf_279e6fa356ffbd95
 
-	var __obf_19a369452cd5fbde __obf_ae16adf734cfe1aa
-	__obf_19a369452cd5fbde.Assign(__obf_6a3e060d23caf99c)
-	__obf_19a369452cd5fbde.Shift(__obf_1ef84065a6a49f43 - int(__obf_f9f981b2fd2cf5a1.__obf_5991f9c502ad3b8d))
-	__obf_19a369452cd5fbde.__obf_d12c1496d23e3503 = __obf_ca6a2e6cd90372b0>>(__obf_f9f981b2fd2cf5a1.__obf_7361f35f98ac5740+__obf_f9f981b2fd2cf5a1.__obf_5991f9c502ad3b8d) != 0
+	var __obf_d09f058c0a390c93 __obf_0962dc77c6b6239b
+	__obf_d09f058c0a390c93.Assign(__obf_a54bc9ed25a8de66)
+	__obf_d09f058c0a390c93.Shift(__obf_406325483a83b1fa - int(__obf_8b0328b22b58eb64.__obf_f89d4a69e09b5dc8))
+	__obf_d09f058c0a390c93.__obf_f0af453d1e176af6 = __obf_0e017b837b95afdb>>(__obf_8b0328b22b58eb64.__obf_44fa0a4671bd9290+__obf_8b0328b22b58eb64.__obf_f89d4a69e09b5dc8) != 0
 
-	__obf_a9030787063799d3(&__obf_19a369452cd5fbde, __obf_6a3e060d23caf99c, __obf_1ef84065a6a49f43, __obf_f9f981b2fd2cf5a1)
+	__obf_f513f8a0934968e3(&__obf_d09f058c0a390c93, __obf_a54bc9ed25a8de66, __obf_406325483a83b1fa, __obf_8b0328b22b58eb64)
 	// If less than 19 digits, we can do calculation in an int64.
-	if __obf_19a369452cd5fbde.__obf_04074ea54302ce17 < 19 {
-		__obf_e059bdc33d645894 := int64(0)
-		__obf_3f873ba4f9076041 := int64(1)
-		for __obf_40720372b6d983c7 := __obf_19a369452cd5fbde.__obf_04074ea54302ce17 - 1; __obf_40720372b6d983c7 >= 0; __obf_40720372b6d983c7-- {
-			__obf_e059bdc33d645894 += __obf_3f873ba4f9076041 * int64(__obf_19a369452cd5fbde.__obf_19a369452cd5fbde[__obf_40720372b6d983c7]-'0')
-			__obf_3f873ba4f9076041 *= 10
+	if __obf_d09f058c0a390c93.__obf_ea04243a9869d25e < 19 {
+		__obf_bab5f70189aa167a := int64(0)
+		__obf_b041e2c85e138a64 := int64(1)
+		for __obf_a6733ea50196cc53 := __obf_d09f058c0a390c93.__obf_ea04243a9869d25e - 1; __obf_a6733ea50196cc53 >= 0; __obf_a6733ea50196cc53-- {
+			__obf_bab5f70189aa167a += __obf_b041e2c85e138a64 * int64(__obf_d09f058c0a390c93.__obf_d09f058c0a390c93[__obf_a6733ea50196cc53]-'0')
+			__obf_b041e2c85e138a64 *= 10
 		}
-		if __obf_19a369452cd5fbde.__obf_d12c1496d23e3503 {
-			__obf_e059bdc33d645894 *= -1
+		if __obf_d09f058c0a390c93.__obf_f0af453d1e176af6 {
+			__obf_bab5f70189aa167a *= -1
 		}
-		return Decimal{__obf_6e5f77decbc21dea: big.NewInt(__obf_e059bdc33d645894), __obf_1ef84065a6a49f43: int32(__obf_19a369452cd5fbde.__obf_45565779317643f9) - int32(__obf_19a369452cd5fbde.__obf_04074ea54302ce17)}
+		return Decimal{__obf_c36b36e18c228e7f: big.NewInt(__obf_bab5f70189aa167a), __obf_406325483a83b1fa: int32(__obf_d09f058c0a390c93.__obf_cb19c1fd6e41a0d7) - int32(__obf_d09f058c0a390c93.__obf_ea04243a9869d25e)}
 	}
-	__obf_75dd2f5b4248b696 := new(big.Int)
-	__obf_75dd2f5b4248b696, __obf_1ef0d34491e1175a := __obf_75dd2f5b4248b696.SetString(string(__obf_19a369452cd5fbde.__obf_19a369452cd5fbde[:__obf_19a369452cd5fbde.__obf_04074ea54302ce17]), 10)
-	if __obf_1ef0d34491e1175a {
-		return Decimal{__obf_6e5f77decbc21dea: __obf_75dd2f5b4248b696, __obf_1ef84065a6a49f43: int32(__obf_19a369452cd5fbde.__obf_45565779317643f9) - int32(__obf_19a369452cd5fbde.__obf_04074ea54302ce17)}
+	__obf_68e723775b28a699 := new(big.Int)
+	__obf_68e723775b28a699, __obf_5a1cc71347798e7b := __obf_68e723775b28a699.SetString(string(__obf_d09f058c0a390c93.__obf_d09f058c0a390c93[:__obf_d09f058c0a390c93.__obf_ea04243a9869d25e]), 10)
+	if __obf_5a1cc71347798e7b {
+		return Decimal{__obf_c36b36e18c228e7f: __obf_68e723775b28a699, __obf_406325483a83b1fa: int32(__obf_d09f058c0a390c93.__obf_cb19c1fd6e41a0d7) - int32(__obf_d09f058c0a390c93.__obf_ea04243a9869d25e)}
 	}
 
-	return NewFromFloatWithExponent(__obf_3fcee5abdf286e44, int32(__obf_19a369452cd5fbde.__obf_45565779317643f9)-int32(__obf_19a369452cd5fbde.__obf_04074ea54302ce17))
+	return NewFromFloatWithExponent(__obf_4c6accf7c36a21ec, int32(__obf_d09f058c0a390c93.__obf_cb19c1fd6e41a0d7)-int32(__obf_d09f058c0a390c93.__obf_ea04243a9869d25e))
 }
 
 // NewFromFloatWithExponent converts a float64 to Decimal, with an arbitrary
@@ -374,92 +374,92 @@ func __obf_b25cfa86d7c21099(__obf_3fcee5abdf286e44 float64, __obf_ca6a2e6cd90372
 // Example:
 //
 //	NewFromFloatWithExponent(123.456, -2).String() // output: "123.46"
-func NewFromFloatWithExponent(__obf_6e5f77decbc21dea float64, __obf_1ef84065a6a49f43 int32) Decimal {
-	if math.IsNaN(__obf_6e5f77decbc21dea) || math.IsInf(__obf_6e5f77decbc21dea, 0) {
-		panic(fmt.Sprintf("Cannot create a Decimal from %v", __obf_6e5f77decbc21dea))
+func NewFromFloatWithExponent(__obf_c36b36e18c228e7f float64, __obf_406325483a83b1fa int32) Decimal {
+	if math.IsNaN(__obf_c36b36e18c228e7f) || math.IsInf(__obf_c36b36e18c228e7f, 0) {
+		panic(fmt.Sprintf("Cannot create a Decimal from %v", __obf_c36b36e18c228e7f))
 	}
 
-	__obf_ca6a2e6cd90372b0 := math.Float64bits(__obf_6e5f77decbc21dea)
-	__obf_6a3e060d23caf99c := __obf_ca6a2e6cd90372b0 & (1<<52 - 1)
-	__obf_eb56d6ae62080b35 := int32((__obf_ca6a2e6cd90372b0 >> 52) & (1<<11 - 1))
-	__obf_0a87f1adff24c937 := __obf_ca6a2e6cd90372b0 >> 63
+	__obf_0e017b837b95afdb := math.Float64bits(__obf_c36b36e18c228e7f)
+	__obf_a54bc9ed25a8de66 := __obf_0e017b837b95afdb & (1<<52 - 1)
+	__obf_739f278b145b2380 := int32((__obf_0e017b837b95afdb >> 52) & (1<<11 - 1))
+	__obf_87165cc42c6992a3 := __obf_0e017b837b95afdb >> 63
 
-	if __obf_eb56d6ae62080b35 == 0 {
+	if __obf_739f278b145b2380 == 0 {
 		// specials
-		if __obf_6a3e060d23caf99c == 0 {
+		if __obf_a54bc9ed25a8de66 == 0 {
 			return Decimal{}
 		}
 		// subnormal
-		__obf_eb56d6ae62080b35++
+		__obf_739f278b145b2380++
 	} else {
 		// normal
-		__obf_6a3e060d23caf99c |= 1 << 52
+		__obf_a54bc9ed25a8de66 |= 1 << 52
 	}
 
-	__obf_eb56d6ae62080b35 -= 1023 + 52
+	__obf_739f278b145b2380 -= 1023 + 52
 
 	// normalizing base-2 values
-	for __obf_6a3e060d23caf99c&1 == 0 {
-		__obf_6a3e060d23caf99c = __obf_6a3e060d23caf99c >> 1
-		__obf_eb56d6ae62080b35++
+	for __obf_a54bc9ed25a8de66&1 == 0 {
+		__obf_a54bc9ed25a8de66 = __obf_a54bc9ed25a8de66 >> 1
+		__obf_739f278b145b2380++
 	}
 
 	// maximum number of fractional base-10 digits to represent 2^N exactly cannot be more than -N if N<0
-	if __obf_1ef84065a6a49f43 < 0 && __obf_1ef84065a6a49f43 < __obf_eb56d6ae62080b35 {
-		if __obf_eb56d6ae62080b35 < 0 {
-			__obf_1ef84065a6a49f43 = __obf_eb56d6ae62080b35
+	if __obf_406325483a83b1fa < 0 && __obf_406325483a83b1fa < __obf_739f278b145b2380 {
+		if __obf_739f278b145b2380 < 0 {
+			__obf_406325483a83b1fa = __obf_739f278b145b2380
 		} else {
-			__obf_1ef84065a6a49f43 = 0
+			__obf_406325483a83b1fa = 0
 		}
 	}
 
 	// representing 10^M * 2^N as 5^M * 2^(M+N)
-	__obf_eb56d6ae62080b35 -= __obf_1ef84065a6a49f43
+	__obf_739f278b145b2380 -= __obf_406325483a83b1fa
 
-	__obf_78c292e95bf52fd1 := big.NewInt(1)
-	__obf_ce93d52d1f0f5002 := big.NewInt(int64(__obf_6a3e060d23caf99c))
+	__obf_02a8739fa97e954e := big.NewInt(1)
+	__obf_9178141ce7345815 := big.NewInt(int64(__obf_a54bc9ed25a8de66))
 
 	// applying 5^M
-	if __obf_1ef84065a6a49f43 > 0 {
-		__obf_78c292e95bf52fd1 = __obf_78c292e95bf52fd1.SetInt64(int64(__obf_1ef84065a6a49f43))
-		__obf_78c292e95bf52fd1 = __obf_78c292e95bf52fd1.Exp(__obf_a02c1e3273085f0d, __obf_78c292e95bf52fd1, nil)
-	} else if __obf_1ef84065a6a49f43 < 0 {
-		__obf_78c292e95bf52fd1 = __obf_78c292e95bf52fd1.SetInt64(-int64(__obf_1ef84065a6a49f43))
-		__obf_78c292e95bf52fd1 = __obf_78c292e95bf52fd1.Exp(__obf_a02c1e3273085f0d, __obf_78c292e95bf52fd1, nil)
-		__obf_ce93d52d1f0f5002 = __obf_ce93d52d1f0f5002.Mul(__obf_ce93d52d1f0f5002, __obf_78c292e95bf52fd1)
-		__obf_78c292e95bf52fd1 = __obf_78c292e95bf52fd1.SetUint64(1)
+	if __obf_406325483a83b1fa > 0 {
+		__obf_02a8739fa97e954e = __obf_02a8739fa97e954e.SetInt64(int64(__obf_406325483a83b1fa))
+		__obf_02a8739fa97e954e = __obf_02a8739fa97e954e.Exp(__obf_dc2da84e9cc8100a, __obf_02a8739fa97e954e, nil)
+	} else if __obf_406325483a83b1fa < 0 {
+		__obf_02a8739fa97e954e = __obf_02a8739fa97e954e.SetInt64(-int64(__obf_406325483a83b1fa))
+		__obf_02a8739fa97e954e = __obf_02a8739fa97e954e.Exp(__obf_dc2da84e9cc8100a, __obf_02a8739fa97e954e, nil)
+		__obf_9178141ce7345815 = __obf_9178141ce7345815.Mul(__obf_9178141ce7345815, __obf_02a8739fa97e954e)
+		__obf_02a8739fa97e954e = __obf_02a8739fa97e954e.SetUint64(1)
 	}
 
 	// applying 2^(M+N)
-	if __obf_eb56d6ae62080b35 > 0 {
-		__obf_ce93d52d1f0f5002 = __obf_ce93d52d1f0f5002.Lsh(__obf_ce93d52d1f0f5002, uint(__obf_eb56d6ae62080b35))
-	} else if __obf_eb56d6ae62080b35 < 0 {
-		__obf_78c292e95bf52fd1 = __obf_78c292e95bf52fd1.Lsh(__obf_78c292e95bf52fd1, uint(-__obf_eb56d6ae62080b35))
+	if __obf_739f278b145b2380 > 0 {
+		__obf_9178141ce7345815 = __obf_9178141ce7345815.Lsh(__obf_9178141ce7345815, uint(__obf_739f278b145b2380))
+	} else if __obf_739f278b145b2380 < 0 {
+		__obf_02a8739fa97e954e = __obf_02a8739fa97e954e.Lsh(__obf_02a8739fa97e954e, uint(-__obf_739f278b145b2380))
 	}
 
 	// rounding and downscaling
-	if __obf_1ef84065a6a49f43 > 0 || __obf_eb56d6ae62080b35 < 0 {
-		__obf_938e9a4f95b74e87 := new(big.Int).Rsh(__obf_78c292e95bf52fd1, 1)
-		__obf_ce93d52d1f0f5002 = __obf_ce93d52d1f0f5002.Add(__obf_ce93d52d1f0f5002, __obf_938e9a4f95b74e87)
-		__obf_ce93d52d1f0f5002 = __obf_ce93d52d1f0f5002.Quo(__obf_ce93d52d1f0f5002, __obf_78c292e95bf52fd1)
+	if __obf_406325483a83b1fa > 0 || __obf_739f278b145b2380 < 0 {
+		__obf_ce7d20e6f5981c53 := new(big.Int).Rsh(__obf_02a8739fa97e954e, 1)
+		__obf_9178141ce7345815 = __obf_9178141ce7345815.Add(__obf_9178141ce7345815, __obf_ce7d20e6f5981c53)
+		__obf_9178141ce7345815 = __obf_9178141ce7345815.Quo(__obf_9178141ce7345815, __obf_02a8739fa97e954e)
 	}
 
-	if __obf_0a87f1adff24c937 == 1 {
-		__obf_ce93d52d1f0f5002 = __obf_ce93d52d1f0f5002.Neg(__obf_ce93d52d1f0f5002)
+	if __obf_87165cc42c6992a3 == 1 {
+		__obf_9178141ce7345815 = __obf_9178141ce7345815.Neg(__obf_9178141ce7345815)
 	}
 
 	return Decimal{
-		__obf_6e5f77decbc21dea: __obf_ce93d52d1f0f5002,
-		__obf_1ef84065a6a49f43: __obf_1ef84065a6a49f43,
+		__obf_c36b36e18c228e7f: __obf_9178141ce7345815,
+		__obf_406325483a83b1fa: __obf_406325483a83b1fa,
 	}
 }
 
 // Copy returns a copy of decimal with the same value and exponent, but a different pointer to value.
-func (__obf_19a369452cd5fbde Decimal) Copy() Decimal {
-	__obf_19a369452cd5fbde.__obf_b1325bfc63b249a7()
+func (__obf_d09f058c0a390c93 Decimal) Copy() Decimal {
+	__obf_d09f058c0a390c93.__obf_b119326c257b1b2a()
 	return Decimal{
-		__obf_6e5f77decbc21dea: new(big.Int).Set(__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea),
-		__obf_1ef84065a6a49f43: __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43,
+		__obf_c36b36e18c228e7f: new(big.Int).Set(__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f),
+		__obf_406325483a83b1fa: __obf_d09f058c0a390c93.__obf_406325483a83b1fa,
 	}
 }
 
@@ -482,94 +482,94 @@ func (__obf_19a369452cd5fbde Decimal) Copy() Decimal {
 //	1.2345
 //	1.2
 //	1.2000
-func (__obf_19a369452cd5fbde Decimal) __obf_957a7b5240163386(__obf_1ef84065a6a49f43 int32) Decimal {
-	__obf_19a369452cd5fbde.__obf_b1325bfc63b249a7()
+func (__obf_d09f058c0a390c93 Decimal) __obf_d44df924a1b98873(__obf_406325483a83b1fa int32) Decimal {
+	__obf_d09f058c0a390c93.__obf_b119326c257b1b2a()
 
-	if __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 == __obf_1ef84065a6a49f43 {
+	if __obf_d09f058c0a390c93.__obf_406325483a83b1fa == __obf_406325483a83b1fa {
 		return Decimal{
-			new(big.Int).Set(__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea),
-			__obf_19a369452cd5fbde.__obf_1ef84065a6a49f43,
+			new(big.Int).Set(__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f),
+			__obf_d09f058c0a390c93.__obf_406325483a83b1fa,
 		}
 	}
 
 	// NOTE(vadim): must convert exps to float64 before - to prevent overflow
-	__obf_19b4ab1fa58f1937 := math.Abs(float64(__obf_1ef84065a6a49f43) - float64(__obf_19a369452cd5fbde.__obf_1ef84065a6a49f43))
-	__obf_6e5f77decbc21dea := new(big.Int).Set(__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea)
+	__obf_b023c1714ba1c58d := math.Abs(float64(__obf_406325483a83b1fa) - float64(__obf_d09f058c0a390c93.__obf_406325483a83b1fa))
+	__obf_c36b36e18c228e7f := new(big.Int).Set(__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f)
 
-	__obf_c469517f5dd0980f := new(big.Int).Exp(__obf_6e3308650b479548, big.NewInt(int64(__obf_19b4ab1fa58f1937)), nil)
-	if __obf_1ef84065a6a49f43 > __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 {
-		__obf_6e5f77decbc21dea = __obf_6e5f77decbc21dea.Quo(__obf_6e5f77decbc21dea, __obf_c469517f5dd0980f)
-	} else if __obf_1ef84065a6a49f43 < __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 {
-		__obf_6e5f77decbc21dea = __obf_6e5f77decbc21dea.Mul(__obf_6e5f77decbc21dea, __obf_c469517f5dd0980f)
+	__obf_a981a455fcecbe85 := new(big.Int).Exp(__obf_44ff59a8ed385a0e, big.NewInt(int64(__obf_b023c1714ba1c58d)), nil)
+	if __obf_406325483a83b1fa > __obf_d09f058c0a390c93.__obf_406325483a83b1fa {
+		__obf_c36b36e18c228e7f = __obf_c36b36e18c228e7f.Quo(__obf_c36b36e18c228e7f, __obf_a981a455fcecbe85)
+	} else if __obf_406325483a83b1fa < __obf_d09f058c0a390c93.__obf_406325483a83b1fa {
+		__obf_c36b36e18c228e7f = __obf_c36b36e18c228e7f.Mul(__obf_c36b36e18c228e7f, __obf_a981a455fcecbe85)
 	}
 
 	return Decimal{
-		__obf_6e5f77decbc21dea: __obf_6e5f77decbc21dea,
-		__obf_1ef84065a6a49f43: __obf_1ef84065a6a49f43,
+		__obf_c36b36e18c228e7f: __obf_c36b36e18c228e7f,
+		__obf_406325483a83b1fa: __obf_406325483a83b1fa,
 	}
 }
 
 // Abs returns the absolute value of the decimal.
-func (__obf_19a369452cd5fbde Decimal) Abs() Decimal {
-	if !__obf_19a369452cd5fbde.IsNegative() {
-		return __obf_19a369452cd5fbde
+func (__obf_d09f058c0a390c93 Decimal) Abs() Decimal {
+	if !__obf_d09f058c0a390c93.IsNegative() {
+		return __obf_d09f058c0a390c93
 	}
-	__obf_19a369452cd5fbde.__obf_b1325bfc63b249a7()
-	__obf_dcd405a8970df614 := new(big.Int).Abs(__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea)
+	__obf_d09f058c0a390c93.__obf_b119326c257b1b2a()
+	__obf_7b9a006e7f3823b4 := new(big.Int).Abs(__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f)
 	return Decimal{
-		__obf_6e5f77decbc21dea: __obf_dcd405a8970df614,
-		__obf_1ef84065a6a49f43: __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43,
+		__obf_c36b36e18c228e7f: __obf_7b9a006e7f3823b4,
+		__obf_406325483a83b1fa: __obf_d09f058c0a390c93.__obf_406325483a83b1fa,
 	}
 }
 
 // Add returns d + d2.
-func (__obf_19a369452cd5fbde Decimal) Add(__obf_e5610ee7ba67ce83 Decimal) Decimal {
-	__obf_e569aa78d09dc408, __obf_f8f48e5992257be1 := RescalePair(__obf_19a369452cd5fbde, __obf_e5610ee7ba67ce83)
+func (__obf_d09f058c0a390c93 Decimal) Add(__obf_f3234e094c8ed488 Decimal) Decimal {
+	__obf_c1fa73dffb7b10fa, __obf_3e0ad0062bf745cb := RescalePair(__obf_d09f058c0a390c93, __obf_f3234e094c8ed488)
 
-	__obf_84a93c33bbb4a4c7 := new(big.Int).Add(__obf_e569aa78d09dc408.__obf_6e5f77decbc21dea, __obf_f8f48e5992257be1.__obf_6e5f77decbc21dea)
+	__obf_8df00b326bd0e7c3 := new(big.Int).Add(__obf_c1fa73dffb7b10fa.__obf_c36b36e18c228e7f, __obf_3e0ad0062bf745cb.__obf_c36b36e18c228e7f)
 	return Decimal{
-		__obf_6e5f77decbc21dea: __obf_84a93c33bbb4a4c7,
-		__obf_1ef84065a6a49f43: __obf_e569aa78d09dc408.__obf_1ef84065a6a49f43,
+		__obf_c36b36e18c228e7f: __obf_8df00b326bd0e7c3,
+		__obf_406325483a83b1fa: __obf_c1fa73dffb7b10fa.__obf_406325483a83b1fa,
 	}
 }
 
 // Sub returns d - d2.
-func (__obf_19a369452cd5fbde Decimal) Sub(__obf_e5610ee7ba67ce83 Decimal) Decimal {
-	__obf_e569aa78d09dc408, __obf_f8f48e5992257be1 := RescalePair(__obf_19a369452cd5fbde, __obf_e5610ee7ba67ce83)
+func (__obf_d09f058c0a390c93 Decimal) Sub(__obf_f3234e094c8ed488 Decimal) Decimal {
+	__obf_c1fa73dffb7b10fa, __obf_3e0ad0062bf745cb := RescalePair(__obf_d09f058c0a390c93, __obf_f3234e094c8ed488)
 
-	__obf_84a93c33bbb4a4c7 := new(big.Int).Sub(__obf_e569aa78d09dc408.__obf_6e5f77decbc21dea, __obf_f8f48e5992257be1.__obf_6e5f77decbc21dea)
+	__obf_8df00b326bd0e7c3 := new(big.Int).Sub(__obf_c1fa73dffb7b10fa.__obf_c36b36e18c228e7f, __obf_3e0ad0062bf745cb.__obf_c36b36e18c228e7f)
 	return Decimal{
-		__obf_6e5f77decbc21dea: __obf_84a93c33bbb4a4c7,
-		__obf_1ef84065a6a49f43: __obf_e569aa78d09dc408.__obf_1ef84065a6a49f43,
+		__obf_c36b36e18c228e7f: __obf_8df00b326bd0e7c3,
+		__obf_406325483a83b1fa: __obf_c1fa73dffb7b10fa.__obf_406325483a83b1fa,
 	}
 }
 
 // Neg returns -d.
-func (__obf_19a369452cd5fbde Decimal) Neg() Decimal {
-	__obf_19a369452cd5fbde.__obf_b1325bfc63b249a7()
-	__obf_3fcee5abdf286e44 := new(big.Int).Neg(__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea)
+func (__obf_d09f058c0a390c93 Decimal) Neg() Decimal {
+	__obf_d09f058c0a390c93.__obf_b119326c257b1b2a()
+	__obf_4c6accf7c36a21ec := new(big.Int).Neg(__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f)
 	return Decimal{
-		__obf_6e5f77decbc21dea: __obf_3fcee5abdf286e44,
-		__obf_1ef84065a6a49f43: __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43,
+		__obf_c36b36e18c228e7f: __obf_4c6accf7c36a21ec,
+		__obf_406325483a83b1fa: __obf_d09f058c0a390c93.__obf_406325483a83b1fa,
 	}
 }
 
 // Mul returns d * d2.
-func (__obf_19a369452cd5fbde Decimal) Mul(__obf_e5610ee7ba67ce83 Decimal) Decimal {
-	__obf_19a369452cd5fbde.__obf_b1325bfc63b249a7()
-	__obf_e5610ee7ba67ce83.__obf_b1325bfc63b249a7()
+func (__obf_d09f058c0a390c93 Decimal) Mul(__obf_f3234e094c8ed488 Decimal) Decimal {
+	__obf_d09f058c0a390c93.__obf_b119326c257b1b2a()
+	__obf_f3234e094c8ed488.__obf_b119326c257b1b2a()
 
-	__obf_2771e4da350786fa := int64(__obf_19a369452cd5fbde.__obf_1ef84065a6a49f43) + int64(__obf_e5610ee7ba67ce83.__obf_1ef84065a6a49f43)
-	if __obf_2771e4da350786fa > math.MaxInt32 || __obf_2771e4da350786fa < math.MinInt32 {
+	__obf_5587418c09b335be := int64(__obf_d09f058c0a390c93.__obf_406325483a83b1fa) + int64(__obf_f3234e094c8ed488.__obf_406325483a83b1fa)
+	if __obf_5587418c09b335be > math.MaxInt32 || __obf_5587418c09b335be < math.MinInt32 {
 		// NOTE(vadim): better to panic than give incorrect results, as
 		// Decimals are usually used for money
-		panic(fmt.Sprintf("exponent %v overflows an int32!", __obf_2771e4da350786fa))
+		panic(fmt.Sprintf("exponent %v overflows an int32!", __obf_5587418c09b335be))
 	}
 
-	__obf_84a93c33bbb4a4c7 := new(big.Int).Mul(__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea, __obf_e5610ee7ba67ce83.__obf_6e5f77decbc21dea)
+	__obf_8df00b326bd0e7c3 := new(big.Int).Mul(__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f, __obf_f3234e094c8ed488.__obf_c36b36e18c228e7f)
 	return Decimal{
-		__obf_6e5f77decbc21dea: __obf_84a93c33bbb4a4c7,
-		__obf_1ef84065a6a49f43: int32(__obf_2771e4da350786fa),
+		__obf_c36b36e18c228e7f: __obf_8df00b326bd0e7c3,
+		__obf_406325483a83b1fa: int32(__obf_5587418c09b335be),
 	}
 }
 
@@ -577,18 +577,18 @@ func (__obf_19a369452cd5fbde Decimal) Mul(__obf_e5610ee7ba67ce83 Decimal) Decima
 // It shifts left when shift is positive and right if shift is negative.
 // In simpler terms, the given value for shift is added to the exponent
 // of the decimal.
-func (__obf_19a369452cd5fbde Decimal) Shift(__obf_ebae5be0d75c387b int32) Decimal {
-	__obf_19a369452cd5fbde.__obf_b1325bfc63b249a7()
+func (__obf_d09f058c0a390c93 Decimal) Shift(__obf_f054861756521c97 int32) Decimal {
+	__obf_d09f058c0a390c93.__obf_b119326c257b1b2a()
 	return Decimal{
-		__obf_6e5f77decbc21dea: new(big.Int).Set(__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea),
-		__obf_1ef84065a6a49f43: __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 + __obf_ebae5be0d75c387b,
+		__obf_c36b36e18c228e7f: new(big.Int).Set(__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f),
+		__obf_406325483a83b1fa: __obf_d09f058c0a390c93.__obf_406325483a83b1fa + __obf_f054861756521c97,
 	}
 }
 
 // Div returns d / d2. If it doesn't divide exactly, the result will have
 // DivisionPrecision digits after the decimal point.
-func (__obf_19a369452cd5fbde Decimal) Div(__obf_e5610ee7ba67ce83 Decimal) Decimal {
-	return __obf_19a369452cd5fbde.DivRound(__obf_e5610ee7ba67ce83, int32(DivisionPrecision))
+func (__obf_d09f058c0a390c93 Decimal) Div(__obf_f3234e094c8ed488 Decimal) Decimal {
+	return __obf_d09f058c0a390c93.DivRound(__obf_f3234e094c8ed488, int32(DivisionPrecision))
 }
 
 // QuoRem does division with remainder
@@ -599,43 +599,43 @@ func (__obf_19a369452cd5fbde Decimal) Div(__obf_e5610ee7ba67ce83 Decimal) Decima
 //	0 >= r > -abs(d2) * 10 ^(-precision) if d<0
 //
 // Note that precision<0 is allowed as input.
-func (__obf_19a369452cd5fbde Decimal) QuoRem(__obf_e5610ee7ba67ce83 Decimal, __obf_fb38b245d2cdb3ee int32) (Decimal, Decimal) {
-	__obf_19a369452cd5fbde.__obf_b1325bfc63b249a7()
-	__obf_e5610ee7ba67ce83.__obf_b1325bfc63b249a7()
-	if __obf_e5610ee7ba67ce83.__obf_6e5f77decbc21dea.Sign() == 0 {
+func (__obf_d09f058c0a390c93 Decimal) QuoRem(__obf_f3234e094c8ed488 Decimal, __obf_7efed86618b2f272 int32) (Decimal, Decimal) {
+	__obf_d09f058c0a390c93.__obf_b119326c257b1b2a()
+	__obf_f3234e094c8ed488.__obf_b119326c257b1b2a()
+	if __obf_f3234e094c8ed488.__obf_c36b36e18c228e7f.Sign() == 0 {
 		panic("decimal division by 0")
 	}
-	__obf_f24b6cbe98a42168 := -__obf_fb38b245d2cdb3ee
-	__obf_c1ef4fea8d3ecd63 := int64(__obf_19a369452cd5fbde.__obf_1ef84065a6a49f43) - int64(__obf_e5610ee7ba67ce83.__obf_1ef84065a6a49f43) - int64(__obf_f24b6cbe98a42168)
-	if __obf_c1ef4fea8d3ecd63 > math.MaxInt32 || __obf_c1ef4fea8d3ecd63 < math.MinInt32 {
+	__obf_7916ec76510088c1 := -__obf_7efed86618b2f272
+	__obf_6b31de26b3f4abad := int64(__obf_d09f058c0a390c93.__obf_406325483a83b1fa) - int64(__obf_f3234e094c8ed488.__obf_406325483a83b1fa) - int64(__obf_7916ec76510088c1)
+	if __obf_6b31de26b3f4abad > math.MaxInt32 || __obf_6b31de26b3f4abad < math.MinInt32 {
 		panic("overflow in decimal QuoRem")
 	}
-	var __obf_7f652b2fe88ad74e, __obf_9ab697160cd0e872, __obf_50708d4010a00d9a big.Int
-	var __obf_16e479196b43af13 int32
+	var __obf_15218c7dca47c57c, __obf_6fa38131d19e1364, __obf_9fb732b11a24b3c8 big.Int
+	var __obf_c208697a844b8def int32
 	// d = a 10^ea
 	// d2 = b 10^eb
-	if __obf_c1ef4fea8d3ecd63 < 0 {
-		__obf_7f652b2fe88ad74e = *__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea
-		__obf_50708d4010a00d9a.SetInt64(-__obf_c1ef4fea8d3ecd63)
-		__obf_9ab697160cd0e872.Exp(__obf_6e3308650b479548, &__obf_50708d4010a00d9a, nil)
-		__obf_9ab697160cd0e872.Mul(__obf_e5610ee7ba67ce83.__obf_6e5f77decbc21dea, &__obf_9ab697160cd0e872)
-		__obf_16e479196b43af13 = __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43
+	if __obf_6b31de26b3f4abad < 0 {
+		__obf_15218c7dca47c57c = *__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f
+		__obf_9fb732b11a24b3c8.SetInt64(-__obf_6b31de26b3f4abad)
+		__obf_6fa38131d19e1364.Exp(__obf_44ff59a8ed385a0e, &__obf_9fb732b11a24b3c8, nil)
+		__obf_6fa38131d19e1364.Mul(__obf_f3234e094c8ed488.__obf_c36b36e18c228e7f, &__obf_6fa38131d19e1364)
+		__obf_c208697a844b8def = __obf_d09f058c0a390c93.__obf_406325483a83b1fa
 		// now aa = a
 		//     bb = b 10^(scale + eb - ea)
 	} else {
-		__obf_50708d4010a00d9a.SetInt64(__obf_c1ef4fea8d3ecd63)
-		__obf_7f652b2fe88ad74e.Exp(__obf_6e3308650b479548, &__obf_50708d4010a00d9a, nil)
-		__obf_7f652b2fe88ad74e.Mul(__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea, &__obf_7f652b2fe88ad74e)
-		__obf_9ab697160cd0e872 = *__obf_e5610ee7ba67ce83.__obf_6e5f77decbc21dea
-		__obf_16e479196b43af13 = __obf_f24b6cbe98a42168 + __obf_e5610ee7ba67ce83.__obf_1ef84065a6a49f43
+		__obf_9fb732b11a24b3c8.SetInt64(__obf_6b31de26b3f4abad)
+		__obf_15218c7dca47c57c.Exp(__obf_44ff59a8ed385a0e, &__obf_9fb732b11a24b3c8, nil)
+		__obf_15218c7dca47c57c.Mul(__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f, &__obf_15218c7dca47c57c)
+		__obf_6fa38131d19e1364 = *__obf_f3234e094c8ed488.__obf_c36b36e18c228e7f
+		__obf_c208697a844b8def = __obf_7916ec76510088c1 + __obf_f3234e094c8ed488.__obf_406325483a83b1fa
 		// now aa = a ^ (ea - eb - scale)
 		//     bb = b
 	}
-	var __obf_99a04cdb50494bb6, __obf_0feccac4ef34d0a4 big.Int
-	__obf_99a04cdb50494bb6.QuoRem(&__obf_7f652b2fe88ad74e, &__obf_9ab697160cd0e872, &__obf_0feccac4ef34d0a4)
-	__obf_20068c1e4acf6fcb := Decimal{__obf_6e5f77decbc21dea: &__obf_99a04cdb50494bb6, __obf_1ef84065a6a49f43: __obf_f24b6cbe98a42168}
-	__obf_51b99efbe12bffee := Decimal{__obf_6e5f77decbc21dea: &__obf_0feccac4ef34d0a4, __obf_1ef84065a6a49f43: __obf_16e479196b43af13}
-	return __obf_20068c1e4acf6fcb, __obf_51b99efbe12bffee
+	var __obf_1b9e13ef114085d1, __obf_a934ca815da1fc1a big.Int
+	__obf_1b9e13ef114085d1.QuoRem(&__obf_15218c7dca47c57c, &__obf_6fa38131d19e1364, &__obf_a934ca815da1fc1a)
+	__obf_0fb9f51f7f599bf6 := Decimal{__obf_c36b36e18c228e7f: &__obf_1b9e13ef114085d1, __obf_406325483a83b1fa: __obf_7916ec76510088c1}
+	__obf_851402996a7905d1 := Decimal{__obf_c36b36e18c228e7f: &__obf_a934ca815da1fc1a, __obf_406325483a83b1fa: __obf_c208697a844b8def}
+	return __obf_0fb9f51f7f599bf6, __obf_851402996a7905d1
 }
 
 // DivRound divides and rounds to a given precision
@@ -645,34 +645,34 @@ func (__obf_19a369452cd5fbde Decimal) QuoRem(__obf_e5610ee7ba67ce83 Decimal, __o
 //	if the quotient is negative then digit 5 is rounded down, away from 0
 //
 // Note that precision<0 is allowed as input.
-func (__obf_19a369452cd5fbde Decimal) DivRound(__obf_e5610ee7ba67ce83 Decimal, __obf_fb38b245d2cdb3ee int32) Decimal {
+func (__obf_d09f058c0a390c93 Decimal) DivRound(__obf_f3234e094c8ed488 Decimal, __obf_7efed86618b2f272 int32) Decimal {
 	// QuoRem already checks initialization
-	__obf_99a04cdb50494bb6, __obf_0feccac4ef34d0a4 := __obf_19a369452cd5fbde.QuoRem(__obf_e5610ee7ba67ce83, __obf_fb38b245d2cdb3ee)
+	__obf_1b9e13ef114085d1, __obf_a934ca815da1fc1a := __obf_d09f058c0a390c93.QuoRem(__obf_f3234e094c8ed488, __obf_7efed86618b2f272)
 	// the actual rounding decision is based on comparing r*10^precision and d2/2
 	// instead compare 2 r 10 ^precision and d2
-	var __obf_aabcdbb90e686acd big.Int
-	__obf_aabcdbb90e686acd.Abs(__obf_0feccac4ef34d0a4.__obf_6e5f77decbc21dea)
-	__obf_aabcdbb90e686acd.Lsh(&__obf_aabcdbb90e686acd, 1)
+	var __obf_e486c59cbc93e241 big.Int
+	__obf_e486c59cbc93e241.Abs(__obf_a934ca815da1fc1a.__obf_c36b36e18c228e7f)
+	__obf_e486c59cbc93e241.Lsh(&__obf_e486c59cbc93e241, 1)
 	// now rv2 = abs(r.value) * 2
-	__obf_2d6f459f7f9d2700 := Decimal{__obf_6e5f77decbc21dea: &__obf_aabcdbb90e686acd, __obf_1ef84065a6a49f43: __obf_0feccac4ef34d0a4.__obf_1ef84065a6a49f43 + __obf_fb38b245d2cdb3ee}
+	__obf_a39cd17941b9200c := Decimal{__obf_c36b36e18c228e7f: &__obf_e486c59cbc93e241, __obf_406325483a83b1fa: __obf_a934ca815da1fc1a.__obf_406325483a83b1fa + __obf_7efed86618b2f272}
 	// r2 is now 2 * r * 10 ^ precision
-	var __obf_6dfba1dc52bc2b42 = __obf_2d6f459f7f9d2700.Cmp(__obf_e5610ee7ba67ce83.Abs())
+	var __obf_ec75e4ddc71ce85e = __obf_a39cd17941b9200c.Cmp(__obf_f3234e094c8ed488.Abs())
 
-	if __obf_6dfba1dc52bc2b42 < 0 {
-		return __obf_99a04cdb50494bb6
+	if __obf_ec75e4ddc71ce85e < 0 {
+		return __obf_1b9e13ef114085d1
 	}
 
-	if __obf_19a369452cd5fbde.__obf_6e5f77decbc21dea.Sign()*__obf_e5610ee7ba67ce83.__obf_6e5f77decbc21dea.Sign() < 0 {
-		return __obf_99a04cdb50494bb6.Sub(New(1, -__obf_fb38b245d2cdb3ee))
+	if __obf_d09f058c0a390c93.__obf_c36b36e18c228e7f.Sign()*__obf_f3234e094c8ed488.__obf_c36b36e18c228e7f.Sign() < 0 {
+		return __obf_1b9e13ef114085d1.Sub(New(1, -__obf_7efed86618b2f272))
 	}
 
-	return __obf_99a04cdb50494bb6.Add(New(1, -__obf_fb38b245d2cdb3ee))
+	return __obf_1b9e13ef114085d1.Add(New(1, -__obf_7efed86618b2f272))
 }
 
 // Mod returns d % d2.
-func (__obf_19a369452cd5fbde Decimal) Mod(__obf_e5610ee7ba67ce83 Decimal) Decimal {
-	_, __obf_0feccac4ef34d0a4 := __obf_19a369452cd5fbde.QuoRem(__obf_e5610ee7ba67ce83, 0)
-	return __obf_0feccac4ef34d0a4
+func (__obf_d09f058c0a390c93 Decimal) Mod(__obf_f3234e094c8ed488 Decimal) Decimal {
+	_, __obf_a934ca815da1fc1a := __obf_d09f058c0a390c93.QuoRem(__obf_f3234e094c8ed488, 0)
+	return __obf_a934ca815da1fc1a
 }
 
 // Pow returns d to the power of d2.
@@ -695,72 +695,72 @@ func (__obf_19a369452cd5fbde Decimal) Mod(__obf_e5610ee7ba67ce83 Decimal) Decima
 //	d4 := decimal.NewFromFloat(5.73)
 //	res2 := d3.Pow(d4)
 //	res2.String() // output: "10118.08037125"
-func (__obf_19a369452cd5fbde Decimal) Pow(__obf_e5610ee7ba67ce83 Decimal) Decimal {
-	__obf_e2d91f0337623bec := __obf_19a369452cd5fbde.Sign()
-	__obf_1b2d52d258f49740 := __obf_e5610ee7ba67ce83.Sign()
+func (__obf_d09f058c0a390c93 Decimal) Pow(__obf_f3234e094c8ed488 Decimal) Decimal {
+	__obf_450569c7fe284678 := __obf_d09f058c0a390c93.Sign()
+	__obf_609ea661285d6196 := __obf_f3234e094c8ed488.Sign()
 
-	if __obf_e2d91f0337623bec == 0 {
-		if __obf_1b2d52d258f49740 == 0 {
+	if __obf_450569c7fe284678 == 0 {
+		if __obf_609ea661285d6196 == 0 {
 			return Decimal{}
 		}
-		if __obf_1b2d52d258f49740 == 1 {
-			return Decimal{__obf_91bffcce19efb7d8, 0}
+		if __obf_609ea661285d6196 == 1 {
+			return Decimal{__obf_1bb56bff7931ff30, 0}
 		}
-		if __obf_1b2d52d258f49740 == -1 {
+		if __obf_609ea661285d6196 == -1 {
 			return Decimal{}
 		}
 	}
 
-	if __obf_1b2d52d258f49740 == 0 {
-		return Decimal{__obf_6b7012530e205f39, 0}
+	if __obf_609ea661285d6196 == 0 {
+		return Decimal{__obf_25f16531cde494de, 0}
 	}
 
 	// TODO: optimize extraction of fractional part
-	__obf_3b803b95d5fc8b6b := Decimal{__obf_6b7012530e205f39, 0}
-	__obf_a15fe04a384142dd, __obf_f3a8aaed56831f9d := __obf_e5610ee7ba67ce83.QuoRem(__obf_3b803b95d5fc8b6b, 0)
+	__obf_ffb29ce7762ffc55 := Decimal{__obf_25f16531cde494de, 0}
+	__obf_60ba2b229d4ee5c6, __obf_3d1eececbebb1a33 := __obf_f3234e094c8ed488.QuoRem(__obf_ffb29ce7762ffc55, 0)
 
-	if __obf_e2d91f0337623bec == -1 && !__obf_f3a8aaed56831f9d.IsZero() {
+	if __obf_450569c7fe284678 == -1 && !__obf_3d1eececbebb1a33.IsZero() {
 		return Decimal{}
 	}
 
-	__obf_09d2bbe0858a15c0, _ := __obf_19a369452cd5fbde.PowBigInt(__obf_a15fe04a384142dd.__obf_6e5f77decbc21dea)
+	__obf_10242900ad553b4b, _ := __obf_d09f058c0a390c93.PowBigInt(__obf_60ba2b229d4ee5c6.__obf_c36b36e18c228e7f)
 
 	// if exponent is an integer we don't need to calculate d1**frac(d2)
-	if __obf_f3a8aaed56831f9d.__obf_6e5f77decbc21dea.Sign() == 0 {
-		return __obf_09d2bbe0858a15c0
+	if __obf_3d1eececbebb1a33.__obf_c36b36e18c228e7f.Sign() == 0 {
+		return __obf_10242900ad553b4b
 	}
 
 	// TODO: optimize NumDigits for more performant precision adjustment
-	__obf_49d8c84b3237ddf4 := __obf_19a369452cd5fbde.NumDigits()
-	__obf_388de7c089524859 := __obf_e5610ee7ba67ce83.NumDigits()
+	__obf_badbacb99efba1da := __obf_d09f058c0a390c93.NumDigits()
+	__obf_9e5c7fbe16e98a1b := __obf_f3234e094c8ed488.NumDigits()
 
-	__obf_fb38b245d2cdb3ee := __obf_49d8c84b3237ddf4
+	__obf_7efed86618b2f272 := __obf_badbacb99efba1da
 
-	if __obf_388de7c089524859 > __obf_fb38b245d2cdb3ee {
-		__obf_fb38b245d2cdb3ee += __obf_388de7c089524859
+	if __obf_9e5c7fbe16e98a1b > __obf_7efed86618b2f272 {
+		__obf_7efed86618b2f272 += __obf_9e5c7fbe16e98a1b
 	}
 
-	__obf_fb38b245d2cdb3ee += 6
+	__obf_7efed86618b2f272 += 6
 
 	// Calculate x ** frac(y), where
 	// x ** frac(y) = exp(ln(x ** frac(y)) = exp(ln(x) * frac(y))
-	__obf_7ca7f3589705fc1e, __obf_68bcf986f9cdf0c0 := __obf_19a369452cd5fbde.Abs().Ln(-__obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 + int32(__obf_fb38b245d2cdb3ee))
-	if __obf_68bcf986f9cdf0c0 != nil {
+	__obf_c1b085d7f5661a8b, __obf_c1d612f6bfc234d7 := __obf_d09f058c0a390c93.Abs().Ln(-__obf_d09f058c0a390c93.__obf_406325483a83b1fa + int32(__obf_7efed86618b2f272))
+	if __obf_c1d612f6bfc234d7 != nil {
 		return Decimal{}
 	}
 
-	__obf_7ca7f3589705fc1e = __obf_7ca7f3589705fc1e.Mul(__obf_f3a8aaed56831f9d)
+	__obf_c1b085d7f5661a8b = __obf_c1b085d7f5661a8b.Mul(__obf_3d1eececbebb1a33)
 
-	__obf_7ca7f3589705fc1e, __obf_68bcf986f9cdf0c0 = __obf_7ca7f3589705fc1e.ExpTaylor(-__obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 + int32(__obf_fb38b245d2cdb3ee))
-	if __obf_68bcf986f9cdf0c0 != nil {
+	__obf_c1b085d7f5661a8b, __obf_c1d612f6bfc234d7 = __obf_c1b085d7f5661a8b.ExpTaylor(-__obf_d09f058c0a390c93.__obf_406325483a83b1fa + int32(__obf_7efed86618b2f272))
+	if __obf_c1d612f6bfc234d7 != nil {
 		return Decimal{}
 	}
 
 	// Join integer and fractional part,
 	// base ** (expBase + expFrac) = base ** expBase * base ** expFrac
-	__obf_a01a49266a86f271 := __obf_09d2bbe0858a15c0.Mul(__obf_7ca7f3589705fc1e)
+	__obf_df948d36f2e10e0e := __obf_10242900ad553b4b.Mul(__obf_c1b085d7f5661a8b)
 
-	return __obf_a01a49266a86f271
+	return __obf_df948d36f2e10e0e
 }
 
 // PowWithPrecision returns d to the power of d2.
@@ -788,73 +788,73 @@ func (__obf_19a369452cd5fbde Decimal) Pow(__obf_e5610ee7ba67ce83 Decimal) Decima
 //	d6 := decimal.NewFromFloat(-6.0)
 //	res3, err := d5.PowWithPrecision(d6, 10)
 //	res3.String() // output: "0.0013717421"
-func (__obf_19a369452cd5fbde Decimal) PowWithPrecision(__obf_e5610ee7ba67ce83 Decimal, __obf_fb38b245d2cdb3ee int32) (Decimal, error) {
-	__obf_e2d91f0337623bec := __obf_19a369452cd5fbde.Sign()
-	__obf_1b2d52d258f49740 := __obf_e5610ee7ba67ce83.Sign()
+func (__obf_d09f058c0a390c93 Decimal) PowWithPrecision(__obf_f3234e094c8ed488 Decimal, __obf_7efed86618b2f272 int32) (Decimal, error) {
+	__obf_450569c7fe284678 := __obf_d09f058c0a390c93.Sign()
+	__obf_609ea661285d6196 := __obf_f3234e094c8ed488.Sign()
 
-	if __obf_e2d91f0337623bec == 0 {
-		if __obf_1b2d52d258f49740 == 0 {
+	if __obf_450569c7fe284678 == 0 {
+		if __obf_609ea661285d6196 == 0 {
 			return Decimal{}, fmt.Errorf("cannot represent undefined value of 0**0")
 		}
-		if __obf_1b2d52d258f49740 == 1 {
-			return Decimal{__obf_91bffcce19efb7d8, 0}, nil
+		if __obf_609ea661285d6196 == 1 {
+			return Decimal{__obf_1bb56bff7931ff30, 0}, nil
 		}
-		if __obf_1b2d52d258f49740 == -1 {
+		if __obf_609ea661285d6196 == -1 {
 			return Decimal{}, fmt.Errorf("cannot represent infinity value of 0 ** y, where y < 0")
 		}
 	}
 
-	if __obf_1b2d52d258f49740 == 0 {
-		return Decimal{__obf_6b7012530e205f39, 0}, nil
+	if __obf_609ea661285d6196 == 0 {
+		return Decimal{__obf_25f16531cde494de, 0}, nil
 	}
 
 	// TODO: optimize extraction of fractional part
-	__obf_3b803b95d5fc8b6b := Decimal{__obf_6b7012530e205f39, 0}
-	__obf_a15fe04a384142dd, __obf_f3a8aaed56831f9d := __obf_e5610ee7ba67ce83.QuoRem(__obf_3b803b95d5fc8b6b, 0)
+	__obf_ffb29ce7762ffc55 := Decimal{__obf_25f16531cde494de, 0}
+	__obf_60ba2b229d4ee5c6, __obf_3d1eececbebb1a33 := __obf_f3234e094c8ed488.QuoRem(__obf_ffb29ce7762ffc55, 0)
 
-	if __obf_e2d91f0337623bec == -1 && !__obf_f3a8aaed56831f9d.IsZero() {
+	if __obf_450569c7fe284678 == -1 && !__obf_3d1eececbebb1a33.IsZero() {
 		return Decimal{}, fmt.Errorf("cannot represent imaginary value of x ** y, where x < 0 and y is non-integer decimal")
 	}
 
-	__obf_09d2bbe0858a15c0, _ := __obf_19a369452cd5fbde.__obf_9ca5ed499a711b19(__obf_a15fe04a384142dd.__obf_6e5f77decbc21dea, __obf_fb38b245d2cdb3ee)
+	__obf_10242900ad553b4b, _ := __obf_d09f058c0a390c93.__obf_d206a3f11e17859e(__obf_60ba2b229d4ee5c6.__obf_c36b36e18c228e7f, __obf_7efed86618b2f272)
 
 	// if exponent is an integer we don't need to calculate d1**frac(d2)
-	if __obf_f3a8aaed56831f9d.__obf_6e5f77decbc21dea.Sign() == 0 {
-		return __obf_09d2bbe0858a15c0, nil
+	if __obf_3d1eececbebb1a33.__obf_c36b36e18c228e7f.Sign() == 0 {
+		return __obf_10242900ad553b4b, nil
 	}
 
 	// TODO: optimize NumDigits for more performant precision adjustment
-	__obf_49d8c84b3237ddf4 := __obf_19a369452cd5fbde.NumDigits()
-	__obf_388de7c089524859 := __obf_e5610ee7ba67ce83.NumDigits()
+	__obf_badbacb99efba1da := __obf_d09f058c0a390c93.NumDigits()
+	__obf_9e5c7fbe16e98a1b := __obf_f3234e094c8ed488.NumDigits()
 
-	if int32(__obf_49d8c84b3237ddf4) > __obf_fb38b245d2cdb3ee {
-		__obf_fb38b245d2cdb3ee = int32(__obf_49d8c84b3237ddf4)
+	if int32(__obf_badbacb99efba1da) > __obf_7efed86618b2f272 {
+		__obf_7efed86618b2f272 = int32(__obf_badbacb99efba1da)
 	}
-	if int32(__obf_388de7c089524859) > __obf_fb38b245d2cdb3ee {
-		__obf_fb38b245d2cdb3ee += int32(__obf_388de7c089524859)
+	if int32(__obf_9e5c7fbe16e98a1b) > __obf_7efed86618b2f272 {
+		__obf_7efed86618b2f272 += int32(__obf_9e5c7fbe16e98a1b)
 	}
 	// increase precision by 10 to compensate for errors in further calculations
-	__obf_fb38b245d2cdb3ee += 10
+	__obf_7efed86618b2f272 += 10
 
 	// Calculate x ** frac(y), where
 	// x ** frac(y) = exp(ln(x ** frac(y)) = exp(ln(x) * frac(y))
-	__obf_7ca7f3589705fc1e, __obf_68bcf986f9cdf0c0 := __obf_19a369452cd5fbde.Abs().Ln(__obf_fb38b245d2cdb3ee)
-	if __obf_68bcf986f9cdf0c0 != nil {
-		return Decimal{}, __obf_68bcf986f9cdf0c0
+	__obf_c1b085d7f5661a8b, __obf_c1d612f6bfc234d7 := __obf_d09f058c0a390c93.Abs().Ln(__obf_7efed86618b2f272)
+	if __obf_c1d612f6bfc234d7 != nil {
+		return Decimal{}, __obf_c1d612f6bfc234d7
 	}
 
-	__obf_7ca7f3589705fc1e = __obf_7ca7f3589705fc1e.Mul(__obf_f3a8aaed56831f9d)
+	__obf_c1b085d7f5661a8b = __obf_c1b085d7f5661a8b.Mul(__obf_3d1eececbebb1a33)
 
-	__obf_7ca7f3589705fc1e, __obf_68bcf986f9cdf0c0 = __obf_7ca7f3589705fc1e.ExpTaylor(__obf_fb38b245d2cdb3ee)
-	if __obf_68bcf986f9cdf0c0 != nil {
-		return Decimal{}, __obf_68bcf986f9cdf0c0
+	__obf_c1b085d7f5661a8b, __obf_c1d612f6bfc234d7 = __obf_c1b085d7f5661a8b.ExpTaylor(__obf_7efed86618b2f272)
+	if __obf_c1d612f6bfc234d7 != nil {
+		return Decimal{}, __obf_c1d612f6bfc234d7
 	}
 
 	// Join integer and fractional part,
 	// base ** (expBase + expFrac) = base ** expBase * base ** expFrac
-	__obf_a01a49266a86f271 := __obf_09d2bbe0858a15c0.Mul(__obf_7ca7f3589705fc1e)
+	__obf_df948d36f2e10e0e := __obf_10242900ad553b4b.Mul(__obf_c1b085d7f5661a8b)
 
-	return __obf_a01a49266a86f271, nil
+	return __obf_df948d36f2e10e0e, nil
 }
 
 // PowInt32 returns d to the power of exp, where exp is int32.
@@ -869,32 +869,32 @@ func (__obf_19a369452cd5fbde Decimal) PowWithPrecision(__obf_e5610ee7ba67ce83 De
 //
 //	d2, err := decimal.NewFromFloat(3.13).PowInt32(5)
 //	d2.String() // output: "300.4150512793"
-func (__obf_19a369452cd5fbde Decimal) PowInt32(__obf_1ef84065a6a49f43 int32) (Decimal, error) {
-	if __obf_19a369452cd5fbde.IsZero() && __obf_1ef84065a6a49f43 == 0 {
+func (__obf_d09f058c0a390c93 Decimal) PowInt32(__obf_406325483a83b1fa int32) (Decimal, error) {
+	if __obf_d09f058c0a390c93.IsZero() && __obf_406325483a83b1fa == 0 {
 		return Decimal{}, fmt.Errorf("cannot represent undefined value of 0**0")
 	}
 
-	__obf_c520382c5238e14a := __obf_1ef84065a6a49f43 < 0
-	__obf_1ef84065a6a49f43 = __obf_8f6522a0df8c3107(__obf_1ef84065a6a49f43)
+	__obf_8502632695ccbc17 := __obf_406325483a83b1fa < 0
+	__obf_406325483a83b1fa = __obf_37fad7391972833c(__obf_406325483a83b1fa)
 
-	__obf_3edab89cf83bab1c, __obf_5a37cbbecbaac4ed := __obf_19a369452cd5fbde, New(1, 0)
+	__obf_45b69da0ab68e425, __obf_f1febca7bf443d8f := __obf_d09f058c0a390c93, New(1, 0)
 
-	for __obf_1ef84065a6a49f43 > 0 {
-		if __obf_1ef84065a6a49f43%2 == 1 {
-			__obf_5a37cbbecbaac4ed = __obf_5a37cbbecbaac4ed.Mul(__obf_3edab89cf83bab1c)
+	for __obf_406325483a83b1fa > 0 {
+		if __obf_406325483a83b1fa%2 == 1 {
+			__obf_f1febca7bf443d8f = __obf_f1febca7bf443d8f.Mul(__obf_45b69da0ab68e425)
 		}
-		__obf_1ef84065a6a49f43 /= 2
+		__obf_406325483a83b1fa /= 2
 
-		if __obf_1ef84065a6a49f43 > 0 {
-			__obf_3edab89cf83bab1c = __obf_3edab89cf83bab1c.Mul(__obf_3edab89cf83bab1c)
+		if __obf_406325483a83b1fa > 0 {
+			__obf_45b69da0ab68e425 = __obf_45b69da0ab68e425.Mul(__obf_45b69da0ab68e425)
 		}
 	}
 
-	if __obf_c520382c5238e14a {
-		return New(1, 0).DivRound(__obf_5a37cbbecbaac4ed, int32(PowPrecisionNegativeExponent)), nil
+	if __obf_8502632695ccbc17 {
+		return New(1, 0).DivRound(__obf_f1febca7bf443d8f, int32(PowPrecisionNegativeExponent)), nil
 	}
 
-	return __obf_5a37cbbecbaac4ed, nil
+	return __obf_f1febca7bf443d8f, nil
 }
 
 // PowBigInt returns d to the power of exp, where exp is big.Int.
@@ -909,40 +909,40 @@ func (__obf_19a369452cd5fbde Decimal) PowInt32(__obf_1ef84065a6a49f43 int32) (De
 //
 //	d2, err := decimal.NewFromFloat(629.25).PowBigInt(big.NewInt(5))
 //	d2.String() // output: "98654323103449.5673828125"
-func (__obf_19a369452cd5fbde Decimal) PowBigInt(__obf_1ef84065a6a49f43 *big.Int) (Decimal, error) {
-	return __obf_19a369452cd5fbde.__obf_9ca5ed499a711b19(__obf_1ef84065a6a49f43, int32(PowPrecisionNegativeExponent))
+func (__obf_d09f058c0a390c93 Decimal) PowBigInt(__obf_406325483a83b1fa *big.Int) (Decimal, error) {
+	return __obf_d09f058c0a390c93.__obf_d206a3f11e17859e(__obf_406325483a83b1fa, int32(PowPrecisionNegativeExponent))
 }
 
-func (__obf_19a369452cd5fbde Decimal) __obf_9ca5ed499a711b19(__obf_1ef84065a6a49f43 *big.Int, __obf_fb38b245d2cdb3ee int32) (Decimal, error) {
-	if __obf_19a369452cd5fbde.IsZero() && __obf_1ef84065a6a49f43.Sign() == 0 {
+func (__obf_d09f058c0a390c93 Decimal) __obf_d206a3f11e17859e(__obf_406325483a83b1fa *big.Int, __obf_7efed86618b2f272 int32) (Decimal, error) {
+	if __obf_d09f058c0a390c93.IsZero() && __obf_406325483a83b1fa.Sign() == 0 {
 		return Decimal{}, fmt.Errorf("cannot represent undefined value of 0**0")
 	}
 
-	__obf_9b28b1f06a86b092 := new(big.Int).Set(__obf_1ef84065a6a49f43)
-	__obf_c520382c5238e14a := __obf_1ef84065a6a49f43.Sign() < 0
+	__obf_041dde05bc98a284 := new(big.Int).Set(__obf_406325483a83b1fa)
+	__obf_8502632695ccbc17 := __obf_406325483a83b1fa.Sign() < 0
 
-	if __obf_c520382c5238e14a {
-		__obf_9b28b1f06a86b092.Abs(__obf_9b28b1f06a86b092)
+	if __obf_8502632695ccbc17 {
+		__obf_041dde05bc98a284.Abs(__obf_041dde05bc98a284)
 	}
 
-	__obf_3edab89cf83bab1c, __obf_5a37cbbecbaac4ed := __obf_19a369452cd5fbde, New(1, 0)
+	__obf_45b69da0ab68e425, __obf_f1febca7bf443d8f := __obf_d09f058c0a390c93, New(1, 0)
 
-	for __obf_9b28b1f06a86b092.Sign() > 0 {
-		if __obf_9b28b1f06a86b092.Bit(0) == 1 {
-			__obf_5a37cbbecbaac4ed = __obf_5a37cbbecbaac4ed.Mul(__obf_3edab89cf83bab1c)
+	for __obf_041dde05bc98a284.Sign() > 0 {
+		if __obf_041dde05bc98a284.Bit(0) == 1 {
+			__obf_f1febca7bf443d8f = __obf_f1febca7bf443d8f.Mul(__obf_45b69da0ab68e425)
 		}
-		__obf_9b28b1f06a86b092.Rsh(__obf_9b28b1f06a86b092, 1)
+		__obf_041dde05bc98a284.Rsh(__obf_041dde05bc98a284, 1)
 
-		if __obf_9b28b1f06a86b092.Sign() > 0 {
-			__obf_3edab89cf83bab1c = __obf_3edab89cf83bab1c.Mul(__obf_3edab89cf83bab1c)
+		if __obf_041dde05bc98a284.Sign() > 0 {
+			__obf_45b69da0ab68e425 = __obf_45b69da0ab68e425.Mul(__obf_45b69da0ab68e425)
 		}
 	}
 
-	if __obf_c520382c5238e14a {
-		return New(1, 0).DivRound(__obf_5a37cbbecbaac4ed, __obf_fb38b245d2cdb3ee), nil
+	if __obf_8502632695ccbc17 {
+		return New(1, 0).DivRound(__obf_f1febca7bf443d8f, __obf_7efed86618b2f272), nil
 	}
 
-	return __obf_5a37cbbecbaac4ed, nil
+	return __obf_f1febca7bf443d8f, nil
 }
 
 // ExpHullAbrham calculates the natural exponent of decimal (e to the power of d) using Hull-Abraham algorithm.
@@ -954,85 +954,85 @@ func (__obf_19a369452cd5fbde Decimal) __obf_9ca5ed499a711b19(__obf_1ef84065a6a49
 //
 //	NewFromFloat(26.1).ExpHullAbrham(2).String()    // output: "220000000000"
 //	NewFromFloat(26.1).ExpHullAbrham(20).String()   // output: "216314672147.05767284"
-func (__obf_19a369452cd5fbde Decimal) ExpHullAbrham(__obf_bfc48a42dcc5a5cc uint32) (Decimal, error) {
+func (__obf_d09f058c0a390c93 Decimal) ExpHullAbrham(__obf_6d8f1071e6a9333f uint32) (Decimal, error) {
 	// Algorithm based on Variable precision exponential function.
 	// ACM Transactions on Mathematical Software by T. E. Hull & A. Abrham.
-	if __obf_19a369452cd5fbde.IsZero() {
-		return Decimal{__obf_6b7012530e205f39, 0}, nil
+	if __obf_d09f058c0a390c93.IsZero() {
+		return Decimal{__obf_25f16531cde494de, 0}, nil
 	}
 
-	__obf_b7f6e437e07cf74a := __obf_bfc48a42dcc5a5cc
+	__obf_4790853bbbd98160 := __obf_6d8f1071e6a9333f
 
 	// Algorithm does not work if currentPrecision * 23 < |x|.
 	// Precision is automatically increased in such cases, so the value can be calculated precisely.
 	// If newly calculated precision is higher than ExpMaxIterations the currentPrecision will not be changed.
-	__obf_fd7d6ef724312b50 := __obf_19a369452cd5fbde.Abs().InexactFloat64()
-	if __obf_aca08fd18006ae92 := __obf_fd7d6ef724312b50 / 23; __obf_aca08fd18006ae92 > float64(__obf_b7f6e437e07cf74a) && __obf_aca08fd18006ae92 < float64(ExpMaxIterations) {
-		__obf_b7f6e437e07cf74a = uint32(math.Ceil(__obf_aca08fd18006ae92))
+	__obf_cb430c29f24deb1e := __obf_d09f058c0a390c93.Abs().InexactFloat64()
+	if __obf_8e6183ef0b08fd20 := __obf_cb430c29f24deb1e / 23; __obf_8e6183ef0b08fd20 > float64(__obf_4790853bbbd98160) && __obf_8e6183ef0b08fd20 < float64(ExpMaxIterations) {
+		__obf_4790853bbbd98160 = uint32(math.Ceil(__obf_8e6183ef0b08fd20))
 	}
 
 	// fail if abs(d) beyond an over/underflow threshold
-	__obf_d63340ff75fc06f7 := New(23*int64(__obf_b7f6e437e07cf74a), 0)
-	if __obf_19a369452cd5fbde.Abs().Cmp(__obf_d63340ff75fc06f7) > 0 {
+	__obf_0d0699f070216fe8 := New(23*int64(__obf_4790853bbbd98160), 0)
+	if __obf_d09f058c0a390c93.Abs().Cmp(__obf_0d0699f070216fe8) > 0 {
 		return Decimal{}, fmt.Errorf("over/underflow threshold, exp(x) cannot be calculated precisely")
 	}
 
 	// Return 1 if abs(d) small enough; this also avoids later over/underflow
-	__obf_e844928fcd460900 := New(9, -int32(__obf_b7f6e437e07cf74a)-1)
-	if __obf_19a369452cd5fbde.Abs().Cmp(__obf_e844928fcd460900) <= 0 {
-		return Decimal{__obf_6b7012530e205f39, __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43}, nil
+	__obf_f3c86764321764b6 := New(9, -int32(__obf_4790853bbbd98160)-1)
+	if __obf_d09f058c0a390c93.Abs().Cmp(__obf_f3c86764321764b6) <= 0 {
+		return Decimal{__obf_25f16531cde494de, __obf_d09f058c0a390c93.__obf_406325483a83b1fa}, nil
 	}
 
 	// t is the smallest integer >= 0 such that the corresponding abs(d/k) < 1
-	__obf_0e45b010b2b05e0d := __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 + int32(__obf_19a369452cd5fbde.NumDigits()) // Add d.NumDigits because the paper assumes that d.value [0.1, 1)
+	__obf_d8a1f54969413649 := __obf_d09f058c0a390c93.__obf_406325483a83b1fa + int32(__obf_d09f058c0a390c93.NumDigits()) // Add d.NumDigits because the paper assumes that d.value [0.1, 1)
 
-	if __obf_0e45b010b2b05e0d < 0 {
-		__obf_0e45b010b2b05e0d = 0
+	if __obf_d8a1f54969413649 < 0 {
+		__obf_d8a1f54969413649 = 0
 	}
 
-	__obf_ec401ce06db88a9f := New(1, __obf_0e45b010b2b05e0d)                                                                                                                   // reduction factor
-	__obf_0feccac4ef34d0a4 := Decimal{new(big.Int).Set(__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea), __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 - __obf_0e45b010b2b05e0d} // reduced argument
-	__obf_f00a4e020967bf11 := int32(__obf_b7f6e437e07cf74a) + __obf_0e45b010b2b05e0d + 2                                                                                       // precision for calculating the sum
+	__obf_c6eff4cc2bd046d5 := New(1, __obf_d8a1f54969413649)                                                                                                                   // reduction factor
+	__obf_a934ca815da1fc1a := Decimal{new(big.Int).Set(__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f), __obf_d09f058c0a390c93.__obf_406325483a83b1fa - __obf_d8a1f54969413649} // reduced argument
+	__obf_43f93d52162c34e4 := int32(__obf_4790853bbbd98160) + __obf_d8a1f54969413649 + 2                                                                                       // precision for calculating the sum
 
 	// Determine n, the number of therms for calculating sum
 	// use first Newton step (1.435p - 1.182) / log10(p/abs(r))
 	// for solving appropriate equation, along with directed
 	// roundings and simple rational bound for log10(p/abs(r))
-	__obf_cfeb02a08e0decd8 := __obf_0feccac4ef34d0a4.Abs().InexactFloat64()
-	__obf_35a16f64f7e5af88 := float64(__obf_f00a4e020967bf11)
-	__obf_d14c538f3ac0369c := math.Ceil((1.453*__obf_35a16f64f7e5af88 - 1.182) / math.Log10(__obf_35a16f64f7e5af88/__obf_cfeb02a08e0decd8))
-	if __obf_d14c538f3ac0369c > float64(ExpMaxIterations) || math.IsNaN(__obf_d14c538f3ac0369c) {
+	__obf_8d3ba6e2ccd60e6d := __obf_a934ca815da1fc1a.Abs().InexactFloat64()
+	__obf_17b5bf4105c51c4a := float64(__obf_43f93d52162c34e4)
+	__obf_c7f3db0810afc00e := math.Ceil((1.453*__obf_17b5bf4105c51c4a - 1.182) / math.Log10(__obf_17b5bf4105c51c4a/__obf_8d3ba6e2ccd60e6d))
+	if __obf_c7f3db0810afc00e > float64(ExpMaxIterations) || math.IsNaN(__obf_c7f3db0810afc00e) {
 		return Decimal{}, fmt.Errorf("exact value cannot be calculated in <=ExpMaxIterations iterations")
 	}
-	__obf_3edab89cf83bab1c := int64(__obf_d14c538f3ac0369c)
+	__obf_45b69da0ab68e425 := int64(__obf_c7f3db0810afc00e)
 
-	__obf_e059bdc33d645894 := New(0, 0)
-	__obf_1882daa5a5fd23a5 := New(1, 0)
-	__obf_3b803b95d5fc8b6b := New(1, 0)
-	for __obf_40720372b6d983c7 := __obf_3edab89cf83bab1c - 1; __obf_40720372b6d983c7 > 0; __obf_40720372b6d983c7-- {
-		__obf_e059bdc33d645894.__obf_6e5f77decbc21dea.SetInt64(__obf_40720372b6d983c7)
-		__obf_1882daa5a5fd23a5 = __obf_1882daa5a5fd23a5.Mul(__obf_0feccac4ef34d0a4.DivRound(__obf_e059bdc33d645894, __obf_f00a4e020967bf11))
-		__obf_1882daa5a5fd23a5 = __obf_1882daa5a5fd23a5.Add(__obf_3b803b95d5fc8b6b)
+	__obf_bab5f70189aa167a := New(0, 0)
+	__obf_0a03d5c951bd51ca := New(1, 0)
+	__obf_ffb29ce7762ffc55 := New(1, 0)
+	for __obf_a6733ea50196cc53 := __obf_45b69da0ab68e425 - 1; __obf_a6733ea50196cc53 > 0; __obf_a6733ea50196cc53-- {
+		__obf_bab5f70189aa167a.__obf_c36b36e18c228e7f.SetInt64(__obf_a6733ea50196cc53)
+		__obf_0a03d5c951bd51ca = __obf_0a03d5c951bd51ca.Mul(__obf_a934ca815da1fc1a.DivRound(__obf_bab5f70189aa167a, __obf_43f93d52162c34e4))
+		__obf_0a03d5c951bd51ca = __obf_0a03d5c951bd51ca.Add(__obf_ffb29ce7762ffc55)
 	}
 
-	__obf_398ac2a491ab93f4 := __obf_ec401ce06db88a9f.IntPart()
-	__obf_a01a49266a86f271 := New(1, 0)
-	for __obf_40720372b6d983c7 := __obf_398ac2a491ab93f4; __obf_40720372b6d983c7 > 0; __obf_40720372b6d983c7-- {
-		__obf_a01a49266a86f271 = __obf_a01a49266a86f271.Mul(__obf_1882daa5a5fd23a5)
+	__obf_3ee8d6ce3886b697 := __obf_c6eff4cc2bd046d5.IntPart()
+	__obf_df948d36f2e10e0e := New(1, 0)
+	for __obf_a6733ea50196cc53 := __obf_3ee8d6ce3886b697; __obf_a6733ea50196cc53 > 0; __obf_a6733ea50196cc53-- {
+		__obf_df948d36f2e10e0e = __obf_df948d36f2e10e0e.Mul(__obf_0a03d5c951bd51ca)
 	}
 
-	__obf_195eb4899c090619 := int32(__obf_a01a49266a86f271.NumDigits())
+	__obf_03b4b32eb90e503d := int32(__obf_df948d36f2e10e0e.NumDigits())
 
-	var __obf_86c41a5c5717f0f5 int32
-	if __obf_195eb4899c090619 > __obf_8f6522a0df8c3107(__obf_a01a49266a86f271.__obf_1ef84065a6a49f43) {
-		__obf_86c41a5c5717f0f5 = int32(__obf_b7f6e437e07cf74a) - __obf_195eb4899c090619 - __obf_a01a49266a86f271.__obf_1ef84065a6a49f43
+	var __obf_9e00dd9d89629d72 int32
+	if __obf_03b4b32eb90e503d > __obf_37fad7391972833c(__obf_df948d36f2e10e0e.__obf_406325483a83b1fa) {
+		__obf_9e00dd9d89629d72 = int32(__obf_4790853bbbd98160) - __obf_03b4b32eb90e503d - __obf_df948d36f2e10e0e.__obf_406325483a83b1fa
 	} else {
-		__obf_86c41a5c5717f0f5 = int32(__obf_b7f6e437e07cf74a)
+		__obf_9e00dd9d89629d72 = int32(__obf_4790853bbbd98160)
 	}
 
-	__obf_a01a49266a86f271 = __obf_a01a49266a86f271.Round(__obf_86c41a5c5717f0f5)
+	__obf_df948d36f2e10e0e = __obf_df948d36f2e10e0e.Round(__obf_9e00dd9d89629d72)
 
-	return __obf_a01a49266a86f271, nil
+	return __obf_df948d36f2e10e0e, nil
 }
 
 // ExpTaylor calculates the natural exponent of decimal (e to the power of d) using Taylor series expansion.
@@ -1051,60 +1051,60 @@ func (__obf_19a369452cd5fbde Decimal) ExpHullAbrham(__obf_bfc48a42dcc5a5cc uint3
 //
 //	NewFromFloat(26.1).ExpTaylor(-10).String()
 //	d.String()  // output: "220000000000"
-func (__obf_19a369452cd5fbde Decimal) ExpTaylor(__obf_fb38b245d2cdb3ee int32) (Decimal, error) {
+func (__obf_d09f058c0a390c93 Decimal) ExpTaylor(__obf_7efed86618b2f272 int32) (Decimal, error) {
 	// Note(mwoss): Implementation can be optimized by exclusively using big.Int API only
-	if __obf_19a369452cd5fbde.IsZero() {
-		return Decimal{__obf_6b7012530e205f39, 0}.Round(__obf_fb38b245d2cdb3ee), nil
+	if __obf_d09f058c0a390c93.IsZero() {
+		return Decimal{__obf_25f16531cde494de, 0}.Round(__obf_7efed86618b2f272), nil
 	}
 
-	var __obf_cf5de1db9e631594 Decimal
-	var __obf_25ab290f5081581a int32
-	if __obf_fb38b245d2cdb3ee < 0 {
-		__obf_cf5de1db9e631594 = New(1, -1)
-		__obf_25ab290f5081581a = 8
+	var __obf_082ee8b1a1ba9d2f Decimal
+	var __obf_5f57099ccd3b913e int32
+	if __obf_7efed86618b2f272 < 0 {
+		__obf_082ee8b1a1ba9d2f = New(1, -1)
+		__obf_5f57099ccd3b913e = 8
 	} else {
-		__obf_cf5de1db9e631594 = New(1, -__obf_fb38b245d2cdb3ee-1)
-		__obf_25ab290f5081581a = __obf_fb38b245d2cdb3ee + 1
+		__obf_082ee8b1a1ba9d2f = New(1, -__obf_7efed86618b2f272-1)
+		__obf_5f57099ccd3b913e = __obf_7efed86618b2f272 + 1
 	}
 
-	__obf_6d46c256a4bb47b8 := __obf_19a369452cd5fbde.Abs()
-	__obf_b954d39f1598c041 := __obf_19a369452cd5fbde.Abs()
-	__obf_5794cb2cfcaed684 := New(1, 0)
+	__obf_f4fc06761296e9bb := __obf_d09f058c0a390c93.Abs()
+	__obf_c7885e2e751af9ba := __obf_d09f058c0a390c93.Abs()
+	__obf_c44ec3d1e6ba1f29 := New(1, 0)
 
-	__obf_5a37cbbecbaac4ed := New(1, 0)
+	__obf_f1febca7bf443d8f := New(1, 0)
 
-	for __obf_40720372b6d983c7 := int64(1); ; {
-		__obf_20e97b9a2de85df5 := __obf_b954d39f1598c041.DivRound(__obf_5794cb2cfcaed684, __obf_25ab290f5081581a)
-		__obf_5a37cbbecbaac4ed = __obf_5a37cbbecbaac4ed.Add(__obf_20e97b9a2de85df5)
+	for __obf_a6733ea50196cc53 := int64(1); ; {
+		__obf_b27e1a204c229d5a := __obf_c7885e2e751af9ba.DivRound(__obf_c44ec3d1e6ba1f29, __obf_5f57099ccd3b913e)
+		__obf_f1febca7bf443d8f = __obf_f1febca7bf443d8f.Add(__obf_b27e1a204c229d5a)
 
 		// Stop Taylor series when current step is smaller than epsilon
-		if __obf_20e97b9a2de85df5.Cmp(__obf_cf5de1db9e631594) < 0 {
+		if __obf_b27e1a204c229d5a.Cmp(__obf_082ee8b1a1ba9d2f) < 0 {
 			break
 		}
 
-		__obf_b954d39f1598c041 = __obf_b954d39f1598c041.Mul(__obf_6d46c256a4bb47b8)
+		__obf_c7885e2e751af9ba = __obf_c7885e2e751af9ba.Mul(__obf_f4fc06761296e9bb)
 
-		__obf_40720372b6d983c7++
+		__obf_a6733ea50196cc53++
 
 		// Calculate next factorial number or retrieve cached value
-		if len(__obf_5004c7371a2d0179) >= int(__obf_40720372b6d983c7) && !__obf_5004c7371a2d0179[__obf_40720372b6d983c7-1].IsZero() {
-			__obf_5794cb2cfcaed684 = __obf_5004c7371a2d0179[__obf_40720372b6d983c7-1]
+		if len(__obf_b83126d172f97ebd) >= int(__obf_a6733ea50196cc53) && !__obf_b83126d172f97ebd[__obf_a6733ea50196cc53-1].IsZero() {
+			__obf_c44ec3d1e6ba1f29 = __obf_b83126d172f97ebd[__obf_a6733ea50196cc53-1]
 		} else {
 			// To avoid any race conditions, firstly the zero value is appended to a slice to create
 			// a spot for newly calculated factorial. After that, the zero value is replaced by calculated
 			// factorial using the index notation.
-			__obf_5794cb2cfcaed684 = __obf_5004c7371a2d0179[__obf_40720372b6d983c7-2].Mul(New(__obf_40720372b6d983c7, 0))
-			__obf_5004c7371a2d0179 = append(__obf_5004c7371a2d0179, Zero)
-			__obf_5004c7371a2d0179[__obf_40720372b6d983c7-1] = __obf_5794cb2cfcaed684
+			__obf_c44ec3d1e6ba1f29 = __obf_b83126d172f97ebd[__obf_a6733ea50196cc53-2].Mul(New(__obf_a6733ea50196cc53, 0))
+			__obf_b83126d172f97ebd = append(__obf_b83126d172f97ebd, Zero)
+			__obf_b83126d172f97ebd[__obf_a6733ea50196cc53-1] = __obf_c44ec3d1e6ba1f29
 		}
 	}
 
-	if __obf_19a369452cd5fbde.Sign() < 0 {
-		__obf_5a37cbbecbaac4ed = New(1, 0).DivRound(__obf_5a37cbbecbaac4ed, __obf_fb38b245d2cdb3ee+1)
+	if __obf_d09f058c0a390c93.Sign() < 0 {
+		__obf_f1febca7bf443d8f = New(1, 0).DivRound(__obf_f1febca7bf443d8f, __obf_7efed86618b2f272+1)
 	}
 
-	__obf_5a37cbbecbaac4ed = __obf_5a37cbbecbaac4ed.Round(__obf_fb38b245d2cdb3ee)
-	return __obf_5a37cbbecbaac4ed, nil
+	__obf_f1febca7bf443d8f = __obf_f1febca7bf443d8f.Round(__obf_7efed86618b2f272)
+	return __obf_f1febca7bf443d8f, nil
 }
 
 // Ln calculates natural logarithm of d.
@@ -1118,80 +1118,80 @@ func (__obf_19a369452cd5fbde Decimal) ExpTaylor(__obf_fb38b245d2cdb3ee int32) (D
 //
 //	d2, err := NewFromFloat(579.161).Ln(10)
 //	d2.String()  // output: "6.3615805046"
-func (__obf_19a369452cd5fbde Decimal) Ln(__obf_fb38b245d2cdb3ee int32) (Decimal, error) {
+func (__obf_d09f058c0a390c93 Decimal) Ln(__obf_7efed86618b2f272 int32) (Decimal, error) {
 	// Algorithm based on The Use of Iteration Methods for Approximating the Natural Logarithm,
 	// James F. Epperson, The American Mathematical Monthly, Vol. 96, No. 9, November 1989, pp. 831-835.
-	if __obf_19a369452cd5fbde.IsNegative() {
+	if __obf_d09f058c0a390c93.IsNegative() {
 		return Decimal{}, fmt.Errorf("cannot calculate natural logarithm for negative decimals")
 	}
 
-	if __obf_19a369452cd5fbde.IsZero() {
+	if __obf_d09f058c0a390c93.IsZero() {
 		return Decimal{}, fmt.Errorf("cannot represent natural logarithm of 0, result: -infinity")
 	}
 
-	__obf_8c06c377a56a9277 := __obf_fb38b245d2cdb3ee + 2
-	__obf_f0a3b6dafda7d395 := __obf_19a369452cd5fbde.Copy()
+	__obf_1314bb6b90f4d9a1 := __obf_7efed86618b2f272 + 2
+	__obf_cfabb27034b7f97a := __obf_d09f058c0a390c93.Copy()
 
-	var __obf_291675a83df87dce, __obf_72676d7e0f36a12e, __obf_110691455bfd43fc, __obf_fdc0dd5534b24a23, __obf_bf7c636ae74a6766 Decimal
-	__obf_291675a83df87dce = __obf_f0a3b6dafda7d395.Sub(Decimal{__obf_6b7012530e205f39, 0})
-	__obf_72676d7e0f36a12e = Decimal{__obf_6b7012530e205f39, -1}
+	var __obf_33ed815004e03065, __obf_83031f42b615dc28, __obf_eff104be57722508, __obf_0bd67fe03d37cd38, __obf_6f28deb5fd45d0e8 Decimal
+	__obf_33ed815004e03065 = __obf_cfabb27034b7f97a.Sub(Decimal{__obf_25f16531cde494de, 0})
+	__obf_83031f42b615dc28 = Decimal{__obf_25f16531cde494de, -1}
 
 	// for decimal in range [0.9, 1.1] where ln(d) is close to 0
-	__obf_38c47c160fcb6992 := false
+	__obf_8245ac3846d79b39 := false
 
-	if __obf_291675a83df87dce.Abs().Cmp(__obf_72676d7e0f36a12e) <= 0 {
-		__obf_38c47c160fcb6992 = true
+	if __obf_33ed815004e03065.Abs().Cmp(__obf_83031f42b615dc28) <= 0 {
+		__obf_8245ac3846d79b39 = true
 	} else {
 		// reduce input decimal to range [0.1, 1)
-		__obf_08915d087dbf986e := int32(__obf_f0a3b6dafda7d395.NumDigits()) + __obf_f0a3b6dafda7d395.__obf_1ef84065a6a49f43
-		__obf_f0a3b6dafda7d395.__obf_1ef84065a6a49f43 -= __obf_08915d087dbf986e
+		__obf_ad064f0e2e7bced1 := int32(__obf_cfabb27034b7f97a.NumDigits()) + __obf_cfabb27034b7f97a.__obf_406325483a83b1fa
+		__obf_cfabb27034b7f97a.__obf_406325483a83b1fa -= __obf_ad064f0e2e7bced1
 
 		// Input decimal was reduced by factor of 10^expDelta, thus we will need to add
 		// ln(10^expDelta) = expDelta * ln(10)
 		// to the result to compensate that
-		__obf_d03443580eb472ff := __obf_d03443580eb472ff.__obf_a43f9e51ea49d1d6(__obf_8c06c377a56a9277)
-		__obf_bf7c636ae74a6766 = NewFromInt32(__obf_08915d087dbf986e)
-		__obf_bf7c636ae74a6766 = __obf_bf7c636ae74a6766.Mul(__obf_d03443580eb472ff)
+		__obf_5a26e8654d026182 := __obf_5a26e8654d026182.__obf_eb4cce5de048f0ba(__obf_1314bb6b90f4d9a1)
+		__obf_6f28deb5fd45d0e8 = NewFromInt32(__obf_ad064f0e2e7bced1)
+		__obf_6f28deb5fd45d0e8 = __obf_6f28deb5fd45d0e8.Mul(__obf_5a26e8654d026182)
 
-		__obf_291675a83df87dce = __obf_f0a3b6dafda7d395.Sub(Decimal{__obf_6b7012530e205f39, 0})
+		__obf_33ed815004e03065 = __obf_cfabb27034b7f97a.Sub(Decimal{__obf_25f16531cde494de, 0})
 
-		if __obf_291675a83df87dce.Abs().Cmp(__obf_72676d7e0f36a12e) <= 0 {
-			__obf_38c47c160fcb6992 = true
+		if __obf_33ed815004e03065.Abs().Cmp(__obf_83031f42b615dc28) <= 0 {
+			__obf_8245ac3846d79b39 = true
 		} else {
 			// initial estimate using floats
-			__obf_77c091eaef07d7d3 := __obf_f0a3b6dafda7d395.InexactFloat64()
-			__obf_291675a83df87dce = NewFromFloat(math.Log(__obf_77c091eaef07d7d3))
+			__obf_0fe558412d516e5d := __obf_cfabb27034b7f97a.InexactFloat64()
+			__obf_33ed815004e03065 = NewFromFloat(math.Log(__obf_0fe558412d516e5d))
 		}
 	}
 
-	__obf_cf5de1db9e631594 := Decimal{__obf_6b7012530e205f39, -__obf_8c06c377a56a9277}
+	__obf_082ee8b1a1ba9d2f := Decimal{__obf_25f16531cde494de, -__obf_1314bb6b90f4d9a1}
 
-	if __obf_38c47c160fcb6992 {
+	if __obf_8245ac3846d79b39 {
 		// Power Series - https://en.wikipedia.org/wiki/Logarithm#Power_series
 		// Calculating n-th term of formula: ln(z+1) = 2 sum [ 1 / (2n+1) * (z / (z+2))^(2n+1) ]
 		// until the difference between current and next term is smaller than epsilon.
 		// Coverage quite fast for decimals close to 1.0
 
 		// z + 2
-		__obf_110691455bfd43fc = __obf_291675a83df87dce.Add(Decimal{__obf_3338f87aa2a5f65a, 0})
+		__obf_eff104be57722508 = __obf_33ed815004e03065.Add(Decimal{__obf_3cbd576e784ed478, 0})
 		// z / (z + 2)
-		__obf_72676d7e0f36a12e = __obf_291675a83df87dce.DivRound(__obf_110691455bfd43fc, __obf_8c06c377a56a9277)
+		__obf_83031f42b615dc28 = __obf_33ed815004e03065.DivRound(__obf_eff104be57722508, __obf_1314bb6b90f4d9a1)
 		// 2 * (z / (z + 2))
-		__obf_291675a83df87dce = __obf_72676d7e0f36a12e.Add(__obf_72676d7e0f36a12e)
-		__obf_110691455bfd43fc = __obf_291675a83df87dce.Copy()
+		__obf_33ed815004e03065 = __obf_83031f42b615dc28.Add(__obf_83031f42b615dc28)
+		__obf_eff104be57722508 = __obf_33ed815004e03065.Copy()
 
-		for __obf_3edab89cf83bab1c := 1; ; __obf_3edab89cf83bab1c++ {
+		for __obf_45b69da0ab68e425 := 1; ; __obf_45b69da0ab68e425++ {
 			// 2 * (z / (z+2))^(2n+1)
-			__obf_110691455bfd43fc = __obf_110691455bfd43fc.Mul(__obf_72676d7e0f36a12e).Mul(__obf_72676d7e0f36a12e)
+			__obf_eff104be57722508 = __obf_eff104be57722508.Mul(__obf_83031f42b615dc28).Mul(__obf_83031f42b615dc28)
 
 			// 1 / (2n+1) * 2 * (z / (z+2))^(2n+1)
-			__obf_fdc0dd5534b24a23 = NewFromInt(int64(2*__obf_3edab89cf83bab1c + 1))
-			__obf_fdc0dd5534b24a23 = __obf_110691455bfd43fc.DivRound(__obf_fdc0dd5534b24a23, __obf_8c06c377a56a9277)
+			__obf_0bd67fe03d37cd38 = NewFromInt(int64(2*__obf_45b69da0ab68e425 + 1))
+			__obf_0bd67fe03d37cd38 = __obf_eff104be57722508.DivRound(__obf_0bd67fe03d37cd38, __obf_1314bb6b90f4d9a1)
 
 			// comp1 = 2 sum [ 1 / (2n+1) * (z / (z+2))^(2n+1) ]
-			__obf_291675a83df87dce = __obf_291675a83df87dce.Add(__obf_fdc0dd5534b24a23)
+			__obf_33ed815004e03065 = __obf_33ed815004e03065.Add(__obf_0bd67fe03d37cd38)
 
-			if __obf_fdc0dd5534b24a23.Abs().Cmp(__obf_cf5de1db9e631594) <= 0 {
+			if __obf_0bd67fe03d37cd38.Abs().Cmp(__obf_082ee8b1a1ba9d2f) <= 0 {
 				break
 			}
 		}
@@ -1199,85 +1199,85 @@ func (__obf_19a369452cd5fbde Decimal) Ln(__obf_fb38b245d2cdb3ee int32) (Decimal,
 		// Halley's Iteration.
 		// Calculating n-th term of formula: a_(n+1) = a_n - 2 * (exp(a_n) - z) / (exp(a_n) + z),
 		// until the difference between current and next term is smaller than epsilon
-		var __obf_eb489493ed7f4e19 Decimal
-		__obf_f9780f2e47b88006 := __obf_8c06c377a56a9277*2 + 10
+		var __obf_63a91f9fa58cdee0 Decimal
+		__obf_3fb8bd9af117c09c := __obf_1314bb6b90f4d9a1*2 + 10
 
-		for __obf_40720372b6d983c7 := int32(0); __obf_40720372b6d983c7 < __obf_f9780f2e47b88006; __obf_40720372b6d983c7++ {
+		for __obf_a6733ea50196cc53 := int32(0); __obf_a6733ea50196cc53 < __obf_3fb8bd9af117c09c; __obf_a6733ea50196cc53++ {
 			// exp(a_n)
-			__obf_72676d7e0f36a12e, _ = __obf_291675a83df87dce.ExpTaylor(__obf_8c06c377a56a9277)
+			__obf_83031f42b615dc28, _ = __obf_33ed815004e03065.ExpTaylor(__obf_1314bb6b90f4d9a1)
 			// exp(a_n) - z
-			__obf_110691455bfd43fc = __obf_72676d7e0f36a12e.Sub(__obf_f0a3b6dafda7d395)
+			__obf_eff104be57722508 = __obf_83031f42b615dc28.Sub(__obf_cfabb27034b7f97a)
 			// 2 * (exp(a_n) - z)
-			__obf_110691455bfd43fc = __obf_110691455bfd43fc.Add(__obf_110691455bfd43fc)
+			__obf_eff104be57722508 = __obf_eff104be57722508.Add(__obf_eff104be57722508)
 			// exp(a_n) + z
-			__obf_fdc0dd5534b24a23 = __obf_72676d7e0f36a12e.Add(__obf_f0a3b6dafda7d395)
+			__obf_0bd67fe03d37cd38 = __obf_83031f42b615dc28.Add(__obf_cfabb27034b7f97a)
 			// 2 * (exp(a_n) - z) / (exp(a_n) + z)
-			__obf_72676d7e0f36a12e = __obf_110691455bfd43fc.DivRound(__obf_fdc0dd5534b24a23, __obf_8c06c377a56a9277)
+			__obf_83031f42b615dc28 = __obf_eff104be57722508.DivRound(__obf_0bd67fe03d37cd38, __obf_1314bb6b90f4d9a1)
 			// comp1 = a_(n+1) = a_n - 2 * (exp(a_n) - z) / (exp(a_n) + z)
-			__obf_291675a83df87dce = __obf_291675a83df87dce.Sub(__obf_72676d7e0f36a12e)
+			__obf_33ed815004e03065 = __obf_33ed815004e03065.Sub(__obf_83031f42b615dc28)
 
-			if __obf_eb489493ed7f4e19.Add(__obf_72676d7e0f36a12e).IsZero() {
+			if __obf_63a91f9fa58cdee0.Add(__obf_83031f42b615dc28).IsZero() {
 				// If iteration steps oscillate we should return early and prevent an infinity loop
 				// NOTE(mwoss): This should be quite a rare case, returning error is not necessary
 				break
 			}
 
-			if __obf_72676d7e0f36a12e.Abs().Cmp(__obf_cf5de1db9e631594) <= 0 {
+			if __obf_83031f42b615dc28.Abs().Cmp(__obf_082ee8b1a1ba9d2f) <= 0 {
 				break
 			}
 
-			__obf_eb489493ed7f4e19 = __obf_72676d7e0f36a12e
+			__obf_63a91f9fa58cdee0 = __obf_83031f42b615dc28
 		}
 	}
 
-	__obf_291675a83df87dce = __obf_291675a83df87dce.Add(__obf_bf7c636ae74a6766)
+	__obf_33ed815004e03065 = __obf_33ed815004e03065.Add(__obf_6f28deb5fd45d0e8)
 
-	return __obf_291675a83df87dce.Round(__obf_fb38b245d2cdb3ee), nil
+	return __obf_33ed815004e03065.Round(__obf_7efed86618b2f272), nil
 }
 
 // NumDigits returns the number of digits of the decimal coefficient (d.Value)
-func (__obf_19a369452cd5fbde Decimal) NumDigits() int {
-	if __obf_19a369452cd5fbde.__obf_6e5f77decbc21dea == nil {
+func (__obf_d09f058c0a390c93 Decimal) NumDigits() int {
+	if __obf_d09f058c0a390c93.__obf_c36b36e18c228e7f == nil {
 		return 1
 	}
 
-	if __obf_19a369452cd5fbde.__obf_6e5f77decbc21dea.IsInt64() {
-		__obf_bd0a6195fd130370 := __obf_19a369452cd5fbde.__obf_6e5f77decbc21dea.Int64()
+	if __obf_d09f058c0a390c93.__obf_c36b36e18c228e7f.IsInt64() {
+		__obf_3e637496a1a1f908 := __obf_d09f058c0a390c93.__obf_c36b36e18c228e7f.Int64()
 		// restrict fast path to integers with exact conversion to float64
-		if __obf_bd0a6195fd130370 <= (1<<53) && __obf_bd0a6195fd130370 >= -(1<<53) {
-			if __obf_bd0a6195fd130370 == 0 {
+		if __obf_3e637496a1a1f908 <= (1<<53) && __obf_3e637496a1a1f908 >= -(1<<53) {
+			if __obf_3e637496a1a1f908 == 0 {
 				return 1
 			}
-			return int(math.Log10(math.Abs(float64(__obf_bd0a6195fd130370)))) + 1
+			return int(math.Log10(math.Abs(float64(__obf_3e637496a1a1f908)))) + 1
 		}
 	}
 
-	__obf_e73455e4b039eecd := int(float64(__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea.BitLen()) / math.Log2(10))
+	__obf_e823e6d5b3406aa7 := int(float64(__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f.BitLen()) / math.Log2(10))
 
 	// estimatedNumDigits (lg10) may be off by 1, need to verify
-	__obf_89bbd71996a3d55d := big.NewInt(int64(__obf_e73455e4b039eecd))
-	__obf_d414c33699262c20 := __obf_89bbd71996a3d55d.Exp(__obf_6e3308650b479548, __obf_89bbd71996a3d55d, nil)
+	__obf_a279893fa3ef34b6 := big.NewInt(int64(__obf_e823e6d5b3406aa7))
+	__obf_3fa5f0f6cf1d9ba7 := __obf_a279893fa3ef34b6.Exp(__obf_44ff59a8ed385a0e, __obf_a279893fa3ef34b6, nil)
 
-	if __obf_19a369452cd5fbde.__obf_6e5f77decbc21dea.CmpAbs(__obf_d414c33699262c20) >= 0 {
-		return __obf_e73455e4b039eecd + 1
+	if __obf_d09f058c0a390c93.__obf_c36b36e18c228e7f.CmpAbs(__obf_3fa5f0f6cf1d9ba7) >= 0 {
+		return __obf_e823e6d5b3406aa7 + 1
 	}
 
-	return __obf_e73455e4b039eecd
+	return __obf_e823e6d5b3406aa7
 }
 
 // IsInteger returns true when decimal can be represented as an integer value, otherwise, it returns false.
-func (__obf_19a369452cd5fbde Decimal) IsInteger() bool {
+func (__obf_d09f058c0a390c93 Decimal) IsInteger() bool {
 	// The most typical case, all decimal with exponent higher or equal 0 can be represented as integer
-	if __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 >= 0 {
+	if __obf_d09f058c0a390c93.__obf_406325483a83b1fa >= 0 {
 		return true
 	}
 	// When the exponent is negative we have to check every number after the decimal place
 	// If all of them are zeroes, we are sure that given decimal can be represented as an integer
-	var __obf_0feccac4ef34d0a4 big.Int
-	__obf_99a04cdb50494bb6 := new(big.Int).Set(__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea)
-	for __obf_f0a3b6dafda7d395 := __obf_8f6522a0df8c3107(__obf_19a369452cd5fbde.__obf_1ef84065a6a49f43); __obf_f0a3b6dafda7d395 > 0; __obf_f0a3b6dafda7d395-- {
-		__obf_99a04cdb50494bb6.QuoRem(__obf_99a04cdb50494bb6, __obf_6e3308650b479548, &__obf_0feccac4ef34d0a4)
-		if __obf_0feccac4ef34d0a4.Cmp(__obf_91bffcce19efb7d8) != 0 {
+	var __obf_a934ca815da1fc1a big.Int
+	__obf_1b9e13ef114085d1 := new(big.Int).Set(__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f)
+	for __obf_cfabb27034b7f97a := __obf_37fad7391972833c(__obf_d09f058c0a390c93.__obf_406325483a83b1fa); __obf_cfabb27034b7f97a > 0; __obf_cfabb27034b7f97a-- {
+		__obf_1b9e13ef114085d1.QuoRem(__obf_1b9e13ef114085d1, __obf_44ff59a8ed385a0e, &__obf_a934ca815da1fc1a)
+		if __obf_a934ca815da1fc1a.Cmp(__obf_1bb56bff7931ff30) != 0 {
 			return false
 		}
 	}
@@ -1285,11 +1285,11 @@ func (__obf_19a369452cd5fbde Decimal) IsInteger() bool {
 }
 
 // Abs calculates absolute value of any int32. Used for calculating absolute value of decimal's exponent.
-func __obf_8f6522a0df8c3107(__obf_3edab89cf83bab1c int32) int32 {
-	if __obf_3edab89cf83bab1c < 0 {
-		return -__obf_3edab89cf83bab1c
+func __obf_37fad7391972833c(__obf_45b69da0ab68e425 int32) int32 {
+	if __obf_45b69da0ab68e425 < 0 {
+		return -__obf_45b69da0ab68e425
 	}
-	return __obf_3edab89cf83bab1c
+	return __obf_45b69da0ab68e425
 }
 
 // Cmp compares the numbers represented by d and d2 and returns:
@@ -1297,17 +1297,17 @@ func __obf_8f6522a0df8c3107(__obf_3edab89cf83bab1c int32) int32 {
 //	-1 if d <  d2
 //	 0 if d == d2
 //	+1 if d >  d2
-func (__obf_19a369452cd5fbde Decimal) Cmp(__obf_e5610ee7ba67ce83 Decimal) int {
-	__obf_19a369452cd5fbde.__obf_b1325bfc63b249a7()
-	__obf_e5610ee7ba67ce83.__obf_b1325bfc63b249a7()
+func (__obf_d09f058c0a390c93 Decimal) Cmp(__obf_f3234e094c8ed488 Decimal) int {
+	__obf_d09f058c0a390c93.__obf_b119326c257b1b2a()
+	__obf_f3234e094c8ed488.__obf_b119326c257b1b2a()
 
-	if __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 == __obf_e5610ee7ba67ce83.__obf_1ef84065a6a49f43 {
-		return __obf_19a369452cd5fbde.__obf_6e5f77decbc21dea.Cmp(__obf_e5610ee7ba67ce83.__obf_6e5f77decbc21dea)
+	if __obf_d09f058c0a390c93.__obf_406325483a83b1fa == __obf_f3234e094c8ed488.__obf_406325483a83b1fa {
+		return __obf_d09f058c0a390c93.__obf_c36b36e18c228e7f.Cmp(__obf_f3234e094c8ed488.__obf_c36b36e18c228e7f)
 	}
 
-	__obf_e569aa78d09dc408, __obf_f8f48e5992257be1 := RescalePair(__obf_19a369452cd5fbde, __obf_e5610ee7ba67ce83)
+	__obf_c1fa73dffb7b10fa, __obf_3e0ad0062bf745cb := RescalePair(__obf_d09f058c0a390c93, __obf_f3234e094c8ed488)
 
-	return __obf_e569aa78d09dc408.__obf_6e5f77decbc21dea.Cmp(__obf_f8f48e5992257be1.__obf_6e5f77decbc21dea)
+	return __obf_c1fa73dffb7b10fa.__obf_c36b36e18c228e7f.Cmp(__obf_3e0ad0062bf745cb.__obf_c36b36e18c228e7f)
 }
 
 // Compare compares the numbers represented by d and d2 and returns:
@@ -1315,40 +1315,40 @@ func (__obf_19a369452cd5fbde Decimal) Cmp(__obf_e5610ee7ba67ce83 Decimal) int {
 //	-1 if d <  d2
 //	 0 if d == d2
 //	+1 if d >  d2
-func (__obf_19a369452cd5fbde Decimal) Compare(__obf_e5610ee7ba67ce83 Decimal) int {
-	return __obf_19a369452cd5fbde.Cmp(__obf_e5610ee7ba67ce83)
+func (__obf_d09f058c0a390c93 Decimal) Compare(__obf_f3234e094c8ed488 Decimal) int {
+	return __obf_d09f058c0a390c93.Cmp(__obf_f3234e094c8ed488)
 }
 
 // Equal returns whether the numbers represented by d and d2 are equal.
-func (__obf_19a369452cd5fbde Decimal) Equal(__obf_e5610ee7ba67ce83 Decimal) bool {
-	return __obf_19a369452cd5fbde.Cmp(__obf_e5610ee7ba67ce83) == 0
+func (__obf_d09f058c0a390c93 Decimal) Equal(__obf_f3234e094c8ed488 Decimal) bool {
+	return __obf_d09f058c0a390c93.Cmp(__obf_f3234e094c8ed488) == 0
 }
 
 // Deprecated: Equals is deprecated, please use Equal method instead.
-func (__obf_19a369452cd5fbde Decimal) Equals(__obf_e5610ee7ba67ce83 Decimal) bool {
-	return __obf_19a369452cd5fbde.Equal(__obf_e5610ee7ba67ce83)
+func (__obf_d09f058c0a390c93 Decimal) Equals(__obf_f3234e094c8ed488 Decimal) bool {
+	return __obf_d09f058c0a390c93.Equal(__obf_f3234e094c8ed488)
 }
 
 // GreaterThan (GT) returns true when d is greater than d2.
-func (__obf_19a369452cd5fbde Decimal) GreaterThan(__obf_e5610ee7ba67ce83 Decimal) bool {
-	return __obf_19a369452cd5fbde.Cmp(__obf_e5610ee7ba67ce83) == 1
+func (__obf_d09f058c0a390c93 Decimal) GreaterThan(__obf_f3234e094c8ed488 Decimal) bool {
+	return __obf_d09f058c0a390c93.Cmp(__obf_f3234e094c8ed488) == 1
 }
 
 // GreaterThanOrEqual (GTE) returns true when d is greater than or equal to d2.
-func (__obf_19a369452cd5fbde Decimal) GreaterThanOrEqual(__obf_e5610ee7ba67ce83 Decimal) bool {
-	__obf_633ebead09af5abb := __obf_19a369452cd5fbde.Cmp(__obf_e5610ee7ba67ce83)
-	return __obf_633ebead09af5abb == 1 || __obf_633ebead09af5abb == 0
+func (__obf_d09f058c0a390c93 Decimal) GreaterThanOrEqual(__obf_f3234e094c8ed488 Decimal) bool {
+	__obf_fabbd5845ceb048e := __obf_d09f058c0a390c93.Cmp(__obf_f3234e094c8ed488)
+	return __obf_fabbd5845ceb048e == 1 || __obf_fabbd5845ceb048e == 0
 }
 
 // LessThan (LT) returns true when d is less than d2.
-func (__obf_19a369452cd5fbde Decimal) LessThan(__obf_e5610ee7ba67ce83 Decimal) bool {
-	return __obf_19a369452cd5fbde.Cmp(__obf_e5610ee7ba67ce83) == -1
+func (__obf_d09f058c0a390c93 Decimal) LessThan(__obf_f3234e094c8ed488 Decimal) bool {
+	return __obf_d09f058c0a390c93.Cmp(__obf_f3234e094c8ed488) == -1
 }
 
 // LessThanOrEqual (LTE) returns true when d is less than or equal to d2.
-func (__obf_19a369452cd5fbde Decimal) LessThanOrEqual(__obf_e5610ee7ba67ce83 Decimal) bool {
-	__obf_633ebead09af5abb := __obf_19a369452cd5fbde.Cmp(__obf_e5610ee7ba67ce83)
-	return __obf_633ebead09af5abb == -1 || __obf_633ebead09af5abb == 0
+func (__obf_d09f058c0a390c93 Decimal) LessThanOrEqual(__obf_f3234e094c8ed488 Decimal) bool {
+	__obf_fabbd5845ceb048e := __obf_d09f058c0a390c93.Cmp(__obf_f3234e094c8ed488)
+	return __obf_fabbd5845ceb048e == -1 || __obf_fabbd5845ceb048e == 0
 }
 
 // Sign returns:
@@ -1356,11 +1356,11 @@ func (__obf_19a369452cd5fbde Decimal) LessThanOrEqual(__obf_e5610ee7ba67ce83 Dec
 //	-1 if d <  0
 //	 0 if d == 0
 //	+1 if d >  0
-func (__obf_19a369452cd5fbde Decimal) Sign() int {
-	if __obf_19a369452cd5fbde.__obf_6e5f77decbc21dea == nil {
+func (__obf_d09f058c0a390c93 Decimal) Sign() int {
+	if __obf_d09f058c0a390c93.__obf_c36b36e18c228e7f == nil {
 		return 0
 	}
-	return __obf_19a369452cd5fbde.__obf_6e5f77decbc21dea.Sign()
+	return __obf_d09f058c0a390c93.__obf_c36b36e18c228e7f.Sign()
 }
 
 // IsPositive return
@@ -1368,8 +1368,8 @@ func (__obf_19a369452cd5fbde Decimal) Sign() int {
 //	true if d > 0
 //	false if d == 0
 //	false if d < 0
-func (__obf_19a369452cd5fbde Decimal) IsPositive() bool {
-	return __obf_19a369452cd5fbde.Sign() == 1
+func (__obf_d09f058c0a390c93 Decimal) IsPositive() bool {
+	return __obf_d09f058c0a390c93.Sign() == 1
 }
 
 // IsNegative return
@@ -1377,8 +1377,8 @@ func (__obf_19a369452cd5fbde Decimal) IsPositive() bool {
 //	true if d < 0
 //	false if d == 0
 //	false if d > 0
-func (__obf_19a369452cd5fbde Decimal) IsNegative() bool {
-	return __obf_19a369452cd5fbde.Sign() == -1
+func (__obf_d09f058c0a390c93 Decimal) IsNegative() bool {
+	return __obf_d09f058c0a390c93.Sign() == -1
 }
 
 // IsZero return
@@ -1386,75 +1386,75 @@ func (__obf_19a369452cd5fbde Decimal) IsNegative() bool {
 //	true if d == 0
 //	false if d > 0
 //	false if d < 0
-func (__obf_19a369452cd5fbde Decimal) IsZero() bool {
-	return __obf_19a369452cd5fbde.Sign() == 0
+func (__obf_d09f058c0a390c93 Decimal) IsZero() bool {
+	return __obf_d09f058c0a390c93.Sign() == 0
 }
 
 // Exponent returns the exponent, or scale component of the decimal.
-func (__obf_19a369452cd5fbde Decimal) Exponent() int32 {
-	return __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43
+func (__obf_d09f058c0a390c93 Decimal) Exponent() int32 {
+	return __obf_d09f058c0a390c93.__obf_406325483a83b1fa
 }
 
 // Coefficient returns the coefficient of the decimal. It is scaled by 10^Exponent()
-func (__obf_19a369452cd5fbde Decimal) Coefficient() *big.Int {
-	__obf_19a369452cd5fbde.__obf_b1325bfc63b249a7()
+func (__obf_d09f058c0a390c93 Decimal) Coefficient() *big.Int {
+	__obf_d09f058c0a390c93.__obf_b119326c257b1b2a()
 	// we copy the coefficient so that mutating the result does not mutate the Decimal.
-	return new(big.Int).Set(__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea)
+	return new(big.Int).Set(__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f)
 }
 
 // CoefficientInt64 returns the coefficient of the decimal as int64. It is scaled by 10^Exponent()
 // If coefficient cannot be represented in an int64, the result will be undefined.
-func (__obf_19a369452cd5fbde Decimal) CoefficientInt64() int64 {
-	__obf_19a369452cd5fbde.__obf_b1325bfc63b249a7()
-	return __obf_19a369452cd5fbde.__obf_6e5f77decbc21dea.Int64()
+func (__obf_d09f058c0a390c93 Decimal) CoefficientInt64() int64 {
+	__obf_d09f058c0a390c93.__obf_b119326c257b1b2a()
+	return __obf_d09f058c0a390c93.__obf_c36b36e18c228e7f.Int64()
 }
 
 // IntPart returns the integer component of the decimal.
-func (__obf_19a369452cd5fbde Decimal) IntPart() int64 {
-	__obf_fe4a29a2006b0e73 := __obf_19a369452cd5fbde.__obf_957a7b5240163386(0)
-	return __obf_fe4a29a2006b0e73.__obf_6e5f77decbc21dea.Int64()
+func (__obf_d09f058c0a390c93 Decimal) IntPart() int64 {
+	__obf_1319cc31f48d3a28 := __obf_d09f058c0a390c93.__obf_d44df924a1b98873(0)
+	return __obf_1319cc31f48d3a28.__obf_c36b36e18c228e7f.Int64()
 }
 
 // BigInt returns integer component of the decimal as a BigInt.
-func (__obf_19a369452cd5fbde Decimal) BigInt() *big.Int {
-	__obf_fe4a29a2006b0e73 := __obf_19a369452cd5fbde.__obf_957a7b5240163386(0)
-	return __obf_fe4a29a2006b0e73.__obf_6e5f77decbc21dea
+func (__obf_d09f058c0a390c93 Decimal) BigInt() *big.Int {
+	__obf_1319cc31f48d3a28 := __obf_d09f058c0a390c93.__obf_d44df924a1b98873(0)
+	return __obf_1319cc31f48d3a28.__obf_c36b36e18c228e7f
 }
 
 // BigFloat returns decimal as BigFloat.
 // Be aware that casting decimal to BigFloat might cause a loss of precision.
-func (__obf_19a369452cd5fbde Decimal) BigFloat() *big.Float {
-	__obf_fd7d6ef724312b50 := &big.Float{}
-	__obf_fd7d6ef724312b50.SetString(__obf_19a369452cd5fbde.String())
-	return __obf_fd7d6ef724312b50
+func (__obf_d09f058c0a390c93 Decimal) BigFloat() *big.Float {
+	__obf_cb430c29f24deb1e := &big.Float{}
+	__obf_cb430c29f24deb1e.SetString(__obf_d09f058c0a390c93.String())
+	return __obf_cb430c29f24deb1e
 }
 
 // Rat returns a rational number representation of the decimal.
-func (__obf_19a369452cd5fbde Decimal) Rat() *big.Rat {
-	__obf_19a369452cd5fbde.__obf_b1325bfc63b249a7()
-	if __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 <= 0 {
+func (__obf_d09f058c0a390c93 Decimal) Rat() *big.Rat {
+	__obf_d09f058c0a390c93.__obf_b119326c257b1b2a()
+	if __obf_d09f058c0a390c93.__obf_406325483a83b1fa <= 0 {
 		// NOTE(vadim): must negate after casting to prevent int32 overflow
-		__obf_dec3313ff2430ad1 := new(big.Int).Exp(__obf_6e3308650b479548, big.NewInt(-int64(__obf_19a369452cd5fbde.__obf_1ef84065a6a49f43)), nil)
-		return new(big.Rat).SetFrac(__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea, __obf_dec3313ff2430ad1)
+		__obf_3fd45fa1be8c5bee := new(big.Int).Exp(__obf_44ff59a8ed385a0e, big.NewInt(-int64(__obf_d09f058c0a390c93.__obf_406325483a83b1fa)), nil)
+		return new(big.Rat).SetFrac(__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f, __obf_3fd45fa1be8c5bee)
 	}
 
-	__obf_5f9f7cde1c1cb6b0 := new(big.Int).Exp(__obf_6e3308650b479548, big.NewInt(int64(__obf_19a369452cd5fbde.__obf_1ef84065a6a49f43)), nil)
-	__obf_f33935c2c4a07945 := new(big.Int).Mul(__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea, __obf_5f9f7cde1c1cb6b0)
-	return new(big.Rat).SetFrac(__obf_f33935c2c4a07945, __obf_6b7012530e205f39)
+	__obf_06d411512358dedf := new(big.Int).Exp(__obf_44ff59a8ed385a0e, big.NewInt(int64(__obf_d09f058c0a390c93.__obf_406325483a83b1fa)), nil)
+	__obf_e7f08852b714628e := new(big.Int).Mul(__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f, __obf_06d411512358dedf)
+	return new(big.Rat).SetFrac(__obf_e7f08852b714628e, __obf_25f16531cde494de)
 }
 
 // Float64 returns the nearest float64 value for d and a bool indicating
 // whether f represents d exactly.
 // For more details, see the documentation for big.Rat.Float64
-func (__obf_19a369452cd5fbde Decimal) Float64() (__obf_fd7d6ef724312b50 float64, __obf_8fed91263b695030 bool) {
-	return __obf_19a369452cd5fbde.Rat().Float64()
+func (__obf_d09f058c0a390c93 Decimal) Float64() (__obf_cb430c29f24deb1e float64, __obf_1d7338aa878aa2d3 bool) {
+	return __obf_d09f058c0a390c93.Rat().Float64()
 }
 
 // InexactFloat64 returns the nearest float64 value for d.
 // It doesn't indicate if the returned value represents d exactly.
-func (__obf_19a369452cd5fbde Decimal) InexactFloat64() float64 {
-	__obf_fd7d6ef724312b50, _ := __obf_19a369452cd5fbde.Float64()
-	return __obf_fd7d6ef724312b50
+func (__obf_d09f058c0a390c93 Decimal) InexactFloat64() float64 {
+	__obf_cb430c29f24deb1e, _ := __obf_d09f058c0a390c93.Float64()
+	return __obf_cb430c29f24deb1e
 }
 
 // String returns the string representation of the decimal
@@ -1468,8 +1468,8 @@ func (__obf_19a369452cd5fbde Decimal) InexactFloat64() float64 {
 // Output:
 //
 //	-12.345
-func (__obf_19a369452cd5fbde Decimal) String() string {
-	return __obf_19a369452cd5fbde.string(true)
+func (__obf_d09f058c0a390c93 Decimal) String() string {
+	return __obf_d09f058c0a390c93.string(true)
 }
 
 // StringFixed returns a rounded fixed-point string with places digits after
@@ -1484,9 +1484,9 @@ func (__obf_19a369452cd5fbde Decimal) String() string {
 //	NewFromFloat(5.45).StringFixed(2) // output: "5.45"
 //	NewFromFloat(5.45).StringFixed(3) // output: "5.450"
 //	NewFromFloat(545).StringFixed(-1) // output: "550"
-func (__obf_19a369452cd5fbde Decimal) StringFixed(__obf_eb137eafa1a56d73 int32) string {
-	__obf_cd9f5961f510f6b4 := __obf_19a369452cd5fbde.Round(__obf_eb137eafa1a56d73)
-	return __obf_cd9f5961f510f6b4.string(false)
+func (__obf_d09f058c0a390c93 Decimal) StringFixed(__obf_c97f9440e7da0c32 int32) string {
+	__obf_2a6386939d30aa57 := __obf_d09f058c0a390c93.Round(__obf_c97f9440e7da0c32)
+	return __obf_2a6386939d30aa57.string(false)
 }
 
 // StringFixedBank returns a banker rounded fixed-point string with places digits
@@ -1501,16 +1501,16 @@ func (__obf_19a369452cd5fbde Decimal) StringFixed(__obf_eb137eafa1a56d73 int32) 
 //	NewFromFloat(5.45).StringFixedBank(2) // output: "5.45"
 //	NewFromFloat(5.45).StringFixedBank(3) // output: "5.450"
 //	NewFromFloat(545).StringFixedBank(-1) // output: "540"
-func (__obf_19a369452cd5fbde Decimal) StringFixedBank(__obf_eb137eafa1a56d73 int32) string {
-	__obf_cd9f5961f510f6b4 := __obf_19a369452cd5fbde.RoundBank(__obf_eb137eafa1a56d73)
-	return __obf_cd9f5961f510f6b4.string(false)
+func (__obf_d09f058c0a390c93 Decimal) StringFixedBank(__obf_c97f9440e7da0c32 int32) string {
+	__obf_2a6386939d30aa57 := __obf_d09f058c0a390c93.RoundBank(__obf_c97f9440e7da0c32)
+	return __obf_2a6386939d30aa57.string(false)
 }
 
 // StringFixedCash returns a Swedish/Cash rounded fixed-point string. For
 // more details see the documentation at function RoundCash.
-func (__obf_19a369452cd5fbde Decimal) StringFixedCash(__obf_0f11bf0455c26e02 uint8) string {
-	__obf_cd9f5961f510f6b4 := __obf_19a369452cd5fbde.RoundCash(__obf_0f11bf0455c26e02)
-	return __obf_cd9f5961f510f6b4.string(false)
+func (__obf_d09f058c0a390c93 Decimal) StringFixedCash(__obf_62b88200d4864d59 uint8) string {
+	__obf_2a6386939d30aa57 := __obf_d09f058c0a390c93.RoundCash(__obf_62b88200d4864d59)
+	return __obf_2a6386939d30aa57.string(false)
 }
 
 // Round rounds the decimal to places decimal places.
@@ -1520,28 +1520,28 @@ func (__obf_19a369452cd5fbde Decimal) StringFixedCash(__obf_0f11bf0455c26e02 uin
 //
 //	NewFromFloat(5.45).Round(1).String() // output: "5.5"
 //	NewFromFloat(545).Round(-1).String() // output: "550"
-func (__obf_19a369452cd5fbde Decimal) Round(__obf_eb137eafa1a56d73 int32) Decimal {
-	if __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 == -__obf_eb137eafa1a56d73 {
-		return __obf_19a369452cd5fbde
+func (__obf_d09f058c0a390c93 Decimal) Round(__obf_c97f9440e7da0c32 int32) Decimal {
+	if __obf_d09f058c0a390c93.__obf_406325483a83b1fa == -__obf_c97f9440e7da0c32 {
+		return __obf_d09f058c0a390c93
 	}
 	// truncate to places + 1
-	__obf_0f6065acafe14405 := __obf_19a369452cd5fbde.__obf_957a7b5240163386(-__obf_eb137eafa1a56d73 - 1)
+	__obf_afc53812d03631be := __obf_d09f058c0a390c93.__obf_d44df924a1b98873(-__obf_c97f9440e7da0c32 - 1)
 
 	// add sign(d) * 0.5
-	if __obf_0f6065acafe14405.__obf_6e5f77decbc21dea.Sign() < 0 {
-		__obf_0f6065acafe14405.__obf_6e5f77decbc21dea.Sub(__obf_0f6065acafe14405.__obf_6e5f77decbc21dea, __obf_a02c1e3273085f0d)
+	if __obf_afc53812d03631be.__obf_c36b36e18c228e7f.Sign() < 0 {
+		__obf_afc53812d03631be.__obf_c36b36e18c228e7f.Sub(__obf_afc53812d03631be.__obf_c36b36e18c228e7f, __obf_dc2da84e9cc8100a)
 	} else {
-		__obf_0f6065acafe14405.__obf_6e5f77decbc21dea.Add(__obf_0f6065acafe14405.__obf_6e5f77decbc21dea, __obf_a02c1e3273085f0d)
+		__obf_afc53812d03631be.__obf_c36b36e18c228e7f.Add(__obf_afc53812d03631be.__obf_c36b36e18c228e7f, __obf_dc2da84e9cc8100a)
 	}
 
 	// floor for positive numbers, ceil for negative numbers
-	_, __obf_3f873ba4f9076041 := __obf_0f6065acafe14405.__obf_6e5f77decbc21dea.DivMod(__obf_0f6065acafe14405.__obf_6e5f77decbc21dea, __obf_6e3308650b479548, new(big.Int))
-	__obf_0f6065acafe14405.__obf_1ef84065a6a49f43++
-	if __obf_0f6065acafe14405.__obf_6e5f77decbc21dea.Sign() < 0 && __obf_3f873ba4f9076041.Cmp(__obf_91bffcce19efb7d8) != 0 {
-		__obf_0f6065acafe14405.__obf_6e5f77decbc21dea.Add(__obf_0f6065acafe14405.__obf_6e5f77decbc21dea, __obf_6b7012530e205f39)
+	_, __obf_b041e2c85e138a64 := __obf_afc53812d03631be.__obf_c36b36e18c228e7f.DivMod(__obf_afc53812d03631be.__obf_c36b36e18c228e7f, __obf_44ff59a8ed385a0e, new(big.Int))
+	__obf_afc53812d03631be.__obf_406325483a83b1fa++
+	if __obf_afc53812d03631be.__obf_c36b36e18c228e7f.Sign() < 0 && __obf_b041e2c85e138a64.Cmp(__obf_1bb56bff7931ff30) != 0 {
+		__obf_afc53812d03631be.__obf_c36b36e18c228e7f.Add(__obf_afc53812d03631be.__obf_c36b36e18c228e7f, __obf_25f16531cde494de)
 	}
 
-	return __obf_0f6065acafe14405
+	return __obf_afc53812d03631be
 }
 
 // RoundCeil rounds the decimal towards +infinity.
@@ -1552,21 +1552,21 @@ func (__obf_19a369452cd5fbde Decimal) Round(__obf_eb137eafa1a56d73 int32) Decima
 //	NewFromFloat(500).RoundCeil(-2).String()   // output: "500"
 //	NewFromFloat(1.1001).RoundCeil(2).String() // output: "1.11"
 //	NewFromFloat(-1.454).RoundCeil(1).String() // output: "-1.4"
-func (__obf_19a369452cd5fbde Decimal) RoundCeil(__obf_eb137eafa1a56d73 int32) Decimal {
-	if __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 >= -__obf_eb137eafa1a56d73 {
-		return __obf_19a369452cd5fbde
+func (__obf_d09f058c0a390c93 Decimal) RoundCeil(__obf_c97f9440e7da0c32 int32) Decimal {
+	if __obf_d09f058c0a390c93.__obf_406325483a83b1fa >= -__obf_c97f9440e7da0c32 {
+		return __obf_d09f058c0a390c93
 	}
 
-	__obf_73ec129015c1fb73 := __obf_19a369452cd5fbde.__obf_957a7b5240163386(-__obf_eb137eafa1a56d73)
-	if __obf_19a369452cd5fbde.Equal(__obf_73ec129015c1fb73) {
-		return __obf_19a369452cd5fbde
+	__obf_0b19174f046cd670 := __obf_d09f058c0a390c93.__obf_d44df924a1b98873(-__obf_c97f9440e7da0c32)
+	if __obf_d09f058c0a390c93.Equal(__obf_0b19174f046cd670) {
+		return __obf_d09f058c0a390c93
 	}
 
-	if __obf_19a369452cd5fbde.__obf_6e5f77decbc21dea.Sign() > 0 {
-		__obf_73ec129015c1fb73.__obf_6e5f77decbc21dea.Add(__obf_73ec129015c1fb73.__obf_6e5f77decbc21dea, __obf_6b7012530e205f39)
+	if __obf_d09f058c0a390c93.__obf_c36b36e18c228e7f.Sign() > 0 {
+		__obf_0b19174f046cd670.__obf_c36b36e18c228e7f.Add(__obf_0b19174f046cd670.__obf_c36b36e18c228e7f, __obf_25f16531cde494de)
 	}
 
-	return __obf_73ec129015c1fb73
+	return __obf_0b19174f046cd670
 }
 
 // RoundFloor rounds the decimal towards -infinity.
@@ -1577,21 +1577,21 @@ func (__obf_19a369452cd5fbde Decimal) RoundCeil(__obf_eb137eafa1a56d73 int32) De
 //	NewFromFloat(-500).RoundFloor(-2).String()   // output: "-500"
 //	NewFromFloat(1.1001).RoundFloor(2).String() // output: "1.1"
 //	NewFromFloat(-1.454).RoundFloor(1).String() // output: "-1.5"
-func (__obf_19a369452cd5fbde Decimal) RoundFloor(__obf_eb137eafa1a56d73 int32) Decimal {
-	if __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 >= -__obf_eb137eafa1a56d73 {
-		return __obf_19a369452cd5fbde
+func (__obf_d09f058c0a390c93 Decimal) RoundFloor(__obf_c97f9440e7da0c32 int32) Decimal {
+	if __obf_d09f058c0a390c93.__obf_406325483a83b1fa >= -__obf_c97f9440e7da0c32 {
+		return __obf_d09f058c0a390c93
 	}
 
-	__obf_73ec129015c1fb73 := __obf_19a369452cd5fbde.__obf_957a7b5240163386(-__obf_eb137eafa1a56d73)
-	if __obf_19a369452cd5fbde.Equal(__obf_73ec129015c1fb73) {
-		return __obf_19a369452cd5fbde
+	__obf_0b19174f046cd670 := __obf_d09f058c0a390c93.__obf_d44df924a1b98873(-__obf_c97f9440e7da0c32)
+	if __obf_d09f058c0a390c93.Equal(__obf_0b19174f046cd670) {
+		return __obf_d09f058c0a390c93
 	}
 
-	if __obf_19a369452cd5fbde.__obf_6e5f77decbc21dea.Sign() < 0 {
-		__obf_73ec129015c1fb73.__obf_6e5f77decbc21dea.Sub(__obf_73ec129015c1fb73.__obf_6e5f77decbc21dea, __obf_6b7012530e205f39)
+	if __obf_d09f058c0a390c93.__obf_c36b36e18c228e7f.Sign() < 0 {
+		__obf_0b19174f046cd670.__obf_c36b36e18c228e7f.Sub(__obf_0b19174f046cd670.__obf_c36b36e18c228e7f, __obf_25f16531cde494de)
 	}
 
-	return __obf_73ec129015c1fb73
+	return __obf_0b19174f046cd670
 }
 
 // RoundUp rounds the decimal away from zero.
@@ -1602,23 +1602,23 @@ func (__obf_19a369452cd5fbde Decimal) RoundFloor(__obf_eb137eafa1a56d73 int32) D
 //	NewFromFloat(500).RoundUp(-2).String()   // output: "500"
 //	NewFromFloat(1.1001).RoundUp(2).String() // output: "1.11"
 //	NewFromFloat(-1.454).RoundUp(1).String() // output: "-1.5"
-func (__obf_19a369452cd5fbde Decimal) RoundUp(__obf_eb137eafa1a56d73 int32) Decimal {
-	if __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 >= -__obf_eb137eafa1a56d73 {
-		return __obf_19a369452cd5fbde
+func (__obf_d09f058c0a390c93 Decimal) RoundUp(__obf_c97f9440e7da0c32 int32) Decimal {
+	if __obf_d09f058c0a390c93.__obf_406325483a83b1fa >= -__obf_c97f9440e7da0c32 {
+		return __obf_d09f058c0a390c93
 	}
 
-	__obf_73ec129015c1fb73 := __obf_19a369452cd5fbde.__obf_957a7b5240163386(-__obf_eb137eafa1a56d73)
-	if __obf_19a369452cd5fbde.Equal(__obf_73ec129015c1fb73) {
-		return __obf_19a369452cd5fbde
+	__obf_0b19174f046cd670 := __obf_d09f058c0a390c93.__obf_d44df924a1b98873(-__obf_c97f9440e7da0c32)
+	if __obf_d09f058c0a390c93.Equal(__obf_0b19174f046cd670) {
+		return __obf_d09f058c0a390c93
 	}
 
-	if __obf_19a369452cd5fbde.__obf_6e5f77decbc21dea.Sign() > 0 {
-		__obf_73ec129015c1fb73.__obf_6e5f77decbc21dea.Add(__obf_73ec129015c1fb73.__obf_6e5f77decbc21dea, __obf_6b7012530e205f39)
-	} else if __obf_19a369452cd5fbde.__obf_6e5f77decbc21dea.Sign() < 0 {
-		__obf_73ec129015c1fb73.__obf_6e5f77decbc21dea.Sub(__obf_73ec129015c1fb73.__obf_6e5f77decbc21dea, __obf_6b7012530e205f39)
+	if __obf_d09f058c0a390c93.__obf_c36b36e18c228e7f.Sign() > 0 {
+		__obf_0b19174f046cd670.__obf_c36b36e18c228e7f.Add(__obf_0b19174f046cd670.__obf_c36b36e18c228e7f, __obf_25f16531cde494de)
+	} else if __obf_d09f058c0a390c93.__obf_c36b36e18c228e7f.Sign() < 0 {
+		__obf_0b19174f046cd670.__obf_c36b36e18c228e7f.Sub(__obf_0b19174f046cd670.__obf_c36b36e18c228e7f, __obf_25f16531cde494de)
 	}
 
-	return __obf_73ec129015c1fb73
+	return __obf_0b19174f046cd670
 }
 
 // RoundDown rounds the decimal towards zero.
@@ -1629,16 +1629,16 @@ func (__obf_19a369452cd5fbde Decimal) RoundUp(__obf_eb137eafa1a56d73 int32) Deci
 //	NewFromFloat(-500).RoundDown(-2).String()   // output: "-500"
 //	NewFromFloat(1.1001).RoundDown(2).String() // output: "1.1"
 //	NewFromFloat(-1.454).RoundDown(1).String() // output: "-1.4"
-func (__obf_19a369452cd5fbde Decimal) RoundDown(__obf_eb137eafa1a56d73 int32) Decimal {
-	if __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 >= -__obf_eb137eafa1a56d73 {
-		return __obf_19a369452cd5fbde
+func (__obf_d09f058c0a390c93 Decimal) RoundDown(__obf_c97f9440e7da0c32 int32) Decimal {
+	if __obf_d09f058c0a390c93.__obf_406325483a83b1fa >= -__obf_c97f9440e7da0c32 {
+		return __obf_d09f058c0a390c93
 	}
 
-	__obf_73ec129015c1fb73 := __obf_19a369452cd5fbde.__obf_957a7b5240163386(-__obf_eb137eafa1a56d73)
-	if __obf_19a369452cd5fbde.Equal(__obf_73ec129015c1fb73) {
-		return __obf_19a369452cd5fbde
+	__obf_0b19174f046cd670 := __obf_d09f058c0a390c93.__obf_d44df924a1b98873(-__obf_c97f9440e7da0c32)
+	if __obf_d09f058c0a390c93.Equal(__obf_0b19174f046cd670) {
+		return __obf_d09f058c0a390c93
 	}
-	return __obf_73ec129015c1fb73
+	return __obf_0b19174f046cd670
 }
 
 // RoundBank rounds the decimal to places decimal places.
@@ -1655,21 +1655,21 @@ func (__obf_19a369452cd5fbde Decimal) RoundDown(__obf_eb137eafa1a56d73 int32) De
 //	NewFromFloat(546).RoundBank(-1).String() // output: "550"
 //	NewFromFloat(5.55).RoundBank(1).String() // output: "5.6"
 //	NewFromFloat(555).RoundBank(-1).String() // output: "560"
-func (__obf_19a369452cd5fbde Decimal) RoundBank(__obf_eb137eafa1a56d73 int32) Decimal {
+func (__obf_d09f058c0a390c93 Decimal) RoundBank(__obf_c97f9440e7da0c32 int32) Decimal {
 
-	__obf_27ea7adcf083f578 := __obf_19a369452cd5fbde.Round(__obf_eb137eafa1a56d73)
-	__obf_e01abbc36ecc041e := __obf_19a369452cd5fbde.Sub(__obf_27ea7adcf083f578).Abs()
+	__obf_603401f5bd2df87a := __obf_d09f058c0a390c93.Round(__obf_c97f9440e7da0c32)
+	__obf_0b98c67f785f60dc := __obf_d09f058c0a390c93.Sub(__obf_603401f5bd2df87a).Abs()
 
-	__obf_51d13fb3aa70db27 := New(5, -__obf_eb137eafa1a56d73-1)
-	if __obf_e01abbc36ecc041e.Cmp(__obf_51d13fb3aa70db27) == 0 && __obf_27ea7adcf083f578.__obf_6e5f77decbc21dea.Bit(0) != 0 {
-		if __obf_27ea7adcf083f578.__obf_6e5f77decbc21dea.Sign() < 0 {
-			__obf_27ea7adcf083f578.__obf_6e5f77decbc21dea.Add(__obf_27ea7adcf083f578.__obf_6e5f77decbc21dea, __obf_6b7012530e205f39)
+	__obf_34d8fed473f6c6f8 := New(5, -__obf_c97f9440e7da0c32-1)
+	if __obf_0b98c67f785f60dc.Cmp(__obf_34d8fed473f6c6f8) == 0 && __obf_603401f5bd2df87a.__obf_c36b36e18c228e7f.Bit(0) != 0 {
+		if __obf_603401f5bd2df87a.__obf_c36b36e18c228e7f.Sign() < 0 {
+			__obf_603401f5bd2df87a.__obf_c36b36e18c228e7f.Add(__obf_603401f5bd2df87a.__obf_c36b36e18c228e7f, __obf_25f16531cde494de)
 		} else {
-			__obf_27ea7adcf083f578.__obf_6e5f77decbc21dea.Sub(__obf_27ea7adcf083f578.__obf_6e5f77decbc21dea, __obf_6b7012530e205f39)
+			__obf_603401f5bd2df87a.__obf_c36b36e18c228e7f.Sub(__obf_603401f5bd2df87a.__obf_c36b36e18c228e7f, __obf_25f16531cde494de)
 		}
 	}
 
-	return __obf_27ea7adcf083f578
+	return __obf_603401f5bd2df87a
 }
 
 // RoundCash aka Cash/Penny/öre rounding rounds decimal to a specific
@@ -1684,65 +1684,65 @@ func (__obf_19a369452cd5fbde Decimal) RoundBank(__obf_eb137eafa1a56d73 int32) De
 //	100: 100 cent rounding 3.50 => 4.00
 //
 // For more details: https://en.wikipedia.org/wiki/Cash_rounding
-func (__obf_19a369452cd5fbde Decimal) RoundCash(__obf_0f11bf0455c26e02 uint8) Decimal {
-	var __obf_2ef6e82509e87a46 *big.Int
-	switch __obf_0f11bf0455c26e02 {
+func (__obf_d09f058c0a390c93 Decimal) RoundCash(__obf_62b88200d4864d59 uint8) Decimal {
+	var __obf_4bc619935b3fdcd5 *big.Int
+	switch __obf_62b88200d4864d59 {
 	case 5:
-		__obf_2ef6e82509e87a46 = __obf_cc9bfe65d22c82e4
+		__obf_4bc619935b3fdcd5 = __obf_3316a3319b2a8b33
 	case 10:
-		__obf_2ef6e82509e87a46 = __obf_6e3308650b479548
+		__obf_4bc619935b3fdcd5 = __obf_44ff59a8ed385a0e
 	case 25:
-		__obf_2ef6e82509e87a46 = __obf_7a3c2c07b99ffb48
+		__obf_4bc619935b3fdcd5 = __obf_e1dd4002d73ad6cd
 	case 50:
-		__obf_2ef6e82509e87a46 = __obf_3338f87aa2a5f65a
+		__obf_4bc619935b3fdcd5 = __obf_3cbd576e784ed478
 	case 100:
-		__obf_2ef6e82509e87a46 = __obf_6b7012530e205f39
+		__obf_4bc619935b3fdcd5 = __obf_25f16531cde494de
 	default:
-		panic(fmt.Sprintf("Decimal does not support this Cash rounding interval `%d`. Supported: 5, 10, 25, 50, 100", __obf_0f11bf0455c26e02))
+		panic(fmt.Sprintf("Decimal does not support this Cash rounding interval `%d`. Supported: 5, 10, 25, 50, 100", __obf_62b88200d4864d59))
 	}
-	__obf_473188eb89a369e4 := Decimal{
-		__obf_6e5f77decbc21dea: __obf_2ef6e82509e87a46,
+	__obf_ff9aa3fb34ef1c3e := Decimal{
+		__obf_c36b36e18c228e7f: __obf_4bc619935b3fdcd5,
 	}
 
 	// TODO: optimize those calculations to reduce the high allocations (~29 allocs).
-	return __obf_19a369452cd5fbde.Mul(__obf_473188eb89a369e4).Round(0).Div(__obf_473188eb89a369e4).Truncate(2)
+	return __obf_d09f058c0a390c93.Mul(__obf_ff9aa3fb34ef1c3e).Round(0).Div(__obf_ff9aa3fb34ef1c3e).Truncate(2)
 }
 
 // Floor returns the nearest integer value less than or equal to d.
-func (__obf_19a369452cd5fbde Decimal) Floor() Decimal {
-	__obf_19a369452cd5fbde.__obf_b1325bfc63b249a7()
+func (__obf_d09f058c0a390c93 Decimal) Floor() Decimal {
+	__obf_d09f058c0a390c93.__obf_b119326c257b1b2a()
 
-	if __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 >= 0 {
-		return __obf_19a369452cd5fbde
+	if __obf_d09f058c0a390c93.__obf_406325483a83b1fa >= 0 {
+		return __obf_d09f058c0a390c93
 	}
 
-	__obf_1ef84065a6a49f43 := big.NewInt(10)
+	__obf_406325483a83b1fa := big.NewInt(10)
 
 	// NOTE(vadim): must negate after casting to prevent int32 overflow
-	__obf_1ef84065a6a49f43.Exp(__obf_1ef84065a6a49f43, big.NewInt(-int64(__obf_19a369452cd5fbde.__obf_1ef84065a6a49f43)), nil)
+	__obf_406325483a83b1fa.Exp(__obf_406325483a83b1fa, big.NewInt(-int64(__obf_d09f058c0a390c93.__obf_406325483a83b1fa)), nil)
 
-	__obf_f0a3b6dafda7d395 := new(big.Int).Div(__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea, __obf_1ef84065a6a49f43)
-	return Decimal{__obf_6e5f77decbc21dea: __obf_f0a3b6dafda7d395, __obf_1ef84065a6a49f43: 0}
+	__obf_cfabb27034b7f97a := new(big.Int).Div(__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f, __obf_406325483a83b1fa)
+	return Decimal{__obf_c36b36e18c228e7f: __obf_cfabb27034b7f97a, __obf_406325483a83b1fa: 0}
 }
 
 // Ceil returns the nearest integer value greater than or equal to d.
-func (__obf_19a369452cd5fbde Decimal) Ceil() Decimal {
-	__obf_19a369452cd5fbde.__obf_b1325bfc63b249a7()
+func (__obf_d09f058c0a390c93 Decimal) Ceil() Decimal {
+	__obf_d09f058c0a390c93.__obf_b119326c257b1b2a()
 
-	if __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 >= 0 {
-		return __obf_19a369452cd5fbde
+	if __obf_d09f058c0a390c93.__obf_406325483a83b1fa >= 0 {
+		return __obf_d09f058c0a390c93
 	}
 
-	__obf_1ef84065a6a49f43 := big.NewInt(10)
+	__obf_406325483a83b1fa := big.NewInt(10)
 
 	// NOTE(vadim): must negate after casting to prevent int32 overflow
-	__obf_1ef84065a6a49f43.Exp(__obf_1ef84065a6a49f43, big.NewInt(-int64(__obf_19a369452cd5fbde.__obf_1ef84065a6a49f43)), nil)
+	__obf_406325483a83b1fa.Exp(__obf_406325483a83b1fa, big.NewInt(-int64(__obf_d09f058c0a390c93.__obf_406325483a83b1fa)), nil)
 
-	__obf_f0a3b6dafda7d395, __obf_3f873ba4f9076041 := new(big.Int).DivMod(__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea, __obf_1ef84065a6a49f43, new(big.Int))
-	if __obf_3f873ba4f9076041.Cmp(__obf_91bffcce19efb7d8) != 0 {
-		__obf_f0a3b6dafda7d395.Add(__obf_f0a3b6dafda7d395, __obf_6b7012530e205f39)
+	__obf_cfabb27034b7f97a, __obf_b041e2c85e138a64 := new(big.Int).DivMod(__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f, __obf_406325483a83b1fa, new(big.Int))
+	if __obf_b041e2c85e138a64.Cmp(__obf_1bb56bff7931ff30) != 0 {
+		__obf_cfabb27034b7f97a.Add(__obf_cfabb27034b7f97a, __obf_25f16531cde494de)
 	}
-	return Decimal{__obf_6e5f77decbc21dea: __obf_f0a3b6dafda7d395, __obf_1ef84065a6a49f43: 0}
+	return Decimal{__obf_c36b36e18c228e7f: __obf_cfabb27034b7f97a, __obf_406325483a83b1fa: 0}
 }
 
 // Truncate truncates off digits from the number, without rounding.
@@ -1752,131 +1752,131 @@ func (__obf_19a369452cd5fbde Decimal) Ceil() Decimal {
 // Example:
 //
 //	decimal.NewFromString("123.456").Truncate(2).String() // "123.45"
-func (__obf_19a369452cd5fbde Decimal) Truncate(__obf_fb38b245d2cdb3ee int32) Decimal {
-	__obf_19a369452cd5fbde.__obf_b1325bfc63b249a7()
-	if __obf_fb38b245d2cdb3ee >= 0 && -__obf_fb38b245d2cdb3ee > __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 {
-		return __obf_19a369452cd5fbde.__obf_957a7b5240163386(-__obf_fb38b245d2cdb3ee)
+func (__obf_d09f058c0a390c93 Decimal) Truncate(__obf_7efed86618b2f272 int32) Decimal {
+	__obf_d09f058c0a390c93.__obf_b119326c257b1b2a()
+	if __obf_7efed86618b2f272 >= 0 && -__obf_7efed86618b2f272 > __obf_d09f058c0a390c93.__obf_406325483a83b1fa {
+		return __obf_d09f058c0a390c93.__obf_d44df924a1b98873(-__obf_7efed86618b2f272)
 	}
-	return __obf_19a369452cd5fbde
+	return __obf_d09f058c0a390c93
 }
 
 // UnmarshalJSON implements the json.Unmarshaler interface.
-func (__obf_19a369452cd5fbde *Decimal) UnmarshalJSON(__obf_bb0607f4ee95f9e9 []byte) error {
-	if string(__obf_bb0607f4ee95f9e9) == "null" {
+func (__obf_d09f058c0a390c93 *Decimal) UnmarshalJSON(__obf_e8fd8b794f91b308 []byte) error {
+	if string(__obf_e8fd8b794f91b308) == "null" {
 		return nil
 	}
 
-	__obf_1e6e3de76535e1bf, __obf_68bcf986f9cdf0c0 := __obf_b4b0c2ff19759ebc(__obf_bb0607f4ee95f9e9)
-	if __obf_68bcf986f9cdf0c0 != nil {
-		return fmt.Errorf("error decoding string '%s': %s", __obf_bb0607f4ee95f9e9, __obf_68bcf986f9cdf0c0)
+	__obf_d27522cdebc9fff3, __obf_c1d612f6bfc234d7 := __obf_4404c46e45e621bb(__obf_e8fd8b794f91b308)
+	if __obf_c1d612f6bfc234d7 != nil {
+		return fmt.Errorf("error decoding string '%s': %s", __obf_e8fd8b794f91b308, __obf_c1d612f6bfc234d7)
 	}
 
-	__obf_ae16adf734cfe1aa, __obf_68bcf986f9cdf0c0 := NewFromString(__obf_1e6e3de76535e1bf)
-	*__obf_19a369452cd5fbde = __obf_ae16adf734cfe1aa
-	if __obf_68bcf986f9cdf0c0 != nil {
-		return fmt.Errorf("error decoding string '%s': %s", __obf_1e6e3de76535e1bf, __obf_68bcf986f9cdf0c0)
+	__obf_0962dc77c6b6239b, __obf_c1d612f6bfc234d7 := NewFromString(__obf_d27522cdebc9fff3)
+	*__obf_d09f058c0a390c93 = __obf_0962dc77c6b6239b
+	if __obf_c1d612f6bfc234d7 != nil {
+		return fmt.Errorf("error decoding string '%s': %s", __obf_d27522cdebc9fff3, __obf_c1d612f6bfc234d7)
 	}
 	return nil
 }
 
 // MarshalJSON implements the json.Marshaler interface.
-func (__obf_19a369452cd5fbde Decimal) MarshalJSON() ([]byte, error) {
-	var __obf_1e6e3de76535e1bf string
+func (__obf_d09f058c0a390c93 Decimal) MarshalJSON() ([]byte, error) {
+	var __obf_d27522cdebc9fff3 string
 	if MarshalJSONWithoutQuotes {
-		__obf_1e6e3de76535e1bf = __obf_19a369452cd5fbde.String()
+		__obf_d27522cdebc9fff3 = __obf_d09f058c0a390c93.String()
 	} else {
-		__obf_1e6e3de76535e1bf = "\"" + __obf_19a369452cd5fbde.String() + "\""
+		__obf_d27522cdebc9fff3 = "\"" + __obf_d09f058c0a390c93.String() + "\""
 	}
-	return []byte(__obf_1e6e3de76535e1bf), nil
+	return []byte(__obf_d27522cdebc9fff3), nil
 }
 
 // UnmarshalBinary implements the encoding.BinaryUnmarshaler interface. As a string representation
 // is already used when encoding to text, this method stores that string as []byte
-func (__obf_19a369452cd5fbde *Decimal) UnmarshalBinary(__obf_b774665a4676567d []byte) error {
+func (__obf_d09f058c0a390c93 *Decimal) UnmarshalBinary(__obf_76bba392325e4533 []byte) error {
 	// Verify we have at least 4 bytes for the exponent. The GOB encoded value
 	// may be empty.
-	if len(__obf_b774665a4676567d) < 4 {
-		return fmt.Errorf("error decoding binary %v: expected at least 4 bytes, got %d", __obf_b774665a4676567d, len(__obf_b774665a4676567d))
+	if len(__obf_76bba392325e4533) < 4 {
+		return fmt.Errorf("error decoding binary %v: expected at least 4 bytes, got %d", __obf_76bba392325e4533, len(__obf_76bba392325e4533))
 	}
 
 	// Extract the exponent
-	__obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 = int32(binary.BigEndian.Uint32(__obf_b774665a4676567d[:4]))
+	__obf_d09f058c0a390c93.__obf_406325483a83b1fa = int32(binary.BigEndian.Uint32(__obf_76bba392325e4533[:4]))
 
 	// Extract the value
-	__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea = new(big.Int)
-	if __obf_68bcf986f9cdf0c0 := __obf_19a369452cd5fbde.__obf_6e5f77decbc21dea.GobDecode(__obf_b774665a4676567d[4:]); __obf_68bcf986f9cdf0c0 != nil {
-		return fmt.Errorf("error decoding binary %v: %s", __obf_b774665a4676567d, __obf_68bcf986f9cdf0c0)
+	__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f = new(big.Int)
+	if __obf_c1d612f6bfc234d7 := __obf_d09f058c0a390c93.__obf_c36b36e18c228e7f.GobDecode(__obf_76bba392325e4533[4:]); __obf_c1d612f6bfc234d7 != nil {
+		return fmt.Errorf("error decoding binary %v: %s", __obf_76bba392325e4533, __obf_c1d612f6bfc234d7)
 	}
 
 	return nil
 }
 
 // MarshalBinary implements the encoding.BinaryMarshaler interface.
-func (__obf_19a369452cd5fbde Decimal) MarshalBinary() (__obf_b774665a4676567d []byte, __obf_68bcf986f9cdf0c0 error) {
+func (__obf_d09f058c0a390c93 Decimal) MarshalBinary() (__obf_76bba392325e4533 []byte, __obf_c1d612f6bfc234d7 error) {
 	// exp is written first, but encode value first to know output size
-	var __obf_551e83f3d41c5c97 []byte
-	if __obf_551e83f3d41c5c97, __obf_68bcf986f9cdf0c0 = __obf_19a369452cd5fbde.__obf_6e5f77decbc21dea.GobEncode(); __obf_68bcf986f9cdf0c0 != nil {
-		return nil, __obf_68bcf986f9cdf0c0
+	var __obf_53881788b7c6f89e []byte
+	if __obf_53881788b7c6f89e, __obf_c1d612f6bfc234d7 = __obf_d09f058c0a390c93.__obf_c36b36e18c228e7f.GobEncode(); __obf_c1d612f6bfc234d7 != nil {
+		return nil, __obf_c1d612f6bfc234d7
 	}
 
 	// Write the exponent in front, since it's a fixed size
-	__obf_d9b150080a98dfe6 := make([]byte, 4, len(__obf_551e83f3d41c5c97)+4)
-	binary.BigEndian.PutUint32(__obf_d9b150080a98dfe6, uint32(__obf_19a369452cd5fbde.__obf_1ef84065a6a49f43))
+	__obf_0110d9f08cbe5049 := make([]byte, 4, len(__obf_53881788b7c6f89e)+4)
+	binary.BigEndian.PutUint32(__obf_0110d9f08cbe5049, uint32(__obf_d09f058c0a390c93.__obf_406325483a83b1fa))
 
 	// Return the byte array
-	return append(__obf_d9b150080a98dfe6, __obf_551e83f3d41c5c97...), nil
+	return append(__obf_0110d9f08cbe5049, __obf_53881788b7c6f89e...), nil
 }
 
 // Scan implements the sql.Scanner interface for database deserialization.
-func (__obf_19a369452cd5fbde *Decimal) Scan(__obf_6e5f77decbc21dea any) error {
+func (__obf_d09f058c0a390c93 *Decimal) Scan(__obf_c36b36e18c228e7f any) error {
 	// first try to see if the data is stored in database as a Numeric datatype
-	switch __obf_847c12b47a12274f := __obf_6e5f77decbc21dea.(type) {
+	switch __obf_a07140d89ee7df26 := __obf_c36b36e18c228e7f.(type) {
 
 	case float32:
-		*__obf_19a369452cd5fbde = NewFromFloat(float64(__obf_847c12b47a12274f))
+		*__obf_d09f058c0a390c93 = NewFromFloat(float64(__obf_a07140d89ee7df26))
 		return nil
 
 	case float64:
 		// numeric in sqlite3 sends us float64
-		*__obf_19a369452cd5fbde = NewFromFloat(__obf_847c12b47a12274f)
+		*__obf_d09f058c0a390c93 = NewFromFloat(__obf_a07140d89ee7df26)
 		return nil
 
 	case int64:
 		// at least in sqlite3 when the value is 0 in db, the data is sent
 		// to us as an int64 instead of a float64 ...
-		*__obf_19a369452cd5fbde = New(__obf_847c12b47a12274f, 0)
+		*__obf_d09f058c0a390c93 = New(__obf_a07140d89ee7df26, 0)
 		return nil
 
 	case uint64:
 		// while clickhouse may send 0 in db as uint64
-		*__obf_19a369452cd5fbde = NewFromUint64(__obf_847c12b47a12274f)
+		*__obf_d09f058c0a390c93 = NewFromUint64(__obf_a07140d89ee7df26)
 		return nil
 
 	default:
 		// default is trying to interpret value stored as string
-		__obf_1e6e3de76535e1bf, __obf_68bcf986f9cdf0c0 := __obf_b4b0c2ff19759ebc(__obf_847c12b47a12274f)
-		if __obf_68bcf986f9cdf0c0 != nil {
-			return __obf_68bcf986f9cdf0c0
+		__obf_d27522cdebc9fff3, __obf_c1d612f6bfc234d7 := __obf_4404c46e45e621bb(__obf_a07140d89ee7df26)
+		if __obf_c1d612f6bfc234d7 != nil {
+			return __obf_c1d612f6bfc234d7
 		}
-		*__obf_19a369452cd5fbde, __obf_68bcf986f9cdf0c0 = NewFromString(__obf_1e6e3de76535e1bf)
-		return __obf_68bcf986f9cdf0c0
+		*__obf_d09f058c0a390c93, __obf_c1d612f6bfc234d7 = NewFromString(__obf_d27522cdebc9fff3)
+		return __obf_c1d612f6bfc234d7
 	}
 }
 
 // Value implements the driver.Valuer interface for database serialization.
-func (__obf_19a369452cd5fbde Decimal) Value() (driver.Value, error) {
-	return __obf_19a369452cd5fbde.String(), nil
+func (__obf_d09f058c0a390c93 Decimal) Value() (driver.Value, error) {
+	return __obf_d09f058c0a390c93.String(), nil
 }
 
 // UnmarshalText implements the encoding.TextUnmarshaler interface for XML
 // deserialization.
-func (__obf_19a369452cd5fbde *Decimal) UnmarshalText(__obf_206229668f99ca6d []byte) error {
-	__obf_1e6e3de76535e1bf := string(__obf_206229668f99ca6d)
+func (__obf_d09f058c0a390c93 *Decimal) UnmarshalText(__obf_56af27e60e31824b []byte) error {
+	__obf_d27522cdebc9fff3 := string(__obf_56af27e60e31824b)
 
-	__obf_e8ecc3b172d7ce84, __obf_68bcf986f9cdf0c0 := NewFromString(__obf_1e6e3de76535e1bf)
-	*__obf_19a369452cd5fbde = __obf_e8ecc3b172d7ce84
-	if __obf_68bcf986f9cdf0c0 != nil {
-		return fmt.Errorf("error decoding string '%s': %s", __obf_1e6e3de76535e1bf, __obf_68bcf986f9cdf0c0)
+	__obf_bc636ce96a8a7277, __obf_c1d612f6bfc234d7 := NewFromString(__obf_d27522cdebc9fff3)
+	*__obf_d09f058c0a390c93 = __obf_bc636ce96a8a7277
+	if __obf_c1d612f6bfc234d7 != nil {
+		return fmt.Errorf("error decoding string '%s': %s", __obf_d27522cdebc9fff3, __obf_c1d612f6bfc234d7)
 	}
 
 	return nil
@@ -1884,75 +1884,75 @@ func (__obf_19a369452cd5fbde *Decimal) UnmarshalText(__obf_206229668f99ca6d []by
 
 // MarshalText implements the encoding.TextMarshaler interface for XML
 // serialization.
-func (__obf_19a369452cd5fbde Decimal) MarshalText() (__obf_206229668f99ca6d []byte, __obf_68bcf986f9cdf0c0 error) {
-	return []byte(__obf_19a369452cd5fbde.String()), nil
+func (__obf_d09f058c0a390c93 Decimal) MarshalText() (__obf_56af27e60e31824b []byte, __obf_c1d612f6bfc234d7 error) {
+	return []byte(__obf_d09f058c0a390c93.String()), nil
 }
 
 // GobEncode implements the gob.GobEncoder interface for gob serialization.
-func (__obf_19a369452cd5fbde Decimal) GobEncode() ([]byte, error) {
-	return __obf_19a369452cd5fbde.MarshalBinary()
+func (__obf_d09f058c0a390c93 Decimal) GobEncode() ([]byte, error) {
+	return __obf_d09f058c0a390c93.MarshalBinary()
 }
 
 // GobDecode implements the gob.GobDecoder interface for gob serialization.
-func (__obf_19a369452cd5fbde *Decimal) GobDecode(__obf_b774665a4676567d []byte) error {
-	return __obf_19a369452cd5fbde.UnmarshalBinary(__obf_b774665a4676567d)
+func (__obf_d09f058c0a390c93 *Decimal) GobDecode(__obf_76bba392325e4533 []byte) error {
+	return __obf_d09f058c0a390c93.UnmarshalBinary(__obf_76bba392325e4533)
 }
 
 // StringScaled first scales the decimal then calls .String() on it.
 //
 // Deprecated: buggy and unintuitive. Use StringFixed instead.
-func (__obf_19a369452cd5fbde Decimal) StringScaled(__obf_1ef84065a6a49f43 int32) string {
-	return __obf_19a369452cd5fbde.__obf_957a7b5240163386(__obf_1ef84065a6a49f43).String()
+func (__obf_d09f058c0a390c93 Decimal) StringScaled(__obf_406325483a83b1fa int32) string {
+	return __obf_d09f058c0a390c93.__obf_d44df924a1b98873(__obf_406325483a83b1fa).String()
 }
 
-func (__obf_19a369452cd5fbde Decimal) string(__obf_06dced229dc88d1a bool) string {
-	if __obf_19a369452cd5fbde.__obf_1ef84065a6a49f43 >= 0 {
-		return __obf_19a369452cd5fbde.__obf_957a7b5240163386(0).__obf_6e5f77decbc21dea.String()
+func (__obf_d09f058c0a390c93 Decimal) string(__obf_02867e68dfa271d5 bool) string {
+	if __obf_d09f058c0a390c93.__obf_406325483a83b1fa >= 0 {
+		return __obf_d09f058c0a390c93.__obf_d44df924a1b98873(0).__obf_c36b36e18c228e7f.String()
 	}
 
-	__obf_8f6522a0df8c3107 := new(big.Int).Abs(__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea)
-	__obf_1e6e3de76535e1bf := __obf_8f6522a0df8c3107.String()
+	__obf_37fad7391972833c := new(big.Int).Abs(__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f)
+	__obf_d27522cdebc9fff3 := __obf_37fad7391972833c.String()
 
-	var __obf_65b0c23f761b6d4d, __obf_5e4d7dd61d551a43 string
+	var __obf_b6fa4ff85902af25, __obf_ac722d2c47f80856 string
 
 	// NOTE(vadim): this cast to int will cause bugs if d.exp == INT_MIN
 	// and you are on a 32-bit machine. Won't fix this super-edge case.
-	__obf_d26c2280c86a4213 := int(__obf_19a369452cd5fbde.__obf_1ef84065a6a49f43)
-	if len(__obf_1e6e3de76535e1bf) > -__obf_d26c2280c86a4213 {
-		__obf_65b0c23f761b6d4d = __obf_1e6e3de76535e1bf[:len(__obf_1e6e3de76535e1bf)+__obf_d26c2280c86a4213]
-		__obf_5e4d7dd61d551a43 = __obf_1e6e3de76535e1bf[len(__obf_1e6e3de76535e1bf)+__obf_d26c2280c86a4213:]
+	__obf_edfebbae2a495a9f := int(__obf_d09f058c0a390c93.__obf_406325483a83b1fa)
+	if len(__obf_d27522cdebc9fff3) > -__obf_edfebbae2a495a9f {
+		__obf_b6fa4ff85902af25 = __obf_d27522cdebc9fff3[:len(__obf_d27522cdebc9fff3)+__obf_edfebbae2a495a9f]
+		__obf_ac722d2c47f80856 = __obf_d27522cdebc9fff3[len(__obf_d27522cdebc9fff3)+__obf_edfebbae2a495a9f:]
 	} else {
-		__obf_65b0c23f761b6d4d = "0"
+		__obf_b6fa4ff85902af25 = "0"
 
-		__obf_6ffe472be3a9bba1 := -__obf_d26c2280c86a4213 - len(__obf_1e6e3de76535e1bf)
-		__obf_5e4d7dd61d551a43 = strings.Repeat("0", __obf_6ffe472be3a9bba1) + __obf_1e6e3de76535e1bf
+		__obf_307eb9c0766f3eee := -__obf_edfebbae2a495a9f - len(__obf_d27522cdebc9fff3)
+		__obf_ac722d2c47f80856 = strings.Repeat("0", __obf_307eb9c0766f3eee) + __obf_d27522cdebc9fff3
 	}
 
-	if __obf_06dced229dc88d1a {
-		__obf_40720372b6d983c7 := len(__obf_5e4d7dd61d551a43) - 1
-		for ; __obf_40720372b6d983c7 >= 0; __obf_40720372b6d983c7-- {
-			if __obf_5e4d7dd61d551a43[__obf_40720372b6d983c7] != '0' {
+	if __obf_02867e68dfa271d5 {
+		__obf_a6733ea50196cc53 := len(__obf_ac722d2c47f80856) - 1
+		for ; __obf_a6733ea50196cc53 >= 0; __obf_a6733ea50196cc53-- {
+			if __obf_ac722d2c47f80856[__obf_a6733ea50196cc53] != '0' {
 				break
 			}
 		}
-		__obf_5e4d7dd61d551a43 = __obf_5e4d7dd61d551a43[:__obf_40720372b6d983c7+1]
+		__obf_ac722d2c47f80856 = __obf_ac722d2c47f80856[:__obf_a6733ea50196cc53+1]
 	}
 
-	__obf_a78756e7843a968b := __obf_65b0c23f761b6d4d
-	if len(__obf_5e4d7dd61d551a43) > 0 {
-		__obf_a78756e7843a968b += "." + __obf_5e4d7dd61d551a43
+	__obf_dcfebf40f008ef2a := __obf_b6fa4ff85902af25
+	if len(__obf_ac722d2c47f80856) > 0 {
+		__obf_dcfebf40f008ef2a += "." + __obf_ac722d2c47f80856
 	}
 
-	if __obf_19a369452cd5fbde.__obf_6e5f77decbc21dea.Sign() < 0 {
-		return "-" + __obf_a78756e7843a968b
+	if __obf_d09f058c0a390c93.__obf_c36b36e18c228e7f.Sign() < 0 {
+		return "-" + __obf_dcfebf40f008ef2a
 	}
 
-	return __obf_a78756e7843a968b
+	return __obf_dcfebf40f008ef2a
 }
 
-func (__obf_19a369452cd5fbde *Decimal) __obf_b1325bfc63b249a7() {
-	if __obf_19a369452cd5fbde.__obf_6e5f77decbc21dea == nil {
-		__obf_19a369452cd5fbde.__obf_6e5f77decbc21dea = new(big.Int)
+func (__obf_d09f058c0a390c93 *Decimal) __obf_b119326c257b1b2a() {
+	if __obf_d09f058c0a390c93.__obf_c36b36e18c228e7f == nil {
+		__obf_d09f058c0a390c93.__obf_c36b36e18c228e7f = new(big.Int)
 	}
 }
 
@@ -1963,14 +1963,14 @@ func (__obf_19a369452cd5fbde *Decimal) __obf_b1325bfc63b249a7() {
 //	Min(arr[0], arr[1:]...)
 //
 // This makes it harder to accidentally call Min with 0 arguments.
-func Min(__obf_a957bd021d745ab7 Decimal, __obf_9f2f92fe3d31076a ...Decimal) Decimal {
-	__obf_6cf964822d1a9f94 := __obf_a957bd021d745ab7
-	for _, __obf_244d5a292e67910b := range __obf_9f2f92fe3d31076a {
-		if __obf_244d5a292e67910b.Cmp(__obf_6cf964822d1a9f94) < 0 {
-			__obf_6cf964822d1a9f94 = __obf_244d5a292e67910b
+func Min(__obf_601c4c6a2f69ebaf Decimal, __obf_a6bd19a4a2b2d12a ...Decimal) Decimal {
+	__obf_37bb74e984e7327e := __obf_601c4c6a2f69ebaf
+	for _, __obf_e10a3284e09c0ec8 := range __obf_a6bd19a4a2b2d12a {
+		if __obf_e10a3284e09c0ec8.Cmp(__obf_37bb74e984e7327e) < 0 {
+			__obf_37bb74e984e7327e = __obf_e10a3284e09c0ec8
 		}
 	}
-	return __obf_6cf964822d1a9f94
+	return __obf_37bb74e984e7327e
 }
 
 // Max returns the largest Decimal that was passed in the arguments.
@@ -1980,64 +1980,64 @@ func Min(__obf_a957bd021d745ab7 Decimal, __obf_9f2f92fe3d31076a ...Decimal) Deci
 //	Max(arr[0], arr[1:]...)
 //
 // This makes it harder to accidentally call Max with 0 arguments.
-func Max(__obf_a957bd021d745ab7 Decimal, __obf_9f2f92fe3d31076a ...Decimal) Decimal {
-	__obf_6cf964822d1a9f94 := __obf_a957bd021d745ab7
-	for _, __obf_244d5a292e67910b := range __obf_9f2f92fe3d31076a {
-		if __obf_244d5a292e67910b.Cmp(__obf_6cf964822d1a9f94) > 0 {
-			__obf_6cf964822d1a9f94 = __obf_244d5a292e67910b
+func Max(__obf_601c4c6a2f69ebaf Decimal, __obf_a6bd19a4a2b2d12a ...Decimal) Decimal {
+	__obf_37bb74e984e7327e := __obf_601c4c6a2f69ebaf
+	for _, __obf_e10a3284e09c0ec8 := range __obf_a6bd19a4a2b2d12a {
+		if __obf_e10a3284e09c0ec8.Cmp(__obf_37bb74e984e7327e) > 0 {
+			__obf_37bb74e984e7327e = __obf_e10a3284e09c0ec8
 		}
 	}
-	return __obf_6cf964822d1a9f94
+	return __obf_37bb74e984e7327e
 }
 
 // Sum returns the combined total of the provided first and rest Decimals
-func Sum(__obf_a957bd021d745ab7 Decimal, __obf_9f2f92fe3d31076a ...Decimal) Decimal {
-	__obf_f6935ddaf75a9429 := __obf_a957bd021d745ab7
-	for _, __obf_244d5a292e67910b := range __obf_9f2f92fe3d31076a {
-		__obf_f6935ddaf75a9429 = __obf_f6935ddaf75a9429.Add(__obf_244d5a292e67910b)
+func Sum(__obf_601c4c6a2f69ebaf Decimal, __obf_a6bd19a4a2b2d12a ...Decimal) Decimal {
+	__obf_a63308b9298ca4e5 := __obf_601c4c6a2f69ebaf
+	for _, __obf_e10a3284e09c0ec8 := range __obf_a6bd19a4a2b2d12a {
+		__obf_a63308b9298ca4e5 = __obf_a63308b9298ca4e5.Add(__obf_e10a3284e09c0ec8)
 	}
 
-	return __obf_f6935ddaf75a9429
+	return __obf_a63308b9298ca4e5
 }
 
 // Avg returns the average value of the provided first and rest Decimals
-func Avg(__obf_a957bd021d745ab7 Decimal, __obf_9f2f92fe3d31076a ...Decimal) Decimal {
-	__obf_386b7d21e8a8de4a := New(int64(len(__obf_9f2f92fe3d31076a)+1), 0)
-	__obf_1882daa5a5fd23a5 := Sum(__obf_a957bd021d745ab7, __obf_9f2f92fe3d31076a...)
-	return __obf_1882daa5a5fd23a5.Div(__obf_386b7d21e8a8de4a)
+func Avg(__obf_601c4c6a2f69ebaf Decimal, __obf_a6bd19a4a2b2d12a ...Decimal) Decimal {
+	__obf_3a8999938925f58d := New(int64(len(__obf_a6bd19a4a2b2d12a)+1), 0)
+	__obf_0a03d5c951bd51ca := Sum(__obf_601c4c6a2f69ebaf, __obf_a6bd19a4a2b2d12a...)
+	return __obf_0a03d5c951bd51ca.Div(__obf_3a8999938925f58d)
 }
 
 // RescalePair rescales two decimals to common exponential value (minimal exp of both decimals)
-func RescalePair(__obf_c5110493d022b03b Decimal, __obf_e5610ee7ba67ce83 Decimal) (Decimal, Decimal) {
-	__obf_c5110493d022b03b.__obf_b1325bfc63b249a7()
-	__obf_e5610ee7ba67ce83.__obf_b1325bfc63b249a7()
+func RescalePair(__obf_00e4676552627ab3 Decimal, __obf_f3234e094c8ed488 Decimal) (Decimal, Decimal) {
+	__obf_00e4676552627ab3.__obf_b119326c257b1b2a()
+	__obf_f3234e094c8ed488.__obf_b119326c257b1b2a()
 
-	if __obf_c5110493d022b03b.__obf_1ef84065a6a49f43 < __obf_e5610ee7ba67ce83.__obf_1ef84065a6a49f43 {
-		return __obf_c5110493d022b03b, __obf_e5610ee7ba67ce83.__obf_957a7b5240163386(__obf_c5110493d022b03b.__obf_1ef84065a6a49f43)
-	} else if __obf_c5110493d022b03b.__obf_1ef84065a6a49f43 > __obf_e5610ee7ba67ce83.__obf_1ef84065a6a49f43 {
-		return __obf_c5110493d022b03b.__obf_957a7b5240163386(__obf_e5610ee7ba67ce83.__obf_1ef84065a6a49f43), __obf_e5610ee7ba67ce83
+	if __obf_00e4676552627ab3.__obf_406325483a83b1fa < __obf_f3234e094c8ed488.__obf_406325483a83b1fa {
+		return __obf_00e4676552627ab3, __obf_f3234e094c8ed488.__obf_d44df924a1b98873(__obf_00e4676552627ab3.__obf_406325483a83b1fa)
+	} else if __obf_00e4676552627ab3.__obf_406325483a83b1fa > __obf_f3234e094c8ed488.__obf_406325483a83b1fa {
+		return __obf_00e4676552627ab3.__obf_d44df924a1b98873(__obf_f3234e094c8ed488.__obf_406325483a83b1fa), __obf_f3234e094c8ed488
 	}
 
-	return __obf_c5110493d022b03b, __obf_e5610ee7ba67ce83
+	return __obf_00e4676552627ab3, __obf_f3234e094c8ed488
 }
 
-func __obf_b4b0c2ff19759ebc(__obf_6e5f77decbc21dea any) (string, error) {
-	var __obf_ccf6444bfd6ef423 []byte
+func __obf_4404c46e45e621bb(__obf_c36b36e18c228e7f any) (string, error) {
+	var __obf_677b5d29e57d52c8 []byte
 
-	switch __obf_847c12b47a12274f := __obf_6e5f77decbc21dea.(type) {
+	switch __obf_a07140d89ee7df26 := __obf_c36b36e18c228e7f.(type) {
 	case string:
-		__obf_ccf6444bfd6ef423 = []byte(__obf_847c12b47a12274f)
+		__obf_677b5d29e57d52c8 = []byte(__obf_a07140d89ee7df26)
 	case []byte:
-		__obf_ccf6444bfd6ef423 = __obf_847c12b47a12274f
+		__obf_677b5d29e57d52c8 = __obf_a07140d89ee7df26
 	default:
-		return "", fmt.Errorf("could not convert value '%+v' to byte array of type '%T'", __obf_6e5f77decbc21dea, __obf_6e5f77decbc21dea)
+		return "", fmt.Errorf("could not convert value '%+v' to byte array of type '%T'", __obf_c36b36e18c228e7f, __obf_c36b36e18c228e7f)
 	}
 
 	// If the amount is quoted, strip the quotes
-	if len(__obf_ccf6444bfd6ef423) > 2 && __obf_ccf6444bfd6ef423[0] == '"' && __obf_ccf6444bfd6ef423[len(__obf_ccf6444bfd6ef423)-1] == '"' {
-		__obf_ccf6444bfd6ef423 = __obf_ccf6444bfd6ef423[1 : len(__obf_ccf6444bfd6ef423)-1]
+	if len(__obf_677b5d29e57d52c8) > 2 && __obf_677b5d29e57d52c8[0] == '"' && __obf_677b5d29e57d52c8[len(__obf_677b5d29e57d52c8)-1] == '"' {
+		__obf_677b5d29e57d52c8 = __obf_677b5d29e57d52c8[1 : len(__obf_677b5d29e57d52c8)-1]
 	}
-	return string(__obf_ccf6444bfd6ef423), nil
+	return string(__obf_677b5d29e57d52c8), nil
 }
 
 // NullDecimal represents a nullable decimal with compatibility for
@@ -2047,90 +2047,90 @@ type NullDecimal struct {
 	Valid   bool
 }
 
-func NewNullDecimal(__obf_19a369452cd5fbde Decimal) NullDecimal {
+func NewNullDecimal(__obf_d09f058c0a390c93 Decimal) NullDecimal {
 	return NullDecimal{
-		Decimal: __obf_19a369452cd5fbde,
+		Decimal: __obf_d09f058c0a390c93,
 		Valid:   true,
 	}
 }
 
 // Scan implements the sql.Scanner interface for database deserialization.
-func (__obf_19a369452cd5fbde *NullDecimal) Scan(__obf_6e5f77decbc21dea any) error {
-	if __obf_6e5f77decbc21dea == nil {
-		__obf_19a369452cd5fbde.Valid = false
+func (__obf_d09f058c0a390c93 *NullDecimal) Scan(__obf_c36b36e18c228e7f any) error {
+	if __obf_c36b36e18c228e7f == nil {
+		__obf_d09f058c0a390c93.Valid = false
 		return nil
 	}
-	__obf_19a369452cd5fbde.Valid = true
-	return __obf_19a369452cd5fbde.Decimal.Scan(__obf_6e5f77decbc21dea)
+	__obf_d09f058c0a390c93.Valid = true
+	return __obf_d09f058c0a390c93.Decimal.Scan(__obf_c36b36e18c228e7f)
 }
 
 // Value implements the driver.Valuer interface for database serialization.
-func (__obf_19a369452cd5fbde NullDecimal) Value() (driver.Value, error) {
-	if !__obf_19a369452cd5fbde.Valid {
+func (__obf_d09f058c0a390c93 NullDecimal) Value() (driver.Value, error) {
+	if !__obf_d09f058c0a390c93.Valid {
 		return nil, nil
 	}
-	return __obf_19a369452cd5fbde.Decimal.Value()
+	return __obf_d09f058c0a390c93.Decimal.Value()
 }
 
 // UnmarshalJSON implements the json.Unmarshaler interface.
-func (__obf_19a369452cd5fbde *NullDecimal) UnmarshalJSON(__obf_bb0607f4ee95f9e9 []byte) error {
-	if string(__obf_bb0607f4ee95f9e9) == "null" {
-		__obf_19a369452cd5fbde.Valid = false
+func (__obf_d09f058c0a390c93 *NullDecimal) UnmarshalJSON(__obf_e8fd8b794f91b308 []byte) error {
+	if string(__obf_e8fd8b794f91b308) == "null" {
+		__obf_d09f058c0a390c93.Valid = false
 		return nil
 	}
-	__obf_19a369452cd5fbde.Valid = true
-	return __obf_19a369452cd5fbde.Decimal.UnmarshalJSON(__obf_bb0607f4ee95f9e9)
+	__obf_d09f058c0a390c93.Valid = true
+	return __obf_d09f058c0a390c93.Decimal.UnmarshalJSON(__obf_e8fd8b794f91b308)
 }
 
 // MarshalJSON implements the json.Marshaler interface.
-func (__obf_19a369452cd5fbde NullDecimal) MarshalJSON() ([]byte, error) {
-	if !__obf_19a369452cd5fbde.Valid {
+func (__obf_d09f058c0a390c93 NullDecimal) MarshalJSON() ([]byte, error) {
+	if !__obf_d09f058c0a390c93.Valid {
 		return []byte("null"), nil
 	}
-	return __obf_19a369452cd5fbde.Decimal.MarshalJSON()
+	return __obf_d09f058c0a390c93.Decimal.MarshalJSON()
 }
 
 // UnmarshalText implements the encoding.TextUnmarshaler interface for XML
 // deserialization
-func (__obf_19a369452cd5fbde *NullDecimal) UnmarshalText(__obf_206229668f99ca6d []byte) error {
-	__obf_1e6e3de76535e1bf := string(__obf_206229668f99ca6d)
+func (__obf_d09f058c0a390c93 *NullDecimal) UnmarshalText(__obf_56af27e60e31824b []byte) error {
+	__obf_d27522cdebc9fff3 := string(__obf_56af27e60e31824b)
 
 	// check for empty XML or XML without body e.g., <tag></tag>
-	if __obf_1e6e3de76535e1bf == "" {
-		__obf_19a369452cd5fbde.Valid = false
+	if __obf_d27522cdebc9fff3 == "" {
+		__obf_d09f058c0a390c93.Valid = false
 		return nil
 	}
-	if __obf_68bcf986f9cdf0c0 := __obf_19a369452cd5fbde.Decimal.UnmarshalText(__obf_206229668f99ca6d); __obf_68bcf986f9cdf0c0 != nil {
-		__obf_19a369452cd5fbde.Valid = false
-		return __obf_68bcf986f9cdf0c0
+	if __obf_c1d612f6bfc234d7 := __obf_d09f058c0a390c93.Decimal.UnmarshalText(__obf_56af27e60e31824b); __obf_c1d612f6bfc234d7 != nil {
+		__obf_d09f058c0a390c93.Valid = false
+		return __obf_c1d612f6bfc234d7
 	}
-	__obf_19a369452cd5fbde.Valid = true
+	__obf_d09f058c0a390c93.Valid = true
 	return nil
 }
 
 // MarshalText implements the encoding.TextMarshaler interface for XML
 // serialization.
-func (__obf_19a369452cd5fbde NullDecimal) MarshalText() (__obf_206229668f99ca6d []byte, __obf_68bcf986f9cdf0c0 error) {
-	if !__obf_19a369452cd5fbde.Valid {
+func (__obf_d09f058c0a390c93 NullDecimal) MarshalText() (__obf_56af27e60e31824b []byte, __obf_c1d612f6bfc234d7 error) {
+	if !__obf_d09f058c0a390c93.Valid {
 		return []byte{}, nil
 	}
-	return __obf_19a369452cd5fbde.Decimal.MarshalText()
+	return __obf_d09f058c0a390c93.Decimal.MarshalText()
 }
 
 // Trig functions
 
 // Atan returns the arctangent, in radians, of x.
-func (__obf_19a369452cd5fbde Decimal) Atan() Decimal {
-	if __obf_19a369452cd5fbde.Equal(NewFromFloat(0.0)) {
-		return __obf_19a369452cd5fbde
+func (__obf_d09f058c0a390c93 Decimal) Atan() Decimal {
+	if __obf_d09f058c0a390c93.Equal(NewFromFloat(0.0)) {
+		return __obf_d09f058c0a390c93
 	}
-	if __obf_19a369452cd5fbde.GreaterThan(NewFromFloat(0.0)) {
-		return __obf_19a369452cd5fbde.__obf_e2a1a7ef085b8edd()
+	if __obf_d09f058c0a390c93.GreaterThan(NewFromFloat(0.0)) {
+		return __obf_d09f058c0a390c93.__obf_c211ad731ffd0563()
 	}
-	return __obf_19a369452cd5fbde.Neg().__obf_e2a1a7ef085b8edd().Neg()
+	return __obf_d09f058c0a390c93.Neg().__obf_c211ad731ffd0563().Neg()
 }
 
-func (__obf_19a369452cd5fbde Decimal) __obf_bfc57a3079197eb5() Decimal {
+func (__obf_d09f058c0a390c93 Decimal) __obf_65e84b2d0f9bf309() Decimal {
 	P0 := NewFromFloat(-8.750608600031904122785e-01)
 	P1 := NewFromFloat(-1.615753718733365076637e+01)
 	P2 := NewFromFloat(-7.500855792314704667340e+01)
@@ -2141,28 +2141,28 @@ func (__obf_19a369452cd5fbde Decimal) __obf_bfc57a3079197eb5() Decimal {
 	Q2 := NewFromFloat(4.328810604912902668951e+02)
 	Q3 := NewFromFloat(4.853903996359136964868e+02)
 	Q4 := NewFromFloat(1.945506571482613964425e+02)
-	__obf_f0a3b6dafda7d395 := __obf_19a369452cd5fbde.Mul(__obf_19a369452cd5fbde)
-	__obf_225e316cf6199eff := P0.Mul(__obf_f0a3b6dafda7d395).Add(P1).Mul(__obf_f0a3b6dafda7d395).Add(P2).Mul(__obf_f0a3b6dafda7d395).Add(P3).Mul(__obf_f0a3b6dafda7d395).Add(P4).Mul(__obf_f0a3b6dafda7d395)
-	__obf_32166e2f302bb9e6 := __obf_f0a3b6dafda7d395.Add(Q0).Mul(__obf_f0a3b6dafda7d395).Add(Q1).Mul(__obf_f0a3b6dafda7d395).Add(Q2).Mul(__obf_f0a3b6dafda7d395).Add(Q3).Mul(__obf_f0a3b6dafda7d395).Add(Q4)
-	__obf_f0a3b6dafda7d395 = __obf_225e316cf6199eff.Div(__obf_32166e2f302bb9e6)
-	__obf_f0a3b6dafda7d395 = __obf_19a369452cd5fbde.Mul(__obf_f0a3b6dafda7d395).Add(__obf_19a369452cd5fbde)
-	return __obf_f0a3b6dafda7d395
+	__obf_cfabb27034b7f97a := __obf_d09f058c0a390c93.Mul(__obf_d09f058c0a390c93)
+	__obf_7d5ecff6d2d5c88d := P0.Mul(__obf_cfabb27034b7f97a).Add(P1).Mul(__obf_cfabb27034b7f97a).Add(P2).Mul(__obf_cfabb27034b7f97a).Add(P3).Mul(__obf_cfabb27034b7f97a).Add(P4).Mul(__obf_cfabb27034b7f97a)
+	__obf_64e7317a703fe325 := __obf_cfabb27034b7f97a.Add(Q0).Mul(__obf_cfabb27034b7f97a).Add(Q1).Mul(__obf_cfabb27034b7f97a).Add(Q2).Mul(__obf_cfabb27034b7f97a).Add(Q3).Mul(__obf_cfabb27034b7f97a).Add(Q4)
+	__obf_cfabb27034b7f97a = __obf_7d5ecff6d2d5c88d.Div(__obf_64e7317a703fe325)
+	__obf_cfabb27034b7f97a = __obf_d09f058c0a390c93.Mul(__obf_cfabb27034b7f97a).Add(__obf_d09f058c0a390c93)
+	return __obf_cfabb27034b7f97a
 }
 
 // satan reduces its argument (known to be positive)
 // to the range [0, 0.66] and calls xatan.
-func (__obf_19a369452cd5fbde Decimal) __obf_e2a1a7ef085b8edd() Decimal {
+func (__obf_d09f058c0a390c93 Decimal) __obf_c211ad731ffd0563() Decimal {
 	Morebits := NewFromFloat(6.123233995736765886130e-17) // pi/2 = PIO2 + Morebits
 	Tan3pio8 := NewFromFloat(2.41421356237309504880)      // tan(3*pi/8)
-	__obf_62e68c99e102320d := NewFromFloat(3.14159265358979323846264338327950288419716939937510582097494459)
+	__obf_daf4071b4f8ca84e := NewFromFloat(3.14159265358979323846264338327950288419716939937510582097494459)
 
-	if __obf_19a369452cd5fbde.LessThanOrEqual(NewFromFloat(0.66)) {
-		return __obf_19a369452cd5fbde.__obf_bfc57a3079197eb5()
+	if __obf_d09f058c0a390c93.LessThanOrEqual(NewFromFloat(0.66)) {
+		return __obf_d09f058c0a390c93.__obf_65e84b2d0f9bf309()
 	}
-	if __obf_19a369452cd5fbde.GreaterThan(Tan3pio8) {
-		return __obf_62e68c99e102320d.Div(NewFromFloat(2.0)).Sub(NewFromFloat(1.0).Div(__obf_19a369452cd5fbde).__obf_bfc57a3079197eb5()).Add(Morebits)
+	if __obf_d09f058c0a390c93.GreaterThan(Tan3pio8) {
+		return __obf_daf4071b4f8ca84e.Div(NewFromFloat(2.0)).Sub(NewFromFloat(1.0).Div(__obf_d09f058c0a390c93).__obf_65e84b2d0f9bf309()).Add(Morebits)
 	}
-	return __obf_62e68c99e102320d.Div(NewFromFloat(4.0)).Add((__obf_19a369452cd5fbde.Sub(NewFromFloat(1.0)).Div(__obf_19a369452cd5fbde.Add(NewFromFloat(1.0)))).__obf_bfc57a3079197eb5()).Add(NewFromFloat(0.5).Mul(Morebits))
+	return __obf_daf4071b4f8ca84e.Div(NewFromFloat(4.0)).Add((__obf_d09f058c0a390c93.Sub(NewFromFloat(1.0)).Div(__obf_d09f058c0a390c93.Add(NewFromFloat(1.0)))).__obf_65e84b2d0f9bf309()).Add(NewFromFloat(0.5).Mul(Morebits))
 }
 
 // sin coefficients
@@ -2176,49 +2176,49 @@ var _sin = [...]Decimal{
 }
 
 // Sin returns the sine of the radian argument x.
-func (__obf_19a369452cd5fbde Decimal) Sin() Decimal {
+func (__obf_d09f058c0a390c93 Decimal) Sin() Decimal {
 	PI4A := NewFromFloat(7.85398125648498535156e-1)                             // 0x3fe921fb40000000, Pi/4 split into three parts
 	PI4B := NewFromFloat(3.77489470793079817668e-8)                             // 0x3e64442d00000000,
 	PI4C := NewFromFloat(2.69515142907905952645e-15)                            // 0x3ce8469898cc5170,
 	M4PI := NewFromFloat(1.273239544735162542821171882678754627704620361328125) // 4/pi
 
-	if __obf_19a369452cd5fbde.Equal(NewFromFloat(0.0)) {
-		return __obf_19a369452cd5fbde
+	if __obf_d09f058c0a390c93.Equal(NewFromFloat(0.0)) {
+		return __obf_d09f058c0a390c93
 	}
 	// make argument positive but save the sign
-	__obf_0a87f1adff24c937 := false
-	if __obf_19a369452cd5fbde.LessThan(NewFromFloat(0.0)) {
-		__obf_19a369452cd5fbde = __obf_19a369452cd5fbde.Neg()
-		__obf_0a87f1adff24c937 = true
+	__obf_87165cc42c6992a3 := false
+	if __obf_d09f058c0a390c93.LessThan(NewFromFloat(0.0)) {
+		__obf_d09f058c0a390c93 = __obf_d09f058c0a390c93.Neg()
+		__obf_87165cc42c6992a3 = true
 	}
 
-	__obf_13685bbda520f0c9 := __obf_19a369452cd5fbde.Mul(M4PI).IntPart()    // integer part of x/(Pi/4), as integer for tests on the phase angle
-	__obf_aba9ed83ce5f99ca := NewFromFloat(float64(__obf_13685bbda520f0c9)) // integer part of x/(Pi/4), as float
+	__obf_2ada872b5e39595f := __obf_d09f058c0a390c93.Mul(M4PI).IntPart()    // integer part of x/(Pi/4), as integer for tests on the phase angle
+	__obf_cc34602f8a37fb57 := NewFromFloat(float64(__obf_2ada872b5e39595f)) // integer part of x/(Pi/4), as float
 
 	// map zeros to origin
-	if __obf_13685bbda520f0c9&1 == 1 {
-		__obf_13685bbda520f0c9++
-		__obf_aba9ed83ce5f99ca = __obf_aba9ed83ce5f99ca.Add(NewFromFloat(1.0))
+	if __obf_2ada872b5e39595f&1 == 1 {
+		__obf_2ada872b5e39595f++
+		__obf_cc34602f8a37fb57 = __obf_cc34602f8a37fb57.Add(NewFromFloat(1.0))
 	}
-	__obf_13685bbda520f0c9 &= 7 // octant modulo 2Pi radians (360 degrees)
+	__obf_2ada872b5e39595f &= 7 // octant modulo 2Pi radians (360 degrees)
 	// reflect in x axis
-	if __obf_13685bbda520f0c9 > 3 {
-		__obf_0a87f1adff24c937 = !__obf_0a87f1adff24c937
-		__obf_13685bbda520f0c9 -= 4
+	if __obf_2ada872b5e39595f > 3 {
+		__obf_87165cc42c6992a3 = !__obf_87165cc42c6992a3
+		__obf_2ada872b5e39595f -= 4
 	}
-	__obf_f0a3b6dafda7d395 := __obf_19a369452cd5fbde.Sub(__obf_aba9ed83ce5f99ca.Mul(PI4A)).Sub(__obf_aba9ed83ce5f99ca.Mul(PI4B)).Sub(__obf_aba9ed83ce5f99ca.Mul(PI4C)) // Extended precision modular arithmetic
-	__obf_fac411bb87698bdc := __obf_f0a3b6dafda7d395.Mul(__obf_f0a3b6dafda7d395)
+	__obf_cfabb27034b7f97a := __obf_d09f058c0a390c93.Sub(__obf_cc34602f8a37fb57.Mul(PI4A)).Sub(__obf_cc34602f8a37fb57.Mul(PI4B)).Sub(__obf_cc34602f8a37fb57.Mul(PI4C)) // Extended precision modular arithmetic
+	__obf_1b188d7167364580 := __obf_cfabb27034b7f97a.Mul(__obf_cfabb27034b7f97a)
 
-	if __obf_13685bbda520f0c9 == 1 || __obf_13685bbda520f0c9 == 2 {
-		__obf_9c7c0223c400a310 := __obf_fac411bb87698bdc.Mul(__obf_fac411bb87698bdc).Mul(_cos[0].Mul(__obf_fac411bb87698bdc).Add(_cos[1]).Mul(__obf_fac411bb87698bdc).Add(_cos[2]).Mul(__obf_fac411bb87698bdc).Add(_cos[3]).Mul(__obf_fac411bb87698bdc).Add(_cos[4]).Mul(__obf_fac411bb87698bdc).Add(_cos[5]))
-		__obf_aba9ed83ce5f99ca = NewFromFloat(1.0).Sub(NewFromFloat(0.5).Mul(__obf_fac411bb87698bdc)).Add(__obf_9c7c0223c400a310)
+	if __obf_2ada872b5e39595f == 1 || __obf_2ada872b5e39595f == 2 {
+		__obf_c981e663ad88d103 := __obf_1b188d7167364580.Mul(__obf_1b188d7167364580).Mul(_cos[0].Mul(__obf_1b188d7167364580).Add(_cos[1]).Mul(__obf_1b188d7167364580).Add(_cos[2]).Mul(__obf_1b188d7167364580).Add(_cos[3]).Mul(__obf_1b188d7167364580).Add(_cos[4]).Mul(__obf_1b188d7167364580).Add(_cos[5]))
+		__obf_cc34602f8a37fb57 = NewFromFloat(1.0).Sub(NewFromFloat(0.5).Mul(__obf_1b188d7167364580)).Add(__obf_c981e663ad88d103)
 	} else {
-		__obf_aba9ed83ce5f99ca = __obf_f0a3b6dafda7d395.Add(__obf_f0a3b6dafda7d395.Mul(__obf_fac411bb87698bdc).Mul(_sin[0].Mul(__obf_fac411bb87698bdc).Add(_sin[1]).Mul(__obf_fac411bb87698bdc).Add(_sin[2]).Mul(__obf_fac411bb87698bdc).Add(_sin[3]).Mul(__obf_fac411bb87698bdc).Add(_sin[4]).Mul(__obf_fac411bb87698bdc).Add(_sin[5])))
+		__obf_cc34602f8a37fb57 = __obf_cfabb27034b7f97a.Add(__obf_cfabb27034b7f97a.Mul(__obf_1b188d7167364580).Mul(_sin[0].Mul(__obf_1b188d7167364580).Add(_sin[1]).Mul(__obf_1b188d7167364580).Add(_sin[2]).Mul(__obf_1b188d7167364580).Add(_sin[3]).Mul(__obf_1b188d7167364580).Add(_sin[4]).Mul(__obf_1b188d7167364580).Add(_sin[5])))
 	}
-	if __obf_0a87f1adff24c937 {
-		__obf_aba9ed83ce5f99ca = __obf_aba9ed83ce5f99ca.Neg()
+	if __obf_87165cc42c6992a3 {
+		__obf_cc34602f8a37fb57 = __obf_cc34602f8a37fb57.Neg()
 	}
-	return __obf_aba9ed83ce5f99ca
+	return __obf_cc34602f8a37fb57
 }
 
 // cos coefficients
@@ -2232,7 +2232,7 @@ var _cos = [...]Decimal{
 }
 
 // Cos returns the cosine of the radian argument x.
-func (__obf_19a369452cd5fbde Decimal) Cos() Decimal {
+func (__obf_d09f058c0a390c93 Decimal) Cos() Decimal {
 
 	PI4A := NewFromFloat(7.85398125648498535156e-1)                             // 0x3fe921fb40000000, Pi/4 split into three parts
 	PI4B := NewFromFloat(3.77489470793079817668e-8)                             // 0x3e64442d00000000,
@@ -2240,42 +2240,42 @@ func (__obf_19a369452cd5fbde Decimal) Cos() Decimal {
 	M4PI := NewFromFloat(1.273239544735162542821171882678754627704620361328125) // 4/pi
 
 	// make argument positive
-	__obf_0a87f1adff24c937 := false
-	if __obf_19a369452cd5fbde.LessThan(NewFromFloat(0.0)) {
-		__obf_19a369452cd5fbde = __obf_19a369452cd5fbde.Neg()
+	__obf_87165cc42c6992a3 := false
+	if __obf_d09f058c0a390c93.LessThan(NewFromFloat(0.0)) {
+		__obf_d09f058c0a390c93 = __obf_d09f058c0a390c93.Neg()
 	}
 
-	__obf_13685bbda520f0c9 := __obf_19a369452cd5fbde.Mul(M4PI).IntPart()    // integer part of x/(Pi/4), as integer for tests on the phase angle
-	__obf_aba9ed83ce5f99ca := NewFromFloat(float64(__obf_13685bbda520f0c9)) // integer part of x/(Pi/4), as float
+	__obf_2ada872b5e39595f := __obf_d09f058c0a390c93.Mul(M4PI).IntPart()    // integer part of x/(Pi/4), as integer for tests on the phase angle
+	__obf_cc34602f8a37fb57 := NewFromFloat(float64(__obf_2ada872b5e39595f)) // integer part of x/(Pi/4), as float
 
 	// map zeros to origin
-	if __obf_13685bbda520f0c9&1 == 1 {
-		__obf_13685bbda520f0c9++
-		__obf_aba9ed83ce5f99ca = __obf_aba9ed83ce5f99ca.Add(NewFromFloat(1.0))
+	if __obf_2ada872b5e39595f&1 == 1 {
+		__obf_2ada872b5e39595f++
+		__obf_cc34602f8a37fb57 = __obf_cc34602f8a37fb57.Add(NewFromFloat(1.0))
 	}
-	__obf_13685bbda520f0c9 &= 7 // octant modulo 2Pi radians (360 degrees)
+	__obf_2ada872b5e39595f &= 7 // octant modulo 2Pi radians (360 degrees)
 	// reflect in x axis
-	if __obf_13685bbda520f0c9 > 3 {
-		__obf_0a87f1adff24c937 = !__obf_0a87f1adff24c937
-		__obf_13685bbda520f0c9 -= 4
+	if __obf_2ada872b5e39595f > 3 {
+		__obf_87165cc42c6992a3 = !__obf_87165cc42c6992a3
+		__obf_2ada872b5e39595f -= 4
 	}
-	if __obf_13685bbda520f0c9 > 1 {
-		__obf_0a87f1adff24c937 = !__obf_0a87f1adff24c937
+	if __obf_2ada872b5e39595f > 1 {
+		__obf_87165cc42c6992a3 = !__obf_87165cc42c6992a3
 	}
 
-	__obf_f0a3b6dafda7d395 := __obf_19a369452cd5fbde.Sub(__obf_aba9ed83ce5f99ca.Mul(PI4A)).Sub(__obf_aba9ed83ce5f99ca.Mul(PI4B)).Sub(__obf_aba9ed83ce5f99ca.Mul(PI4C)) // Extended precision modular arithmetic
-	__obf_fac411bb87698bdc := __obf_f0a3b6dafda7d395.Mul(__obf_f0a3b6dafda7d395)
+	__obf_cfabb27034b7f97a := __obf_d09f058c0a390c93.Sub(__obf_cc34602f8a37fb57.Mul(PI4A)).Sub(__obf_cc34602f8a37fb57.Mul(PI4B)).Sub(__obf_cc34602f8a37fb57.Mul(PI4C)) // Extended precision modular arithmetic
+	__obf_1b188d7167364580 := __obf_cfabb27034b7f97a.Mul(__obf_cfabb27034b7f97a)
 
-	if __obf_13685bbda520f0c9 == 1 || __obf_13685bbda520f0c9 == 2 {
-		__obf_aba9ed83ce5f99ca = __obf_f0a3b6dafda7d395.Add(__obf_f0a3b6dafda7d395.Mul(__obf_fac411bb87698bdc).Mul(_sin[0].Mul(__obf_fac411bb87698bdc).Add(_sin[1]).Mul(__obf_fac411bb87698bdc).Add(_sin[2]).Mul(__obf_fac411bb87698bdc).Add(_sin[3]).Mul(__obf_fac411bb87698bdc).Add(_sin[4]).Mul(__obf_fac411bb87698bdc).Add(_sin[5])))
+	if __obf_2ada872b5e39595f == 1 || __obf_2ada872b5e39595f == 2 {
+		__obf_cc34602f8a37fb57 = __obf_cfabb27034b7f97a.Add(__obf_cfabb27034b7f97a.Mul(__obf_1b188d7167364580).Mul(_sin[0].Mul(__obf_1b188d7167364580).Add(_sin[1]).Mul(__obf_1b188d7167364580).Add(_sin[2]).Mul(__obf_1b188d7167364580).Add(_sin[3]).Mul(__obf_1b188d7167364580).Add(_sin[4]).Mul(__obf_1b188d7167364580).Add(_sin[5])))
 	} else {
-		__obf_9c7c0223c400a310 := __obf_fac411bb87698bdc.Mul(__obf_fac411bb87698bdc).Mul(_cos[0].Mul(__obf_fac411bb87698bdc).Add(_cos[1]).Mul(__obf_fac411bb87698bdc).Add(_cos[2]).Mul(__obf_fac411bb87698bdc).Add(_cos[3]).Mul(__obf_fac411bb87698bdc).Add(_cos[4]).Mul(__obf_fac411bb87698bdc).Add(_cos[5]))
-		__obf_aba9ed83ce5f99ca = NewFromFloat(1.0).Sub(NewFromFloat(0.5).Mul(__obf_fac411bb87698bdc)).Add(__obf_9c7c0223c400a310)
+		__obf_c981e663ad88d103 := __obf_1b188d7167364580.Mul(__obf_1b188d7167364580).Mul(_cos[0].Mul(__obf_1b188d7167364580).Add(_cos[1]).Mul(__obf_1b188d7167364580).Add(_cos[2]).Mul(__obf_1b188d7167364580).Add(_cos[3]).Mul(__obf_1b188d7167364580).Add(_cos[4]).Mul(__obf_1b188d7167364580).Add(_cos[5]))
+		__obf_cc34602f8a37fb57 = NewFromFloat(1.0).Sub(NewFromFloat(0.5).Mul(__obf_1b188d7167364580)).Add(__obf_c981e663ad88d103)
 	}
-	if __obf_0a87f1adff24c937 {
-		__obf_aba9ed83ce5f99ca = __obf_aba9ed83ce5f99ca.Neg()
+	if __obf_87165cc42c6992a3 {
+		__obf_cc34602f8a37fb57 = __obf_cc34602f8a37fb57.Neg()
 	}
-	return __obf_aba9ed83ce5f99ca
+	return __obf_cc34602f8a37fb57
 }
 
 var _tanP = [...]Decimal{
@@ -2292,50 +2292,50 @@ var _tanQ = [...]Decimal{
 }
 
 // Tan returns the tangent of the radian argument x.
-func (__obf_19a369452cd5fbde Decimal) Tan() Decimal {
+func (__obf_d09f058c0a390c93 Decimal) Tan() Decimal {
 
 	PI4A := NewFromFloat(7.85398125648498535156e-1)                             // 0x3fe921fb40000000, Pi/4 split into three parts
 	PI4B := NewFromFloat(3.77489470793079817668e-8)                             // 0x3e64442d00000000,
 	PI4C := NewFromFloat(2.69515142907905952645e-15)                            // 0x3ce8469898cc5170,
 	M4PI := NewFromFloat(1.273239544735162542821171882678754627704620361328125) // 4/pi
 
-	if __obf_19a369452cd5fbde.Equal(NewFromFloat(0.0)) {
-		return __obf_19a369452cd5fbde
+	if __obf_d09f058c0a390c93.Equal(NewFromFloat(0.0)) {
+		return __obf_d09f058c0a390c93
 	}
 
 	// make argument positive but save the sign
-	__obf_0a87f1adff24c937 := false
-	if __obf_19a369452cd5fbde.LessThan(NewFromFloat(0.0)) {
-		__obf_19a369452cd5fbde = __obf_19a369452cd5fbde.Neg()
-		__obf_0a87f1adff24c937 = true
+	__obf_87165cc42c6992a3 := false
+	if __obf_d09f058c0a390c93.LessThan(NewFromFloat(0.0)) {
+		__obf_d09f058c0a390c93 = __obf_d09f058c0a390c93.Neg()
+		__obf_87165cc42c6992a3 = true
 	}
 
-	__obf_13685bbda520f0c9 := __obf_19a369452cd5fbde.Mul(M4PI).IntPart()    // integer part of x/(Pi/4), as integer for tests on the phase angle
-	__obf_aba9ed83ce5f99ca := NewFromFloat(float64(__obf_13685bbda520f0c9)) // integer part of x/(Pi/4), as float
+	__obf_2ada872b5e39595f := __obf_d09f058c0a390c93.Mul(M4PI).IntPart()    // integer part of x/(Pi/4), as integer for tests on the phase angle
+	__obf_cc34602f8a37fb57 := NewFromFloat(float64(__obf_2ada872b5e39595f)) // integer part of x/(Pi/4), as float
 
 	// map zeros to origin
-	if __obf_13685bbda520f0c9&1 == 1 {
-		__obf_13685bbda520f0c9++
-		__obf_aba9ed83ce5f99ca = __obf_aba9ed83ce5f99ca.Add(NewFromFloat(1.0))
+	if __obf_2ada872b5e39595f&1 == 1 {
+		__obf_2ada872b5e39595f++
+		__obf_cc34602f8a37fb57 = __obf_cc34602f8a37fb57.Add(NewFromFloat(1.0))
 	}
 
-	__obf_f0a3b6dafda7d395 := __obf_19a369452cd5fbde.Sub(__obf_aba9ed83ce5f99ca.Mul(PI4A)).Sub(__obf_aba9ed83ce5f99ca.Mul(PI4B)).Sub(__obf_aba9ed83ce5f99ca.Mul(PI4C)) // Extended precision modular arithmetic
-	__obf_fac411bb87698bdc := __obf_f0a3b6dafda7d395.Mul(__obf_f0a3b6dafda7d395)
+	__obf_cfabb27034b7f97a := __obf_d09f058c0a390c93.Sub(__obf_cc34602f8a37fb57.Mul(PI4A)).Sub(__obf_cc34602f8a37fb57.Mul(PI4B)).Sub(__obf_cc34602f8a37fb57.Mul(PI4C)) // Extended precision modular arithmetic
+	__obf_1b188d7167364580 := __obf_cfabb27034b7f97a.Mul(__obf_cfabb27034b7f97a)
 
-	if __obf_fac411bb87698bdc.GreaterThan(NewFromFloat(1e-14)) {
-		__obf_9c7c0223c400a310 := __obf_fac411bb87698bdc.Mul(_tanP[0].Mul(__obf_fac411bb87698bdc).Add(_tanP[1]).Mul(__obf_fac411bb87698bdc).Add(_tanP[2]))
-		__obf_cfc89f6d692b6000 := __obf_fac411bb87698bdc.Add(_tanQ[1]).Mul(__obf_fac411bb87698bdc).Add(_tanQ[2]).Mul(__obf_fac411bb87698bdc).Add(_tanQ[3]).Mul(__obf_fac411bb87698bdc).Add(_tanQ[4])
-		__obf_aba9ed83ce5f99ca = __obf_f0a3b6dafda7d395.Add(__obf_f0a3b6dafda7d395.Mul(__obf_9c7c0223c400a310.Div(__obf_cfc89f6d692b6000)))
+	if __obf_1b188d7167364580.GreaterThan(NewFromFloat(1e-14)) {
+		__obf_c981e663ad88d103 := __obf_1b188d7167364580.Mul(_tanP[0].Mul(__obf_1b188d7167364580).Add(_tanP[1]).Mul(__obf_1b188d7167364580).Add(_tanP[2]))
+		__obf_1c048090fbae2177 := __obf_1b188d7167364580.Add(_tanQ[1]).Mul(__obf_1b188d7167364580).Add(_tanQ[2]).Mul(__obf_1b188d7167364580).Add(_tanQ[3]).Mul(__obf_1b188d7167364580).Add(_tanQ[4])
+		__obf_cc34602f8a37fb57 = __obf_cfabb27034b7f97a.Add(__obf_cfabb27034b7f97a.Mul(__obf_c981e663ad88d103.Div(__obf_1c048090fbae2177)))
 	} else {
-		__obf_aba9ed83ce5f99ca = __obf_f0a3b6dafda7d395
+		__obf_cc34602f8a37fb57 = __obf_cfabb27034b7f97a
 	}
-	if __obf_13685bbda520f0c9&2 == 2 {
-		__obf_aba9ed83ce5f99ca = NewFromFloat(-1.0).Div(__obf_aba9ed83ce5f99ca)
+	if __obf_2ada872b5e39595f&2 == 2 {
+		__obf_cc34602f8a37fb57 = NewFromFloat(-1.0).Div(__obf_cc34602f8a37fb57)
 	}
-	if __obf_0a87f1adff24c937 {
-		__obf_aba9ed83ce5f99ca = __obf_aba9ed83ce5f99ca.Neg()
+	if __obf_87165cc42c6992a3 {
+		__obf_cc34602f8a37fb57 = __obf_cc34602f8a37fb57.Neg()
 	}
-	return __obf_aba9ed83ce5f99ca
+	return __obf_cc34602f8a37fb57
 }
 
 // Copyright 2009 The Go Authors. All rights reserved.
@@ -2349,153 +2349,153 @@ func (__obf_19a369452cd5fbde Decimal) Tan() Decimal {
 // because 2 divides 10; cannot do decimal floating point
 // in multiprecision binary precisely.
 
-type __obf_ae16adf734cfe1aa struct {
-	__obf_19a369452cd5fbde [800]byte // digits, big-endian representation
-	__obf_04074ea54302ce17 int       // number of digits used
-	__obf_45565779317643f9 int       // decimal point
-	__obf_d12c1496d23e3503 bool      // negative flag
-	__obf_a9f8af80e19992b6 bool      // discarded nonzero digits beyond d[:nd]
+type __obf_0962dc77c6b6239b struct {
+	__obf_d09f058c0a390c93 [800]byte // digits, big-endian representation
+	__obf_ea04243a9869d25e int       // number of digits used
+	__obf_cb19c1fd6e41a0d7 int       // decimal point
+	__obf_f0af453d1e176af6 bool      // negative flag
+	__obf_6d99ec3c0920e3eb bool      // discarded nonzero digits beyond d[:nd]
 }
 
-func (__obf_364e38cb96f1c266 *__obf_ae16adf734cfe1aa) String() string {
-	__obf_3edab89cf83bab1c := 10 + __obf_364e38cb96f1c266.__obf_04074ea54302ce17
-	if __obf_364e38cb96f1c266.__obf_45565779317643f9 > 0 {
-		__obf_3edab89cf83bab1c += __obf_364e38cb96f1c266.__obf_45565779317643f9
+func (__obf_5097a5efcc046ddc *__obf_0962dc77c6b6239b) String() string {
+	__obf_45b69da0ab68e425 := 10 + __obf_5097a5efcc046ddc.__obf_ea04243a9869d25e
+	if __obf_5097a5efcc046ddc.__obf_cb19c1fd6e41a0d7 > 0 {
+		__obf_45b69da0ab68e425 += __obf_5097a5efcc046ddc.__obf_cb19c1fd6e41a0d7
 	}
-	if __obf_364e38cb96f1c266.__obf_45565779317643f9 < 0 {
-		__obf_3edab89cf83bab1c += -__obf_364e38cb96f1c266.__obf_45565779317643f9
+	if __obf_5097a5efcc046ddc.__obf_cb19c1fd6e41a0d7 < 0 {
+		__obf_45b69da0ab68e425 += -__obf_5097a5efcc046ddc.__obf_cb19c1fd6e41a0d7
 	}
 
-	__obf_27adff64d3e60f06 := make([]byte, __obf_3edab89cf83bab1c)
-	__obf_9c7c0223c400a310 := 0
+	__obf_93542e6c18fdd6ca := make([]byte, __obf_45b69da0ab68e425)
+	__obf_c981e663ad88d103 := 0
 	switch {
-	case __obf_364e38cb96f1c266.__obf_04074ea54302ce17 == 0:
+	case __obf_5097a5efcc046ddc.__obf_ea04243a9869d25e == 0:
 		return "0"
 
-	case __obf_364e38cb96f1c266.__obf_45565779317643f9 <= 0:
+	case __obf_5097a5efcc046ddc.__obf_cb19c1fd6e41a0d7 <= 0:
 		// zeros fill space between decimal point and digits
-		__obf_27adff64d3e60f06[__obf_9c7c0223c400a310] = '0'
-		__obf_9c7c0223c400a310++
-		__obf_27adff64d3e60f06[__obf_9c7c0223c400a310] = '.'
-		__obf_9c7c0223c400a310++
-		__obf_9c7c0223c400a310 += __obf_e2f74946f0b4300c(__obf_27adff64d3e60f06[__obf_9c7c0223c400a310 : __obf_9c7c0223c400a310+-__obf_364e38cb96f1c266.__obf_45565779317643f9])
-		__obf_9c7c0223c400a310 += copy(__obf_27adff64d3e60f06[__obf_9c7c0223c400a310:], __obf_364e38cb96f1c266.__obf_19a369452cd5fbde[0:__obf_364e38cb96f1c266.__obf_04074ea54302ce17])
+		__obf_93542e6c18fdd6ca[__obf_c981e663ad88d103] = '0'
+		__obf_c981e663ad88d103++
+		__obf_93542e6c18fdd6ca[__obf_c981e663ad88d103] = '.'
+		__obf_c981e663ad88d103++
+		__obf_c981e663ad88d103 += __obf_50fe429044a97b04(__obf_93542e6c18fdd6ca[__obf_c981e663ad88d103 : __obf_c981e663ad88d103+-__obf_5097a5efcc046ddc.__obf_cb19c1fd6e41a0d7])
+		__obf_c981e663ad88d103 += copy(__obf_93542e6c18fdd6ca[__obf_c981e663ad88d103:], __obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[0:__obf_5097a5efcc046ddc.__obf_ea04243a9869d25e])
 
-	case __obf_364e38cb96f1c266.__obf_45565779317643f9 < __obf_364e38cb96f1c266.__obf_04074ea54302ce17:
+	case __obf_5097a5efcc046ddc.__obf_cb19c1fd6e41a0d7 < __obf_5097a5efcc046ddc.__obf_ea04243a9869d25e:
 		// decimal point in middle of digits
-		__obf_9c7c0223c400a310 += copy(__obf_27adff64d3e60f06[__obf_9c7c0223c400a310:], __obf_364e38cb96f1c266.__obf_19a369452cd5fbde[0:__obf_364e38cb96f1c266.__obf_45565779317643f9])
-		__obf_27adff64d3e60f06[__obf_9c7c0223c400a310] = '.'
-		__obf_9c7c0223c400a310++
-		__obf_9c7c0223c400a310 += copy(__obf_27adff64d3e60f06[__obf_9c7c0223c400a310:], __obf_364e38cb96f1c266.__obf_19a369452cd5fbde[__obf_364e38cb96f1c266.__obf_45565779317643f9:__obf_364e38cb96f1c266.__obf_04074ea54302ce17])
+		__obf_c981e663ad88d103 += copy(__obf_93542e6c18fdd6ca[__obf_c981e663ad88d103:], __obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[0:__obf_5097a5efcc046ddc.__obf_cb19c1fd6e41a0d7])
+		__obf_93542e6c18fdd6ca[__obf_c981e663ad88d103] = '.'
+		__obf_c981e663ad88d103++
+		__obf_c981e663ad88d103 += copy(__obf_93542e6c18fdd6ca[__obf_c981e663ad88d103:], __obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[__obf_5097a5efcc046ddc.__obf_cb19c1fd6e41a0d7:__obf_5097a5efcc046ddc.__obf_ea04243a9869d25e])
 
 	default:
 		// zeros fill space between digits and decimal point
-		__obf_9c7c0223c400a310 += copy(__obf_27adff64d3e60f06[__obf_9c7c0223c400a310:], __obf_364e38cb96f1c266.__obf_19a369452cd5fbde[0:__obf_364e38cb96f1c266.__obf_04074ea54302ce17])
-		__obf_9c7c0223c400a310 += __obf_e2f74946f0b4300c(__obf_27adff64d3e60f06[__obf_9c7c0223c400a310 : __obf_9c7c0223c400a310+__obf_364e38cb96f1c266.__obf_45565779317643f9-__obf_364e38cb96f1c266.__obf_04074ea54302ce17])
+		__obf_c981e663ad88d103 += copy(__obf_93542e6c18fdd6ca[__obf_c981e663ad88d103:], __obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[0:__obf_5097a5efcc046ddc.__obf_ea04243a9869d25e])
+		__obf_c981e663ad88d103 += __obf_50fe429044a97b04(__obf_93542e6c18fdd6ca[__obf_c981e663ad88d103 : __obf_c981e663ad88d103+__obf_5097a5efcc046ddc.__obf_cb19c1fd6e41a0d7-__obf_5097a5efcc046ddc.__obf_ea04243a9869d25e])
 	}
-	return string(__obf_27adff64d3e60f06[0:__obf_9c7c0223c400a310])
+	return string(__obf_93542e6c18fdd6ca[0:__obf_c981e663ad88d103])
 }
 
-func __obf_e2f74946f0b4300c(__obf_1eac2c84174deaf7 []byte) int {
-	for __obf_40720372b6d983c7 := range __obf_1eac2c84174deaf7 {
-		__obf_1eac2c84174deaf7[__obf_40720372b6d983c7] = '0'
+func __obf_50fe429044a97b04(__obf_d8e4295fe41206b1 []byte) int {
+	for __obf_a6733ea50196cc53 := range __obf_d8e4295fe41206b1 {
+		__obf_d8e4295fe41206b1[__obf_a6733ea50196cc53] = '0'
 	}
-	return len(__obf_1eac2c84174deaf7)
+	return len(__obf_d8e4295fe41206b1)
 }
 
 // trim trailing zeros from number.
 // (They are meaningless; the decimal point is tracked
 // independent of the number of digits.)
-func __obf_0e49a0dae06ff7fc(__obf_364e38cb96f1c266 *__obf_ae16adf734cfe1aa) {
-	for __obf_364e38cb96f1c266.__obf_04074ea54302ce17 > 0 && __obf_364e38cb96f1c266.__obf_19a369452cd5fbde[__obf_364e38cb96f1c266.__obf_04074ea54302ce17-1] == '0' {
-		__obf_364e38cb96f1c266.__obf_04074ea54302ce17--
+func __obf_80a150c45f6664a5(__obf_5097a5efcc046ddc *__obf_0962dc77c6b6239b) {
+	for __obf_5097a5efcc046ddc.__obf_ea04243a9869d25e > 0 && __obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[__obf_5097a5efcc046ddc.__obf_ea04243a9869d25e-1] == '0' {
+		__obf_5097a5efcc046ddc.__obf_ea04243a9869d25e--
 	}
-	if __obf_364e38cb96f1c266.__obf_04074ea54302ce17 == 0 {
-		__obf_364e38cb96f1c266.__obf_45565779317643f9 = 0
+	if __obf_5097a5efcc046ddc.__obf_ea04243a9869d25e == 0 {
+		__obf_5097a5efcc046ddc.__obf_cb19c1fd6e41a0d7 = 0
 	}
 }
 
 // Assign v to a.
-func (__obf_364e38cb96f1c266 *__obf_ae16adf734cfe1aa) Assign(__obf_847c12b47a12274f uint64) {
-	var __obf_27adff64d3e60f06 [24]byte
+func (__obf_5097a5efcc046ddc *__obf_0962dc77c6b6239b) Assign(__obf_a07140d89ee7df26 uint64) {
+	var __obf_93542e6c18fdd6ca [24]byte
 
 	// Write reversed decimal in buf.
-	__obf_3edab89cf83bab1c := 0
-	for __obf_847c12b47a12274f > 0 {
-		__obf_8cf82387c82987e3 := __obf_847c12b47a12274f / 10
-		__obf_847c12b47a12274f -= 10 * __obf_8cf82387c82987e3
-		__obf_27adff64d3e60f06[__obf_3edab89cf83bab1c] = byte(__obf_847c12b47a12274f + '0')
-		__obf_3edab89cf83bab1c++
-		__obf_847c12b47a12274f = __obf_8cf82387c82987e3
+	__obf_45b69da0ab68e425 := 0
+	for __obf_a07140d89ee7df26 > 0 {
+		__obf_b83d0db5c6f6bede := __obf_a07140d89ee7df26 / 10
+		__obf_a07140d89ee7df26 -= 10 * __obf_b83d0db5c6f6bede
+		__obf_93542e6c18fdd6ca[__obf_45b69da0ab68e425] = byte(__obf_a07140d89ee7df26 + '0')
+		__obf_45b69da0ab68e425++
+		__obf_a07140d89ee7df26 = __obf_b83d0db5c6f6bede
 	}
 
 	// Reverse again to produce forward decimal in a.d.
-	__obf_364e38cb96f1c266.__obf_04074ea54302ce17 = 0
-	for __obf_3edab89cf83bab1c--; __obf_3edab89cf83bab1c >= 0; __obf_3edab89cf83bab1c-- {
-		__obf_364e38cb96f1c266.__obf_19a369452cd5fbde[__obf_364e38cb96f1c266.__obf_04074ea54302ce17] = __obf_27adff64d3e60f06[__obf_3edab89cf83bab1c]
-		__obf_364e38cb96f1c266.__obf_04074ea54302ce17++
+	__obf_5097a5efcc046ddc.__obf_ea04243a9869d25e = 0
+	for __obf_45b69da0ab68e425--; __obf_45b69da0ab68e425 >= 0; __obf_45b69da0ab68e425-- {
+		__obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[__obf_5097a5efcc046ddc.__obf_ea04243a9869d25e] = __obf_93542e6c18fdd6ca[__obf_45b69da0ab68e425]
+		__obf_5097a5efcc046ddc.__obf_ea04243a9869d25e++
 	}
-	__obf_364e38cb96f1c266.__obf_45565779317643f9 = __obf_364e38cb96f1c266.__obf_04074ea54302ce17
-	__obf_0e49a0dae06ff7fc(__obf_364e38cb96f1c266)
+	__obf_5097a5efcc046ddc.__obf_cb19c1fd6e41a0d7 = __obf_5097a5efcc046ddc.__obf_ea04243a9869d25e
+	__obf_80a150c45f6664a5(__obf_5097a5efcc046ddc)
 }
 
 // Maximum shift that we can do in one pass without overflow.
 // A uint has 32 or 64 bits, and we have to be able to accommodate 9<<k.
-const __obf_072540258d9bc049 = 32 << (^uint(0) >> 63)
-const __obf_19a0abec1376a547 = __obf_072540258d9bc049 - 4
+const __obf_6af2b3468807a8d6 = 32 << (^uint(0) >> 63)
+const __obf_809dd9d021cb9743 = __obf_6af2b3468807a8d6 - 4
 
 // Binary shift right (/ 2) by k bits.  k <= maxShift to avoid overflow.
-func __obf_5a5b314cdd262b1a(__obf_364e38cb96f1c266 *__obf_ae16adf734cfe1aa, __obf_ec401ce06db88a9f uint) {
-	__obf_0feccac4ef34d0a4 := 0 // read pointer
-	__obf_9c7c0223c400a310 := 0 // write pointer
+func __obf_5e1efe9fc84c5b3e(__obf_5097a5efcc046ddc *__obf_0962dc77c6b6239b, __obf_c6eff4cc2bd046d5 uint) {
+	__obf_a934ca815da1fc1a := 0 // read pointer
+	__obf_c981e663ad88d103 := 0 // write pointer
 
 	// Pick up enough leading digits to cover first shift.
-	var __obf_3edab89cf83bab1c uint
-	for ; __obf_3edab89cf83bab1c>>__obf_ec401ce06db88a9f == 0; __obf_0feccac4ef34d0a4++ {
-		if __obf_0feccac4ef34d0a4 >= __obf_364e38cb96f1c266.__obf_04074ea54302ce17 {
-			if __obf_3edab89cf83bab1c == 0 {
+	var __obf_45b69da0ab68e425 uint
+	for ; __obf_45b69da0ab68e425>>__obf_c6eff4cc2bd046d5 == 0; __obf_a934ca815da1fc1a++ {
+		if __obf_a934ca815da1fc1a >= __obf_5097a5efcc046ddc.__obf_ea04243a9869d25e {
+			if __obf_45b69da0ab68e425 == 0 {
 				// a == 0; shouldn't get here, but handle anyway.
-				__obf_364e38cb96f1c266.__obf_04074ea54302ce17 = 0
+				__obf_5097a5efcc046ddc.__obf_ea04243a9869d25e = 0
 				return
 			}
-			for __obf_3edab89cf83bab1c>>__obf_ec401ce06db88a9f == 0 {
-				__obf_3edab89cf83bab1c = __obf_3edab89cf83bab1c * 10
-				__obf_0feccac4ef34d0a4++
+			for __obf_45b69da0ab68e425>>__obf_c6eff4cc2bd046d5 == 0 {
+				__obf_45b69da0ab68e425 = __obf_45b69da0ab68e425 * 10
+				__obf_a934ca815da1fc1a++
 			}
 			break
 		}
-		__obf_6dfba1dc52bc2b42 := uint(__obf_364e38cb96f1c266.__obf_19a369452cd5fbde[__obf_0feccac4ef34d0a4])
-		__obf_3edab89cf83bab1c = __obf_3edab89cf83bab1c*10 + __obf_6dfba1dc52bc2b42 - '0'
+		__obf_ec75e4ddc71ce85e := uint(__obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[__obf_a934ca815da1fc1a])
+		__obf_45b69da0ab68e425 = __obf_45b69da0ab68e425*10 + __obf_ec75e4ddc71ce85e - '0'
 	}
-	__obf_364e38cb96f1c266.__obf_45565779317643f9 -= __obf_0feccac4ef34d0a4 - 1
+	__obf_5097a5efcc046ddc.__obf_cb19c1fd6e41a0d7 -= __obf_a934ca815da1fc1a - 1
 
-	var __obf_2960a71b685f1638 uint = (1 << __obf_ec401ce06db88a9f) - 1
+	var __obf_7bb5289c9c89dc1c uint = (1 << __obf_c6eff4cc2bd046d5) - 1
 
 	// Pick up a digit, put down a digit.
-	for ; __obf_0feccac4ef34d0a4 < __obf_364e38cb96f1c266.__obf_04074ea54302ce17; __obf_0feccac4ef34d0a4++ {
-		__obf_6dfba1dc52bc2b42 := uint(__obf_364e38cb96f1c266.__obf_19a369452cd5fbde[__obf_0feccac4ef34d0a4])
-		__obf_742bea9a421ff878 := __obf_3edab89cf83bab1c >> __obf_ec401ce06db88a9f
-		__obf_3edab89cf83bab1c &= __obf_2960a71b685f1638
-		__obf_364e38cb96f1c266.__obf_19a369452cd5fbde[__obf_9c7c0223c400a310] = byte(__obf_742bea9a421ff878 + '0')
-		__obf_9c7c0223c400a310++
-		__obf_3edab89cf83bab1c = __obf_3edab89cf83bab1c*10 + __obf_6dfba1dc52bc2b42 - '0'
+	for ; __obf_a934ca815da1fc1a < __obf_5097a5efcc046ddc.__obf_ea04243a9869d25e; __obf_a934ca815da1fc1a++ {
+		__obf_ec75e4ddc71ce85e := uint(__obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[__obf_a934ca815da1fc1a])
+		__obf_d19bf61c6ae7a20e := __obf_45b69da0ab68e425 >> __obf_c6eff4cc2bd046d5
+		__obf_45b69da0ab68e425 &= __obf_7bb5289c9c89dc1c
+		__obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[__obf_c981e663ad88d103] = byte(__obf_d19bf61c6ae7a20e + '0')
+		__obf_c981e663ad88d103++
+		__obf_45b69da0ab68e425 = __obf_45b69da0ab68e425*10 + __obf_ec75e4ddc71ce85e - '0'
 	}
 
 	// Put down extra digits.
-	for __obf_3edab89cf83bab1c > 0 {
-		__obf_742bea9a421ff878 := __obf_3edab89cf83bab1c >> __obf_ec401ce06db88a9f
-		__obf_3edab89cf83bab1c &= __obf_2960a71b685f1638
-		if __obf_9c7c0223c400a310 < len(__obf_364e38cb96f1c266.__obf_19a369452cd5fbde) {
-			__obf_364e38cb96f1c266.__obf_19a369452cd5fbde[__obf_9c7c0223c400a310] = byte(__obf_742bea9a421ff878 + '0')
-			__obf_9c7c0223c400a310++
-		} else if __obf_742bea9a421ff878 > 0 {
-			__obf_364e38cb96f1c266.__obf_a9f8af80e19992b6 = true
+	for __obf_45b69da0ab68e425 > 0 {
+		__obf_d19bf61c6ae7a20e := __obf_45b69da0ab68e425 >> __obf_c6eff4cc2bd046d5
+		__obf_45b69da0ab68e425 &= __obf_7bb5289c9c89dc1c
+		if __obf_c981e663ad88d103 < len(__obf_5097a5efcc046ddc.__obf_d09f058c0a390c93) {
+			__obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[__obf_c981e663ad88d103] = byte(__obf_d19bf61c6ae7a20e + '0')
+			__obf_c981e663ad88d103++
+		} else if __obf_d19bf61c6ae7a20e > 0 {
+			__obf_5097a5efcc046ddc.__obf_6d99ec3c0920e3eb = true
 		}
-		__obf_3edab89cf83bab1c = __obf_3edab89cf83bab1c * 10
+		__obf_45b69da0ab68e425 = __obf_45b69da0ab68e425 * 10
 	}
 
-	__obf_364e38cb96f1c266.__obf_04074ea54302ce17 = __obf_9c7c0223c400a310
-	__obf_0e49a0dae06ff7fc(__obf_364e38cb96f1c266)
+	__obf_5097a5efcc046ddc.__obf_ea04243a9869d25e = __obf_c981e663ad88d103
+	__obf_80a150c45f6664a5(__obf_5097a5efcc046ddc)
 }
 
 // Cheat sheet for left shift: table indexed by shift count giving
@@ -2508,12 +2508,12 @@ func __obf_5a5b314cdd262b1a(__obf_364e38cb96f1c266 *__obf_ae16adf734cfe1aa, __ob
 //
 // Credit for this trick goes to Ken.
 
-type __obf_2312a386ebb40631 struct {
-	__obf_c0eae4d6d233536d int    // number of new digits
-	__obf_faa129282fbe4c56 string // minus one digit if original < a.
+type __obf_60b087b69279ef70 struct {
+	__obf_e25b9a4ddc40a521 int    // number of new digits
+	__obf_ac7aaf94727b9dec string // minus one digit if original < a.
 }
 
-var __obf_e664b6f58cdf7a41 = []__obf_2312a386ebb40631{
+var __obf_e6b729c8a19aa74f = []__obf_60b087b69279ef70{
 	// Leading digits of 1/2^i = 5^i.
 	// 5^23 is not an exact 64-bit floating point number,
 	// so have to use bc for the math.
@@ -2591,163 +2591,163 @@ var __obf_e664b6f58cdf7a41 = []__obf_2312a386ebb40631{
 }
 
 // Is the leading prefix of b lexicographically less than s?
-func __obf_cb98672515456c4f(__obf_2ea797d6029d6922 []byte, __obf_1d21ccd15f74d9eb string) bool {
-	for __obf_40720372b6d983c7 := 0; __obf_40720372b6d983c7 < len(__obf_1d21ccd15f74d9eb); __obf_40720372b6d983c7++ {
-		if __obf_40720372b6d983c7 >= len(__obf_2ea797d6029d6922) {
+func __obf_0c709a396e42b86e(__obf_5acc254c98f3fd5e []byte, __obf_539943ae97e52628 string) bool {
+	for __obf_a6733ea50196cc53 := 0; __obf_a6733ea50196cc53 < len(__obf_539943ae97e52628); __obf_a6733ea50196cc53++ {
+		if __obf_a6733ea50196cc53 >= len(__obf_5acc254c98f3fd5e) {
 			return true
 		}
-		if __obf_2ea797d6029d6922[__obf_40720372b6d983c7] != __obf_1d21ccd15f74d9eb[__obf_40720372b6d983c7] {
-			return __obf_2ea797d6029d6922[__obf_40720372b6d983c7] < __obf_1d21ccd15f74d9eb[__obf_40720372b6d983c7]
+		if __obf_5acc254c98f3fd5e[__obf_a6733ea50196cc53] != __obf_539943ae97e52628[__obf_a6733ea50196cc53] {
+			return __obf_5acc254c98f3fd5e[__obf_a6733ea50196cc53] < __obf_539943ae97e52628[__obf_a6733ea50196cc53]
 		}
 	}
 	return false
 }
 
 // Binary shift left (* 2) by k bits.  k <= maxShift to avoid overflow.
-func __obf_bfe89c7811ef030d(__obf_364e38cb96f1c266 *__obf_ae16adf734cfe1aa, __obf_ec401ce06db88a9f uint) {
-	__obf_c0eae4d6d233536d := __obf_e664b6f58cdf7a41[__obf_ec401ce06db88a9f].__obf_c0eae4d6d233536d
-	if __obf_cb98672515456c4f(__obf_364e38cb96f1c266.__obf_19a369452cd5fbde[0:__obf_364e38cb96f1c266.__obf_04074ea54302ce17], __obf_e664b6f58cdf7a41[__obf_ec401ce06db88a9f].__obf_faa129282fbe4c56) {
-		__obf_c0eae4d6d233536d--
+func __obf_7f131afdfb9c0003(__obf_5097a5efcc046ddc *__obf_0962dc77c6b6239b, __obf_c6eff4cc2bd046d5 uint) {
+	__obf_e25b9a4ddc40a521 := __obf_e6b729c8a19aa74f[__obf_c6eff4cc2bd046d5].__obf_e25b9a4ddc40a521
+	if __obf_0c709a396e42b86e(__obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[0:__obf_5097a5efcc046ddc.__obf_ea04243a9869d25e], __obf_e6b729c8a19aa74f[__obf_c6eff4cc2bd046d5].__obf_ac7aaf94727b9dec) {
+		__obf_e25b9a4ddc40a521--
 	}
 
-	__obf_0feccac4ef34d0a4 := __obf_364e38cb96f1c266.__obf_04074ea54302ce17                          // read index
-	__obf_9c7c0223c400a310 := __obf_364e38cb96f1c266.__obf_04074ea54302ce17 + __obf_c0eae4d6d233536d // write index
+	__obf_a934ca815da1fc1a := __obf_5097a5efcc046ddc.__obf_ea04243a9869d25e                          // read index
+	__obf_c981e663ad88d103 := __obf_5097a5efcc046ddc.__obf_ea04243a9869d25e + __obf_e25b9a4ddc40a521 // write index
 
 	// Pick up a digit, put down a digit.
-	var __obf_3edab89cf83bab1c uint
-	for __obf_0feccac4ef34d0a4--; __obf_0feccac4ef34d0a4 >= 0; __obf_0feccac4ef34d0a4-- {
-		__obf_3edab89cf83bab1c += (uint(__obf_364e38cb96f1c266.__obf_19a369452cd5fbde[__obf_0feccac4ef34d0a4]) - '0') << __obf_ec401ce06db88a9f
-		__obf_e2ed4a0db8d049a4 := __obf_3edab89cf83bab1c / 10
-		__obf_b64a2b410302a63f := __obf_3edab89cf83bab1c - 10*__obf_e2ed4a0db8d049a4
-		__obf_9c7c0223c400a310--
-		if __obf_9c7c0223c400a310 < len(__obf_364e38cb96f1c266.__obf_19a369452cd5fbde) {
-			__obf_364e38cb96f1c266.__obf_19a369452cd5fbde[__obf_9c7c0223c400a310] = byte(__obf_b64a2b410302a63f + '0')
-		} else if __obf_b64a2b410302a63f != 0 {
-			__obf_364e38cb96f1c266.__obf_a9f8af80e19992b6 = true
+	var __obf_45b69da0ab68e425 uint
+	for __obf_a934ca815da1fc1a--; __obf_a934ca815da1fc1a >= 0; __obf_a934ca815da1fc1a-- {
+		__obf_45b69da0ab68e425 += (uint(__obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[__obf_a934ca815da1fc1a]) - '0') << __obf_c6eff4cc2bd046d5
+		__obf_2133c767fa1629c8 := __obf_45b69da0ab68e425 / 10
+		__obf_7c7926c5ab5f5cee := __obf_45b69da0ab68e425 - 10*__obf_2133c767fa1629c8
+		__obf_c981e663ad88d103--
+		if __obf_c981e663ad88d103 < len(__obf_5097a5efcc046ddc.__obf_d09f058c0a390c93) {
+			__obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[__obf_c981e663ad88d103] = byte(__obf_7c7926c5ab5f5cee + '0')
+		} else if __obf_7c7926c5ab5f5cee != 0 {
+			__obf_5097a5efcc046ddc.__obf_6d99ec3c0920e3eb = true
 		}
-		__obf_3edab89cf83bab1c = __obf_e2ed4a0db8d049a4
+		__obf_45b69da0ab68e425 = __obf_2133c767fa1629c8
 	}
 
 	// Put down extra digits.
-	for __obf_3edab89cf83bab1c > 0 {
-		__obf_e2ed4a0db8d049a4 := __obf_3edab89cf83bab1c / 10
-		__obf_b64a2b410302a63f := __obf_3edab89cf83bab1c - 10*__obf_e2ed4a0db8d049a4
-		__obf_9c7c0223c400a310--
-		if __obf_9c7c0223c400a310 < len(__obf_364e38cb96f1c266.__obf_19a369452cd5fbde) {
-			__obf_364e38cb96f1c266.__obf_19a369452cd5fbde[__obf_9c7c0223c400a310] = byte(__obf_b64a2b410302a63f + '0')
-		} else if __obf_b64a2b410302a63f != 0 {
-			__obf_364e38cb96f1c266.__obf_a9f8af80e19992b6 = true
+	for __obf_45b69da0ab68e425 > 0 {
+		__obf_2133c767fa1629c8 := __obf_45b69da0ab68e425 / 10
+		__obf_7c7926c5ab5f5cee := __obf_45b69da0ab68e425 - 10*__obf_2133c767fa1629c8
+		__obf_c981e663ad88d103--
+		if __obf_c981e663ad88d103 < len(__obf_5097a5efcc046ddc.__obf_d09f058c0a390c93) {
+			__obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[__obf_c981e663ad88d103] = byte(__obf_7c7926c5ab5f5cee + '0')
+		} else if __obf_7c7926c5ab5f5cee != 0 {
+			__obf_5097a5efcc046ddc.__obf_6d99ec3c0920e3eb = true
 		}
-		__obf_3edab89cf83bab1c = __obf_e2ed4a0db8d049a4
+		__obf_45b69da0ab68e425 = __obf_2133c767fa1629c8
 	}
 
-	__obf_364e38cb96f1c266.__obf_04074ea54302ce17 += __obf_c0eae4d6d233536d
-	if __obf_364e38cb96f1c266.__obf_04074ea54302ce17 >= len(__obf_364e38cb96f1c266.__obf_19a369452cd5fbde) {
-		__obf_364e38cb96f1c266.__obf_04074ea54302ce17 = len(__obf_364e38cb96f1c266.__obf_19a369452cd5fbde)
+	__obf_5097a5efcc046ddc.__obf_ea04243a9869d25e += __obf_e25b9a4ddc40a521
+	if __obf_5097a5efcc046ddc.__obf_ea04243a9869d25e >= len(__obf_5097a5efcc046ddc.__obf_d09f058c0a390c93) {
+		__obf_5097a5efcc046ddc.__obf_ea04243a9869d25e = len(__obf_5097a5efcc046ddc.__obf_d09f058c0a390c93)
 	}
-	__obf_364e38cb96f1c266.__obf_45565779317643f9 += __obf_c0eae4d6d233536d
-	__obf_0e49a0dae06ff7fc(__obf_364e38cb96f1c266)
+	__obf_5097a5efcc046ddc.__obf_cb19c1fd6e41a0d7 += __obf_e25b9a4ddc40a521
+	__obf_80a150c45f6664a5(__obf_5097a5efcc046ddc)
 }
 
 // Binary shift left (k > 0) or right (k < 0).
-func (__obf_364e38cb96f1c266 *__obf_ae16adf734cfe1aa) Shift(__obf_ec401ce06db88a9f int) {
+func (__obf_5097a5efcc046ddc *__obf_0962dc77c6b6239b) Shift(__obf_c6eff4cc2bd046d5 int) {
 	switch {
-	case __obf_364e38cb96f1c266.__obf_04074ea54302ce17 == 0:
+	case __obf_5097a5efcc046ddc.__obf_ea04243a9869d25e == 0:
 		// nothing to do: a == 0
-	case __obf_ec401ce06db88a9f > 0:
-		for __obf_ec401ce06db88a9f > __obf_19a0abec1376a547 {
-			__obf_bfe89c7811ef030d(__obf_364e38cb96f1c266, __obf_19a0abec1376a547)
-			__obf_ec401ce06db88a9f -= __obf_19a0abec1376a547
+	case __obf_c6eff4cc2bd046d5 > 0:
+		for __obf_c6eff4cc2bd046d5 > __obf_809dd9d021cb9743 {
+			__obf_7f131afdfb9c0003(__obf_5097a5efcc046ddc, __obf_809dd9d021cb9743)
+			__obf_c6eff4cc2bd046d5 -= __obf_809dd9d021cb9743
 		}
-		__obf_bfe89c7811ef030d(__obf_364e38cb96f1c266, uint(__obf_ec401ce06db88a9f))
-	case __obf_ec401ce06db88a9f < 0:
-		for __obf_ec401ce06db88a9f < -__obf_19a0abec1376a547 {
-			__obf_5a5b314cdd262b1a(__obf_364e38cb96f1c266, __obf_19a0abec1376a547)
-			__obf_ec401ce06db88a9f += __obf_19a0abec1376a547
+		__obf_7f131afdfb9c0003(__obf_5097a5efcc046ddc, uint(__obf_c6eff4cc2bd046d5))
+	case __obf_c6eff4cc2bd046d5 < 0:
+		for __obf_c6eff4cc2bd046d5 < -__obf_809dd9d021cb9743 {
+			__obf_5e1efe9fc84c5b3e(__obf_5097a5efcc046ddc, __obf_809dd9d021cb9743)
+			__obf_c6eff4cc2bd046d5 += __obf_809dd9d021cb9743
 		}
-		__obf_5a5b314cdd262b1a(__obf_364e38cb96f1c266, uint(-__obf_ec401ce06db88a9f))
+		__obf_5e1efe9fc84c5b3e(__obf_5097a5efcc046ddc, uint(-__obf_c6eff4cc2bd046d5))
 	}
 }
 
 // If we chop a at nd digits, should we round up?
-func __obf_1f47eb3e5c6a4efc(__obf_364e38cb96f1c266 *__obf_ae16adf734cfe1aa, __obf_04074ea54302ce17 int) bool {
-	if __obf_04074ea54302ce17 < 0 || __obf_04074ea54302ce17 >= __obf_364e38cb96f1c266.__obf_04074ea54302ce17 {
+func __obf_5366ed222e70c315(__obf_5097a5efcc046ddc *__obf_0962dc77c6b6239b, __obf_ea04243a9869d25e int) bool {
+	if __obf_ea04243a9869d25e < 0 || __obf_ea04243a9869d25e >= __obf_5097a5efcc046ddc.__obf_ea04243a9869d25e {
 		return false
 	}
-	if __obf_364e38cb96f1c266.__obf_19a369452cd5fbde[__obf_04074ea54302ce17] == '5' && __obf_04074ea54302ce17+1 == __obf_364e38cb96f1c266.__obf_04074ea54302ce17 { // exactly halfway - round to even
+	if __obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[__obf_ea04243a9869d25e] == '5' && __obf_ea04243a9869d25e+1 == __obf_5097a5efcc046ddc.__obf_ea04243a9869d25e { // exactly halfway - round to even
 		// if we truncated, a little higher than what's recorded - always round up
-		if __obf_364e38cb96f1c266.__obf_a9f8af80e19992b6 {
+		if __obf_5097a5efcc046ddc.__obf_6d99ec3c0920e3eb {
 			return true
 		}
-		return __obf_04074ea54302ce17 > 0 && (__obf_364e38cb96f1c266.__obf_19a369452cd5fbde[__obf_04074ea54302ce17-1]-'0')%2 != 0
+		return __obf_ea04243a9869d25e > 0 && (__obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[__obf_ea04243a9869d25e-1]-'0')%2 != 0
 	}
 	// not halfway - digit tells all
-	return __obf_364e38cb96f1c266.__obf_19a369452cd5fbde[__obf_04074ea54302ce17] >= '5'
+	return __obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[__obf_ea04243a9869d25e] >= '5'
 }
 
 // Round a to nd digits (or fewer).
 // If nd is zero, it means we're rounding
 // just to the left of the digits, as in
 // 0.09 -> 0.1.
-func (__obf_364e38cb96f1c266 *__obf_ae16adf734cfe1aa) Round(__obf_04074ea54302ce17 int) {
-	if __obf_04074ea54302ce17 < 0 || __obf_04074ea54302ce17 >= __obf_364e38cb96f1c266.__obf_04074ea54302ce17 {
+func (__obf_5097a5efcc046ddc *__obf_0962dc77c6b6239b) Round(__obf_ea04243a9869d25e int) {
+	if __obf_ea04243a9869d25e < 0 || __obf_ea04243a9869d25e >= __obf_5097a5efcc046ddc.__obf_ea04243a9869d25e {
 		return
 	}
-	if __obf_1f47eb3e5c6a4efc(__obf_364e38cb96f1c266, __obf_04074ea54302ce17) {
-		__obf_364e38cb96f1c266.RoundUp(__obf_04074ea54302ce17)
+	if __obf_5366ed222e70c315(__obf_5097a5efcc046ddc, __obf_ea04243a9869d25e) {
+		__obf_5097a5efcc046ddc.RoundUp(__obf_ea04243a9869d25e)
 	} else {
-		__obf_364e38cb96f1c266.RoundDown(__obf_04074ea54302ce17)
+		__obf_5097a5efcc046ddc.RoundDown(__obf_ea04243a9869d25e)
 	}
 }
 
 // Round a down to nd digits (or fewer).
-func (__obf_364e38cb96f1c266 *__obf_ae16adf734cfe1aa) RoundDown(__obf_04074ea54302ce17 int) {
-	if __obf_04074ea54302ce17 < 0 || __obf_04074ea54302ce17 >= __obf_364e38cb96f1c266.__obf_04074ea54302ce17 {
+func (__obf_5097a5efcc046ddc *__obf_0962dc77c6b6239b) RoundDown(__obf_ea04243a9869d25e int) {
+	if __obf_ea04243a9869d25e < 0 || __obf_ea04243a9869d25e >= __obf_5097a5efcc046ddc.__obf_ea04243a9869d25e {
 		return
 	}
-	__obf_364e38cb96f1c266.__obf_04074ea54302ce17 = __obf_04074ea54302ce17
-	__obf_0e49a0dae06ff7fc(__obf_364e38cb96f1c266)
+	__obf_5097a5efcc046ddc.__obf_ea04243a9869d25e = __obf_ea04243a9869d25e
+	__obf_80a150c45f6664a5(__obf_5097a5efcc046ddc)
 }
 
 // Round a up to nd digits (or fewer).
-func (__obf_364e38cb96f1c266 *__obf_ae16adf734cfe1aa) RoundUp(__obf_04074ea54302ce17 int) {
-	if __obf_04074ea54302ce17 < 0 || __obf_04074ea54302ce17 >= __obf_364e38cb96f1c266.__obf_04074ea54302ce17 {
+func (__obf_5097a5efcc046ddc *__obf_0962dc77c6b6239b) RoundUp(__obf_ea04243a9869d25e int) {
+	if __obf_ea04243a9869d25e < 0 || __obf_ea04243a9869d25e >= __obf_5097a5efcc046ddc.__obf_ea04243a9869d25e {
 		return
 	}
 
 	// round up
-	for __obf_40720372b6d983c7 := __obf_04074ea54302ce17 - 1; __obf_40720372b6d983c7 >= 0; __obf_40720372b6d983c7-- {
-		__obf_6dfba1dc52bc2b42 := __obf_364e38cb96f1c266.__obf_19a369452cd5fbde[__obf_40720372b6d983c7]
-		if __obf_6dfba1dc52bc2b42 < '9' { // can stop after this digit
-			__obf_364e38cb96f1c266.__obf_19a369452cd5fbde[__obf_40720372b6d983c7]++
-			__obf_364e38cb96f1c266.__obf_04074ea54302ce17 = __obf_40720372b6d983c7 + 1
+	for __obf_a6733ea50196cc53 := __obf_ea04243a9869d25e - 1; __obf_a6733ea50196cc53 >= 0; __obf_a6733ea50196cc53-- {
+		__obf_ec75e4ddc71ce85e := __obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[__obf_a6733ea50196cc53]
+		if __obf_ec75e4ddc71ce85e < '9' { // can stop after this digit
+			__obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[__obf_a6733ea50196cc53]++
+			__obf_5097a5efcc046ddc.__obf_ea04243a9869d25e = __obf_a6733ea50196cc53 + 1
 			return
 		}
 	}
 
 	// Number is all 9s.
 	// Change to single 1 with adjusted decimal point.
-	__obf_364e38cb96f1c266.__obf_19a369452cd5fbde[0] = '1'
-	__obf_364e38cb96f1c266.__obf_04074ea54302ce17 = 1
-	__obf_364e38cb96f1c266.__obf_45565779317643f9++
+	__obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[0] = '1'
+	__obf_5097a5efcc046ddc.__obf_ea04243a9869d25e = 1
+	__obf_5097a5efcc046ddc.__obf_cb19c1fd6e41a0d7++
 }
 
 // Extract integer part, rounded appropriately.
 // No guarantees about overflow.
-func (__obf_364e38cb96f1c266 *__obf_ae16adf734cfe1aa) RoundedInteger() uint64 {
-	if __obf_364e38cb96f1c266.__obf_45565779317643f9 > 20 {
+func (__obf_5097a5efcc046ddc *__obf_0962dc77c6b6239b) RoundedInteger() uint64 {
+	if __obf_5097a5efcc046ddc.__obf_cb19c1fd6e41a0d7 > 20 {
 		return 0xFFFFFFFFFFFFFFFF
 	}
-	var __obf_40720372b6d983c7 int
-	__obf_3edab89cf83bab1c := uint64(0)
-	for __obf_40720372b6d983c7 = 0; __obf_40720372b6d983c7 < __obf_364e38cb96f1c266.__obf_45565779317643f9 && __obf_40720372b6d983c7 < __obf_364e38cb96f1c266.__obf_04074ea54302ce17; __obf_40720372b6d983c7++ {
-		__obf_3edab89cf83bab1c = __obf_3edab89cf83bab1c*10 + uint64(__obf_364e38cb96f1c266.__obf_19a369452cd5fbde[__obf_40720372b6d983c7]-'0')
+	var __obf_a6733ea50196cc53 int
+	__obf_45b69da0ab68e425 := uint64(0)
+	for __obf_a6733ea50196cc53 = 0; __obf_a6733ea50196cc53 < __obf_5097a5efcc046ddc.__obf_cb19c1fd6e41a0d7 && __obf_a6733ea50196cc53 < __obf_5097a5efcc046ddc.__obf_ea04243a9869d25e; __obf_a6733ea50196cc53++ {
+		__obf_45b69da0ab68e425 = __obf_45b69da0ab68e425*10 + uint64(__obf_5097a5efcc046ddc.__obf_d09f058c0a390c93[__obf_a6733ea50196cc53]-'0')
 	}
-	for ; __obf_40720372b6d983c7 < __obf_364e38cb96f1c266.__obf_45565779317643f9; __obf_40720372b6d983c7++ {
-		__obf_3edab89cf83bab1c *= 10
+	for ; __obf_a6733ea50196cc53 < __obf_5097a5efcc046ddc.__obf_cb19c1fd6e41a0d7; __obf_a6733ea50196cc53++ {
+		__obf_45b69da0ab68e425 *= 10
 	}
-	if __obf_1f47eb3e5c6a4efc(__obf_364e38cb96f1c266, __obf_364e38cb96f1c266.__obf_45565779317643f9) {
-		__obf_3edab89cf83bab1c++
+	if __obf_5366ed222e70c315(__obf_5097a5efcc046ddc, __obf_5097a5efcc046ddc.__obf_cb19c1fd6e41a0d7) {
+		__obf_45b69da0ab68e425++
 	}
-	return __obf_3edab89cf83bab1c
+	return __obf_45b69da0ab68e425
 }

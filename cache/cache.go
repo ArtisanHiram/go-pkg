@@ -1,4 +1,4 @@
-package __obf_8281010a3a6d2ab0
+package __obf_79e7502d8563d901
 
 import (
 	"errors"
@@ -24,21 +24,21 @@ type Expirable interface {
 // }
 
 type Cache interface {
-	Add(__obf_805b9182f4a01a43 string, __obf_a31843a6764aecf9 any) error
-	Set(__obf_805b9182f4a01a43 string, __obf_a31843a6764aecf9 any, __obf_e2e393700839b297 time.Duration) error
-	Get(__obf_805b9182f4a01a43 string) ([]byte, error)
-	Delete(__obf_c2739d84a72f2e49 string)
-	Remove(__obf_805b9182f4a01a43 string) error
+	Add(__obf_50994613b7653a88 string, __obf_e043381e0771feca any) error
+	Set(__obf_50994613b7653a88 string, __obf_e043381e0771feca any, __obf_4ff6d8752a4fea92 time.Duration) error
+	Get(__obf_50994613b7653a88 string) ([]byte, error)
+	Delete(__obf_bac226386ec983d7 string)
+	Remove(__obf_50994613b7653a88 string) error
 	Clear() error
-	Has(__obf_805b9182f4a01a43 string) bool
+	Has(__obf_50994613b7653a88 string) bool
 }
 
-func Get[T any](__obf_5bb7b87538df600c Cache, __obf_805b9182f4a01a43 string) (__obf_0b4c113b57caf372 T, __obf_7444330fd960f532 error) {
-	var __obf_4f07d7a3752cb867 []byte
-	__obf_4f07d7a3752cb867, __obf_7444330fd960f532 = __obf_5bb7b87538df600c.Get(__obf_805b9182f4a01a43)
-	if __obf_7444330fd960f532 != nil {
+func Get[T any](__obf_38cd74f1c4e39ef3 Cache, __obf_50994613b7653a88 string) (__obf_83c2f84d0ae1360e T, __obf_8429338405294247 error) {
+	var __obf_e859322e84749c37 []byte
+	__obf_e859322e84749c37, __obf_8429338405294247 = __obf_38cd74f1c4e39ef3.Get(__obf_50994613b7653a88)
+	if __obf_8429338405294247 != nil {
 		return
 	}
 
-	return util.BytesToAny[T](__obf_4f07d7a3752cb867)
+	return util.BytesToAny[T](__obf_e859322e84749c37)
 }

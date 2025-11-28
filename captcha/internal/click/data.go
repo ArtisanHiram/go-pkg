@@ -1,12 +1,12 @@
-package __obf_b2344bb9128f17e6
+package __obf_96c99f1db90b23fa
 
 import types "github.com/ArtisanHiram/go-pkg/captcha/types"
 
 // CaptchaData is the concrete implementation of the CaptchaData interface
 type CaptchaData struct {
-	__obf_8c02fb9797f8ce7a []*types.Dot
-	__obf_7e08e5ae21de2666 *types.JPEGImage
-	__obf_ca3de5ebdc66e8cf *types.PNGImage
+	__obf_9ecfe5c0e9e57390 []*types.Dot
+	__obf_d1b1b184cf543db3 *types.JPEGImage
+	__obf_dedf9178334e9a06 *types.PNGImage
 }
 
 // Ensure CaptchaData implements util.CaptchaData interface
@@ -14,22 +14,22 @@ var _ types.Captcha[[]*types.Dot] = (*CaptchaData)(nil)
 
 // GetPrimary gets the main captcha image
 // return: Main image as CaptchaImage interface
-func (__obf_a38f2b46ae5b8a61 *CaptchaData) GetPrimary() types.CaptchaImage {
-	return __obf_a38f2b46ae5b8a61.__obf_7e08e5ae21de2666
+func (__obf_3f5b5aab6d53fe90 *CaptchaData) GetPrimary() types.CaptchaImage {
+	return __obf_3f5b5aab6d53fe90.__obf_d1b1b184cf543db3
 }
 
 // GetSecondary gets the thumbnail image
 // return: Thumbnail image as CaptchaImage interface
-func (__obf_a38f2b46ae5b8a61 *CaptchaData) GetSecondary() types.CaptchaImage {
-	return __obf_a38f2b46ae5b8a61.__obf_ca3de5ebdc66e8cf
+func (__obf_3f5b5aab6d53fe90 *CaptchaData) GetSecondary() types.CaptchaImage {
+	return __obf_3f5b5aab6d53fe90.__obf_dedf9178334e9a06
 }
 
 // GetData gets the target dots data
-func (__obf_a38f2b46ae5b8a61 *CaptchaData) GetData() []*types.Dot {
-	return __obf_a38f2b46ae5b8a61.__obf_8c02fb9797f8ce7a
+func (__obf_3f5b5aab6d53fe90 *CaptchaData) GetData() []*types.Dot {
+	return __obf_3f5b5aab6d53fe90.__obf_9ecfe5c0e9e57390
 }
 
-func (__obf_a38f2b46ae5b8a61 *CaptchaData) Type() types.CaptchaType {
+func (__obf_3f5b5aab6d53fe90 *CaptchaData) Type() types.CaptchaType {
 	return types.ClickCaptchat
 }
 
@@ -37,28 +37,28 @@ func (__obf_a38f2b46ae5b8a61 *CaptchaData) Type() types.CaptchaType {
 // clicks: slice of clicked coordinates
 // tolerance: allowed pixel deviation for matching
 // Returns true if all target dots are clicked correctly in order
-func (__obf_a38f2b46ae5b8a61 *CaptchaData) Verify(__obf_eda1d32b18f59544 []*types.Dot, __obf_f8405c4e3a20c061 int) bool {
+func (__obf_3f5b5aab6d53fe90 *CaptchaData) Verify(__obf_2d727629b6dc5dfb []*types.Dot, __obf_77fd0cfb3db60892 int) bool {
 	// if len(clicks) != len(c.dots)*2 {
 	// 	return false
 	// }
 
-	if len(__obf_eda1d32b18f59544) != len(__obf_a38f2b46ae5b8a61.__obf_8c02fb9797f8ce7a) {
+	if len(__obf_2d727629b6dc5dfb) != len(__obf_3f5b5aab6d53fe90.__obf_9ecfe5c0e9e57390) {
 		return false
 	}
 
-	for __obf_76ec865d65fb400e, __obf_24103e8f3612481d := range __obf_a38f2b46ae5b8a61.__obf_8c02fb9797f8ce7a {
+	for __obf_176527c945a10eb5, __obf_68c032f360706780 := range __obf_3f5b5aab6d53fe90.__obf_9ecfe5c0e9e57390 {
 		// clickX := clicks[i*2]
 		// clickY := clicks[i*2+1]
-		__obf_9538715a5b840083 := __obf_eda1d32b18f59544[__obf_76ec865d65fb400e].X
-		__obf_26db953e3ce28edb := __obf_eda1d32b18f59544[__obf_76ec865d65fb400e].Y
+		__obf_c5d039033cfb967a := __obf_2d727629b6dc5dfb[__obf_176527c945a10eb5].X
+		__obf_825f010539c63826 := __obf_2d727629b6dc5dfb[__obf_176527c945a10eb5].Y
 
 		// Calculate the center point of the dot
-		__obf_7239f696c39b2834 := __obf_24103e8f3612481d.X + __obf_24103e8f3612481d.Size/2
-		__obf_79e79031243e2d1f := __obf_24103e8f3612481d.Y + __obf_24103e8f3612481d.Size/2
+		__obf_4c0edcf9e88aee9f := __obf_68c032f360706780.X + __obf_68c032f360706780.Size/2
+		__obf_25f07cf3768e1222 := __obf_68c032f360706780.Y + __obf_68c032f360706780.Size/2
 
 		// Check if click is within tolerance range
-		if __obf_9538715a5b840083 < __obf_7239f696c39b2834-__obf_f8405c4e3a20c061 || __obf_9538715a5b840083 > __obf_7239f696c39b2834+__obf_f8405c4e3a20c061 ||
-			__obf_26db953e3ce28edb < __obf_79e79031243e2d1f-__obf_f8405c4e3a20c061 || __obf_26db953e3ce28edb > __obf_79e79031243e2d1f+__obf_f8405c4e3a20c061 {
+		if __obf_c5d039033cfb967a < __obf_4c0edcf9e88aee9f-__obf_77fd0cfb3db60892 || __obf_c5d039033cfb967a > __obf_4c0edcf9e88aee9f+__obf_77fd0cfb3db60892 ||
+			__obf_825f010539c63826 < __obf_25f07cf3768e1222-__obf_77fd0cfb3db60892 || __obf_825f010539c63826 > __obf_25f07cf3768e1222+__obf_77fd0cfb3db60892 {
 			return false
 		}
 	}

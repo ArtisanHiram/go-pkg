@@ -1,9 +1,9 @@
-package __obf_54fa1ddb10038ac2
+package __obf_3024f65bc75e4688
 
 import (
 	cmd "github.com/ArtisanHiram/go-pkg/runner/cmd"
 )
 
-func Run(__obf_28bcb607ee417396 string, __obf_4cd941745525199c string, __obf_645829dfd443d4d2 []string) (string, string, error) {
-	return cmd.RunStdin(__obf_28bcb607ee417396, __obf_4cd941745525199c, "node", __obf_645829dfd443d4d2[0])
+func Run(__obf_41e578201431fd85 string, __obf_053c82f38e3a7140 string, __obf_a936af4b6a56537c []string) (string, string, error) {
+	return cmd.RunStdin(__obf_41e578201431fd85, __obf_053c82f38e3a7140, "node", __obf_a936af4b6a56537c[0])
 }

@@ -1,4 +1,4 @@
-package __obf_66da9ed7fbc1ec9e
+package __obf_df9e37b4dd16fa57
 
 import (
 	"context"
@@ -30,46 +30,46 @@ const (
 )
 
 // 用单参数，函数内部调用自行转换类型，否则没办法传递，很烦
-type FuncTx func(__obf_181488bf1961013b *sqlx.Tx, __obf_66ab003bba546d1d any) error
+type FuncTx func(__obf_4e1da10c2afe56d6 *sqlx.Tx, __obf_3cef69abfd4b5fed any) error
 
-func Open(__obf_9e03da570445de8c, __obf_b3d2e1eb0cdd272b string, __obf_f6d4ed25fadbb031 time.Duration) (*DB, error) {
-	__obf_2e13600f19148084, __obf_1229ad25944902c2 := sqlx.Open(__obf_9e03da570445de8c, __obf_b3d2e1eb0cdd272b)
-	if __obf_1229ad25944902c2 != nil {
-		return nil, __obf_1229ad25944902c2
+func Open(__obf_3e1e1a445db62cdf, __obf_bc181e5ba2602fb2 string, __obf_435469c73588f1a2 time.Duration) (*DB, error) {
+	__obf_ed3a9a8432b2d457, __obf_4795d167371f16d4 := sqlx.Open(__obf_3e1e1a445db62cdf, __obf_bc181e5ba2602fb2)
+	if __obf_4795d167371f16d4 != nil {
+		return nil, __obf_4795d167371f16d4
 	}
-	__obf_1d423fa3821811d8 := &DB{
-		DB:                     __obf_2e13600f19148084,
-		__obf_f6d4ed25fadbb031: __obf_f6d4ed25fadbb031,
+	__obf_8baa416e653862dd := &DB{
+		DB:                     __obf_ed3a9a8432b2d457,
+		__obf_435469c73588f1a2: __obf_435469c73588f1a2,
 	}
-	__obf_1d423fa3821811d8.__obf_cd09a97e77526b71.New = func() any {
-		return __obf_1d423fa3821811d8.__obf_c3fbd30db852bdaf()
+	__obf_8baa416e653862dd.__obf_d6fbd616396c8e75.New = func() any {
+		return __obf_8baa416e653862dd.__obf_c6402afb25903cc1()
 	}
-	return __obf_1d423fa3821811d8, nil
+	return __obf_8baa416e653862dd, nil
 }
 
 type DB struct {
 	*sqlx.DB
-	__obf_f6d4ed25fadbb031 time.Duration
-	__obf_cd09a97e77526b71 sync.Pool
+	__obf_435469c73588f1a2 time.Duration
+	__obf_d6fbd616396c8e75 sync.Pool
 }
 
-func (__obf_2e13600f19148084 *DB) __obf_c3fbd30db852bdaf() *Context {
-	return &Context{__obf_2e13600f19148084: __obf_2e13600f19148084}
+func (__obf_ed3a9a8432b2d457 *DB) __obf_c6402afb25903cc1() *Context {
+	return &Context{__obf_ed3a9a8432b2d457: __obf_ed3a9a8432b2d457}
 }
 
 // 获取一个`SQL`执行`Context`
-func (__obf_2e13600f19148084 *DB) Acquire() *Context {
+func (__obf_ed3a9a8432b2d457 *DB) Acquire() *Context {
 	// 无需加锁，sync.Pool本身是线程安全的
-	__obf_def785cbde1dd5f0 := __obf_2e13600f19148084.__obf_cd09a97e77526b71.Get().(*Context)
-	__obf_def785cbde1dd5f0.__obf_90518a6ab8d87fe8()
-	return __obf_def785cbde1dd5f0
+	__obf_036c6b778079b76b := __obf_ed3a9a8432b2d457.__obf_d6fbd616396c8e75.Get().(*Context)
+	__obf_036c6b778079b76b.__obf_79a134d3318127c7()
+	return __obf_036c6b778079b76b
 }
 
 // 获取一个带有事务`tx`的`SQL`执行`Context`
-func (__obf_2e13600f19148084 *DB) AcquireTx(__obf_181488bf1961013b *sqlx.Tx) *Context {
-	__obf_def785cbde1dd5f0 := __obf_2e13600f19148084.Acquire()
-	__obf_def785cbde1dd5f0.__obf_181488bf1961013b = __obf_181488bf1961013b
-	return __obf_def785cbde1dd5f0
+func (__obf_ed3a9a8432b2d457 *DB) AcquireTx(__obf_4e1da10c2afe56d6 *sqlx.Tx) *Context {
+	__obf_036c6b778079b76b := __obf_ed3a9a8432b2d457.Acquire()
+	__obf_036c6b778079b76b.__obf_4e1da10c2afe56d6 = __obf_4e1da10c2afe56d6
+	return __obf_036c6b778079b76b
 }
 
 // 优雅的开启事务
@@ -77,268 +77,268 @@ func (__obf_2e13600f19148084 *DB) AcquireTx(__obf_181488bf1961013b *sqlx.Tx) *Co
 // 除了可以统一处理开启事务的代码，好像也没看到啥好处，而且还限制了参数的传递，只能传递一个参数，所以多参数就弄成一个对象传递吧
 // 返回值也就只有异常，所以如果需要返回什么数据的，就直接搞到异常里面吧，我也不知道怎么搞...
 // 最后，不要搞嵌套事务
-func (__obf_2e13600f19148084 *DB) WithTx(__obf_9c7c78fc0a38ac8d FuncTx, __obf_66ab003bba546d1d any) (__obf_1229ad25944902c2 error) {
-	var __obf_181488bf1961013b *sqlx.Tx
-	__obf_181488bf1961013b, __obf_1229ad25944902c2 = __obf_2e13600f19148084.Beginx()
-	if __obf_1229ad25944902c2 != nil {
+func (__obf_ed3a9a8432b2d457 *DB) WithTx(__obf_0c6f3b0568984f99 FuncTx, __obf_3cef69abfd4b5fed any) (__obf_4795d167371f16d4 error) {
+	var __obf_4e1da10c2afe56d6 *sqlx.Tx
+	__obf_4e1da10c2afe56d6, __obf_4795d167371f16d4 = __obf_ed3a9a8432b2d457.Beginx()
+	if __obf_4795d167371f16d4 != nil {
 		return
 	}
 	defer func() {
-		if __obf_1229ad25944902c2 != nil && __obf_181488bf1961013b != nil {
-			__obf_1229ad25944902c2 = __obf_181488bf1961013b.Rollback()
+		if __obf_4795d167371f16d4 != nil && __obf_4e1da10c2afe56d6 != nil {
+			__obf_4795d167371f16d4 = __obf_4e1da10c2afe56d6.Rollback()
 		}
 	}()
 
 	// 调用外部函数
-	if __obf_1229ad25944902c2 = __obf_9c7c78fc0a38ac8d(__obf_181488bf1961013b, __obf_66ab003bba546d1d); __obf_1229ad25944902c2 != nil {
+	if __obf_4795d167371f16d4 = __obf_0c6f3b0568984f99(__obf_4e1da10c2afe56d6, __obf_3cef69abfd4b5fed); __obf_4795d167371f16d4 != nil {
 		return
 	}
 
-	__obf_1229ad25944902c2 = __obf_181488bf1961013b.Commit()
+	__obf_4795d167371f16d4 = __obf_4e1da10c2afe56d6.Commit()
 	return
 }
 
 type Context struct {
-	__obf_2e13600f19148084 *DB
-	__obf_181488bf1961013b *sqlx.Tx //事务
+	__obf_ed3a9a8432b2d457 *DB
+	__obf_4e1da10c2afe56d6 *sqlx.Tx //事务
 	sql                    string
-	__obf_f477196bed539112 string
-	__obf_1421765dbeb61db5 []string
-	__obf_097c32c9294d6428 []string
-	__obf_5e44ba8d82e98713 string
-	__obf_f53196fb47cd5ca4 string
-	__obf_62eeef7f2a3ed712 string
-	__obf_6164bcde7de4e49c int64
-	__obf_d807a2811f7abbfc int64
-	__obf_66ab003bba546d1d []any
-	__obf_605a9fc0aebcb352 bool //排他锁
-	__obf_74e2706a3d008fb5 bool //共享锁
+	__obf_5bf373809aa21efc string
+	__obf_375b71252e6f26c6 []string
+	__obf_8649156a558d0fb4 []string
+	__obf_72aa9c9e212e03fe string
+	__obf_79a5b98b6cf49502 string
+	__obf_3901bcf69ddf5fea string
+	__obf_159c787549b63f29 int64
+	__obf_b9906ca51574c61e int64
+	__obf_3cef69abfd4b5fed []any
+	__obf_04522ec63d23e18d bool //排他锁
+	__obf_dacd8adf705f369a bool //共享锁
 }
 
-func (__obf_def785cbde1dd5f0 *Context) Name(__obf_f477196bed539112 string) *Context {
-	__obf_def785cbde1dd5f0.__obf_f477196bed539112 = __obf_f477196bed539112
-	return __obf_def785cbde1dd5f0
+func (__obf_036c6b778079b76b *Context) Name(__obf_5bf373809aa21efc string) *Context {
+	__obf_036c6b778079b76b.__obf_5bf373809aa21efc = __obf_5bf373809aa21efc
+	return __obf_036c6b778079b76b
 }
 
 // 查询字段
 // 如果不指定查询字段，默认使用传递的对象中的标签`db`指定的字段，如果没有指定`db`标签则使用`*`代替
 // 使用`*`以后增加数据库字段可能会导致老的查询出错，对兼容性不好，可能是`orm`这个库的问题
-func (__obf_def785cbde1dd5f0 *Context) What(__obf_1421765dbeb61db5 []string) *Context {
-	__obf_def785cbde1dd5f0.__obf_1421765dbeb61db5 = __obf_1421765dbeb61db5
-	return __obf_def785cbde1dd5f0
+func (__obf_036c6b778079b76b *Context) What(__obf_375b71252e6f26c6 []string) *Context {
+	__obf_036c6b778079b76b.__obf_375b71252e6f26c6 = __obf_375b71252e6f26c6
+	return __obf_036c6b778079b76b
 }
 
-func (__obf_def785cbde1dd5f0 *Context) Where(__obf_f818ec1012d81c56 string, __obf_66ab003bba546d1d ...any) *Context {
-	__obf_def785cbde1dd5f0.__obf_097c32c9294d6428 = append(__obf_def785cbde1dd5f0.__obf_097c32c9294d6428, __obf_f818ec1012d81c56)
-	__obf_def785cbde1dd5f0.__obf_66ab003bba546d1d = append(__obf_def785cbde1dd5f0.__obf_66ab003bba546d1d, __obf_66ab003bba546d1d...)
-	return __obf_def785cbde1dd5f0
+func (__obf_036c6b778079b76b *Context) Where(__obf_511a4b0e43c6c0f2 string, __obf_3cef69abfd4b5fed ...any) *Context {
+	__obf_036c6b778079b76b.__obf_8649156a558d0fb4 = append(__obf_036c6b778079b76b.__obf_8649156a558d0fb4, __obf_511a4b0e43c6c0f2)
+	__obf_036c6b778079b76b.__obf_3cef69abfd4b5fed = append(__obf_036c6b778079b76b.__obf_3cef69abfd4b5fed, __obf_3cef69abfd4b5fed...)
+	return __obf_036c6b778079b76b
 }
 
 // 指定字段和字段的可取值，自动拼接成 `field in (?,?)` 形式，`args`必须是 `[]any`类型，"严格"的类型系统，蛤...
-func (__obf_def785cbde1dd5f0 *Context) WhereIn(__obf_7527be360ce64e08 string, __obf_66ab003bba546d1d []any) *Context {
-	__obf_a964a53ba0b068c6 := len(__obf_66ab003bba546d1d)
-	__obf_827735f3ab9e435a := make([]string, __obf_a964a53ba0b068c6)
-	for __obf_4ceb93679168ba44 := 0; __obf_4ceb93679168ba44 < __obf_a964a53ba0b068c6; __obf_4ceb93679168ba44++ {
-		__obf_827735f3ab9e435a[__obf_4ceb93679168ba44] = ParamMarker
+func (__obf_036c6b778079b76b *Context) WhereIn(__obf_a5ff5bba00286eca string, __obf_3cef69abfd4b5fed []any) *Context {
+	__obf_b30c16b0f3bef92f := len(__obf_3cef69abfd4b5fed)
+	__obf_4108d94ccc3925fa := make([]string, __obf_b30c16b0f3bef92f)
+	for __obf_2a7388295d503598 := 0; __obf_2a7388295d503598 < __obf_b30c16b0f3bef92f; __obf_2a7388295d503598++ {
+		__obf_4108d94ccc3925fa[__obf_2a7388295d503598] = ParamMarker
 	}
-	__obf_8c7d5e2a1cb7efb0 := fmt.Sprintf("%s in (%s)", __obf_7527be360ce64e08, __obf_d5759b3288e8c167(__obf_827735f3ab9e435a, SeqComma))
-	return __obf_def785cbde1dd5f0.Where(__obf_8c7d5e2a1cb7efb0, __obf_66ab003bba546d1d...)
+	__obf_832ab91dc904a7c6 := fmt.Sprintf("%s in (%s)", __obf_a5ff5bba00286eca, __obf_b3ceeeee12719402(__obf_4108d94ccc3925fa, SeqComma))
+	return __obf_036c6b778079b76b.Where(__obf_832ab91dc904a7c6, __obf_3cef69abfd4b5fed...)
 }
 
-func (__obf_def785cbde1dd5f0 *Context) Order(__obf_5e44ba8d82e98713 string) *Context {
-	__obf_def785cbde1dd5f0.__obf_5e44ba8d82e98713 = __obf_5e44ba8d82e98713
-	return __obf_def785cbde1dd5f0
+func (__obf_036c6b778079b76b *Context) Order(__obf_72aa9c9e212e03fe string) *Context {
+	__obf_036c6b778079b76b.__obf_72aa9c9e212e03fe = __obf_72aa9c9e212e03fe
+	return __obf_036c6b778079b76b
 }
 
-func (__obf_def785cbde1dd5f0 *Context) Limit(__obf_6164bcde7de4e49c int64) *Context {
-	__obf_def785cbde1dd5f0.__obf_6164bcde7de4e49c = __obf_6164bcde7de4e49c
-	return __obf_def785cbde1dd5f0
+func (__obf_036c6b778079b76b *Context) Limit(__obf_159c787549b63f29 int64) *Context {
+	__obf_036c6b778079b76b.__obf_159c787549b63f29 = __obf_159c787549b63f29
+	return __obf_036c6b778079b76b
 }
 
-func (__obf_def785cbde1dd5f0 *Context) Offset(__obf_d807a2811f7abbfc int64) *Context {
-	__obf_def785cbde1dd5f0.__obf_d807a2811f7abbfc = __obf_d807a2811f7abbfc
-	return __obf_def785cbde1dd5f0
+func (__obf_036c6b778079b76b *Context) Offset(__obf_b9906ca51574c61e int64) *Context {
+	__obf_036c6b778079b76b.__obf_b9906ca51574c61e = __obf_b9906ca51574c61e
+	return __obf_036c6b778079b76b
 }
 
-func (__obf_def785cbde1dd5f0 *Context) Group(__obf_f53196fb47cd5ca4 string) *Context {
-	__obf_def785cbde1dd5f0.__obf_f53196fb47cd5ca4 = __obf_f53196fb47cd5ca4
-	return __obf_def785cbde1dd5f0
+func (__obf_036c6b778079b76b *Context) Group(__obf_79a5b98b6cf49502 string) *Context {
+	__obf_036c6b778079b76b.__obf_79a5b98b6cf49502 = __obf_79a5b98b6cf49502
+	return __obf_036c6b778079b76b
 }
 
-func (__obf_def785cbde1dd5f0 *Context) Having(__obf_62eeef7f2a3ed712 string, __obf_66ab003bba546d1d ...any) *Context {
-	__obf_def785cbde1dd5f0.__obf_62eeef7f2a3ed712 = __obf_62eeef7f2a3ed712
-	__obf_def785cbde1dd5f0.__obf_66ab003bba546d1d = append(__obf_def785cbde1dd5f0.__obf_66ab003bba546d1d, __obf_66ab003bba546d1d...)
-	return __obf_def785cbde1dd5f0
+func (__obf_036c6b778079b76b *Context) Having(__obf_3901bcf69ddf5fea string, __obf_3cef69abfd4b5fed ...any) *Context {
+	__obf_036c6b778079b76b.__obf_3901bcf69ddf5fea = __obf_3901bcf69ddf5fea
+	__obf_036c6b778079b76b.__obf_3cef69abfd4b5fed = append(__obf_036c6b778079b76b.__obf_3cef69abfd4b5fed, __obf_3cef69abfd4b5fed...)
+	return __obf_036c6b778079b76b
 }
 
 // 加排他锁(X锁)，不保证与`LockS`互斥，自己保证
-func (__obf_def785cbde1dd5f0 *Context) LockX() *Context {
-	__obf_def785cbde1dd5f0.__obf_605a9fc0aebcb352 = true
-	return __obf_def785cbde1dd5f0
+func (__obf_036c6b778079b76b *Context) LockX() *Context {
+	__obf_036c6b778079b76b.__obf_04522ec63d23e18d = true
+	return __obf_036c6b778079b76b
 }
 
 // 加共享锁(S锁)，不保证与`LockX`互斥，自己保证
-func (__obf_def785cbde1dd5f0 *Context) LockS() *Context {
-	__obf_def785cbde1dd5f0.__obf_74e2706a3d008fb5 = true
-	return __obf_def785cbde1dd5f0
+func (__obf_036c6b778079b76b *Context) LockS() *Context {
+	__obf_036c6b778079b76b.__obf_dacd8adf705f369a = true
+	return __obf_036c6b778079b76b
 }
 
 // 查询多条记录，参数传入一个数组的指针，eg: &[]Little
-func (__obf_def785cbde1dd5f0 *Context) FindMany(__obf_888dae6fde0def77 any) error {
-	return __obf_def785cbde1dd5f0.__obf_7762dc532a04150f(__obf_888dae6fde0def77, SelectTypeMany)
+func (__obf_036c6b778079b76b *Context) FindMany(__obf_ecfa1ba7846c04d3 any) error {
+	return __obf_036c6b778079b76b.__obf_fde655c5896dd5ee(__obf_ecfa1ba7846c04d3, SelectTypeMany)
 }
 
 // 查询一条记录，参数传入一个对象指针
-func (__obf_def785cbde1dd5f0 *Context) FindById(__obf_888dae6fde0def77 any) error {
-	return __obf_def785cbde1dd5f0.__obf_7762dc532a04150f(__obf_888dae6fde0def77, SelectTypeOne)
+func (__obf_036c6b778079b76b *Context) FindById(__obf_ecfa1ba7846c04d3 any) error {
+	return __obf_036c6b778079b76b.__obf_fde655c5896dd5ee(__obf_ecfa1ba7846c04d3, SelectTypeOne)
 }
 
 // 插入
-func (__obf_def785cbde1dd5f0 *Context) Insert(__obf_7542478dd197efb5 map[string]any) (sql.Result, error) {
+func (__obf_036c6b778079b76b *Context) Insert(__obf_2b62c53fec3ac5a3 map[string]any) (sql.Result, error) {
 	var (
-		__obf_61e6b3ecbb290190 []string
-		__obf_0f506337693ba0e6 []any
+		__obf_cabff7cb0e419137 []string
+		__obf_b4f45d1add3ff7a2 []any
 	)
-	for __obf_22dbe2e4f410cd44, __obf_ac35cf98df641116 := range __obf_7542478dd197efb5 {
-		__obf_61e6b3ecbb290190 = append(__obf_61e6b3ecbb290190, __obf_22dbe2e4f410cd44)
-		__obf_0f506337693ba0e6 = append(__obf_0f506337693ba0e6, __obf_ac35cf98df641116)
+	for __obf_6c0498eabb04b3fb, __obf_9573d75ff89816de := range __obf_2b62c53fec3ac5a3 {
+		__obf_cabff7cb0e419137 = append(__obf_cabff7cb0e419137, __obf_6c0498eabb04b3fb)
+		__obf_b4f45d1add3ff7a2 = append(__obf_b4f45d1add3ff7a2, __obf_9573d75ff89816de)
 	}
-	return __obf_def785cbde1dd5f0.InsertBatch(__obf_61e6b3ecbb290190, __obf_0f506337693ba0e6)
+	return __obf_036c6b778079b76b.InsertBatch(__obf_cabff7cb0e419137, __obf_b4f45d1add3ff7a2)
 }
 
 // 批量插入
-func (__obf_def785cbde1dd5f0 *Context) InsertBatch(__obf_61e6b3ecbb290190 []string, __obf_7542478dd197efb5 ...[]any) (sql.Result, error) {
+func (__obf_036c6b778079b76b *Context) InsertBatch(__obf_cabff7cb0e419137 []string, __obf_2b62c53fec3ac5a3 ...[]any) (sql.Result, error) {
 	var (
-		__obf_0f506337693ba0e6 []any
-		__obf_544cb58d8e7c4f15 []string
+		__obf_b4f45d1add3ff7a2 []any
+		__obf_0787ed292dc128be []string
 	)
-	for _, __obf_3ec97e021e4afb4b := range __obf_7542478dd197efb5 {
-		__obf_827735f3ab9e435a := make([]string, len(__obf_3ec97e021e4afb4b))
-		for __obf_4ceb93679168ba44, __obf_ac35cf98df641116 := range __obf_3ec97e021e4afb4b {
-			__obf_827735f3ab9e435a[__obf_4ceb93679168ba44] = ParamMarker
-			__obf_0f506337693ba0e6 = append(__obf_0f506337693ba0e6, __obf_ac35cf98df641116)
+	for _, __obf_2591249cec989e72 := range __obf_2b62c53fec3ac5a3 {
+		__obf_4108d94ccc3925fa := make([]string, len(__obf_2591249cec989e72))
+		for __obf_2a7388295d503598, __obf_9573d75ff89816de := range __obf_2591249cec989e72 {
+			__obf_4108d94ccc3925fa[__obf_2a7388295d503598] = ParamMarker
+			__obf_b4f45d1add3ff7a2 = append(__obf_b4f45d1add3ff7a2, __obf_9573d75ff89816de)
 		}
-		__obf_544cb58d8e7c4f15 = append(__obf_544cb58d8e7c4f15, fmt.Sprintf("(%s)", __obf_d5759b3288e8c167(__obf_827735f3ab9e435a, SeqComma)))
+		__obf_0787ed292dc128be = append(__obf_0787ed292dc128be, fmt.Sprintf("(%s)", __obf_b3ceeeee12719402(__obf_4108d94ccc3925fa, SeqComma)))
 	}
 
-	__obf_8c21f68e9672c4f9 := fmt.Sprintf("insert into %s (%s) values %s", __obf_def785cbde1dd5f0.__obf_f477196bed539112, __obf_d5759b3288e8c167(__obf_61e6b3ecbb290190, SeqComma), __obf_d5759b3288e8c167(__obf_544cb58d8e7c4f15, SeqComma))
-	return __obf_def785cbde1dd5f0.__obf_5512d8558b9b1498(__obf_8c21f68e9672c4f9, __obf_0f506337693ba0e6...)
+	__obf_3b4f9deb3c30de53 := fmt.Sprintf("insert into %s (%s) values %s", __obf_036c6b778079b76b.__obf_5bf373809aa21efc, __obf_b3ceeeee12719402(__obf_cabff7cb0e419137, SeqComma), __obf_b3ceeeee12719402(__obf_0787ed292dc128be, SeqComma))
+	return __obf_036c6b778079b76b.__obf_d5f9a0ffa9af380a(__obf_3b4f9deb3c30de53, __obf_b4f45d1add3ff7a2...)
 }
 
 // 使用map更新
-func (__obf_def785cbde1dd5f0 *Context) UpdateMap(__obf_66ab003bba546d1d map[string]any) (__obf_a21601ecbe05773b int64, __obf_1229ad25944902c2 error) {
+func (__obf_036c6b778079b76b *Context) UpdateMap(__obf_3cef69abfd4b5fed map[string]any) (__obf_179a7402a13f78d3 int64, __obf_4795d167371f16d4 error) {
 	var (
-		__obf_0f506337693ba0e6 []any
-		__obf_babc3866b4d26829 []string
+		__obf_b4f45d1add3ff7a2 []any
+		__obf_85d298bd6a284f1d []string
 	)
-	for __obf_22dbe2e4f410cd44, __obf_ac35cf98df641116 := range __obf_66ab003bba546d1d {
-		__obf_0f506337693ba0e6 = append(__obf_0f506337693ba0e6, __obf_ac35cf98df641116)
-		__obf_babc3866b4d26829 = append(__obf_babc3866b4d26829, fmt.Sprintf("%s=%s", __obf_22dbe2e4f410cd44, ParamMarker))
+	for __obf_6c0498eabb04b3fb, __obf_9573d75ff89816de := range __obf_3cef69abfd4b5fed {
+		__obf_b4f45d1add3ff7a2 = append(__obf_b4f45d1add3ff7a2, __obf_9573d75ff89816de)
+		__obf_85d298bd6a284f1d = append(__obf_85d298bd6a284f1d, fmt.Sprintf("%s=%s", __obf_6c0498eabb04b3fb, ParamMarker))
 	}
-	__obf_d6fa7f60b49d0ca3 := __obf_d5759b3288e8c167(__obf_babc3866b4d26829, SeqComma)
-	__obf_a21601ecbe05773b, __obf_1229ad25944902c2 = __obf_def785cbde1dd5f0.Update(__obf_d6fa7f60b49d0ca3, __obf_0f506337693ba0e6...)
+	__obf_94276ff5367398a4 := __obf_b3ceeeee12719402(__obf_85d298bd6a284f1d, SeqComma)
+	__obf_179a7402a13f78d3, __obf_4795d167371f16d4 = __obf_036c6b778079b76b.Update(__obf_94276ff5367398a4, __obf_b4f45d1add3ff7a2...)
 	return
 }
 
 // 更新
-func (__obf_def785cbde1dd5f0 *Context) Update(__obf_d6fa7f60b49d0ca3 string, __obf_66ab003bba546d1d ...any) (__obf_a21601ecbe05773b int64, __obf_1229ad25944902c2 error) {
-	__obf_c59032a111760ff4 := "update %s set %s %s"
-	__obf_f818ec1012d81c56 := __obf_314aea75e959ddeb(__obf_def785cbde1dd5f0.__obf_097c32c9294d6428, Grouping)
-	__obf_8c21f68e9672c4f9 := fmt.Sprintf(__obf_c59032a111760ff4, __obf_def785cbde1dd5f0.__obf_f477196bed539112, __obf_d6fa7f60b49d0ca3, __obf_f818ec1012d81c56)
-	__obf_0f506337693ba0e6 := append(__obf_66ab003bba546d1d, __obf_def785cbde1dd5f0.__obf_66ab003bba546d1d...)
-	var __obf_8f096a0267f35515 sql.Result
-	__obf_8f096a0267f35515, __obf_1229ad25944902c2 = __obf_def785cbde1dd5f0.__obf_5512d8558b9b1498(__obf_8c21f68e9672c4f9, __obf_0f506337693ba0e6...)
-	if __obf_1229ad25944902c2 != nil {
+func (__obf_036c6b778079b76b *Context) Update(__obf_94276ff5367398a4 string, __obf_3cef69abfd4b5fed ...any) (__obf_179a7402a13f78d3 int64, __obf_4795d167371f16d4 error) {
+	__obf_a7c1276d711ccf62 := "update %s set %s %s"
+	__obf_511a4b0e43c6c0f2 := __obf_507ca9459d85fdd1(__obf_036c6b778079b76b.__obf_8649156a558d0fb4, Grouping)
+	__obf_3b4f9deb3c30de53 := fmt.Sprintf(__obf_a7c1276d711ccf62, __obf_036c6b778079b76b.__obf_5bf373809aa21efc, __obf_94276ff5367398a4, __obf_511a4b0e43c6c0f2)
+	__obf_b4f45d1add3ff7a2 := append(__obf_3cef69abfd4b5fed, __obf_036c6b778079b76b.__obf_3cef69abfd4b5fed...)
+	var __obf_7480d8040044dcbd sql.Result
+	__obf_7480d8040044dcbd, __obf_4795d167371f16d4 = __obf_036c6b778079b76b.__obf_d5f9a0ffa9af380a(__obf_3b4f9deb3c30de53, __obf_b4f45d1add3ff7a2...)
+	if __obf_4795d167371f16d4 != nil {
 		return
 	}
-	__obf_a21601ecbe05773b, __obf_1229ad25944902c2 = __obf_8f096a0267f35515.RowsAffected()
+	__obf_179a7402a13f78d3, __obf_4795d167371f16d4 = __obf_7480d8040044dcbd.RowsAffected()
 	return
 }
 
 // 删除
-func (__obf_def785cbde1dd5f0 *Context) Delete() (__obf_a21601ecbe05773b int64, __obf_1229ad25944902c2 error) {
-	__obf_c59032a111760ff4 := "delete from %s %s"
-	__obf_f818ec1012d81c56 := __obf_314aea75e959ddeb(__obf_def785cbde1dd5f0.__obf_097c32c9294d6428, Grouping)
+func (__obf_036c6b778079b76b *Context) Delete() (__obf_179a7402a13f78d3 int64, __obf_4795d167371f16d4 error) {
+	__obf_a7c1276d711ccf62 := "delete from %s %s"
+	__obf_511a4b0e43c6c0f2 := __obf_507ca9459d85fdd1(__obf_036c6b778079b76b.__obf_8649156a558d0fb4, Grouping)
 
-	__obf_8c21f68e9672c4f9 := fmt.Sprintf(__obf_c59032a111760ff4, __obf_def785cbde1dd5f0.__obf_f477196bed539112, __obf_f818ec1012d81c56)
-	var __obf_8f096a0267f35515 sql.Result
-	__obf_8f096a0267f35515, __obf_1229ad25944902c2 = __obf_def785cbde1dd5f0.__obf_5512d8558b9b1498(__obf_8c21f68e9672c4f9, __obf_def785cbde1dd5f0.__obf_66ab003bba546d1d...)
-	if __obf_1229ad25944902c2 != nil {
+	__obf_3b4f9deb3c30de53 := fmt.Sprintf(__obf_a7c1276d711ccf62, __obf_036c6b778079b76b.__obf_5bf373809aa21efc, __obf_511a4b0e43c6c0f2)
+	var __obf_7480d8040044dcbd sql.Result
+	__obf_7480d8040044dcbd, __obf_4795d167371f16d4 = __obf_036c6b778079b76b.__obf_d5f9a0ffa9af380a(__obf_3b4f9deb3c30de53, __obf_036c6b778079b76b.__obf_3cef69abfd4b5fed...)
+	if __obf_4795d167371f16d4 != nil {
 		return
 	}
-	__obf_a21601ecbe05773b, __obf_1229ad25944902c2 = __obf_8f096a0267f35515.RowsAffected()
+	__obf_179a7402a13f78d3, __obf_4795d167371f16d4 = __obf_7480d8040044dcbd.RowsAffected()
 	return
 }
 
 // 查询多条记录，直接使用给定的`sql`和`args`
-func (__obf_def785cbde1dd5f0 *Context) Select(__obf_888dae6fde0def77 any, sql string, __obf_66ab003bba546d1d ...any) error {
-	__obf_def785cbde1dd5f0.sql = sql
-	__obf_def785cbde1dd5f0.__obf_66ab003bba546d1d = __obf_66ab003bba546d1d
-	return __obf_def785cbde1dd5f0.__obf_7762dc532a04150f(__obf_888dae6fde0def77, SelectTypeMany)
+func (__obf_036c6b778079b76b *Context) Select(__obf_ecfa1ba7846c04d3 any, sql string, __obf_3cef69abfd4b5fed ...any) error {
+	__obf_036c6b778079b76b.sql = sql
+	__obf_036c6b778079b76b.__obf_3cef69abfd4b5fed = __obf_3cef69abfd4b5fed
+	return __obf_036c6b778079b76b.__obf_fde655c5896dd5ee(__obf_ecfa1ba7846c04d3, SelectTypeMany)
 }
 
 // 查询单条记录，直接使用给定的`sql`和`args`
-func (__obf_def785cbde1dd5f0 *Context) Get(__obf_888dae6fde0def77 any, sql string, __obf_66ab003bba546d1d ...any) error {
-	__obf_def785cbde1dd5f0.sql = sql
-	__obf_def785cbde1dd5f0.__obf_66ab003bba546d1d = __obf_66ab003bba546d1d
-	return __obf_def785cbde1dd5f0.__obf_7762dc532a04150f(__obf_888dae6fde0def77, SelectTypeOne)
+func (__obf_036c6b778079b76b *Context) Get(__obf_ecfa1ba7846c04d3 any, sql string, __obf_3cef69abfd4b5fed ...any) error {
+	__obf_036c6b778079b76b.sql = sql
+	__obf_036c6b778079b76b.__obf_3cef69abfd4b5fed = __obf_3cef69abfd4b5fed
+	return __obf_036c6b778079b76b.__obf_fde655c5896dd5ee(__obf_ecfa1ba7846c04d3, SelectTypeOne)
 }
 
 // 直接执行操作，直接使用给定的`sql`和`args`
-func (__obf_def785cbde1dd5f0 *Context) Exec(sql string, __obf_66ab003bba546d1d ...any) (sql.Result, error) {
-	return __obf_def785cbde1dd5f0.__obf_5512d8558b9b1498(sql, __obf_66ab003bba546d1d...)
+func (__obf_036c6b778079b76b *Context) Exec(sql string, __obf_3cef69abfd4b5fed ...any) (sql.Result, error) {
+	return __obf_036c6b778079b76b.__obf_d5f9a0ffa9af380a(sql, __obf_3cef69abfd4b5fed...)
 }
 
 // 创建表
-func (__obf_def785cbde1dd5f0 *Context) Create(sql string) (sql.Result, error) {
-	return __obf_def785cbde1dd5f0.__obf_5512d8558b9b1498(sql)
+func (__obf_036c6b778079b76b *Context) Create(sql string) (sql.Result, error) {
+	return __obf_036c6b778079b76b.__obf_d5f9a0ffa9af380a(sql)
 }
 
 // 删除表
-func (__obf_def785cbde1dd5f0 *Context) Drop() (sql.Result, error) {
-	return __obf_def785cbde1dd5f0.__obf_5512d8558b9b1498(fmt.Sprintf("DROP TABLE IF EXISTS %s", __obf_def785cbde1dd5f0.__obf_f477196bed539112))
+func (__obf_036c6b778079b76b *Context) Drop() (sql.Result, error) {
+	return __obf_036c6b778079b76b.__obf_d5f9a0ffa9af380a(fmt.Sprintf("DROP TABLE IF EXISTS %s", __obf_036c6b778079b76b.__obf_5bf373809aa21efc))
 }
 
 /////////////////////////private methods//////////////////////
 
 // 重置Context
-func (__obf_def785cbde1dd5f0 *Context) __obf_90518a6ab8d87fe8() *Context {
-	__obf_def785cbde1dd5f0.sql = ""
-	__obf_def785cbde1dd5f0.__obf_f477196bed539112 = ""
-	__obf_def785cbde1dd5f0.__obf_1421765dbeb61db5 = []string{}
-	__obf_def785cbde1dd5f0.__obf_097c32c9294d6428 = []string{}
-	__obf_def785cbde1dd5f0.__obf_5e44ba8d82e98713 = ""
-	__obf_def785cbde1dd5f0.__obf_f53196fb47cd5ca4 = ""
-	__obf_def785cbde1dd5f0.__obf_62eeef7f2a3ed712 = ""
-	__obf_def785cbde1dd5f0.__obf_6164bcde7de4e49c = 0
-	__obf_def785cbde1dd5f0.__obf_d807a2811f7abbfc = 0
-	__obf_def785cbde1dd5f0.__obf_66ab003bba546d1d = []any{}
-	__obf_def785cbde1dd5f0.__obf_181488bf1961013b = nil
-	__obf_def785cbde1dd5f0.__obf_74e2706a3d008fb5 = false
-	__obf_def785cbde1dd5f0.__obf_605a9fc0aebcb352 = false
-	return __obf_def785cbde1dd5f0
+func (__obf_036c6b778079b76b *Context) __obf_79a134d3318127c7() *Context {
+	__obf_036c6b778079b76b.sql = ""
+	__obf_036c6b778079b76b.__obf_5bf373809aa21efc = ""
+	__obf_036c6b778079b76b.__obf_375b71252e6f26c6 = []string{}
+	__obf_036c6b778079b76b.__obf_8649156a558d0fb4 = []string{}
+	__obf_036c6b778079b76b.__obf_72aa9c9e212e03fe = ""
+	__obf_036c6b778079b76b.__obf_79a5b98b6cf49502 = ""
+	__obf_036c6b778079b76b.__obf_3901bcf69ddf5fea = ""
+	__obf_036c6b778079b76b.__obf_159c787549b63f29 = 0
+	__obf_036c6b778079b76b.__obf_b9906ca51574c61e = 0
+	__obf_036c6b778079b76b.__obf_3cef69abfd4b5fed = []any{}
+	__obf_036c6b778079b76b.__obf_4e1da10c2afe56d6 = nil
+	__obf_036c6b778079b76b.__obf_dacd8adf705f369a = false
+	__obf_036c6b778079b76b.__obf_04522ec63d23e18d = false
+	return __obf_036c6b778079b76b
 }
 
 // 查询方法
-func (__obf_def785cbde1dd5f0 *Context) __obf_7762dc532a04150f(__obf_888dae6fde0def77 any, __obf_fbca303bff678977 int) (__obf_1229ad25944902c2 error) {
-	defer __obf_def785cbde1dd5f0.__obf_2e13600f19148084.__obf_cd09a97e77526b71.Put(__obf_def785cbde1dd5f0)
-	__obf_b904a54e22a0591d, __obf_bf4713cdd156b365 := context.WithTimeout(context.Background(), __obf_def785cbde1dd5f0.__obf_2e13600f19148084.__obf_f6d4ed25fadbb031)
-	defer __obf_bf4713cdd156b365()
-	if __obf_def785cbde1dd5f0.sql == "" {
-		__obf_def785cbde1dd5f0.sql = __obf_def785cbde1dd5f0.__obf_f14a9c2c3e275e87(__obf_888dae6fde0def77)
+func (__obf_036c6b778079b76b *Context) __obf_fde655c5896dd5ee(__obf_ecfa1ba7846c04d3 any, __obf_547a935d85a68218 int) (__obf_4795d167371f16d4 error) {
+	defer __obf_036c6b778079b76b.__obf_ed3a9a8432b2d457.__obf_d6fbd616396c8e75.Put(__obf_036c6b778079b76b)
+	__obf_1f4eede373123ce9, __obf_b2f227a0dc11c0d8 := context.WithTimeout(context.Background(), __obf_036c6b778079b76b.__obf_ed3a9a8432b2d457.__obf_435469c73588f1a2)
+	defer __obf_b2f227a0dc11c0d8()
+	if __obf_036c6b778079b76b.sql == "" {
+		__obf_036c6b778079b76b.sql = __obf_036c6b778079b76b.__obf_13932d5d7fde5bcd(__obf_ecfa1ba7846c04d3)
 	}
-	switch __obf_fbca303bff678977 {
+	switch __obf_547a935d85a68218 {
 	case SelectTypeOne:
-		if __obf_def785cbde1dd5f0.__obf_181488bf1961013b != nil {
-			__obf_1229ad25944902c2 = __obf_def785cbde1dd5f0.__obf_181488bf1961013b.GetContext(__obf_b904a54e22a0591d, __obf_888dae6fde0def77, __obf_def785cbde1dd5f0.sql, __obf_def785cbde1dd5f0.__obf_66ab003bba546d1d...)
+		if __obf_036c6b778079b76b.__obf_4e1da10c2afe56d6 != nil {
+			__obf_4795d167371f16d4 = __obf_036c6b778079b76b.__obf_4e1da10c2afe56d6.GetContext(__obf_1f4eede373123ce9, __obf_ecfa1ba7846c04d3, __obf_036c6b778079b76b.sql, __obf_036c6b778079b76b.__obf_3cef69abfd4b5fed...)
 		} else {
-			__obf_1229ad25944902c2 = __obf_def785cbde1dd5f0.__obf_2e13600f19148084.GetContext(__obf_b904a54e22a0591d, __obf_888dae6fde0def77, __obf_def785cbde1dd5f0.sql, __obf_def785cbde1dd5f0.__obf_66ab003bba546d1d...)
+			__obf_4795d167371f16d4 = __obf_036c6b778079b76b.__obf_ed3a9a8432b2d457.GetContext(__obf_1f4eede373123ce9, __obf_ecfa1ba7846c04d3, __obf_036c6b778079b76b.sql, __obf_036c6b778079b76b.__obf_3cef69abfd4b5fed...)
 		}
 	case SelectTypeMany:
-		if __obf_def785cbde1dd5f0.__obf_181488bf1961013b != nil {
-			__obf_1229ad25944902c2 = __obf_def785cbde1dd5f0.__obf_181488bf1961013b.SelectContext(__obf_b904a54e22a0591d, __obf_888dae6fde0def77, __obf_def785cbde1dd5f0.sql, __obf_def785cbde1dd5f0.__obf_66ab003bba546d1d...)
+		if __obf_036c6b778079b76b.__obf_4e1da10c2afe56d6 != nil {
+			__obf_4795d167371f16d4 = __obf_036c6b778079b76b.__obf_4e1da10c2afe56d6.SelectContext(__obf_1f4eede373123ce9, __obf_ecfa1ba7846c04d3, __obf_036c6b778079b76b.sql, __obf_036c6b778079b76b.__obf_3cef69abfd4b5fed...)
 		} else {
-			__obf_1229ad25944902c2 = __obf_def785cbde1dd5f0.__obf_2e13600f19148084.SelectContext(__obf_b904a54e22a0591d, __obf_888dae6fde0def77, __obf_def785cbde1dd5f0.sql, __obf_def785cbde1dd5f0.__obf_66ab003bba546d1d...)
+			__obf_4795d167371f16d4 = __obf_036c6b778079b76b.__obf_ed3a9a8432b2d457.SelectContext(__obf_1f4eede373123ce9, __obf_ecfa1ba7846c04d3, __obf_036c6b778079b76b.sql, __obf_036c6b778079b76b.__obf_3cef69abfd4b5fed...)
 		}
 	default:
 		panic("select type err")
@@ -347,161 +347,161 @@ func (__obf_def785cbde1dd5f0 *Context) __obf_7762dc532a04150f(__obf_888dae6fde0d
 }
 
 // update,insert,delete方法
-func (__obf_def785cbde1dd5f0 *Context) __obf_5512d8558b9b1498(__obf_8c21f68e9672c4f9 string, __obf_66ab003bba546d1d ...any) (sql.Result, error) {
-	log.Printf("littleorm exec sql: <%s>, args: %#v", __obf_8c21f68e9672c4f9, __obf_66ab003bba546d1d)
-	defer __obf_def785cbde1dd5f0.__obf_2e13600f19148084.__obf_cd09a97e77526b71.Put(__obf_def785cbde1dd5f0)
-	__obf_b904a54e22a0591d, __obf_bf4713cdd156b365 := context.WithTimeout(context.Background(), __obf_def785cbde1dd5f0.__obf_2e13600f19148084.__obf_f6d4ed25fadbb031)
-	defer __obf_bf4713cdd156b365()
+func (__obf_036c6b778079b76b *Context) __obf_d5f9a0ffa9af380a(__obf_3b4f9deb3c30de53 string, __obf_3cef69abfd4b5fed ...any) (sql.Result, error) {
+	log.Printf("littleorm exec sql: <%s>, args: %#v", __obf_3b4f9deb3c30de53, __obf_3cef69abfd4b5fed)
+	defer __obf_036c6b778079b76b.__obf_ed3a9a8432b2d457.__obf_d6fbd616396c8e75.Put(__obf_036c6b778079b76b)
+	__obf_1f4eede373123ce9, __obf_b2f227a0dc11c0d8 := context.WithTimeout(context.Background(), __obf_036c6b778079b76b.__obf_ed3a9a8432b2d457.__obf_435469c73588f1a2)
+	defer __obf_b2f227a0dc11c0d8()
 
-	var __obf_4ed23a295d93b84a sqlx.ExecerContext
-	if __obf_def785cbde1dd5f0.__obf_181488bf1961013b != nil {
-		__obf_4ed23a295d93b84a = __obf_def785cbde1dd5f0.__obf_181488bf1961013b
+	var __obf_eeff625af9405efe sqlx.ExecerContext
+	if __obf_036c6b778079b76b.__obf_4e1da10c2afe56d6 != nil {
+		__obf_eeff625af9405efe = __obf_036c6b778079b76b.__obf_4e1da10c2afe56d6
 	} else {
-		__obf_4ed23a295d93b84a = __obf_def785cbde1dd5f0.__obf_2e13600f19148084
+		__obf_eeff625af9405efe = __obf_036c6b778079b76b.__obf_ed3a9a8432b2d457
 	}
-	return __obf_4ed23a295d93b84a.ExecContext(__obf_b904a54e22a0591d, __obf_8c21f68e9672c4f9, __obf_66ab003bba546d1d...)
+	return __obf_eeff625af9405efe.ExecContext(__obf_1f4eede373123ce9, __obf_3b4f9deb3c30de53, __obf_3cef69abfd4b5fed...)
 }
 
 // select查询语句的拼接
-func (__obf_def785cbde1dd5f0 *Context) __obf_f14a9c2c3e275e87(__obf_888dae6fde0def77 any) string {
-	var __obf_2946fd754152c36e []string
-	__obf_2946fd754152c36e = append(__obf_2946fd754152c36e, "select")
-	if len(__obf_def785cbde1dd5f0.__obf_1421765dbeb61db5) != 0 {
-		__obf_2946fd754152c36e = append(__obf_2946fd754152c36e, __obf_d5759b3288e8c167(__obf_def785cbde1dd5f0.__obf_1421765dbeb61db5, SeqComma))
+func (__obf_036c6b778079b76b *Context) __obf_13932d5d7fde5bcd(__obf_ecfa1ba7846c04d3 any) string {
+	var __obf_ad9413ed6cce9d39 []string
+	__obf_ad9413ed6cce9d39 = append(__obf_ad9413ed6cce9d39, "select")
+	if len(__obf_036c6b778079b76b.__obf_375b71252e6f26c6) != 0 {
+		__obf_ad9413ed6cce9d39 = append(__obf_ad9413ed6cce9d39, __obf_b3ceeeee12719402(__obf_036c6b778079b76b.__obf_375b71252e6f26c6, SeqComma))
 	} else {
 		// 如果不指定字段，取出目标对象的 tag 中的 db 全部填充了，
 		// 不使用 * 来填充是因为 orm 解析时候如果对象中不包含数据库中全部字段会出现映射错误，会让以后增加数据库字段时候不兼容
-		__obf_0f189bb6d7d1ca5c := __obf_bf495dcf9bbf3e4b(__obf_888dae6fde0def77)
-		if len(__obf_0f189bb6d7d1ca5c) > 0 {
-			__obf_2946fd754152c36e = append(__obf_2946fd754152c36e, __obf_d5759b3288e8c167(__obf_0f189bb6d7d1ca5c, SeqComma))
+		__obf_72b4fbe76d2b2179 := __obf_1c4ef1753f0a87ce(__obf_ecfa1ba7846c04d3)
+		if len(__obf_72b4fbe76d2b2179) > 0 {
+			__obf_ad9413ed6cce9d39 = append(__obf_ad9413ed6cce9d39, __obf_b3ceeeee12719402(__obf_72b4fbe76d2b2179, SeqComma))
 		} else {
-			__obf_2946fd754152c36e = append(__obf_2946fd754152c36e, "*")
+			__obf_ad9413ed6cce9d39 = append(__obf_ad9413ed6cce9d39, "*")
 		}
 	}
-	__obf_2946fd754152c36e = append(__obf_2946fd754152c36e, "from "+__obf_def785cbde1dd5f0.__obf_f477196bed539112)
-	if len(__obf_def785cbde1dd5f0.__obf_097c32c9294d6428) != 0 {
-		__obf_2946fd754152c36e = append(__obf_2946fd754152c36e, __obf_314aea75e959ddeb(__obf_def785cbde1dd5f0.__obf_097c32c9294d6428, Grouping))
+	__obf_ad9413ed6cce9d39 = append(__obf_ad9413ed6cce9d39, "from "+__obf_036c6b778079b76b.__obf_5bf373809aa21efc)
+	if len(__obf_036c6b778079b76b.__obf_8649156a558d0fb4) != 0 {
+		__obf_ad9413ed6cce9d39 = append(__obf_ad9413ed6cce9d39, __obf_507ca9459d85fdd1(__obf_036c6b778079b76b.__obf_8649156a558d0fb4, Grouping))
 	}
 
-	if __obf_def785cbde1dd5f0.__obf_f53196fb47cd5ca4 != "" {
-		__obf_2946fd754152c36e = append(__obf_2946fd754152c36e, "group by "+__obf_def785cbde1dd5f0.__obf_f53196fb47cd5ca4)
+	if __obf_036c6b778079b76b.__obf_79a5b98b6cf49502 != "" {
+		__obf_ad9413ed6cce9d39 = append(__obf_ad9413ed6cce9d39, "group by "+__obf_036c6b778079b76b.__obf_79a5b98b6cf49502)
 	}
 
-	if __obf_def785cbde1dd5f0.__obf_62eeef7f2a3ed712 != "" {
-		__obf_2946fd754152c36e = append(__obf_2946fd754152c36e, "having "+__obf_def785cbde1dd5f0.__obf_62eeef7f2a3ed712)
+	if __obf_036c6b778079b76b.__obf_3901bcf69ddf5fea != "" {
+		__obf_ad9413ed6cce9d39 = append(__obf_ad9413ed6cce9d39, "having "+__obf_036c6b778079b76b.__obf_3901bcf69ddf5fea)
 	}
 
-	if __obf_def785cbde1dd5f0.__obf_5e44ba8d82e98713 != "" {
-		__obf_2946fd754152c36e = append(__obf_2946fd754152c36e, "order by "+__obf_def785cbde1dd5f0.__obf_5e44ba8d82e98713)
+	if __obf_036c6b778079b76b.__obf_72aa9c9e212e03fe != "" {
+		__obf_ad9413ed6cce9d39 = append(__obf_ad9413ed6cce9d39, "order by "+__obf_036c6b778079b76b.__obf_72aa9c9e212e03fe)
 	}
 
-	if __obf_def785cbde1dd5f0.__obf_6164bcde7de4e49c != 0 {
-		__obf_2946fd754152c36e = append(__obf_2946fd754152c36e, fmt.Sprintf("limit %d, %d", __obf_def785cbde1dd5f0.__obf_d807a2811f7abbfc, __obf_def785cbde1dd5f0.__obf_6164bcde7de4e49c))
+	if __obf_036c6b778079b76b.__obf_159c787549b63f29 != 0 {
+		__obf_ad9413ed6cce9d39 = append(__obf_ad9413ed6cce9d39, fmt.Sprintf("limit %d, %d", __obf_036c6b778079b76b.__obf_b9906ca51574c61e, __obf_036c6b778079b76b.__obf_159c787549b63f29))
 	}
-	if __obf_def785cbde1dd5f0.__obf_74e2706a3d008fb5 {
-		__obf_2946fd754152c36e = append(__obf_2946fd754152c36e, "lock in share mode")
+	if __obf_036c6b778079b76b.__obf_dacd8adf705f369a {
+		__obf_ad9413ed6cce9d39 = append(__obf_ad9413ed6cce9d39, "lock in share mode")
 	}
-	if __obf_def785cbde1dd5f0.__obf_605a9fc0aebcb352 {
-		__obf_2946fd754152c36e = append(__obf_2946fd754152c36e, "for update")
+	if __obf_036c6b778079b76b.__obf_04522ec63d23e18d {
+		__obf_ad9413ed6cce9d39 = append(__obf_ad9413ed6cce9d39, "for update")
 	}
-	sql := __obf_d5759b3288e8c167(__obf_2946fd754152c36e, SeqSpace)
-	log.Printf("littleorm sql: <%v>, args: %#v", sql, __obf_def785cbde1dd5f0.__obf_66ab003bba546d1d)
+	sql := __obf_b3ceeeee12719402(__obf_ad9413ed6cce9d39, SeqSpace)
+	log.Printf("littleorm sql: <%v>, args: %#v", sql, __obf_036c6b778079b76b.__obf_3cef69abfd4b5fed)
 	return sql
 }
 
 // /////////////////////////utils method/////////////////////////
 // 拼接where条件
-func __obf_314aea75e959ddeb(__obf_097c32c9294d6428 []string, __obf_e38deba7eb0a0e9f string) string {
-	if len(__obf_097c32c9294d6428) > 0 {
-		return fmt.Sprintf("where %s", strings.Join(__obf_097c32c9294d6428, __obf_e38deba7eb0a0e9f))
+func __obf_507ca9459d85fdd1(__obf_8649156a558d0fb4 []string, __obf_77b849016a88d61a string) string {
+	if len(__obf_8649156a558d0fb4) > 0 {
+		return fmt.Sprintf("where %s", strings.Join(__obf_8649156a558d0fb4, __obf_77b849016a88d61a))
 	} else {
 		return ""
 	}
 }
 
 // 拼接数组字符串
-func __obf_d5759b3288e8c167(__obf_66ab003bba546d1d []string, __obf_b4e2a90785c77a27 string) string {
-	return strings.Join(__obf_66ab003bba546d1d, __obf_b4e2a90785c77a27)
+func __obf_b3ceeeee12719402(__obf_3cef69abfd4b5fed []string, __obf_cfa7c05ebdd73e4f string) string {
+	return strings.Join(__obf_3cef69abfd4b5fed, __obf_cfa7c05ebdd73e4f)
 }
 
 // 解析对象中的 `db tag`
 // 参数只能指针，单个对象或者数组，eg: &little, &[]Little
-func __obf_bf495dcf9bbf3e4b(__obf_888dae6fde0def77 any) (__obf_61e6b3ecbb290190 []string) {
-	__obf_830db7a4c207dec8 := reflect.ValueOf(__obf_888dae6fde0def77)
-	__obf_b7e3d0c96c05802f := __obf_830db7a4c207dec8.Type().Elem()
-	var __obf_978cab3718b5cd5d reflect.Type
-	if __obf_b7e3d0c96c05802f.Kind() == reflect.Slice {
-		__obf_978cab3718b5cd5d = __obf_b7e3d0c96c05802f.Elem()
+func __obf_1c4ef1753f0a87ce(__obf_ecfa1ba7846c04d3 any) (__obf_cabff7cb0e419137 []string) {
+	__obf_fe4dab033b4bbf22 := reflect.ValueOf(__obf_ecfa1ba7846c04d3)
+	__obf_98a4c1858d15f6fd := __obf_fe4dab033b4bbf22.Type().Elem()
+	var __obf_95c95ab62fed5eaa reflect.Type
+	if __obf_98a4c1858d15f6fd.Kind() == reflect.Slice {
+		__obf_95c95ab62fed5eaa = __obf_98a4c1858d15f6fd.Elem()
 	} else {
-		__obf_978cab3718b5cd5d = __obf_b7e3d0c96c05802f
+		__obf_95c95ab62fed5eaa = __obf_98a4c1858d15f6fd
 	}
-	for __obf_4ceb93679168ba44 := 0; __obf_4ceb93679168ba44 < __obf_978cab3718b5cd5d.NumField(); __obf_4ceb93679168ba44++ {
-		__obf_b1a624be540b7a6b := __obf_978cab3718b5cd5d.Field(__obf_4ceb93679168ba44).Tag.Get(DBTag)
-		if __obf_b1a624be540b7a6b != "" {
-			__obf_61e6b3ecbb290190 = append(__obf_61e6b3ecbb290190, __obf_b1a624be540b7a6b)
+	for __obf_2a7388295d503598 := 0; __obf_2a7388295d503598 < __obf_95c95ab62fed5eaa.NumField(); __obf_2a7388295d503598++ {
+		__obf_52fff51e27b377b0 := __obf_95c95ab62fed5eaa.Field(__obf_2a7388295d503598).Tag.Get(DBTag)
+		if __obf_52fff51e27b377b0 != "" {
+			__obf_cabff7cb0e419137 = append(__obf_cabff7cb0e419137, __obf_52fff51e27b377b0)
 		}
 	}
 	return
 }
 
-func CleanSQLXMap(__obf_90b9e55b34956f13 map[string]any) map[string]any {
-	for __obf_22dbe2e4f410cd44, __obf_ac35cf98df641116 := range __obf_90b9e55b34956f13 {
-		switch __obf_bc4d09a84501c296 := __obf_ac35cf98df641116.(type) {
+func CleanSQLXMap(__obf_7644650c72213f91 map[string]any) map[string]any {
+	for __obf_6c0498eabb04b3fb, __obf_9573d75ff89816de := range __obf_7644650c72213f91 {
+		switch __obf_a0400a0a546202a1 := __obf_9573d75ff89816de.(type) {
 		case []byte:
-			__obf_a3ec10d2be1cb29c := string(__obf_bc4d09a84501c296)
+			__obf_2eac47834e11c59d := string(__obf_a0400a0a546202a1)
 
 			// 尝试智能识别具体类型
-			__obf_5bc0a86d054bc94e := strings.TrimSpace(__obf_a3ec10d2be1cb29c)
+			__obf_d8a74ef9a4d6ebf6 := strings.TrimSpace(__obf_2eac47834e11c59d)
 
 			// bool
-			if strings.EqualFold(__obf_5bc0a86d054bc94e, "true") || strings.EqualFold(__obf_5bc0a86d054bc94e, "false") {
-				if __obf_b150671df762e3f7, __obf_1229ad25944902c2 := strconv.ParseBool(__obf_5bc0a86d054bc94e); __obf_1229ad25944902c2 == nil {
-					__obf_90b9e55b34956f13[__obf_22dbe2e4f410cd44] = __obf_b150671df762e3f7
+			if strings.EqualFold(__obf_d8a74ef9a4d6ebf6, "true") || strings.EqualFold(__obf_d8a74ef9a4d6ebf6, "false") {
+				if __obf_9e1db65f077c8102, __obf_4795d167371f16d4 := strconv.ParseBool(__obf_d8a74ef9a4d6ebf6); __obf_4795d167371f16d4 == nil {
+					__obf_7644650c72213f91[__obf_6c0498eabb04b3fb] = __obf_9e1db65f077c8102
 					continue
 				}
 			}
 
 			// int
-			if __obf_4ceb93679168ba44, __obf_1229ad25944902c2 := strconv.Atoi(__obf_5bc0a86d054bc94e); __obf_1229ad25944902c2 == nil {
-				__obf_90b9e55b34956f13[__obf_22dbe2e4f410cd44] = __obf_4ceb93679168ba44
+			if __obf_2a7388295d503598, __obf_4795d167371f16d4 := strconv.Atoi(__obf_d8a74ef9a4d6ebf6); __obf_4795d167371f16d4 == nil {
+				__obf_7644650c72213f91[__obf_6c0498eabb04b3fb] = __obf_2a7388295d503598
 				continue
 			}
 
 			// float
-			if __obf_bb16074987cbe782, __obf_1229ad25944902c2 := strconv.ParseFloat(__obf_5bc0a86d054bc94e, 64); __obf_1229ad25944902c2 == nil {
-				__obf_90b9e55b34956f13[__obf_22dbe2e4f410cd44] = __obf_bb16074987cbe782
+			if __obf_2e7920ea71b44a3b, __obf_4795d167371f16d4 := strconv.ParseFloat(__obf_d8a74ef9a4d6ebf6, 64); __obf_4795d167371f16d4 == nil {
+				__obf_7644650c72213f91[__obf_6c0498eabb04b3fb] = __obf_2e7920ea71b44a3b
 				continue
 			}
 
 			// JSON 对象或数组
-			if (strings.HasPrefix(__obf_5bc0a86d054bc94e, "{") && strings.HasSuffix(__obf_5bc0a86d054bc94e, "}")) ||
-				(strings.HasPrefix(__obf_5bc0a86d054bc94e, "[") && strings.HasSuffix(__obf_5bc0a86d054bc94e, "]")) {
-				var __obf_2ebc4f322d0ea57b any
-				if __obf_1229ad25944902c2 := json.Unmarshal(__obf_bc4d09a84501c296, &__obf_2ebc4f322d0ea57b); __obf_1229ad25944902c2 == nil {
-					__obf_90b9e55b34956f13[__obf_22dbe2e4f410cd44] = __obf_2ebc4f322d0ea57b
+			if (strings.HasPrefix(__obf_d8a74ef9a4d6ebf6, "{") && strings.HasSuffix(__obf_d8a74ef9a4d6ebf6, "}")) ||
+				(strings.HasPrefix(__obf_d8a74ef9a4d6ebf6, "[") && strings.HasSuffix(__obf_d8a74ef9a4d6ebf6, "]")) {
+				var __obf_2199dbb4ae4933fb any
+				if __obf_4795d167371f16d4 := json.Unmarshal(__obf_a0400a0a546202a1, &__obf_2199dbb4ae4933fb); __obf_4795d167371f16d4 == nil {
+					__obf_7644650c72213f91[__obf_6c0498eabb04b3fb] = __obf_2199dbb4ae4933fb
 					continue
 				}
 			}
 
 			// 默认保留为 string
-			__obf_90b9e55b34956f13[__obf_22dbe2e4f410cd44] = __obf_a3ec10d2be1cb29c
+			__obf_7644650c72213f91[__obf_6c0498eabb04b3fb] = __obf_2eac47834e11c59d
 		default:
-			__obf_90b9e55b34956f13[__obf_22dbe2e4f410cd44] = __obf_bc4d09a84501c296
+			__obf_7644650c72213f91[__obf_6c0498eabb04b3fb] = __obf_a0400a0a546202a1
 		}
 	}
-	return __obf_90b9e55b34956f13
+	return __obf_7644650c72213f91
 }
 
-func ToListMap(__obf_ce506c59e72daf0b *sqlx.Rows) []map[string]any {
-	var __obf_8f096a0267f35515 []map[string]any
-	for __obf_ce506c59e72daf0b.Next() {
-		__obf_69d25d4c49e4c4af := make(map[string]any)
-		if __obf_1229ad25944902c2 := __obf_ce506c59e72daf0b.MapScan(__obf_69d25d4c49e4c4af); __obf_1229ad25944902c2 != nil {
-			slog.Error(fmt.Sprintf("[ToListMap] MapScan: %s", __obf_1229ad25944902c2.Error()))
+func ToListMap(__obf_4f052f7555da44c1 *sqlx.Rows) []map[string]any {
+	var __obf_7480d8040044dcbd []map[string]any
+	for __obf_4f052f7555da44c1.Next() {
+		__obf_9c2998b49b552a7b := make(map[string]any)
+		if __obf_4795d167371f16d4 := __obf_4f052f7555da44c1.MapScan(__obf_9c2998b49b552a7b); __obf_4795d167371f16d4 != nil {
+			slog.Error(fmt.Sprintf("[ToListMap] MapScan: %s", __obf_4795d167371f16d4.Error()))
 			continue
 		}
 
-		__obf_8f096a0267f35515 = append(__obf_8f096a0267f35515, CleanSQLXMap(__obf_69d25d4c49e4c4af))
+		__obf_7480d8040044dcbd = append(__obf_7480d8040044dcbd, CleanSQLXMap(__obf_9c2998b49b552a7b))
 	}
-	return __obf_8f096a0267f35515
+	return __obf_7480d8040044dcbd
 }

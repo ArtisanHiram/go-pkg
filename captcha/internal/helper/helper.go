@@ -1,4 +1,4 @@
-package __obf_339ea479ec4d549f
+package __obf_46685d1b8357802f
 
 import (
 	types "github.com/ArtisanHiram/go-pkg/captcha/types"
@@ -11,41 +11,41 @@ import (
 )
 
 // DrawString draws a string on the canvas with high-quality rendering
-func DrawString(__obf_27e3280d911273cd draw.Image, __obf_6338fcba1f93e3ae *types.DrawStringParam, __obf_aa65fec8564bacce fixed.Point26_6) error {
-	__obf_00e082898a79bcfc, __obf_cf21fc297e0f6e30 := opentype.NewFace(__obf_6338fcba1f93e3ae.Font, &opentype.FaceOptions{
-		Size:    float64(__obf_6338fcba1f93e3ae.FontSize),
-		DPI:     float64(__obf_6338fcba1f93e3ae.FontDPI),
-		Hinting: __obf_6338fcba1f93e3ae.FontHinting,
+func DrawString(__obf_5ecf496288e5f149 draw.Image, __obf_43b8e36b51bef8d5 *types.DrawStringParam, __obf_a8e1f8ffe0b12fa6 fixed.Point26_6) error {
+	__obf_5953fb47dd765925, __obf_1e7c77fdd506b7f0 := opentype.NewFace(__obf_43b8e36b51bef8d5.Font, &opentype.FaceOptions{
+		Size:    float64(__obf_43b8e36b51bef8d5.FontSize),
+		DPI:     float64(__obf_43b8e36b51bef8d5.FontDPI),
+		Hinting: __obf_43b8e36b51bef8d5.FontHinting,
 	})
-	if __obf_cf21fc297e0f6e30 != nil {
-		return __obf_cf21fc297e0f6e30
+	if __obf_1e7c77fdd506b7f0 != nil {
+		return __obf_1e7c77fdd506b7f0
 	}
-	defer __obf_00e082898a79bcfc.Close()
+	defer __obf_5953fb47dd765925.Close()
 
-	__obf_281f48fc04c72ffe := &font.Drawer{
-		Dst:  __obf_27e3280d911273cd,
-		Src:  image.NewUniform(__obf_6338fcba1f93e3ae.Color),
-		Face: __obf_00e082898a79bcfc,
-		Dot:  __obf_aa65fec8564bacce,
+	__obf_b7142c40f3499f83 := &font.Drawer{
+		Dst:  __obf_5ecf496288e5f149,
+		Src:  image.NewUniform(__obf_43b8e36b51bef8d5.Color),
+		Face: __obf_5953fb47dd765925,
+		Dot:  __obf_a8e1f8ffe0b12fa6,
 	}
-	__obf_281f48fc04c72ffe.DrawString(__obf_6338fcba1f93e3ae.Text)
+	__obf_b7142c40f3499f83.DrawString(__obf_43b8e36b51bef8d5.Text)
 
 	return nil
 }
 
 // CreatePaletteCanvas creates a canvas with a palette
-func CreatePaletteCanvas(__obf_c35c90c2e6ac7db9, __obf_d2b863d65591d09c int, __obf_3dd63487ec0219dd []color.RGBA) *types.Palette {
-	__obf_27e3280d911273cd := make([]color.Color, 0, len(__obf_3dd63487ec0219dd)+1)
-	__obf_27e3280d911273cd = append(__obf_27e3280d911273cd, color.RGBA{R: 0xFF, G: 0xFF, B: 0xFF, A: 0x00})
+func CreatePaletteCanvas(__obf_556b479bf2421137, __obf_d0c48e43cf612abf int, __obf_30ea65b03e929b79 []color.RGBA) *types.Palette {
+	__obf_5ecf496288e5f149 := make([]color.Color, 0, len(__obf_30ea65b03e929b79)+1)
+	__obf_5ecf496288e5f149 = append(__obf_5ecf496288e5f149, color.RGBA{R: 0xFF, G: 0xFF, B: 0xFF, A: 0x00})
 
-	for _, __obf_a1ded02a6ce849ac := range __obf_3dd63487ec0219dd {
-		__obf_27e3280d911273cd = append(__obf_27e3280d911273cd, __obf_a1ded02a6ce849ac)
+	for _, __obf_4fb580350581f30e := range __obf_30ea65b03e929b79 {
+		__obf_5ecf496288e5f149 = append(__obf_5ecf496288e5f149, __obf_4fb580350581f30e)
 	}
 
-	return types.NewPalette(image.Rect(0, 0, __obf_c35c90c2e6ac7db9, __obf_d2b863d65591d09c), __obf_27e3280d911273cd)
+	return types.NewPalette(image.Rect(0, 0, __obf_556b479bf2421137, __obf_d0c48e43cf612abf), __obf_5ecf496288e5f149)
 }
 
 // CreateNRGBACanvas creates an NRGBA canvas
-func CreateNRGBACanvas(__obf_c35c90c2e6ac7db9, __obf_d2b863d65591d09c int, __obf_6294b9693d93429f bool) *types.NRGBA {
-	return types.NewNRGBA(image.Rect(0, 0, __obf_c35c90c2e6ac7db9, __obf_d2b863d65591d09c), __obf_6294b9693d93429f)
+func CreateNRGBACanvas(__obf_556b479bf2421137, __obf_d0c48e43cf612abf int, __obf_94e494f0dfc796a5 bool) *types.NRGBA {
+	return types.NewNRGBA(image.Rect(0, 0, __obf_556b479bf2421137, __obf_d0c48e43cf612abf), __obf_94e494f0dfc796a5)
 }

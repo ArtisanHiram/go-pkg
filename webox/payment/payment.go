@@ -1,4 +1,4 @@
-package __obf_6ccf18d8f5aab98f
+package __obf_6e10ad3f90512272
 
 import (
 	"encoding/xml" // 确保导入 encoding/xml
@@ -12,101 +12,101 @@ import (
 
 // Payment 支付模块实例
 type Payment struct {
-	__obf_1607cb15609a424b *Config
-	__obf_443dbb7ff0b9cfde *internal.HttpClient
+	__obf_8f2d0c22eb8f010b *Config
+	__obf_599670bf43af41e5 *internal.HttpClient
 }
 
 var (
-	__obf_ffae0a51b010aa7e *Payment
-	__obf_eb84427a119dae32 sync.Once
+	__obf_7d783c6f19e0784e *Payment
+	__obf_1ec62182ef8c85d8 sync.Once
 )
 
 // NewPayment 创建并返回支付模块的单例实例
 // 根据配置中的 CertPath 和 KeyPath 决定是否创建带证书的客户端
-func NewPayment(__obf_5a123da13f1a88bc *Config) (*Payment, error) {
-	var __obf_f4364d86368fdd92 error
-	__obf_eb84427a119dae32.Do(func() {
-		var __obf_443dbb7ff0b9cfde *internal.HttpClient
-		if len(__obf_5a123da13f1a88bc.TLSCert.Certificate) == 0 || __obf_5a123da13f1a88bc.TLSCert.PrivateKey == nil {
-			__obf_443dbb7ff0b9cfde = internal.NewClient()
+func NewPayment(__obf_9fad420db7066d49 *Config) (*Payment, error) {
+	var __obf_ef52c60cbdb9d4d7 error
+	__obf_1ec62182ef8c85d8.Do(func() {
+		var __obf_599670bf43af41e5 *internal.HttpClient
+		if len(__obf_9fad420db7066d49.TLSCert.Certificate) == 0 || __obf_9fad420db7066d49.TLSCert.PrivateKey == nil {
+			__obf_599670bf43af41e5 = internal.NewClient()
 		} else {
-			__obf_443dbb7ff0b9cfde, __obf_f4364d86368fdd92 = internal.NewClientWithTLS(__obf_5a123da13f1a88bc.TLSCert)
-			if __obf_f4364d86368fdd92 != nil {
-				__obf_f4364d86368fdd92 = fmt.Errorf("create payment client with TLS failed: %w", __obf_f4364d86368fdd92)
+			__obf_599670bf43af41e5, __obf_ef52c60cbdb9d4d7 = internal.NewClientWithTLS(__obf_9fad420db7066d49.TLSCert)
+			if __obf_ef52c60cbdb9d4d7 != nil {
+				__obf_ef52c60cbdb9d4d7 = fmt.Errorf("create payment client with TLS failed: %w", __obf_ef52c60cbdb9d4d7)
 				return
 			}
 		}
-		__obf_ffae0a51b010aa7e = &Payment{
-			__obf_1607cb15609a424b: __obf_5a123da13f1a88bc,
-			__obf_443dbb7ff0b9cfde: __obf_443dbb7ff0b9cfde,
+		__obf_7d783c6f19e0784e = &Payment{
+			__obf_8f2d0c22eb8f010b: __obf_9fad420db7066d49,
+			__obf_599670bf43af41e5: __obf_599670bf43af41e5,
 		}
 	})
-	return __obf_ffae0a51b010aa7e, __obf_f4364d86368fdd92
+	return __obf_7d783c6f19e0784e, __obf_ef52c60cbdb9d4d7
 }
 
 // UnifiedOrder 统一下单
-func (__obf_9b75ae39f500dd91 *Payment) UnifiedOrder(__obf_752a8380dbe117d0 uint8, __obf_7cb39cd1da0603a4 model.UnifiedOrderRequest) (*model.UnifiedOrderResponse, error) {
-	if __obf_7cb39cd1da0603a4.TradeType == "JSAPI" && __obf_7cb39cd1da0603a4.OpenID == "" {
+func (__obf_5ad75aad3a96c8b1 *Payment) UnifiedOrder(__obf_6f8c1f163ed0ea4c uint8, __obf_63456b2b2091fa0d model.UnifiedOrderRequest) (*model.UnifiedOrderResponse, error) {
+	if __obf_63456b2b2091fa0d.TradeType == "JSAPI" && __obf_63456b2b2091fa0d.OpenID == "" {
 		return nil, errors.New("trade_type is JSAPI but OpenID is not provided")
 	}
-	__obf_7cb39cd1da0603a4.XMLRequest = model.XMLRequest{
-		AppID:    __obf_9b75ae39f500dd91.__obf_1607cb15609a424b.AppID,
-		MchID:    __obf_9b75ae39f500dd91.__obf_1607cb15609a424b.MchID,
+	__obf_63456b2b2091fa0d.XMLRequest = model.XMLRequest{
+		AppID:    __obf_5ad75aad3a96c8b1.__obf_8f2d0c22eb8f010b.AppID,
+		MchID:    __obf_5ad75aad3a96c8b1.__obf_8f2d0c22eb8f010b.MchID,
 		NonceStr: internal.GenerateNonceStr(),
 	}
-	__obf_7cb39cd1da0603a4.SignType = __obf_9b75ae39f500dd91.__obf_1607cb15609a424b.SignType                                                 // 使用配置中的签名类型
-	__obf_7cb39cd1da0603a4.NotifyURL = fmt.Sprintf("%s/%d", __obf_9b75ae39f500dd91.__obf_1607cb15609a424b.NotifyURL, __obf_752a8380dbe117d0) // 确保通知URL包含商户号
-	__obf_7cb39cd1da0603a4.XMLRequest.Sign = internal.CreateSign(__obf_9b75ae39f500dd91.__obf_1607cb15609a424b.APIKey, __obf_7cb39cd1da0603a4.ToMap())
+	__obf_63456b2b2091fa0d.SignType = __obf_5ad75aad3a96c8b1.__obf_8f2d0c22eb8f010b.SignType                                                 // 使用配置中的签名类型
+	__obf_63456b2b2091fa0d.NotifyURL = fmt.Sprintf("%s/%d", __obf_5ad75aad3a96c8b1.__obf_8f2d0c22eb8f010b.NotifyURL, __obf_6f8c1f163ed0ea4c) // 确保通知URL包含商户号
+	__obf_63456b2b2091fa0d.XMLRequest.Sign = internal.CreateSign(__obf_5ad75aad3a96c8b1.__obf_8f2d0c22eb8f010b.APIKey, __obf_63456b2b2091fa0d.ToMap())
 
 	// 发送XML请求，获取原始响应体
-	__obf_4a6c52a6165e7781, __obf_f4364d86368fdd92 := __obf_9b75ae39f500dd91.__obf_443dbb7ff0b9cfde.PostXML(internal.PaymentUnifiedOrderURL, &__obf_7cb39cd1da0603a4)
-	if __obf_f4364d86368fdd92 != nil {
-		return nil, fmt.Errorf("unified order request failed: %w", __obf_f4364d86368fdd92)
+	__obf_c442b47e4257486b, __obf_ef52c60cbdb9d4d7 := __obf_5ad75aad3a96c8b1.__obf_599670bf43af41e5.PostXML(internal.PaymentUnifiedOrderURL, &__obf_63456b2b2091fa0d)
+	if __obf_ef52c60cbdb9d4d7 != nil {
+		return nil, fmt.Errorf("unified order request failed: %w", __obf_ef52c60cbdb9d4d7)
 	}
 
 	// 将原始响应体解析为map，用于验签
-	__obf_d08e01b9e49e8a67, __obf_f4364d86368fdd92 := internal.XMLToMap(__obf_4a6c52a6165e7781)
-	if __obf_f4364d86368fdd92 != nil {
-		return nil, fmt.Errorf("parse unified order response XML to map failed: %w", __obf_f4364d86368fdd92)
+	__obf_6d57a350f97fd0e5, __obf_ef52c60cbdb9d4d7 := internal.XMLToMap(__obf_c442b47e4257486b)
+	if __obf_ef52c60cbdb9d4d7 != nil {
+		return nil, fmt.Errorf("parse unified order response XML to map failed: %w", __obf_ef52c60cbdb9d4d7)
 	}
-	if __obf_d08e01b9e49e8a67["return_code"] == model.FAIL {
-		return nil, fmt.Errorf("支付失败: %s", __obf_d08e01b9e49e8a67["return_msg"])
+	if __obf_6d57a350f97fd0e5["return_code"] == model.FAIL {
+		return nil, fmt.Errorf("支付失败: %s", __obf_6d57a350f97fd0e5["return_msg"])
 	}
 
 	// 验签
-	if !internal.VerifySign(__obf_9b75ae39f500dd91.__obf_1607cb15609a424b.APIKey, __obf_d08e01b9e49e8a67) {
+	if !internal.VerifySign(__obf_5ad75aad3a96c8b1.__obf_8f2d0c22eb8f010b.APIKey, __obf_6d57a350f97fd0e5) {
 		return nil, errors.New("unified order response signature verification failed")
 	}
 
 	// 验签通过后，将原始响应体解析为结构体
-	var __obf_e9d852bd4884fa82 struct {
+	var __obf_0bddfa7c6a93d39a struct {
 		model.XMLResponse
 		model.UnifiedOrderResponse
 	}
 	// 解析原始响应体为map，供验签使用
-	__obf_f4364d86368fdd92 = xml.Unmarshal(__obf_4a6c52a6165e7781, &__obf_e9d852bd4884fa82)
-	if __obf_f4364d86368fdd92 != nil {
-		return nil, fmt.Errorf("unmarshal unified order response XML to struct failed: %w", __obf_f4364d86368fdd92)
+	__obf_ef52c60cbdb9d4d7 = xml.Unmarshal(__obf_c442b47e4257486b, &__obf_0bddfa7c6a93d39a)
+	if __obf_ef52c60cbdb9d4d7 != nil {
+		return nil, fmt.Errorf("unmarshal unified order response XML to struct failed: %w", __obf_ef52c60cbdb9d4d7)
 	}
 
 	// 检查返回码和业务结果码
-	if __obf_e9d852bd4884fa82.ReturnCode != model.SUCCESS {
-		return nil, fmt.Errorf("unified order API return error: %s - %s", __obf_e9d852bd4884fa82.ReturnCode, __obf_e9d852bd4884fa82.ReturnMsg)
+	if __obf_0bddfa7c6a93d39a.ReturnCode != model.SUCCESS {
+		return nil, fmt.Errorf("unified order API return error: %s - %s", __obf_0bddfa7c6a93d39a.ReturnCode, __obf_0bddfa7c6a93d39a.ReturnMsg)
 	}
-	if __obf_e9d852bd4884fa82.ResultCode != model.SUCCESS {
-		return nil, fmt.Errorf("unified order API business error: %s - %s (detail: %s)", __obf_e9d852bd4884fa82.ErrCode, __obf_e9d852bd4884fa82.ErrCodeDes, __obf_e9d852bd4884fa82.ReturnMsg)
+	if __obf_0bddfa7c6a93d39a.ResultCode != model.SUCCESS {
+		return nil, fmt.Errorf("unified order API business error: %s - %s (detail: %s)", __obf_0bddfa7c6a93d39a.ErrCode, __obf_0bddfa7c6a93d39a.ErrCodeDes, __obf_0bddfa7c6a93d39a.ReturnMsg)
 	}
-	__obf_e9d852bd4884fa82.Timestamp = fmt.Sprint(time.Now().Unix())
-	__obf_e9d852bd4884fa82.Package = fmt.Sprintf("prepay_id=%s", __obf_e9d852bd4884fa82.PrepayID)
-	__obf_e9d852bd4884fa82.Sign = internal.CreateSign(__obf_9b75ae39f500dd91.__obf_1607cb15609a424b.APIKey, map[string]string{
-		"appId":     __obf_e9d852bd4884fa82.AppID,
-		"nonceStr":  __obf_e9d852bd4884fa82.NonceStr,
-		"package":   __obf_e9d852bd4884fa82.Package,
-		"signType":  __obf_9b75ae39f500dd91.__obf_1607cb15609a424b.SignType,
-		"timeStamp": __obf_e9d852bd4884fa82.Timestamp,
+	__obf_0bddfa7c6a93d39a.Timestamp = fmt.Sprint(time.Now().Unix())
+	__obf_0bddfa7c6a93d39a.Package = fmt.Sprintf("prepay_id=%s", __obf_0bddfa7c6a93d39a.PrepayID)
+	__obf_0bddfa7c6a93d39a.Sign = internal.CreateSign(__obf_5ad75aad3a96c8b1.__obf_8f2d0c22eb8f010b.APIKey, map[string]string{
+		"appId":     __obf_0bddfa7c6a93d39a.AppID,
+		"nonceStr":  __obf_0bddfa7c6a93d39a.NonceStr,
+		"package":   __obf_0bddfa7c6a93d39a.Package,
+		"signType":  __obf_5ad75aad3a96c8b1.__obf_8f2d0c22eb8f010b.SignType,
+		"timeStamp": __obf_0bddfa7c6a93d39a.Timestamp,
 	})
 
-	return &__obf_e9d852bd4884fa82.UnifiedOrderResponse, nil
+	return &__obf_0bddfa7c6a93d39a.UnifiedOrderResponse, nil
 }
 
 // Refund 发起退款请求 (需要API证书)
@@ -116,81 +116,81 @@ func (__obf_9b75ae39f500dd91 *Payment) UnifiedOrder(__obf_752a8380dbe117d0 uint8
 // totalFee: 订单总金额 (单位：分)
 // refundFee: 退款金额 (单位：分)
 // refundDesc: 退款原因
-func (__obf_9b75ae39f500dd91 *Payment) Refund(__obf_7cb39cd1da0603a4 model.RefundRequest) (string, error) {
+func (__obf_5ad75aad3a96c8b1 *Payment) Refund(__obf_63456b2b2091fa0d model.RefundRequest) (string, error) {
 
-	if __obf_7cb39cd1da0603a4.TransactionID == "" && __obf_7cb39cd1da0603a4.OutTradeNo == "" {
+	if __obf_63456b2b2091fa0d.TransactionID == "" && __obf_63456b2b2091fa0d.OutTradeNo == "" {
 		return "", errors.New("transaction_id or out_trade_no must be provided")
 	}
 
-	__obf_7cb39cd1da0603a4.XMLRequest = model.XMLRequest{
-		AppID:    __obf_9b75ae39f500dd91.__obf_1607cb15609a424b.AppID,
-		MchID:    __obf_9b75ae39f500dd91.__obf_1607cb15609a424b.MchID,
+	__obf_63456b2b2091fa0d.XMLRequest = model.XMLRequest{
+		AppID:    __obf_5ad75aad3a96c8b1.__obf_8f2d0c22eb8f010b.AppID,
+		MchID:    __obf_5ad75aad3a96c8b1.__obf_8f2d0c22eb8f010b.MchID,
 		NonceStr: internal.GenerateNonceStr(),
 	}
-	__obf_7cb39cd1da0603a4.SignType = __obf_9b75ae39f500dd91.__obf_1607cb15609a424b.SignType // 使用配置中的签名类型
-	__obf_7cb39cd1da0603a4.NotifyURL = __obf_9b75ae39f500dd91.__obf_1607cb15609a424b.NotifyURL
-	__obf_7cb39cd1da0603a4.XMLRequest.Sign = internal.CreateSign(__obf_9b75ae39f500dd91.__obf_1607cb15609a424b.APIKey, __obf_7cb39cd1da0603a4.ToMap()) // 签名放入请求结构体中
+	__obf_63456b2b2091fa0d.SignType = __obf_5ad75aad3a96c8b1.__obf_8f2d0c22eb8f010b.SignType // 使用配置中的签名类型
+	__obf_63456b2b2091fa0d.NotifyURL = __obf_5ad75aad3a96c8b1.__obf_8f2d0c22eb8f010b.NotifyURL
+	__obf_63456b2b2091fa0d.XMLRequest.Sign = internal.CreateSign(__obf_5ad75aad3a96c8b1.__obf_8f2d0c22eb8f010b.APIKey, __obf_63456b2b2091fa0d.ToMap()) // 签名放入请求结构体中
 
-	__obf_4a6c52a6165e7781, __obf_f4364d86368fdd92 := __obf_9b75ae39f500dd91.__obf_443dbb7ff0b9cfde.PostXML(internal.PaymentRefundURL, &__obf_7cb39cd1da0603a4)
-	if __obf_f4364d86368fdd92 != nil {
-		return "", fmt.Errorf("refund request failed: %w", __obf_f4364d86368fdd92)
+	__obf_c442b47e4257486b, __obf_ef52c60cbdb9d4d7 := __obf_5ad75aad3a96c8b1.__obf_599670bf43af41e5.PostXML(internal.PaymentRefundURL, &__obf_63456b2b2091fa0d)
+	if __obf_ef52c60cbdb9d4d7 != nil {
+		return "", fmt.Errorf("refund request failed: %w", __obf_ef52c60cbdb9d4d7)
 	}
 
 	// 将原始响应体解析为map，用于验签
-	__obf_d08e01b9e49e8a67, __obf_f4364d86368fdd92 := internal.XMLToMap(__obf_4a6c52a6165e7781)
-	if __obf_f4364d86368fdd92 != nil {
-		return "", fmt.Errorf("parse refund response XML to map failed: %w", __obf_f4364d86368fdd92)
+	__obf_6d57a350f97fd0e5, __obf_ef52c60cbdb9d4d7 := internal.XMLToMap(__obf_c442b47e4257486b)
+	if __obf_ef52c60cbdb9d4d7 != nil {
+		return "", fmt.Errorf("parse refund response XML to map failed: %w", __obf_ef52c60cbdb9d4d7)
 	}
 
 	// 验签
-	if !internal.VerifySign(__obf_9b75ae39f500dd91.__obf_1607cb15609a424b.APIKey, __obf_d08e01b9e49e8a67) {
+	if !internal.VerifySign(__obf_5ad75aad3a96c8b1.__obf_8f2d0c22eb8f010b.APIKey, __obf_6d57a350f97fd0e5) {
 		return "", errors.New("refund response signature verification failed")
 	}
 
 	// 验签通过后，将原始响应体解析为结构体
 
-	var __obf_e9d852bd4884fa82 struct {
+	var __obf_0bddfa7c6a93d39a struct {
 		model.XMLResponse
 		model.RefundResponse
 	}
-	__obf_f4364d86368fdd92 = xml.Unmarshal(__obf_4a6c52a6165e7781, &__obf_e9d852bd4884fa82)
-	if __obf_f4364d86368fdd92 != nil {
-		return "", fmt.Errorf("unmarshal refund response XML to struct failed: %w", __obf_f4364d86368fdd92)
+	__obf_ef52c60cbdb9d4d7 = xml.Unmarshal(__obf_c442b47e4257486b, &__obf_0bddfa7c6a93d39a)
+	if __obf_ef52c60cbdb9d4d7 != nil {
+		return "", fmt.Errorf("unmarshal refund response XML to struct failed: %w", __obf_ef52c60cbdb9d4d7)
 	}
 
-	if __obf_e9d852bd4884fa82.ReturnCode != model.SUCCESS {
-		return "", fmt.Errorf("refund API return error: %s - %s", __obf_e9d852bd4884fa82.ReturnCode, __obf_e9d852bd4884fa82.ReturnMsg)
+	if __obf_0bddfa7c6a93d39a.ReturnCode != model.SUCCESS {
+		return "", fmt.Errorf("refund API return error: %s - %s", __obf_0bddfa7c6a93d39a.ReturnCode, __obf_0bddfa7c6a93d39a.ReturnMsg)
 	}
-	if __obf_e9d852bd4884fa82.ResultCode != model.SUCCESS {
-		return "", fmt.Errorf("refund API business error: %s - %s (detail: %s)", __obf_e9d852bd4884fa82.ErrCode, __obf_e9d852bd4884fa82.ErrCodeDes, __obf_e9d852bd4884fa82.ReturnMsg)
+	if __obf_0bddfa7c6a93d39a.ResultCode != model.SUCCESS {
+		return "", fmt.Errorf("refund API business error: %s - %s (detail: %s)", __obf_0bddfa7c6a93d39a.ErrCode, __obf_0bddfa7c6a93d39a.ErrCodeDes, __obf_0bddfa7c6a93d39a.ReturnMsg)
 	}
 
-	return string(__obf_4a6c52a6165e7781), nil
+	return string(__obf_c442b47e4257486b), nil
 }
 
-func (__obf_9b75ae39f500dd91 *Payment) PayNotify(__obf_1ff37d1426bfdde7 []byte, __obf_b8bac2e81d270319 func(model.PayNotifyRequest) error) error {
+func (__obf_5ad75aad3a96c8b1 *Payment) PayNotify(__obf_c1bc9c926332b9ae []byte, __obf_4b08bf3c7102488a func(model.PayNotifyRequest) error) error {
 
 	// 6. 将原始XML解析为结构体 (用于更方便地访问字段)
-	var __obf_7cb39cd1da0603a4 model.PayNotifyRequest
-	__obf_f4364d86368fdd92 := xml.Unmarshal(__obf_1ff37d1426bfdde7, &__obf_7cb39cd1da0603a4)
-	if __obf_f4364d86368fdd92 != nil {
-		return fmt.Errorf("Payment Notify: Unmarshal XML to struct failed: %v, Body: %s", __obf_f4364d86368fdd92, string(__obf_1ff37d1426bfdde7))
+	var __obf_63456b2b2091fa0d model.PayNotifyRequest
+	__obf_ef52c60cbdb9d4d7 := xml.Unmarshal(__obf_c1bc9c926332b9ae, &__obf_63456b2b2091fa0d)
+	if __obf_ef52c60cbdb9d4d7 != nil {
+		return fmt.Errorf("Payment Notify: Unmarshal XML to struct failed: %v, Body: %s", __obf_ef52c60cbdb9d4d7, string(__obf_c1bc9c926332b9ae))
 	}
 
 	// 即使业务失败，如果通信成功 (ReturnCode是SUCCESS)，也应该返回 SUCCESS 给微信，
 	// 告诉微信你已经收到通知，避免微信重复发送。
 	// 只有在通信本身出错时 (如读取Body失败，验签失败等) 才返回 FAIL
 
-	if __obf_7cb39cd1da0603a4.ReturnCode != model.SUCCESS {
-		return fmt.Errorf("Payment Notify: ReturnCode is not SUCCESS: %s - %s", __obf_7cb39cd1da0603a4.ReturnCode, __obf_7cb39cd1da0603a4.ReturnMsg)
+	if __obf_63456b2b2091fa0d.ReturnCode != model.SUCCESS {
+		return fmt.Errorf("Payment Notify: ReturnCode is not SUCCESS: %s - %s", __obf_63456b2b2091fa0d.ReturnCode, __obf_63456b2b2091fa0d.ReturnMsg)
 	}
 
 	// 7. 检查业务结果 (ResultCode)
-	if __obf_7cb39cd1da0603a4.ResultCode == model.SUCCESS {
+	if __obf_63456b2b2091fa0d.ResultCode == model.SUCCESS {
 		// 5. 验签
 		// VerifySign 会在内部移除 reqMap 中的 "sign" 字段，所以传入前需要复制或注意。
 		// 这里直接传入 reqMap 是可以的，因为验签后我们通常不再使用这个 map 进行后续操作。
-		if !internal.VerifySign(__obf_9b75ae39f500dd91.__obf_1607cb15609a424b.APIKey, __obf_7cb39cd1da0603a4.ToMap()) {
+		if !internal.VerifySign(__obf_5ad75aad3a96c8b1.__obf_8f2d0c22eb8f010b.APIKey, __obf_63456b2b2091fa0d.ToMap()) {
 			return errors.New("signature verification failed")
 		}
 		// 8. TODO: 在这里处理你的业务逻辑
@@ -212,7 +212,7 @@ func (__obf_9b75ae39f500dd91 *Payment) PayNotify(__obf_1ff37d1426bfdde7 []byte, 
 
 		// 模拟业务处理
 		// 假设这里查询数据库并更新订单状态
-		return __obf_b8bac2e81d270319(__obf_7cb39cd1da0603a4)
+		return __obf_4b08bf3c7102488a(__obf_63456b2b2091fa0d)
 		// orderID := req.OutTradeNo
 		// actualAmount := req.TotalFee // 你的订单实际应收金额 (从数据库获取)
 		// if actualAmount != req.TotalFee {
@@ -224,60 +224,60 @@ func (__obf_9b75ae39f500dd91 *Payment) PayNotify(__obf_1ff37d1426bfdde7 []byte, 
 
 // Notify 向微信返回响应
 // data参数是需要转换为XML的map[string]string，如 {"return_code": model.SUCCESS, "return_msg": "OK"}
-func ReturnMessage(__obf_75803e62173152a6, __obf_2c01b95e20f3e19e string) []byte {
-	__obf_d08e01b9e49e8a67 := map[string]string{
-		"return_code": __obf_75803e62173152a6,
-		"return_msg":  __obf_2c01b95e20f3e19e,
+func ReturnMessage(__obf_71a71a137b93c082, __obf_228af42e4c398065 string) []byte {
+	__obf_6d57a350f97fd0e5 := map[string]string{
+		"return_code": __obf_71a71a137b93c082,
+		"return_msg":  __obf_228af42e4c398065,
 	}
-	return internal.MapToXML(__obf_d08e01b9e49e8a67)
+	return internal.MapToXML(__obf_6d57a350f97fd0e5)
 }
 
-func (__obf_9b75ae39f500dd91 *Payment) TransBank(__obf_7cb39cd1da0603a4 model.TransBankRequest) (*model.TransBankResponse, error) {
+func (__obf_5ad75aad3a96c8b1 *Payment) TransBank(__obf_63456b2b2091fa0d model.TransBankRequest) (*model.TransBankResponse, error) {
 
-	if __obf_7cb39cd1da0603a4.PartnerTradeNo == "" && __obf_7cb39cd1da0603a4.EncBankNo == "" && __obf_7cb39cd1da0603a4.EncTrueName == "" && __obf_7cb39cd1da0603a4.BankCode == "" {
+	if __obf_63456b2b2091fa0d.PartnerTradeNo == "" && __obf_63456b2b2091fa0d.EncBankNo == "" && __obf_63456b2b2091fa0d.EncTrueName == "" && __obf_63456b2b2091fa0d.BankCode == "" {
 		return nil, errors.New("请提供商户付款单号、收款方银行卡号、收款方用户名、收款方开户行")
 	}
 
-	__obf_7cb39cd1da0603a4.XMLRequest = model.XMLRequest{
-		AppID:    __obf_9b75ae39f500dd91.__obf_1607cb15609a424b.AppID,
-		MchID:    __obf_9b75ae39f500dd91.__obf_1607cb15609a424b.MchID,
+	__obf_63456b2b2091fa0d.XMLRequest = model.XMLRequest{
+		AppID:    __obf_5ad75aad3a96c8b1.__obf_8f2d0c22eb8f010b.AppID,
+		MchID:    __obf_5ad75aad3a96c8b1.__obf_8f2d0c22eb8f010b.MchID,
 		NonceStr: internal.GenerateNonceStr(),
 	}
-	__obf_7cb39cd1da0603a4.XMLRequest.Sign = internal.CreateSign(__obf_9b75ae39f500dd91.__obf_1607cb15609a424b.APIKey, __obf_7cb39cd1da0603a4.ToMap()) // 签名放入请求结构体中
+	__obf_63456b2b2091fa0d.XMLRequest.Sign = internal.CreateSign(__obf_5ad75aad3a96c8b1.__obf_8f2d0c22eb8f010b.APIKey, __obf_63456b2b2091fa0d.ToMap()) // 签名放入请求结构体中
 
-	__obf_4a6c52a6165e7781, __obf_f4364d86368fdd92 := __obf_9b75ae39f500dd91.__obf_443dbb7ff0b9cfde.PostXML(internal.PaymentTransURL, &__obf_7cb39cd1da0603a4)
-	if __obf_f4364d86368fdd92 != nil {
-		return nil, fmt.Errorf("pay_bank request failed: %w", __obf_f4364d86368fdd92)
+	__obf_c442b47e4257486b, __obf_ef52c60cbdb9d4d7 := __obf_5ad75aad3a96c8b1.__obf_599670bf43af41e5.PostXML(internal.PaymentTransURL, &__obf_63456b2b2091fa0d)
+	if __obf_ef52c60cbdb9d4d7 != nil {
+		return nil, fmt.Errorf("pay_bank request failed: %w", __obf_ef52c60cbdb9d4d7)
 	}
 
 	// 将原始响应体解析为map，用于验签
-	__obf_d08e01b9e49e8a67, __obf_f4364d86368fdd92 := internal.XMLToMap(__obf_4a6c52a6165e7781)
-	if __obf_f4364d86368fdd92 != nil {
-		return nil, fmt.Errorf("parse pay_bank response XML to map failed: %w", __obf_f4364d86368fdd92)
+	__obf_6d57a350f97fd0e5, __obf_ef52c60cbdb9d4d7 := internal.XMLToMap(__obf_c442b47e4257486b)
+	if __obf_ef52c60cbdb9d4d7 != nil {
+		return nil, fmt.Errorf("parse pay_bank response XML to map failed: %w", __obf_ef52c60cbdb9d4d7)
 	}
 
 	// 验签
-	if !internal.VerifySign(__obf_9b75ae39f500dd91.__obf_1607cb15609a424b.APIKey, __obf_d08e01b9e49e8a67) {
+	if !internal.VerifySign(__obf_5ad75aad3a96c8b1.__obf_8f2d0c22eb8f010b.APIKey, __obf_6d57a350f97fd0e5) {
 		return nil, errors.New("pay_bank response signature verification failed")
 	}
 
 	// 验签通过后，将原始响应体解析为结构体
 
-	var __obf_e9d852bd4884fa82 struct {
+	var __obf_0bddfa7c6a93d39a struct {
 		model.XMLResponse
 		model.TransBankResponse
 	}
-	__obf_f4364d86368fdd92 = xml.Unmarshal(__obf_4a6c52a6165e7781, &__obf_e9d852bd4884fa82)
-	if __obf_f4364d86368fdd92 != nil {
-		return nil, fmt.Errorf("unmarshal pay_bank response XML to struct failed: %w", __obf_f4364d86368fdd92)
+	__obf_ef52c60cbdb9d4d7 = xml.Unmarshal(__obf_c442b47e4257486b, &__obf_0bddfa7c6a93d39a)
+	if __obf_ef52c60cbdb9d4d7 != nil {
+		return nil, fmt.Errorf("unmarshal pay_bank response XML to struct failed: %w", __obf_ef52c60cbdb9d4d7)
 	}
 
-	if __obf_e9d852bd4884fa82.ReturnCode != model.SUCCESS {
-		return nil, fmt.Errorf("pay_bank API return error: %s - %s", __obf_e9d852bd4884fa82.ReturnCode, __obf_e9d852bd4884fa82.ReturnMsg)
+	if __obf_0bddfa7c6a93d39a.ReturnCode != model.SUCCESS {
+		return nil, fmt.Errorf("pay_bank API return error: %s - %s", __obf_0bddfa7c6a93d39a.ReturnCode, __obf_0bddfa7c6a93d39a.ReturnMsg)
 	}
-	if __obf_e9d852bd4884fa82.ResultCode != model.SUCCESS {
-		return nil, fmt.Errorf("pay_bank API business error: %s - %s (detail: %s)", __obf_e9d852bd4884fa82.ErrCode, __obf_e9d852bd4884fa82.ErrCodeDes, __obf_e9d852bd4884fa82.ReturnMsg)
+	if __obf_0bddfa7c6a93d39a.ResultCode != model.SUCCESS {
+		return nil, fmt.Errorf("pay_bank API business error: %s - %s (detail: %s)", __obf_0bddfa7c6a93d39a.ErrCode, __obf_0bddfa7c6a93d39a.ErrCodeDes, __obf_0bddfa7c6a93d39a.ReturnMsg)
 	}
 
-	return &__obf_e9d852bd4884fa82.TransBankResponse, nil
+	return &__obf_0bddfa7c6a93d39a.TransBankResponse, nil
 }

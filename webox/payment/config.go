@@ -1,4 +1,4 @@
-package __obf_7d0a8d04d1ebfa9c
+package __obf_ee2a3d1511c9a129
 
 import (
 	"crypto/rsa"
@@ -25,30 +25,30 @@ type Config struct {
 	TLSCert   tls.Certificate   `json:"-" yaml:"-"`
 }
 
-func (__obf_54a90fd849d05db7 *Config) LoadAPICert() (__obf_679831abd2fe70b9 error) {
-	if __obf_54a90fd849d05db7.P12Path == "" || __obf_54a90fd849d05db7.P12Key == "" {
+func (__obf_70c8899fd3270f18 *Config) LoadAPICert() (__obf_fa89548a2f0e2225 error) {
+	if __obf_70c8899fd3270f18.P12Path == "" || __obf_70c8899fd3270f18.P12Key == "" {
 		return errors.New("p12 path or p12 key is not set")
 	}
-	__obf_df345a1d2219461c, __obf_679831abd2fe70b9 := os.ReadFile(__obf_54a90fd849d05db7.P12Path)
-	if __obf_679831abd2fe70b9 != nil {
-		return fmt.Errorf("p12 read failed: %w", __obf_679831abd2fe70b9)
+	__obf_f7892faeadf8ca81, __obf_fa89548a2f0e2225 := os.ReadFile(__obf_70c8899fd3270f18.P12Path)
+	if __obf_fa89548a2f0e2225 != nil {
+		return fmt.Errorf("p12 read failed: %w", __obf_fa89548a2f0e2225)
 	}
-	__obf_6a6a5296315f5f1d, __obf_4f2d3bf655e524d6, __obf_679831abd2fe70b9 := pkcs12.Decode(__obf_df345a1d2219461c, __obf_54a90fd849d05db7.P12Key)
-	if __obf_679831abd2fe70b9 != nil {
-		return fmt.Errorf("p12 decode failed: %w", __obf_679831abd2fe70b9)
+	__obf_cd52db004a3314ba, __obf_83a83ad14357852e, __obf_fa89548a2f0e2225 := pkcs12.Decode(__obf_f7892faeadf8ca81, __obf_70c8899fd3270f18.P12Key)
+	if __obf_fa89548a2f0e2225 != nil {
+		return fmt.Errorf("p12 decode failed: %w", __obf_fa89548a2f0e2225)
 	}
 
-	__obf_54a90fd849d05db7.TLSCert, __obf_679831abd2fe70b9 = tls.X509KeyPair(
+	__obf_70c8899fd3270f18.TLSCert, __obf_fa89548a2f0e2225 = tls.X509KeyPair(
 		pem.EncodeToMemory(
 			&pem.Block{
 				Type:  "CERTIFICATE",
-				Bytes: __obf_4f2d3bf655e524d6.Raw,
+				Bytes: __obf_83a83ad14357852e.Raw,
 			},
 		),
 		pem.EncodeToMemory(
 			&pem.Block{
 				Type:  "PRIVATE KEY",
-				Bytes: x509.MarshalPKCS1PrivateKey(__obf_6a6a5296315f5f1d.(*rsa.PrivateKey)),
+				Bytes: x509.MarshalPKCS1PrivateKey(__obf_cd52db004a3314ba.(*rsa.PrivateKey)),
 			},
 		),
 	)

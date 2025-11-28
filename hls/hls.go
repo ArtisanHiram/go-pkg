@@ -1,4 +1,4 @@
-package __obf_5028a0a829ddcdab
+package __obf_42bbcad92b7de1a8
 
 // https://github.com/shimberger/gohls
 import (
@@ -26,50 +26,50 @@ type Option struct {
 
 type HlsServer struct {
 	Option                 *Option
-	__obf_3c1630e7a0e9c371 *Worker
-	__obf_3c22b11f4aa43eed *Worker
-	__obf_afca1d674bf7806a *Worker
+	__obf_6b0feca1a08b9797 *Worker
+	__obf_6b3042483ee82bf2 *Worker
+	__obf_97a68cd1a689bbf5 *Worker
 }
 
-func NewHlsServer(__obf_20a7bafb4e0c1704 *Option) *HlsServer {
+func NewHlsServer(__obf_e6c9fd00e8935168 *Option) *HlsServer {
 	return &HlsServer{
-		__obf_20a7bafb4e0c1704,
-		NewWorker(__obf_20a7bafb4e0c1704.WorkersNum, __obf_20a7bafb4e0c1704.ExeTimeout, __obf_20a7bafb4e0c1704.CacheDir),
-		NewWorker(__obf_20a7bafb4e0c1704.WorkersNum, __obf_20a7bafb4e0c1704.ExeTimeout, __obf_20a7bafb4e0c1704.CacheDir),
-		NewWorker(__obf_20a7bafb4e0c1704.WorkersNum, __obf_20a7bafb4e0c1704.ExeTimeout, __obf_20a7bafb4e0c1704.CacheDir),
+		__obf_e6c9fd00e8935168,
+		NewWorker(__obf_e6c9fd00e8935168.WorkersNum, __obf_e6c9fd00e8935168.ExeTimeout, __obf_e6c9fd00e8935168.CacheDir),
+		NewWorker(__obf_e6c9fd00e8935168.WorkersNum, __obf_e6c9fd00e8935168.ExeTimeout, __obf_e6c9fd00e8935168.CacheDir),
+		NewWorker(__obf_e6c9fd00e8935168.WorkersNum, __obf_e6c9fd00e8935168.ExeTimeout, __obf_e6c9fd00e8935168.CacheDir),
 	}
 }
 
-func ExecJsonStdout(__obf_13daf0dd60267c30 *exec.Cmd, __obf_781de6fadb337177 any) error {
+func ExecJsonStdout(__obf_a7aad0ff1142655b *exec.Cmd, __obf_f20b361e19413a01 any) error {
 
-	__obf_a128e98fcbfe8702 := new(bytes.Buffer)
-	if __obf_97be5ef7ba0b1a8f := ExecWriteStdout(__obf_13daf0dd60267c30, __obf_a128e98fcbfe8702); __obf_97be5ef7ba0b1a8f != nil {
-		return __obf_97be5ef7ba0b1a8f
+	__obf_dbea6d57990eeedb := new(bytes.Buffer)
+	if __obf_59b2ec060775896c := ExecWriteStdout(__obf_a7aad0ff1142655b, __obf_dbea6d57990eeedb); __obf_59b2ec060775896c != nil {
+		return __obf_59b2ec060775896c
 	}
 
-	return json.Unmarshal(__obf_a128e98fcbfe8702.Bytes(), __obf_781de6fadb337177)
+	return json.Unmarshal(__obf_dbea6d57990eeedb.Bytes(), __obf_f20b361e19413a01)
 }
 
-func ExecWriteStdout(__obf_13daf0dd60267c30 *exec.Cmd, __obf_f0018e81daaf1fa9 io.Writer) error {
+func ExecWriteStdout(__obf_a7aad0ff1142655b *exec.Cmd, __obf_39100c7ef6f93ec8 io.Writer) error {
 
-	__obf_60beac99b7d9da01, __obf_97be5ef7ba0b1a8f := __obf_13daf0dd60267c30.StdoutPipe()
-	if __obf_97be5ef7ba0b1a8f != nil {
-		return fmt.Errorf("error opening stdout of command: %v", __obf_97be5ef7ba0b1a8f)
+	__obf_c9f3c9e1a944b39e, __obf_59b2ec060775896c := __obf_a7aad0ff1142655b.StdoutPipe()
+	if __obf_59b2ec060775896c != nil {
+		return fmt.Errorf("error opening stdout of command: %v", __obf_59b2ec060775896c)
 	}
-	defer __obf_60beac99b7d9da01.Close()
+	defer __obf_c9f3c9e1a944b39e.Close()
 
-	if __obf_97be5ef7ba0b1a8f = __obf_13daf0dd60267c30.Start(); __obf_97be5ef7ba0b1a8f != nil {
-		return fmt.Errorf("error starting command: %v", __obf_97be5ef7ba0b1a8f)
+	if __obf_59b2ec060775896c = __obf_a7aad0ff1142655b.Start(); __obf_59b2ec060775896c != nil {
+		return fmt.Errorf("error starting command: %v", __obf_59b2ec060775896c)
 	}
 
-	if _, __obf_97be5ef7ba0b1a8f = io.Copy(__obf_f0018e81daaf1fa9, __obf_60beac99b7d9da01); __obf_97be5ef7ba0b1a8f != nil {
+	if _, __obf_59b2ec060775896c = io.Copy(__obf_39100c7ef6f93ec8, __obf_c9f3c9e1a944b39e); __obf_59b2ec060775896c != nil {
 		// Ask the process to exit
-		_ = __obf_13daf0dd60267c30.Process.Signal(syscall.SIGKILL)
-		_, _ = __obf_13daf0dd60267c30.Process.Wait()
-		return fmt.Errorf("error copying stdout to buffer: %v", __obf_97be5ef7ba0b1a8f)
+		_ = __obf_a7aad0ff1142655b.Process.Signal(syscall.SIGKILL)
+		_, _ = __obf_a7aad0ff1142655b.Process.Wait()
+		return fmt.Errorf("error copying stdout to buffer: %v", __obf_59b2ec060775896c)
 	}
-	if __obf_97be5ef7ba0b1a8f = __obf_13daf0dd60267c30.Wait(); __obf_97be5ef7ba0b1a8f != nil {
-		return fmt.Errorf("command failed %v", __obf_97be5ef7ba0b1a8f)
+	if __obf_59b2ec060775896c = __obf_a7aad0ff1142655b.Wait(); __obf_59b2ec060775896c != nil {
+		return fmt.Errorf("command failed %v", __obf_59b2ec060775896c)
 	}
 
 	return nil

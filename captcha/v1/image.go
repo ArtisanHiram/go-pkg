@@ -1,4 +1,4 @@
-package __obf_699038f0de0a4a2b
+package __obf_4574f91399c0b6ef
 
 import (
 	"bytes"
@@ -12,14 +12,14 @@ import (
 )
 
 const (
-	__obf_14cc59f53dd8f928 = 11
-	__obf_101c8cde6eecc5b8 = 18
-	__obf_9f0c5a8cb83057ab = 1
+	__obf_83e7fe8e1cf23215 = 11
+	__obf_c14e0ff4e9f7b4d9 = 18
+	__obf_706ebb3b1c1ca4f9 = 1
 )
 
-func __obf_a26fde05a281128d() {
-	for __obf_d1894ef3fc0c7106 := 'a'; __obf_d1894ef3fc0c7106 <= 'z'; __obf_d1894ef3fc0c7106++ {
-		__obf_5132a5ce20e7620f[byte(__obf_d1894ef3fc0c7106)] = __obf_5132a5ce20e7620f[byte(__obf_d1894ef3fc0c7106-('a'-'A'))]
+func __obf_8f85c6bca5ed4579() {
+	for __obf_378b621098b07a32 := 'a'; __obf_378b621098b07a32 <= 'z'; __obf_378b621098b07a32++ {
+		__obf_4a3c42307d971962[byte(__obf_378b621098b07a32)] = __obf_4a3c42307d971962[byte(__obf_378b621098b07a32-('a'-'A'))]
 	}
 }
 
@@ -28,268 +28,268 @@ type Image struct {
 	Chars                  string
 	Width                  int
 	Height                 int
-	__obf_6246ec10142f3632 int // 噪点大小
+	__obf_3772168e684afbff int // 噪点大小
 	Noises                 int // 噪点数
 	MaxSkew                float64
 }
 
-var __obf_5eb974f0b0578e2d = &__obf_c9ed1e65c1540a33{}
+var __obf_07456fa42e621a8a = &__obf_3f24088299fc8cc2{}
 
 // randIntn returns a pseudorandom non-negative int in range [0, n).
-func __obf_fe369def8184b94a(__obf_789ed643afa52a81 int) int {
-	return __obf_5eb974f0b0578e2d.Intn(__obf_789ed643afa52a81)
+func __obf_1122d104bc79683d(__obf_27a156eb5f8cea50 int) int {
+	return __obf_07456fa42e621a8a.Intn(__obf_27a156eb5f8cea50)
 }
 
 // randInt returns a pseudorandom int in range [from, to].
-func __obf_f09040a9360915f7(__obf_3d56355ef363cd35, __obf_d7e2655e8c741e4f int) int {
-	return __obf_5eb974f0b0578e2d.Intn(__obf_d7e2655e8c741e4f+1-__obf_3d56355ef363cd35) + __obf_3d56355ef363cd35
+func __obf_15fab0295fa551a8(__obf_5b00234efb8b7fb2, __obf_68067dadd42e100b int) int {
+	return __obf_07456fa42e621a8a.Intn(__obf_68067dadd42e100b+1-__obf_5b00234efb8b7fb2) + __obf_5b00234efb8b7fb2
 }
 
 // randFloat returns a pseudorandom float64 in range [from, to].
-func __obf_296648ed70ae8be4(__obf_3d56355ef363cd35, __obf_d7e2655e8c741e4f float64) float64 {
-	return (__obf_d7e2655e8c741e4f-__obf_3d56355ef363cd35)*__obf_5eb974f0b0578e2d.Float64() + __obf_3d56355ef363cd35
+func __obf_db11a9f120a3a1d0(__obf_5b00234efb8b7fb2, __obf_68067dadd42e100b float64) float64 {
+	return (__obf_68067dadd42e100b-__obf_5b00234efb8b7fb2)*__obf_07456fa42e621a8a.Float64() + __obf_5b00234efb8b7fb2
 }
 
-func __obf_06c480be33ee98b5(__obf_2de550138f10c35b color.Palette, __obf_cb9675d95fbc1f5c int) color.Palette {
-	__obf_26866b3a6a3b0338 := make([]color.Color, __obf_cb9675d95fbc1f5c+1)
+func __obf_6ad6f8034a663745(__obf_83633db68783c69d color.Palette, __obf_b44d07639949453c int) color.Palette {
+	__obf_19d7640489e7800e := make([]color.Color, __obf_b44d07639949453c+1)
 	// Transparent color.
-	__obf_26866b3a6a3b0338[0] = color.RGBA{0xFF, 0xFF, 0xFF, 0x00}
+	__obf_19d7640489e7800e[0] = color.RGBA{0xFF, 0xFF, 0xFF, 0x00}
 	// Primary color.
-	var __obf_49b6692dbd444b70 color.RGBA
-	if len(__obf_2de550138f10c35b) == 0 {
-		__obf_49b6692dbd444b70 = color.RGBA{
-			uint8(__obf_fe369def8184b94a(129)),
-			uint8(__obf_fe369def8184b94a(129)),
-			uint8(__obf_fe369def8184b94a(129)),
+	var __obf_2a892d1fc3086c49 color.RGBA
+	if len(__obf_83633db68783c69d) == 0 {
+		__obf_2a892d1fc3086c49 = color.RGBA{
+			uint8(__obf_1122d104bc79683d(129)),
+			uint8(__obf_1122d104bc79683d(129)),
+			uint8(__obf_1122d104bc79683d(129)),
 			0xFF,
 		}
 	} else {
-		__obf_d8fde49203f68fa9, __obf_9ee8e3ff8fe46aff, __obf_510607bb725a50ea, __obf_e45e8dc9fbdd57dc := __obf_2de550138f10c35b[__obf_fe369def8184b94a(len(__obf_2de550138f10c35b)-1)].RGBA()
-		__obf_49b6692dbd444b70 = color.RGBA{uint8(__obf_d8fde49203f68fa9), uint8(__obf_9ee8e3ff8fe46aff), uint8(__obf_510607bb725a50ea), uint8(__obf_e45e8dc9fbdd57dc)}
+		__obf_5132c4a0b1dc11cf, __obf_966c1e9d630c7e17, __obf_7cdb1db04840a397, __obf_2462a6b194374618 := __obf_83633db68783c69d[__obf_1122d104bc79683d(len(__obf_83633db68783c69d)-1)].RGBA()
+		__obf_2a892d1fc3086c49 = color.RGBA{uint8(__obf_5132c4a0b1dc11cf), uint8(__obf_966c1e9d630c7e17), uint8(__obf_7cdb1db04840a397), uint8(__obf_2462a6b194374618)}
 	}
-	__obf_26866b3a6a3b0338[1] = __obf_49b6692dbd444b70
+	__obf_19d7640489e7800e[1] = __obf_2a892d1fc3086c49
 	// Circle colors.
-	for __obf_d1894ef3fc0c7106 := 2; __obf_d1894ef3fc0c7106 <= __obf_cb9675d95fbc1f5c; __obf_d1894ef3fc0c7106++ {
-		__obf_26866b3a6a3b0338[__obf_d1894ef3fc0c7106] = __obf_049efa9239edde68(__obf_49b6692dbd444b70, 255)
+	for __obf_378b621098b07a32 := 2; __obf_378b621098b07a32 <= __obf_b44d07639949453c; __obf_378b621098b07a32++ {
+		__obf_19d7640489e7800e[__obf_378b621098b07a32] = __obf_21592861ee1c14b9(__obf_2a892d1fc3086c49, 255)
 	}
-	return __obf_26866b3a6a3b0338
+	return __obf_19d7640489e7800e
 }
 
-func (__obf_9c81337cc9960af4 *Image) __obf_a26fde05a281128d() {
-	__obf_9c81337cc9960af4.Paletted = image.NewPaletted(image.Rect(0, 0, __obf_9c81337cc9960af4.Width, __obf_9c81337cc9960af4.Height), __obf_06c480be33ee98b5(nil, __obf_9c81337cc9960af4.Noises))
+func (__obf_5a59b6276618e993 *Image) __obf_8f85c6bca5ed4579() {
+	__obf_5a59b6276618e993.Paletted = image.NewPaletted(image.Rect(0, 0, __obf_5a59b6276618e993.Width, __obf_5a59b6276618e993.Height), __obf_6ad6f8034a663745(nil, __obf_5a59b6276618e993.Noises))
 	// width, height := m.width, m.height
 	// m.calculateSizes(len(digits))
-	var __obf_b4509990a418349f int
-	if __obf_9c81337cc9960af4.Width > __obf_9c81337cc9960af4.Height {
-		__obf_b4509990a418349f = __obf_9c81337cc9960af4.Height / 4
+	var __obf_0dbbade29471bdea int
+	if __obf_5a59b6276618e993.Width > __obf_5a59b6276618e993.Height {
+		__obf_0dbbade29471bdea = __obf_5a59b6276618e993.Height / 4
 	} else {
-		__obf_b4509990a418349f = __obf_9c81337cc9960af4.Width / 4
+		__obf_0dbbade29471bdea = __obf_5a59b6276618e993.Width / 4
 	}
 	// Convert everything to floats for calculations.
-	__obf_116dfe042cf3db2b := float64(__obf_9c81337cc9960af4.Width - __obf_b4509990a418349f*2)
-	__obf_6c9608338fc5ac89 := float64(__obf_9c81337cc9960af4.Height - __obf_b4509990a418349f*2)
+	__obf_63516e98dfa4cca2 := float64(__obf_5a59b6276618e993.Width - __obf_0dbbade29471bdea*2)
+	__obf_b44008d617ade581 := float64(__obf_5a59b6276618e993.Height - __obf_0dbbade29471bdea*2)
 	// fw takes into account 1-dot spacing between digits.
-	__obf_0c22e00b96c6eefe := float64(__obf_14cc59f53dd8f928 + 9)
-	__obf_e7571a63284dbd66 := float64(__obf_101c8cde6eecc5b8)
-	__obf_5a087b24d4329f6e := []byte(__obf_9c81337cc9960af4.Chars)
-	__obf_d095fa06f0c5f4ab := len(__obf_5a087b24d4329f6e)
+	__obf_e9951a7ce6c5368b := float64(__obf_83e7fe8e1cf23215 + 9)
+	__obf_7d72716428b4fc29 := float64(__obf_c14e0ff4e9f7b4d9)
+	__obf_83d52111ac00b2df := []byte(__obf_5a59b6276618e993.Chars)
+	__obf_b7c3e2edc3a2f194 := len(__obf_83d52111ac00b2df)
 	// Calculate the width of a single digit taking into account only the
 	// width of the image.
-	__obf_0445cee92dc2b4e3 := __obf_116dfe042cf3db2b / float64(__obf_d095fa06f0c5f4ab)
+	__obf_5861bb5633b2ae08 := __obf_63516e98dfa4cca2 / float64(__obf_b7c3e2edc3a2f194)
 	// Calculate the height of a digit from this width.
-	__obf_d19fb6e1bc8676e9 := __obf_0445cee92dc2b4e3 * __obf_e7571a63284dbd66 / __obf_0c22e00b96c6eefe
+	__obf_5bf7edd4179c0c76 := __obf_5861bb5633b2ae08 * __obf_7d72716428b4fc29 / __obf_e9951a7ce6c5368b
 	// Digit too high?
-	if __obf_d19fb6e1bc8676e9 > __obf_6c9608338fc5ac89 {
+	if __obf_5bf7edd4179c0c76 > __obf_b44008d617ade581 {
 		// Fit digits based on height.
-		__obf_d19fb6e1bc8676e9 = __obf_6c9608338fc5ac89
-		__obf_0445cee92dc2b4e3 = __obf_0c22e00b96c6eefe / __obf_e7571a63284dbd66 * __obf_d19fb6e1bc8676e9
+		__obf_5bf7edd4179c0c76 = __obf_b44008d617ade581
+		__obf_5861bb5633b2ae08 = __obf_e9951a7ce6c5368b / __obf_7d72716428b4fc29 * __obf_5bf7edd4179c0c76
 	}
 	// Calculate dot size.
-	__obf_9c81337cc9960af4.__obf_6246ec10142f3632 = max(int(__obf_d19fb6e1bc8676e9/__obf_e7571a63284dbd66), 1)
+	__obf_5a59b6276618e993.__obf_3772168e684afbff = max(int(__obf_5bf7edd4179c0c76/__obf_7d72716428b4fc29), 1)
 	// Save everything, making the actual width smaller by 1 dot to account
 	// for spacing between digits.
-	__obf_7207062fd3c2604c := int(__obf_0445cee92dc2b4e3) - __obf_9c81337cc9960af4.__obf_6246ec10142f3632
-	__obf_cbac2cf5c7cc6145 := int(__obf_d19fb6e1bc8676e9)
+	__obf_dcbbd2d493391784 := int(__obf_5861bb5633b2ae08) - __obf_5a59b6276618e993.__obf_3772168e684afbff
+	__obf_939a3b363dc326d9 := int(__obf_5bf7edd4179c0c76)
 
 	// Randomly position captcha inside the image.
-	__obf_ca43922236476b02 := __obf_9c81337cc9960af4.Width - (__obf_7207062fd3c2604c+__obf_9c81337cc9960af4.__obf_6246ec10142f3632)*__obf_d095fa06f0c5f4ab - __obf_9c81337cc9960af4.__obf_6246ec10142f3632
-	__obf_76ea72fa03bdfcd4 := __obf_9c81337cc9960af4.Height - __obf_cbac2cf5c7cc6145 - __obf_9c81337cc9960af4.__obf_6246ec10142f3632*2
+	__obf_8ef8d6e6ad198078 := __obf_5a59b6276618e993.Width - (__obf_dcbbd2d493391784+__obf_5a59b6276618e993.__obf_3772168e684afbff)*__obf_b7c3e2edc3a2f194 - __obf_5a59b6276618e993.__obf_3772168e684afbff
+	__obf_e2bd0218554e4c4f := __obf_5a59b6276618e993.Height - __obf_939a3b363dc326d9 - __obf_5a59b6276618e993.__obf_3772168e684afbff*2
 
-	if __obf_9c81337cc9960af4.Width > __obf_9c81337cc9960af4.Height {
-		__obf_b4509990a418349f = __obf_9c81337cc9960af4.Height / 5
+	if __obf_5a59b6276618e993.Width > __obf_5a59b6276618e993.Height {
+		__obf_0dbbade29471bdea = __obf_5a59b6276618e993.Height / 5
 	} else {
-		__obf_b4509990a418349f = __obf_9c81337cc9960af4.Width / 5
+		__obf_0dbbade29471bdea = __obf_5a59b6276618e993.Width / 5
 	}
 
-	__obf_0d40c6828d17c572 := __obf_f09040a9360915f7(__obf_b4509990a418349f, __obf_ca43922236476b02-__obf_b4509990a418349f)
-	__obf_b367bdc1cc4e9b30 := __obf_f09040a9360915f7(__obf_b4509990a418349f, __obf_76ea72fa03bdfcd4-__obf_b4509990a418349f)
+	__obf_72e56065c0cb51c1 := __obf_15fab0295fa551a8(__obf_0dbbade29471bdea, __obf_8ef8d6e6ad198078-__obf_0dbbade29471bdea)
+	__obf_2c2c7c234dadf515 := __obf_15fab0295fa551a8(__obf_0dbbade29471bdea, __obf_e2bd0218554e4c4f-__obf_0dbbade29471bdea)
 	// Draw digits.
 	// 遍历传入的字符 `[]byte`
-	for _, __obf_b401e8255c86b053 := range __obf_5a087b24d4329f6e {
+	for _, __obf_603bdf8c259465e5 := range __obf_83d52111ac00b2df {
 		// 从 font map 中查找字符的点阵数据
-		__obf_12367e4d3000bc1e, __obf_2af71eface86e8de := __obf_5132a5ce20e7620f[__obf_b401e8255c86b053]
-		if !__obf_2af71eface86e8de {
+		__obf_227d5799d4e53f19, __obf_eb24aa00060ce9a0 := __obf_4a3c42307d971962[__obf_603bdf8c259465e5]
+		if !__obf_eb24aa00060ce9a0 {
 			// 如果传入了我们不支持的字符（例如 '%'），则跳过该字符。
 			// 也可以选择在此处 panic 或返回 error。
 			continue
 		}
 		// 使用获取到的点阵数据绘制字符
-		__obf_9c81337cc9960af4.__obf_c4325cc35e4f751e(__obf_12367e4d3000bc1e, __obf_0d40c6828d17c572, __obf_b367bdc1cc4e9b30)
-		__obf_0d40c6828d17c572 += __obf_7207062fd3c2604c + __obf_9c81337cc9960af4.__obf_6246ec10142f3632
+		__obf_5a59b6276618e993.__obf_93602b3313d5df20(__obf_227d5799d4e53f19, __obf_72e56065c0cb51c1, __obf_2c2c7c234dadf515)
+		__obf_72e56065c0cb51c1 += __obf_dcbbd2d493391784 + __obf_5a59b6276618e993.__obf_3772168e684afbff
 	}
 	// Draw strike-through line.
-	__obf_9c81337cc9960af4.__obf_3e6713a6179de81d()
+	__obf_5a59b6276618e993.__obf_dd23a27ace1ef372()
 	// Apply wave distortion.
-	__obf_9c81337cc9960af4.__obf_6ea71147e7fd88c1(__obf_296648ed70ae8be4(5, 10), __obf_296648ed70ae8be4(100, 200))
+	__obf_5a59b6276618e993.__obf_c60bce6193c3cb83(__obf_db11a9f120a3a1d0(5, 10), __obf_db11a9f120a3a1d0(100, 200))
 	// Fill image with random circles.
-	__obf_9c81337cc9960af4.__obf_e1ff563f4d9de1f5(__obf_9c81337cc9960af4.Noises, __obf_9c81337cc9960af4.__obf_6246ec10142f3632)
+	__obf_5a59b6276618e993.__obf_14a0da0a901c1f17(__obf_5a59b6276618e993.Noises, __obf_5a59b6276618e993.__obf_3772168e684afbff)
 	// return m
 }
 
 // encodedPNG encodes an image to PNG and returns
 // the result as a byte slice.
-func (__obf_9c81337cc9960af4 *Image) __obf_371f6bff348572f7() []byte {
-	__obf_9c81337cc9960af4.__obf_a26fde05a281128d()
-	var __obf_473162ac45a6a24b bytes.Buffer
-	if __obf_ccabaa39217573c9 := png.Encode(&__obf_473162ac45a6a24b, __obf_9c81337cc9960af4.Paletted); __obf_ccabaa39217573c9 != nil {
-		panic(__obf_ccabaa39217573c9.Error())
+func (__obf_5a59b6276618e993 *Image) __obf_2fcbe630b8a0fe48() []byte {
+	__obf_5a59b6276618e993.__obf_8f85c6bca5ed4579()
+	var __obf_0c35eb9208ec2dd0 bytes.Buffer
+	if __obf_f03d347b1ec97670 := png.Encode(&__obf_0c35eb9208ec2dd0, __obf_5a59b6276618e993.Paletted); __obf_f03d347b1ec97670 != nil {
+		panic(__obf_f03d347b1ec97670.Error())
 	}
-	return __obf_473162ac45a6a24b.Bytes()
+	return __obf_0c35eb9208ec2dd0.Bytes()
 }
 
 // WriteTo writes captcha image in PNG format into the given writer.
-func (__obf_9c81337cc9960af4 *Image) WriteTo(__obf_116dfe042cf3db2b io.Writer) (int64, error) {
-	__obf_789ed643afa52a81, __obf_ccabaa39217573c9 := __obf_116dfe042cf3db2b.Write(__obf_9c81337cc9960af4.__obf_371f6bff348572f7())
-	return int64(__obf_789ed643afa52a81), __obf_ccabaa39217573c9
+func (__obf_5a59b6276618e993 *Image) WriteTo(__obf_63516e98dfa4cca2 io.Writer) (int64, error) {
+	__obf_27a156eb5f8cea50, __obf_f03d347b1ec97670 := __obf_63516e98dfa4cca2.Write(__obf_5a59b6276618e993.__obf_2fcbe630b8a0fe48())
+	return int64(__obf_27a156eb5f8cea50), __obf_f03d347b1ec97670
 }
 
-func (__obf_9c81337cc9960af4 *Image) Base64() string {
-	__obf_651a81992fdaeb2e := base64.StdEncoding.EncodeToString(__obf_9c81337cc9960af4.__obf_371f6bff348572f7())
-	return fmt.Sprintf("data:image/png;base64,%s", __obf_651a81992fdaeb2e)
+func (__obf_5a59b6276618e993 *Image) Base64() string {
+	__obf_9487f4714151db10 := base64.StdEncoding.EncodeToString(__obf_5a59b6276618e993.__obf_2fcbe630b8a0fe48())
+	return fmt.Sprintf("data:image/png;base64,%s", __obf_9487f4714151db10)
 }
 
-func (__obf_9c81337cc9960af4 *Image) __obf_3692f1878b4efbe3(__obf_dc1f159f9a45480a, __obf_0e2dd777472b8c1d, __obf_b367bdc1cc4e9b30 int, __obf_0f4a6a572bb4f19d uint8) {
-	for __obf_0d40c6828d17c572 := __obf_dc1f159f9a45480a; __obf_0d40c6828d17c572 <= __obf_0e2dd777472b8c1d; __obf_0d40c6828d17c572++ {
-		__obf_9c81337cc9960af4.SetColorIndex(__obf_0d40c6828d17c572, __obf_b367bdc1cc4e9b30, __obf_0f4a6a572bb4f19d)
+func (__obf_5a59b6276618e993 *Image) __obf_e62a6322f8d96f15(__obf_82d65fcce3c307e9, __obf_c03fb4bd786de018, __obf_2c2c7c234dadf515 int, __obf_d0c85f508ed950fc uint8) {
+	for __obf_72e56065c0cb51c1 := __obf_82d65fcce3c307e9; __obf_72e56065c0cb51c1 <= __obf_c03fb4bd786de018; __obf_72e56065c0cb51c1++ {
+		__obf_5a59b6276618e993.SetColorIndex(__obf_72e56065c0cb51c1, __obf_2c2c7c234dadf515, __obf_d0c85f508ed950fc)
 	}
 }
 
-func (__obf_9c81337cc9960af4 *Image) __obf_4cd66e4b21067e48(__obf_0d40c6828d17c572, __obf_b367bdc1cc4e9b30, __obf_389b241917203ae6 int, __obf_0f4a6a572bb4f19d uint8) {
-	__obf_de7e3baddb0878e5 := 1 - __obf_389b241917203ae6
-	__obf_f223c85abca088bb := 1
-	__obf_96c006cade90fa1f := -2 * __obf_389b241917203ae6
-	__obf_29ceade3420583d7 := 0
-	__obf_7b9cf1906d0c6c5b := __obf_389b241917203ae6
+func (__obf_5a59b6276618e993 *Image) __obf_dc63af93d2e7429c(__obf_72e56065c0cb51c1, __obf_2c2c7c234dadf515, __obf_58247e74e20ca270 int, __obf_d0c85f508ed950fc uint8) {
+	__obf_3edace2fc1d16e3a := 1 - __obf_58247e74e20ca270
+	__obf_5e3c1040bd3366c4 := 1
+	__obf_f83cb8439c217691 := -2 * __obf_58247e74e20ca270
+	__obf_9f49a11015ef5b27 := 0
+	__obf_5dc09ee099d86289 := __obf_58247e74e20ca270
 
-	__obf_9c81337cc9960af4.SetColorIndex(__obf_0d40c6828d17c572, __obf_b367bdc1cc4e9b30+__obf_389b241917203ae6, __obf_0f4a6a572bb4f19d)
-	__obf_9c81337cc9960af4.SetColorIndex(__obf_0d40c6828d17c572, __obf_b367bdc1cc4e9b30-__obf_389b241917203ae6, __obf_0f4a6a572bb4f19d)
-	__obf_9c81337cc9960af4.__obf_3692f1878b4efbe3(__obf_0d40c6828d17c572-__obf_389b241917203ae6, __obf_0d40c6828d17c572+__obf_389b241917203ae6, __obf_b367bdc1cc4e9b30, __obf_0f4a6a572bb4f19d)
+	__obf_5a59b6276618e993.SetColorIndex(__obf_72e56065c0cb51c1, __obf_2c2c7c234dadf515+__obf_58247e74e20ca270, __obf_d0c85f508ed950fc)
+	__obf_5a59b6276618e993.SetColorIndex(__obf_72e56065c0cb51c1, __obf_2c2c7c234dadf515-__obf_58247e74e20ca270, __obf_d0c85f508ed950fc)
+	__obf_5a59b6276618e993.__obf_e62a6322f8d96f15(__obf_72e56065c0cb51c1-__obf_58247e74e20ca270, __obf_72e56065c0cb51c1+__obf_58247e74e20ca270, __obf_2c2c7c234dadf515, __obf_d0c85f508ed950fc)
 
-	for __obf_29ceade3420583d7 < __obf_7b9cf1906d0c6c5b {
-		if __obf_de7e3baddb0878e5 >= 0 {
-			__obf_7b9cf1906d0c6c5b--
-			__obf_96c006cade90fa1f += 2
-			__obf_de7e3baddb0878e5 += __obf_96c006cade90fa1f
+	for __obf_9f49a11015ef5b27 < __obf_5dc09ee099d86289 {
+		if __obf_3edace2fc1d16e3a >= 0 {
+			__obf_5dc09ee099d86289--
+			__obf_f83cb8439c217691 += 2
+			__obf_3edace2fc1d16e3a += __obf_f83cb8439c217691
 		}
-		__obf_29ceade3420583d7++
-		__obf_f223c85abca088bb += 2
-		__obf_de7e3baddb0878e5 += __obf_f223c85abca088bb
-		__obf_9c81337cc9960af4.__obf_3692f1878b4efbe3(__obf_0d40c6828d17c572-__obf_29ceade3420583d7, __obf_0d40c6828d17c572+__obf_29ceade3420583d7, __obf_b367bdc1cc4e9b30+__obf_7b9cf1906d0c6c5b, __obf_0f4a6a572bb4f19d)
-		__obf_9c81337cc9960af4.__obf_3692f1878b4efbe3(__obf_0d40c6828d17c572-__obf_29ceade3420583d7, __obf_0d40c6828d17c572+__obf_29ceade3420583d7, __obf_b367bdc1cc4e9b30-__obf_7b9cf1906d0c6c5b, __obf_0f4a6a572bb4f19d)
-		__obf_9c81337cc9960af4.__obf_3692f1878b4efbe3(__obf_0d40c6828d17c572-__obf_7b9cf1906d0c6c5b, __obf_0d40c6828d17c572+__obf_7b9cf1906d0c6c5b, __obf_b367bdc1cc4e9b30+__obf_29ceade3420583d7, __obf_0f4a6a572bb4f19d)
-		__obf_9c81337cc9960af4.__obf_3692f1878b4efbe3(__obf_0d40c6828d17c572-__obf_7b9cf1906d0c6c5b, __obf_0d40c6828d17c572+__obf_7b9cf1906d0c6c5b, __obf_b367bdc1cc4e9b30-__obf_29ceade3420583d7, __obf_0f4a6a572bb4f19d)
+		__obf_9f49a11015ef5b27++
+		__obf_5e3c1040bd3366c4 += 2
+		__obf_3edace2fc1d16e3a += __obf_5e3c1040bd3366c4
+		__obf_5a59b6276618e993.__obf_e62a6322f8d96f15(__obf_72e56065c0cb51c1-__obf_9f49a11015ef5b27, __obf_72e56065c0cb51c1+__obf_9f49a11015ef5b27, __obf_2c2c7c234dadf515+__obf_5dc09ee099d86289, __obf_d0c85f508ed950fc)
+		__obf_5a59b6276618e993.__obf_e62a6322f8d96f15(__obf_72e56065c0cb51c1-__obf_9f49a11015ef5b27, __obf_72e56065c0cb51c1+__obf_9f49a11015ef5b27, __obf_2c2c7c234dadf515-__obf_5dc09ee099d86289, __obf_d0c85f508ed950fc)
+		__obf_5a59b6276618e993.__obf_e62a6322f8d96f15(__obf_72e56065c0cb51c1-__obf_5dc09ee099d86289, __obf_72e56065c0cb51c1+__obf_5dc09ee099d86289, __obf_2c2c7c234dadf515+__obf_9f49a11015ef5b27, __obf_d0c85f508ed950fc)
+		__obf_5a59b6276618e993.__obf_e62a6322f8d96f15(__obf_72e56065c0cb51c1-__obf_5dc09ee099d86289, __obf_72e56065c0cb51c1+__obf_5dc09ee099d86289, __obf_2c2c7c234dadf515-__obf_9f49a11015ef5b27, __obf_d0c85f508ed950fc)
 	}
 }
 
-func (__obf_9c81337cc9960af4 *Image) __obf_e1ff563f4d9de1f5(__obf_789ed643afa52a81, __obf_5d3b39c0da418154 int) {
-	__obf_ca43922236476b02 := __obf_9c81337cc9960af4.Bounds().Max.X
-	__obf_76ea72fa03bdfcd4 := __obf_9c81337cc9960af4.Bounds().Max.Y
-	for range __obf_789ed643afa52a81 {
-		__obf_0f4a6a572bb4f19d := uint8(__obf_f09040a9360915f7(2, __obf_9c81337cc9960af4.Noises)) // Use colors from index 2 onwards for circles
-		__obf_d8fde49203f68fa9 := __obf_f09040a9360915f7(1, __obf_5d3b39c0da418154)
-		__obf_9c81337cc9960af4.__obf_4cd66e4b21067e48(__obf_f09040a9360915f7(__obf_d8fde49203f68fa9, __obf_ca43922236476b02-__obf_d8fde49203f68fa9), __obf_f09040a9360915f7(__obf_d8fde49203f68fa9, __obf_76ea72fa03bdfcd4-__obf_d8fde49203f68fa9), __obf_d8fde49203f68fa9, __obf_0f4a6a572bb4f19d)
+func (__obf_5a59b6276618e993 *Image) __obf_14a0da0a901c1f17(__obf_27a156eb5f8cea50, __obf_9f1e30711abe4c2b int) {
+	__obf_8ef8d6e6ad198078 := __obf_5a59b6276618e993.Bounds().Max.X
+	__obf_e2bd0218554e4c4f := __obf_5a59b6276618e993.Bounds().Max.Y
+	for range __obf_27a156eb5f8cea50 {
+		__obf_d0c85f508ed950fc := uint8(__obf_15fab0295fa551a8(2, __obf_5a59b6276618e993.Noises)) // Use colors from index 2 onwards for circles
+		__obf_5132c4a0b1dc11cf := __obf_15fab0295fa551a8(1, __obf_9f1e30711abe4c2b)
+		__obf_5a59b6276618e993.__obf_dc63af93d2e7429c(__obf_15fab0295fa551a8(__obf_5132c4a0b1dc11cf, __obf_8ef8d6e6ad198078-__obf_5132c4a0b1dc11cf), __obf_15fab0295fa551a8(__obf_5132c4a0b1dc11cf, __obf_e2bd0218554e4c4f-__obf_5132c4a0b1dc11cf), __obf_5132c4a0b1dc11cf, __obf_d0c85f508ed950fc)
 	}
 }
 
-func (__obf_9c81337cc9960af4 *Image) __obf_3e6713a6179de81d() {
-	__obf_ca43922236476b02 := __obf_9c81337cc9960af4.Bounds().Max.X
-	__obf_76ea72fa03bdfcd4 := __obf_9c81337cc9960af4.Bounds().Max.Y
-	__obf_b367bdc1cc4e9b30 := __obf_f09040a9360915f7(__obf_76ea72fa03bdfcd4/3, __obf_76ea72fa03bdfcd4-__obf_76ea72fa03bdfcd4/3)
-	__obf_48dff9314d79ccea := __obf_296648ed70ae8be4(5, 20)
-	__obf_961d1cba66f6eb2e := __obf_296648ed70ae8be4(80, 180)
-	__obf_799fcbb4ff49108d := 2.0 * math.Pi / __obf_961d1cba66f6eb2e
-	for __obf_0d40c6828d17c572 := range __obf_ca43922236476b02 {
-		__obf_29ceade3420583d7 := __obf_48dff9314d79ccea * math.Cos(float64(__obf_b367bdc1cc4e9b30)*__obf_799fcbb4ff49108d)
-		__obf_7b9cf1906d0c6c5b := __obf_48dff9314d79ccea * math.Sin(float64(__obf_0d40c6828d17c572)*__obf_799fcbb4ff49108d)
-		for __obf_ef5661eb5cbd9baa := 0; __obf_ef5661eb5cbd9baa < __obf_9c81337cc9960af4.__obf_6246ec10142f3632; __obf_ef5661eb5cbd9baa++ {
-			__obf_d8fde49203f68fa9 := __obf_f09040a9360915f7(0, __obf_9c81337cc9960af4.__obf_6246ec10142f3632)
-			__obf_9c81337cc9960af4.__obf_4cd66e4b21067e48(__obf_0d40c6828d17c572+int(__obf_29ceade3420583d7), __obf_b367bdc1cc4e9b30+int(__obf_7b9cf1906d0c6c5b)+(__obf_ef5661eb5cbd9baa*__obf_9c81337cc9960af4.__obf_6246ec10142f3632), __obf_d8fde49203f68fa9/2, 1)
+func (__obf_5a59b6276618e993 *Image) __obf_dd23a27ace1ef372() {
+	__obf_8ef8d6e6ad198078 := __obf_5a59b6276618e993.Bounds().Max.X
+	__obf_e2bd0218554e4c4f := __obf_5a59b6276618e993.Bounds().Max.Y
+	__obf_2c2c7c234dadf515 := __obf_15fab0295fa551a8(__obf_e2bd0218554e4c4f/3, __obf_e2bd0218554e4c4f-__obf_e2bd0218554e4c4f/3)
+	__obf_70d326c4939a3b4c := __obf_db11a9f120a3a1d0(5, 20)
+	__obf_849e1b16c42465ef := __obf_db11a9f120a3a1d0(80, 180)
+	__obf_e85eaab32c829196 := 2.0 * math.Pi / __obf_849e1b16c42465ef
+	for __obf_72e56065c0cb51c1 := range __obf_8ef8d6e6ad198078 {
+		__obf_9f49a11015ef5b27 := __obf_70d326c4939a3b4c * math.Cos(float64(__obf_2c2c7c234dadf515)*__obf_e85eaab32c829196)
+		__obf_5dc09ee099d86289 := __obf_70d326c4939a3b4c * math.Sin(float64(__obf_72e56065c0cb51c1)*__obf_e85eaab32c829196)
+		for __obf_bad4a89a32fd2d48 := 0; __obf_bad4a89a32fd2d48 < __obf_5a59b6276618e993.__obf_3772168e684afbff; __obf_bad4a89a32fd2d48++ {
+			__obf_5132c4a0b1dc11cf := __obf_15fab0295fa551a8(0, __obf_5a59b6276618e993.__obf_3772168e684afbff)
+			__obf_5a59b6276618e993.__obf_dc63af93d2e7429c(__obf_72e56065c0cb51c1+int(__obf_9f49a11015ef5b27), __obf_2c2c7c234dadf515+int(__obf_5dc09ee099d86289)+(__obf_bad4a89a32fd2d48*__obf_5a59b6276618e993.__obf_3772168e684afbff), __obf_5132c4a0b1dc11cf/2, 1)
 		}
 	}
 }
 
-func (__obf_9c81337cc9960af4 *Image) __obf_c4325cc35e4f751e(__obf_6e286bbabdab16dd []byte, __obf_0d40c6828d17c572, __obf_b367bdc1cc4e9b30 int) {
-	__obf_ca014d588e301f99 := __obf_296648ed70ae8be4(-__obf_9c81337cc9960af4.MaxSkew, __obf_9c81337cc9960af4.MaxSkew)
-	__obf_88f912c74fae737f := float64(__obf_0d40c6828d17c572)
-	__obf_d8fde49203f68fa9 := __obf_9c81337cc9960af4.__obf_6246ec10142f3632 / 2
-	__obf_b367bdc1cc4e9b30 += __obf_f09040a9360915f7(-__obf_d8fde49203f68fa9, __obf_d8fde49203f68fa9)
-	for __obf_7b9cf1906d0c6c5b := range __obf_101c8cde6eecc5b8 {
-		for __obf_29ceade3420583d7 := range __obf_14cc59f53dd8f928 {
-			if __obf_6e286bbabdab16dd[__obf_7b9cf1906d0c6c5b*__obf_14cc59f53dd8f928+__obf_29ceade3420583d7] != __obf_9f0c5a8cb83057ab {
+func (__obf_5a59b6276618e993 *Image) __obf_93602b3313d5df20(__obf_47c54e2381774d5b []byte, __obf_72e56065c0cb51c1, __obf_2c2c7c234dadf515 int) {
+	__obf_945124093f790ff9 := __obf_db11a9f120a3a1d0(-__obf_5a59b6276618e993.MaxSkew, __obf_5a59b6276618e993.MaxSkew)
+	__obf_f1ef3bd0d67f3aed := float64(__obf_72e56065c0cb51c1)
+	__obf_5132c4a0b1dc11cf := __obf_5a59b6276618e993.__obf_3772168e684afbff / 2
+	__obf_2c2c7c234dadf515 += __obf_15fab0295fa551a8(-__obf_5132c4a0b1dc11cf, __obf_5132c4a0b1dc11cf)
+	for __obf_5dc09ee099d86289 := range __obf_c14e0ff4e9f7b4d9 {
+		for __obf_9f49a11015ef5b27 := range __obf_83e7fe8e1cf23215 {
+			if __obf_47c54e2381774d5b[__obf_5dc09ee099d86289*__obf_83e7fe8e1cf23215+__obf_9f49a11015ef5b27] != __obf_706ebb3b1c1ca4f9 {
 				continue
 			}
-			__obf_9c81337cc9960af4.__obf_4cd66e4b21067e48(__obf_0d40c6828d17c572+__obf_29ceade3420583d7*__obf_9c81337cc9960af4.__obf_6246ec10142f3632, __obf_b367bdc1cc4e9b30+__obf_7b9cf1906d0c6c5b*__obf_9c81337cc9960af4.__obf_6246ec10142f3632, __obf_d8fde49203f68fa9, 1)
+			__obf_5a59b6276618e993.__obf_dc63af93d2e7429c(__obf_72e56065c0cb51c1+__obf_9f49a11015ef5b27*__obf_5a59b6276618e993.__obf_3772168e684afbff, __obf_2c2c7c234dadf515+__obf_5dc09ee099d86289*__obf_5a59b6276618e993.__obf_3772168e684afbff, __obf_5132c4a0b1dc11cf, 1)
 		}
-		__obf_88f912c74fae737f += __obf_ca014d588e301f99
-		__obf_0d40c6828d17c572 = int(__obf_88f912c74fae737f)
+		__obf_f1ef3bd0d67f3aed += __obf_945124093f790ff9
+		__obf_72e56065c0cb51c1 = int(__obf_f1ef3bd0d67f3aed)
 	}
 }
 
-func (__obf_9c81337cc9960af4 *Image) __obf_6ea71147e7fd88c1(__obf_809a54e78c131366 float64, __obf_961d1cba66f6eb2e float64) {
-	__obf_116dfe042cf3db2b := __obf_9c81337cc9960af4.Bounds().Max.X
-	__obf_6c9608338fc5ac89 := __obf_9c81337cc9960af4.Bounds().Max.Y
+func (__obf_5a59b6276618e993 *Image) __obf_c60bce6193c3cb83(__obf_c3dc7b2135cee131 float64, __obf_849e1b16c42465ef float64) {
+	__obf_63516e98dfa4cca2 := __obf_5a59b6276618e993.Bounds().Max.X
+	__obf_b44008d617ade581 := __obf_5a59b6276618e993.Bounds().Max.Y
 
-	__obf_08b4a009f9873671 := __obf_9c81337cc9960af4.Paletted
-	__obf_0d95a914e977224c := image.NewPaletted(image.Rect(0, 0, __obf_116dfe042cf3db2b, __obf_6c9608338fc5ac89), __obf_08b4a009f9873671.Palette)
+	__obf_787c500730ccef0d := __obf_5a59b6276618e993.Paletted
+	__obf_162569e0878b3d4c := image.NewPaletted(image.Rect(0, 0, __obf_63516e98dfa4cca2, __obf_b44008d617ade581), __obf_787c500730ccef0d.Palette)
 
-	__obf_799fcbb4ff49108d := 2.0 * math.Pi / __obf_961d1cba66f6eb2e
-	for __obf_0d40c6828d17c572 := range __obf_116dfe042cf3db2b {
-		for __obf_b367bdc1cc4e9b30 := range __obf_6c9608338fc5ac89 {
-			__obf_29ceade3420583d7 := __obf_809a54e78c131366 * math.Sin(float64(__obf_b367bdc1cc4e9b30)*__obf_799fcbb4ff49108d)
-			__obf_7b9cf1906d0c6c5b := __obf_809a54e78c131366 * math.Cos(float64(__obf_0d40c6828d17c572)*__obf_799fcbb4ff49108d)
-			__obf_0d95a914e977224c.SetColorIndex(__obf_0d40c6828d17c572, __obf_b367bdc1cc4e9b30, __obf_08b4a009f9873671.ColorIndexAt(__obf_0d40c6828d17c572+int(__obf_29ceade3420583d7), __obf_b367bdc1cc4e9b30+int(__obf_7b9cf1906d0c6c5b)))
+	__obf_e85eaab32c829196 := 2.0 * math.Pi / __obf_849e1b16c42465ef
+	for __obf_72e56065c0cb51c1 := range __obf_63516e98dfa4cca2 {
+		for __obf_2c2c7c234dadf515 := range __obf_b44008d617ade581 {
+			__obf_9f49a11015ef5b27 := __obf_c3dc7b2135cee131 * math.Sin(float64(__obf_2c2c7c234dadf515)*__obf_e85eaab32c829196)
+			__obf_5dc09ee099d86289 := __obf_c3dc7b2135cee131 * math.Cos(float64(__obf_72e56065c0cb51c1)*__obf_e85eaab32c829196)
+			__obf_162569e0878b3d4c.SetColorIndex(__obf_72e56065c0cb51c1, __obf_2c2c7c234dadf515, __obf_787c500730ccef0d.ColorIndexAt(__obf_72e56065c0cb51c1+int(__obf_9f49a11015ef5b27), __obf_2c2c7c234dadf515+int(__obf_5dc09ee099d86289)))
 		}
 	}
-	__obf_9c81337cc9960af4.Paletted = __obf_0d95a914e977224c
+	__obf_5a59b6276618e993.Paletted = __obf_162569e0878b3d4c
 }
 
-func __obf_049efa9239edde68(__obf_b0677886b7817654 color.RGBA, max uint8) color.RGBA {
-	__obf_61df09c7249e817b := __obf_32910eb9d88a84d3(__obf_b0677886b7817654.R, __obf_b0677886b7817654.G, __obf_b0677886b7817654.B)
-	__obf_90bf95551ef483f3 := __obf_b7df36669faddf9a(__obf_b0677886b7817654.R, __obf_b0677886b7817654.G, __obf_b0677886b7817654.B)
-	if __obf_90bf95551ef483f3 > max {
-		return __obf_b0677886b7817654
+func __obf_21592861ee1c14b9(__obf_77c8e6f59f12faaf color.RGBA, max uint8) color.RGBA {
+	__obf_c3dfae7fe5cbec99 := __obf_6a0aeeea69cbc53a(__obf_77c8e6f59f12faaf.R, __obf_77c8e6f59f12faaf.G, __obf_77c8e6f59f12faaf.B)
+	__obf_2d6f1b65f7992517 := __obf_5f19b58bc2c176ef(__obf_77c8e6f59f12faaf.R, __obf_77c8e6f59f12faaf.G, __obf_77c8e6f59f12faaf.B)
+	if __obf_2d6f1b65f7992517 > max {
+		return __obf_77c8e6f59f12faaf
 	}
-	__obf_789ed643afa52a81 := __obf_fe369def8184b94a(int(max-__obf_90bf95551ef483f3)) - int(__obf_61df09c7249e817b)
+	__obf_27a156eb5f8cea50 := __obf_1122d104bc79683d(int(max-__obf_2d6f1b65f7992517)) - int(__obf_c3dfae7fe5cbec99)
 	return color.RGBA{
-		uint8(int(__obf_b0677886b7817654.R) + __obf_789ed643afa52a81),
-		uint8(int(__obf_b0677886b7817654.G) + __obf_789ed643afa52a81),
-		uint8(int(__obf_b0677886b7817654.B) + __obf_789ed643afa52a81),
-		__obf_b0677886b7817654.A,
+		uint8(int(__obf_77c8e6f59f12faaf.R) + __obf_27a156eb5f8cea50),
+		uint8(int(__obf_77c8e6f59f12faaf.G) + __obf_27a156eb5f8cea50),
+		uint8(int(__obf_77c8e6f59f12faaf.B) + __obf_27a156eb5f8cea50),
+		__obf_77c8e6f59f12faaf.A,
 	}
 }
 
-func __obf_32910eb9d88a84d3(__obf_0d40c6828d17c572, __obf_b367bdc1cc4e9b30, __obf_2d71064c3d6f42a9 uint8) (__obf_9c81337cc9960af4 uint8) {
-	__obf_9c81337cc9960af4 = min(__obf_2d71064c3d6f42a9, min(__obf_0d40c6828d17c572, __obf_b367bdc1cc4e9b30))
+func __obf_6a0aeeea69cbc53a(__obf_72e56065c0cb51c1, __obf_2c2c7c234dadf515, __obf_3e8f894562a2c4d6 uint8) (__obf_5a59b6276618e993 uint8) {
+	__obf_5a59b6276618e993 = min(__obf_3e8f894562a2c4d6, min(__obf_72e56065c0cb51c1, __obf_2c2c7c234dadf515))
 	return
 }
 
-func __obf_b7df36669faddf9a(__obf_0d40c6828d17c572, __obf_b367bdc1cc4e9b30, __obf_2d71064c3d6f42a9 uint8) (__obf_9c81337cc9960af4 uint8) {
-	__obf_9c81337cc9960af4 = max(__obf_2d71064c3d6f42a9, max(__obf_0d40c6828d17c572, __obf_b367bdc1cc4e9b30))
+func __obf_5f19b58bc2c176ef(__obf_72e56065c0cb51c1, __obf_2c2c7c234dadf515, __obf_3e8f894562a2c4d6 uint8) (__obf_5a59b6276618e993 uint8) {
+	__obf_5a59b6276618e993 = max(__obf_3e8f894562a2c4d6, max(__obf_72e56065c0cb51c1, __obf_2c2c7c234dadf515))
 	return
 }
 
 // 0-9a-zA-Z 的点阵数据
-var __obf_5132a5ce20e7620f = map[byte][]byte{
+var __obf_4a3c42307d971962 = map[byte][]byte{
 	'0': {
 		0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0,
 		0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0,

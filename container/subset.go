@@ -1,24 +1,24 @@
-package __obf_1fda7fbdeda52f1e
+package __obf_af42fb6cde2beed6
 
 import consistent "github.com/ArtisanHiram/go-pkg/consistent"
 
-func Subset[M consistent.Member](__obf_0319c73a9fcfea78 string, __obf_e1d97ccd4f404a0c []M, __obf_de5e180fe13c970f int) []M {
-	if len(__obf_e1d97ccd4f404a0c) <= __obf_de5e180fe13c970f {
-		return __obf_e1d97ccd4f404a0c
+func Subset[M consistent.Member](__obf_bf7a39439a0629b6 string, __obf_10409a6d1dcdfe09 []M, __obf_a18c495ebc00d86e int) []M {
+	if len(__obf_10409a6d1dcdfe09) <= __obf_a18c495ebc00d86e {
+		return __obf_10409a6d1dcdfe09
 	}
 
-	__obf_253b4b4b09bc3548 := consistent.New[M]()
-	__obf_253b4b4b09bc3548.NumberOfReplicas = 160
-	__obf_253b4b4b09bc3548.UseFnv = true
-	__obf_253b4b4b09bc3548.Set(__obf_e1d97ccd4f404a0c)
+	__obf_b8edc6183e50f0e0 := consistent.New[M]()
+	__obf_b8edc6183e50f0e0.NumberOfReplicas = 160
+	__obf_b8edc6183e50f0e0.UseFnv = true
+	__obf_b8edc6183e50f0e0.Set(__obf_10409a6d1dcdfe09)
 
-	return __obf_3d27992e137eac13(__obf_253b4b4b09bc3548, __obf_0319c73a9fcfea78, __obf_e1d97ccd4f404a0c, __obf_de5e180fe13c970f)
+	return __obf_a3e746036282c4af(__obf_b8edc6183e50f0e0, __obf_bf7a39439a0629b6, __obf_10409a6d1dcdfe09, __obf_a18c495ebc00d86e)
 }
 
-func __obf_3d27992e137eac13[M consistent.Member](__obf_253b4b4b09bc3548 *consistent.Consistent[M], __obf_0319c73a9fcfea78 string, __obf_e1d97ccd4f404a0c []M, __obf_de5e180fe13c970f int) []M {
-	__obf_0f4e1927b9296c23, __obf_483c2f6b078721a6 := __obf_253b4b4b09bc3548.GetN(__obf_0319c73a9fcfea78, __obf_de5e180fe13c970f)
-	if __obf_483c2f6b078721a6 != nil {
-		return __obf_e1d97ccd4f404a0c
+func __obf_a3e746036282c4af[M consistent.Member](__obf_b8edc6183e50f0e0 *consistent.Consistent[M], __obf_bf7a39439a0629b6 string, __obf_10409a6d1dcdfe09 []M, __obf_a18c495ebc00d86e int) []M {
+	__obf_e3ae521dae03af73, __obf_24456bd3f3e29186 := __obf_b8edc6183e50f0e0.GetN(__obf_bf7a39439a0629b6, __obf_a18c495ebc00d86e)
+	if __obf_24456bd3f3e29186 != nil {
+		return __obf_10409a6d1dcdfe09
 	}
-	return __obf_0f4e1927b9296c23
+	return __obf_e3ae521dae03af73
 }

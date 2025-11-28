@@ -1,65 +1,65 @@
-package __obf_699038f0de0a4a2b
+package __obf_4574f91399c0b6ef
 
 // ---------------------------------
 // siprng is needed for random functions, keeping it from the original code.
 // ---------------------------------
-type __obf_c9ed1e65c1540a33 struct {
-	__obf_9f3d5b43ca613004, __obf_76f0b0ef8ff8d3fc, __obf_0f8aed180c330f0c, __obf_ed8f89279a15b8c2 uint64
+type __obf_3f24088299fc8cc2 struct {
+	__obf_ddc0228d360ac3fe, __obf_1d6eb6491d24d298, __obf_83ba1a0484f42b6e, __obf_ab52ff1ee21ec0ba uint64
 }
 
 const (
-	__obf_ac9eb801ef876b58 = 2
-	__obf_5b71d05db0fcea61 = 4
+	__obf_bc02efce650a142f = 2
+	__obf_d302a2303152a041 = 4
 )
 
-func (__obf_d8fde49203f68fa9 *__obf_c9ed1e65c1540a33) Seed(__obf_c5708a1b03b4e418 [16]byte) {
-	__obf_c20cfcd02ad1f375 := uint64(__obf_c5708a1b03b4e418[0]) | uint64(__obf_c5708a1b03b4e418[1])<<8 | uint64(__obf_c5708a1b03b4e418[2])<<16 |
-		uint64(__obf_c5708a1b03b4e418[3])<<24 | uint64(__obf_c5708a1b03b4e418[4])<<32 | uint64(__obf_c5708a1b03b4e418[5])<<40 |
-		uint64(__obf_c5708a1b03b4e418[6])<<48 | uint64(__obf_c5708a1b03b4e418[7])<<56
-	__obf_37046a2c8bab0e60 := uint64(__obf_c5708a1b03b4e418[8]) | uint64(__obf_c5708a1b03b4e418[9])<<8 | uint64(__obf_c5708a1b03b4e418[10])<<16 |
-		uint64(__obf_c5708a1b03b4e418[11])<<24 | uint64(__obf_c5708a1b03b4e418[12])<<32 | uint64(__obf_c5708a1b03b4e418[13])<<40 |
-		uint64(__obf_c5708a1b03b4e418[14])<<48 | uint64(__obf_c5708a1b03b4e418[15])<<56
-	__obf_d8fde49203f68fa9.__obf_9f3d5b43ca613004 = __obf_c20cfcd02ad1f375 ^ 0x736f6d6570736575
-	__obf_d8fde49203f68fa9.__obf_76f0b0ef8ff8d3fc = __obf_37046a2c8bab0e60 ^ 0x646f72616e646f6d
-	__obf_d8fde49203f68fa9.__obf_0f8aed180c330f0c = __obf_c20cfcd02ad1f375 ^ 0x6c7967656e657261
-	__obf_d8fde49203f68fa9.__obf_ed8f89279a15b8c2 = __obf_37046a2c8bab0e60 ^ 0x7465646279746573
+func (__obf_5132c4a0b1dc11cf *__obf_3f24088299fc8cc2) Seed(__obf_9c33ed0b58f68eaf [16]byte) {
+	__obf_a38d6c2bf49c6bf1 := uint64(__obf_9c33ed0b58f68eaf[0]) | uint64(__obf_9c33ed0b58f68eaf[1])<<8 | uint64(__obf_9c33ed0b58f68eaf[2])<<16 |
+		uint64(__obf_9c33ed0b58f68eaf[3])<<24 | uint64(__obf_9c33ed0b58f68eaf[4])<<32 | uint64(__obf_9c33ed0b58f68eaf[5])<<40 |
+		uint64(__obf_9c33ed0b58f68eaf[6])<<48 | uint64(__obf_9c33ed0b58f68eaf[7])<<56
+	__obf_7509cdc25eb21471 := uint64(__obf_9c33ed0b58f68eaf[8]) | uint64(__obf_9c33ed0b58f68eaf[9])<<8 | uint64(__obf_9c33ed0b58f68eaf[10])<<16 |
+		uint64(__obf_9c33ed0b58f68eaf[11])<<24 | uint64(__obf_9c33ed0b58f68eaf[12])<<32 | uint64(__obf_9c33ed0b58f68eaf[13])<<40 |
+		uint64(__obf_9c33ed0b58f68eaf[14])<<48 | uint64(__obf_9c33ed0b58f68eaf[15])<<56
+	__obf_5132c4a0b1dc11cf.__obf_ddc0228d360ac3fe = __obf_a38d6c2bf49c6bf1 ^ 0x736f6d6570736575
+	__obf_5132c4a0b1dc11cf.__obf_1d6eb6491d24d298 = __obf_7509cdc25eb21471 ^ 0x646f72616e646f6d
+	__obf_5132c4a0b1dc11cf.__obf_83ba1a0484f42b6e = __obf_a38d6c2bf49c6bf1 ^ 0x6c7967656e657261
+	__obf_5132c4a0b1dc11cf.__obf_ab52ff1ee21ec0ba = __obf_7509cdc25eb21471 ^ 0x7465646279746573
 }
 
-func (__obf_d8fde49203f68fa9 *__obf_c9ed1e65c1540a33) Uint64() uint64 {
-	__obf_d8fde49203f68fa9.__obf_ed8f89279a15b8c2++
-	for range __obf_ac9eb801ef876b58 {
-		__obf_d8fde49203f68fa9.__obf_9f3d5b43ca613004 += __obf_d8fde49203f68fa9.__obf_76f0b0ef8ff8d3fc
-		__obf_d8fde49203f68fa9.__obf_76f0b0ef8ff8d3fc = __obf_df5c1d45061f5bff(__obf_d8fde49203f68fa9.__obf_76f0b0ef8ff8d3fc, 13)
-		__obf_d8fde49203f68fa9.__obf_76f0b0ef8ff8d3fc ^= __obf_d8fde49203f68fa9.__obf_9f3d5b43ca613004
-		__obf_d8fde49203f68fa9.__obf_9f3d5b43ca613004 = __obf_df5c1d45061f5bff(__obf_d8fde49203f68fa9.__obf_9f3d5b43ca613004, 32)
-		__obf_d8fde49203f68fa9.__obf_0f8aed180c330f0c += __obf_d8fde49203f68fa9.__obf_ed8f89279a15b8c2
-		__obf_d8fde49203f68fa9.__obf_ed8f89279a15b8c2 = __obf_df5c1d45061f5bff(__obf_d8fde49203f68fa9.__obf_ed8f89279a15b8c2, 16)
-		__obf_d8fde49203f68fa9.__obf_ed8f89279a15b8c2 ^= __obf_d8fde49203f68fa9.__obf_0f8aed180c330f0c
-		__obf_d8fde49203f68fa9.__obf_0f8aed180c330f0c += __obf_d8fde49203f68fa9.__obf_76f0b0ef8ff8d3fc
-		__obf_d8fde49203f68fa9.__obf_76f0b0ef8ff8d3fc = __obf_df5c1d45061f5bff(__obf_d8fde49203f68fa9.__obf_76f0b0ef8ff8d3fc, 17)
-		__obf_d8fde49203f68fa9.__obf_76f0b0ef8ff8d3fc ^= __obf_d8fde49203f68fa9.__obf_0f8aed180c330f0c
-		__obf_d8fde49203f68fa9.__obf_0f8aed180c330f0c = __obf_df5c1d45061f5bff(__obf_d8fde49203f68fa9.__obf_0f8aed180c330f0c, 32)
-		__obf_d8fde49203f68fa9.__obf_ed8f89279a15b8c2 += __obf_d8fde49203f68fa9.__obf_9f3d5b43ca613004
-		__obf_d8fde49203f68fa9.__obf_9f3d5b43ca613004 = __obf_df5c1d45061f5bff(__obf_d8fde49203f68fa9.__obf_9f3d5b43ca613004, 21)
-		__obf_d8fde49203f68fa9.__obf_9f3d5b43ca613004 ^= __obf_d8fde49203f68fa9.__obf_ed8f89279a15b8c2
+func (__obf_5132c4a0b1dc11cf *__obf_3f24088299fc8cc2) Uint64() uint64 {
+	__obf_5132c4a0b1dc11cf.__obf_ab52ff1ee21ec0ba++
+	for range __obf_bc02efce650a142f {
+		__obf_5132c4a0b1dc11cf.__obf_ddc0228d360ac3fe += __obf_5132c4a0b1dc11cf.__obf_1d6eb6491d24d298
+		__obf_5132c4a0b1dc11cf.__obf_1d6eb6491d24d298 = __obf_862aa9e6604eb238(__obf_5132c4a0b1dc11cf.__obf_1d6eb6491d24d298, 13)
+		__obf_5132c4a0b1dc11cf.__obf_1d6eb6491d24d298 ^= __obf_5132c4a0b1dc11cf.__obf_ddc0228d360ac3fe
+		__obf_5132c4a0b1dc11cf.__obf_ddc0228d360ac3fe = __obf_862aa9e6604eb238(__obf_5132c4a0b1dc11cf.__obf_ddc0228d360ac3fe, 32)
+		__obf_5132c4a0b1dc11cf.__obf_83ba1a0484f42b6e += __obf_5132c4a0b1dc11cf.__obf_ab52ff1ee21ec0ba
+		__obf_5132c4a0b1dc11cf.__obf_ab52ff1ee21ec0ba = __obf_862aa9e6604eb238(__obf_5132c4a0b1dc11cf.__obf_ab52ff1ee21ec0ba, 16)
+		__obf_5132c4a0b1dc11cf.__obf_ab52ff1ee21ec0ba ^= __obf_5132c4a0b1dc11cf.__obf_83ba1a0484f42b6e
+		__obf_5132c4a0b1dc11cf.__obf_83ba1a0484f42b6e += __obf_5132c4a0b1dc11cf.__obf_1d6eb6491d24d298
+		__obf_5132c4a0b1dc11cf.__obf_1d6eb6491d24d298 = __obf_862aa9e6604eb238(__obf_5132c4a0b1dc11cf.__obf_1d6eb6491d24d298, 17)
+		__obf_5132c4a0b1dc11cf.__obf_1d6eb6491d24d298 ^= __obf_5132c4a0b1dc11cf.__obf_83ba1a0484f42b6e
+		__obf_5132c4a0b1dc11cf.__obf_83ba1a0484f42b6e = __obf_862aa9e6604eb238(__obf_5132c4a0b1dc11cf.__obf_83ba1a0484f42b6e, 32)
+		__obf_5132c4a0b1dc11cf.__obf_ab52ff1ee21ec0ba += __obf_5132c4a0b1dc11cf.__obf_ddc0228d360ac3fe
+		__obf_5132c4a0b1dc11cf.__obf_ddc0228d360ac3fe = __obf_862aa9e6604eb238(__obf_5132c4a0b1dc11cf.__obf_ddc0228d360ac3fe, 21)
+		__obf_5132c4a0b1dc11cf.__obf_ddc0228d360ac3fe ^= __obf_5132c4a0b1dc11cf.__obf_ab52ff1ee21ec0ba
 	}
-	__obf_112064f0426241f7 := __obf_d8fde49203f68fa9.__obf_9f3d5b43ca613004 ^ __obf_d8fde49203f68fa9.__obf_76f0b0ef8ff8d3fc ^ __obf_d8fde49203f68fa9.__obf_0f8aed180c330f0c ^ __obf_d8fde49203f68fa9.__obf_ed8f89279a15b8c2
-	for range __obf_5b71d05db0fcea61 {
-		__obf_d8fde49203f68fa9.__obf_ed8f89279a15b8c2++
+	__obf_a3531c8a8e1f49ff := __obf_5132c4a0b1dc11cf.__obf_ddc0228d360ac3fe ^ __obf_5132c4a0b1dc11cf.__obf_1d6eb6491d24d298 ^ __obf_5132c4a0b1dc11cf.__obf_83ba1a0484f42b6e ^ __obf_5132c4a0b1dc11cf.__obf_ab52ff1ee21ec0ba
+	for range __obf_d302a2303152a041 {
+		__obf_5132c4a0b1dc11cf.__obf_ab52ff1ee21ec0ba++
 	}
-	return __obf_112064f0426241f7
+	return __obf_a3531c8a8e1f49ff
 }
 
-func (__obf_d8fde49203f68fa9 *__obf_c9ed1e65c1540a33) Float64() float64 {
-	return float64(__obf_d8fde49203f68fa9.Uint64()>>11) / (1 << 53)
+func (__obf_5132c4a0b1dc11cf *__obf_3f24088299fc8cc2) Float64() float64 {
+	return float64(__obf_5132c4a0b1dc11cf.Uint64()>>11) / (1 << 53)
 }
 
-func (__obf_d8fde49203f68fa9 *__obf_c9ed1e65c1540a33) Intn(__obf_789ed643afa52a81 int) int {
-	return int(__obf_d8fde49203f68fa9.Uint64() % uint64(__obf_789ed643afa52a81))
+func (__obf_5132c4a0b1dc11cf *__obf_3f24088299fc8cc2) Intn(__obf_27a156eb5f8cea50 int) int {
+	return int(__obf_5132c4a0b1dc11cf.Uint64() % uint64(__obf_27a156eb5f8cea50))
 }
 
-func __obf_df5c1d45061f5bff(__obf_0d40c6828d17c572 uint64, __obf_510607bb725a50ea int) uint64 {
-	return (__obf_0d40c6828d17c572 << __obf_510607bb725a50ea) | (__obf_0d40c6828d17c572 >> (64 - __obf_510607bb725a50ea))
+func __obf_862aa9e6604eb238(__obf_72e56065c0cb51c1 uint64, __obf_7cdb1db04840a397 int) uint64 {
+	return (__obf_72e56065c0cb51c1 << __obf_7cdb1db04840a397) | (__obf_72e56065c0cb51c1 >> (64 - __obf_7cdb1db04840a397))
 }
 
 // import "encoding/binary"

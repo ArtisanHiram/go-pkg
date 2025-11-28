@@ -1,14 +1,14 @@
 // Package group provides a sample lazy load container.
 // The group only creating a new object not until the object is needed by user.
 // And it will cache all the objects to reduce the creation of object.
-package __obf_1fda7fbdeda52f1e
+package __obf_af42fb6cde2beed6
 
 import "sync"
 
 // Group is a lazy load container.
 type Group struct {
 	new                    func() any
-	__obf_c6f1eaada6fb59d9 map[string]any
+	__obf_ecffc655bb698ea6 map[string]any
 	sync.RWMutex
 }
 
@@ -19,46 +19,46 @@ func NewGroup(new func() any) *Group {
 	}
 	return &Group{
 		new:                    new,
-		__obf_c6f1eaada6fb59d9: make(map[string]any),
+		__obf_ecffc655bb698ea6: make(map[string]any),
 	}
 }
 
 // Get gets the object by the given key.
-func (__obf_bff32981c1e1be21 *Group) Get(__obf_95c4c09a56c1a070 string) any {
-	__obf_bff32981c1e1be21.RLock()
-	__obf_9371496cccb864c5, __obf_d24c61455fa2e4db := __obf_bff32981c1e1be21.__obf_c6f1eaada6fb59d9[__obf_95c4c09a56c1a070]
-	if __obf_d24c61455fa2e4db {
-		__obf_bff32981c1e1be21.RUnlock()
-		return __obf_9371496cccb864c5
+func (__obf_a21c61750a893db5 *Group) Get(__obf_55cde42f6d47c5be string) any {
+	__obf_a21c61750a893db5.RLock()
+	__obf_289dd915247ca25d, __obf_021756766e1db5da := __obf_a21c61750a893db5.__obf_ecffc655bb698ea6[__obf_55cde42f6d47c5be]
+	if __obf_021756766e1db5da {
+		__obf_a21c61750a893db5.RUnlock()
+		return __obf_289dd915247ca25d
 	}
-	__obf_bff32981c1e1be21.RUnlock()
+	__obf_a21c61750a893db5.RUnlock()
 
 	// slow path for group don`t have specified key value
-	__obf_bff32981c1e1be21.Lock()
-	defer __obf_bff32981c1e1be21.Unlock()
-	__obf_9371496cccb864c5, __obf_d24c61455fa2e4db = __obf_bff32981c1e1be21.__obf_c6f1eaada6fb59d9[__obf_95c4c09a56c1a070]
-	if __obf_d24c61455fa2e4db {
-		return __obf_9371496cccb864c5
+	__obf_a21c61750a893db5.Lock()
+	defer __obf_a21c61750a893db5.Unlock()
+	__obf_289dd915247ca25d, __obf_021756766e1db5da = __obf_a21c61750a893db5.__obf_ecffc655bb698ea6[__obf_55cde42f6d47c5be]
+	if __obf_021756766e1db5da {
+		return __obf_289dd915247ca25d
 	}
-	__obf_9371496cccb864c5 = __obf_bff32981c1e1be21.new()
-	__obf_bff32981c1e1be21.__obf_c6f1eaada6fb59d9[__obf_95c4c09a56c1a070] = __obf_9371496cccb864c5
-	return __obf_9371496cccb864c5
+	__obf_289dd915247ca25d = __obf_a21c61750a893db5.new()
+	__obf_a21c61750a893db5.__obf_ecffc655bb698ea6[__obf_55cde42f6d47c5be] = __obf_289dd915247ca25d
+	return __obf_289dd915247ca25d
 }
 
 // Reset resets the new function and deletes all existing objects.
-func (__obf_bff32981c1e1be21 *Group) Reset(new func() any) {
+func (__obf_a21c61750a893db5 *Group) Reset(new func() any) {
 	if new == nil {
 		panic("container.group: can't assign a nil to the new function")
 	}
-	__obf_bff32981c1e1be21.Lock()
-	__obf_bff32981c1e1be21.new = new
-	__obf_bff32981c1e1be21.Unlock()
-	__obf_bff32981c1e1be21.Clear()
+	__obf_a21c61750a893db5.Lock()
+	__obf_a21c61750a893db5.new = new
+	__obf_a21c61750a893db5.Unlock()
+	__obf_a21c61750a893db5.Clear()
 }
 
 // Clear deletes all objects.
-func (__obf_bff32981c1e1be21 *Group) Clear() {
-	__obf_bff32981c1e1be21.Lock()
-	__obf_bff32981c1e1be21.__obf_c6f1eaada6fb59d9 = make(map[string]any)
-	__obf_bff32981c1e1be21.Unlock()
+func (__obf_a21c61750a893db5 *Group) Clear() {
+	__obf_a21c61750a893db5.Lock()
+	__obf_a21c61750a893db5.__obf_ecffc655bb698ea6 = make(map[string]any)
+	__obf_a21c61750a893db5.Unlock()
 }

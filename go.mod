@@ -51,7 +51,6 @@ require (
 require (
 	github.com/bradfitz/gomemcache v0.0.0-20250403215159-8d39553ac7cf
 	github.com/go-sql-driver/mysql v1.9.3
-	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0
 	github.com/google/gopacket v1.1.19
 	github.com/gorilla/websocket v1.5.3
 	github.com/jmoiron/sqlx v1.4.0
@@ -63,6 +62,5 @@ require (
 	github.com/redis/go-redis/v9 v9.16.0
 	github.com/vmihailenco/msgpack v4.0.4+incompatible
 	golang.org/x/image v0.33.0
-	golang.org/x/term v0.37.0
 	gopkg.in/yaml.v2 v2.4.0
 )

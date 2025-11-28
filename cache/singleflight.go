@@ -1,46 +1,46 @@
-package __obf_2f5c14e012cec42e
+package __obf_32d927a1e06b7e71
 
 import "sync"
 
 // call is an in-flight or completed Do call
-type __obf_956e636928c02864 struct {
-	__obf_6a4878a8ca84762f sync.WaitGroup
-	__obf_aee38dd09d94cdd5 any
-	__obf_956c4015cf7da152 error
+type __obf_10f94ce554e86430 struct {
+	__obf_d3c273cd2f08c66e sync.WaitGroup
+	__obf_a967d4ebf1531f4c any
+	__obf_19fb5c4c25ff452a error
 }
 
 // Group represents a class of work and forms a namespace in which
 // units of work can be executed with duplicate suppression.
 type Group struct {
-	__obf_1791af550e1052ce sync.Mutex                         // protects m
-	__obf_b127f8671154d05f map[string]*__obf_956e636928c02864 // lazily initialized
+	__obf_3123ffce698833d2 sync.Mutex                         // protects m
+	__obf_549c2dd367f7ff13 map[string]*__obf_10f94ce554e86430 // lazily initialized
 }
 
 // Do executes and returns the results of the given function, making
 // sure that only one execution is in-flight for a given key at a
 // time. If a duplicate comes in, the duplicate caller waits for the
 // original to complete and receives the same results.
-func (__obf_2d4acf5eae184044 *Group) Do(__obf_f0b3ebeba048b5e4 string, __obf_a8209df76c3bc8e8 func() (any, error)) (any, error) {
-	__obf_2d4acf5eae184044.__obf_1791af550e1052ce.Lock()
-	if __obf_2d4acf5eae184044.__obf_b127f8671154d05f == nil {
-		__obf_2d4acf5eae184044.__obf_b127f8671154d05f = make(map[string]*__obf_956e636928c02864)
+func (__obf_da812586baf1c809 *Group) Do(__obf_13113b328a6972ad string, __obf_9ac055d43ce03c4f func() (any, error)) (any, error) {
+	__obf_da812586baf1c809.__obf_3123ffce698833d2.Lock()
+	if __obf_da812586baf1c809.__obf_549c2dd367f7ff13 == nil {
+		__obf_da812586baf1c809.__obf_549c2dd367f7ff13 = make(map[string]*__obf_10f94ce554e86430)
 	}
-	if __obf_4379f98bc2ed9ecc, __obf_a39fb2a67596cf35 := __obf_2d4acf5eae184044.__obf_b127f8671154d05f[__obf_f0b3ebeba048b5e4]; __obf_a39fb2a67596cf35 {
-		__obf_2d4acf5eae184044.__obf_1791af550e1052ce.Unlock()
-		__obf_4379f98bc2ed9ecc.__obf_6a4878a8ca84762f.Wait()
-		return __obf_4379f98bc2ed9ecc.__obf_aee38dd09d94cdd5, __obf_4379f98bc2ed9ecc.__obf_956c4015cf7da152
+	if __obf_443bb096afb82210, __obf_542c0401f22c9aec := __obf_da812586baf1c809.__obf_549c2dd367f7ff13[__obf_13113b328a6972ad]; __obf_542c0401f22c9aec {
+		__obf_da812586baf1c809.__obf_3123ffce698833d2.Unlock()
+		__obf_443bb096afb82210.__obf_d3c273cd2f08c66e.Wait()
+		return __obf_443bb096afb82210.__obf_a967d4ebf1531f4c, __obf_443bb096afb82210.__obf_19fb5c4c25ff452a
 	}
-	__obf_4379f98bc2ed9ecc := new(__obf_956e636928c02864)
-	__obf_4379f98bc2ed9ecc.__obf_6a4878a8ca84762f.Add(1)
-	__obf_2d4acf5eae184044.__obf_b127f8671154d05f[__obf_f0b3ebeba048b5e4] = __obf_4379f98bc2ed9ecc
-	__obf_2d4acf5eae184044.__obf_1791af550e1052ce.Unlock()
+	__obf_443bb096afb82210 := new(__obf_10f94ce554e86430)
+	__obf_443bb096afb82210.__obf_d3c273cd2f08c66e.Add(1)
+	__obf_da812586baf1c809.__obf_549c2dd367f7ff13[__obf_13113b328a6972ad] = __obf_443bb096afb82210
+	__obf_da812586baf1c809.__obf_3123ffce698833d2.Unlock()
 
-	__obf_4379f98bc2ed9ecc.__obf_aee38dd09d94cdd5, __obf_4379f98bc2ed9ecc.__obf_956c4015cf7da152 = __obf_a8209df76c3bc8e8()
-	__obf_4379f98bc2ed9ecc.__obf_6a4878a8ca84762f.Done()
+	__obf_443bb096afb82210.__obf_a967d4ebf1531f4c, __obf_443bb096afb82210.__obf_19fb5c4c25ff452a = __obf_9ac055d43ce03c4f()
+	__obf_443bb096afb82210.__obf_d3c273cd2f08c66e.Done()
 
-	__obf_2d4acf5eae184044.__obf_1791af550e1052ce.Lock()
-	delete(__obf_2d4acf5eae184044.__obf_b127f8671154d05f, __obf_f0b3ebeba048b5e4)
-	__obf_2d4acf5eae184044.__obf_1791af550e1052ce.Unlock()
+	__obf_da812586baf1c809.__obf_3123ffce698833d2.Lock()
+	delete(__obf_da812586baf1c809.__obf_549c2dd367f7ff13, __obf_13113b328a6972ad)
+	__obf_da812586baf1c809.__obf_3123ffce698833d2.Unlock()
 
-	return __obf_4379f98bc2ed9ecc.__obf_aee38dd09d94cdd5, __obf_4379f98bc2ed9ecc.__obf_956c4015cf7da152
+	return __obf_443bb096afb82210.__obf_a967d4ebf1531f4c, __obf_443bb096afb82210.__obf_19fb5c4c25ff452a
 }

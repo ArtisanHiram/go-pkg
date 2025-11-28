@@ -1,4 +1,4 @@
-package __obf_ec9d7914a439392a
+package __obf_ab412e39d1ca7e25
 
 import (
 	"encoding/json"
@@ -8,30 +8,30 @@ import (
 	"path/filepath"
 )
 
-func FilterByExtension(__obf_90abc88922b5ede6 []string, __obf_d3ad5ed83f1f130d string) []string {
-	var __obf_6e69d47e5313fbb5 []string
+func FilterByExtension(__obf_04dbf20f09eca552 []string, __obf_cc6eebebe4f75911 string) []string {
+	var __obf_9910a6d34da70390 []string
 
-	for _, __obf_acee41a77c558128 := range __obf_90abc88922b5ede6 {
-		if filepath.Ext(__obf_acee41a77c558128) == __obf_d3ad5ed83f1f130d {
-			__obf_6e69d47e5313fbb5 = append(__obf_6e69d47e5313fbb5, __obf_acee41a77c558128)
+	for _, __obf_1c4ae3cbcf5144ba := range __obf_04dbf20f09eca552 {
+		if filepath.Ext(__obf_1c4ae3cbcf5144ba) == __obf_cc6eebebe4f75911 {
+			__obf_9910a6d34da70390 = append(__obf_9910a6d34da70390, __obf_1c4ae3cbcf5144ba)
 		}
 	}
 
-	return __obf_6e69d47e5313fbb5
+	return __obf_9910a6d34da70390
 }
 
 // Writes files to disk, returns list of absolute filepaths
-func WriteFiles(__obf_b61fccab5a760df3 string, __obf_ddd60739524d343e string, __obf_90abc88922b5ede6 []*model.InMemoryFile) (__obf_70c05b53bc24e97a string, __obf_355ee014d91538c0 []string, __obf_e73c5c3dfebd52fb error) {
+func WriteFiles(__obf_040e24649c9c4b94 string, __obf_15f8b057156b65ad string, __obf_04dbf20f09eca552 []*model.InMemoryFile) (__obf_01bb8703ce75f555 string, __obf_885f81497f4bf213 []string, __obf_e5418f9487faf990 error) {
 	// Create temp dir
-	__obf_70c05b53bc24e97a, __obf_e73c5c3dfebd52fb = os.MkdirTemp(__obf_b61fccab5a760df3, __obf_ddd60739524d343e) //fmt.Sprintf("%s-*", lang))
-	if __obf_e73c5c3dfebd52fb != nil {
+	__obf_01bb8703ce75f555, __obf_e5418f9487faf990 = os.MkdirTemp(__obf_040e24649c9c4b94, __obf_15f8b057156b65ad) //fmt.Sprintf("%s-*", lang))
+	if __obf_e5418f9487faf990 != nil {
 		return
 	}
 
-	for _, __obf_acee41a77c558128 := range __obf_90abc88922b5ede6 {
-		__obf_355ee014d91538c0 = append(__obf_355ee014d91538c0, __obf_acee41a77c558128.Name)
-		__obf_e73c5c3dfebd52fb = __obf_ccd2c0048e8beac7(__obf_70c05b53bc24e97a, __obf_acee41a77c558128)
-		if __obf_e73c5c3dfebd52fb != nil {
+	for _, __obf_1c4ae3cbcf5144ba := range __obf_04dbf20f09eca552 {
+		__obf_885f81497f4bf213 = append(__obf_885f81497f4bf213, __obf_1c4ae3cbcf5144ba.Name)
+		__obf_e5418f9487faf990 = __obf_ef98323d635faff1(__obf_01bb8703ce75f555, __obf_1c4ae3cbcf5144ba)
+		if __obf_e5418f9487faf990 != nil {
 			return
 		}
 	}
@@ -39,33 +39,33 @@ func WriteFiles(__obf_b61fccab5a760df3 string, __obf_ddd60739524d343e string, __
 }
 
 // Writes a single file to disk
-func __obf_ccd2c0048e8beac7(__obf_70c05b53bc24e97a string, __obf_acee41a77c558128 *model.InMemoryFile) error {
+func __obf_ef98323d635faff1(__obf_01bb8703ce75f555 string, __obf_1c4ae3cbcf5144ba *model.InMemoryFile) error {
 	// Get absolute path to file inside basePath
 	// Create all parent dirs
-	__obf_e73c5c3dfebd52fb := os.MkdirAll(__obf_70c05b53bc24e97a, os.ModePerm)
-	if __obf_e73c5c3dfebd52fb != nil {
-		return fmt.Errorf("MkdirAll failed: %s", __obf_e73c5c3dfebd52fb.Error())
+	__obf_e5418f9487faf990 := os.MkdirAll(__obf_01bb8703ce75f555, os.ModePerm)
+	if __obf_e5418f9487faf990 != nil {
+		return fmt.Errorf("MkdirAll failed: %s", __obf_e5418f9487faf990.Error())
 	}
 
 	// Write file to disk
-	__obf_e73c5c3dfebd52fb = os.WriteFile(filepath.Join(__obf_70c05b53bc24e97a, __obf_acee41a77c558128.Name), []byte(__obf_acee41a77c558128.Content), 0664)
-	if __obf_e73c5c3dfebd52fb != nil {
-		return fmt.Errorf("WriteFile failed: %s", __obf_e73c5c3dfebd52fb.Error())
+	__obf_e5418f9487faf990 = os.WriteFile(filepath.Join(__obf_01bb8703ce75f555, __obf_1c4ae3cbcf5144ba.Name), []byte(__obf_1c4ae3cbcf5144ba.Content), 0664)
+	if __obf_e5418f9487faf990 != nil {
+		return fmt.Errorf("WriteFile failed: %s", __obf_e5418f9487faf990.Error())
 	}
 
 	return nil
 }
 
-func PrintResult(__obf_34bd87285db2e858, __obf_b0cc1d6f82789b37 string, __obf_e73c5c3dfebd52fb error) {
-	__obf_3559bac86f838a58 := &model.Result{
-		Stdout: __obf_34bd87285db2e858,
-		Stderr: __obf_b0cc1d6f82789b37,
+func PrintResult(__obf_ca98ea1cd2d76371, __obf_9880b6037615b6cb string, __obf_e5418f9487faf990 error) {
+	__obf_c9c18e3110085347 := &model.Result{
+		Stdout: __obf_ca98ea1cd2d76371,
+		Stderr: __obf_9880b6037615b6cb,
 		Error: func(error) string {
-			if __obf_e73c5c3dfebd52fb != nil {
-				return __obf_e73c5c3dfebd52fb.Error()
+			if __obf_e5418f9487faf990 != nil {
+				return __obf_e5418f9487faf990.Error()
 			}
 			return ""
-		}(__obf_e73c5c3dfebd52fb),
+		}(__obf_e5418f9487faf990),
 	}
-	json.NewEncoder(os.Stdout).Encode(__obf_3559bac86f838a58)
+	json.NewEncoder(os.Stdout).Encode(__obf_c9c18e3110085347)
 }

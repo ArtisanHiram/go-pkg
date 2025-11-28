@@ -1,4 +1,4 @@
-package __obf_083c8deafa73f533
+package __obf_f1e346e3aa5cc554
 
 import (
 	"bytes"
@@ -17,18 +17,18 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-func Sha256Hex(__obf_b1e85a310b2a8288 []byte) string {
-	__obf_f2d2cb562d270bc5 := sha256.Sum256(__obf_b1e85a310b2a8288)
-	return hex.EncodeToString(__obf_f2d2cb562d270bc5[:])
+func Sha256Hex(__obf_44c24162abb79539 []byte) string {
+	__obf_51260656a7ac8feb := sha256.Sum256(__obf_44c24162abb79539)
+	return hex.EncodeToString(__obf_51260656a7ac8feb[:])
 }
 
-func HashPassword(__obf_37e867abee569719 string) (string, error) {
-	bytes, __obf_ab078048114898aa := bcrypt.GenerateFromPassword([]byte(__obf_37e867abee569719), bcrypt.DefaultCost)
-	return string(bytes), __obf_ab078048114898aa
+func HashPassword(__obf_d502aa660a734925 string) (string, error) {
+	bytes, __obf_eec784b359ebf42f := bcrypt.GenerateFromPassword([]byte(__obf_d502aa660a734925), bcrypt.DefaultCost)
+	return string(bytes), __obf_eec784b359ebf42f
 }
 
-func CheckPasswordHash(__obf_37e867abee569719, __obf_8c461311413369ed string) bool {
-	return bcrypt.CompareHashAndPassword([]byte(__obf_8c461311413369ed), []byte(__obf_37e867abee569719)) == nil
+func CheckPasswordHash(__obf_d502aa660a734925, __obf_6f5aede0472f1ac1 string) bool {
+	return bcrypt.CompareHashAndPassword([]byte(__obf_6f5aede0472f1ac1), []byte(__obf_d502aa660a734925)) == nil
 }
 
 // func Md5(str string) string {
@@ -37,95 +37,95 @@ func CheckPasswordHash(__obf_37e867abee569719, __obf_8c461311413369ed string) bo
 // 	return hex.EncodeToString(h.Sum(nil))
 // }
 
-func Sha1Sign(__obf_116809f90a65bc1a string) string {
+func Sha1Sign(__obf_0115cb118880283a string) string {
 	// The pattern for generating a hash is `sha1.New()`,
 	// `sha1.Write(bytes)`, then `sha1.Sum([]byte{})`.
 	// Here we start with a new hash.
-	__obf_f2d2cb562d270bc5 := sha1.New()
+	__obf_51260656a7ac8feb := sha1.New()
 
 	// `Write` expects bytes. If you have a string `s`,
 	// use `[]byte(s)` to coerce it to bytes.
-	_, _ = __obf_f2d2cb562d270bc5.Write([]byte(__obf_116809f90a65bc1a))
+	_, _ = __obf_51260656a7ac8feb.Write([]byte(__obf_0115cb118880283a))
 
 	// This gets the finalized hash result as a byte
 	// slice. The argument to `Sum` can be used to append
 	// to an existing byte slice: it usually isn't needed.
-	__obf_ca09173ee115154f := __obf_f2d2cb562d270bc5.Sum(nil)
+	__obf_5180a77656aa2d9e := __obf_51260656a7ac8feb.Sum(nil)
 
 	// SHA1 values are often printed in hex, for example
 	// in git commits. Use the `%x` format verb to convert
 	// a hash results to a hex string.
-	return fmt.Sprintf("%x", __obf_ca09173ee115154f)
+	return fmt.Sprintf("%x", __obf_5180a77656aa2d9e)
 }
 
 // AesDecrypt AES-CBC解密,PKCS#7,传入密文和密钥，[]byte
-func AesDecrypt(__obf_641c50999baea69d, __obf_5e4139c6b01db295 []byte) (__obf_7f1a2faf30532967 []byte, __obf_ab078048114898aa error) {
-	__obf_3d6af9358365c3d2, __obf_ab078048114898aa := aes.NewCipher(__obf_5e4139c6b01db295)
-	if __obf_ab078048114898aa != nil {
-		return nil, __obf_ab078048114898aa
+func AesDecrypt(__obf_ac1f80c958d4d9f8, __obf_9a20564fc99ec5cb []byte) (__obf_eaf2753e8a77b6e9 []byte, __obf_eec784b359ebf42f error) {
+	__obf_1f0d52f8190d8bbf, __obf_eec784b359ebf42f := aes.NewCipher(__obf_9a20564fc99ec5cb)
+	if __obf_eec784b359ebf42f != nil {
+		return nil, __obf_eec784b359ebf42f
 	}
-	__obf_f6befa370f20df34 := make([]byte, aes.BlockSize)
-	if _, __obf_ab078048114898aa := io.ReadFull(rand.Reader, __obf_f6befa370f20df34); __obf_ab078048114898aa != nil {
-		return nil, __obf_ab078048114898aa
+	__obf_bea1885fa152433c := make([]byte, aes.BlockSize)
+	if _, __obf_eec784b359ebf42f := io.ReadFull(rand.Reader, __obf_bea1885fa152433c); __obf_eec784b359ebf42f != nil {
+		return nil, __obf_eec784b359ebf42f
 	}
-	__obf_7f1a2faf30532967 = make([]byte, len(__obf_641c50999baea69d))
-	cipher.NewCBCDecrypter(__obf_3d6af9358365c3d2, __obf_f6befa370f20df34).CryptBlocks(__obf_7f1a2faf30532967, __obf_641c50999baea69d)
+	__obf_eaf2753e8a77b6e9 = make([]byte, len(__obf_ac1f80c958d4d9f8))
+	cipher.NewCBCDecrypter(__obf_1f0d52f8190d8bbf, __obf_bea1885fa152433c).CryptBlocks(__obf_eaf2753e8a77b6e9, __obf_ac1f80c958d4d9f8)
 
-	return PKCS7UnPad(__obf_7f1a2faf30532967), nil
+	return PKCS7UnPad(__obf_eaf2753e8a77b6e9), nil
 }
 
 // PKCS7UnPad PKSC#7解包
-func PKCS7UnPad(__obf_556ff4928f9b300e []byte) []byte {
-	__obf_48154335eab5cfd3 := len(__obf_556ff4928f9b300e)
-	__obf_9f675d7533014c4d := int(__obf_556ff4928f9b300e[__obf_48154335eab5cfd3-1])
-	return __obf_556ff4928f9b300e[:__obf_48154335eab5cfd3-__obf_9f675d7533014c4d]
+func PKCS7UnPad(__obf_b7fc63f57d283f31 []byte) []byte {
+	__obf_60e733d31111c611 := len(__obf_b7fc63f57d283f31)
+	__obf_13165d2fdc17a265 := int(__obf_b7fc63f57d283f31[__obf_60e733d31111c611-1])
+	return __obf_b7fc63f57d283f31[:__obf_60e733d31111c611-__obf_13165d2fdc17a265]
 }
 
 // AesEncrypt AES-CBC加密+PKCS#7打包，传入明文和密钥
-func AesEncrypt(__obf_641c50999baea69d []byte, __obf_5e4139c6b01db295 []byte) ([]byte, error) {
-	__obf_4f6630328e99b83a := len(__obf_5e4139c6b01db295)
-	if len(__obf_641c50999baea69d)%__obf_4f6630328e99b83a != 0 {
-		__obf_641c50999baea69d = PKCS7Pad(__obf_641c50999baea69d, __obf_4f6630328e99b83a)
+func AesEncrypt(__obf_ac1f80c958d4d9f8 []byte, __obf_9a20564fc99ec5cb []byte) ([]byte, error) {
+	__obf_6126311d2a895ba1 := len(__obf_9a20564fc99ec5cb)
+	if len(__obf_ac1f80c958d4d9f8)%__obf_6126311d2a895ba1 != 0 {
+		__obf_ac1f80c958d4d9f8 = PKCS7Pad(__obf_ac1f80c958d4d9f8, __obf_6126311d2a895ba1)
 	}
 
-	__obf_3d6af9358365c3d2, __obf_ab078048114898aa := aes.NewCipher(__obf_5e4139c6b01db295)
-	if __obf_ab078048114898aa != nil {
-		return nil, __obf_ab078048114898aa
+	__obf_1f0d52f8190d8bbf, __obf_eec784b359ebf42f := aes.NewCipher(__obf_9a20564fc99ec5cb)
+	if __obf_eec784b359ebf42f != nil {
+		return nil, __obf_eec784b359ebf42f
 	}
 
-	__obf_f6befa370f20df34 := make([]byte, aes.BlockSize)
-	if _, __obf_ab078048114898aa := io.ReadFull(rand.Reader, __obf_f6befa370f20df34); __obf_ab078048114898aa != nil {
-		return nil, __obf_ab078048114898aa
+	__obf_bea1885fa152433c := make([]byte, aes.BlockSize)
+	if _, __obf_eec784b359ebf42f := io.ReadFull(rand.Reader, __obf_bea1885fa152433c); __obf_eec784b359ebf42f != nil {
+		return nil, __obf_eec784b359ebf42f
 	}
 
-	__obf_7f1a2faf30532967 := make([]byte, len(__obf_641c50999baea69d))
-	cipher.NewCBCEncrypter(__obf_3d6af9358365c3d2, __obf_f6befa370f20df34).CryptBlocks(__obf_7f1a2faf30532967, __obf_641c50999baea69d)
+	__obf_eaf2753e8a77b6e9 := make([]byte, len(__obf_ac1f80c958d4d9f8))
+	cipher.NewCBCEncrypter(__obf_1f0d52f8190d8bbf, __obf_bea1885fa152433c).CryptBlocks(__obf_eaf2753e8a77b6e9, __obf_ac1f80c958d4d9f8)
 
-	return __obf_7f1a2faf30532967, nil
+	return __obf_eaf2753e8a77b6e9, nil
 }
 
 // PKCS7Pad PKCS#7打包
-func PKCS7Pad(__obf_556ff4928f9b300e []byte, __obf_5c53da3ff6e1f197 int) []byte {
-	if __obf_5c53da3ff6e1f197 < 1<<1 || __obf_5c53da3ff6e1f197 >= 1<<8 {
+func PKCS7Pad(__obf_b7fc63f57d283f31 []byte, __obf_a2ce69636b8ce0a0 int) []byte {
+	if __obf_a2ce69636b8ce0a0 < 1<<1 || __obf_a2ce69636b8ce0a0 >= 1<<8 {
 		panic("unsupported block size")
 	}
-	__obf_9f675d7533014c4d := __obf_5c53da3ff6e1f197 - len(__obf_556ff4928f9b300e)%__obf_5c53da3ff6e1f197
-	__obf_f40f0643f28ca48e := bytes.Repeat([]byte{byte(__obf_9f675d7533014c4d)}, __obf_9f675d7533014c4d)
-	return append(__obf_556ff4928f9b300e, __obf_f40f0643f28ca48e...)
+	__obf_13165d2fdc17a265 := __obf_a2ce69636b8ce0a0 - len(__obf_b7fc63f57d283f31)%__obf_a2ce69636b8ce0a0
+	__obf_0f00058cd1b32208 := bytes.Repeat([]byte{byte(__obf_13165d2fdc17a265)}, __obf_13165d2fdc17a265)
+	return append(__obf_b7fc63f57d283f31, __obf_0f00058cd1b32208...)
 }
 
 // SortSha1 排序并sha1，主要用于计算signature
-func SortSha1(__obf_116809f90a65bc1a ...string) string {
-	sort.Strings(__obf_116809f90a65bc1a)
-	__obf_f2d2cb562d270bc5 := sha1.New()
-	__obf_f2d2cb562d270bc5.Write([]byte(strings.Join(__obf_116809f90a65bc1a, "")))
-	return fmt.Sprintf("%x", __obf_f2d2cb562d270bc5.Sum(nil))
+func SortSha1(__obf_0115cb118880283a ...string) string {
+	sort.Strings(__obf_0115cb118880283a)
+	__obf_51260656a7ac8feb := sha1.New()
+	__obf_51260656a7ac8feb.Write([]byte(strings.Join(__obf_0115cb118880283a, "")))
+	return fmt.Sprintf("%x", __obf_51260656a7ac8feb.Sum(nil))
 }
 
 // SortMd5 排序并md5，主要用于计算sign
-func SortMd5(__obf_116809f90a65bc1a ...string) string {
-	sort.Strings(__obf_116809f90a65bc1a)
-	__obf_f2d2cb562d270bc5 := md5.New()
-	__obf_f2d2cb562d270bc5.Write([]byte(strings.Join(__obf_116809f90a65bc1a, "")))
-	return strings.ToUpper(fmt.Sprintf("%x", __obf_f2d2cb562d270bc5.Sum(nil)))
+func SortMd5(__obf_0115cb118880283a ...string) string {
+	sort.Strings(__obf_0115cb118880283a)
+	__obf_51260656a7ac8feb := md5.New()
+	__obf_51260656a7ac8feb.Write([]byte(strings.Join(__obf_0115cb118880283a, "")))
+	return strings.ToUpper(fmt.Sprintf("%x", __obf_51260656a7ac8feb.Sum(nil)))
 }

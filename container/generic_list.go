@@ -1,4 +1,4 @@
-package __obf_9861fa13140c30a3
+package __obf_1fda7fbdeda52f1e
 
 // Element is an element of a null terminated (non circular) intrusive doubly linked list that contains the key of the correspondent element in the ordered map too.
 type Element[V any] struct {
@@ -7,7 +7,7 @@ type Element[V any] struct {
 	// as a ring, such that &l.root is both the next element of the last
 	// list element (l.Back()) and the previous element of the first list
 	// element (l.Front()).
-	__obf_9c578e473cd91a70, __obf_9e64c21ddd522887 *Element[V]
+	__obf_3f38a216fb054660, __obf_475810ae089ac9c9 *Element[V]
 
 	// The key that corresponds to this element in the ordered map.
 	Key string
@@ -17,79 +17,79 @@ type Element[V any] struct {
 }
 
 // Next returns the next list element or nil.
-func (__obf_bd79c4ec5cbfc921 *Element[V]) Next() *Element[V] {
-	return __obf_bd79c4ec5cbfc921.__obf_9c578e473cd91a70
+func (__obf_673d5726ca470196 *Element[V]) Next() *Element[V] {
+	return __obf_673d5726ca470196.__obf_3f38a216fb054660
 }
 
 // Prev returns the previous list element or nil.
-func (__obf_bd79c4ec5cbfc921 *Element[V]) Prev() *Element[V] {
-	return __obf_bd79c4ec5cbfc921.__obf_9e64c21ddd522887
+func (__obf_673d5726ca470196 *Element[V]) Prev() *Element[V] {
+	return __obf_673d5726ca470196.__obf_475810ae089ac9c9
 }
 
 // list represents a null terminated (non circular) intrusive doubly linked list.
 // The list is immediately usable after instantiation without the need of a dedicated initialization.
-type __obf_9da43f38a5013de2[V any] struct {
-	__obf_272bfa9ba362b63a Element[V] // list head and tail
+type __obf_5275791a072a11d1[V any] struct {
+	__obf_549d995cf5b98905 Element[V] // list head and tail
 }
 
-func (__obf_e6e08b693d421fab *__obf_9da43f38a5013de2[V]) IsEmpty() bool {
-	return __obf_e6e08b693d421fab.__obf_272bfa9ba362b63a.__obf_9c578e473cd91a70 == nil
+func (__obf_3f548a299e41833e *__obf_5275791a072a11d1[V]) IsEmpty() bool {
+	return __obf_3f548a299e41833e.__obf_549d995cf5b98905.__obf_3f38a216fb054660 == nil
 }
 
 // Front returns the first element of list l or nil if the list is empty.
-func (__obf_e6e08b693d421fab *__obf_9da43f38a5013de2[V]) Front() *Element[V] {
-	return __obf_e6e08b693d421fab.__obf_272bfa9ba362b63a.__obf_9c578e473cd91a70
+func (__obf_3f548a299e41833e *__obf_5275791a072a11d1[V]) Front() *Element[V] {
+	return __obf_3f548a299e41833e.__obf_549d995cf5b98905.__obf_3f38a216fb054660
 }
 
 // Back returns the last element of list l or nil if the list is empty.
-func (__obf_e6e08b693d421fab *__obf_9da43f38a5013de2[V]) Back() *Element[V] {
-	return __obf_e6e08b693d421fab.__obf_272bfa9ba362b63a.__obf_9e64c21ddd522887
+func (__obf_3f548a299e41833e *__obf_5275791a072a11d1[V]) Back() *Element[V] {
+	return __obf_3f548a299e41833e.__obf_549d995cf5b98905.__obf_475810ae089ac9c9
 }
 
 // Remove removes e from its list
-func (__obf_e6e08b693d421fab *__obf_9da43f38a5013de2[V]) Remove(__obf_bd79c4ec5cbfc921 *Element[V]) {
-	if __obf_bd79c4ec5cbfc921.__obf_9e64c21ddd522887 == nil {
-		__obf_e6e08b693d421fab.__obf_272bfa9ba362b63a.__obf_9c578e473cd91a70 = __obf_bd79c4ec5cbfc921.__obf_9c578e473cd91a70
+func (__obf_3f548a299e41833e *__obf_5275791a072a11d1[V]) Remove(__obf_673d5726ca470196 *Element[V]) {
+	if __obf_673d5726ca470196.__obf_475810ae089ac9c9 == nil {
+		__obf_3f548a299e41833e.__obf_549d995cf5b98905.__obf_3f38a216fb054660 = __obf_673d5726ca470196.__obf_3f38a216fb054660
 	} else {
-		__obf_bd79c4ec5cbfc921.__obf_9e64c21ddd522887.__obf_9c578e473cd91a70 = __obf_bd79c4ec5cbfc921.__obf_9c578e473cd91a70
+		__obf_673d5726ca470196.__obf_475810ae089ac9c9.__obf_3f38a216fb054660 = __obf_673d5726ca470196.__obf_3f38a216fb054660
 	}
-	if __obf_bd79c4ec5cbfc921.__obf_9c578e473cd91a70 == nil {
-		__obf_e6e08b693d421fab.__obf_272bfa9ba362b63a.__obf_9e64c21ddd522887 = __obf_bd79c4ec5cbfc921.__obf_9e64c21ddd522887
+	if __obf_673d5726ca470196.__obf_3f38a216fb054660 == nil {
+		__obf_3f548a299e41833e.__obf_549d995cf5b98905.__obf_475810ae089ac9c9 = __obf_673d5726ca470196.__obf_475810ae089ac9c9
 	} else {
-		__obf_bd79c4ec5cbfc921.__obf_9c578e473cd91a70.__obf_9e64c21ddd522887 = __obf_bd79c4ec5cbfc921.__obf_9e64c21ddd522887
+		__obf_673d5726ca470196.__obf_3f38a216fb054660.__obf_475810ae089ac9c9 = __obf_673d5726ca470196.__obf_475810ae089ac9c9
 	}
-	__obf_bd79c4ec5cbfc921.__obf_9c578e473cd91a70 = nil // avoid memory leaks
-	__obf_bd79c4ec5cbfc921.__obf_9e64c21ddd522887 = nil // avoid memory leaks
+	__obf_673d5726ca470196.__obf_3f38a216fb054660 = nil // avoid memory leaks
+	__obf_673d5726ca470196.__obf_475810ae089ac9c9 = nil // avoid memory leaks
 }
 
 // PushFront inserts a new element e with value v at the front of list l and returns e.
-func (__obf_e6e08b693d421fab *__obf_9da43f38a5013de2[V]) PushFront(__obf_43194ec765d86867 string, __obf_3966a3e46995974f V) *Element[V] {
-	__obf_bd79c4ec5cbfc921 := &Element[V]{Key: __obf_43194ec765d86867, Value: __obf_3966a3e46995974f}
-	if __obf_e6e08b693d421fab.__obf_272bfa9ba362b63a.__obf_9c578e473cd91a70 == nil {
+func (__obf_3f548a299e41833e *__obf_5275791a072a11d1[V]) PushFront(__obf_95c4c09a56c1a070 string, __obf_6d18c47092a65f53 V) *Element[V] {
+	__obf_673d5726ca470196 := &Element[V]{Key: __obf_95c4c09a56c1a070, Value: __obf_6d18c47092a65f53}
+	if __obf_3f548a299e41833e.__obf_549d995cf5b98905.__obf_3f38a216fb054660 == nil {
 		// It's the first element
-		__obf_e6e08b693d421fab.__obf_272bfa9ba362b63a.__obf_9c578e473cd91a70 = __obf_bd79c4ec5cbfc921
-		__obf_e6e08b693d421fab.__obf_272bfa9ba362b63a.__obf_9e64c21ddd522887 = __obf_bd79c4ec5cbfc921
-		return __obf_bd79c4ec5cbfc921
+		__obf_3f548a299e41833e.__obf_549d995cf5b98905.__obf_3f38a216fb054660 = __obf_673d5726ca470196
+		__obf_3f548a299e41833e.__obf_549d995cf5b98905.__obf_475810ae089ac9c9 = __obf_673d5726ca470196
+		return __obf_673d5726ca470196
 	}
 
-	__obf_bd79c4ec5cbfc921.__obf_9c578e473cd91a70 = __obf_e6e08b693d421fab.__obf_272bfa9ba362b63a.__obf_9c578e473cd91a70
-	__obf_e6e08b693d421fab.__obf_272bfa9ba362b63a.__obf_9c578e473cd91a70.__obf_9e64c21ddd522887 = __obf_bd79c4ec5cbfc921
-	__obf_e6e08b693d421fab.__obf_272bfa9ba362b63a.__obf_9c578e473cd91a70 = __obf_bd79c4ec5cbfc921
-	return __obf_bd79c4ec5cbfc921
+	__obf_673d5726ca470196.__obf_3f38a216fb054660 = __obf_3f548a299e41833e.__obf_549d995cf5b98905.__obf_3f38a216fb054660
+	__obf_3f548a299e41833e.__obf_549d995cf5b98905.__obf_3f38a216fb054660.__obf_475810ae089ac9c9 = __obf_673d5726ca470196
+	__obf_3f548a299e41833e.__obf_549d995cf5b98905.__obf_3f38a216fb054660 = __obf_673d5726ca470196
+	return __obf_673d5726ca470196
 }
 
 // PushBack inserts a new element e with value v at the back of list l and returns e.
-func (__obf_e6e08b693d421fab *__obf_9da43f38a5013de2[V]) PushBack(__obf_43194ec765d86867 string, __obf_3966a3e46995974f V) *Element[V] {
-	__obf_bd79c4ec5cbfc921 := &Element[V]{Key: __obf_43194ec765d86867, Value: __obf_3966a3e46995974f}
-	if __obf_e6e08b693d421fab.__obf_272bfa9ba362b63a.__obf_9e64c21ddd522887 == nil {
+func (__obf_3f548a299e41833e *__obf_5275791a072a11d1[V]) PushBack(__obf_95c4c09a56c1a070 string, __obf_6d18c47092a65f53 V) *Element[V] {
+	__obf_673d5726ca470196 := &Element[V]{Key: __obf_95c4c09a56c1a070, Value: __obf_6d18c47092a65f53}
+	if __obf_3f548a299e41833e.__obf_549d995cf5b98905.__obf_475810ae089ac9c9 == nil {
 		// It's the first element
-		__obf_e6e08b693d421fab.__obf_272bfa9ba362b63a.__obf_9c578e473cd91a70 = __obf_bd79c4ec5cbfc921
-		__obf_e6e08b693d421fab.__obf_272bfa9ba362b63a.__obf_9e64c21ddd522887 = __obf_bd79c4ec5cbfc921
-		return __obf_bd79c4ec5cbfc921
+		__obf_3f548a299e41833e.__obf_549d995cf5b98905.__obf_3f38a216fb054660 = __obf_673d5726ca470196
+		__obf_3f548a299e41833e.__obf_549d995cf5b98905.__obf_475810ae089ac9c9 = __obf_673d5726ca470196
+		return __obf_673d5726ca470196
 	}
 
-	__obf_bd79c4ec5cbfc921.__obf_9e64c21ddd522887 = __obf_e6e08b693d421fab.__obf_272bfa9ba362b63a.__obf_9e64c21ddd522887
-	__obf_e6e08b693d421fab.__obf_272bfa9ba362b63a.__obf_9e64c21ddd522887.__obf_9c578e473cd91a70 = __obf_bd79c4ec5cbfc921
-	__obf_e6e08b693d421fab.__obf_272bfa9ba362b63a.__obf_9e64c21ddd522887 = __obf_bd79c4ec5cbfc921
-	return __obf_bd79c4ec5cbfc921
+	__obf_673d5726ca470196.__obf_475810ae089ac9c9 = __obf_3f548a299e41833e.__obf_549d995cf5b98905.__obf_475810ae089ac9c9
+	__obf_3f548a299e41833e.__obf_549d995cf5b98905.__obf_475810ae089ac9c9.__obf_3f38a216fb054660 = __obf_673d5726ca470196
+	__obf_3f548a299e41833e.__obf_549d995cf5b98905.__obf_475810ae089ac9c9 = __obf_673d5726ca470196
+	return __obf_673d5726ca470196
 }

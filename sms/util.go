@@ -1,4 +1,4 @@
-package __obf_a307862f84d54cc6
+package __obf_cb62198a5f8c0e2c
 
 import (
 	"bytes"
@@ -15,35 +15,35 @@ import (
 	"time"
 )
 
-var __obf_ddb437d5df6b7338 int64 = 0
-var __obf_7bbdca9bbe4109ac int64 = time.Now().UnixNano() / 1e6
+var __obf_21b071081aae0d7a int64 = 0
+var __obf_0a5c8fde46581f74 int64 = time.Now().UnixNano() / 1e6
 
-func __obf_a49f1d27524bcbdb() string {
+func __obf_1f0e3362918c2912() string {
 
-	__obf_856053960379f1d3 := make([]byte, 64)
-	__obf_856053960379f1d3 = __obf_856053960379f1d3[:runtime.Stack(__obf_856053960379f1d3, false)]
-	__obf_856053960379f1d3 = bytes.TrimPrefix(__obf_856053960379f1d3, []byte("goroutine "))
-	__obf_856053960379f1d3 = __obf_856053960379f1d3[:bytes.IndexByte(__obf_856053960379f1d3, ' ')]
-	__obf_e857b55c8ad28868, _ := strconv.ParseUint(string(__obf_856053960379f1d3), 10, 64)
+	__obf_bd05f014be491fb8 := make([]byte, 64)
+	__obf_bd05f014be491fb8 = __obf_bd05f014be491fb8[:runtime.Stack(__obf_bd05f014be491fb8, false)]
+	__obf_bd05f014be491fb8 = bytes.TrimPrefix(__obf_bd05f014be491fb8, []byte("goroutine "))
+	__obf_bd05f014be491fb8 = __obf_bd05f014be491fb8[:bytes.IndexByte(__obf_bd05f014be491fb8, ' ')]
+	__obf_983b389d4bce2818, _ := strconv.ParseUint(string(__obf_bd05f014be491fb8), 10, 64)
 
-	__obf_7b5de4f88a4e708f := time.Now().UnixNano() / 1e6
-	__obf_7c2677d114280cad := atomic.AddInt64(&__obf_ddb437d5df6b7338, 1)
-	__obf_df93f6fa08360578 := mrand.Int63()
-	__obf_3b91e2714fae3e9b := fmt.Sprintf("%d-%d-%d-%d-%d", __obf_7bbdca9bbe4109ac, __obf_e857b55c8ad28868, __obf_7b5de4f88a4e708f, __obf_7c2677d114280cad, __obf_df93f6fa08360578)
-	__obf_66f2bca1c6c7d88d := md5.New()
-	__obf_66f2bca1c6c7d88d.Write([]byte(__obf_3b91e2714fae3e9b))
-	return hex.EncodeToString(__obf_66f2bca1c6c7d88d.Sum(nil))
+	__obf_a457d50604ca7404 := time.Now().UnixNano() / 1e6
+	__obf_03231da4f5015b66 := atomic.AddInt64(&__obf_21b071081aae0d7a, 1)
+	__obf_5be48821346d59c8 := mrand.Int63()
+	__obf_88cd55b9ab3ed8af := fmt.Sprintf("%d-%d-%d-%d-%d", __obf_0a5c8fde46581f74, __obf_983b389d4bce2818, __obf_a457d50604ca7404, __obf_03231da4f5015b66, __obf_5be48821346d59c8)
+	__obf_58eae71206ec5018 := md5.New()
+	__obf_58eae71206ec5018.Write([]byte(__obf_88cd55b9ab3ed8af))
+	return hex.EncodeToString(__obf_58eae71206ec5018.Sum(nil))
 }
 
 // generateSignature 生成签名
-func __obf_cdacf59f3a4d15f3(__obf_47e75f2fdeec63af string, __obf_0d83fb6d65187b1d string) string {
-	var __obf_d21aa78f6d95f3c1 bytes.Buffer
-	__obf_d21aa78f6d95f3c1.WriteString("GET&")
-	__obf_d21aa78f6d95f3c1.WriteString(__obf_03c24bcdceda96ba("/"))
-	__obf_d21aa78f6d95f3c1.WriteString("&")
-	__obf_d21aa78f6d95f3c1.WriteString(__obf_03c24bcdceda96ba(__obf_47e75f2fdeec63af))
+func __obf_e993b87f82f2044b(__obf_2346704bb5e01c49 string, __obf_af4b82e4375e005a string) string {
+	var __obf_cde918037b664289 bytes.Buffer
+	__obf_cde918037b664289.WriteString("GET&")
+	__obf_cde918037b664289.WriteString(__obf_fdce8fc899639dcd("/"))
+	__obf_cde918037b664289.WriteString("&")
+	__obf_cde918037b664289.WriteString(__obf_fdce8fc899639dcd(__obf_2346704bb5e01c49))
 
-	__obf_66f2bca1c6c7d88d := hmac.New(sha1.New, []byte(__obf_0d83fb6d65187b1d+"&"))
-	__obf_66f2bca1c6c7d88d.Write(__obf_d21aa78f6d95f3c1.Bytes())
-	return base64.StdEncoding.EncodeToString(__obf_66f2bca1c6c7d88d.Sum(nil))
+	__obf_58eae71206ec5018 := hmac.New(sha1.New, []byte(__obf_af4b82e4375e005a+"&"))
+	__obf_58eae71206ec5018.Write(__obf_cde918037b664289.Bytes())
+	return base64.StdEncoding.EncodeToString(__obf_58eae71206ec5018.Sum(nil))
 }

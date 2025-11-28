@@ -1,4 +1,4 @@
-package __obf_c338b4748c62107c
+package __obf_633b893d0a4821b9
 
 import (
 	"fmt"
@@ -10,29 +10,29 @@ import (
 
 // Program 小程序模块实例
 type Program struct {
-	__obf_4417935ef63331f6 *Config
-	__obf_d3392c2ce39da195 *internal.HttpClient
+	__obf_439de1cf6bdf5991 *Config
+	__obf_b583c040f28ea4e8 *internal.HttpClient
 	// AccessToken 缓存相关
-	__obf_0acaac2cee17a80e string
-	__obf_8eec73473dd03f50 int64 // 过期时间戳 (秒)
-	__obf_365c39b60a84586d sync.RWMutex
+	__obf_9d464e96113d413d string
+	__obf_55f5ff9c016635c0 int64 // 过期时间戳 (秒)
+	__obf_28e08d37fd5c8951 sync.RWMutex
 }
 
 var (
-	__obf_57bbf9ae88dbbfb2 *Program
-	__obf_61a1d37d54df324e sync.Once
+	__obf_848671284868173e *Program
+	__obf_4b115920c422c3f6 sync.Once
 )
 
 // NewMiniprogram 创建并返回小程序模块的单例实例
-func NewProgram(__obf_c2e3665f98028d5c *Config) (*Program, error) {
-	var __obf_67c1d84e8fb6ba1a error
-	__obf_61a1d37d54df324e.Do(func() {
-		__obf_57bbf9ae88dbbfb2 = &Program{
-			__obf_4417935ef63331f6: __obf_c2e3665f98028d5c,
-			__obf_d3392c2ce39da195: internal.NewClient(),
+func NewProgram(__obf_2f555632e8f720e7 *Config) (*Program, error) {
+	var __obf_56287602be52ef04 error
+	__obf_4b115920c422c3f6.Do(func() {
+		__obf_848671284868173e = &Program{
+			__obf_439de1cf6bdf5991: __obf_2f555632e8f720e7,
+			__obf_b583c040f28ea4e8: internal.NewClient(),
 		}
 	})
-	return __obf_57bbf9ae88dbbfb2, __obf_67c1d84e8fb6ba1a
+	return __obf_848671284868173e, __obf_56287602be52ef04
 }
 
 // AccessTokenResponse 获取 AccessToken 接口返回结构
@@ -45,58 +45,58 @@ type AccessTokenResponse struct {
 // GetAccessToken 获取小程序全局唯一调用凭据 access_token
 // 注意：access_token 有效期为2小时，重复获取会导致上一次获取的失效。
 // 建议在生产环境中使用缓存机制，避免频繁获取。
-func (__obf_33502c4f6ca494c9 *Program) GetAccessToken() (string, error) {
-	__obf_33502c4f6ca494c9.__obf_365c39b60a84586d.RLock()
+func (__obf_7cef49d6192821d4 *Program) GetAccessToken() (string, error) {
+	__obf_7cef49d6192821d4.__obf_28e08d37fd5c8951.RLock()
 	// 检查缓存，如果未过期，直接返回
-	if __obf_33502c4f6ca494c9.__obf_0acaac2cee17a80e != "" && time.Now().Unix() < __obf_33502c4f6ca494c9.__obf_8eec73473dd03f50 {
-		__obf_d2c6d2b9d060b08a := __obf_33502c4f6ca494c9.__obf_0acaac2cee17a80e
-		__obf_33502c4f6ca494c9.__obf_365c39b60a84586d.RUnlock()
-		return __obf_d2c6d2b9d060b08a, nil
+	if __obf_7cef49d6192821d4.__obf_9d464e96113d413d != "" && time.Now().Unix() < __obf_7cef49d6192821d4.__obf_55f5ff9c016635c0 {
+		__obf_396c06cc8ad8810f := __obf_7cef49d6192821d4.__obf_9d464e96113d413d
+		__obf_7cef49d6192821d4.__obf_28e08d37fd5c8951.RUnlock()
+		return __obf_396c06cc8ad8810f, nil
 	}
-	__obf_33502c4f6ca494c9.__obf_365c39b60a84586d.RUnlock()
+	__obf_7cef49d6192821d4.__obf_28e08d37fd5c8951.RUnlock()
 
 	// 如果过期或未获取，则加写锁进行获取
-	__obf_33502c4f6ca494c9.__obf_365c39b60a84586d.Lock()
-	defer __obf_33502c4f6ca494c9.__obf_365c39b60a84586d.Unlock()
+	__obf_7cef49d6192821d4.__obf_28e08d37fd5c8951.Lock()
+	defer __obf_7cef49d6192821d4.__obf_28e08d37fd5c8951.Unlock()
 
 	// 再次检查，防止多协程竞争时，在等待写锁期间，另一个协程已经更新了token
-	if __obf_33502c4f6ca494c9.__obf_0acaac2cee17a80e != "" && time.Now().Unix() < __obf_33502c4f6ca494c9.__obf_8eec73473dd03f50 {
-		return __obf_33502c4f6ca494c9.__obf_0acaac2cee17a80e, nil
+	if __obf_7cef49d6192821d4.__obf_9d464e96113d413d != "" && time.Now().Unix() < __obf_7cef49d6192821d4.__obf_55f5ff9c016635c0 {
+		return __obf_7cef49d6192821d4.__obf_9d464e96113d413d, nil
 	}
 
 	var (
-		__obf_e2db4d8fe72b443b AccessTokenResponse
-		__obf_67c1d84e8fb6ba1a error
+		__obf_2b64cff76a873a63 AccessTokenResponse
+		__obf_56287602be52ef04 error
 	)
-	if __obf_33502c4f6ca494c9.__obf_4417935ef63331f6.UseStableAK {
+	if __obf_7cef49d6192821d4.__obf_439de1cf6bdf5991.UseStableAK {
 		// 使用稳定版的 AccessToken 接口
-		__obf_67c1d84e8fb6ba1a = __obf_33502c4f6ca494c9.__obf_d3392c2ce39da195.PostJSON(internal.MiniprogramGetStableAccessTokenURL, map[string]string{
+		__obf_56287602be52ef04 = __obf_7cef49d6192821d4.__obf_b583c040f28ea4e8.PostJSON(internal.MiniprogramGetStableAccessTokenURL, map[string]string{
 			"grant_type": "client_credential",
-			"appid":      __obf_33502c4f6ca494c9.__obf_4417935ef63331f6.AppID,
-			"secret":     __obf_33502c4f6ca494c9.__obf_4417935ef63331f6.AppSecret,
-		}, &__obf_e2db4d8fe72b443b)
+			"appid":      __obf_7cef49d6192821d4.__obf_439de1cf6bdf5991.AppID,
+			"secret":     __obf_7cef49d6192821d4.__obf_439de1cf6bdf5991.AppSecret,
+		}, &__obf_2b64cff76a873a63)
 	} else {
 		// 使用普通的 AccessToken 接口
-		__obf_67c1d84e8fb6ba1a = __obf_33502c4f6ca494c9.__obf_d3392c2ce39da195.Get(internal.MiniprogramGetAccessTokenURL, map[string]string{
+		__obf_56287602be52ef04 = __obf_7cef49d6192821d4.__obf_b583c040f28ea4e8.Get(internal.MiniprogramGetAccessTokenURL, map[string]string{
 			"grant_type": "client_credential",
-			"appid":      __obf_33502c4f6ca494c9.__obf_4417935ef63331f6.AppID,
-			"secret":     __obf_33502c4f6ca494c9.__obf_4417935ef63331f6.AppSecret,
-		}, &__obf_e2db4d8fe72b443b)
+			"appid":      __obf_7cef49d6192821d4.__obf_439de1cf6bdf5991.AppID,
+			"secret":     __obf_7cef49d6192821d4.__obf_439de1cf6bdf5991.AppSecret,
+		}, &__obf_2b64cff76a873a63)
 	}
-	if __obf_67c1d84e8fb6ba1a != nil {
-		return "", fmt.Errorf("get access token request failed: %w", __obf_67c1d84e8fb6ba1a)
+	if __obf_56287602be52ef04 != nil {
+		return "", fmt.Errorf("get access token request failed: %w", __obf_56287602be52ef04)
 	}
 
-	if __obf_e2db4d8fe72b443b.ErrCode != 0 {
-		return "", fmt.Errorf("get access token API error: %d - %s", __obf_e2db4d8fe72b443b.ErrCode, __obf_e2db4d8fe72b443b.ErrMsg)
+	if __obf_2b64cff76a873a63.ErrCode != 0 {
+		return "", fmt.Errorf("get access token API error: %d - %s", __obf_2b64cff76a873a63.ErrCode, __obf_2b64cff76a873a63.ErrMsg)
 	}
 
 	// 更新缓存
-	__obf_33502c4f6ca494c9.__obf_0acaac2cee17a80e = __obf_e2db4d8fe72b443b.AccessToken
+	__obf_7cef49d6192821d4.__obf_9d464e96113d413d = __obf_2b64cff76a873a63.AccessToken
 	// 提前10分钟过期，给刷新留出余地
-	__obf_33502c4f6ca494c9.__obf_8eec73473dd03f50 = time.Now().Unix() + int64(__obf_e2db4d8fe72b443b.ExpiresIn) - 600
+	__obf_7cef49d6192821d4.__obf_55f5ff9c016635c0 = time.Now().Unix() + int64(__obf_2b64cff76a873a63.ExpiresIn) - 600
 
-	return __obf_33502c4f6ca494c9.__obf_0acaac2cee17a80e, nil
+	return __obf_7cef49d6192821d4.__obf_9d464e96113d413d, nil
 }
 
 // Code2SessionResult code2Session 接口返回结构
@@ -108,24 +108,24 @@ type Code2SessionResult struct {
 }
 
 // Code2Session 使用 code 换取 openid 和 session_key
-func (__obf_33502c4f6ca494c9 *Program) Code2Session(__obf_e9ed649484e00a1a string) (*Code2SessionResult, error) {
-	__obf_5634c124704e842f := map[string]string{
-		"appid":      __obf_33502c4f6ca494c9.__obf_4417935ef63331f6.AppID,
-		"secret":     __obf_33502c4f6ca494c9.__obf_4417935ef63331f6.AppSecret,
-		"js_code":    __obf_e9ed649484e00a1a,
+func (__obf_7cef49d6192821d4 *Program) Code2Session(__obf_edb6d8d201907bb4 string) (*Code2SessionResult, error) {
+	__obf_819f43e0c408ab65 := map[string]string{
+		"appid":      __obf_7cef49d6192821d4.__obf_439de1cf6bdf5991.AppID,
+		"secret":     __obf_7cef49d6192821d4.__obf_439de1cf6bdf5991.AppSecret,
+		"js_code":    __obf_edb6d8d201907bb4,
 		"grant_type": "authorization_code",
 	}
 
-	var __obf_e2db4d8fe72b443b Code2SessionResult
-	__obf_67c1d84e8fb6ba1a := __obf_33502c4f6ca494c9.__obf_d3392c2ce39da195.Get(internal.MiniprogramCode2SessionURL, __obf_5634c124704e842f, &__obf_e2db4d8fe72b443b)
-	if __obf_67c1d84e8fb6ba1a != nil {
-		return nil, fmt.Errorf("code2Session request failed: %w", __obf_67c1d84e8fb6ba1a)
+	var __obf_2b64cff76a873a63 Code2SessionResult
+	__obf_56287602be52ef04 := __obf_7cef49d6192821d4.__obf_b583c040f28ea4e8.Get(internal.MiniprogramCode2SessionURL, __obf_819f43e0c408ab65, &__obf_2b64cff76a873a63)
+	if __obf_56287602be52ef04 != nil {
+		return nil, fmt.Errorf("code2Session request failed: %w", __obf_56287602be52ef04)
 	}
 
-	if __obf_e2db4d8fe72b443b.ErrCode != 0 {
-		return nil, fmt.Errorf("code2Session API error: %d - %s", __obf_e2db4d8fe72b443b.ErrCode, __obf_e2db4d8fe72b443b.ErrMsg)
+	if __obf_2b64cff76a873a63.ErrCode != 0 {
+		return nil, fmt.Errorf("code2Session API error: %d - %s", __obf_2b64cff76a873a63.ErrCode, __obf_2b64cff76a873a63.ErrMsg)
 	}
-	return &__obf_e2db4d8fe72b443b, nil
+	return &__obf_2b64cff76a873a63, nil
 }
 
 type PhoneNumberData struct {
@@ -140,38 +140,38 @@ type PhoneNumberData struct {
 
 // GetPhoneNumber 通过小程序前端传入的code获取用户手机号 (新版本方式)
 // phoneCode: 小程序前端通过 `wx.getPhoneNumber` 接口获取的动态令牌 `e.detail.code`
-func (__obf_33502c4f6ca494c9 *Program) GetPhoneNumber(__obf_2fc65b2ecae3373c string) (*PhoneNumberData, error) {
-	__obf_0acaac2cee17a80e, __obf_67c1d84e8fb6ba1a := __obf_33502c4f6ca494c9.GetAccessToken()
-	if __obf_67c1d84e8fb6ba1a != nil {
-		return nil, fmt.Errorf("get access token failed: %w", __obf_67c1d84e8fb6ba1a)
+func (__obf_7cef49d6192821d4 *Program) GetPhoneNumber(__obf_0fbda69bbda01fe6 string) (*PhoneNumberData, error) {
+	__obf_9d464e96113d413d, __obf_56287602be52ef04 := __obf_7cef49d6192821d4.GetAccessToken()
+	if __obf_56287602be52ef04 != nil {
+		return nil, fmt.Errorf("get access token failed: %w", __obf_56287602be52ef04)
 	}
 
-	__obf_ea6d0dcfda90dae1 := fmt.Sprintf("%s?access_token=%s", internal.MiniprogramGetPhoneNumberURL, __obf_0acaac2cee17a80e)
+	__obf_cd56a266e13f1828 := fmt.Sprintf("%s?access_token=%s", internal.MiniprogramGetPhoneNumberURL, __obf_9d464e96113d413d)
 
-	var __obf_e2db4d8fe72b443b struct {
+	var __obf_2b64cff76a873a63 struct {
 		model.ErrResponse
 		PhoneNumberData `json:"phone_info"`
 	}
-	__obf_67c1d84e8fb6ba1a = __obf_33502c4f6ca494c9.__obf_d3392c2ce39da195.PostJSON(
-		__obf_ea6d0dcfda90dae1,
+	__obf_56287602be52ef04 = __obf_7cef49d6192821d4.__obf_b583c040f28ea4e8.PostJSON(
+		__obf_cd56a266e13f1828,
 		map[string]any{
-			"code": __obf_2fc65b2ecae3373c,
+			"code": __obf_0fbda69bbda01fe6,
 		},
-		&__obf_e2db4d8fe72b443b,
+		&__obf_2b64cff76a873a63,
 	)
-	if __obf_67c1d84e8fb6ba1a != nil {
-		return nil, fmt.Errorf("get phone number request failed: %w", __obf_67c1d84e8fb6ba1a)
+	if __obf_56287602be52ef04 != nil {
+		return nil, fmt.Errorf("get phone number request failed: %w", __obf_56287602be52ef04)
 	}
 
-	if __obf_e2db4d8fe72b443b.ErrCode != 0 {
-		return nil, fmt.Errorf("get phone number API error: %d - %s", __obf_e2db4d8fe72b443b.ErrCode, __obf_e2db4d8fe72b443b.ErrMsg)
+	if __obf_2b64cff76a873a63.ErrCode != 0 {
+		return nil, fmt.Errorf("get phone number API error: %d - %s", __obf_2b64cff76a873a63.ErrCode, __obf_2b64cff76a873a63.ErrMsg)
 	}
 
 	// 验证AppID是否一致，增强安全性
-	if __obf_e2db4d8fe72b443b.PhoneNumberData.Watermark.AppID != __obf_33502c4f6ca494c9.__obf_4417935ef63331f6.AppID {
+	if __obf_2b64cff76a873a63.PhoneNumberData.Watermark.AppID != __obf_7cef49d6192821d4.__obf_439de1cf6bdf5991.AppID {
 		return nil, fmt.Errorf("app_id in phone number watermark (%s) does not match configured app_id (%s)",
-			__obf_e2db4d8fe72b443b.PhoneNumberData.Watermark.AppID, __obf_33502c4f6ca494c9.__obf_4417935ef63331f6.AppID)
+			__obf_2b64cff76a873a63.PhoneNumberData.Watermark.AppID, __obf_7cef49d6192821d4.__obf_439de1cf6bdf5991.AppID)
 	}
 
-	return &(__obf_e2db4d8fe72b443b.PhoneNumberData), nil
+	return &(__obf_2b64cff76a873a63.PhoneNumberData), nil
 }

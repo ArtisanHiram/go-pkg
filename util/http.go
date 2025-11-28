@@ -1,4 +1,4 @@
-package __obf_083c8deafa73f533
+package __obf_f1e346e3aa5cc554
 
 import (
 	"bytes"
@@ -17,48 +17,48 @@ import (
 var TimeOut time.Duration = 60 * time.Second
 
 // SetTimeOut 设置全局请求超时
-func SetTimeOut(__obf_66f560b1a3148c0c time.Duration) {
-	TimeOut = __obf_66f560b1a3148c0c
+func SetTimeOut(__obf_8beab787517c6111 time.Duration) {
+	TimeOut = __obf_8beab787517c6111
 }
 
 // httpClient() 带超时的http.Client
-func __obf_4a60dda07f59cbef() *http.Client {
+func __obf_eb674f05d452612b() *http.Client {
 	return &http.Client{Timeout: TimeOut}
 }
 
 // GetJson 发送GET请求解析json
-func GetJson(__obf_22869fd63c164f49 string, __obf_bc97935e99909ed0 any) error {
+func GetJson(__obf_a3d8a1d7a26a1b34 string, __obf_29f3385acfb70f69 any) error {
 
-	__obf_c094a893233159c5, __obf_ab078048114898aa := __obf_4a60dda07f59cbef().Get(__obf_22869fd63c164f49)
-	if __obf_ab078048114898aa != nil {
-		return __obf_ab078048114898aa
+	__obf_72fc7f85fed6cac3, __obf_eec784b359ebf42f := __obf_eb674f05d452612b().Get(__obf_a3d8a1d7a26a1b34)
+	if __obf_eec784b359ebf42f != nil {
+		return __obf_eec784b359ebf42f
 	}
-	defer __obf_c094a893233159c5.Body.Close()
-	return __obf_283076f580f99f88.NewDecoder(__obf_c094a893233159c5.Body).Decode(__obf_bc97935e99909ed0)
+	defer __obf_72fc7f85fed6cac3.Body.Close()
+	return __obf_f3d2a2a7fb490096.NewDecoder(__obf_72fc7f85fed6cac3.Body).Decode(__obf_29f3385acfb70f69)
 }
 
 // GetXml 发送GET请求并解析xml
-func GetXml(__obf_22869fd63c164f49 string, __obf_bc97935e99909ed0 any) error {
-	__obf_c094a893233159c5, __obf_ab078048114898aa := __obf_4a60dda07f59cbef().Get(__obf_22869fd63c164f49)
-	if __obf_ab078048114898aa != nil {
-		return __obf_ab078048114898aa
+func GetXml(__obf_a3d8a1d7a26a1b34 string, __obf_29f3385acfb70f69 any) error {
+	__obf_72fc7f85fed6cac3, __obf_eec784b359ebf42f := __obf_eb674f05d452612b().Get(__obf_a3d8a1d7a26a1b34)
+	if __obf_eec784b359ebf42f != nil {
+		return __obf_eec784b359ebf42f
 	}
-	defer __obf_c094a893233159c5.Body.Close()
-	return xml.NewDecoder(__obf_c094a893233159c5.Body).Decode(__obf_bc97935e99909ed0)
+	defer __obf_72fc7f85fed6cac3.Body.Close()
+	return xml.NewDecoder(__obf_72fc7f85fed6cac3.Body).Decode(__obf_29f3385acfb70f69)
 }
 
 // GetBody 发送GET请求，返回body字节
-func GetBody(__obf_22869fd63c164f49 string) ([]byte, error) {
-	__obf_1aeba3af5526ef6d, __obf_ab078048114898aa := __obf_4a60dda07f59cbef().Get(__obf_22869fd63c164f49)
-	if __obf_ab078048114898aa != nil {
-		return nil, __obf_ab078048114898aa
+func GetBody(__obf_a3d8a1d7a26a1b34 string) ([]byte, error) {
+	__obf_a215c76839be61a5, __obf_eec784b359ebf42f := __obf_eb674f05d452612b().Get(__obf_a3d8a1d7a26a1b34)
+	if __obf_eec784b359ebf42f != nil {
+		return nil, __obf_eec784b359ebf42f
 	}
-	defer __obf_1aeba3af5526ef6d.Body.Close()
+	defer __obf_a215c76839be61a5.Body.Close()
 
-	if __obf_1aeba3af5526ef6d.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("http get err: uri=%v , statusCode=%v", __obf_22869fd63c164f49, __obf_1aeba3af5526ef6d.StatusCode)
+	if __obf_a215c76839be61a5.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("http get err: uri=%v , statusCode=%v", __obf_a3d8a1d7a26a1b34, __obf_a215c76839be61a5.StatusCode)
 	}
-	return io.ReadAll(__obf_1aeba3af5526ef6d.Body)
+	return io.ReadAll(__obf_a215c76839be61a5.Body)
 }
 
 // GetRawBody 发送GET请求，返回body字节
@@ -75,100 +75,100 @@ func GetBody(__obf_22869fd63c164f49 string) ([]byte, error) {
 // }
 
 // PostJson 发送Json格式的POST请求
-func PostJson(__obf_22869fd63c164f49 string, __obf_34b84ecd45b601a3 any) ([]byte, error) {
-	__obf_28b8108c6efefd30 := new(bytes.Buffer)
-	__obf_207f5f9f1a2e7b5e := __obf_283076f580f99f88.NewEncoder(__obf_28b8108c6efefd30)
-	__obf_207f5f9f1a2e7b5e.SetEscapeHTML(false)
-	__obf_ab078048114898aa := __obf_207f5f9f1a2e7b5e.Encode(__obf_34b84ecd45b601a3)
-	if __obf_ab078048114898aa != nil {
-		return nil, __obf_ab078048114898aa
+func PostJson(__obf_a3d8a1d7a26a1b34 string, __obf_8690295b52001a12 any) ([]byte, error) {
+	__obf_92a6c1286d60d679 := new(bytes.Buffer)
+	__obf_34006b956928274a := __obf_f3d2a2a7fb490096.NewEncoder(__obf_92a6c1286d60d679)
+	__obf_34006b956928274a.SetEscapeHTML(false)
+	__obf_eec784b359ebf42f := __obf_34006b956928274a.Encode(__obf_8690295b52001a12)
+	if __obf_eec784b359ebf42f != nil {
+		return nil, __obf_eec784b359ebf42f
 	}
-	__obf_1aeba3af5526ef6d, __obf_ab078048114898aa := __obf_4a60dda07f59cbef().Post(__obf_22869fd63c164f49, "application/json;charset=utf-8", __obf_28b8108c6efefd30)
-	if __obf_ab078048114898aa != nil {
-		return nil, __obf_ab078048114898aa
+	__obf_a215c76839be61a5, __obf_eec784b359ebf42f := __obf_eb674f05d452612b().Post(__obf_a3d8a1d7a26a1b34, "application/json;charset=utf-8", __obf_92a6c1286d60d679)
+	if __obf_eec784b359ebf42f != nil {
+		return nil, __obf_eec784b359ebf42f
 	}
-	defer __obf_1aeba3af5526ef6d.Body.Close()
+	defer __obf_a215c76839be61a5.Body.Close()
 
-	if __obf_1aeba3af5526ef6d.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("http post error : uri=%v , statusCode=%v", __obf_22869fd63c164f49, __obf_1aeba3af5526ef6d.StatusCode)
+	if __obf_a215c76839be61a5.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("http post error : uri=%v , statusCode=%v", __obf_a3d8a1d7a26a1b34, __obf_a215c76839be61a5.StatusCode)
 	}
-	return io.ReadAll(__obf_1aeba3af5526ef6d.Body)
+	return io.ReadAll(__obf_a215c76839be61a5.Body)
 }
 
 // PostJsonPtr 发送Json格式的POST请求并解析结果到result指针
-func PostJsonPtr(__obf_22869fd63c164f49 string, __obf_34b84ecd45b601a3 any, __obf_fae510501b39e125 any, __obf_71b895a9ee0308a1 ...string) (__obf_ab078048114898aa error) {
-	__obf_28b8108c6efefd30 := new(bytes.Buffer)
-	__obf_207f5f9f1a2e7b5e := __obf_283076f580f99f88.NewEncoder(__obf_28b8108c6efefd30)
+func PostJsonPtr(__obf_a3d8a1d7a26a1b34 string, __obf_8690295b52001a12 any, __obf_969aede8eee9c705 any, __obf_66c3ab22b6b799e9 ...string) (__obf_eec784b359ebf42f error) {
+	__obf_92a6c1286d60d679 := new(bytes.Buffer)
+	__obf_34006b956928274a := __obf_f3d2a2a7fb490096.NewEncoder(__obf_92a6c1286d60d679)
 	//	enc.SetEscapeHTML(false)
-	__obf_ab078048114898aa = __obf_207f5f9f1a2e7b5e.Encode(__obf_34b84ecd45b601a3)
-	if __obf_ab078048114898aa != nil {
+	__obf_eec784b359ebf42f = __obf_34006b956928274a.Encode(__obf_8690295b52001a12)
+	if __obf_eec784b359ebf42f != nil {
 		return
 	}
-	__obf_3ca498a986584e5b := "application/json;charset=utf-8"
-	if len(__obf_71b895a9ee0308a1) > 0 {
-		__obf_3ca498a986584e5b = strings.Join(__obf_71b895a9ee0308a1, ";")
+	__obf_9557d38bd34367a6 := "application/json;charset=utf-8"
+	if len(__obf_66c3ab22b6b799e9) > 0 {
+		__obf_9557d38bd34367a6 = strings.Join(__obf_66c3ab22b6b799e9, ";")
 	}
 	// fmt.Println("post buf:", buf.String()) // Debug
-	__obf_1aeba3af5526ef6d, __obf_ab078048114898aa := __obf_4a60dda07f59cbef().Post(__obf_22869fd63c164f49, __obf_3ca498a986584e5b, __obf_28b8108c6efefd30)
-	if __obf_ab078048114898aa != nil {
-		return __obf_ab078048114898aa
+	__obf_a215c76839be61a5, __obf_eec784b359ebf42f := __obf_eb674f05d452612b().Post(__obf_a3d8a1d7a26a1b34, __obf_9557d38bd34367a6, __obf_92a6c1286d60d679)
+	if __obf_eec784b359ebf42f != nil {
+		return __obf_eec784b359ebf42f
 	}
-	defer __obf_1aeba3af5526ef6d.Body.Close()
+	defer __obf_a215c76839be61a5.Body.Close()
 
-	if __obf_1aeba3af5526ef6d.StatusCode != http.StatusOK {
-		return fmt.Errorf("http post error : uri=%v , statusCode=%v", __obf_22869fd63c164f49, __obf_1aeba3af5526ef6d.StatusCode)
+	if __obf_a215c76839be61a5.StatusCode != http.StatusOK {
+		return fmt.Errorf("http post error : uri=%v , statusCode=%v", __obf_a3d8a1d7a26a1b34, __obf_a215c76839be61a5.StatusCode)
 	}
-	return __obf_283076f580f99f88.NewDecoder(__obf_1aeba3af5526ef6d.Body).Decode(__obf_fae510501b39e125)
+	return __obf_f3d2a2a7fb490096.NewDecoder(__obf_a215c76839be61a5.Body).Decode(__obf_969aede8eee9c705)
 }
 
 // PostXmlPtr 发送Xml格式的POST请求并解析结果到result指针
-func PostXmlPtr(__obf_22869fd63c164f49 string, __obf_34b84ecd45b601a3 any, __obf_fae510501b39e125 any) (__obf_ab078048114898aa error) {
-	__obf_28b8108c6efefd30 := new(bytes.Buffer)
-	__obf_207f5f9f1a2e7b5e := xml.NewEncoder(__obf_28b8108c6efefd30)
+func PostXmlPtr(__obf_a3d8a1d7a26a1b34 string, __obf_8690295b52001a12 any, __obf_969aede8eee9c705 any) (__obf_eec784b359ebf42f error) {
+	__obf_92a6c1286d60d679 := new(bytes.Buffer)
+	__obf_34006b956928274a := xml.NewEncoder(__obf_92a6c1286d60d679)
 	//	enc.SetEscapeHTML(false)
-	__obf_ab078048114898aa = __obf_207f5f9f1a2e7b5e.Encode(__obf_34b84ecd45b601a3)
-	if __obf_ab078048114898aa != nil {
+	__obf_eec784b359ebf42f = __obf_34006b956928274a.Encode(__obf_8690295b52001a12)
+	if __obf_eec784b359ebf42f != nil {
 		return
 	}
 
-	__obf_1aeba3af5526ef6d, __obf_ab078048114898aa := __obf_4a60dda07f59cbef().Post(__obf_22869fd63c164f49, "application/xml;charset=utf-8", __obf_28b8108c6efefd30)
-	if __obf_ab078048114898aa != nil {
-		return __obf_ab078048114898aa
+	__obf_a215c76839be61a5, __obf_eec784b359ebf42f := __obf_eb674f05d452612b().Post(__obf_a3d8a1d7a26a1b34, "application/xml;charset=utf-8", __obf_92a6c1286d60d679)
+	if __obf_eec784b359ebf42f != nil {
+		return __obf_eec784b359ebf42f
 	}
-	defer __obf_1aeba3af5526ef6d.Body.Close()
+	defer __obf_a215c76839be61a5.Body.Close()
 
-	if __obf_1aeba3af5526ef6d.StatusCode != http.StatusOK {
-		return fmt.Errorf("http post error : uri=%v , statusCode=%v", __obf_22869fd63c164f49, __obf_1aeba3af5526ef6d.StatusCode)
+	if __obf_a215c76839be61a5.StatusCode != http.StatusOK {
+		return fmt.Errorf("http post error : uri=%v , statusCode=%v", __obf_a3d8a1d7a26a1b34, __obf_a215c76839be61a5.StatusCode)
 	}
-	return xml.NewDecoder(__obf_1aeba3af5526ef6d.Body).Decode(__obf_fae510501b39e125)
+	return xml.NewDecoder(__obf_a215c76839be61a5.Body).Decode(__obf_969aede8eee9c705)
 }
 
 // PostFile 上传文件
-func PostFile(__obf_c447bc0f2c0d0335, __obf_efd6dcc9831c56ca, __obf_22869fd63c164f49 string) ([]byte, error) {
-	__obf_f489e5affddeda62 := []MultipartFormField{
+func PostFile(__obf_512f7ba4511bb22d, __obf_4d2a16dc437c92be, __obf_a3d8a1d7a26a1b34 string) ([]byte, error) {
+	__obf_e762e70277dfa6bb := []MultipartFormField{
 		{
 			IsFile:    true,
-			Fieldname: __obf_c447bc0f2c0d0335,
-			Filename:  __obf_efd6dcc9831c56ca,
+			Fieldname: __obf_512f7ba4511bb22d,
+			Filename:  __obf_4d2a16dc437c92be,
 		},
 	}
-	return PostMultipartForm(__obf_f489e5affddeda62, __obf_22869fd63c164f49)
+	return PostMultipartForm(__obf_e762e70277dfa6bb, __obf_a3d8a1d7a26a1b34)
 }
 
 // GetFile 下载文件
-func GetFile(__obf_efd6dcc9831c56ca, __obf_22869fd63c164f49 string) error {
-	__obf_1aeba3af5526ef6d, __obf_ab078048114898aa := __obf_4a60dda07f59cbef().Get(__obf_22869fd63c164f49)
-	if __obf_ab078048114898aa != nil {
-		return __obf_ab078048114898aa
+func GetFile(__obf_4d2a16dc437c92be, __obf_a3d8a1d7a26a1b34 string) error {
+	__obf_a215c76839be61a5, __obf_eec784b359ebf42f := __obf_eb674f05d452612b().Get(__obf_a3d8a1d7a26a1b34)
+	if __obf_eec784b359ebf42f != nil {
+		return __obf_eec784b359ebf42f
 	}
-	defer __obf_1aeba3af5526ef6d.Body.Close()
-	__obf_cddb0fc0ea27c776, __obf_ab078048114898aa := os.Create(__obf_efd6dcc9831c56ca)
-	if __obf_ab078048114898aa != nil {
-		return __obf_ab078048114898aa
+	defer __obf_a215c76839be61a5.Body.Close()
+	__obf_a7fa827cefd5f9da, __obf_eec784b359ebf42f := os.Create(__obf_4d2a16dc437c92be)
+	if __obf_eec784b359ebf42f != nil {
+		return __obf_eec784b359ebf42f
 	}
-	defer __obf_cddb0fc0ea27c776.Close()
-	_, __obf_ab078048114898aa = io.Copy(__obf_cddb0fc0ea27c776, __obf_1aeba3af5526ef6d.Body)
-	return __obf_ab078048114898aa
+	defer __obf_a7fa827cefd5f9da.Close()
+	_, __obf_eec784b359ebf42f = io.Copy(__obf_a7fa827cefd5f9da, __obf_a215c76839be61a5.Body)
+	return __obf_eec784b359ebf42f
 }
 
 // MultipartFormField 文件或其他表单数据
@@ -180,53 +180,53 @@ type MultipartFormField struct {
 }
 
 // PostMultipartForm 上传文件或其他表单数据
-func PostMultipartForm(__obf_f489e5affddeda62 []MultipartFormField, __obf_22869fd63c164f49 string) (__obf_0479429e7c43e116 []byte, __obf_ab078048114898aa error) {
-	__obf_d95aaf2b0df07e00 := &bytes.Buffer{}
-	__obf_64e83fc8b561be5f := multipart.NewWriter(__obf_d95aaf2b0df07e00)
+func PostMultipartForm(__obf_e762e70277dfa6bb []MultipartFormField, __obf_a3d8a1d7a26a1b34 string) (__obf_fd8156f051ce46a0 []byte, __obf_eec784b359ebf42f error) {
+	__obf_2723fbc427b8679e := &bytes.Buffer{}
+	__obf_6f34980bb723c1d2 := multipart.NewWriter(__obf_2723fbc427b8679e)
 
-	for _, __obf_17f9fa2b16b7f147 := range __obf_f489e5affddeda62 {
-		if __obf_17f9fa2b16b7f147.IsFile {
-			__obf_cb0e3c94f7a2749b, __obf_90ec48ccc47fd0ef := __obf_64e83fc8b561be5f.CreateFormFile(__obf_17f9fa2b16b7f147.Fieldname, filepath.Base(__obf_17f9fa2b16b7f147.Filename))
-			if __obf_90ec48ccc47fd0ef != nil {
-				__obf_ab078048114898aa = fmt.Errorf("error writing to buffer , err=%v", __obf_90ec48ccc47fd0ef)
+	for _, __obf_8880ca1fd5d68374 := range __obf_e762e70277dfa6bb {
+		if __obf_8880ca1fd5d68374.IsFile {
+			__obf_8987633b509a2b77, __obf_d4bd147170d96001 := __obf_6f34980bb723c1d2.CreateFormFile(__obf_8880ca1fd5d68374.Fieldname, filepath.Base(__obf_8880ca1fd5d68374.Filename))
+			if __obf_d4bd147170d96001 != nil {
+				__obf_eec784b359ebf42f = fmt.Errorf("error writing to buffer , err=%v", __obf_d4bd147170d96001)
 				return
 			}
 
-			__obf_ae6e420b43b759e6, __obf_90ec48ccc47fd0ef := os.Open(__obf_17f9fa2b16b7f147.Filename)
-			if __obf_90ec48ccc47fd0ef != nil {
-				__obf_ab078048114898aa = fmt.Errorf("error opening file , err=%v", __obf_90ec48ccc47fd0ef)
+			__obf_7be5d4fb8c22e328, __obf_d4bd147170d96001 := os.Open(__obf_8880ca1fd5d68374.Filename)
+			if __obf_d4bd147170d96001 != nil {
+				__obf_eec784b359ebf42f = fmt.Errorf("error opening file , err=%v", __obf_d4bd147170d96001)
 				return
 			}
-			defer __obf_ae6e420b43b759e6.Close()
+			defer __obf_7be5d4fb8c22e328.Close()
 
-			if _, __obf_ab078048114898aa = io.Copy(__obf_cb0e3c94f7a2749b, __obf_ae6e420b43b759e6); __obf_ab078048114898aa != nil {
+			if _, __obf_eec784b359ebf42f = io.Copy(__obf_8987633b509a2b77, __obf_7be5d4fb8c22e328); __obf_eec784b359ebf42f != nil {
 				return
 			}
 		} else {
-			__obf_f9037ebc2e148dc5, __obf_90ec48ccc47fd0ef := __obf_64e83fc8b561be5f.CreateFormField(__obf_17f9fa2b16b7f147.Fieldname)
-			if __obf_90ec48ccc47fd0ef != nil {
-				__obf_ab078048114898aa = __obf_90ec48ccc47fd0ef
+			__obf_997a0d530d6e7c15, __obf_d4bd147170d96001 := __obf_6f34980bb723c1d2.CreateFormField(__obf_8880ca1fd5d68374.Fieldname)
+			if __obf_d4bd147170d96001 != nil {
+				__obf_eec784b359ebf42f = __obf_d4bd147170d96001
 				return
 			}
-			__obf_31ed8c399bb554e9 := bytes.NewReader(__obf_17f9fa2b16b7f147.Value)
-			if _, __obf_ab078048114898aa = io.Copy(__obf_f9037ebc2e148dc5, __obf_31ed8c399bb554e9); __obf_ab078048114898aa != nil {
+			__obf_d6b71428b1349375 := bytes.NewReader(__obf_8880ca1fd5d68374.Value)
+			if _, __obf_eec784b359ebf42f = io.Copy(__obf_997a0d530d6e7c15, __obf_d6b71428b1349375); __obf_eec784b359ebf42f != nil {
 				return
 			}
 		}
 	}
 
-	__obf_71b895a9ee0308a1 := __obf_64e83fc8b561be5f.FormDataContentType()
-	__obf_64e83fc8b561be5f.Close()
+	__obf_66c3ab22b6b799e9 := __obf_6f34980bb723c1d2.FormDataContentType()
+	__obf_6f34980bb723c1d2.Close()
 
-	__obf_1aeba3af5526ef6d, __obf_90ec48ccc47fd0ef := __obf_4a60dda07f59cbef().Post(__obf_22869fd63c164f49, __obf_71b895a9ee0308a1, __obf_d95aaf2b0df07e00)
-	if __obf_90ec48ccc47fd0ef != nil {
-		__obf_ab078048114898aa = __obf_90ec48ccc47fd0ef
+	__obf_a215c76839be61a5, __obf_d4bd147170d96001 := __obf_eb674f05d452612b().Post(__obf_a3d8a1d7a26a1b34, __obf_66c3ab22b6b799e9, __obf_2723fbc427b8679e)
+	if __obf_d4bd147170d96001 != nil {
+		__obf_eec784b359ebf42f = __obf_d4bd147170d96001
 		return
 	}
-	defer __obf_1aeba3af5526ef6d.Body.Close()
+	defer __obf_a215c76839be61a5.Body.Close()
 
-	if __obf_1aeba3af5526ef6d.StatusCode != http.StatusOK {
-		return nil, __obf_ab078048114898aa
+	if __obf_a215c76839be61a5.StatusCode != http.StatusOK {
+		return nil, __obf_eec784b359ebf42f
 	}
-	return io.ReadAll(__obf_1aeba3af5526ef6d.Body)
+	return io.ReadAll(__obf_a215c76839be61a5.Body)
 }

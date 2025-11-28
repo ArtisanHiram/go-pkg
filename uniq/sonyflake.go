@@ -5,7 +5,7 @@
 //	39 bits for time in units of 10 msec
 //	 8 bits for a sequence number
 //	16 bits for a machine id
-package __obf_7913809aab6c8423
+package __obf_0f0e0d1ff72f3ff0
 
 import (
 	"errors"
@@ -46,11 +46,11 @@ type Settings struct {
 
 // Sonyflake is a distributed unique ID generator.
 type Sonyflake struct {
-	__obf_27be151129f99025 *sync.Mutex
-	__obf_fc0ec6f645c1b8bd int64
-	__obf_07ab9ade19346688 int64
-	__obf_007ec6572a283fb6 uint16
-	__obf_a1d6b2555ea864dd uint16
+	__obf_63f6c289520bd7e2 *sync.Mutex
+	__obf_bc63f3e0335cd8ba int64
+	__obf_c648d99dd6a74354 int64
+	__obf_60bc88779bdc777d uint16
+	__obf_91ff39c23c7fcbf1 uint16
 }
 
 var (
@@ -60,43 +60,43 @@ var (
 	ErrInvalidMachineID = errors.New("invalid machine id")
 )
 
-var __obf_14e45a783661b383 = net.InterfaceAddrs
+var __obf_160beb80d20992ed = net.InterfaceAddrs
 
 // New returns a new Sonyflake configured with the given Settings.
 // New returns an error in the following cases:
 // - Settings.StartTime is ahead of the current time.
 // - Settings.MachineID returns an error.
 // - Settings.CheckMachineID returns false.
-func NewSonyflake(__obf_9aa5ddd833df9a52 Settings) (*Sonyflake, error) {
-	if __obf_9aa5ddd833df9a52.StartTime.After(time.Now()) {
+func NewSonyflake(__obf_10f225029ba7d295 Settings) (*Sonyflake, error) {
+	if __obf_10f225029ba7d295.StartTime.After(time.Now()) {
 		return nil, ErrStartTimeAhead
 	}
 
-	__obf_609e1f690a9bdb71 := new(Sonyflake)
-	__obf_609e1f690a9bdb71.__obf_27be151129f99025 = new(sync.Mutex)
-	__obf_609e1f690a9bdb71.__obf_007ec6572a283fb6 = uint16(1<<BitLenSequence - 1)
+	__obf_93c464fcd213d377 := new(Sonyflake)
+	__obf_93c464fcd213d377.__obf_63f6c289520bd7e2 = new(sync.Mutex)
+	__obf_93c464fcd213d377.__obf_60bc88779bdc777d = uint16(1<<BitLenSequence - 1)
 
-	if __obf_9aa5ddd833df9a52.StartTime.IsZero() {
-		__obf_609e1f690a9bdb71.__obf_fc0ec6f645c1b8bd = __obf_cc2f44abacb0408b(time.Date(2014, 9, 1, 0, 0, 0, 0, time.UTC))
+	if __obf_10f225029ba7d295.StartTime.IsZero() {
+		__obf_93c464fcd213d377.__obf_bc63f3e0335cd8ba = __obf_7e4c1daef2ced091(time.Date(2014, 9, 1, 0, 0, 0, 0, time.UTC))
 	} else {
-		__obf_609e1f690a9bdb71.__obf_fc0ec6f645c1b8bd = __obf_cc2f44abacb0408b(__obf_9aa5ddd833df9a52.StartTime)
+		__obf_93c464fcd213d377.__obf_bc63f3e0335cd8ba = __obf_7e4c1daef2ced091(__obf_10f225029ba7d295.StartTime)
 	}
 
-	var __obf_e62cd9e417a87ee7 error
-	if __obf_9aa5ddd833df9a52.MachineID == nil {
-		__obf_609e1f690a9bdb71.__obf_a1d6b2555ea864dd, __obf_e62cd9e417a87ee7 = __obf_d9ec635ee8c6d754(__obf_14e45a783661b383)
+	var __obf_f24ec7ae16791add error
+	if __obf_10f225029ba7d295.MachineID == nil {
+		__obf_93c464fcd213d377.__obf_91ff39c23c7fcbf1, __obf_f24ec7ae16791add = __obf_bbf4e99a718bfaf5(__obf_160beb80d20992ed)
 	} else {
-		__obf_609e1f690a9bdb71.__obf_a1d6b2555ea864dd, __obf_e62cd9e417a87ee7 = __obf_9aa5ddd833df9a52.MachineID()
+		__obf_93c464fcd213d377.__obf_91ff39c23c7fcbf1, __obf_f24ec7ae16791add = __obf_10f225029ba7d295.MachineID()
 	}
-	if __obf_e62cd9e417a87ee7 != nil {
-		return nil, __obf_e62cd9e417a87ee7
+	if __obf_f24ec7ae16791add != nil {
+		return nil, __obf_f24ec7ae16791add
 	}
 
-	if __obf_9aa5ddd833df9a52.CheckMachineID != nil && !__obf_9aa5ddd833df9a52.CheckMachineID(__obf_609e1f690a9bdb71.__obf_a1d6b2555ea864dd) {
+	if __obf_10f225029ba7d295.CheckMachineID != nil && !__obf_10f225029ba7d295.CheckMachineID(__obf_93c464fcd213d377.__obf_91ff39c23c7fcbf1) {
 		return nil, ErrInvalidMachineID
 	}
 
-	return __obf_609e1f690a9bdb71, nil
+	return __obf_93c464fcd213d377, nil
 }
 
 // NewSonyflake returns a new Sonyflake configured with the given Settings.
@@ -111,119 +111,119 @@ func NewSonyflake(__obf_9aa5ddd833df9a52 Settings) (*Sonyflake, error) {
 
 // NextID generates a next unique ID.
 // After the Sonyflake time overflows, NextID returns an error.
-func (__obf_609e1f690a9bdb71 *Sonyflake) NextID() (string, error) {
-	const __obf_ab062e813ac77875 = uint16(1<<BitLenSequence - 1)
+func (__obf_93c464fcd213d377 *Sonyflake) NextID() (string, error) {
+	const __obf_52ef6e2da5c40865 = uint16(1<<BitLenSequence - 1)
 
-	__obf_609e1f690a9bdb71.__obf_27be151129f99025.Lock()
-	defer __obf_609e1f690a9bdb71.__obf_27be151129f99025.Unlock()
+	__obf_93c464fcd213d377.__obf_63f6c289520bd7e2.Lock()
+	defer __obf_93c464fcd213d377.__obf_63f6c289520bd7e2.Unlock()
 
-	__obf_c5695d044cde6996 := __obf_c01ebe7dd2704a3d(__obf_609e1f690a9bdb71.__obf_fc0ec6f645c1b8bd)
-	if __obf_609e1f690a9bdb71.__obf_07ab9ade19346688 < __obf_c5695d044cde6996 {
-		__obf_609e1f690a9bdb71.__obf_07ab9ade19346688 = __obf_c5695d044cde6996
-		__obf_609e1f690a9bdb71.__obf_007ec6572a283fb6 = 0
+	__obf_5d6a616846e72812 := __obf_92d75f1dc8129463(__obf_93c464fcd213d377.__obf_bc63f3e0335cd8ba)
+	if __obf_93c464fcd213d377.__obf_c648d99dd6a74354 < __obf_5d6a616846e72812 {
+		__obf_93c464fcd213d377.__obf_c648d99dd6a74354 = __obf_5d6a616846e72812
+		__obf_93c464fcd213d377.__obf_60bc88779bdc777d = 0
 	} else { // sf.elapsedTime >= current
-		__obf_609e1f690a9bdb71.__obf_007ec6572a283fb6 = (__obf_609e1f690a9bdb71.__obf_007ec6572a283fb6 + 1) & __obf_ab062e813ac77875
-		if __obf_609e1f690a9bdb71.__obf_007ec6572a283fb6 == 0 {
-			__obf_609e1f690a9bdb71.__obf_07ab9ade19346688++
-			__obf_118efe86013deedf := __obf_609e1f690a9bdb71.__obf_07ab9ade19346688 - __obf_c5695d044cde6996
-			time.Sleep(__obf_2b50c20e0ad2a012((__obf_118efe86013deedf)))
+		__obf_93c464fcd213d377.__obf_60bc88779bdc777d = (__obf_93c464fcd213d377.__obf_60bc88779bdc777d + 1) & __obf_52ef6e2da5c40865
+		if __obf_93c464fcd213d377.__obf_60bc88779bdc777d == 0 {
+			__obf_93c464fcd213d377.__obf_c648d99dd6a74354++
+			__obf_11bf7d3195bd594b := __obf_93c464fcd213d377.__obf_c648d99dd6a74354 - __obf_5d6a616846e72812
+			time.Sleep(__obf_57c82dd4f7ef85e4((__obf_11bf7d3195bd594b)))
 		}
 	}
 
-	return __obf_609e1f690a9bdb71.__obf_65554ed04c6fa6bc()
+	return __obf_93c464fcd213d377.__obf_de9d3d4479b0867d()
 }
 
-const __obf_13dc99f55cf6618f = 1e7 // nsec, i.e. 10 msec
+const __obf_a6e3ddfca53f1c41 = 1e7 // nsec, i.e. 10 msec
 
-func __obf_cc2f44abacb0408b(__obf_f154b37f4911a720 time.Time) int64 {
-	return __obf_f154b37f4911a720.UTC().UnixNano() / __obf_13dc99f55cf6618f
+func __obf_7e4c1daef2ced091(__obf_3c7f4fcc21cb9f0d time.Time) int64 {
+	return __obf_3c7f4fcc21cb9f0d.UTC().UnixNano() / __obf_a6e3ddfca53f1c41
 }
 
-func __obf_c01ebe7dd2704a3d(__obf_fc0ec6f645c1b8bd int64) int64 {
-	return __obf_cc2f44abacb0408b(time.Now()) - __obf_fc0ec6f645c1b8bd
+func __obf_92d75f1dc8129463(__obf_bc63f3e0335cd8ba int64) int64 {
+	return __obf_7e4c1daef2ced091(time.Now()) - __obf_bc63f3e0335cd8ba
 }
 
-func __obf_2b50c20e0ad2a012(__obf_118efe86013deedf int64) time.Duration {
-	return time.Duration(__obf_118efe86013deedf*__obf_13dc99f55cf6618f) -
-		time.Duration(time.Now().UTC().UnixNano()%__obf_13dc99f55cf6618f)
+func __obf_57c82dd4f7ef85e4(__obf_11bf7d3195bd594b int64) time.Duration {
+	return time.Duration(__obf_11bf7d3195bd594b*__obf_a6e3ddfca53f1c41) -
+		time.Duration(time.Now().UTC().UnixNano()%__obf_a6e3ddfca53f1c41)
 }
 
-func (__obf_609e1f690a9bdb71 *Sonyflake) __obf_65554ed04c6fa6bc() (string, error) {
-	if __obf_609e1f690a9bdb71.__obf_07ab9ade19346688 >= 1<<BitLenTime {
+func (__obf_93c464fcd213d377 *Sonyflake) __obf_de9d3d4479b0867d() (string, error) {
+	if __obf_93c464fcd213d377.__obf_c648d99dd6a74354 >= 1<<BitLenTime {
 		return "", ErrOverTimeLimit
 	}
 
-	return fmt.Sprintf("%X", uint64(__obf_609e1f690a9bdb71.__obf_07ab9ade19346688)<<(BitLenSequence+BitLenMachineID)|
-		uint64(__obf_609e1f690a9bdb71.__obf_007ec6572a283fb6)<<BitLenMachineID|
-		uint64(__obf_609e1f690a9bdb71.__obf_a1d6b2555ea864dd)), nil
+	return fmt.Sprintf("%X", uint64(__obf_93c464fcd213d377.__obf_c648d99dd6a74354)<<(BitLenSequence+BitLenMachineID)|
+		uint64(__obf_93c464fcd213d377.__obf_60bc88779bdc777d)<<BitLenMachineID|
+		uint64(__obf_93c464fcd213d377.__obf_91ff39c23c7fcbf1)), nil
 }
 
-func __obf_804575fb9d8d64b6(__obf_c6787a8a9759149d InterfaceAddrs) (net.IP, error) {
-	__obf_663788bf5979f5d2, __obf_e62cd9e417a87ee7 := __obf_c6787a8a9759149d()
-	if __obf_e62cd9e417a87ee7 != nil {
-		return nil, __obf_e62cd9e417a87ee7
+func __obf_cd1a65bbacac6a62(__obf_99d7ff6bde6d7540 InterfaceAddrs) (net.IP, error) {
+	__obf_243666a925f1dff1, __obf_f24ec7ae16791add := __obf_99d7ff6bde6d7540()
+	if __obf_f24ec7ae16791add != nil {
+		return nil, __obf_f24ec7ae16791add
 	}
 
-	for _, __obf_3da24acaf7d1fffd := range __obf_663788bf5979f5d2 {
-		__obf_59e528b477c09677, __obf_c8f04275fcb5c686 := __obf_3da24acaf7d1fffd.(*net.IPNet)
-		if !__obf_c8f04275fcb5c686 || __obf_59e528b477c09677.IP.IsLoopback() {
+	for _, __obf_92d04951402c828c := range __obf_243666a925f1dff1 {
+		__obf_ddb9513e7b6bc4b7, __obf_b08eebaa4bd2dee3 := __obf_92d04951402c828c.(*net.IPNet)
+		if !__obf_b08eebaa4bd2dee3 || __obf_ddb9513e7b6bc4b7.IP.IsLoopback() {
 			continue
 		}
 
-		__obf_63e8f9372174d7f0 := __obf_59e528b477c09677.IP.To4()
-		if __obf_43c4258a47d63b90(__obf_63e8f9372174d7f0) {
-			return __obf_63e8f9372174d7f0, nil
+		__obf_61706468d58f484e := __obf_ddb9513e7b6bc4b7.IP.To4()
+		if __obf_aabc836bce84c46e(__obf_61706468d58f484e) {
+			return __obf_61706468d58f484e, nil
 		}
 	}
 	return nil, ErrNoPrivateAddress
 }
 
-func __obf_43c4258a47d63b90(__obf_63e8f9372174d7f0 net.IP) bool {
-	return __obf_63e8f9372174d7f0 != nil &&
-		(__obf_63e8f9372174d7f0[0] == 10 || __obf_63e8f9372174d7f0[0] == 172 && (__obf_63e8f9372174d7f0[1] >= 16 && __obf_63e8f9372174d7f0[1] < 32) || __obf_63e8f9372174d7f0[0] == 192 && __obf_63e8f9372174d7f0[1] == 168)
+func __obf_aabc836bce84c46e(__obf_61706468d58f484e net.IP) bool {
+	return __obf_61706468d58f484e != nil &&
+		(__obf_61706468d58f484e[0] == 10 || __obf_61706468d58f484e[0] == 172 && (__obf_61706468d58f484e[1] >= 16 && __obf_61706468d58f484e[1] < 32) || __obf_61706468d58f484e[0] == 192 && __obf_61706468d58f484e[1] == 168)
 }
 
-func __obf_d9ec635ee8c6d754(__obf_c6787a8a9759149d InterfaceAddrs) (uint16, error) {
-	__obf_63e8f9372174d7f0, __obf_e62cd9e417a87ee7 := __obf_804575fb9d8d64b6(__obf_c6787a8a9759149d)
-	if __obf_e62cd9e417a87ee7 != nil {
-		return 0, __obf_e62cd9e417a87ee7
+func __obf_bbf4e99a718bfaf5(__obf_99d7ff6bde6d7540 InterfaceAddrs) (uint16, error) {
+	__obf_61706468d58f484e, __obf_f24ec7ae16791add := __obf_cd1a65bbacac6a62(__obf_99d7ff6bde6d7540)
+	if __obf_f24ec7ae16791add != nil {
+		return 0, __obf_f24ec7ae16791add
 	}
 
-	return uint16(__obf_63e8f9372174d7f0[2])<<8 + uint16(__obf_63e8f9372174d7f0[3]), nil
+	return uint16(__obf_61706468d58f484e[2])<<8 + uint16(__obf_61706468d58f484e[3]), nil
 }
 
 // ElapsedTime returns the elapsed time when the given Sonyflake ID was generated.
-func ElapsedTime(__obf_1dfe314328e20778 uint64) time.Duration {
-	return time.Duration(__obf_07ab9ade19346688(__obf_1dfe314328e20778) * __obf_13dc99f55cf6618f)
+func ElapsedTime(__obf_a7593a31c69c5d40 uint64) time.Duration {
+	return time.Duration(__obf_c648d99dd6a74354(__obf_a7593a31c69c5d40) * __obf_a6e3ddfca53f1c41)
 }
 
-func __obf_07ab9ade19346688(__obf_1dfe314328e20778 uint64) uint64 {
-	return __obf_1dfe314328e20778 >> (BitLenSequence + BitLenMachineID)
+func __obf_c648d99dd6a74354(__obf_a7593a31c69c5d40 uint64) uint64 {
+	return __obf_a7593a31c69c5d40 >> (BitLenSequence + BitLenMachineID)
 }
 
 // SequenceNumber returns the sequence number of a Sonyflake ID.
-func SequenceNumber(__obf_1dfe314328e20778 uint64) uint64 {
-	const __obf_ab062e813ac77875 = uint64((1<<BitLenSequence - 1) << BitLenMachineID)
-	return __obf_1dfe314328e20778 & __obf_ab062e813ac77875 >> BitLenMachineID
+func SequenceNumber(__obf_a7593a31c69c5d40 uint64) uint64 {
+	const __obf_52ef6e2da5c40865 = uint64((1<<BitLenSequence - 1) << BitLenMachineID)
+	return __obf_a7593a31c69c5d40 & __obf_52ef6e2da5c40865 >> BitLenMachineID
 }
 
 // MachineID returns the machine ID of a Sonyflake ID.
-func MachineID(__obf_1dfe314328e20778 uint64) uint64 {
-	const __obf_d65150b72dcc040d = uint64(1<<BitLenMachineID - 1)
-	return __obf_1dfe314328e20778 & __obf_d65150b72dcc040d
+func MachineID(__obf_a7593a31c69c5d40 uint64) uint64 {
+	const __obf_d4c0b0343970b293 = uint64(1<<BitLenMachineID - 1)
+	return __obf_a7593a31c69c5d40 & __obf_d4c0b0343970b293
 }
 
 // Decompose returns a set of Sonyflake ID parts.
-func Decompose(__obf_1dfe314328e20778 uint64) map[string]uint64 {
-	__obf_9ec5dd2e93ae8261 := __obf_1dfe314328e20778 >> 63
-	time := __obf_07ab9ade19346688(__obf_1dfe314328e20778)
-	__obf_007ec6572a283fb6 := SequenceNumber(__obf_1dfe314328e20778)
-	__obf_a1d6b2555ea864dd := MachineID(__obf_1dfe314328e20778)
+func Decompose(__obf_a7593a31c69c5d40 uint64) map[string]uint64 {
+	__obf_32edf9de6f654b3b := __obf_a7593a31c69c5d40 >> 63
+	time := __obf_c648d99dd6a74354(__obf_a7593a31c69c5d40)
+	__obf_60bc88779bdc777d := SequenceNumber(__obf_a7593a31c69c5d40)
+	__obf_91ff39c23c7fcbf1 := MachineID(__obf_a7593a31c69c5d40)
 	return map[string]uint64{
-		"id":         __obf_1dfe314328e20778,
-		"msb":        __obf_9ec5dd2e93ae8261,
+		"id":         __obf_a7593a31c69c5d40,
+		"msb":        __obf_32edf9de6f654b3b,
 		"time":       time,
-		"sequence":   __obf_007ec6572a283fb6,
-		"machine-id": __obf_a1d6b2555ea864dd,
+		"sequence":   __obf_60bc88779bdc777d,
+		"machine-id": __obf_91ff39c23c7fcbf1,
 	}
 }

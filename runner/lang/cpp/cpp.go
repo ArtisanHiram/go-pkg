@@ -1,19 +1,19 @@
-package __obf_db3a2adcf9f700bf
+package __obf_0db3567988dbee94
 
 import (
 	cmd "github.com/ArtisanHiram/go-pkg/runner/cmd"
 	"path/filepath"
 )
 
-func Run(__obf_511d5deb5f698e16, __obf_a7305547b06d118a string, __obf_a977baec74f93342 []string) (string, string, error) {
-	__obf_f2026fc3cea3689a := "main.out"
+func Run(__obf_0b2adfc2f41fd172, __obf_99b7747b68041347 string, __obf_1cb27b48bc2a845c []string) (string, string, error) {
+	__obf_b95b345249378829 := "main.out"
 
-	__obf_edc62d6b3e6637a6 := append([]string{"clang++", "-std=c++11", "-o", __obf_f2026fc3cea3689a}, __obf_a977baec74f93342...)
-	__obf_dd797dcdc10320e0, __obf_025fc615fbfe3ca5, __obf_b99fcc8c31596230 := cmd.Run(__obf_511d5deb5f698e16, __obf_edc62d6b3e6637a6...)
-	if __obf_b99fcc8c31596230 != nil {
-		return __obf_dd797dcdc10320e0, __obf_025fc615fbfe3ca5, __obf_b99fcc8c31596230
+	__obf_ee11f4b6b5e3373a := append([]string{"clang++", "-std=c++11", "-o", __obf_b95b345249378829}, __obf_1cb27b48bc2a845c...)
+	__obf_adfc1aac49122c99, __obf_3e76f5da14d82fa3, __obf_1ff3ef539cddaaac := cmd.Run(__obf_0b2adfc2f41fd172, __obf_ee11f4b6b5e3373a...)
+	if __obf_1ff3ef539cddaaac != nil {
+		return __obf_adfc1aac49122c99, __obf_3e76f5da14d82fa3, __obf_1ff3ef539cddaaac
 	}
 
-	__obf_b0ffe88338c9ab16 := filepath.Join(__obf_511d5deb5f698e16, __obf_f2026fc3cea3689a)
-	return cmd.RunStdin(__obf_511d5deb5f698e16, __obf_a7305547b06d118a, __obf_b0ffe88338c9ab16)
+	__obf_0af0c3c964aad7d9 := filepath.Join(__obf_0b2adfc2f41fd172, __obf_b95b345249378829)
+	return cmd.RunStdin(__obf_0b2adfc2f41fd172, __obf_99b7747b68041347, __obf_0af0c3c964aad7d9)
 }

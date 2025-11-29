@@ -1,35 +1,42 @@
-package __obf_96c99f1db90b23fa
+package __obf_a0c8110fd085454e
 
-import types "github.com/ArtisanHiram/go-pkg/captcha/types"
+import (
+	types "github.com/ArtisanHiram/go-pkg/captcha/types"
+	mapstructure "github.com/ArtisanHiram/go-pkg/mapstructure"
+)
 
 // CaptchaData is the concrete implementation of the CaptchaData interface
 type CaptchaData struct {
-	__obf_9ecfe5c0e9e57390 []*types.Dot
-	__obf_d1b1b184cf543db3 *types.JPEGImage
-	__obf_dedf9178334e9a06 *types.PNGImage
+	__obf_cea1e242f930c716 []*types.Dot
+	__obf_d88cc15f0bafbf24 *types.JPEGImage
+	__obf_30d550091f68f974 *types.PNGImage
 }
 
 // Ensure CaptchaData implements util.CaptchaData interface
-var _ types.Captcha[[]*types.Dot] = (*CaptchaData)(nil)
+var _ types.CaptchaData = (*CaptchaData)(nil)
 
 // GetPrimary gets the main captcha image
 // return: Main image as CaptchaImage interface
-func (__obf_3f5b5aab6d53fe90 *CaptchaData) GetPrimary() types.CaptchaImage {
-	return __obf_3f5b5aab6d53fe90.__obf_d1b1b184cf543db3
+func (__obf_761b3f820674d2e3 *CaptchaData) GetPrimary() types.CaptchaImage {
+	return __obf_761b3f820674d2e3.
+
+		// GetSecondary gets the thumbnail image
+		// return: Thumbnail image as CaptchaImage interface
+		__obf_d88cc15f0bafbf24
 }
 
-// GetSecondary gets the thumbnail image
-// return: Thumbnail image as CaptchaImage interface
-func (__obf_3f5b5aab6d53fe90 *CaptchaData) GetSecondary() types.CaptchaImage {
-	return __obf_3f5b5aab6d53fe90.__obf_dedf9178334e9a06
+func (__obf_761b3f820674d2e3 *CaptchaData) GetSecondary() types.CaptchaImage {
+	return __obf_761b3f820674d2e3.
+
+		// GetData gets the target dots data
+		__obf_30d550091f68f974
 }
 
-// GetData gets the target dots data
-func (__obf_3f5b5aab6d53fe90 *CaptchaData) GetData() []*types.Dot {
-	return __obf_3f5b5aab6d53fe90.__obf_9ecfe5c0e9e57390
+func (__obf_761b3f820674d2e3 *CaptchaData) GetData() any {
+	return __obf_761b3f820674d2e3.__obf_cea1e242f930c716
 }
 
-func (__obf_3f5b5aab6d53fe90 *CaptchaData) Type() types.CaptchaType {
+func (__obf_761b3f820674d2e3 *CaptchaData) Type() types.CaptchaType {
 	return types.ClickCaptchat
 }
 
@@ -37,32 +44,45 @@ func (__obf_3f5b5aab6d53fe90 *CaptchaData) Type() types.CaptchaType {
 // clicks: slice of clicked coordinates
 // tolerance: allowed pixel deviation for matching
 // Returns true if all target dots are clicked correctly in order
-func (__obf_3f5b5aab6d53fe90 *CaptchaData) Verify(__obf_2d727629b6dc5dfb []*types.Dot, __obf_77fd0cfb3db60892 int) bool {
+func (__obf_761b3f820674d2e3 *CaptchaData) Verify(__obf_e32e2dedaa5096ca any, __obf_7161ea62e78e23e3 int) bool {
 	// if len(clicks) != len(c.dots)*2 {
 	// 	return false
 	// }
 
-	if len(__obf_2d727629b6dc5dfb) != len(__obf_3f5b5aab6d53fe90.__obf_9ecfe5c0e9e57390) {
+	var __obf_cea1e242f930c716 []*types.Dot
+	__obf_e1cc2008a5f56072 := // 配置 mapstructure
+		&mapstructure.DecoderConfig{
+			Result:           &__obf_cea1e242f930c716,
+			TagName:          "json",
+			WeaklyTypedInput: true, // 关键：允许弱类型转换（如 float64 -> int）
+		}
+	__obf_b0c425150960b60d, __obf_43790225c3b3432f := mapstructure.NewDecoder(__obf_e1cc2008a5f56072)
+	if __obf_43790225c3b3432f != nil {
 		return false
 	}
 
-	for __obf_176527c945a10eb5, __obf_68c032f360706780 := range __obf_3f5b5aab6d53fe90.__obf_9ecfe5c0e9e57390 {
+	if __obf_43790225c3b3432f := __obf_b0c425150960b60d.Decode(__obf_e32e2dedaa5096ca); __obf_43790225c3b3432f != nil {
+		return false
+	}
+
+	if len(__obf_cea1e242f930c716) != len(__obf_761b3f820674d2e3.__obf_cea1e242f930c716) {
+		return false
+	}
+	for __obf_d9fed1663089e979, __obf_b4922ee002e08e21 := range __obf_761b3f820674d2e3.
 		// clickX := clicks[i*2]
 		// clickY := clicks[i*2+1]
-		__obf_c5d039033cfb967a := __obf_2d727629b6dc5dfb[__obf_176527c945a10eb5].X
-		__obf_825f010539c63826 := __obf_2d727629b6dc5dfb[__obf_176527c945a10eb5].Y
-
-		// Calculate the center point of the dot
-		__obf_4c0edcf9e88aee9f := __obf_68c032f360706780.X + __obf_68c032f360706780.Size/2
-		__obf_25f07cf3768e1222 := __obf_68c032f360706780.Y + __obf_68c032f360706780.Size/2
+		__obf_cea1e242f930c716 {
+		__obf_3544ec82ee713232 := __obf_cea1e242f930c716[__obf_d9fed1663089e979].X
+		__obf_ec1ce5a82d0b9af3 := __obf_cea1e242f930c716[__obf_d9fed1663089e979].Y
+		__obf_91d919a815d9189c := // Calculate the center point of the dot
+			__obf_b4922ee002e08e21.X + __obf_b4922ee002e08e21.Size/2
+		__obf_a25d5405a298af9b := __obf_b4922ee002e08e21.Y + __obf_b4922ee002e08e21.Size/2
 
 		// Check if click is within tolerance range
-		if __obf_c5d039033cfb967a < __obf_4c0edcf9e88aee9f-__obf_77fd0cfb3db60892 || __obf_c5d039033cfb967a > __obf_4c0edcf9e88aee9f+__obf_77fd0cfb3db60892 ||
-			__obf_825f010539c63826 < __obf_25f07cf3768e1222-__obf_77fd0cfb3db60892 || __obf_825f010539c63826 > __obf_25f07cf3768e1222+__obf_77fd0cfb3db60892 {
+		if __obf_3544ec82ee713232 < __obf_91d919a815d9189c-__obf_7161ea62e78e23e3 || __obf_3544ec82ee713232 > __obf_91d919a815d9189c+__obf_7161ea62e78e23e3 || __obf_ec1ce5a82d0b9af3 < __obf_a25d5405a298af9b-__obf_7161ea62e78e23e3 || __obf_ec1ce5a82d0b9af3 > __obf_a25d5405a298af9b+__obf_7161ea62e78e23e3 {
 			return false
 		}
 	}
-
 	return true
 }
 

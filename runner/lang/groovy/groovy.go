@@ -1,10 +1,10 @@
-package __obf_b68f91eece4cab06
+package __obf_3fcb5f297f4fa0ce
 
 import (
 	cmd "github.com/ArtisanHiram/go-pkg/runner/cmd"
 )
 
-func Run(__obf_e2a93f145cadb913, __obf_7a996ab24db0f364 string, __obf_fd12521cc6efff3b []string) (string, string, error) {
-	__obf_d03f7657ebb0eae4 := append([]string{"groovy"}, __obf_fd12521cc6efff3b...)
-	return cmd.RunStdin(__obf_e2a93f145cadb913, __obf_7a996ab24db0f364, __obf_d03f7657ebb0eae4...)
+func Run(__obf_607acdba0f8bfb59, __obf_5439fd2b8d11cec3 string, __obf_600a99b324bb9098 []string) (string, string, error) {
+	__obf_46c345598d03ac08 := append([]string{"groovy"}, __obf_600a99b324bb9098...)
+	return cmd.RunStdin(__obf_607acdba0f8bfb59, __obf_5439fd2b8d11cec3, __obf_46c345598d03ac08...)
 }

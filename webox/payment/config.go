@@ -1,4 +1,4 @@
-package __obf_6e10ad3f90512272
+package __obf_b208cbe38c7e3325
 
 import (
 	"crypto/rsa"
@@ -25,30 +25,30 @@ type Config struct {
 	TLSCert   tls.Certificate   `json:"-" yaml:"-"`
 }
 
-func (__obf_a68c16ffd860cd2e *Config) LoadAPICert() (__obf_ef52c60cbdb9d4d7 error) {
-	if __obf_a68c16ffd860cd2e.P12Path == "" || __obf_a68c16ffd860cd2e.P12Key == "" {
+func (__obf_114d56f910b3b284 *Config) LoadAPICert() (__obf_4a2f7560afdd36ef error) {
+	if __obf_114d56f910b3b284.P12Path == "" || __obf_114d56f910b3b284.P12Key == "" {
 		return errors.New("p12 path or p12 key is not set")
 	}
-	__obf_320e33e33e7d96d3, __obf_ef52c60cbdb9d4d7 := os.ReadFile(__obf_a68c16ffd860cd2e.P12Path)
-	if __obf_ef52c60cbdb9d4d7 != nil {
-		return fmt.Errorf("p12 read failed: %w", __obf_ef52c60cbdb9d4d7)
+	__obf_952a9f7d696cc7e9, __obf_4a2f7560afdd36ef := os.ReadFile(__obf_114d56f910b3b284.P12Path)
+	if __obf_4a2f7560afdd36ef != nil {
+		return fmt.Errorf("p12 read failed: %w", __obf_4a2f7560afdd36ef)
 	}
-	__obf_3a9ac02eb1e26566, __obf_f23752148af097c5, __obf_ef52c60cbdb9d4d7 := pkcs12.Decode(__obf_320e33e33e7d96d3, __obf_a68c16ffd860cd2e.P12Key)
-	if __obf_ef52c60cbdb9d4d7 != nil {
-		return fmt.Errorf("p12 decode failed: %w", __obf_ef52c60cbdb9d4d7)
+	__obf_b3258e4e01c3274c, __obf_60b3d3dc2577a1dc, __obf_4a2f7560afdd36ef := pkcs12.Decode(__obf_952a9f7d696cc7e9, __obf_114d56f910b3b284.P12Key)
+	if __obf_4a2f7560afdd36ef != nil {
+		return fmt.Errorf("p12 decode failed: %w", __obf_4a2f7560afdd36ef)
 	}
-
-	__obf_a68c16ffd860cd2e.TLSCert, __obf_ef52c60cbdb9d4d7 = tls.X509KeyPair(
+	__obf_114d56f910b3b284.
+		TLSCert, __obf_4a2f7560afdd36ef = tls.X509KeyPair(
 		pem.EncodeToMemory(
 			&pem.Block{
 				Type:  "CERTIFICATE",
-				Bytes: __obf_f23752148af097c5.Raw,
+				Bytes: __obf_60b3d3dc2577a1dc.Raw,
 			},
 		),
 		pem.EncodeToMemory(
 			&pem.Block{
 				Type:  "PRIVATE KEY",
-				Bytes: x509.MarshalPKCS1PrivateKey(__obf_3a9ac02eb1e26566.(*rsa.PrivateKey)),
+				Bytes: x509.MarshalPKCS1PrivateKey(__obf_b3258e4e01c3274c.(*rsa.PrivateKey)),
 			},
 		),
 	)

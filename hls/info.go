@@ -1,4 +1,4 @@
-package __obf_b28324f38df50634
+package __obf_5441fcd9a319cf59
 
 import (
 	"context"
@@ -13,15 +13,15 @@ type MediaInfo struct {
 	Duration string `json:"duration"`
 }
 
-func GetVideoInfo(__obf_ef284eab1db4670a string) (*MediaInfo, error) {
-	__obf_c2c8a52eb04b2873, __obf_f6957728c129bb63 := context.WithTimeout(context.Background(), 20*time.Second)
-	defer __obf_f6957728c129bb63()
-	var __obf_243ecc1b663ec613 struct {
+func GetVideoInfo(__obf_75bf03e05fea1b50 string) (*MediaInfo, error) {
+	__obf_83fad17274e83f8e, __obf_79bf09d29303d0f4 := context.WithTimeout(context.Background(), 20*time.Second)
+	defer __obf_79bf09d29303d0f4()
+	var __obf_3753bb63957fd7cb struct {
 		Format MediaInfo
 	}
-	if __obf_a4e073529832bad2 := ExecJsonStdout(exec.CommandContext(__obf_c2c8a52eb04b2873, FFProbePath, "-v", "quiet", "-print_format", "json", "-show_format", __obf_ef284eab1db4670a), &__obf_243ecc1b663ec613); __obf_a4e073529832bad2 != nil {
-		return nil, fmt.Errorf("error getting JSON from ffprobe output for file '%v': %v", __obf_ef284eab1db4670a, __obf_a4e073529832bad2)
+	if __obf_e8125dea727cd4c9 := ExecJsonStdout(exec.CommandContext(__obf_83fad17274e83f8e, FFProbePath, "-v", "quiet", "-print_format", "json", "-show_format", __obf_75bf03e05fea1b50), &__obf_3753bb63957fd7cb); __obf_e8125dea727cd4c9 != nil {
+		return nil, fmt.Errorf("error getting JSON from ffprobe output for file '%v': %v", __obf_75bf03e05fea1b50, __obf_e8125dea727cd4c9)
 	}
 
-	return &__obf_243ecc1b663ec613.Format, nil
+	return &__obf_3753bb63957fd7cb.Format, nil
 }

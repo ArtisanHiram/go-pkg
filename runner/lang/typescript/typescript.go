@@ -1,22 +1,22 @@
-package __obf_fbebc8f82a04b8b4
+package __obf_d46ec55c5ef4935c
 
 import (
 	cmd "github.com/ArtisanHiram/go-pkg/runner/cmd"
 	util "github.com/ArtisanHiram/go-pkg/runner/util"
 )
 
-func Run(__obf_2c95068e6d454a9f string, __obf_e6ca8c4d305b8666 string, __obf_843a4e5031e3a40f []string) (string, string, error) {
-	__obf_37269134bddabd34 := "main.js"
+func Run(__obf_586a9124022bf13e string, __obf_c83226e738570287 string, __obf_3178da58f50058d3 []string) (string, string, error) {
+	__obf_d89fe2958d7240e8 := "main.js"
+	__obf_073aec09fa2eb690 := // Find all typescript files and build compile command
+		util.FilterByExtension(__obf_3178da58f50058d3, ".ts")
+	__obf_9451dca319ecedc6 := append([]string{"tsc", "-out", __obf_d89fe2958d7240e8}, __obf_073aec09fa2eb690...)
+	__obf_a9be9bad18257073,
 
-	// Find all typescript files and build compile command
-	__obf_796739feb9c77f52 := util.FilterByExtension(__obf_843a4e5031e3a40f, ".ts")
-	__obf_5d503dd057495cbf := append([]string{"tsc", "-out", __obf_37269134bddabd34}, __obf_796739feb9c77f52...)
-
-	// Compile to javascript
-	__obf_159880849dbd6f90, __obf_96222683a03ff27c, __obf_e3d2f690f443f303 := cmd.Run(__obf_2c95068e6d454a9f, __obf_5d503dd057495cbf...)
-	if __obf_e3d2f690f443f303 != nil {
-		return __obf_159880849dbd6f90, __obf_96222683a03ff27c, __obf_e3d2f690f443f303
+		// Compile to javascript
+		__obf_a6c0335e4730c435, __obf_fc1304775289ebff := cmd.Run(__obf_586a9124022bf13e, __obf_9451dca319ecedc6...)
+	if __obf_fc1304775289ebff != nil {
+		return __obf_a9be9bad18257073, __obf_a6c0335e4730c435, __obf_fc1304775289ebff
 	}
 
-	return cmd.RunStdin(__obf_2c95068e6d454a9f, __obf_e6ca8c4d305b8666, "node", __obf_37269134bddabd34)
+	return cmd.RunStdin(__obf_586a9124022bf13e, __obf_c83226e738570287, "node", __obf_d89fe2958d7240e8)
 }

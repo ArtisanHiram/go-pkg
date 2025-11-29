@@ -1,7 +1,7 @@
 // go-qrcode
 // Copyright 2014 Tom Harwood
 
-package __obf_6d5da6b2ca65c82e
+package __obf_d5be46fdf9a047aa
 
 // Addition, subtraction, multiplication, and division in GF(2^8).
 // Operations are performed modulo x^8 + x^4 + x^3 + x^2 + 1.
@@ -11,12 +11,12 @@ package __obf_6d5da6b2ca65c82e
 import "log"
 
 const (
-	__obf_c3429c035d16c395 = __obf_29e803ad00f0d12b(0)
-	__obf_2a87e72cea132955 = __obf_29e803ad00f0d12b(1)
+	__obf_b79d07b388290551 = __obf_94bafdc0d5ce6bf6(0)
+	__obf_336334426df17940 = __obf_94bafdc0d5ce6bf6(1)
 )
 
 var (
-	__obf_654399568b579db1 = [256]__obf_29e803ad00f0d12b{
+	__obf_2b1bf999fbc85162 = [256]__obf_94bafdc0d5ce6bf6{
 		/*   0 -   9 */ 1, 2, 4, 8, 16, 32, 64, 128, 29, 58,
 		/*  10 -  19 */ 116, 232, 205, 135, 19, 38, 76, 152, 45, 90,
 		/*  20 -  29 */ 180, 117, 234, 201, 143, 3, 6, 12, 24, 48,
@@ -43,8 +43,7 @@ var (
 		/* 230 - 239 */ 244, 245, 247, 243, 251, 235, 203, 139, 11, 22,
 		/* 240 - 249 */ 44, 88, 176, 125, 250, 233, 207, 131, 27, 54,
 		/* 250 - 255 */ 108, 216, 173, 71, 142, 1}
-
-	__obf_922a3b54cf565bb2 = [256]int{
+	__obf_c02e00c89ccc9280 = [256]int{
 		/*   0 -   9 */ -1, 0, 1, 25, 2, 50, 26, 198, 3, 223,
 		/*  10 -  19 */ 51, 238, 27, 104, 199, 75, 4, 100, 224, 14,
 		/*  20 -  29 */ 52, 141, 239, 129, 28, 193, 105, 248, 200, 8,
@@ -74,56 +73,58 @@ var (
 )
 
 // gfElement is an element in GF(2^8).
-type __obf_29e803ad00f0d12b uint8
+type __obf_94bafdc0d5ce6bf6 uint8
 
 // newGFElement creates and returns a new gfElement.
-func __obf_184af2a41fa8e8a1(__obf_92f02e566ccfb5ff byte) __obf_29e803ad00f0d12b {
-	return __obf_29e803ad00f0d12b(__obf_92f02e566ccfb5ff)
+func __obf_d8e88e067f2b9432(__obf_6a71e09d65c25d89 byte) __obf_94bafdc0d5ce6bf6 {
+	return __obf_94bafdc0d5ce6bf6(__obf_6a71e09d65c25d89)
 }
 
 // gfAdd returns a + b.
-func __obf_1517ca40aa775c29(__obf_a5e0b8636672b1a1, __obf_d86b9025cb5ef594 __obf_29e803ad00f0d12b) __obf_29e803ad00f0d12b {
-	return __obf_a5e0b8636672b1a1 ^ __obf_d86b9025cb5ef594
+func __obf_c0193b490a988aa4(__obf_98a34ba73ba6a166, __obf_0e533b075e8992c6 __obf_94bafdc0d5ce6bf6,) __obf_94bafdc0d5ce6bf6 {
+	return __obf_98a34ba73ba6a166 ^ __obf_0e533b075e8992c6
 }
 
 // gfSub returns a - b.
 //
 // Note addition is equivalent to subtraction in GF(2).
-func __obf_b6060eb306cc13ef(__obf_a5e0b8636672b1a1, __obf_d86b9025cb5ef594 __obf_29e803ad00f0d12b) __obf_29e803ad00f0d12b {
-	return __obf_a5e0b8636672b1a1 ^ __obf_d86b9025cb5ef594
+func __obf_63b32dd096471c2f(__obf_98a34ba73ba6a166, __obf_0e533b075e8992c6 __obf_94bafdc0d5ce6bf6,) __obf_94bafdc0d5ce6bf6 {
+	return __obf_98a34ba73ba6a166 ^ __obf_0e533b075e8992c6
 }
 
 // gfMultiply returns a * b.
-func __obf_bd0138baa1f450bb(__obf_a5e0b8636672b1a1, __obf_d86b9025cb5ef594 __obf_29e803ad00f0d12b) __obf_29e803ad00f0d12b {
-	if __obf_a5e0b8636672b1a1 == __obf_c3429c035d16c395 || __obf_d86b9025cb5ef594 == __obf_c3429c035d16c395 {
-		return __obf_c3429c035d16c395
+func __obf_9969f7a117b39136(__obf_98a34ba73ba6a166, __obf_0e533b075e8992c6 __obf_94bafdc0d5ce6bf6,) __obf_94bafdc0d5ce6bf6 {
+	if __obf_98a34ba73ba6a166 == __obf_b79d07b388290551 || __obf_0e533b075e8992c6 == __obf_b79d07b388290551 {
+		return __obf_b79d07b388290551
 	}
 
-	return __obf_654399568b579db1[(__obf_922a3b54cf565bb2[__obf_a5e0b8636672b1a1]+__obf_922a3b54cf565bb2[__obf_d86b9025cb5ef594])%255]
+	return __obf_2b1bf999fbc85162[(__obf_c02e00c89ccc9280[__obf_98a34ba73ba6a166]+__obf_c02e00c89ccc9280[__obf_0e533b075e8992c6])%255]
 }
 
 // gfDivide returns a / b.
 //
 // Divide by zero results in a panic.
-func __obf_3c69a8ec4ab6d915(__obf_a5e0b8636672b1a1, __obf_d86b9025cb5ef594 __obf_29e803ad00f0d12b) __obf_29e803ad00f0d12b {
-	if __obf_a5e0b8636672b1a1 == __obf_c3429c035d16c395 {
-		return __obf_c3429c035d16c395
-	} else if __obf_d86b9025cb5ef594 == __obf_c3429c035d16c395 {
+func __obf_04fa20e14d374dcc(__obf_98a34ba73ba6a166, __obf_0e533b075e8992c6 __obf_94bafdc0d5ce6bf6,) __obf_94bafdc0d5ce6bf6 {
+	if __obf_98a34ba73ba6a166 == __obf_b79d07b388290551 {
+		return __obf_b79d07b388290551
+	} else if __obf_0e533b075e8992c6 == __obf_b79d07b388290551 {
 		log.Panicln("Divide by zero")
 	}
 
-	return __obf_bd0138baa1f450bb(__obf_a5e0b8636672b1a1, __obf_577ad755b00d860f(__obf_d86b9025cb5ef594))
+	return __obf_9969f7a117b39136(__obf_98a34ba73ba6a166,
+
+	// gfInverse returns the multiplicative inverse of a, a^-1.
+	//
+	// a * a^-1 = 1
+	__obf_da80e9391b4f85ab(__obf_0e533b075e8992c6))
 }
 
-// gfInverse returns the multiplicative inverse of a, a^-1.
-//
-// a * a^-1 = 1
-func __obf_577ad755b00d860f(__obf_a5e0b8636672b1a1 __obf_29e803ad00f0d12b) __obf_29e803ad00f0d12b {
-	if __obf_a5e0b8636672b1a1 == __obf_c3429c035d16c395 {
+func __obf_da80e9391b4f85ab(__obf_98a34ba73ba6a166 __obf_94bafdc0d5ce6bf6,) __obf_94bafdc0d5ce6bf6 {
+	if __obf_98a34ba73ba6a166 == __obf_b79d07b388290551 {
 		log.Panicln("No multiplicative inverse of 0")
 	}
 
-	return __obf_654399568b579db1[255-__obf_922a3b54cf565bb2[__obf_a5e0b8636672b1a1]]
+	return __obf_2b1bf999fbc85162[255-__obf_c02e00c89ccc9280[__obf_98a34ba73ba6a166]]
 }
 
 // a^i   | bits      | polynomial                                   | decimal

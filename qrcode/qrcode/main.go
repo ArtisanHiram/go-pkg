@@ -1,7 +1,7 @@
 // go-qrcode
 // Copyright 2014 Tom Harwood
 
-package __obf_29ab288f1d4949da
+package main
 
 import (
 	"flag"
@@ -12,11 +12,11 @@ import (
 	qrcode "github.com/ArtisanHiram/go-pkg/qrcode"
 )
 
-func __obf_29ab288f1d4949da() {
-	__obf_ba9078ce53f3e5c5 := flag.String("o", "", "out PNG file prefix, empty for stdout")
-	__obf_655692963246709a := flag.Int("s", 256, "image size (pixel)")
-	__obf_f90156b212ef8155 := flag.Bool("t", false, "print as text-art on stdout")
-	__obf_6431291e51f58b55 := flag.Bool("i", false, "invert black and white")
+func main() {
+	__obf_abf9f67500079f7a := flag.String("o", "", "out PNG file prefix, empty for stdout")
+	__obf_a2c1bded25dcd1d3 := flag.Int("s", 256, "image size (pixel)")
+	__obf_319dec1a134e5c56 := flag.Bool("t", false, "print as text-art on stdout")
+	__obf_ebddd617ff5632c1 := flag.Bool("i", false, "invert black and white")
 	Borderless := flag.Bool("b", false, "QR Code borderless or not")
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, `qrcode -- QR Code encoder in Go https://github.com/carmel/go-qrcode
@@ -41,48 +41,50 @@ Usage:
 
 	if len(flag.Args()) == 0 {
 		flag.Usage()
-		__obf_40b6038c7e5ef702(fmt.Errorf("error: no content given"))
+		__obf_ba452ab3ca18bde4(fmt.Errorf("error: no content given"))
 	}
+	__obf_d675106cfc2927e1 := strings.Join(flag.Args(), " ")
 
-	__obf_f105366890fb3380 := strings.Join(flag.Args(), " ")
-
-	var __obf_77be39223e3c6bc4 error
-	var __obf_edc215702ba45948 *qrcode.QRCode
-	__obf_edc215702ba45948, __obf_77be39223e3c6bc4 = qrcode.New(__obf_f105366890fb3380, qrcode.Highest)
-	__obf_40b6038c7e5ef702(__obf_77be39223e3c6bc4)
+	var __obf_716299f548770a5a error
+	var __obf_f92063f9a2908c03 *qrcode.QRCode
+	__obf_f92063f9a2908c03, __obf_716299f548770a5a = qrcode.New(__obf_d675106cfc2927e1, qrcode.Highest)
+	__obf_ba452ab3ca18bde4(__obf_716299f548770a5a)
 
 	if *Borderless {
-		__obf_edc215702ba45948.Borderless = true
+		__obf_f92063f9a2908c03.
+			Borderless = true
 	}
 
-	if *__obf_f90156b212ef8155 {
-		__obf_d036656a0c81ac6c := __obf_edc215702ba45948.ToString(*__obf_6431291e51f58b55)
-		fmt.Println(__obf_d036656a0c81ac6c)
+	if *__obf_319dec1a134e5c56 {
+		__obf_728ed67b96d6045c := __obf_f92063f9a2908c03.ToString(*__obf_ebddd617ff5632c1)
+		fmt.Println(__obf_728ed67b96d6045c)
 		return
 	}
 
-	if *__obf_6431291e51f58b55 {
-		__obf_edc215702ba45948.ForegroundColor, __obf_edc215702ba45948.BackgroundColor = __obf_edc215702ba45948.BackgroundColor, __obf_edc215702ba45948.ForegroundColor
+	if *__obf_ebddd617ff5632c1 {
+		__obf_f92063f9a2908c03.
+			ForegroundColor, __obf_f92063f9a2908c03.BackgroundColor = __obf_f92063f9a2908c03.BackgroundColor, __obf_f92063f9a2908c03.ForegroundColor
 	}
 
-	var __obf_67c0d633cc606c29 []byte
-	__obf_67c0d633cc606c29, __obf_77be39223e3c6bc4 = __obf_edc215702ba45948.PNG(*__obf_655692963246709a)
-	__obf_40b6038c7e5ef702(__obf_77be39223e3c6bc4)
+	var __obf_56dbe61f7197d293 []byte
+	__obf_56dbe61f7197d293, __obf_716299f548770a5a = __obf_f92063f9a2908c03.PNG(*__obf_a2c1bded25dcd1d3)
+	__obf_ba452ab3ca18bde4(__obf_716299f548770a5a)
 
-	if *__obf_ba9078ce53f3e5c5 == "" {
-		os.Stdout.Write(__obf_67c0d633cc606c29)
+	if *__obf_abf9f67500079f7a == "" {
+		os.Stdout.Write(__obf_56dbe61f7197d293)
 	} else {
-		var __obf_b5eefff29b3c6e4b *os.File
-		__obf_b5eefff29b3c6e4b, __obf_77be39223e3c6bc4 = os.Create(*__obf_ba9078ce53f3e5c5 + ".png")
-		__obf_40b6038c7e5ef702(__obf_77be39223e3c6bc4)
-		defer __obf_b5eefff29b3c6e4b.Close()
-		__obf_b5eefff29b3c6e4b.Write(__obf_67c0d633cc606c29)
+		var __obf_81de63fbf6cc9551 *os.File
+		__obf_81de63fbf6cc9551, __obf_716299f548770a5a = os.Create(*__obf_abf9f67500079f7a + ".png")
+		__obf_ba452ab3ca18bde4(__obf_716299f548770a5a)
+		defer __obf_81de63fbf6cc9551.Close()
+		__obf_81de63fbf6cc9551.
+			Write(__obf_56dbe61f7197d293)
 	}
 }
 
-func __obf_40b6038c7e5ef702(__obf_77be39223e3c6bc4 error) {
-	if __obf_77be39223e3c6bc4 != nil {
-		fmt.Fprintf(os.Stderr, "%s\n", __obf_77be39223e3c6bc4)
+func __obf_ba452ab3ca18bde4(__obf_716299f548770a5a error) {
+	if __obf_716299f548770a5a != nil {
+		fmt.Fprintf(os.Stderr, "%s\n", __obf_716299f548770a5a)
 		os.Exit(1)
 	}
 }

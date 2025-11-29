@@ -4,7 +4,6 @@ go 1.25.4
 
 require (
 	github.com/google/uuid v1.6.0
-	github.com/json-iterator/go v1.1.12
 	golang.org/x/crypto v0.44.0
 	google.golang.org/adk v0.1.0
 	google.golang.org/genai v1.20.0
@@ -40,7 +39,6 @@ require (
 	golang.org/x/sync v0.18.0 // indirect
 	golang.org/x/sys v0.38.0 // indirect
 	golang.org/x/text v0.31.0 // indirect
-	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20251014184007-4626949a642f // indirect
 	google.golang.org/grpc v1.76.0 // indirect
 	google.golang.org/protobuf v1.36.10 // indirect
@@ -54,13 +52,12 @@ require (
 	github.com/google/gopacket v1.1.19
 	github.com/gorilla/websocket v1.5.3
 	github.com/jmoiron/sqlx v1.4.0
-	github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421 // indirect
-	github.com/modern-go/reflect2 v1.0.2 // indirect
-	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
+	github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421
+	github.com/modern-go/reflect2 v1.0.2
 	github.com/pkg/errors v0.9.1
 	github.com/pkg/sftp v1.13.10
 	github.com/redis/go-redis/v9 v9.16.0
-	github.com/vmihailenco/msgpack v4.0.4+incompatible
 	golang.org/x/image v0.33.0
+	google.golang.org/appengine v1.6.8
 	gopkg.in/yaml.v2 v2.4.0
 )

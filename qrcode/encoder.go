@@ -1,7 +1,7 @@
 // go-qrcode
 // Copyright 2014 Tom Harwood
 
-package __obf_d8b53a99900c2ed7
+package __obf_07675b7eb1c7284a
 
 import (
 	"errors"
@@ -40,217 +40,179 @@ import (
 // implemented here.
 
 // A segment encoding mode.
-type __obf_5c4639a52fd845a9 uint8
+type __obf_319b72319cecddec uint8
 
 const (
+	__obf_c24c42c85933c4c7 __obf_319b72319cecddec =
 	// Each dataMode is a subset of the subsequent dataMode:
 	// dataModeNone < dataModeNumeric < dataModeAlphanumeric < dataModeByte
 	//
 	// This ordering is important for determining which data modes a character can
 	// be encoded with. E.g. 'E' can be encoded in both dataModeAlphanumeric and
 	// dataModeByte.
-	__obf_8904eeb0e6070283 __obf_5c4639a52fd845a9 = 1 << iota
-	__obf_4e400452bceac92f
-	__obf_2c1e89b2a5d75af1
-	__obf_dc644ee144ffe79d
+	1 << iota
+	__obf_917a5ab78c19aa97
+	__obf_23eff39094784930
+	__obf_105296cdda013cec
 )
 
 // dataModeString returns d as a short printable string.
-func __obf_0337d1690cdd0f4b(__obf_afa8ed5b526f190d __obf_5c4639a52fd845a9) string {
-	switch __obf_afa8ed5b526f190d {
-	case __obf_8904eeb0e6070283:
+func __obf_605f3c21dcf93517(__obf_f4afc55b009a3568 __obf_319b72319cecddec) string {
+	switch __obf_f4afc55b009a3568 {
+	case __obf_c24c42c85933c4c7:
 		return "none"
-	case __obf_4e400452bceac92f:
+	case __obf_917a5ab78c19aa97:
 		return "numeric"
-	case __obf_2c1e89b2a5d75af1:
+	case __obf_23eff39094784930:
 		return "alphanumeric"
-	case __obf_dc644ee144ffe79d:
+	case __obf_105296cdda013cec:
 		return "byte"
 	}
 
 	return "unknown"
 }
 
-type __obf_80ac4aaf2f637970 uint8
+type __obf_d9ac8a0ee0d0f27f uint8
 
 const (
-	__obf_c531a6f523406e39 __obf_80ac4aaf2f637970 = iota
-	__obf_c0bbd372ece2268e
-	__obf_14b09e7535ac520c
+	__obf_96e9dfef6bbb06ba __obf_d9ac8a0ee0d0f27f = iota
+	__obf_bd631aba8d4005cf
+	__obf_5da2f2a34edb06bc
 )
 
 // segment is a single segment of data.
-type __obf_625a739863f7df0b struct {
+type __obf_61a731c6456893e0 struct {
+	__obf_319b72319cecddec __obf_319b72319cecddec
 	// Data Mode (e.g. numeric).
-	__obf_5c4639a52fd845a9 __obf_5c4639a52fd845a9
+	__obf_b08d86cf0c048279 []byte// segment data (e.g. "abc").
 
-	// segment data (e.g. "abc").
-	__obf_597c6046cd04cc8f []byte
 }
 
 // A dataEncoder encodes data for a particular QR Code version.
-type __obf_c5fc77e1fc362b78 struct {
-	// Minimum & maximum versions supported.
-	__obf_37d39dd366b6222a int
-	__obf_f36d7698dc68d8b5 int
+type __obf_a1f99035c479a58e struct {
+	__obf_96356ace474cb30b int // Minimum & maximum versions supported.
+	__obf_cefffff249e842b3 int
+	__obf_b79a3e03cf940166 * // Mode indicator bit sequences.
+	bitset.Bitset
+	__obf_c261a78043989f54 *bitset.Bitset
+	__obf_3f299aaed347bcdd *bitset.Bitset
+	__obf_658acb240021e40d int // Character count lengths.
+	__obf_785a2936c735d1ad int
+	__obf_11f79fbb70f059e6 int
+	__obf_b08d86cf0c048279 []byte// The raw input data.
 
-	// Mode indicator bit sequences.
-	__obf_616a4bf40e113ebb *bitset.Bitset
-	__obf_8bed5a222d237455 *bitset.Bitset
-	__obf_de42629460bbfb17 *bitset.Bitset
-
-	// Character count lengths.
-	__obf_390d5f6e6bc86644 int
-	__obf_8677a2566a502741 int
-	__obf_daef7b2eb908826a int
-
-	// The raw input data.
-	__obf_597c6046cd04cc8f []byte
-
-	// The data classified into unoptimised segments.
-	__obf_103a42653732bfb0 []__obf_625a739863f7df0b
+	__obf_f3d1dd1a36be2be4 []__obf_61a731c6456893e0// The data classified into unoptimised segments.
 
 	// The data classified into optimised segments.
-	__obf_5540ca6ce621a891 []__obf_625a739863f7df0b
+	__obf_51ecedba44aa8ec2 []__obf_61a731c6456893e0
 }
 
 // newDataEncoder constructs a dataEncoder.
-func __obf_0a11f28667b2f0e3(__obf_c40c4d1c8e73185e __obf_80ac4aaf2f637970) *__obf_c5fc77e1fc362b78 {
-	__obf_afa8ed5b526f190d := &__obf_c5fc77e1fc362b78{}
+func __obf_11835c8cedb230b3(__obf_066728c6553a619e __obf_d9ac8a0ee0d0f27f) *__obf_a1f99035c479a58e {
+	__obf_f4afc55b009a3568 := &__obf_a1f99035c479a58e{}
 
-	switch __obf_c40c4d1c8e73185e {
-	case __obf_c531a6f523406e39:
-		__obf_afa8ed5b526f190d = &__obf_c5fc77e1fc362b78{
-			__obf_37d39dd366b6222a: 1,
-			__obf_f36d7698dc68d8b5: 9,
-			__obf_616a4bf40e113ebb: bitset.New(__obf_8bb2569d08f1d0d7, __obf_8bb2569d08f1d0d7, __obf_8bb2569d08f1d0d7, __obf_dd8a19138b3d4a22),
-			__obf_8bed5a222d237455: bitset.New(__obf_8bb2569d08f1d0d7, __obf_8bb2569d08f1d0d7, __obf_dd8a19138b3d4a22, __obf_8bb2569d08f1d0d7),
-			__obf_de42629460bbfb17: bitset.New(__obf_8bb2569d08f1d0d7, __obf_dd8a19138b3d4a22, __obf_8bb2569d08f1d0d7, __obf_8bb2569d08f1d0d7),
-			__obf_390d5f6e6bc86644: 10,
-			__obf_8677a2566a502741: 9,
-			__obf_daef7b2eb908826a: 8,
-		}
-	case __obf_c0bbd372ece2268e:
-		__obf_afa8ed5b526f190d = &__obf_c5fc77e1fc362b78{
-			__obf_37d39dd366b6222a: 10,
-			__obf_f36d7698dc68d8b5: 26,
-			__obf_616a4bf40e113ebb: bitset.New(__obf_8bb2569d08f1d0d7, __obf_8bb2569d08f1d0d7, __obf_8bb2569d08f1d0d7, __obf_dd8a19138b3d4a22),
-			__obf_8bed5a222d237455: bitset.New(__obf_8bb2569d08f1d0d7, __obf_8bb2569d08f1d0d7, __obf_dd8a19138b3d4a22, __obf_8bb2569d08f1d0d7),
-			__obf_de42629460bbfb17: bitset.New(__obf_8bb2569d08f1d0d7, __obf_dd8a19138b3d4a22, __obf_8bb2569d08f1d0d7, __obf_8bb2569d08f1d0d7),
-			__obf_390d5f6e6bc86644: 12,
-			__obf_8677a2566a502741: 11,
-			__obf_daef7b2eb908826a: 16,
-		}
-	case __obf_14b09e7535ac520c:
-		__obf_afa8ed5b526f190d = &__obf_c5fc77e1fc362b78{
-			__obf_37d39dd366b6222a: 27,
-			__obf_f36d7698dc68d8b5: 40,
-			__obf_616a4bf40e113ebb: bitset.New(__obf_8bb2569d08f1d0d7, __obf_8bb2569d08f1d0d7, __obf_8bb2569d08f1d0d7, __obf_dd8a19138b3d4a22),
-			__obf_8bed5a222d237455: bitset.New(__obf_8bb2569d08f1d0d7, __obf_8bb2569d08f1d0d7, __obf_dd8a19138b3d4a22, __obf_8bb2569d08f1d0d7),
-			__obf_de42629460bbfb17: bitset.New(__obf_8bb2569d08f1d0d7, __obf_dd8a19138b3d4a22, __obf_8bb2569d08f1d0d7, __obf_8bb2569d08f1d0d7),
-			__obf_390d5f6e6bc86644: 14,
-			__obf_8677a2566a502741: 13,
-			__obf_daef7b2eb908826a: 16,
-		}
+	switch __obf_066728c6553a619e {
+	case __obf_96e9dfef6bbb06ba:
+		__obf_f4afc55b009a3568 = &__obf_a1f99035c479a58e{__obf_96356ace474cb30b: 1, __obf_cefffff249e842b3: 9, __obf_b79a3e03cf940166: bitset.New(__obf_584bba5d11113643, __obf_584bba5d11113643, __obf_584bba5d11113643, __obf_0249afb330f83509), __obf_c261a78043989f54: bitset.New(__obf_584bba5d11113643, __obf_584bba5d11113643, __obf_0249afb330f83509, __obf_584bba5d11113643), __obf_3f299aaed347bcdd: bitset.New(__obf_584bba5d11113643, __obf_0249afb330f83509, __obf_584bba5d11113643, __obf_584bba5d11113643), __obf_658acb240021e40d: 10, __obf_785a2936c735d1ad: 9, __obf_11f79fbb70f059e6: 8}
+	case __obf_bd631aba8d4005cf:
+		__obf_f4afc55b009a3568 = &__obf_a1f99035c479a58e{__obf_96356ace474cb30b: 10, __obf_cefffff249e842b3: 26, __obf_b79a3e03cf940166: bitset.New(__obf_584bba5d11113643, __obf_584bba5d11113643, __obf_584bba5d11113643, __obf_0249afb330f83509), __obf_c261a78043989f54: bitset.New(__obf_584bba5d11113643, __obf_584bba5d11113643, __obf_0249afb330f83509, __obf_584bba5d11113643), __obf_3f299aaed347bcdd: bitset.New(__obf_584bba5d11113643, __obf_0249afb330f83509, __obf_584bba5d11113643, __obf_584bba5d11113643), __obf_658acb240021e40d: 12, __obf_785a2936c735d1ad: 11, __obf_11f79fbb70f059e6: 16}
+	case __obf_5da2f2a34edb06bc:
+		__obf_f4afc55b009a3568 = &__obf_a1f99035c479a58e{__obf_96356ace474cb30b: 27, __obf_cefffff249e842b3: 40, __obf_b79a3e03cf940166: bitset.New(__obf_584bba5d11113643, __obf_584bba5d11113643, __obf_584bba5d11113643, __obf_0249afb330f83509), __obf_c261a78043989f54: bitset.New(__obf_584bba5d11113643, __obf_584bba5d11113643, __obf_0249afb330f83509, __obf_584bba5d11113643), __obf_3f299aaed347bcdd: bitset.New(__obf_584bba5d11113643, __obf_0249afb330f83509, __obf_584bba5d11113643, __obf_584bba5d11113643), __obf_658acb240021e40d: 14, __obf_785a2936c735d1ad: 13, __obf_11f79fbb70f059e6: 16}
 	default:
 		log.Panic("Unknown dataEncoderType")
 	}
 
-	return __obf_afa8ed5b526f190d
+	return __obf_f4afc55b009a3568
 }
 
 // encode data as one or more segments and return the encoded data.
 //
 // The returned data does not include the terminator bit sequence.
-func (__obf_afa8ed5b526f190d *__obf_c5fc77e1fc362b78) __obf_d69ee0563ed868f4(__obf_597c6046cd04cc8f []byte) (*bitset.Bitset, error) {
-	__obf_afa8ed5b526f190d.__obf_597c6046cd04cc8f = __obf_597c6046cd04cc8f
-	__obf_afa8ed5b526f190d.__obf_103a42653732bfb0 = nil
-	__obf_afa8ed5b526f190d.__obf_5540ca6ce621a891 = nil
+func (__obf_f4afc55b009a3568 *__obf_a1f99035c479a58e) __obf_7626f31ec1adfcf5(__obf_b08d86cf0c048279 []byte) (*bitset.Bitset, error) {
+	__obf_f4afc55b009a3568.__obf_b08d86cf0c048279 = __obf_b08d86cf0c048279
+	__obf_f4afc55b009a3568.__obf_f3d1dd1a36be2be4 = nil
+	__obf_f4afc55b009a3568.__obf_51ecedba44aa8ec2 = nil
 
-	if len(__obf_597c6046cd04cc8f) == 0 {
+	if len(__obf_b08d86cf0c048279) == 0 {
 		return nil, errors.New("no data to encode")
 	}
-
-	// Classify data into unoptimised segments.
-	__obf_1b2182c8ce3b3e61 := __obf_afa8ed5b526f190d.__obf_c88e0f992b68c6a7()
-
-	// Optimise segments.
-	__obf_f3cf37a038d12d80 := __obf_afa8ed5b526f190d.__obf_b0d25d23359160c2()
-	if __obf_f3cf37a038d12d80 != nil {
-		return nil, __obf_f3cf37a038d12d80
+	__obf_93d69090667e2328 := // Classify data into unoptimised segments.
+		__obf_f4afc55b009a3568.__obf_1273ebd275828441()
+	__obf_c88308f5c3b1b66a := // Optimise segments.
+		__obf_f4afc55b009a3568.__obf_d011521c6fa18cab()
+	if __obf_c88308f5c3b1b66a != nil {
+		return nil, __obf_c88308f5c3b1b66a
 	}
-
-	// Check if a single byte encoded segment would be more efficient.
-	__obf_22a214620c73a3d1 := 0
-	for _, __obf_da19f8f4aed522cb := range __obf_afa8ed5b526f190d.__obf_5540ca6ce621a891 {
-		__obf_2b2e0ead9ee6917b, __obf_f3cf37a038d12d80 := __obf_afa8ed5b526f190d.__obf_babc4e2d32fa0aee(__obf_da19f8f4aed522cb.__obf_5c4639a52fd845a9, len(__obf_da19f8f4aed522cb.__obf_597c6046cd04cc8f))
-		if __obf_f3cf37a038d12d80 != nil {
-			return nil, __obf_f3cf37a038d12d80
+	__obf_3ab763a07cbdd9b4 := // Check if a single byte encoded segment would be more efficient.
+		0
+	for _, __obf_e988dab6de39cff8 := range __obf_f4afc55b009a3568.__obf_51ecedba44aa8ec2 {
+		__obf_ebfaa7ff95572879, __obf_c88308f5c3b1b66a := __obf_f4afc55b009a3568.__obf_450a56f409c91c82(__obf_e988dab6de39cff8.__obf_319b72319cecddec, len(__obf_e988dab6de39cff8.__obf_b08d86cf0c048279))
+		if __obf_c88308f5c3b1b66a != nil {
+			return nil, __obf_c88308f5c3b1b66a
 		}
-		__obf_22a214620c73a3d1 += __obf_2b2e0ead9ee6917b
+		__obf_3ab763a07cbdd9b4 += __obf_ebfaa7ff95572879
+	}
+	__obf_4eb306bd5d7cb879, __obf_c88308f5c3b1b66a := __obf_f4afc55b009a3568.__obf_450a56f409c91c82(__obf_93d69090667e2328, len(__obf_f4afc55b009a3568.__obf_b08d86cf0c048279))
+	if __obf_c88308f5c3b1b66a != nil {
+		return nil, __obf_c88308f5c3b1b66a
 	}
 
-	__obf_7c89bd2ed253a1bd, __obf_f3cf37a038d12d80 := __obf_afa8ed5b526f190d.__obf_babc4e2d32fa0aee(__obf_1b2182c8ce3b3e61, len(__obf_afa8ed5b526f190d.__obf_597c6046cd04cc8f))
-	if __obf_f3cf37a038d12d80 != nil {
-		return nil, __obf_f3cf37a038d12d80
+	if __obf_4eb306bd5d7cb879 <= __obf_3ab763a07cbdd9b4 {
+		__obf_f4afc55b009a3568.__obf_51ecedba44aa8ec2 = []__obf_61a731c6456893e0{{__obf_319b72319cecddec: __obf_93d69090667e2328, __obf_b08d86cf0c048279: __obf_f4afc55b009a3568.
+
+			// Encode data.
+			__obf_b08d86cf0c048279}}
+	}
+	__obf_9b1dcfbd17fe9618 := bitset.New()
+	for _, __obf_e988dab6de39cff8 := range __obf_f4afc55b009a3568.__obf_51ecedba44aa8ec2 {
+		__obf_f4afc55b009a3568.__obf_995fa9722e1e3e94(__obf_e988dab6de39cff8.__obf_b08d86cf0c048279, __obf_e988dab6de39cff8.
+
+			// classifyDataModes classifies the raw data into unoptimised segments.
+			// e.g. "123ZZ#!#!" =>
+			// [numeric, 3, "123"] [alphanumeric, 2, "ZZ"] [byte, 4, "#!#!"].
+			//
+			// Returns the highest data mode needed to encode the data. e.g. for a mixed
+			// numeric/alphanumeric input, the highest is alphanumeric.
+			//
+			// dataModeNone < dataModeNumeric < dataModeAlphanumeric < dataModeByte
+			__obf_319b72319cecddec, __obf_9b1dcfbd17fe9618)
 	}
 
-	if __obf_7c89bd2ed253a1bd <= __obf_22a214620c73a3d1 {
-		__obf_afa8ed5b526f190d.__obf_5540ca6ce621a891 = []__obf_625a739863f7df0b{{__obf_5c4639a52fd845a9: __obf_1b2182c8ce3b3e61, __obf_597c6046cd04cc8f: __obf_afa8ed5b526f190d.__obf_597c6046cd04cc8f}}
-	}
-
-	// Encode data.
-	__obf_db73de0d3577b11c := bitset.New()
-	for _, __obf_da19f8f4aed522cb := range __obf_afa8ed5b526f190d.__obf_5540ca6ce621a891 {
-		__obf_afa8ed5b526f190d.__obf_ea8717f83acf7afb(__obf_da19f8f4aed522cb.__obf_597c6046cd04cc8f, __obf_da19f8f4aed522cb.__obf_5c4639a52fd845a9, __obf_db73de0d3577b11c)
-	}
-
-	return __obf_db73de0d3577b11c, nil
+	return __obf_9b1dcfbd17fe9618, nil
 }
 
-// classifyDataModes classifies the raw data into unoptimised segments.
-// e.g. "123ZZ#!#!" =>
-// [numeric, 3, "123"] [alphanumeric, 2, "ZZ"] [byte, 4, "#!#!"].
-//
-// Returns the highest data mode needed to encode the data. e.g. for a mixed
-// numeric/alphanumeric input, the highest is alphanumeric.
-//
-// dataModeNone < dataModeNumeric < dataModeAlphanumeric < dataModeByte
-func (__obf_afa8ed5b526f190d *__obf_c5fc77e1fc362b78) __obf_c88e0f992b68c6a7() __obf_5c4639a52fd845a9 {
-	var __obf_c6edaa3d3a18688d int
-	__obf_d8f32e09042a3b32 := __obf_8904eeb0e6070283
-	__obf_1b2182c8ce3b3e61 := __obf_d8f32e09042a3b32
+func (__obf_f4afc55b009a3568 *__obf_a1f99035c479a58e) __obf_1273ebd275828441() __obf_319b72319cecddec {
+	var __obf_6a6a77e65664e51f int
+	__obf_80e7217120235b62 := __obf_c24c42c85933c4c7
+	__obf_93d69090667e2328 := __obf_80e7217120235b62
 
-	for __obf_6ffda43d9ecd66ed, __obf_4650eaa332d33944 := range __obf_afa8ed5b526f190d.__obf_597c6046cd04cc8f {
-		__obf_35a9b6929e13af76 := __obf_8904eeb0e6070283
+	for __obf_2e4170383a5ddec7, __obf_283aa709fd2621d8 := range __obf_f4afc55b009a3568.__obf_b08d86cf0c048279 {
+		__obf_0586bff182bd0146 := __obf_c24c42c85933c4c7
 		switch {
-		case __obf_4650eaa332d33944 >= 0x30 && __obf_4650eaa332d33944 <= 0x39:
-			__obf_35a9b6929e13af76 = __obf_4e400452bceac92f
-		case __obf_4650eaa332d33944 == 0x20 || __obf_4650eaa332d33944 == 0x24 || __obf_4650eaa332d33944 == 0x25 || __obf_4650eaa332d33944 == 0x2a || __obf_4650eaa332d33944 == 0x2b || __obf_4650eaa332d33944 ==
-			0x2d || __obf_4650eaa332d33944 == 0x2e || __obf_4650eaa332d33944 == 0x2f || __obf_4650eaa332d33944 == 0x3a || (__obf_4650eaa332d33944 >= 0x41 && __obf_4650eaa332d33944 <= 0x5a):
-			__obf_35a9b6929e13af76 = __obf_2c1e89b2a5d75af1
+		case __obf_283aa709fd2621d8 >= 0x30 && __obf_283aa709fd2621d8 <= 0x39:
+			__obf_0586bff182bd0146 = __obf_917a5ab78c19aa97
+		case __obf_283aa709fd2621d8 == 0x20 || __obf_283aa709fd2621d8 == 0x24 || __obf_283aa709fd2621d8 == 0x25 || __obf_283aa709fd2621d8 == 0x2a || __obf_283aa709fd2621d8 == 0x2b || __obf_283aa709fd2621d8 ==
+			0x2d || __obf_283aa709fd2621d8 == 0x2e || __obf_283aa709fd2621d8 == 0x2f || __obf_283aa709fd2621d8 == 0x3a || (__obf_283aa709fd2621d8 >= 0x41 && __obf_283aa709fd2621d8 <= 0x5a):
+			__obf_0586bff182bd0146 = __obf_23eff39094784930
 		default:
-			__obf_35a9b6929e13af76 = __obf_dc644ee144ffe79d
+			__obf_0586bff182bd0146 = __obf_105296cdda013cec
 		}
 
-		if __obf_35a9b6929e13af76 != __obf_d8f32e09042a3b32 {
-			if __obf_6ffda43d9ecd66ed > 0 {
-				__obf_afa8ed5b526f190d.__obf_103a42653732bfb0 = append(__obf_afa8ed5b526f190d.__obf_103a42653732bfb0, __obf_625a739863f7df0b{__obf_5c4639a52fd845a9: __obf_d8f32e09042a3b32, __obf_597c6046cd04cc8f: __obf_afa8ed5b526f190d.__obf_597c6046cd04cc8f[__obf_c6edaa3d3a18688d:__obf_6ffda43d9ecd66ed]})
-
-				__obf_c6edaa3d3a18688d = __obf_6ffda43d9ecd66ed
+		if __obf_0586bff182bd0146 != __obf_80e7217120235b62 {
+			if __obf_2e4170383a5ddec7 > 0 {
+				__obf_f4afc55b009a3568.__obf_f3d1dd1a36be2be4 = append(__obf_f4afc55b009a3568.__obf_f3d1dd1a36be2be4, __obf_61a731c6456893e0{__obf_319b72319cecddec: __obf_80e7217120235b62, __obf_b08d86cf0c048279: __obf_f4afc55b009a3568.__obf_b08d86cf0c048279[__obf_6a6a77e65664e51f:__obf_2e4170383a5ddec7]})
+				__obf_6a6a77e65664e51f = __obf_2e4170383a5ddec7
 			}
-
-			__obf_d8f32e09042a3b32 = __obf_35a9b6929e13af76
+			__obf_80e7217120235b62 = __obf_0586bff182bd0146
 		}
 
-		if __obf_35a9b6929e13af76 > __obf_1b2182c8ce3b3e61 {
-			__obf_1b2182c8ce3b3e61 = __obf_35a9b6929e13af76
+		if __obf_0586bff182bd0146 > __obf_93d69090667e2328 {
+			__obf_93d69090667e2328 = __obf_0586bff182bd0146
 		}
 	}
+	__obf_f4afc55b009a3568.__obf_f3d1dd1a36be2be4 = append(__obf_f4afc55b009a3568.__obf_f3d1dd1a36be2be4, __obf_61a731c6456893e0{__obf_319b72319cecddec: __obf_80e7217120235b62, __obf_b08d86cf0c048279: __obf_f4afc55b009a3568.__obf_b08d86cf0c048279[__obf_6a6a77e65664e51f:len(__obf_f4afc55b009a3568.__obf_b08d86cf0c048279)]})
 
-	__obf_afa8ed5b526f190d.__obf_103a42653732bfb0 = append(__obf_afa8ed5b526f190d.__obf_103a42653732bfb0, __obf_625a739863f7df0b{__obf_5c4639a52fd845a9: __obf_d8f32e09042a3b32, __obf_597c6046cd04cc8f: __obf_afa8ed5b526f190d.__obf_597c6046cd04cc8f[__obf_c6edaa3d3a18688d:len(__obf_afa8ed5b526f190d.__obf_597c6046cd04cc8f)]})
-
-	return __obf_1b2182c8ce3b3e61
+	return __obf_93d69090667e2328
 }
 
 // optimiseDataModes optimises the list of segments to reduce the overall output
@@ -262,56 +224,48 @@ func (__obf_afa8ed5b526f190d *__obf_c5fc77e1fc362b78) __obf_c88e0f992b68c6a7() _
 //
 // Multiple segments may be coalesced. For example a string of alternating
 // alphanumeric/numeric segments ANANANANA can be optimised to just A.
-func (__obf_afa8ed5b526f190d *__obf_c5fc77e1fc362b78) __obf_b0d25d23359160c2() error {
-	for __obf_6ffda43d9ecd66ed := 0; __obf_6ffda43d9ecd66ed < len(__obf_afa8ed5b526f190d.__obf_103a42653732bfb0); {
-		__obf_d8f32e09042a3b32 := __obf_afa8ed5b526f190d.__obf_103a42653732bfb0[__obf_6ffda43d9ecd66ed].__obf_5c4639a52fd845a9
-		__obf_26f8637738bf742d := len(__obf_afa8ed5b526f190d.__obf_103a42653732bfb0[__obf_6ffda43d9ecd66ed].__obf_597c6046cd04cc8f)
+func (__obf_f4afc55b009a3568 *__obf_a1f99035c479a58e) __obf_d011521c6fa18cab() error {
+	for __obf_2e4170383a5ddec7 := 0; __obf_2e4170383a5ddec7 < len(__obf_f4afc55b009a3568.__obf_f3d1dd1a36be2be4); {
+		__obf_80e7217120235b62 := __obf_f4afc55b009a3568.__obf_f3d1dd1a36be2be4[__obf_2e4170383a5ddec7].__obf_319b72319cecddec
+		__obf_60d3991259b492b0 := len(__obf_f4afc55b009a3568.__obf_f3d1dd1a36be2be4[__obf_2e4170383a5ddec7].__obf_b08d86cf0c048279)
+		__obf_95b5b5fef8a19647 := __obf_2e4170383a5ddec7 + 1
+		for __obf_95b5b5fef8a19647 < len(__obf_f4afc55b009a3568.__obf_f3d1dd1a36be2be4) {
+			__obf_0dfab613b3881e50 := len(__obf_f4afc55b009a3568.__obf_f3d1dd1a36be2be4[__obf_95b5b5fef8a19647].__obf_b08d86cf0c048279)
+			__obf_81c02393a42f7561 := __obf_f4afc55b009a3568.__obf_f3d1dd1a36be2be4[__obf_95b5b5fef8a19647].__obf_319b72319cecddec
 
-		__obf_b09a06cc5f53e0ed := __obf_6ffda43d9ecd66ed + 1
-		for __obf_b09a06cc5f53e0ed < len(__obf_afa8ed5b526f190d.__obf_103a42653732bfb0) {
-			__obf_f26beb3ccfdbc9d8 := len(__obf_afa8ed5b526f190d.__obf_103a42653732bfb0[__obf_b09a06cc5f53e0ed].__obf_597c6046cd04cc8f)
-			__obf_37e2afe8f7d6ea97 := __obf_afa8ed5b526f190d.__obf_103a42653732bfb0[__obf_b09a06cc5f53e0ed].__obf_5c4639a52fd845a9
-
-			if __obf_37e2afe8f7d6ea97 > __obf_d8f32e09042a3b32 {
+			if __obf_81c02393a42f7561 > __obf_80e7217120235b62 {
 				break
 			}
+			__obf_7afff957137cb0ad, __obf_c88308f5c3b1b66a := __obf_f4afc55b009a3568.__obf_450a56f409c91c82(__obf_80e7217120235b62, __obf_60d3991259b492b0+__obf_0dfab613b3881e50)
 
-			__obf_7619804ba9ea12f1, __obf_f3cf37a038d12d80 := __obf_afa8ed5b526f190d.__obf_babc4e2d32fa0aee(__obf_d8f32e09042a3b32, __obf_26f8637738bf742d+__obf_f26beb3ccfdbc9d8)
+			if __obf_c88308f5c3b1b66a != nil {
+				return __obf_c88308f5c3b1b66a
+			}
+			__obf_e692ad6a050d4bc6, __obf_c88308f5c3b1b66a := __obf_f4afc55b009a3568.__obf_450a56f409c91c82(__obf_80e7217120235b62, __obf_60d3991259b492b0)
 
-			if __obf_f3cf37a038d12d80 != nil {
-				return __obf_f3cf37a038d12d80
+			if __obf_c88308f5c3b1b66a != nil {
+				return __obf_c88308f5c3b1b66a
+			}
+			__obf_ac9b9d902c8cb11a, __obf_c88308f5c3b1b66a := __obf_f4afc55b009a3568.__obf_450a56f409c91c82(__obf_81c02393a42f7561, __obf_0dfab613b3881e50)
+
+			if __obf_c88308f5c3b1b66a != nil {
+				return __obf_c88308f5c3b1b66a
 			}
 
-			__obf_fa4ca55cc5cde682, __obf_f3cf37a038d12d80 := __obf_afa8ed5b526f190d.__obf_babc4e2d32fa0aee(__obf_d8f32e09042a3b32, __obf_26f8637738bf742d)
-
-			if __obf_f3cf37a038d12d80 != nil {
-				return __obf_f3cf37a038d12d80
-			}
-
-			__obf_f89d40f635072397, __obf_f3cf37a038d12d80 := __obf_afa8ed5b526f190d.__obf_babc4e2d32fa0aee(__obf_37e2afe8f7d6ea97, __obf_f26beb3ccfdbc9d8)
-
-			if __obf_f3cf37a038d12d80 != nil {
-				return __obf_f3cf37a038d12d80
-			}
-
-			if __obf_7619804ba9ea12f1 < __obf_fa4ca55cc5cde682+__obf_f89d40f635072397 {
-				__obf_b09a06cc5f53e0ed++
-				__obf_26f8637738bf742d += __obf_f26beb3ccfdbc9d8
+			if __obf_7afff957137cb0ad < __obf_e692ad6a050d4bc6+__obf_ac9b9d902c8cb11a {
+				__obf_95b5b5fef8a19647++
+				__obf_60d3991259b492b0 += __obf_0dfab613b3881e50
 			} else {
 				break
 			}
 		}
+		__obf_51ecedba44aa8ec2 := __obf_61a731c6456893e0{__obf_319b72319cecddec: __obf_80e7217120235b62, __obf_b08d86cf0c048279: make([]byte, 0, __obf_60d3991259b492b0)}
 
-		__obf_5540ca6ce621a891 := __obf_625a739863f7df0b{__obf_5c4639a52fd845a9: __obf_d8f32e09042a3b32,
-			__obf_597c6046cd04cc8f: make([]byte, 0, __obf_26f8637738bf742d)}
-
-		for __obf_aec22229b859db6e := __obf_6ffda43d9ecd66ed; __obf_aec22229b859db6e < __obf_b09a06cc5f53e0ed; __obf_aec22229b859db6e++ {
-			__obf_5540ca6ce621a891.__obf_597c6046cd04cc8f = append(__obf_5540ca6ce621a891.__obf_597c6046cd04cc8f, __obf_afa8ed5b526f190d.__obf_103a42653732bfb0[__obf_aec22229b859db6e].__obf_597c6046cd04cc8f...)
+		for __obf_c4c99244a3ebad64 := __obf_2e4170383a5ddec7; __obf_c4c99244a3ebad64 < __obf_95b5b5fef8a19647; __obf_c4c99244a3ebad64++ {
+			__obf_51ecedba44aa8ec2.__obf_b08d86cf0c048279 = append(__obf_51ecedba44aa8ec2.__obf_b08d86cf0c048279, __obf_f4afc55b009a3568.__obf_f3d1dd1a36be2be4[__obf_c4c99244a3ebad64].__obf_b08d86cf0c048279...)
 		}
-
-		__obf_afa8ed5b526f190d.__obf_5540ca6ce621a891 = append(__obf_afa8ed5b526f190d.__obf_5540ca6ce621a891, __obf_5540ca6ce621a891)
-
-		__obf_6ffda43d9ecd66ed = __obf_b09a06cc5f53e0ed
+		__obf_f4afc55b009a3568.__obf_51ecedba44aa8ec2 = append(__obf_f4afc55b009a3568.__obf_51ecedba44aa8ec2, __obf_51ecedba44aa8ec2)
+		__obf_2e4170383a5ddec7 = __obf_95b5b5fef8a19647
 	}
 
 	return nil
@@ -319,65 +273,68 @@ func (__obf_afa8ed5b526f190d *__obf_c5fc77e1fc362b78) __obf_b0d25d23359160c2() e
 
 // encodeDataRaw encodes data in dataMode. The encoded data is appended to
 // encoded.
-func (__obf_afa8ed5b526f190d *__obf_c5fc77e1fc362b78) __obf_ea8717f83acf7afb(__obf_597c6046cd04cc8f []byte, __obf_5c4639a52fd845a9 __obf_5c4639a52fd845a9, __obf_db73de0d3577b11c *bitset.Bitset) {
-	__obf_089136fa4773c997 := __obf_afa8ed5b526f190d.__obf_089136fa4773c997(__obf_5c4639a52fd845a9)
-	__obf_06b32109ee6b3d5f := __obf_afa8ed5b526f190d.__obf_06b32109ee6b3d5f(__obf_5c4639a52fd845a9)
+func (__obf_f4afc55b009a3568 *__obf_a1f99035c479a58e) __obf_995fa9722e1e3e94(__obf_b08d86cf0c048279 []byte, __obf_319b72319cecddec __obf_319b72319cecddec, __obf_9b1dcfbd17fe9618 *bitset.Bitset) {
+	__obf_a8afedf204c1c547 := __obf_f4afc55b009a3568.__obf_a8afedf204c1c547(__obf_319b72319cecddec)
+	__obf_3458fa791dc0b9a0 := __obf_f4afc55b009a3568.__obf_3458fa791dc0b9a0(__obf_319b72319cecddec)
+	__obf_9b1dcfbd17fe9618.
 
-	// Append mode indicator.
-	__obf_db73de0d3577b11c.Append(__obf_089136fa4773c997)
+		// Append mode indicator.
+		Append(__obf_a8afedf204c1c547)
+	__obf_9b1dcfbd17fe9618.
 
-	// Append character count.
-	__obf_db73de0d3577b11c.AppendUint32(uint32(len(__obf_597c6046cd04cc8f)), __obf_06b32109ee6b3d5f)
+		// Append character count.
+		AppendUint32(uint32(len(__obf_b08d86cf0c048279)), __obf_3458fa791dc0b9a0)
 
 	// Append data.
-	switch __obf_5c4639a52fd845a9 {
-	case __obf_4e400452bceac92f:
-		for __obf_6ffda43d9ecd66ed := 0; __obf_6ffda43d9ecd66ed < len(__obf_597c6046cd04cc8f); __obf_6ffda43d9ecd66ed += 3 {
-			__obf_99809ffb5b750c9b := len(__obf_597c6046cd04cc8f) - __obf_6ffda43d9ecd66ed
+	switch __obf_319b72319cecddec {
+	case __obf_917a5ab78c19aa97:
+		for __obf_2e4170383a5ddec7 := 0; __obf_2e4170383a5ddec7 < len(__obf_b08d86cf0c048279); __obf_2e4170383a5ddec7 += 3 {
+			__obf_a54e890fd8abec6a := len(__obf_b08d86cf0c048279) - __obf_2e4170383a5ddec7
 
-			var __obf_895b3fc3ae24b62b uint32
-			__obf_234eec744708ef21 := 1
+			var __obf_6c9b4b130cbe971d uint32
+			__obf_cce0522023e75233 := 1
 
-			for __obf_b09a06cc5f53e0ed := 0; __obf_b09a06cc5f53e0ed < __obf_99809ffb5b750c9b && __obf_b09a06cc5f53e0ed < 3; __obf_b09a06cc5f53e0ed++ {
-				__obf_895b3fc3ae24b62b *= 10
-				__obf_895b3fc3ae24b62b += uint32(__obf_597c6046cd04cc8f[__obf_6ffda43d9ecd66ed+__obf_b09a06cc5f53e0ed] - 0x30)
-				__obf_234eec744708ef21 += 3
+			for __obf_95b5b5fef8a19647 := 0; __obf_95b5b5fef8a19647 < __obf_a54e890fd8abec6a && __obf_95b5b5fef8a19647 < 3; __obf_95b5b5fef8a19647++ {
+				__obf_6c9b4b130cbe971d *= 10
+				__obf_6c9b4b130cbe971d += uint32(__obf_b08d86cf0c048279[__obf_2e4170383a5ddec7+__obf_95b5b5fef8a19647] - 0x30)
+				__obf_cce0522023e75233 += 3
 			}
-			__obf_db73de0d3577b11c.AppendUint32(__obf_895b3fc3ae24b62b, __obf_234eec744708ef21)
+			__obf_9b1dcfbd17fe9618.
+				AppendUint32(__obf_6c9b4b130cbe971d, __obf_cce0522023e75233)
 		}
-	case __obf_2c1e89b2a5d75af1:
-		for __obf_6ffda43d9ecd66ed := 0; __obf_6ffda43d9ecd66ed < len(__obf_597c6046cd04cc8f); __obf_6ffda43d9ecd66ed += 2 {
-			__obf_99809ffb5b750c9b := len(__obf_597c6046cd04cc8f) - __obf_6ffda43d9ecd66ed
+	case __obf_23eff39094784930:
+		for __obf_2e4170383a5ddec7 := 0; __obf_2e4170383a5ddec7 < len(__obf_b08d86cf0c048279); __obf_2e4170383a5ddec7 += 2 {
+			__obf_a54e890fd8abec6a := len(__obf_b08d86cf0c048279) - __obf_2e4170383a5ddec7
 
-			var __obf_895b3fc3ae24b62b uint32
-			for __obf_b09a06cc5f53e0ed := 0; __obf_b09a06cc5f53e0ed < __obf_99809ffb5b750c9b && __obf_b09a06cc5f53e0ed < 2; __obf_b09a06cc5f53e0ed++ {
-				__obf_895b3fc3ae24b62b *= 45
-				__obf_895b3fc3ae24b62b += __obf_09999fc6072e066a(__obf_597c6046cd04cc8f[__obf_6ffda43d9ecd66ed+__obf_b09a06cc5f53e0ed])
+			var __obf_6c9b4b130cbe971d uint32
+			for __obf_95b5b5fef8a19647 := 0; __obf_95b5b5fef8a19647 < __obf_a54e890fd8abec6a && __obf_95b5b5fef8a19647 < 2; __obf_95b5b5fef8a19647++ {
+				__obf_6c9b4b130cbe971d *= 45
+				__obf_6c9b4b130cbe971d += __obf_a95688ceda5c4487(__obf_b08d86cf0c048279[__obf_2e4170383a5ddec7+__obf_95b5b5fef8a19647])
 			}
-
-			__obf_234eec744708ef21 := 6
-			if __obf_99809ffb5b750c9b > 1 {
-				__obf_234eec744708ef21 = 11
+			__obf_cce0522023e75233 := 6
+			if __obf_a54e890fd8abec6a > 1 {
+				__obf_cce0522023e75233 = 11
 			}
-
-			__obf_db73de0d3577b11c.AppendUint32(__obf_895b3fc3ae24b62b, __obf_234eec744708ef21)
+			__obf_9b1dcfbd17fe9618.
+				AppendUint32(__obf_6c9b4b130cbe971d, __obf_cce0522023e75233)
 		}
-	case __obf_dc644ee144ffe79d:
-		for _, __obf_86534ca54b6c1d7e := range __obf_597c6046cd04cc8f {
-			__obf_db73de0d3577b11c.AppendByte(__obf_86534ca54b6c1d7e, 8)
+	case __obf_105296cdda013cec:
+		for _, __obf_32f895d189b42b64 := range __obf_b08d86cf0c048279 {
+			__obf_9b1dcfbd17fe9618.
+				AppendByte(__obf_32f895d189b42b64, 8)
 		}
 	}
 }
 
 // modeIndicator returns the segment header bits for a segment of type dataMode.
-func (__obf_afa8ed5b526f190d *__obf_c5fc77e1fc362b78) __obf_089136fa4773c997(__obf_5c4639a52fd845a9 __obf_5c4639a52fd845a9) *bitset.Bitset {
-	switch __obf_5c4639a52fd845a9 {
-	case __obf_4e400452bceac92f:
-		return __obf_afa8ed5b526f190d.__obf_616a4bf40e113ebb
-	case __obf_2c1e89b2a5d75af1:
-		return __obf_afa8ed5b526f190d.__obf_8bed5a222d237455
-	case __obf_dc644ee144ffe79d:
-		return __obf_afa8ed5b526f190d.__obf_de42629460bbfb17
+func (__obf_f4afc55b009a3568 *__obf_a1f99035c479a58e) __obf_a8afedf204c1c547(__obf_319b72319cecddec __obf_319b72319cecddec) *bitset.Bitset {
+	switch __obf_319b72319cecddec {
+	case __obf_917a5ab78c19aa97:
+		return __obf_f4afc55b009a3568.__obf_b79a3e03cf940166
+	case __obf_23eff39094784930:
+		return __obf_f4afc55b009a3568.__obf_c261a78043989f54
+	case __obf_105296cdda013cec:
+		return __obf_f4afc55b009a3568.__obf_3f299aaed347bcdd
 	default:
 		log.Panic("Unknown data mode")
 	}
@@ -387,14 +344,14 @@ func (__obf_afa8ed5b526f190d *__obf_c5fc77e1fc362b78) __obf_089136fa4773c997(__o
 
 // charCountBits returns the number of bits used to encode the length of a data
 // segment of type dataMode.
-func (__obf_afa8ed5b526f190d *__obf_c5fc77e1fc362b78) __obf_06b32109ee6b3d5f(__obf_5c4639a52fd845a9 __obf_5c4639a52fd845a9) int {
-	switch __obf_5c4639a52fd845a9 {
-	case __obf_4e400452bceac92f:
-		return __obf_afa8ed5b526f190d.__obf_390d5f6e6bc86644
-	case __obf_2c1e89b2a5d75af1:
-		return __obf_afa8ed5b526f190d.__obf_8677a2566a502741
-	case __obf_dc644ee144ffe79d:
-		return __obf_afa8ed5b526f190d.__obf_daef7b2eb908826a
+func (__obf_f4afc55b009a3568 *__obf_a1f99035c479a58e) __obf_3458fa791dc0b9a0(__obf_319b72319cecddec __obf_319b72319cecddec) int {
+	switch __obf_319b72319cecddec {
+	case __obf_917a5ab78c19aa97:
+		return __obf_f4afc55b009a3568.__obf_658acb240021e40d
+	case __obf_23eff39094784930:
+		return __obf_f4afc55b009a3568.__obf_785a2936c735d1ad
+	case __obf_105296cdda013cec:
+		return __obf_f4afc55b009a3568.__obf_11f79fbb70f059e6
 	default:
 		log.Panic("Unknown data mode")
 	}
@@ -413,73 +370,71 @@ func (__obf_afa8ed5b526f190d *__obf_c5fc77e1fc362b78) __obf_06b32109ee6b3d5f(__o
 //
 // An error is returned if the mode is not supported, or the length requested is
 // too long to be represented.
-func (__obf_afa8ed5b526f190d *__obf_c5fc77e1fc362b78) __obf_babc4e2d32fa0aee(__obf_5c4639a52fd845a9 __obf_5c4639a52fd845a9, __obf_76e5f47d6201804c int) (int, error) {
-	__obf_089136fa4773c997 := __obf_afa8ed5b526f190d.__obf_089136fa4773c997(__obf_5c4639a52fd845a9)
-	__obf_06b32109ee6b3d5f := __obf_afa8ed5b526f190d.__obf_06b32109ee6b3d5f(__obf_5c4639a52fd845a9)
+func (__obf_f4afc55b009a3568 *__obf_a1f99035c479a58e) __obf_450a56f409c91c82(__obf_319b72319cecddec __obf_319b72319cecddec, __obf_15c5ace1af53f46b int) (int, error) {
+	__obf_a8afedf204c1c547 := __obf_f4afc55b009a3568.__obf_a8afedf204c1c547(__obf_319b72319cecddec)
+	__obf_3458fa791dc0b9a0 := __obf_f4afc55b009a3568.__obf_3458fa791dc0b9a0(__obf_319b72319cecddec)
 
-	if __obf_089136fa4773c997 == nil {
+	if __obf_a8afedf204c1c547 == nil {
 		return 0, errors.New("mode not supported")
 	}
+	__obf_e7360c82c37f2fb7 := (1 << uint8(__obf_3458fa791dc0b9a0)) - 1
 
-	__obf_399a13dfdb49f744 := (1 << uint8(__obf_06b32109ee6b3d5f)) - 1
-
-	if __obf_76e5f47d6201804c > __obf_399a13dfdb49f744 {
+	if __obf_15c5ace1af53f46b > __obf_e7360c82c37f2fb7 {
 		return 0, errors.New("length too long to be represented")
 	}
+	__obf_ebfaa7ff95572879 := __obf_a8afedf204c1c547.Len() + __obf_3458fa791dc0b9a0
 
-	__obf_2b2e0ead9ee6917b := __obf_089136fa4773c997.Len() + __obf_06b32109ee6b3d5f
+	switch __obf_319b72319cecddec {
+	case __obf_917a5ab78c19aa97:
+		__obf_ebfaa7ff95572879 += 10 * (__obf_15c5ace1af53f46b / 3)
 
-	switch __obf_5c4639a52fd845a9 {
-	case __obf_4e400452bceac92f:
-		__obf_2b2e0ead9ee6917b += 10 * (__obf_76e5f47d6201804c / 3)
-
-		if __obf_76e5f47d6201804c%3 != 0 {
-			__obf_2b2e0ead9ee6917b += 1 + 3*(__obf_76e5f47d6201804c%3)
+		if __obf_15c5ace1af53f46b%3 != 0 {
+			__obf_ebfaa7ff95572879 += 1 + 3*(__obf_15c5ace1af53f46b%3)
 		}
-	case __obf_2c1e89b2a5d75af1:
-		__obf_2b2e0ead9ee6917b += 11 * (__obf_76e5f47d6201804c / 2)
-		__obf_2b2e0ead9ee6917b += 6 * (__obf_76e5f47d6201804c % 2)
-	case __obf_dc644ee144ffe79d:
-		__obf_2b2e0ead9ee6917b += 8 * __obf_76e5f47d6201804c
+	case __obf_23eff39094784930:
+		__obf_ebfaa7ff95572879 += 11 * (__obf_15c5ace1af53f46b / 2)
+		__obf_ebfaa7ff95572879 += 6 * (__obf_15c5ace1af53f46b % 2)
+	case __obf_105296cdda013cec:
+		__obf_ebfaa7ff95572879 += 8 * __obf_15c5ace1af53f46b
 	}
 
-	return __obf_2b2e0ead9ee6917b, nil
+	return __obf_ebfaa7ff95572879, nil
 }
 
 // encodeAlphanumericChar returns the QR Code encoded value of v.
 //
 // v must be a QR Code defined alphanumeric character: 0-9, A-Z, SP, $%*+-./ or
 // :. The characters are mapped to values in the range 0-44 respectively.
-func __obf_09999fc6072e066a(__obf_4650eaa332d33944 byte) uint32 {
-	__obf_4b78f541c0594a32 := uint32(__obf_4650eaa332d33944)
+func __obf_a95688ceda5c4487(__obf_283aa709fd2621d8 byte) uint32 {
+	__obf_2cb1880a1bbf7299 := uint32(__obf_283aa709fd2621d8)
 
 	switch {
-	case __obf_4b78f541c0594a32 >= '0' && __obf_4b78f541c0594a32 <= '9':
+	case __obf_2cb1880a1bbf7299 >= '0' && __obf_2cb1880a1bbf7299 <= '9':
 		// 0-9 encoded as 0-9.
-		return __obf_4b78f541c0594a32 - '0'
-	case __obf_4b78f541c0594a32 >= 'A' && __obf_4b78f541c0594a32 <= 'Z':
+		return __obf_2cb1880a1bbf7299 - '0'
+	case __obf_2cb1880a1bbf7299 >= 'A' && __obf_2cb1880a1bbf7299 <= 'Z':
 		// A-Z encoded as 10-35.
-		return __obf_4b78f541c0594a32 - 'A' + 10
-	case __obf_4b78f541c0594a32 == ' ':
+		return __obf_2cb1880a1bbf7299 - 'A' + 10
+	case __obf_2cb1880a1bbf7299 == ' ':
 		return 36
-	case __obf_4b78f541c0594a32 == '$':
+	case __obf_2cb1880a1bbf7299 == '$':
 		return 37
-	case __obf_4b78f541c0594a32 == '%':
+	case __obf_2cb1880a1bbf7299 == '%':
 		return 38
-	case __obf_4b78f541c0594a32 == '*':
+	case __obf_2cb1880a1bbf7299 == '*':
 		return 39
-	case __obf_4b78f541c0594a32 == '+':
+	case __obf_2cb1880a1bbf7299 == '+':
 		return 40
-	case __obf_4b78f541c0594a32 == '-':
+	case __obf_2cb1880a1bbf7299 == '-':
 		return 41
-	case __obf_4b78f541c0594a32 == '.':
+	case __obf_2cb1880a1bbf7299 == '.':
 		return 42
-	case __obf_4b78f541c0594a32 == '/':
+	case __obf_2cb1880a1bbf7299 == '/':
 		return 43
-	case __obf_4b78f541c0594a32 == ':':
+	case __obf_2cb1880a1bbf7299 == ':':
 		return 44
 	default:
-		log.Panicf("encodeAlphanumericCharacter() with non alphanumeric char %v.", __obf_4650eaa332d33944)
+		log.Panicf("encodeAlphanumericCharacter() with non alphanumeric char %v.", __obf_283aa709fd2621d8)
 	}
 
 	return 0

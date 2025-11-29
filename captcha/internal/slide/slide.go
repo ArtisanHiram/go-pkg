@@ -1,245 +1,179 @@
-package __obf_7b43310cbd758abe
+package __obf_b1febe121b2dfc2d
 
 import (
-	"image"
-	"math/rand/v2"
-
 	assets "github.com/ArtisanHiram/go-pkg/captcha/internal/assets"
 	helper "github.com/ArtisanHiram/go-pkg/captcha/internal/helper"
 	types "github.com/ArtisanHiram/go-pkg/captcha/types"
 	util "github.com/ArtisanHiram/go-pkg/captcha/util"
 	"golang.org/x/image/draw"
+	"image"
+	"math/rand/v2"
 )
 
 // Captcha is the concrete implementation of the Captcha interface
 type Captcha struct {
-	__obf_c8b2a472ca3619f7 *Options
+	__obf_195f5263d9c40fa7 *Options
 }
+
+var _ types.Captcha = (*Captcha)(nil)
 
 // NewCaptcha creates a new slide CAPTCHA instance in basic mode
-func NewCaptcha(__obf_c8b2a472ca3619f7 *Options) *Captcha {
-	if __obf_c8b2a472ca3619f7 == nil {
+func NewCaptcha(__obf_195f5263d9c40fa7 *Options) *Captcha {
+	if __obf_195f5263d9c40fa7 == nil {
 		return nil
 	}
-	return &Captcha{
-		__obf_c8b2a472ca3619f7: __obf_c8b2a472ca3619f7,
-	}
+	return &Captcha{__obf_195f5263d9c40fa7: __obf_195f5263d9c40fa7}
 }
 
-// func randomSlideType(opts *Options) SlideType {
-// 	slideType := SlideType(rand.IntN(2))
-// 	if slideType == Move {
-// 		opts.Secondary.DeadZoneDirections = []DeadZoneDirectionType{DeadZoneDirectionTypeLeft}
-// 		opts.Secondary.EnableVerticalRandom = false
-// 	} else {
-// 		opts.Secondary.DeadZoneDirections = []DeadZoneDirectionType{
-// 			DeadZoneDirectionTypeLeft,
-// 			DeadZoneDirectionTypeRight,
-// 			DeadZoneDirectionTypeBottom,
-// 			DeadZoneDirectionTypeTop,
-// 		}
-// 		opts.Secondary.EnableVerticalRandom = true
-// 	}
-// 	return slideType
-// }
+func (__obf_6c40c4c2143a89cf *Captcha) Generate() (types.CaptchaData, error) {
+	__obf_bfc5712f7defe7ee,
 
-// DrawWithNRGBA draws the main CAPTCHA image and background image using NRGBA format
-// params:
-//   - params: Drawing parameters
-//
-// returns:
-//   - image.Image: Drawn CAPTCHA image
-//   - image.Image: Drawn background image
-//   - error: Error information
-func (__obf_533af04904ee7f62 *Captcha) DrawWithNRGBA(__obf_48c134abb5c806c2 *DrawImageParam) (image.Image, image.Image, error) {
-	__obf_f511dde7f6376853 := __obf_48c134abb5c806c2.DrawBlocks
-	__obf_029145c292029885 := helper.CreateNRGBACanvas(__obf_48c134abb5c806c2.Width, __obf_48c134abb5c806c2.Height, true)
-
-	for _, __obf_8fe11b25bcff626c := range __obf_f511dde7f6376853 {
-		__obf_0da34411b16aae43, __obf_815a32f6170a5e37 := __obf_533af04904ee7f62.__obf_77358da311ce81a5(__obf_8fe11b25bcff626c.Width, __obf_8fe11b25bcff626c.Height, __obf_8fe11b25bcff626c.Shape)
-		if __obf_815a32f6170a5e37 != nil {
-			return nil, nil, __obf_815a32f6170a5e37
-		}
-
-		__obf_cd8f4831e03f6f74 := __obf_0da34411b16aae43.Bounds()
-		draw.Draw(__obf_029145c292029885, image.Rect(__obf_8fe11b25bcff626c.X, __obf_8fe11b25bcff626c.Y, __obf_8fe11b25bcff626c.X+__obf_cd8f4831e03f6f74.Dx(), __obf_8fe11b25bcff626c.Y+__obf_cd8f4831e03f6f74.Dy()), __obf_0da34411b16aae43, image.Point{}, draw.Over)
+		// slideType := randomSlideType(c.opts)
+		__obf_5aebd7c35b6603fd := assets.PickTile()
+	if __obf_5aebd7c35b6603fd != nil {
+		return nil, __obf_5aebd7c35b6603fd
 	}
-
-	__obf_a7c0b3cec9f0ffae := helper.CreateNRGBACanvas(__obf_48c134abb5c806c2.Width, __obf_48c134abb5c806c2.Height, true)
-	if __obf_48c134abb5c806c2.Background != nil {
-		__obf_5a820796777ed357 := __obf_48c134abb5c806c2.Background
-		__obf_8fe11b25bcff626c := __obf_5a820796777ed357.Bounds()
-		__obf_999af3f415c9b80f := helper.CreateNRGBACanvas(__obf_8fe11b25bcff626c.Dx(), __obf_8fe11b25bcff626c.Dy(), true)
-		__obf_d20461f6caa9aeb8 := util.RangCutImagePos(__obf_48c134abb5c806c2.Width, __obf_48c134abb5c806c2.Height, __obf_5a820796777ed357)
-		draw.Draw(__obf_999af3f415c9b80f, __obf_8fe11b25bcff626c, __obf_5a820796777ed357, __obf_d20461f6caa9aeb8, draw.Src)
-		__obf_999af3f415c9b80f.SubImage(image.Rect(0, 0, __obf_48c134abb5c806c2.Width, __obf_48c134abb5c806c2.Height))
-
-		draw.Draw(__obf_a7c0b3cec9f0ffae, __obf_a7c0b3cec9f0ffae.Bounds(), __obf_999af3f415c9b80f, image.Point{}, draw.Over)
-		draw.Draw(__obf_999af3f415c9b80f, __obf_029145c292029885.Bounds(), __obf_029145c292029885, image.Point{}, draw.Over)
-		return __obf_999af3f415c9b80f, __obf_a7c0b3cec9f0ffae, nil
-	}
-
-	return __obf_029145c292029885, __obf_a7c0b3cec9f0ffae, nil
-}
-
-// DrawWithTemplate draws the tile image using a template
-// params:
-//   - params: Drawing parameters
-//
-// returns:
-//   - image.Image: Drawn tile image
-//   - error: Error information
-func (__obf_533af04904ee7f62 *Captcha) DrawWithTemplate(__obf_48c134abb5c806c2 *DrawTplImageParam) (image.Image, error) {
-	__obf_48a33b6401bf2a46 := __obf_48c134abb5c806c2.Block
-	__obf_5a820796777ed357 := __obf_48c134abb5c806c2.Background
-	__obf_029145c292029885 := helper.CreateNRGBACanvas(__obf_48c134abb5c806c2.Width, __obf_48c134abb5c806c2.Height, true)
-	__obf_035f1a3ab0bffc99 := helper.CreateNRGBACanvas(__obf_48c134abb5c806c2.Width, __obf_48c134abb5c806c2.Height, true)
-
-	__obf_4eddc11b44c141f9, __obf_815a32f6170a5e37 := __obf_533af04904ee7f62.__obf_77358da311ce81a5(__obf_48c134abb5c806c2.Width, __obf_48c134abb5c806c2.Height, __obf_48c134abb5c806c2.Mask)
-	if __obf_815a32f6170a5e37 != nil {
-		return nil, __obf_815a32f6170a5e37
-	}
-
-	draw.Draw(__obf_035f1a3ab0bffc99, __obf_035f1a3ab0bffc99.Bounds(), __obf_5a820796777ed357, image.Pt(__obf_48a33b6401bf2a46.X, __obf_48a33b6401bf2a46.Y), draw.Src)
-	draw.DrawMask(__obf_029145c292029885, __obf_4eddc11b44c141f9.Bounds(), __obf_035f1a3ab0bffc99, image.Point{}, __obf_4eddc11b44c141f9, image.Point{}, draw.Over)
-
-	__obf_59aac214cadf1763, __obf_815a32f6170a5e37 := __obf_533af04904ee7f62.__obf_77358da311ce81a5(__obf_48c134abb5c806c2.Width, __obf_48c134abb5c806c2.Height, __obf_48a33b6401bf2a46.Shape)
-	if __obf_815a32f6170a5e37 != nil {
-		return nil, __obf_815a32f6170a5e37
-	}
-	draw.Draw(__obf_029145c292029885, __obf_59aac214cadf1763.Bounds(), __obf_59aac214cadf1763, image.Point{}, draw.Over)
-
-	return __obf_029145c292029885, nil
-}
-
-// drawGraphImage draws a graph image
-// params:
-//   - width: Image width
-//   - height: Image height
-//   - img: Input image
-//
-// returns:
-//   - types.NRGBA: Drawn graph canvas
-//   - error: Error information
-func (__obf_533af04904ee7f62 *Captcha) __obf_77358da311ce81a5(__obf_9f93f567a968ba47, __obf_ac7d7ce25ce27722 int, __obf_9a60feaf318233a4 image.Image) (*types.NRGBA, error) {
-	__obf_029145c292029885 := helper.CreateNRGBACanvas(__obf_9f93f567a968ba47, __obf_ac7d7ce25ce27722, true)
-	draw.BiLinear.Scale(__obf_029145c292029885, __obf_029145c292029885.Bounds(), __obf_9a60feaf318233a4, __obf_9a60feaf318233a4.Bounds(), draw.Over, nil)
-	return __obf_029145c292029885, nil
-}
-
-// Generate generates slide CAPTCHA data
-// returns:
-//   - CaptchaData: Generated CAPTCHA data
-//   - error: Error information
-func (__obf_533af04904ee7f62 *Captcha) Generate() (*CaptchaData, error) {
-
-	// slideType := randomSlideType(c.opts)
-	__obf_0162179ca3c66d2d, __obf_815a32f6170a5e37 := assets.PickTile()
-	if __obf_815a32f6170a5e37 != nil {
-		return nil, __obf_815a32f6170a5e37
-	}
-
-	__obf_51e1d431c148d66c := util.RandInt(__obf_533af04904ee7f62.__obf_c8b2a472ca3619f7.Secondary.CountRange.Min, __obf_533af04904ee7f62.__obf_c8b2a472ca3619f7.Secondary.CountRange.Max)
-	__obf_f511dde7f6376853, __obf_bccc568563fb03d7 := __obf_533af04904ee7f62.__obf_3d4a564438f48053(__obf_533af04904ee7f62.__obf_c8b2a472ca3619f7.Primary.Size, __obf_533af04904ee7f62.__obf_c8b2a472ca3619f7.Secondary.SizeRange, __obf_51e1d431c148d66c)
-	var __obf_48a33b6401bf2a46 *types.Block
-	if len(__obf_f511dde7f6376853) > 1 {
-		__obf_fc4fc52d8df5628b := max(rand.IntN(len(__obf_f511dde7f6376853)), 0)
-		__obf_48a33b6401bf2a46 = __obf_f511dde7f6376853[__obf_fc4fc52d8df5628b]
+	__obf_7a30ad9a5e348667 := util.RandInt(__obf_6c40c4c2143a89cf.__obf_195f5263d9c40fa7.Secondary.CountRange.Min, __obf_6c40c4c2143a89cf.__obf_195f5263d9c40fa7.Secondary.CountRange.Max)
+	__obf_1edab5b16168422c, __obf_25680b49bee7b8cd := __obf_6c40c4c2143a89cf.__obf_c6431c3f8222f8a9(__obf_6c40c4c2143a89cf.__obf_195f5263d9c40fa7.Primary.Size, __obf_6c40c4c2143a89cf.__obf_195f5263d9c40fa7.Secondary.SizeRange, __obf_7a30ad9a5e348667)
+	var __obf_fc1b3b29182d412e *types.Block
+	if len(__obf_1edab5b16168422c) > 1 {
+		__obf_d0c55d7e94de4ab3 := max(rand.IntN(len(__obf_1edab5b16168422c)), 0)
+		__obf_fc1b3b29182d412e = __obf_1edab5b16168422c[__obf_d0c55d7e94de4ab3]
 	} else {
-		__obf_48a33b6401bf2a46 = __obf_f511dde7f6376853[0]
+		__obf_fc1b3b29182d412e = __obf_1edab5b16168422c[0]
 	}
-
-	__obf_ae9d075a50d2eeb2, __obf_0f8b583ed46bc13c, __obf_815a32f6170a5e37 := __obf_533af04904ee7f62.__obf_744b5ecd3ca3903a(__obf_533af04904ee7f62.__obf_c8b2a472ca3619f7.Primary.Size, __obf_0162179ca3c66d2d.Shadow, __obf_f511dde7f6376853)
-	if __obf_815a32f6170a5e37 != nil {
-		return nil, __obf_815a32f6170a5e37
+	__obf_ece3f1a292371bc7, __obf_ce29229ace617897, __obf_5aebd7c35b6603fd := __obf_6c40c4c2143a89cf.__obf_1a6614a8b01291c4(__obf_6c40c4c2143a89cf.__obf_195f5263d9c40fa7.Primary.Size, __obf_bfc5712f7defe7ee.Shadow, __obf_1edab5b16168422c)
+	if __obf_5aebd7c35b6603fd != nil {
+		return nil, __obf_5aebd7c35b6603fd
 	}
-
-	__obf_48a33b6401bf2a46.Shape = __obf_0162179ca3c66d2d.Overlay
-
-	__obf_91551e891ceb13f1, __obf_815a32f6170a5e37 := __obf_533af04904ee7f62.DrawWithTemplate(&DrawTplImageParam{
-		Background: __obf_0f8b583ed46bc13c,
-		Mask:       __obf_0162179ca3c66d2d.Mask,
-		Alpha:      __obf_533af04904ee7f62.__obf_c8b2a472ca3619f7.Primary.Alpha,
-		Width:      __obf_48a33b6401bf2a46.Width,
-		Height:     __obf_48a33b6401bf2a46.Height,
-		Block:      __obf_48a33b6401bf2a46,
+	__obf_fc1b3b29182d412e.
+		Shape = __obf_bfc5712f7defe7ee.Overlay
+	__obf_765e5abee3631ca2, __obf_5aebd7c35b6603fd := __obf_6c40c4c2143a89cf.DrawWithTemplate(&DrawTplImageParam{
+		Background: __obf_ce29229ace617897,
+		Mask:       __obf_bfc5712f7defe7ee.Mask,
+		Alpha:      __obf_6c40c4c2143a89cf.__obf_195f5263d9c40fa7.Primary.Alpha,
+		Width:      __obf_fc1b3b29182d412e.Width,
+		Height:     __obf_fc1b3b29182d412e.Height,
+		Block:      __obf_fc1b3b29182d412e,
 	})
 
-	if __obf_815a32f6170a5e37 != nil {
-		return nil, __obf_815a32f6170a5e37
+	if __obf_5aebd7c35b6603fd != nil {
+		return nil, __obf_5aebd7c35b6603fd
 	}
 
-	if __obf_533af04904ee7f62.__obf_c8b2a472ca3619f7.Type == Move {
-		__obf_48a33b6401bf2a46.DY = __obf_48a33b6401bf2a46.Y
+	if __obf_6c40c4c2143a89cf.__obf_195f5263d9c40fa7.Type == Move {
+		__obf_fc1b3b29182d412e.
+			DY = __obf_fc1b3b29182d412e.Y
 	} else {
-		__obf_48a33b6401bf2a46.DY = __obf_bccc568563fb03d7.Y
+		__obf_fc1b3b29182d412e.
+			DY = __obf_25680b49bee7b8cd.Y
 	}
-	__obf_48a33b6401bf2a46.DX = __obf_bccc568563fb03d7.X
+	__obf_fc1b3b29182d412e.
+		DX = __obf_25680b49bee7b8cd.X
 
-	return &CaptchaData{
-		__obf_782e73e3bc2a2b90: __obf_533af04904ee7f62.__obf_c8b2a472ca3619f7.Type,
-		__obf_48a33b6401bf2a46: __obf_48a33b6401bf2a46,
-		__obf_ae9d075a50d2eeb2: types.NewJPEGImage(__obf_ae9d075a50d2eeb2),
-		__obf_91551e891ceb13f1: types.NewPNGImage(__obf_91551e891ceb13f1),
-	}, nil
+	return &CaptchaData{__obf_b78c570ef70ccb05: __obf_6c40c4c2143a89cf.__obf_195f5263d9c40fa7.Type, __obf_fc1b3b29182d412e: __obf_fc1b3b29182d412e, __obf_ece3f1a292371bc7: types.NewJPEGImage(__obf_ece3f1a292371bc7), __obf_765e5abee3631ca2: types.NewPNGImage(__obf_765e5abee3631ca2)}, nil
 }
 
-// genMainImage generates the main CAPTCHA image and background image
-// params:
-//   - size: Image size
-//   - shadowImage: Shadow image
-//   - blocks: List of blocks
-//
-// returns:
-//   - image.Image: Main image
-//   - image.Image: Background image
-//   - error: Error information
-func (__obf_533af04904ee7f62 *Captcha) __obf_744b5ecd3ca3903a(__obf_aad00d3034ed9067 types.Size, __obf_484e609f6e7cdb65 image.Image, __obf_f511dde7f6376853 []*types.Block) (image.Image, image.Image, error) {
-	var __obf_b404d62ec25d559e = make([]*types.Block, 0, len(__obf_f511dde7f6376853))
-	for _, __obf_3b8f88980dd18433 := range __obf_f511dde7f6376853 {
-		__obf_3b8f88980dd18433.Shape = __obf_484e609f6e7cdb65
-		__obf_b404d62ec25d559e = append(__obf_b404d62ec25d559e, __obf_3b8f88980dd18433)
+func (__obf_6c40c4c2143a89cf *Captcha) DrawWithNRGBA(__obf_71f255c3ea29422c *DrawImageParam) (image.Image, image.Image, error) {
+	__obf_1edab5b16168422c := __obf_71f255c3ea29422c.DrawBlocks
+	__obf_7b3584bd111a3fe6 := helper.CreateNRGBACanvas(__obf_71f255c3ea29422c.Width, __obf_71f255c3ea29422c.Height, true)
+
+	for _, __obf_7c35927d0adde051 := range __obf_1edab5b16168422c {
+		__obf_ceb1794341487dd6, __obf_5aebd7c35b6603fd := __obf_6c40c4c2143a89cf.__obf_bd6aaa08c23860f2(__obf_7c35927d0adde051.Width, __obf_7c35927d0adde051.Height, __obf_7c35927d0adde051.Shape)
+		if __obf_5aebd7c35b6603fd != nil {
+			return nil, nil, __obf_5aebd7c35b6603fd
+		}
+		__obf_a2fbd4af53d4c076 := __obf_ceb1794341487dd6.Bounds()
+		draw.Draw(__obf_7b3584bd111a3fe6, image.Rect(__obf_7c35927d0adde051.X, __obf_7c35927d0adde051.Y, __obf_7c35927d0adde051.X+__obf_a2fbd4af53d4c076.Dx(), __obf_7c35927d0adde051.Y+__obf_a2fbd4af53d4c076.Dy()), __obf_ceb1794341487dd6, image.Point{}, draw.Over)
+	}
+	__obf_c2ba679c4cff2eeb := helper.CreateNRGBACanvas(__obf_71f255c3ea29422c.Width, __obf_71f255c3ea29422c.Height, true)
+	if __obf_71f255c3ea29422c.Background != nil {
+		__obf_1bbb3f6179a38655 := __obf_71f255c3ea29422c.Background
+		__obf_7c35927d0adde051 := __obf_1bbb3f6179a38655.Bounds()
+		__obf_d05e89d7f2a100f4 := helper.CreateNRGBACanvas(__obf_7c35927d0adde051.Dx(), __obf_7c35927d0adde051.Dy(), true)
+		__obf_7c26d84cefb213cc := util.RangCutImagePos(__obf_71f255c3ea29422c.Width, __obf_71f255c3ea29422c.Height, __obf_1bbb3f6179a38655)
+		draw.Draw(__obf_d05e89d7f2a100f4, __obf_7c35927d0adde051, __obf_1bbb3f6179a38655, __obf_7c26d84cefb213cc, draw.Src)
+		__obf_d05e89d7f2a100f4.
+			SubImage(image.Rect(0, 0, __obf_71f255c3ea29422c.Width, __obf_71f255c3ea29422c.Height))
+
+		draw.Draw(__obf_c2ba679c4cff2eeb, __obf_c2ba679c4cff2eeb.Bounds(), __obf_d05e89d7f2a100f4, image.Point{}, draw.Over)
+		draw.Draw(__obf_d05e89d7f2a100f4, __obf_7b3584bd111a3fe6.Bounds(), __obf_7b3584bd111a3fe6, image.Point{}, draw.Over)
+		return __obf_d05e89d7f2a100f4, __obf_c2ba679c4cff2eeb, nil
 	}
 
-	__obf_1fee37d0587ba009, __obf_815a32f6170a5e37 := assets.PickBgImage()
-	if __obf_815a32f6170a5e37 != nil {
-		return nil, nil, __obf_815a32f6170a5e37
+	return __obf_7b3584bd111a3fe6, __obf_c2ba679c4cff2eeb, nil
+}
+
+func (__obf_6c40c4c2143a89cf *Captcha) DrawWithTemplate(__obf_71f255c3ea29422c *DrawTplImageParam) (image.Image, error) {
+	__obf_fc1b3b29182d412e := __obf_71f255c3ea29422c.Block
+	__obf_1bbb3f6179a38655 := __obf_71f255c3ea29422c.Background
+	__obf_7b3584bd111a3fe6 := helper.CreateNRGBACanvas(__obf_71f255c3ea29422c.Width, __obf_71f255c3ea29422c.Height, true)
+	__obf_9721af8b1b9a5873 := helper.CreateNRGBACanvas(__obf_71f255c3ea29422c.Width, __obf_71f255c3ea29422c.Height, true)
+	__obf_e07647d6ed81856e, __obf_5aebd7c35b6603fd := __obf_6c40c4c2143a89cf.__obf_bd6aaa08c23860f2(__obf_71f255c3ea29422c.Width, __obf_71f255c3ea29422c.Height, __obf_71f255c3ea29422c.Mask)
+	if __obf_5aebd7c35b6603fd != nil {
+		return nil, __obf_5aebd7c35b6603fd
 	}
 
-	return __obf_533af04904ee7f62.DrawWithNRGBA(&DrawImageParam{
-		Width:      __obf_aad00d3034ed9067.Width,
-		Height:     __obf_aad00d3034ed9067.Height,
-		Background: __obf_1fee37d0587ba009,
-		Alpha:      __obf_533af04904ee7f62.__obf_c8b2a472ca3619f7.Primary.Alpha,
-		DrawBlocks: __obf_b404d62ec25d559e,
+	draw.Draw(__obf_9721af8b1b9a5873, __obf_9721af8b1b9a5873.Bounds(), __obf_1bbb3f6179a38655, image.Pt(__obf_fc1b3b29182d412e.X, __obf_fc1b3b29182d412e.Y), draw.Src)
+	draw.DrawMask(__obf_7b3584bd111a3fe6, __obf_e07647d6ed81856e.Bounds(), __obf_9721af8b1b9a5873, image.Point{}, __obf_e07647d6ed81856e, image.Point{}, draw.Over)
+	__obf_f4163ce5cad7788b, __obf_5aebd7c35b6603fd := __obf_6c40c4c2143a89cf.__obf_bd6aaa08c23860f2(__obf_71f255c3ea29422c.Width, __obf_71f255c3ea29422c.Height, __obf_fc1b3b29182d412e.Shape)
+	if __obf_5aebd7c35b6603fd != nil {
+		return nil, __obf_5aebd7c35b6603fd
+	}
+	draw.Draw(__obf_7b3584bd111a3fe6, __obf_f4163ce5cad7788b.Bounds(), __obf_f4163ce5cad7788b, image.Point{}, draw.Over)
+
+	return __obf_7b3584bd111a3fe6, nil
+}
+
+func (__obf_6c40c4c2143a89cf *Captcha) __obf_bd6aaa08c23860f2(__obf_b5007f75c87ca886, __obf_f39217514bf96315 int, __obf_20f34af22b1cb93e image.Image) (*types.NRGBA, error) {
+	__obf_7b3584bd111a3fe6 := helper.CreateNRGBACanvas(__obf_b5007f75c87ca886, __obf_f39217514bf96315, true)
+	draw.BiLinear.Scale(__obf_7b3584bd111a3fe6, __obf_7b3584bd111a3fe6.Bounds(), __obf_20f34af22b1cb93e, __obf_20f34af22b1cb93e.Bounds(), draw.Over, nil)
+	return __obf_7b3584bd111a3fe6, nil
+}
+
+func (__obf_6c40c4c2143a89cf *Captcha) __obf_1a6614a8b01291c4(__obf_067c37c603bffc8d types.Size, __obf_53c8d07bb7f86fd7 image.Image, __obf_1edab5b16168422c []*types.Block) (image.Image, image.Image, error) {
+	var __obf_f4cc6f28902600c6 = make([]*types.Block, 0, len(__obf_1edab5b16168422c))
+	for _, __obf_3a08cc16aa144792 := range __obf_1edab5b16168422c {
+		__obf_3a08cc16aa144792.
+			Shape = __obf_53c8d07bb7f86fd7
+		__obf_f4cc6f28902600c6 = append(__obf_f4cc6f28902600c6, __obf_3a08cc16aa144792)
+	}
+	__obf_2652eded0aaeff0b, __obf_5aebd7c35b6603fd := assets.PickBgImage()
+	if __obf_5aebd7c35b6603fd != nil {
+		return nil, nil, __obf_5aebd7c35b6603fd
+	}
+
+	return __obf_6c40c4c2143a89cf.DrawWithNRGBA(&DrawImageParam{
+		Width:      __obf_067c37c603bffc8d.Width,
+		Height:     __obf_067c37c603bffc8d.Height,
+		Background: __obf_2652eded0aaeff0b,
+		Alpha:      __obf_6c40c4c2143a89cf.__obf_195f5263d9c40fa7.Primary.Alpha,
+		DrawBlocks: __obf_f4cc6f28902600c6,
 	})
 }
 
 // randDeadZoneDirection generates a random dead zone direction
 // return: Dead zone direction
-func (__obf_533af04904ee7f62 *Captcha) __obf_80b7b3130efa2134() DeadZoneDirectionType {
-	__obf_3682c63519ae1a3a := __obf_533af04904ee7f62.__obf_c8b2a472ca3619f7.Secondary.DeadZoneDirections
-
-	__obf_fc4fc52d8df5628b := rand.IntN(len(__obf_3682c63519ae1a3a))
-	if __obf_fc4fc52d8df5628b < 0 {
+func (__obf_6c40c4c2143a89cf *Captcha) __obf_9e8e6adb3493bd16() DeadZoneDirectionType {
+	__obf_e5865ac8cb20d95d := __obf_6c40c4c2143a89cf.__obf_195f5263d9c40fa7.Secondary.DeadZoneDirections
+	__obf_d0c55d7e94de4ab3 := rand.IntN(len(__obf_e5865ac8cb20d95d))
+	if __obf_d0c55d7e94de4ab3 < 0 {
 		return 0
 	}
 
-	return __obf_3682c63519ae1a3a[__obf_fc4fc52d8df5628b]
+	return __obf_e5865ac8cb20d95d[__obf_d0c55d7e94de4ab3]
 }
 
 // randGraphAngle generates a random graph angle
 // return: Random angle value
-func (__obf_533af04904ee7f62 *Captcha) __obf_0f693a765ef8a07e() int {
-	__obf_62c2b10d6cd85c0a := __obf_533af04904ee7f62.__obf_c8b2a472ca3619f7.Secondary.AnglePosRange
-
-	__obf_fc4fc52d8df5628b := rand.IntN(len(__obf_62c2b10d6cd85c0a))
-	if __obf_fc4fc52d8df5628b < 0 {
+func (__obf_6c40c4c2143a89cf *Captcha) __obf_1e2b8a0c7d68a9f4() int {
+	__obf_13b6cc0d1d2c6ef9 := __obf_6c40c4c2143a89cf.__obf_195f5263d9c40fa7.Secondary.AnglePosRange
+	__obf_d0c55d7e94de4ab3 := rand.IntN(len(__obf_13b6cc0d1d2c6ef9))
+	if __obf_d0c55d7e94de4ab3 < 0 {
 		return 0
 	}
-
-	__obf_e88bd40baf6aeb5b := __obf_62c2b10d6cd85c0a[__obf_fc4fc52d8df5628b]
-	return util.RandInt(__obf_e88bd40baf6aeb5b.Min, __obf_e88bd40baf6aeb5b.Max)
+	__obf_0076db988688d2a8 := __obf_13b6cc0d1d2c6ef9[__obf_d0c55d7e94de4ab3]
+	return util.RandInt(__obf_0076db988688d2a8.Min, __obf_0076db988688d2a8.Max)
 }
 
 // genGraphBlocks generates graph block data
@@ -251,97 +185,110 @@ func (__obf_533af04904ee7f62 *Captcha) __obf_0f693a765ef8a07e() int {
 // returns:
 //   - []*types.Block: List of blocks
 //   - types.Point: Tile position
-func (__obf_533af04904ee7f62 *Captcha) __obf_3d4a564438f48053(__obf_6cb0f928dfe5f5c6 types.Size, __obf_aad00d3034ed9067 types.Range, __obf_4a4100bf291d4edd int) ([]*types.Block, types.Point) {
-	var __obf_f511dde7f6376853 = make([]*types.Block, 0, __obf_4a4100bf291d4edd)
-	__obf_9f93f567a968ba47 := __obf_6cb0f928dfe5f5c6.Width
-	__obf_ac7d7ce25ce27722 := __obf_6cb0f928dfe5f5c6.Height
+func (__obf_6c40c4c2143a89cf *Captcha) __obf_c6431c3f8222f8a9(__obf_76308d3d64d47828 types.Size, __obf_067c37c603bffc8d types.Range, __obf_86b43f9d7c7452cd int) ([]*types.Block, types.Point) {
+	var __obf_1edab5b16168422c = make([]*types.Block, 0, __obf_86b43f9d7c7452cd)
+	__obf_b5007f75c87ca886 := __obf_76308d3d64d47828.Width
+	__obf_f39217514bf96315 := __obf_76308d3d64d47828.Height
+	__obf_37e0971ef3dd4b08 := __obf_6c40c4c2143a89cf.__obf_1e2b8a0c7d68a9f4()
+	__obf_a3689b7c0e0a9a9c := util.RandInt(__obf_067c37c603bffc8d.Min, __obf_067c37c603bffc8d.Max)
+	__obf_99a2b3d0bd1ca1a5 := __obf_a3689b7c0e0a9a9c
+	__obf_7326020f8165ae8d := __obf_a3689b7c0e0a9a9c
+	__obf_c882f20d3c1eb5f3 := __obf_6c40c4c2143a89cf.__obf_9e8e6adb3493bd16()
+	__obf_62a130791db26e35 := __obf_7326020f8165ae8d / 2
+	__obf_01fbb5115ff257fb := (__obf_b5007f75c87ca886 - __obf_7326020f8165ae8d - 20) / __obf_86b43f9d7c7452cd
+	__obf_a365fcf4931c088a := __obf_6c40c4c2143a89cf.__obf_966f2e37d66f0b3a(5, __obf_f39217514bf96315-__obf_99a2b3d0bd1ca1a5-5, __obf_99a2b3d0bd1ca1a5, __obf_c882f20d3c1eb5f3)
 
-	__obf_da585450f15dd6d9 := __obf_533af04904ee7f62.__obf_0f693a765ef8a07e()
-	__obf_7f24b3201ab650d3 := util.RandInt(__obf_aad00d3034ed9067.Min, __obf_aad00d3034ed9067.Max)
-	__obf_9715a8e4acb8e6bb := __obf_7f24b3201ab650d3
-	__obf_b4f3e3681701efb0 := __obf_7f24b3201ab650d3
+	for __obf_b30879033ba2ce97 := range __obf_86b43f9d7c7452cd {
+		var __obf_fc1b3b29182d412e = &types.Block{}
+		__obf_c31ad7db39476e96, __obf_b420abdd9570f880 := __obf_6c40c4c2143a89cf.__obf_255dec706da37109((__obf_b30879033ba2ce97*__obf_01fbb5115ff257fb)+__obf_62a130791db26e35+5, ((__obf_b30879033ba2ce97+1)*__obf_01fbb5115ff257fb)-__obf_62a130791db26e35, __obf_7326020f8165ae8d, __obf_c882f20d3c1eb5f3)
+		__obf_c31ad7db39476e96 = int(max(float64(__obf_c31ad7db39476e96), float64(__obf_62a130791db26e35+5)))
+		__obf_fc1b3b29182d412e.
+			X = util.RandInt(__obf_c31ad7db39476e96+20, __obf_b420abdd9570f880+20) - __obf_62a130791db26e35
 
-	__obf_8257a1eaf29026f3 := __obf_533af04904ee7f62.__obf_80b7b3130efa2134()
-	__obf_4dbdd2b602f21ae0 := __obf_b4f3e3681701efb0 / 2
-	__obf_b988f923318ff5d1 := (__obf_9f93f567a968ba47 - __obf_b4f3e3681701efb0 - 20) / __obf_4a4100bf291d4edd
-	__obf_7ebb747a5fcb895a := __obf_533af04904ee7f62.__obf_8229eedd27fe0d0b(5, __obf_ac7d7ce25ce27722-__obf_9715a8e4acb8e6bb-5, __obf_9715a8e4acb8e6bb, __obf_8257a1eaf29026f3)
-
-	for __obf_26220a125481b269 := range __obf_4a4100bf291d4edd {
-		var __obf_48a33b6401bf2a46 = &types.Block{}
-		__obf_afcfed03799ee8b2, __obf_b630e2c195832bb0 := __obf_533af04904ee7f62.__obf_fb9f97fea4c7c64d((__obf_26220a125481b269*__obf_b988f923318ff5d1)+__obf_4dbdd2b602f21ae0+5, ((__obf_26220a125481b269+1)*__obf_b988f923318ff5d1)-__obf_4dbdd2b602f21ae0, __obf_b4f3e3681701efb0, __obf_8257a1eaf29026f3)
-
-		__obf_afcfed03799ee8b2 = int(max(float64(__obf_afcfed03799ee8b2), float64(__obf_4dbdd2b602f21ae0+5)))
-		__obf_48a33b6401bf2a46.X = util.RandInt(__obf_afcfed03799ee8b2+20, __obf_b630e2c195832bb0+20) - __obf_4dbdd2b602f21ae0
-
-		if __obf_533af04904ee7f62.__obf_c8b2a472ca3619f7.Secondary.EnableVerticalRandom {
-			__obf_7ebb747a5fcb895a = __obf_533af04904ee7f62.__obf_8229eedd27fe0d0b(5, __obf_ac7d7ce25ce27722-__obf_9715a8e4acb8e6bb-5, __obf_9715a8e4acb8e6bb, __obf_8257a1eaf29026f3)
+		if __obf_6c40c4c2143a89cf.__obf_195f5263d9c40fa7.Secondary.EnableVerticalRandom {
+			__obf_a365fcf4931c088a = __obf_6c40c4c2143a89cf.__obf_966f2e37d66f0b3a(5, __obf_f39217514bf96315-__obf_99a2b3d0bd1ca1a5-5, __obf_99a2b3d0bd1ca1a5, __obf_c882f20d3c1eb5f3)
 		}
-
-		__obf_48a33b6401bf2a46.Y = __obf_7ebb747a5fcb895a
-		__obf_48a33b6401bf2a46.Width = __obf_b4f3e3681701efb0
-		__obf_48a33b6401bf2a46.Height = __obf_9715a8e4acb8e6bb
-		__obf_48a33b6401bf2a46.Angle = __obf_da585450f15dd6d9
-
-		__obf_f511dde7f6376853 = append(__obf_f511dde7f6376853, __obf_48a33b6401bf2a46)
+		__obf_fc1b3b29182d412e.
+			Y = __obf_a365fcf4931c088a
+		__obf_fc1b3b29182d412e.
+			Width = __obf_7326020f8165ae8d
+		__obf_fc1b3b29182d412e.
+			Height = __obf_99a2b3d0bd1ca1a5
+		__obf_fc1b3b29182d412e.
+			Angle = __obf_37e0971ef3dd4b08
+		__obf_1edab5b16168422c = append(__obf_1edab5b16168422c, __obf_fc1b3b29182d412e)
+	}
+	__obf_7c26d84cefb213cc := types.Point{}
+	if __obf_6c40c4c2143a89cf.__obf_195f5263d9c40fa7.Type == Move {
+		__obf_7c26d84cefb213cc.
+			X = util.RandInt(5, __obf_62a130791db26e35)
+		__obf_7c26d84cefb213cc.
+			Y = __obf_a365fcf4931c088a
+		return __obf_1edab5b16168422c, __obf_7c26d84cefb213cc
 	}
 
-	__obf_d20461f6caa9aeb8 := types.Point{}
-	if __obf_533af04904ee7f62.__obf_c8b2a472ca3619f7.Type == Move {
-		__obf_d20461f6caa9aeb8.X = util.RandInt(5, __obf_4dbdd2b602f21ae0)
-		__obf_d20461f6caa9aeb8.Y = __obf_7ebb747a5fcb895a
-		return __obf_f511dde7f6376853, __obf_d20461f6caa9aeb8
-	}
-
-	switch __obf_8257a1eaf29026f3 {
+	switch __obf_c882f20d3c1eb5f3 {
 	case DeadZoneDirectionTypeTop:
-		__obf_d20461f6caa9aeb8.X = util.RandInt(5, __obf_9f93f567a968ba47-__obf_b4f3e3681701efb0-5)
-		__obf_d20461f6caa9aeb8.Y = 5
+		__obf_7c26d84cefb213cc.
+			X = util.RandInt(5, __obf_b5007f75c87ca886-__obf_7326020f8165ae8d-5)
+		__obf_7c26d84cefb213cc.
+			Y = 5
 	case DeadZoneDirectionTypeBottom:
-		__obf_d20461f6caa9aeb8.X = util.RandInt(5, __obf_9f93f567a968ba47-__obf_b4f3e3681701efb0-5)
-		__obf_d20461f6caa9aeb8.Y = __obf_ac7d7ce25ce27722 - __obf_9715a8e4acb8e6bb - 5
+		__obf_7c26d84cefb213cc.
+			X = util.RandInt(5, __obf_b5007f75c87ca886-__obf_7326020f8165ae8d-5)
+		__obf_7c26d84cefb213cc.
+			Y = __obf_f39217514bf96315 - __obf_99a2b3d0bd1ca1a5 - 5
 	case DeadZoneDirectionTypeLeft:
-		__obf_d20461f6caa9aeb8.X = 5
-		__obf_d20461f6caa9aeb8.Y = util.RandInt(5, __obf_ac7d7ce25ce27722-__obf_9715a8e4acb8e6bb-5)
+		__obf_7c26d84cefb213cc.
+			X = 5
+		__obf_7c26d84cefb213cc.
+			Y = util.RandInt(5, __obf_f39217514bf96315-__obf_99a2b3d0bd1ca1a5-5)
 	case DeadZoneDirectionTypeRight:
-		__obf_d20461f6caa9aeb8.X = __obf_9f93f567a968ba47 - __obf_b4f3e3681701efb0 - 5
-		__obf_d20461f6caa9aeb8.Y = util.RandInt(5, __obf_ac7d7ce25ce27722-__obf_9715a8e4acb8e6bb-5)
+		__obf_7c26d84cefb213cc.
+			X = __obf_b5007f75c87ca886 - __obf_7326020f8165ae8d - 5
+		__obf_7c26d84cefb213cc.
+			Y = util.RandInt(5, __obf_f39217514bf96315-__obf_99a2b3d0bd1ca1a5-5)
 	}
 
-	return __obf_f511dde7f6376853, __obf_d20461f6caa9aeb8
+	return __obf_1edab5b16168422c,
+
+		// calcXWithDeadZone calculates the X coordinate range (considering dead zone)
+		// params:
+		//   - start: Start X coordinate
+		//   - end: End X coordinate
+		//   - value: types.Block width
+		//   - dzdType: Dead zone direction
+		//
+		// returns:
+		//   - int: Adjusted start X coordinate
+		//   - int: Adjusted end X coordinate
+		__obf_7c26d84cefb213cc
 }
 
-// calcXWithDeadZone calculates the X coordinate range (considering dead zone)
-// params:
-//   - start: Start X coordinate
-//   - end: End X coordinate
-//   - value: types.Block width
-//   - dzdType: Dead zone direction
-//
-// returns:
-//   - int: Adjusted start X coordinate
-//   - int: Adjusted end X coordinate
-func (__obf_533af04904ee7f62 *Captcha) __obf_fb9f97fea4c7c64d(__obf_afcfed03799ee8b2, __obf_b630e2c195832bb0, __obf_72a033fd9701305a int, __obf_8257a1eaf29026f3 DeadZoneDirectionType) (int, int) {
-	if __obf_8257a1eaf29026f3 == DeadZoneDirectionTypeLeft {
-		__obf_afcfed03799ee8b2 += __obf_72a033fd9701305a
-		__obf_b630e2c195832bb0 += __obf_72a033fd9701305a
+func (__obf_6c40c4c2143a89cf *Captcha) __obf_255dec706da37109(__obf_c31ad7db39476e96, __obf_b420abdd9570f880, __obf_a2de9a4ccbb03daf int, __obf_c882f20d3c1eb5f3 DeadZoneDirectionType) (int, int) {
+	if __obf_c882f20d3c1eb5f3 == DeadZoneDirectionTypeLeft {
+		__obf_c31ad7db39476e96 += __obf_a2de9a4ccbb03daf
+		__obf_b420abdd9570f880 += __obf_a2de9a4ccbb03daf
 	}
-	return __obf_afcfed03799ee8b2, __obf_b630e2c195832bb0
+	return __obf_c31ad7db39476e96,
+
+		// calcYWithDeadZone calculates the Y coordinate (considering dead zone)
+		// params:
+		//   - start: Start Y coordinate
+		//   - end: End Y coordinate
+		//   - value: types.Block height
+		//   - dzdType: Dead zone direction
+		//
+		// return: Random Y coordinate
+		__obf_b420abdd9570f880
 }
 
-// calcYWithDeadZone calculates the Y coordinate (considering dead zone)
-// params:
-//   - start: Start Y coordinate
-//   - end: End Y coordinate
-//   - value: types.Block height
-//   - dzdType: Dead zone direction
-//
-// return: Random Y coordinate
-func (__obf_533af04904ee7f62 *Captcha) __obf_8229eedd27fe0d0b(__obf_afcfed03799ee8b2, __obf_b630e2c195832bb0, __obf_72a033fd9701305a int, __obf_8257a1eaf29026f3 DeadZoneDirectionType) int {
-	switch __obf_8257a1eaf29026f3 {
+func (__obf_6c40c4c2143a89cf *Captcha) __obf_966f2e37d66f0b3a(__obf_c31ad7db39476e96, __obf_b420abdd9570f880, __obf_a2de9a4ccbb03daf int, __obf_c882f20d3c1eb5f3 DeadZoneDirectionType) int {
+	switch __obf_c882f20d3c1eb5f3 {
 	case DeadZoneDirectionTypeTop:
-		__obf_afcfed03799ee8b2 += __obf_72a033fd9701305a
+		__obf_c31ad7db39476e96 += __obf_a2de9a4ccbb03daf
 	case DeadZoneDirectionTypeBottom:
-		__obf_b630e2c195832bb0 -= __obf_72a033fd9701305a
+		__obf_b420abdd9570f880 -= __obf_a2de9a4ccbb03daf
 	}
-	return util.RandInt(__obf_afcfed03799ee8b2, __obf_b630e2c195832bb0)
+	return util.RandInt(__obf_c31ad7db39476e96, __obf_b420abdd9570f880)
 }

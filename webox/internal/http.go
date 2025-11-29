@@ -1,4 +1,4 @@
-package __obf_c0d7bb2e04898f29
+package __obf_ca26b678cc0b7836
 
 import (
 	"bytes"
@@ -13,111 +13,107 @@ import (
 
 // Client 封装了通用的HTTP请求逻辑
 type HttpClient struct {
-	__obf_d7e3a8a5eebdb96b *http.Client
+	__obf_14113e52cc90753b *http.Client
 }
 
 // NewClient 创建一个新的HTTP客户端实例
 func NewClient() *HttpClient {
-	return &HttpClient{
-		__obf_d7e3a8a5eebdb96b: &http.Client{
-			Timeout: 15 * time.Second, // 设置一个合理的超时时间
-		},
+	return &HttpClient{__obf_14113e52cc90753b: &http.Client{
+		Timeout: 15 * time.Second, // 设置一个合理的超时时间
+	},
 	}
 }
 
 // NewClientWithTls 创建一个新的HTTP客户端实例 (带证书)
 // certPath: API证书文件路径 (例如：apiclient_cert.pem)
 // keyPath: API私钥文件路径 (例如：apiclient_key.pem)
-func NewClientWithTLS(__obf_1e2603d75e893450 tls.Certificate) (*HttpClient, error) {
-	// 加载客户端证书和私钥
-	// cert, err := tls.LoadX509KeyPair(certPath, keyPath)
-	// if err != nil {
-	// 	return nil, fmt.Errorf("load x509 key pair failed: %w", err)
-	// }
+func NewClientWithTLS(__obf_0e782ace50c72fbf tls.Certificate) (*HttpClient, error) {
+	__obf_3dd617f2a453a1c3 := // 加载客户端证书和私钥
+		// cert, err := tls.LoadX509KeyPair(certPath, keyPath)
+		// if err != nil {
+		// 	return nil, fmt.Errorf("load x509 key pair failed: %w", err)
+		// }
 
-	// 构造TLS配置
-	__obf_871bafc1b52ca1c8 := &tls.Config{
-		Certificates: []tls.Certificate{__obf_1e2603d75e893450},
-		// InsecureSkipVerify: true, // 生产环境不要开启！仅用于调试
-		// RootCAs:            nil, // 如果有自定义CA，可以设置
-	}
+		// 构造TLS配置
+		&tls.Config{
+			Certificates: []tls.Certificate{__obf_0e782ace50c72fbf},
+			// InsecureSkipVerify: true, // 生产环境不要开启！仅用于调试
+			// RootCAs:            nil, // 如果有自定义CA，可以设置
+		}
+	__obf_f9504256d5771ae6 := // 创建带证书的HTTP Transport
+		&http.Transport{
+			TLSClientConfig:       __obf_3dd617f2a453a1c3,
+			MaxIdleConns:          100,
+			IdleConnTimeout:       90 * time.Second,
+			TLSHandshakeTimeout:   10 * time.Second,
+			ExpectContinueTimeout: 1 * time.Second,
+		}
 
-	// 创建带证书的HTTP Transport
-	__obf_b3b2be87ead018b9 := &http.Transport{
-		TLSClientConfig:       __obf_871bafc1b52ca1c8,
-		MaxIdleConns:          100,
-		IdleConnTimeout:       90 * time.Second,
-		TLSHandshakeTimeout:   10 * time.Second,
-		ExpectContinueTimeout: 1 * time.Second,
-	}
-
-	return &HttpClient{
-		__obf_d7e3a8a5eebdb96b: &http.Client{
-			Transport: __obf_b3b2be87ead018b9,
-			Timeout:   30 * time.Second, // 证书请求可能更耗时，适当延长超时时间
-		},
+	return &HttpClient{__obf_14113e52cc90753b: &http.Client{
+		Transport: __obf_f9504256d5771ae6,
+		Timeout:   30 * time.Second, // 证书请求可能更耗时，适当延长超时时间
+	},
 	}, nil
 }
 
 // Get 发送GET请求，并解析JSON响应
-func (__obf_b5c164dcca9f4e8d *HttpClient) Get(__obf_dca9797b5521c84f string, __obf_a0f9b06f567f969e map[string]string, __obf_a28ad583524f1d89 any) error {
-	__obf_8c6dd339ebeafcbd, __obf_fb6d611ef291e586 := http.NewRequest(http.MethodGet, __obf_dca9797b5521c84f, nil)
-	if __obf_fb6d611ef291e586 != nil {
-		return fmt.Errorf("create GET request failed: %w", __obf_fb6d611ef291e586)
+func (__obf_0c8be89b0dbdfda4 *HttpClient) Get(__obf_77dbfbe26cd1cc6d string, __obf_69c5c6f264b34048 map[string]string, __obf_03e75e0232046fd1 any) error {
+	__obf_5aabcd57aed77122, __obf_c3e83fee90661fe5 := http.NewRequest(http.MethodGet, __obf_77dbfbe26cd1cc6d, nil)
+	if __obf_c3e83fee90661fe5 != nil {
+		return fmt.Errorf("create GET request failed: %w", __obf_c3e83fee90661fe5)
+	}
+	__obf_0bc1adb1cc68cf98 := __obf_5aabcd57aed77122.URL.Query()
+	for __obf_9a8f89bd5b4d1a17, __obf_52524f49eda93617 := range __obf_69c5c6f264b34048 {
+		__obf_0bc1adb1cc68cf98.
+			Add(__obf_9a8f89bd5b4d1a17, __obf_52524f49eda93617)
+	}
+	__obf_5aabcd57aed77122.
+		URL.RawQuery = __obf_0bc1adb1cc68cf98.Encode()
+	__obf_41889db5730bb241, __obf_c3e83fee90661fe5 := __obf_0c8be89b0dbdfda4.__obf_14113e52cc90753b.Do(__obf_5aabcd57aed77122)
+	if __obf_c3e83fee90661fe5 != nil {
+		return fmt.Errorf("send GET request failed: %w", __obf_c3e83fee90661fe5)
+	}
+	defer __obf_41889db5730bb241.Body.Close()
+
+	if __obf_41889db5730bb241.StatusCode != http.StatusOK {
+		__obf_b82a0ac9ae43aa86, _ := io.ReadAll(__obf_41889db5730bb241.Body)
+		return fmt.Errorf("GET request failed with status %d: %s", __obf_41889db5730bb241.StatusCode, string(__obf_b82a0ac9ae43aa86))
 	}
 
-	__obf_d451a38d4260f92c := __obf_8c6dd339ebeafcbd.URL.Query()
-	for __obf_f8faaa11642d2945, __obf_1a8fb20ade71b8f0 := range __obf_a0f9b06f567f969e {
-		__obf_d451a38d4260f92c.Add(__obf_f8faaa11642d2945, __obf_1a8fb20ade71b8f0)
-	}
-	__obf_8c6dd339ebeafcbd.URL.RawQuery = __obf_d451a38d4260f92c.Encode()
-
-	__obf_697969e7314a2ef9, __obf_fb6d611ef291e586 := __obf_b5c164dcca9f4e8d.__obf_d7e3a8a5eebdb96b.Do(__obf_8c6dd339ebeafcbd)
-	if __obf_fb6d611ef291e586 != nil {
-		return fmt.Errorf("send GET request failed: %w", __obf_fb6d611ef291e586)
-	}
-	defer __obf_697969e7314a2ef9.Body.Close()
-
-	if __obf_697969e7314a2ef9.StatusCode != http.StatusOK {
-		__obf_54d42e5bf8df7934, _ := io.ReadAll(__obf_697969e7314a2ef9.Body)
-		return fmt.Errorf("GET request failed with status %d: %s", __obf_697969e7314a2ef9.StatusCode, string(__obf_54d42e5bf8df7934))
-	}
-
-	if __obf_a28ad583524f1d89 != nil {
-		if __obf_fb6d611ef291e586 := json.NewDecoder(__obf_697969e7314a2ef9.Body).Decode(__obf_a28ad583524f1d89); __obf_fb6d611ef291e586 != nil {
-			return fmt.Errorf("decode JSON response failed: %w", __obf_fb6d611ef291e586)
+	if __obf_03e75e0232046fd1 != nil {
+		if __obf_c3e83fee90661fe5 := json.NewDecoder(__obf_41889db5730bb241.Body).Decode(__obf_03e75e0232046fd1); __obf_c3e83fee90661fe5 != nil {
+			return fmt.Errorf("decode JSON response failed: %w", __obf_c3e83fee90661fe5)
 		}
 	}
 	return nil
 }
 
 // PostJSON 发送POST请求，Body为JSON，并解析JSON响应
-func (__obf_b5c164dcca9f4e8d *HttpClient) PostJSON(__obf_dca9797b5521c84f string, __obf_e561ad363a248750 any, __obf_a28ad583524f1d89 any) error {
-	__obf_ba263a0a818cd60e, __obf_fb6d611ef291e586 := json.Marshal(__obf_e561ad363a248750)
-	if __obf_fb6d611ef291e586 != nil {
-		return fmt.Errorf("marshal JSON request failed: %w", __obf_fb6d611ef291e586)
+func (__obf_0c8be89b0dbdfda4 *HttpClient) PostJSON(__obf_77dbfbe26cd1cc6d string, __obf_3af2978d4956fcda any, __obf_03e75e0232046fd1 any) error {
+	__obf_7568d5f6d416d818, __obf_c3e83fee90661fe5 := json.Marshal(__obf_3af2978d4956fcda)
+	if __obf_c3e83fee90661fe5 != nil {
+		return fmt.Errorf("marshal JSON request failed: %w", __obf_c3e83fee90661fe5)
+	}
+	__obf_5aabcd57aed77122, __obf_c3e83fee90661fe5 := http.NewRequest(http.MethodPost, __obf_77dbfbe26cd1cc6d, bytes.NewBuffer(__obf_7568d5f6d416d818))
+	if __obf_c3e83fee90661fe5 != nil {
+		return fmt.Errorf("create POST JSON request failed: %w", __obf_c3e83fee90661fe5)
+	}
+	__obf_5aabcd57aed77122.
+		Header.Set("Content-Type", "application/json")
+	__obf_41889db5730bb241, __obf_c3e83fee90661fe5 := __obf_0c8be89b0dbdfda4.__obf_14113e52cc90753b.Do(__obf_5aabcd57aed77122)
+	if __obf_c3e83fee90661fe5 != nil {
+		return fmt.Errorf("send POST JSON request failed: %w", __obf_c3e83fee90661fe5)
+	}
+	defer __obf_41889db5730bb241.Body.Close()
+
+	if __obf_41889db5730bb241.StatusCode != http.StatusOK {
+		__obf_b82a0ac9ae43aa86, _ := io.ReadAll(__obf_41889db5730bb241.Body)
+		return fmt.Errorf("POST JSON request failed with status %d: %s", __obf_41889db5730bb241.StatusCode, string(__obf_b82a0ac9ae43aa86))
 	}
 
-	__obf_8c6dd339ebeafcbd, __obf_fb6d611ef291e586 := http.NewRequest(http.MethodPost, __obf_dca9797b5521c84f, bytes.NewBuffer(__obf_ba263a0a818cd60e))
-	if __obf_fb6d611ef291e586 != nil {
-		return fmt.Errorf("create POST JSON request failed: %w", __obf_fb6d611ef291e586)
-	}
-	__obf_8c6dd339ebeafcbd.Header.Set("Content-Type", "application/json")
-
-	__obf_697969e7314a2ef9, __obf_fb6d611ef291e586 := __obf_b5c164dcca9f4e8d.__obf_d7e3a8a5eebdb96b.Do(__obf_8c6dd339ebeafcbd)
-	if __obf_fb6d611ef291e586 != nil {
-		return fmt.Errorf("send POST JSON request failed: %w", __obf_fb6d611ef291e586)
-	}
-	defer __obf_697969e7314a2ef9.Body.Close()
-
-	if __obf_697969e7314a2ef9.StatusCode != http.StatusOK {
-		__obf_54d42e5bf8df7934, _ := io.ReadAll(__obf_697969e7314a2ef9.Body)
-		return fmt.Errorf("POST JSON request failed with status %d: %s", __obf_697969e7314a2ef9.StatusCode, string(__obf_54d42e5bf8df7934))
-	}
-
-	if __obf_a28ad583524f1d89 != nil {
-		if __obf_fb6d611ef291e586 := json.NewDecoder(__obf_697969e7314a2ef9.Body).Decode(__obf_a28ad583524f1d89); __obf_fb6d611ef291e586 != nil {
-			return fmt.Errorf("decode JSON response failed: %w", __obf_fb6d611ef291e586)
+	if __obf_03e75e0232046fd1 != nil {
+		if __obf_c3e83fee90661fe5 := json.NewDecoder(__obf_41889db5730bb241.Body).Decode(__obf_03e75e0232046fd1); __obf_c3e83fee90661fe5 != nil {
+			return fmt.Errorf("decode JSON response failed: %w", __obf_c3e83fee90661fe5)
 		}
 	}
 	return nil
@@ -125,33 +121,33 @@ func (__obf_b5c164dcca9f4e8d *HttpClient) PostJSON(__obf_dca9797b5521c84f string
 
 // PostXML 发送POST请求，Body为XML，并返回原始XML响应体字节数组
 // 调用方需要自行解析和验签
-func (__obf_b5c164dcca9f4e8d *HttpClient) PostXML(__obf_dca9797b5521c84f string, __obf_e561ad363a248750 any) ([]byte, error) { // <- 移除 response any
-	__obf_ba263a0a818cd60e, __obf_fb6d611ef291e586 := xml.Marshal(__obf_e561ad363a248750)
-	if __obf_fb6d611ef291e586 != nil {
-		return nil, fmt.Errorf("marshal XML request failed: %w", __obf_fb6d611ef291e586)
+func (__obf_0c8be89b0dbdfda4 *HttpClient) PostXML(__obf_77dbfbe26cd1cc6d string, __obf_3af2978d4956fcda any) ([]byte, error) {
+	__obf_7568d5f6d416d818, // <- 移除 response any
+		__obf_c3e83fee90661fe5 := xml.Marshal(__obf_3af2978d4956fcda)
+	if __obf_c3e83fee90661fe5 != nil {
+		return nil, fmt.Errorf("marshal XML request failed: %w", __obf_c3e83fee90661fe5)
 	}
-	// fmt.Println("签名报文：", string(reqBody))
-
-	__obf_8c6dd339ebeafcbd, __obf_fb6d611ef291e586 := http.NewRequest(http.MethodPost, __obf_dca9797b5521c84f, bytes.NewBuffer(__obf_ba263a0a818cd60e))
-	if __obf_fb6d611ef291e586 != nil {
-		return nil, fmt.Errorf("create POST XML request failed: %w", __obf_fb6d611ef291e586)
+	__obf_5aabcd57aed77122,
+		// fmt.Println("签名报文：", string(reqBody))
+		__obf_c3e83fee90661fe5 := http.NewRequest(http.MethodPost, __obf_77dbfbe26cd1cc6d, bytes.NewBuffer(__obf_7568d5f6d416d818))
+	if __obf_c3e83fee90661fe5 != nil {
+		return nil, fmt.Errorf("create POST XML request failed: %w", __obf_c3e83fee90661fe5)
 	}
-	__obf_8c6dd339ebeafcbd.Header.Set("Content-Type", "application/xml")
-
-	__obf_697969e7314a2ef9, __obf_fb6d611ef291e586 := __obf_b5c164dcca9f4e8d.__obf_d7e3a8a5eebdb96b.Do(__obf_8c6dd339ebeafcbd)
-	if __obf_fb6d611ef291e586 != nil {
-		return nil, fmt.Errorf("send POST XML request failed: %w", __obf_fb6d611ef291e586)
+	__obf_5aabcd57aed77122.
+		Header.Set("Content-Type", "application/xml")
+	__obf_41889db5730bb241, __obf_c3e83fee90661fe5 := __obf_0c8be89b0dbdfda4.__obf_14113e52cc90753b.Do(__obf_5aabcd57aed77122)
+	if __obf_c3e83fee90661fe5 != nil {
+		return nil, fmt.Errorf("send POST XML request failed: %w", __obf_c3e83fee90661fe5)
 	}
-	defer __obf_697969e7314a2ef9.Body.Close()
-
-	__obf_54d42e5bf8df7934, __obf_fb6d611ef291e586 := io.ReadAll(__obf_697969e7314a2ef9.Body) // <- 读取原始响应体
-	if __obf_fb6d611ef291e586 != nil {
-		return nil, fmt.Errorf("read response body failed: %w", __obf_fb6d611ef291e586)
-	}
-
-	if __obf_697969e7314a2ef9.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("POST XML request failed with status %d: %s", __obf_697969e7314a2ef9.StatusCode, string(__obf_54d42e5bf8df7934))
+	defer __obf_41889db5730bb241.Body.Close()
+	__obf_b82a0ac9ae43aa86, __obf_c3e83fee90661fe5 := io.ReadAll(__obf_41889db5730bb241.Body) // <- 读取原始响应体
+	if __obf_c3e83fee90661fe5 != nil {
+		return nil, fmt.Errorf("read response body failed: %w", __obf_c3e83fee90661fe5)
 	}
 
-	return __obf_54d42e5bf8df7934, nil // <- 返回原始响应体
+	if __obf_41889db5730bb241.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("POST XML request failed with status %d: %s", __obf_41889db5730bb241.StatusCode, string(__obf_b82a0ac9ae43aa86))
+	}
+
+	return __obf_b82a0ac9ae43aa86, nil // <- 返回原始响应体
 }

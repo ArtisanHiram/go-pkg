@@ -1,4 +1,4 @@
-package __obf_976fde27e2109d70
+package main
 
 // import (
 // 	"context"

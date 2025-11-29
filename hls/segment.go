@@ -1,4 +1,4 @@
-package __obf_b28324f38df50634
+package __obf_5441fcd9a319cf59
 
 import (
 	"fmt"
@@ -12,70 +12,68 @@ import (
 // 	},
 // )
 
-func (__obf_2dc28af59fafc546 *HlsServer) GetSegment(__obf_a2e9fb1ef0c6fd12 string, __obf_a80863ab8324a6a3, __obf_439b01e73ce35521 int, __obf_eb3c523b7bd5ff61 io.Writer) error {
-	__obf_bcbd297e690a29ce := float32(__obf_a80863ab8324a6a3) * __obf_2dc28af59fafc546.Option.SegmentLen
-	// see http://superuser.com/questions/908280/what-is-the-correct-way-to-fix-keyframes-in-ffmpeg-for-dash
-	__obf_afb5d9998846f346 := []string{
-		// Prevent encoding to run longer than 30 seonds
-		"-timelimit", "45",
+func (__obf_bf443cef12bfef60 *HlsServer) GetSegment(__obf_617a682795b315ad string, __obf_7a2e0b92720bc6cc, __obf_dde62bd2b7a15ad5 int, __obf_9e22338370faf798 io.Writer) error {
+	__obf_274b551068937d2c := float32(__obf_7a2e0b92720bc6cc) * __obf_bf443cef12bfef60.Option.SegmentLen
+	__obf_e5483301bac834be := // see http://superuser.com/questions/908280/what-is-the-correct-way-to-fix-keyframes-in-ffmpeg-for-dash
+		[]string{
+			// Prevent encoding to run longer than 30 seonds
+			"-timelimit", "45",
 
-		// TODO: Some stuff to investigate
-		// "-probesize", "524288",
-		// "-fpsprobesize", "10",
-		// "-analyzeduration", "2147483647",
-		// "-hwaccel:0", "vda",
+			// TODO: Some stuff to investigate
+			// "-probesize", "524288",
+			// "-fpsprobesize", "10",
+			// "-analyzeduration", "2147483647",
+			// "-hwaccel:0", "vda",
 
-		// The start time
-		// important: needs to be before -i to do input seeking
-		"-ss", fmt.Sprintf("%.2f", __obf_bcbd297e690a29ce),
+			// The start time
+			// important: needs to be before -i to do input seeking
+			"-ss", fmt.Sprintf("%.2f", __obf_274b551068937d2c),
 
-		// The source file
-		"-i", __obf_a2e9fb1ef0c6fd12,
+			// The source file
+			"-i", __obf_617a682795b315ad, // Put all streams to output
+			// "-map", "0",
 
-		// Put all streams to output
-		// "-map", "0",
+			// The duration
+			"-t", fmt.Sprintf("%.2f", __obf_bf443cef12bfef60.Option.SegmentLen),
 
-		// The duration
-		"-t", fmt.Sprintf("%.2f", __obf_2dc28af59fafc546.Option.SegmentLen),
+			// TODO: Find out what it does
+			//"-strict", "-2",
 
-		// TODO: Find out what it does
-		//"-strict", "-2",
+			// Synchronize audio
+			"-async", "1",
 
-		// Synchronize audio
-		"-async", "1",
+			// 720p
+			"-vf", fmt.Sprintf("scale=-2:%d", __obf_dde62bd2b7a15ad5),
 
-		// 720p
-		"-vf", fmt.Sprintf("scale=-2:%d", __obf_439b01e73ce35521),
+			// x264 video codec
+			"-vcodec", "libx264",
 
-		// x264 video codec
-		"-vcodec", "libx264",
+			// x264 preset
+			"-preset", "veryfast",
 
-		// x264 preset
-		"-preset", "veryfast",
+			// aac audio codec
+			"-c:a", "aac",
+			"-b:a", "128k",
+			"-ac", "2",
 
-		// aac audio codec
-		"-c:a", "aac",
-		"-b:a", "128k",
-		"-ac", "2",
+			// TODO
+			"-pix_fmt", "yuv420p",
 
-		// TODO
-		"-pix_fmt", "yuv420p",
+			//"-r", "25", // fixed framerate
 
-		//"-r", "25", // fixed framerate
+			"-force_key_frames", fmt.Sprintf("expr:gte(t,n_forced*%.2f)", __obf_bf443cef12bfef60.Option.SegmentLen),
 
-		"-force_key_frames", fmt.Sprintf("expr:gte(t,n_forced*%.2f)", __obf_2dc28af59fafc546.Option.SegmentLen),
+			//"-force_key_frames", "00:00:00.00",
+			//"-x264opts", "keyint=25:min-keyint=25:scenecut=-1",
 
-		//"-force_key_frames", "00:00:00.00",
-		//"-x264opts", "keyint=25:min-keyint=25:scenecut=-1",
+			//"-f", "mpegts",
 
-		//"-f", "mpegts",
+			"-f", "ssegment",
+			"-segment_time", fmt.Sprintf("%.2f", __obf_bf443cef12bfef60.Option.SegmentLen),
+			"-initial_offset", fmt.Sprintf("%.2f", __obf_274b551068937d2c),
 
-		"-f", "ssegment",
-		"-segment_time", fmt.Sprintf("%.2f", __obf_2dc28af59fafc546.Option.SegmentLen),
-		"-initial_offset", fmt.Sprintf("%.2f", __obf_bcbd297e690a29ce),
+			"pipe:out%03d.ts",
+		}
 
-		"pipe:out%03d.ts",
-	}
-
-	return __obf_2dc28af59fafc546.__obf_0d5f4cd62e2a5059.Serve(FFMpegPath, __obf_afb5d9998846f346, __obf_eb3c523b7bd5ff61)
+	return __obf_bf443cef12bfef60.__obf_50b1d5691dcc362d.Serve(FFMpegPath, __obf_e5483301bac834be, __obf_9e22338370faf798)
 }

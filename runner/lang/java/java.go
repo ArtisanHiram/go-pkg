@@ -1,19 +1,19 @@
-package __obf_7e08567a4bdc9954
+package __obf_fbadb677acc6b6c3
 
 import (
 	cmd "github.com/ArtisanHiram/go-pkg/runner/cmd"
 	"path/filepath"
 )
 
-func Run(__obf_4d5a7fadb0534422 string, __obf_f950cdbe5ddf115d string, __obf_9f1c5ef2b51ab4b5 []string) (string, string, error) {
-	__obf_1d3193fb19efa5f0, __obf_c36e9163431b68d9, __obf_9801fe7fa602ac03 := cmd.Run(__obf_4d5a7fadb0534422, "javac", __obf_9f1c5ef2b51ab4b5[0])
-	if __obf_9801fe7fa602ac03 != nil {
-		return __obf_1d3193fb19efa5f0, __obf_c36e9163431b68d9, __obf_9801fe7fa602ac03
+func Run(__obf_4b18e15edb1d769e string, __obf_42ddc04e5b1cd392 string, __obf_acdceca2dd3b0804 []string) (string, string, error) {
+	__obf_3d268fbeded2785a, __obf_53b22c9374b5531d, __obf_540f3360b8383bda := cmd.Run(__obf_4b18e15edb1d769e, "javac", __obf_acdceca2dd3b0804[0])
+	if __obf_540f3360b8383bda != nil {
+		return __obf_3d268fbeded2785a, __obf_53b22c9374b5531d, __obf_540f3360b8383bda
 	}
-	return cmd.RunStdin(__obf_4d5a7fadb0534422, __obf_f950cdbe5ddf115d, "java", __obf_53a7ce93732544dd(__obf_9f1c5ef2b51ab4b5[0]))
+	return cmd.RunStdin(__obf_4b18e15edb1d769e, __obf_42ddc04e5b1cd392, "java", __obf_b78358bc7d63b095(__obf_acdceca2dd3b0804[0]))
 }
 
-func __obf_53a7ce93732544dd(__obf_eadecbdbce261e73 string) string {
-	__obf_e5813e7067ead3c9 := filepath.Ext(__obf_eadecbdbce261e73)
-	return __obf_eadecbdbce261e73[0 : len(__obf_eadecbdbce261e73)-len(__obf_e5813e7067ead3c9)]
+func __obf_b78358bc7d63b095(__obf_8d308a1dca0c93c3 string) string {
+	__obf_7a223684f3cbddf2 := filepath.Ext(__obf_8d308a1dca0c93c3)
+	return __obf_8d308a1dca0c93c3[0 : len(__obf_8d308a1dca0c93c3)-len(__obf_7a223684f3cbddf2)]
 }

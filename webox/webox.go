@@ -1,4 +1,4 @@
-package __obf_85d38431f55a80f3
+package __obf_ca688c3e204e86eb
 
 import (
 	payment "github.com/ArtisanHiram/go-pkg/webox/payment"
@@ -6,18 +6,18 @@ import (
 )
 
 type Webox struct {
-	__obf_b408367454de77b6 *program.Config
-	__obf_7f3d5b2a9e6a8938 *payment.Config
+	__obf_c12bd46dc9b896a0 *program.Config
+	__obf_e6bb2f419ad294a1 *payment.Config
 }
 
-func New(__obf_b408367454de77b6 *program.Config, __obf_7f3d5b2a9e6a8938 *payment.Config) *Webox {
-	return &Webox{__obf_b408367454de77b6, __obf_7f3d5b2a9e6a8938}
+func New(__obf_c12bd46dc9b896a0 *program.Config, __obf_e6bb2f419ad294a1 *payment.Config) *Webox {
+	return &Webox{__obf_c12bd46dc9b896a0, __obf_e6bb2f419ad294a1}
 }
 
-func (__obf_75e3902733ad482c *Webox) Program() (*program.Program, error) {
-	return program.NewProgram(__obf_75e3902733ad482c.__obf_b408367454de77b6)
+func (__obf_6df5d770465fa1ce *Webox) Program() (*program.Program, error) {
+	return program.NewProgram(__obf_6df5d770465fa1ce.__obf_c12bd46dc9b896a0)
 }
 
-func (__obf_75e3902733ad482c *Webox) Payment() (*payment.Payment, error) {
-	return payment.NewPayment(__obf_75e3902733ad482c.__obf_7f3d5b2a9e6a8938)
+func (__obf_6df5d770465fa1ce *Webox) Payment() (*payment.Payment, error) {
+	return payment.NewPayment(__obf_6df5d770465fa1ce.__obf_e6bb2f419ad294a1)
 }

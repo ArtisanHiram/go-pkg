@@ -1,124 +1,124 @@
-package __obf_91620b895eeff9ed
+package __obf_5b802ce8d9ba56d6
 
 import (
 	"io"
 	"unsafe"
 )
 
-type __obf_37d3c66ca0437bb5 struct {
-	__obf_58563642f42f4a04
-	__obf_892632c77e859037 *__obf_972c2293804d141c
-	__obf_184433571fa55237 []byte
-	__obf_62967739bca1d11d error
+type __obf_dff8f3718df12fe4 struct {
+	__obf_fb75d4e4562132ae
+	__obf_dca106e1cdf85392 *__obf_5d13d7f3bd06c6cf
+	__obf_9fc06d9180f0daca []byte
+	__obf_6d071d48f3b321ad error
 }
 
-func (any *__obf_37d3c66ca0437bb5) ValueType() ValueType {
+func (any *__obf_dff8f3718df12fe4) ValueType() ValueType {
 	return NumberValue
 }
 
-func (any *__obf_37d3c66ca0437bb5) MustBeValid() Any {
+func (any *__obf_dff8f3718df12fe4) MustBeValid() Any {
 	return any
 }
 
-func (any *__obf_37d3c66ca0437bb5) LastError() error {
-	return any.__obf_62967739bca1d11d
+func (any *__obf_dff8f3718df12fe4) LastError() error {
+	return any.__obf_6d071d48f3b321ad
 }
 
-func (any *__obf_37d3c66ca0437bb5) ToBool() bool {
+func (any *__obf_dff8f3718df12fe4) ToBool() bool {
 	return any.ToFloat64() != 0
 }
 
-func (any *__obf_37d3c66ca0437bb5) ToInt() int {
-	__obf_1bb30e8a74ed8233 := any.__obf_892632c77e859037.BorrowIterator(any.__obf_184433571fa55237)
-	defer any.__obf_892632c77e859037.ReturnIterator(__obf_1bb30e8a74ed8233)
-	__obf_bbfd2ac8618a6f0c := __obf_1bb30e8a74ed8233.ReadInt()
-	if __obf_1bb30e8a74ed8233.Error != nil && __obf_1bb30e8a74ed8233.Error != io.EOF {
-		any.__obf_62967739bca1d11d = __obf_1bb30e8a74ed8233.Error
+func (any *__obf_dff8f3718df12fe4) ToInt() int {
+	__obf_67008a6a9e5ba828 := any.__obf_dca106e1cdf85392.BorrowIterator(any.__obf_9fc06d9180f0daca)
+	defer any.__obf_dca106e1cdf85392.ReturnIterator(__obf_67008a6a9e5ba828)
+	__obf_5406b11e33b9d1d3 := __obf_67008a6a9e5ba828.ReadInt()
+	if __obf_67008a6a9e5ba828.Error != nil && __obf_67008a6a9e5ba828.Error != io.EOF {
+		any.__obf_6d071d48f3b321ad = __obf_67008a6a9e5ba828.Error
 	}
-	return __obf_bbfd2ac8618a6f0c
+	return __obf_5406b11e33b9d1d3
 }
 
-func (any *__obf_37d3c66ca0437bb5) ToInt32() int32 {
-	__obf_1bb30e8a74ed8233 := any.__obf_892632c77e859037.BorrowIterator(any.__obf_184433571fa55237)
-	defer any.__obf_892632c77e859037.ReturnIterator(__obf_1bb30e8a74ed8233)
-	__obf_bbfd2ac8618a6f0c := __obf_1bb30e8a74ed8233.ReadInt32()
-	if __obf_1bb30e8a74ed8233.Error != nil && __obf_1bb30e8a74ed8233.Error != io.EOF {
-		any.__obf_62967739bca1d11d = __obf_1bb30e8a74ed8233.Error
+func (any *__obf_dff8f3718df12fe4) ToInt32() int32 {
+	__obf_67008a6a9e5ba828 := any.__obf_dca106e1cdf85392.BorrowIterator(any.__obf_9fc06d9180f0daca)
+	defer any.__obf_dca106e1cdf85392.ReturnIterator(__obf_67008a6a9e5ba828)
+	__obf_5406b11e33b9d1d3 := __obf_67008a6a9e5ba828.ReadInt32()
+	if __obf_67008a6a9e5ba828.Error != nil && __obf_67008a6a9e5ba828.Error != io.EOF {
+		any.__obf_6d071d48f3b321ad = __obf_67008a6a9e5ba828.Error
 	}
-	return __obf_bbfd2ac8618a6f0c
+	return __obf_5406b11e33b9d1d3
 }
 
-func (any *__obf_37d3c66ca0437bb5) ToInt64() int64 {
-	__obf_1bb30e8a74ed8233 := any.__obf_892632c77e859037.BorrowIterator(any.__obf_184433571fa55237)
-	defer any.__obf_892632c77e859037.ReturnIterator(__obf_1bb30e8a74ed8233)
-	__obf_bbfd2ac8618a6f0c := __obf_1bb30e8a74ed8233.ReadInt64()
-	if __obf_1bb30e8a74ed8233.Error != nil && __obf_1bb30e8a74ed8233.Error != io.EOF {
-		any.__obf_62967739bca1d11d = __obf_1bb30e8a74ed8233.Error
+func (any *__obf_dff8f3718df12fe4) ToInt64() int64 {
+	__obf_67008a6a9e5ba828 := any.__obf_dca106e1cdf85392.BorrowIterator(any.__obf_9fc06d9180f0daca)
+	defer any.__obf_dca106e1cdf85392.ReturnIterator(__obf_67008a6a9e5ba828)
+	__obf_5406b11e33b9d1d3 := __obf_67008a6a9e5ba828.ReadInt64()
+	if __obf_67008a6a9e5ba828.Error != nil && __obf_67008a6a9e5ba828.Error != io.EOF {
+		any.__obf_6d071d48f3b321ad = __obf_67008a6a9e5ba828.Error
 	}
-	return __obf_bbfd2ac8618a6f0c
+	return __obf_5406b11e33b9d1d3
 }
 
-func (any *__obf_37d3c66ca0437bb5) ToUint() uint {
-	__obf_1bb30e8a74ed8233 := any.__obf_892632c77e859037.BorrowIterator(any.__obf_184433571fa55237)
-	defer any.__obf_892632c77e859037.ReturnIterator(__obf_1bb30e8a74ed8233)
-	__obf_bbfd2ac8618a6f0c := __obf_1bb30e8a74ed8233.ReadUint()
-	if __obf_1bb30e8a74ed8233.Error != nil && __obf_1bb30e8a74ed8233.Error != io.EOF {
-		any.__obf_62967739bca1d11d = __obf_1bb30e8a74ed8233.Error
+func (any *__obf_dff8f3718df12fe4) ToUint() uint {
+	__obf_67008a6a9e5ba828 := any.__obf_dca106e1cdf85392.BorrowIterator(any.__obf_9fc06d9180f0daca)
+	defer any.__obf_dca106e1cdf85392.ReturnIterator(__obf_67008a6a9e5ba828)
+	__obf_5406b11e33b9d1d3 := __obf_67008a6a9e5ba828.ReadUint()
+	if __obf_67008a6a9e5ba828.Error != nil && __obf_67008a6a9e5ba828.Error != io.EOF {
+		any.__obf_6d071d48f3b321ad = __obf_67008a6a9e5ba828.Error
 	}
-	return __obf_bbfd2ac8618a6f0c
+	return __obf_5406b11e33b9d1d3
 }
 
-func (any *__obf_37d3c66ca0437bb5) ToUint32() uint32 {
-	__obf_1bb30e8a74ed8233 := any.__obf_892632c77e859037.BorrowIterator(any.__obf_184433571fa55237)
-	defer any.__obf_892632c77e859037.ReturnIterator(__obf_1bb30e8a74ed8233)
-	__obf_bbfd2ac8618a6f0c := __obf_1bb30e8a74ed8233.ReadUint32()
-	if __obf_1bb30e8a74ed8233.Error != nil && __obf_1bb30e8a74ed8233.Error != io.EOF {
-		any.__obf_62967739bca1d11d = __obf_1bb30e8a74ed8233.Error
+func (any *__obf_dff8f3718df12fe4) ToUint32() uint32 {
+	__obf_67008a6a9e5ba828 := any.__obf_dca106e1cdf85392.BorrowIterator(any.__obf_9fc06d9180f0daca)
+	defer any.__obf_dca106e1cdf85392.ReturnIterator(__obf_67008a6a9e5ba828)
+	__obf_5406b11e33b9d1d3 := __obf_67008a6a9e5ba828.ReadUint32()
+	if __obf_67008a6a9e5ba828.Error != nil && __obf_67008a6a9e5ba828.Error != io.EOF {
+		any.__obf_6d071d48f3b321ad = __obf_67008a6a9e5ba828.Error
 	}
-	return __obf_bbfd2ac8618a6f0c
+	return __obf_5406b11e33b9d1d3
 }
 
-func (any *__obf_37d3c66ca0437bb5) ToUint64() uint64 {
-	__obf_1bb30e8a74ed8233 := any.__obf_892632c77e859037.BorrowIterator(any.__obf_184433571fa55237)
-	defer any.__obf_892632c77e859037.ReturnIterator(__obf_1bb30e8a74ed8233)
-	__obf_bbfd2ac8618a6f0c := __obf_1bb30e8a74ed8233.ReadUint64()
-	if __obf_1bb30e8a74ed8233.Error != nil && __obf_1bb30e8a74ed8233.Error != io.EOF {
-		any.__obf_62967739bca1d11d = __obf_1bb30e8a74ed8233.Error
+func (any *__obf_dff8f3718df12fe4) ToUint64() uint64 {
+	__obf_67008a6a9e5ba828 := any.__obf_dca106e1cdf85392.BorrowIterator(any.__obf_9fc06d9180f0daca)
+	defer any.__obf_dca106e1cdf85392.ReturnIterator(__obf_67008a6a9e5ba828)
+	__obf_5406b11e33b9d1d3 := __obf_67008a6a9e5ba828.ReadUint64()
+	if __obf_67008a6a9e5ba828.Error != nil && __obf_67008a6a9e5ba828.Error != io.EOF {
+		any.__obf_6d071d48f3b321ad = __obf_67008a6a9e5ba828.Error
 	}
-	return __obf_bbfd2ac8618a6f0c
+	return __obf_5406b11e33b9d1d3
 }
 
-func (any *__obf_37d3c66ca0437bb5) ToFloat32() float32 {
-	__obf_1bb30e8a74ed8233 := any.__obf_892632c77e859037.BorrowIterator(any.__obf_184433571fa55237)
-	defer any.__obf_892632c77e859037.ReturnIterator(__obf_1bb30e8a74ed8233)
-	__obf_bbfd2ac8618a6f0c := __obf_1bb30e8a74ed8233.ReadFloat32()
-	if __obf_1bb30e8a74ed8233.Error != nil && __obf_1bb30e8a74ed8233.Error != io.EOF {
-		any.__obf_62967739bca1d11d = __obf_1bb30e8a74ed8233.Error
+func (any *__obf_dff8f3718df12fe4) ToFloat32() float32 {
+	__obf_67008a6a9e5ba828 := any.__obf_dca106e1cdf85392.BorrowIterator(any.__obf_9fc06d9180f0daca)
+	defer any.__obf_dca106e1cdf85392.ReturnIterator(__obf_67008a6a9e5ba828)
+	__obf_5406b11e33b9d1d3 := __obf_67008a6a9e5ba828.ReadFloat32()
+	if __obf_67008a6a9e5ba828.Error != nil && __obf_67008a6a9e5ba828.Error != io.EOF {
+		any.__obf_6d071d48f3b321ad = __obf_67008a6a9e5ba828.Error
 	}
-	return __obf_bbfd2ac8618a6f0c
+	return __obf_5406b11e33b9d1d3
 }
 
-func (any *__obf_37d3c66ca0437bb5) ToFloat64() float64 {
-	__obf_1bb30e8a74ed8233 := any.__obf_892632c77e859037.BorrowIterator(any.__obf_184433571fa55237)
-	defer any.__obf_892632c77e859037.ReturnIterator(__obf_1bb30e8a74ed8233)
-	__obf_bbfd2ac8618a6f0c := __obf_1bb30e8a74ed8233.ReadFloat64()
-	if __obf_1bb30e8a74ed8233.Error != nil && __obf_1bb30e8a74ed8233.Error != io.EOF {
-		any.__obf_62967739bca1d11d = __obf_1bb30e8a74ed8233.Error
+func (any *__obf_dff8f3718df12fe4) ToFloat64() float64 {
+	__obf_67008a6a9e5ba828 := any.__obf_dca106e1cdf85392.BorrowIterator(any.__obf_9fc06d9180f0daca)
+	defer any.__obf_dca106e1cdf85392.ReturnIterator(__obf_67008a6a9e5ba828)
+	__obf_5406b11e33b9d1d3 := __obf_67008a6a9e5ba828.ReadFloat64()
+	if __obf_67008a6a9e5ba828.Error != nil && __obf_67008a6a9e5ba828.Error != io.EOF {
+		any.__obf_6d071d48f3b321ad = __obf_67008a6a9e5ba828.Error
 	}
-	return __obf_bbfd2ac8618a6f0c
+	return __obf_5406b11e33b9d1d3
 }
 
-func (any *__obf_37d3c66ca0437bb5) ToString() string {
-	return *(*string)(unsafe.Pointer(&any.__obf_184433571fa55237))
+func (any *__obf_dff8f3718df12fe4) ToString() string {
+	return *(*string)(unsafe.Pointer(&any.__obf_9fc06d9180f0daca))
 }
 
-func (any *__obf_37d3c66ca0437bb5) WriteTo(__obf_850a7457bb739a32 *Stream) {
-	__obf_850a7457bb739a32.
-		Write(any.__obf_184433571fa55237)
+func (any *__obf_dff8f3718df12fe4) WriteTo(__obf_00fc491caa967a74 *Stream) {
+	__obf_00fc491caa967a74.
+		Write(any.__obf_9fc06d9180f0daca)
 }
 
-func (any *__obf_37d3c66ca0437bb5) GetInterface() any {
-	__obf_1bb30e8a74ed8233 := any.__obf_892632c77e859037.BorrowIterator(any.__obf_184433571fa55237)
-	defer any.__obf_892632c77e859037.ReturnIterator(__obf_1bb30e8a74ed8233)
-	return __obf_1bb30e8a74ed8233.Read()
+func (any *__obf_dff8f3718df12fe4) GetInterface() any {
+	__obf_67008a6a9e5ba828 := any.__obf_dca106e1cdf85392.BorrowIterator(any.__obf_9fc06d9180f0daca)
+	defer any.__obf_dca106e1cdf85392.ReturnIterator(__obf_67008a6a9e5ba828)
+	return __obf_67008a6a9e5ba828.Read()
 }

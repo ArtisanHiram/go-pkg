@@ -1,4 +1,4 @@
-package __obf_5441fcd9a319cf59
+package __obf_6ff082bd539c7df0
 
 import (
 	"fmt"
@@ -12,9 +12,9 @@ import (
 // 	},
 // )
 
-func (__obf_bf443cef12bfef60 *HlsServer) GetSegment(__obf_617a682795b315ad string, __obf_7a2e0b92720bc6cc, __obf_dde62bd2b7a15ad5 int, __obf_9e22338370faf798 io.Writer) error {
-	__obf_274b551068937d2c := float32(__obf_7a2e0b92720bc6cc) * __obf_bf443cef12bfef60.Option.SegmentLen
-	__obf_e5483301bac834be := // see http://superuser.com/questions/908280/what-is-the-correct-way-to-fix-keyframes-in-ffmpeg-for-dash
+func (__obf_dd5f757557da2c8e *HlsServer) GetSegment(__obf_f6e6713da7daf44f string, __obf_e9447c7b5ab80dc5, __obf_b55259e8f8171da1 int, __obf_42061c65b3e92c28 io.Writer) error {
+	__obf_03158a4f33944ebf := float32(__obf_e9447c7b5ab80dc5) * __obf_dd5f757557da2c8e.Option.SegmentLen
+	__obf_d4c7dc8800d11aa1 := // see http://superuser.com/questions/908280/what-is-the-correct-way-to-fix-keyframes-in-ffmpeg-for-dash
 		[]string{
 			// Prevent encoding to run longer than 30 seonds
 			"-timelimit", "45",
@@ -27,14 +27,14 @@ func (__obf_bf443cef12bfef60 *HlsServer) GetSegment(__obf_617a682795b315ad strin
 
 			// The start time
 			// important: needs to be before -i to do input seeking
-			"-ss", fmt.Sprintf("%.2f", __obf_274b551068937d2c),
+			"-ss", fmt.Sprintf("%.2f", __obf_03158a4f33944ebf),
 
 			// The source file
-			"-i", __obf_617a682795b315ad, // Put all streams to output
+			"-i", __obf_f6e6713da7daf44f, // Put all streams to output
 			// "-map", "0",
 
 			// The duration
-			"-t", fmt.Sprintf("%.2f", __obf_bf443cef12bfef60.Option.SegmentLen),
+			"-t", fmt.Sprintf("%.2f", __obf_dd5f757557da2c8e.Option.SegmentLen),
 
 			// TODO: Find out what it does
 			//"-strict", "-2",
@@ -43,7 +43,7 @@ func (__obf_bf443cef12bfef60 *HlsServer) GetSegment(__obf_617a682795b315ad strin
 			"-async", "1",
 
 			// 720p
-			"-vf", fmt.Sprintf("scale=-2:%d", __obf_dde62bd2b7a15ad5),
+			"-vf", fmt.Sprintf("scale=-2:%d", __obf_b55259e8f8171da1),
 
 			// x264 video codec
 			"-vcodec", "libx264",
@@ -61,7 +61,7 @@ func (__obf_bf443cef12bfef60 *HlsServer) GetSegment(__obf_617a682795b315ad strin
 
 			//"-r", "25", // fixed framerate
 
-			"-force_key_frames", fmt.Sprintf("expr:gte(t,n_forced*%.2f)", __obf_bf443cef12bfef60.Option.SegmentLen),
+			"-force_key_frames", fmt.Sprintf("expr:gte(t,n_forced*%.2f)", __obf_dd5f757557da2c8e.Option.SegmentLen),
 
 			//"-force_key_frames", "00:00:00.00",
 			//"-x264opts", "keyint=25:min-keyint=25:scenecut=-1",
@@ -69,11 +69,11 @@ func (__obf_bf443cef12bfef60 *HlsServer) GetSegment(__obf_617a682795b315ad strin
 			//"-f", "mpegts",
 
 			"-f", "ssegment",
-			"-segment_time", fmt.Sprintf("%.2f", __obf_bf443cef12bfef60.Option.SegmentLen),
-			"-initial_offset", fmt.Sprintf("%.2f", __obf_274b551068937d2c),
+			"-segment_time", fmt.Sprintf("%.2f", __obf_dd5f757557da2c8e.Option.SegmentLen),
+			"-initial_offset", fmt.Sprintf("%.2f", __obf_03158a4f33944ebf),
 
 			"pipe:out%03d.ts",
 		}
 
-	return __obf_bf443cef12bfef60.__obf_50b1d5691dcc362d.Serve(FFMpegPath, __obf_e5483301bac834be, __obf_9e22338370faf798)
+	return __obf_dd5f757557da2c8e.__obf_309e545f7e826626.Serve(FFMpegPath, __obf_d4c7dc8800d11aa1, __obf_42061c65b3e92c28)
 }

@@ -1,4 +1,4 @@
-package __obf_61bc591a775c8985
+package __obf_22f65c3e757f8811
 
 import (
 	"fmt"
@@ -9,33 +9,33 @@ import (
 	"strings"
 )
 
-func CurrentDir(__obf_e636267f55df438a ...string) (string, error) {
-	__obf_0a3e8c2a05960a43, __obf_48065909968843ec := filepath.Abs(filepath.Dir(os.Args[0]))
-	if __obf_48065909968843ec != nil {
-		return "", __obf_48065909968843ec
+func CurrentDir(__obf_3a9b395b0f585b06 ...string) (string, error) {
+	__obf_0336691b7acc25f3, __obf_f749646f37e10859 := filepath.Abs(filepath.Dir(os.Args[0]))
+	if __obf_f749646f37e10859 != nil {
+		return "", __obf_f749646f37e10859
 	}
-	__obf_980149e3a41644c9 := strings.Replace(__obf_0a3e8c2a05960a43, "\\", "/", -1)
-	__obf_4a95416e6d172727 := filepath.Join(__obf_e636267f55df438a...)
-	__obf_4a95416e6d172727 = filepath.Join(__obf_980149e3a41644c9, __obf_4a95416e6d172727)
-	return __obf_4a95416e6d172727, nil
+	__obf_274b0aab616567ff := strings.Replace(__obf_0336691b7acc25f3, "\\", "/", -1)
+	__obf_3371341914786ca2 := filepath.Join(__obf_3a9b395b0f585b06...)
+	__obf_3371341914786ca2 = filepath.Join(__obf_274b0aab616567ff, __obf_3371341914786ca2)
+	return __obf_3371341914786ca2, nil
 }
 
-func ResolveURL(__obf_8a27d47dd36df03f *url.URL, __obf_980149e3a41644c9 string) string {
-	if strings.HasPrefix(__obf_980149e3a41644c9, "https://") || strings.HasPrefix(__obf_980149e3a41644c9, "http://") {
-		return __obf_980149e3a41644c9
+func ResolveURL(__obf_1e88df0f0b966b94 *url.URL, __obf_274b0aab616567ff string) string {
+	if strings.HasPrefix(__obf_274b0aab616567ff, "https://") || strings.HasPrefix(__obf_274b0aab616567ff, "http://") {
+		return __obf_274b0aab616567ff
 	}
-	var __obf_ef13cecbc398015d string
-	if strings.Index(__obf_980149e3a41644c9, "/") == 0 {
-		__obf_ef13cecbc398015d = __obf_8a27d47dd36df03f.Scheme + "://" + __obf_8a27d47dd36df03f.Host
+	var __obf_008087e22c30d01a string
+	if strings.Index(__obf_274b0aab616567ff, "/") == 0 {
+		__obf_008087e22c30d01a = __obf_1e88df0f0b966b94.Scheme + "://" + __obf_1e88df0f0b966b94.Host
 	} else {
-		__obf_3e441270ad20ac28 := __obf_8a27d47dd36df03f.String()
-		__obf_ef13cecbc398015d = __obf_3e441270ad20ac28[0:strings.LastIndex(__obf_3e441270ad20ac28, "/")]
+		__obf_8307feab292a18a0 := __obf_1e88df0f0b966b94.String()
+		__obf_008087e22c30d01a = __obf_8307feab292a18a0[0:strings.LastIndex(__obf_8307feab292a18a0, "/")]
 	}
-	return __obf_ef13cecbc398015d + path.Join("/", __obf_980149e3a41644c9)
+	return __obf_008087e22c30d01a + path.Join("/", __obf_274b0aab616567ff)
 }
 
-func DrawProgressBar(__obf_8d375f91e1c1904a string, __obf_23c3920436c03fcd float32, __obf_554351a19bd71b15 int, __obf_56307ed5705bc8d2 ...string) {
-	__obf_8926187c7b103473 := int(__obf_23c3920436c03fcd * float32(__obf_554351a19bd71b15))
-	__obf_c54ee8a73158c0cf := fmt.Sprintf("[%s] %s%*s %6.2f%% %s", __obf_8d375f91e1c1904a, strings.Repeat("■", __obf_8926187c7b103473), __obf_554351a19bd71b15-__obf_8926187c7b103473, "", __obf_23c3920436c03fcd*100, strings.Join(__obf_56307ed5705bc8d2, ""))
-	fmt.Print("\r" + __obf_c54ee8a73158c0cf)
+func DrawProgressBar(__obf_5ed882628459088f string, __obf_01599d90584b2a96 float32, __obf_a2760c3951a1ae6d int, __obf_0b807bd08fdce7f4 ...string) {
+	__obf_cadeb652b5931706 := int(__obf_01599d90584b2a96 * float32(__obf_a2760c3951a1ae6d))
+	__obf_1df6d77b42222a9b := fmt.Sprintf("[%s] %s%*s %6.2f%% %s", __obf_5ed882628459088f, strings.Repeat("■", __obf_cadeb652b5931706), __obf_a2760c3951a1ae6d-__obf_cadeb652b5931706, "", __obf_01599d90584b2a96*100, strings.Join(__obf_0b807bd08fdce7f4, ""))
+	fmt.Print("\r" + __obf_1df6d77b42222a9b)
 }

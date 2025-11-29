@@ -20,235 +20,235 @@ import (
 	"github.com/pkg/errors"
 )
 
-func __obf_032f2ec5a0eac80f(__obf_770f1ad1e1fd72d0 string, __obf_43806ac0f4f83280 int) (__obf_33889d1f7588078d time.Time, __obf_be228e6b4d822c54 time.Time) {
-	var __obf_2ec52a9654271348 error
-	if __obf_770f1ad1e1fd72d0 == "" {
-		__obf_33889d1f7588078d = time.Now()
+func __obf_704491f843d9aad9(__obf_8dfe9dc499acf7f1 string, __obf_8399d76af1dec67f int) (__obf_8952901113253fb5 time.Time, __obf_75c84bb8e3dcaba2 time.Time) {
+	var __obf_8b98d286773a1eea error
+	if __obf_8dfe9dc499acf7f1 == "" {
+		__obf_8952901113253fb5 = time.Now()
 	} else {
-		if __obf_33889d1f7588078d, __obf_2ec52a9654271348 = time.Parse("2006-01-02", __obf_770f1ad1e1fd72d0); __obf_2ec52a9654271348 != nil {
+		if __obf_8952901113253fb5, __obf_8b98d286773a1eea = time.Parse("2006-01-02", __obf_8dfe9dc499acf7f1); __obf_8b98d286773a1eea != nil {
 			log.Fatalln("time parse failed.")
 		} else {
-			__obf_be228e6b4d822c54 = __obf_33889d1f7588078d.Add(time.Duration(__obf_43806ac0f4f83280*24) * time.Hour)
+			__obf_75c84bb8e3dcaba2 = __obf_8952901113253fb5.Add(time.Duration(__obf_8399d76af1dec67f*24) * time.Hour)
 		}
 	}
 	return
 }
 
-func __obf_4922cb44f2003694() any {
-	var __obf_2ec52a9654271348 error
-	var __obf_3d6e42833081d2b9 any
-	switch *__obf_f5980e672145c29f {
+func __obf_5bb458c8b36f678b() any {
+	var __obf_8b98d286773a1eea error
+	var __obf_61e0a98f3b5bf932 any
+	switch *__obf_9c8c2e6a9197c48c {
 	case "":
-		if *__obf_687f16797dbe5480 {
-			_, __obf_3d6e42833081d2b9, __obf_2ec52a9654271348 = ed25519.GenerateKey(rand.Reader)
+		if *__obf_88fc8a0958f00870 {
+			_, __obf_61e0a98f3b5bf932, __obf_8b98d286773a1eea = ed25519.GenerateKey(rand.Reader)
 		} else {
-			__obf_3d6e42833081d2b9, __obf_2ec52a9654271348 = rsa.GenerateKey(rand.Reader, *__obf_244f5fea7ddf0c82)
+			__obf_61e0a98f3b5bf932, __obf_8b98d286773a1eea = rsa.GenerateKey(rand.Reader, *__obf_ed53a6cf1d81a796)
 		}
 	case "P224":
-		__obf_3d6e42833081d2b9, __obf_2ec52a9654271348 = ecdsa.GenerateKey(elliptic.P224(), rand.Reader)
+		__obf_61e0a98f3b5bf932, __obf_8b98d286773a1eea = ecdsa.GenerateKey(elliptic.P224(), rand.Reader)
 	case "P256":
-		__obf_3d6e42833081d2b9, __obf_2ec52a9654271348 = ecdsa.GenerateKey(elliptic.P256(), rand.Reader)
+		__obf_61e0a98f3b5bf932, __obf_8b98d286773a1eea = ecdsa.GenerateKey(elliptic.P256(), rand.Reader)
 	case "P384":
-		__obf_3d6e42833081d2b9, __obf_2ec52a9654271348 = ecdsa.GenerateKey(elliptic.P384(), rand.Reader)
+		__obf_61e0a98f3b5bf932, __obf_8b98d286773a1eea = ecdsa.GenerateKey(elliptic.P384(), rand.Reader)
 	case "P521":
-		__obf_3d6e42833081d2b9, __obf_2ec52a9654271348 = ecdsa.GenerateKey(elliptic.P521(), rand.Reader)
+		__obf_61e0a98f3b5bf932, __obf_8b98d286773a1eea = ecdsa.GenerateKey(elliptic.P521(), rand.Reader)
 	default:
-		log.Fatalf("Unrecognized elliptic curve: %q", *__obf_f5980e672145c29f)
+		log.Fatalf("Unrecognized elliptic curve: %q", *__obf_9c8c2e6a9197c48c)
 	}
 
-	if __obf_2ec52a9654271348 != nil {
-		log.Fatalf("Failed to generate private key: %v", __obf_2ec52a9654271348)
+	if __obf_8b98d286773a1eea != nil {
+		log.Fatalf("Failed to generate private key: %v", __obf_8b98d286773a1eea)
 	}
 
-	return __obf_3d6e42833081d2b9
+	return __obf_61e0a98f3b5bf932
 }
 
-func __obf_ded3b7d03569731f(__obf_053a008c64910bdb, __obf_2fae55c305fb99f3 string, __obf_706a59d0e2ae4d94 []byte, __obf_9660f3c53970e2ec os.FileMode) error {
+func __obf_899a6824827409e5(__obf_3777679e49fe3f7b, __obf_dcb050a7b1e33ef7 string, __obf_57f6fdf657df089b []byte, __obf_cd28ed9c8db9fa52 os.FileMode) error {
 
-	if _, __obf_2ec52a9654271348 := os.Stat(__obf_053a008c64910bdb); __obf_2ec52a9654271348 == nil {
-		if __obf_2ec52a9654271348 = os.WriteFile(fmt.Sprintf("%s%s%s", __obf_053a008c64910bdb, string(os.PathSeparator), __obf_2fae55c305fb99f3), __obf_706a59d0e2ae4d94, __obf_9660f3c53970e2ec); __obf_2ec52a9654271348 != nil {
-			return errors.Wrap(__obf_2ec52a9654271348, "Write file failed.")
+	if _, __obf_8b98d286773a1eea := os.Stat(__obf_3777679e49fe3f7b); __obf_8b98d286773a1eea == nil {
+		if __obf_8b98d286773a1eea = os.WriteFile(fmt.Sprintf("%s%s%s", __obf_3777679e49fe3f7b, string(os.PathSeparator), __obf_dcb050a7b1e33ef7), __obf_57f6fdf657df089b, __obf_cd28ed9c8db9fa52); __obf_8b98d286773a1eea != nil {
+			return errors.Wrap(__obf_8b98d286773a1eea, "Write file failed.")
 		}
-	} else if os.IsNotExist(__obf_2ec52a9654271348) {
-		return errors.Wrap(__obf_2ec52a9654271348, "Directory not exist.")
+	} else if os.IsNotExist(__obf_8b98d286773a1eea) {
+		return errors.Wrap(__obf_8b98d286773a1eea, "Directory not exist.")
 	} else {
-		return __obf_2ec52a9654271348
+		return __obf_8b98d286773a1eea
 	}
 	return nil
 }
 
-func __obf_b95ec46d49436b0b(__obf_1ed29960d2e595e7 string, __obf_c7be66b042b1a623 *x509.Certificate, __obf_2f56a8cdb16bd159 any, __obf_f5dae7569058304a *x509.Certificate, __obf_3b0f2a731719128f any) {
+func __obf_a0e6f9942171fb68(__obf_94fa2b121e9208a2 string, __obf_89b937c04944cb2b *x509.Certificate, __obf_28a277ccea818a74 any, __obf_19492af16f0f666d *x509.Certificate, __obf_a74fc724d9a30e04 any) {
 
-	var __obf_bfa26ca12c831807 any
-	switch __obf_b0d88f72860f9741 := __obf_2f56a8cdb16bd159.(type) {
+	var __obf_4e690447a56017a0 any
+	switch __obf_c9be9488dbae2196 := __obf_28a277ccea818a74.(type) {
 	case *rsa.PrivateKey:
-		__obf_bfa26ca12c831807 = &__obf_b0d88f72860f9741.PublicKey
+		__obf_4e690447a56017a0 = &__obf_c9be9488dbae2196.PublicKey
 	case *ecdsa.PrivateKey:
-		__obf_bfa26ca12c831807 = &__obf_b0d88f72860f9741.PublicKey
+		__obf_4e690447a56017a0 = &__obf_c9be9488dbae2196.PublicKey
 	case ed25519.PrivateKey:
-		__obf_bfa26ca12c831807 = __obf_b0d88f72860f9741.Public().(ed25519.PublicKey)
+		__obf_4e690447a56017a0 = __obf_c9be9488dbae2196.Public().(ed25519.PublicKey)
 	default:
-		__obf_bfa26ca12c831807 = nil
+		__obf_4e690447a56017a0 = nil
 	}
 
-	var __obf_7515f5b04ab4fdd3 any
-	if __obf_3b0f2a731719128f != nil {
-		__obf_7515f5b04ab4fdd3 = __obf_3b0f2a731719128f
+	var __obf_f42003db463ece31 any
+	if __obf_a74fc724d9a30e04 != nil {
+		__obf_f42003db463ece31 = __obf_a74fc724d9a30e04
 	} else {
-		__obf_7515f5b04ab4fdd3 = __obf_2f56a8cdb16bd159
+		__obf_f42003db463ece31 = __obf_28a277ccea818a74
 	}
-	__obf_ccfcf99a3da52331, __obf_2ec52a9654271348 := x509.CreateCertificate(rand.Reader, __obf_c7be66b042b1a623, __obf_f5dae7569058304a, __obf_bfa26ca12c831807, __obf_7515f5b04ab4fdd3)
-	if __obf_2ec52a9654271348 != nil {
-		log.Println("create failed", __obf_2ec52a9654271348)
+	__obf_cc085b2bdcc9bc80, __obf_8b98d286773a1eea := x509.CreateCertificate(rand.Reader, __obf_89b937c04944cb2b, __obf_19492af16f0f666d, __obf_4e690447a56017a0, __obf_f42003db463ece31)
+	if __obf_8b98d286773a1eea != nil {
+		log.Println("create failed", __obf_8b98d286773a1eea)
 		return
 	}
-	__obf_a8076ac87f764dce := pem.EncodeToMemory(&pem.Block{Type: "CERTIFICATE",
+	__obf_f865972c5b507991 := pem.EncodeToMemory(&pem.Block{Type: "CERTIFICATE",
 		// Headers: map[string]string{},
-		Bytes: __obf_ccfcf99a3da52331})
+		Bytes: __obf_cc085b2bdcc9bc80})
 	// fmt.Printf("%s private key： %s \n", name, ca_b)
 
-	if __obf_2ec52a9654271348 = __obf_ded3b7d03569731f(*__obf_e7dc96daf488b4d7, __obf_1ed29960d2e595e7+".pem", __obf_a8076ac87f764dce, 0777); __obf_2ec52a9654271348 != nil {
-		log.Fatalln(__obf_2ec52a9654271348)
+	if __obf_8b98d286773a1eea = __obf_899a6824827409e5(*__obf_527251753bbe5828, __obf_94fa2b121e9208a2+".pem", __obf_f865972c5b507991, 0777); __obf_8b98d286773a1eea != nil {
+		log.Fatalln(__obf_8b98d286773a1eea)
 	}
-	__obf_c8c65e857103e73b, __obf_2ec52a9654271348 := x509.MarshalPKCS8PrivateKey(__obf_2f56a8cdb16bd159)
-	if __obf_2ec52a9654271348 != nil {
+	__obf_ae4fc2cbb7410041, __obf_8b98d286773a1eea := x509.MarshalPKCS8PrivateKey(__obf_28a277ccea818a74)
+	if __obf_8b98d286773a1eea != nil {
 		log.Fatalln("marshal PKCS8 private key failed")
 	}
-	__obf_ad33ff08cd765f4b := // os.WriteFile(name+".key", priv_b, 0777)
+	__obf_cf30594748a1412b := // os.WriteFile(name+".key", priv_b, 0777)
 
-		pem.EncodeToMemory(&pem.Block{Type: "PRIVATE KEY", Bytes: __obf_c8c65e857103e73b})
+		pem.EncodeToMemory(&pem.Block{Type: "PRIVATE KEY", Bytes: __obf_ae4fc2cbb7410041})
 
-	if __obf_2ec52a9654271348 = __obf_ded3b7d03569731f(*__obf_e7dc96daf488b4d7, __obf_1ed29960d2e595e7+".key", __obf_ad33ff08cd765f4b, 0777); __obf_2ec52a9654271348 != nil {
-		log.Fatalln(__obf_2ec52a9654271348)
+	if __obf_8b98d286773a1eea = __obf_899a6824827409e5(*__obf_527251753bbe5828, __obf_94fa2b121e9208a2+".key", __obf_cf30594748a1412b, 0777); __obf_8b98d286773a1eea != nil {
+		log.Fatalln(__obf_8b98d286773a1eea)
 	}
 }
 
 // 公钥证书解析
-func __obf_88f0f7635949dc5b() (*x509.Certificate, error) {
+func __obf_60e1b858637ea3fd() (*x509.Certificate, error) {
 	//读取公钥证书并解码
-	if __obf_525403725fe58302, __obf_2ec52a9654271348 := os.ReadFile(fmt.Sprintf("%s%sroot.pem", *__obf_e7dc96daf488b4d7, string(os.PathSeparator))); __obf_2ec52a9654271348 != nil {
-		return nil, errors.Wrap(__obf_2ec52a9654271348, "root.pem: Failed to read file.")
+	if __obf_5dbd41a4908e0496, __obf_8b98d286773a1eea := os.ReadFile(fmt.Sprintf("%s%sroot.pem", *__obf_527251753bbe5828, string(os.PathSeparator))); __obf_8b98d286773a1eea != nil {
+		return nil, errors.Wrap(__obf_8b98d286773a1eea, "root.pem: Failed to read file.")
 	} else {
-		__obf_3939ce88260a2024, __obf_a68ed9dc7813bcf2 := pem.Decode(__obf_525403725fe58302)
-		if __obf_3939ce88260a2024 == nil {
-			return nil, errors.Errorf("root.pem: Cert block is nil, rest block is %s.", __obf_a68ed9dc7813bcf2)
+		__obf_7adc7350872191bd, __obf_43a303256282a76e := pem.Decode(__obf_5dbd41a4908e0496)
+		if __obf_7adc7350872191bd == nil {
+			return nil, errors.Errorf("root.pem: Cert block is nil, rest block is %s.", __obf_43a303256282a76e)
 		}
 
-		return x509.ParseCertificate(__obf_3939ce88260a2024.Bytes)
+		return x509.ParseCertificate(__obf_7adc7350872191bd.Bytes)
 	}
 }
 
 // 私钥解析
-func __obf_70f12451da1937d1() (__obf_2f56a8cdb16bd159 any, __obf_2ec52a9654271348 error) {
-	if __obf_525403725fe58302, __obf_2ec52a9654271348 := os.ReadFile(fmt.Sprintf("%s%sroot.key", *__obf_e7dc96daf488b4d7, string(os.PathSeparator))); __obf_2ec52a9654271348 != nil {
-		return nil, errors.Wrap(__obf_2ec52a9654271348, "root.key: Failed to read file.")
+func __obf_7d94847bb46dec22() (__obf_28a277ccea818a74 any, __obf_8b98d286773a1eea error) {
+	if __obf_5dbd41a4908e0496, __obf_8b98d286773a1eea := os.ReadFile(fmt.Sprintf("%s%sroot.key", *__obf_527251753bbe5828, string(os.PathSeparator))); __obf_8b98d286773a1eea != nil {
+		return nil, errors.Wrap(__obf_8b98d286773a1eea, "root.key: Failed to read file.")
 	} else {
-		__obf_3939ce88260a2024, __obf_a68ed9dc7813bcf2 := pem.Decode(__obf_525403725fe58302)
-		if __obf_3939ce88260a2024 == nil {
-			return nil, errors.Errorf("root.key: Cert block is nil, rest block is %s.", __obf_a68ed9dc7813bcf2)
+		__obf_7adc7350872191bd, __obf_43a303256282a76e := pem.Decode(__obf_5dbd41a4908e0496)
+		if __obf_7adc7350872191bd == nil {
+			return nil, errors.Errorf("root.key: Cert block is nil, rest block is %s.", __obf_43a303256282a76e)
 		}
 
-		return x509.ParsePKCS8PrivateKey(__obf_3939ce88260a2024.Bytes)
+		return x509.ParsePKCS8PrivateKey(__obf_7adc7350872191bd.Bytes)
 	}
 }
 
-func __obf_2f0d31a7316c7293() *big.Int {
-	__obf_3178f3a90e5dc3b8 := new(big.Int).Lsh(big.NewInt(1), 128)
-	if __obf_479c34d1d5c0389d, __obf_2ec52a9654271348 := rand.Int(rand.Reader, __obf_3178f3a90e5dc3b8); __obf_2ec52a9654271348 != nil {
+func __obf_3a616818890e9136() *big.Int {
+	__obf_5eca5ed17b1af004 := new(big.Int).Lsh(big.NewInt(1), 128)
+	if __obf_65ba8c82ecf6784e, __obf_8b98d286773a1eea := rand.Int(rand.Reader, __obf_5eca5ed17b1af004); __obf_8b98d286773a1eea != nil {
 		log.Fatalln("generate serial number failed")
 		return nil
 	} else {
-		return __obf_479c34d1d5c0389d
+		return __obf_65ba8c82ecf6784e
 	}
 }
 
 func GenRootCA() {
-	__obf_8ca71a6182159260, __obf_c2aab64f9a9a4357 := __obf_032f2ec5a0eac80f(*__obf_bf317b5f1f2b6382, *__obf_c82831f575e7670b)
-	__obf_cccdf1a27493dddc := &x509.Certificate{
-		SerialNumber: __obf_2f0d31a7316c7293(),
+	__obf_df8ecfd08547baa9, __obf_bd69b06a640448e5 := __obf_704491f843d9aad9(*__obf_07179264e258cdb6, *__obf_879e45fa0c7555fa)
+	__obf_bd646ef02df2a803 := &x509.Certificate{
+		SerialNumber: __obf_3a616818890e9136(),
 		Subject: pkix.Name{
 			// Country:            []string{"China"},
-			Organization: []string{*__obf_5723a8a1754a6ff7},
+			Organization: []string{*__obf_c29edf7ae9e78e22},
 			// OrganizationalUnit: []string{"Shit company Unit"},
 		},
-		NotBefore:             __obf_8ca71a6182159260,
-		NotAfter:              __obf_c2aab64f9a9a4357,
+		NotBefore:             __obf_df8ecfd08547baa9,
+		NotAfter:              __obf_bd69b06a640448e5,
 		IsCA:                  true,
 		BasicConstraintsValid: true,
 		ExtKeyUsage:           []x509.ExtKeyUsage{x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth},
 		KeyUsage:              x509.KeyUsageKeyEncipherment | x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign,
 	}
-	__obf_1d68b8dfdd86e587 := __obf_4922cb44f2003694()
-	__obf_b95ec46d49436b0b("root", __obf_cccdf1a27493dddc, __obf_1d68b8dfdd86e587, __obf_cccdf1a27493dddc, nil)
+	__obf_031842f1c2ed65a3 := __obf_5bb458c8b36f678b()
+	__obf_a0e6f9942171fb68("root", __obf_bd646ef02df2a803, __obf_031842f1c2ed65a3, __obf_bd646ef02df2a803, nil)
 
 }
 
 func GenServerCA() {
-	__obf_8ca71a6182159260, __obf_c2aab64f9a9a4357 := __obf_032f2ec5a0eac80f(*__obf_28837c6c18a9b3d9, *__obf_e1e272065c9d4c14)
-	__obf_28da83af6f8edbe6 := &x509.Certificate{
-		SerialNumber: __obf_2f0d31a7316c7293(),
+	__obf_df8ecfd08547baa9, __obf_bd69b06a640448e5 := __obf_704491f843d9aad9(*__obf_7b61af43155d6a85, *__obf_f035b210ead5b9d7)
+	__obf_441b7d9118c61425 := &x509.Certificate{
+		SerialNumber: __obf_3a616818890e9136(),
 		Subject: pkix.Name{
-			Organization: []string{*__obf_fe2344381e73ffee},
+			Organization: []string{*__obf_18060d85d772c392},
 		},
-		NotBefore: __obf_8ca71a6182159260,
-		NotAfter:  __obf_c2aab64f9a9a4357,
+		NotBefore: __obf_df8ecfd08547baa9,
+		NotAfter:  __obf_bd69b06a640448e5,
 		// SubjectKeyId: []byte{1, 2, 3, 4, 6},
 		ExtKeyUsage: []x509.ExtKeyUsage{x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth},
 		KeyUsage:    x509.KeyUsageKeyEncipherment | x509.KeyUsageDigitalSignature,
 	}
-	__obf_1b90c90256dcecac := strings.Split(*__obf_7c9a6812bf2314f9, ",")
+	__obf_0f57c4cf881d27c7 := strings.Split(*__obf_e31bc42d46a4cadc, ",")
 
-	for _, __obf_56731192f777ebe3 := range __obf_1b90c90256dcecac {
-		if __obf_34b6469a7cf51aaa := net.ParseIP(__obf_56731192f777ebe3); __obf_34b6469a7cf51aaa != nil {
-			__obf_28da83af6f8edbe6.
-				IPAddresses = append(__obf_28da83af6f8edbe6.IPAddresses, __obf_34b6469a7cf51aaa)
+	for _, __obf_64a53c251efc3cd6 := range __obf_0f57c4cf881d27c7 {
+		if __obf_663e92eef5c260d0 := net.ParseIP(__obf_64a53c251efc3cd6); __obf_663e92eef5c260d0 != nil {
+			__obf_441b7d9118c61425.
+				IPAddresses = append(__obf_441b7d9118c61425.IPAddresses, __obf_663e92eef5c260d0)
 		} else {
-			__obf_28da83af6f8edbe6.
-				DNSNames = append(__obf_28da83af6f8edbe6.DNSNames, __obf_56731192f777ebe3)
+			__obf_441b7d9118c61425.
+				DNSNames = append(__obf_441b7d9118c61425.DNSNames, __obf_64a53c251efc3cd6)
 		}
 	}
-	__obf_0dd6962322487601 := __obf_4922cb44f2003694()
+	__obf_f02f58ad7a9d0c1f := __obf_5bb458c8b36f678b()
 
-	var __obf_cccdf1a27493dddc *x509.Certificate
-	var __obf_2ec52a9654271348 error
-	var __obf_1d68b8dfdd86e587 any
-	__obf_cccdf1a27493dddc, __obf_2ec52a9654271348 = __obf_88f0f7635949dc5b()
-	if __obf_2ec52a9654271348 != nil {
-		log.Fatalln(__obf_2ec52a9654271348)
+	var __obf_bd646ef02df2a803 *x509.Certificate
+	var __obf_8b98d286773a1eea error
+	var __obf_031842f1c2ed65a3 any
+	__obf_bd646ef02df2a803, __obf_8b98d286773a1eea = __obf_60e1b858637ea3fd()
+	if __obf_8b98d286773a1eea != nil {
+		log.Fatalln(__obf_8b98d286773a1eea)
 	}
-	__obf_1d68b8dfdd86e587, __obf_2ec52a9654271348 = __obf_70f12451da1937d1()
-	if __obf_2ec52a9654271348 != nil {
-		log.Fatalln(__obf_2ec52a9654271348)
+	__obf_031842f1c2ed65a3, __obf_8b98d286773a1eea = __obf_7d94847bb46dec22()
+	if __obf_8b98d286773a1eea != nil {
+		log.Fatalln(__obf_8b98d286773a1eea)
 	}
-	__obf_b95ec46d49436b0b("server", __obf_28da83af6f8edbe6, __obf_0dd6962322487601, __obf_cccdf1a27493dddc, __obf_1d68b8dfdd86e587)
+	__obf_a0e6f9942171fb68("server", __obf_441b7d9118c61425, __obf_f02f58ad7a9d0c1f, __obf_bd646ef02df2a803, __obf_031842f1c2ed65a3)
 }
 
 func GenClientCA() {
-	__obf_8ca71a6182159260, __obf_c2aab64f9a9a4357 := __obf_032f2ec5a0eac80f(*__obf_af7fc1426a450125, *__obf_b31dfc092fcc3a05)
-	__obf_9c2efd023b154ad3 := &x509.Certificate{
-		SerialNumber: __obf_2f0d31a7316c7293(),
+	__obf_df8ecfd08547baa9, __obf_bd69b06a640448e5 := __obf_704491f843d9aad9(*__obf_f442c10694402f79, *__obf_09177447b8c2c966)
+	__obf_15eb203631991e8f := &x509.Certificate{
+		SerialNumber: __obf_3a616818890e9136(),
 		Subject: pkix.Name{
-			Organization: []string{*__obf_dc0cb0d6e620a6ab},
+			Organization: []string{*__obf_a0186db0e5770e5d},
 		},
-		NotBefore: __obf_8ca71a6182159260,
-		NotAfter:  __obf_c2aab64f9a9a4357,
+		NotBefore: __obf_df8ecfd08547baa9,
+		NotAfter:  __obf_bd69b06a640448e5,
 		// SubjectKeyId: []byte{1, 2, 3, 4, 7},
 		ExtKeyUsage: []x509.ExtKeyUsage{x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth},
 		KeyUsage:    x509.KeyUsageKeyEncipherment | x509.KeyUsageDigitalSignature,
 	}
-	__obf_3a8c2f70431f5f7c := __obf_4922cb44f2003694()
+	__obf_a1788deecf5df7ee := __obf_5bb458c8b36f678b()
 
-	var __obf_cccdf1a27493dddc *x509.Certificate
-	var __obf_2ec52a9654271348 error
-	var __obf_1d68b8dfdd86e587 any
-	__obf_cccdf1a27493dddc, __obf_2ec52a9654271348 = __obf_88f0f7635949dc5b()
-	if __obf_2ec52a9654271348 != nil {
-		log.Fatalln(__obf_2ec52a9654271348)
+	var __obf_bd646ef02df2a803 *x509.Certificate
+	var __obf_8b98d286773a1eea error
+	var __obf_031842f1c2ed65a3 any
+	__obf_bd646ef02df2a803, __obf_8b98d286773a1eea = __obf_60e1b858637ea3fd()
+	if __obf_8b98d286773a1eea != nil {
+		log.Fatalln(__obf_8b98d286773a1eea)
 	}
-	__obf_1d68b8dfdd86e587, __obf_2ec52a9654271348 = __obf_70f12451da1937d1()
-	if __obf_2ec52a9654271348 != nil {
-		log.Fatalln(__obf_2ec52a9654271348)
+	__obf_031842f1c2ed65a3, __obf_8b98d286773a1eea = __obf_7d94847bb46dec22()
+	if __obf_8b98d286773a1eea != nil {
+		log.Fatalln(__obf_8b98d286773a1eea)
 	}
-	__obf_b95ec46d49436b0b("client", __obf_9c2efd023b154ad3, __obf_3a8c2f70431f5f7c, __obf_cccdf1a27493dddc, __obf_1d68b8dfdd86e587)
+	__obf_a0e6f9942171fb68("client", __obf_15eb203631991e8f, __obf_a1788deecf5df7ee, __obf_bd646ef02df2a803, __obf_031842f1c2ed65a3)
 
 }

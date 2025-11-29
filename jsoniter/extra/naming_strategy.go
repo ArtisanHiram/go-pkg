@@ -1,4 +1,4 @@
-package __obf_060749efdc6ad522
+package __obf_789dc33d47f4ab2c
 
 import (
 	jsoniter "github.com/ArtisanHiram/go-pkg/jsoniter"
@@ -7,51 +7,51 @@ import (
 )
 
 // SetNamingStrategy rename struct fields uniformly
-func SetNamingStrategy(__obf_230467da7ea96415 func(string) string) {
-	jsoniter.RegisterExtension(&__obf_e80ef1c9cb107176{jsoniter.DummyExtension{}, __obf_230467da7ea96415})
+func SetNamingStrategy(__obf_9bb5e6c978141659 func(string) string) {
+	jsoniter.RegisterExtension(&__obf_2b8c89a8d54c45fb{jsoniter.DummyExtension{}, __obf_9bb5e6c978141659})
 }
 
-type __obf_e80ef1c9cb107176 struct {
+type __obf_2b8c89a8d54c45fb struct {
 	jsoniter.DummyExtension
-	__obf_230467da7ea96415 func(string) string
+	__obf_9bb5e6c978141659 func(string) string
 }
 
-func (__obf_1ffe89e9c54d7879 *__obf_e80ef1c9cb107176) UpdateStructDescriptor(__obf_d7a80073d1dfd7d7 *jsoniter.StructDescriptor) {
-	for _, __obf_88585cf978e0c17e := range __obf_d7a80073d1dfd7d7.Fields {
-		if unicode.IsLower(rune(__obf_88585cf978e0c17e.Field.Name()[0])) || __obf_88585cf978e0c17e.Field.Name()[0] == '_' {
+func (__obf_369258fb13d82ac5 *__obf_2b8c89a8d54c45fb) UpdateStructDescriptor(__obf_0c6523f08d195dd4 *jsoniter.StructDescriptor) {
+	for _, __obf_7b97f262d18b7c91 := range __obf_0c6523f08d195dd4.Fields {
+		if unicode.IsLower(rune(__obf_7b97f262d18b7c91.Field.Name()[0])) || __obf_7b97f262d18b7c91.Field.Name()[0] == '_' {
 			continue
 		}
-		__obf_5c03b64bc5e37fc7, __obf_ca50ba45dceff983 := __obf_88585cf978e0c17e.Field.Tag().Lookup("json")
-		if __obf_ca50ba45dceff983 {
-			__obf_cc68dfcdabdda8bc := strings.Split(__obf_5c03b64bc5e37fc7, ",")
-			if __obf_cc68dfcdabdda8bc[0] == "-" {
+		__obf_ba151e7945153a22, __obf_9136b4f5c8f3c198 := __obf_7b97f262d18b7c91.Field.Tag().Lookup("json")
+		if __obf_9136b4f5c8f3c198 {
+			__obf_1d1c24a713f957c3 := strings.Split(__obf_ba151e7945153a22, ",")
+			if __obf_1d1c24a713f957c3[0] == "-" {
 				continue // hidden field
 			}
-			if __obf_cc68dfcdabdda8bc[0] != "" {
+			if __obf_1d1c24a713f957c3[0] != "" {
 				continue // field explicitly named
 			}
 		}
-		__obf_88585cf978e0c17e.
-			ToNames = []string{__obf_1ffe89e9c54d7879.__obf_230467da7ea96415(__obf_88585cf978e0c17e.Field.Name())}
-		__obf_88585cf978e0c17e.
-			FromNames = []string{__obf_1ffe89e9c54d7879.__obf_230467da7ea96415(__obf_88585cf978e0c17e.Field.Name())}
+		__obf_7b97f262d18b7c91.
+			ToNames = []string{__obf_369258fb13d82ac5.__obf_9bb5e6c978141659(__obf_7b97f262d18b7c91.Field.Name())}
+		__obf_7b97f262d18b7c91.
+			FromNames = []string{__obf_369258fb13d82ac5.__obf_9bb5e6c978141659(__obf_7b97f262d18b7c91.Field.Name())}
 	}
 }
 
 // LowerCaseWithUnderscores one strategy to SetNamingStrategy for. It will change HelloWorld to hello_world.
-func LowerCaseWithUnderscores(__obf_49ffc53ac93b13d0 string) string {
-	__obf_7ca81e1200cb049d := []rune{}
-	for __obf_9e607be55d8e3092, __obf_e5ca5e05b9822fee := range __obf_49ffc53ac93b13d0 {
-		if __obf_9e607be55d8e3092 == 0 {
-			__obf_7ca81e1200cb049d = append(__obf_7ca81e1200cb049d, unicode.ToLower(__obf_e5ca5e05b9822fee))
+func LowerCaseWithUnderscores(__obf_e9274217ff0621b6 string) string {
+	__obf_114d7264c618cd3c := []rune{}
+	for __obf_c1c90a275d52d9e6, __obf_c39e01a0b80979b1 := range __obf_e9274217ff0621b6 {
+		if __obf_c1c90a275d52d9e6 == 0 {
+			__obf_114d7264c618cd3c = append(__obf_114d7264c618cd3c, unicode.ToLower(__obf_c39e01a0b80979b1))
 		} else {
-			if unicode.IsUpper(__obf_e5ca5e05b9822fee) {
-				__obf_7ca81e1200cb049d = append(__obf_7ca81e1200cb049d, '_')
-				__obf_7ca81e1200cb049d = append(__obf_7ca81e1200cb049d, unicode.ToLower(__obf_e5ca5e05b9822fee))
+			if unicode.IsUpper(__obf_c39e01a0b80979b1) {
+				__obf_114d7264c618cd3c = append(__obf_114d7264c618cd3c, '_')
+				__obf_114d7264c618cd3c = append(__obf_114d7264c618cd3c, unicode.ToLower(__obf_c39e01a0b80979b1))
 			} else {
-				__obf_7ca81e1200cb049d = append(__obf_7ca81e1200cb049d, __obf_e5ca5e05b9822fee)
+				__obf_114d7264c618cd3c = append(__obf_114d7264c618cd3c, __obf_c39e01a0b80979b1)
 			}
 		}
 	}
-	return string(__obf_7ca81e1200cb049d)
+	return string(__obf_114d7264c618cd3c)
 }

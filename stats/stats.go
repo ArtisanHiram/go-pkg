@@ -1,4 +1,4 @@
-package __obf_8cdcb71eb89a0b1a
+package __obf_aa50dbb4389f0ad9
 
 // https://github.com/montanaflynn/stats
 import (
@@ -7,21 +7,21 @@ import (
 )
 
 // Max finds the highest number in a slice
-func Max(__obf_12053c429f32e343 []float64) (max float64, __obf_79a8b5a43b28cb22 error) {
-	__obf_e6a935bbf21d899c := len(__obf_12053c429f32e343)
+func Max(__obf_79ecf1e2364bfac6 []float64) (max float64, __obf_5cc22c21b7b4e9ff error) {
+	__obf_327a83ba05aa82bd := len(__obf_79ecf1e2364bfac6)
 
 	// Return an error if there are no numbers
-	if __obf_e6a935bbf21d899c == 0 {
+	if __obf_327a83ba05aa82bd == 0 {
 		return math.NaN(), ErrEmptyInput
 	}
 
 	// Get the first value as the starting point
-	max = __obf_12053c429f32e343[0]
+	max = __obf_79ecf1e2364bfac6[0]
 
 	// Loop and replace higher values
-	for __obf_4888a164dbcc1e45 := 1; __obf_4888a164dbcc1e45 < __obf_e6a935bbf21d899c; __obf_4888a164dbcc1e45++ {
-		if __obf_12053c429f32e343[__obf_4888a164dbcc1e45] > max {
-			max = __obf_12053c429f32e343[__obf_4888a164dbcc1e45]
+	for __obf_5a121396de114aab := 1; __obf_5a121396de114aab < __obf_327a83ba05aa82bd; __obf_5a121396de114aab++ {
+		if __obf_79ecf1e2364bfac6[__obf_5a121396de114aab] > max {
+			max = __obf_79ecf1e2364bfac6[__obf_5a121396de114aab]
 		}
 	}
 
@@ -29,165 +29,165 @@ func Max(__obf_12053c429f32e343 []float64) (max float64, __obf_79a8b5a43b28cb22 
 }
 
 // Min finds the lowest number in a set of data
-func Min(__obf_12053c429f32e343 []float64) (min float64, __obf_79a8b5a43b28cb22 error) {
-	__obf_e6a935bbf21d899c := // Get the count of numbers in the slice
-		len(__obf_12053c429f32e343)
+func Min(__obf_79ecf1e2364bfac6 []float64) (min float64, __obf_5cc22c21b7b4e9ff error) {
+	__obf_327a83ba05aa82bd := // Get the count of numbers in the slice
+		len(__obf_79ecf1e2364bfac6)
 
 	// Return an error if there are no numbers
-	if __obf_e6a935bbf21d899c == 0 {
+	if __obf_327a83ba05aa82bd == 0 {
 		return math.NaN(), ErrEmptyInput
 	}
 
 	// Get the first value as the starting point
-	min = __obf_12053c429f32e343[0]
+	min = __obf_79ecf1e2364bfac6[0]
 
 	// Iterate until done checking for a lower value
-	for __obf_4888a164dbcc1e45 := 1; __obf_4888a164dbcc1e45 < __obf_e6a935bbf21d899c; __obf_4888a164dbcc1e45++ {
-		if __obf_12053c429f32e343[__obf_4888a164dbcc1e45] < min {
-			min = __obf_12053c429f32e343[__obf_4888a164dbcc1e45]
+	for __obf_5a121396de114aab := 1; __obf_5a121396de114aab < __obf_327a83ba05aa82bd; __obf_5a121396de114aab++ {
+		if __obf_79ecf1e2364bfac6[__obf_5a121396de114aab] < min {
+			min = __obf_79ecf1e2364bfac6[__obf_5a121396de114aab]
 		}
 	}
 	return min, nil
 }
 
 // Round a float to a specific decimal place or precision
-func Round(__obf_12053c429f32e343 float64, __obf_c909abea34f35eb6 int) (__obf_6ff69525d975343b float64, __obf_79a8b5a43b28cb22 error) {
+func Round(__obf_79ecf1e2364bfac6 float64, __obf_ad739921ab60ee6b int) (__obf_8f2ec84d204b7892 float64, __obf_5cc22c21b7b4e9ff error) {
 
 	// If the float is not a number
-	if math.IsNaN(__obf_12053c429f32e343) {
+	if math.IsNaN(__obf_79ecf1e2364bfac6) {
 		return math.NaN(), ErrNaN
 	}
-	__obf_42d11585ce83b129 := // Find out the actual sign and correct the input for later
+	__obf_e2e6ad696317d3b9 := // Find out the actual sign and correct the input for later
 		1.0
-	if __obf_12053c429f32e343 < 0 {
-		__obf_42d11585ce83b129 = -1
-		__obf_12053c429f32e343 *= -1
+	if __obf_79ecf1e2364bfac6 < 0 {
+		__obf_e2e6ad696317d3b9 = -1
+		__obf_79ecf1e2364bfac6 *= -1
 	}
-	__obf_346100edf34209dc := // Use the places arg to get the amount of precision wanted
-		math.Pow(10, float64(__obf_c909abea34f35eb6))
-	__obf_f24f6798e38d2124 := // Find the decimal place we are looking to round
-		__obf_12053c429f32e343 * __obf_346100edf34209dc
+	__obf_aeb99608530addd9 := // Use the places arg to get the amount of precision wanted
+		math.Pow(10, float64(__obf_ad739921ab60ee6b))
+	__obf_5a90cd3f209a8b34 := // Find the decimal place we are looking to round
+		__obf_79ecf1e2364bfac6 * __obf_aeb99608530addd9
 
 	// Get the actual decimal number as a fraction to be compared
-	_, __obf_8eac8091210bcd8d := math.Modf(__obf_f24f6798e38d2124)
+	_, __obf_b91f134e08f75d89 := math.Modf(__obf_5a90cd3f209a8b34)
 
 	// If the decimal is less than .5 we round down otherwise up
-	if __obf_8eac8091210bcd8d >= 0.5 {
-		__obf_6ff69525d975343b = math.Ceil(__obf_f24f6798e38d2124)
+	if __obf_b91f134e08f75d89 >= 0.5 {
+		__obf_8f2ec84d204b7892 = math.Ceil(__obf_5a90cd3f209a8b34)
 	} else {
-		__obf_6ff69525d975343b = math.Floor(__obf_f24f6798e38d2124)
+		__obf_8f2ec84d204b7892 = math.Floor(__obf_5a90cd3f209a8b34)
 	}
 
 	// Finally we do the math to actually create a rounded number
-	return __obf_6ff69525d975343b / __obf_346100edf34209dc * __obf_42d11585ce83b129, nil
+	return __obf_8f2ec84d204b7892 / __obf_aeb99608530addd9 * __obf_e2e6ad696317d3b9, nil
 }
 
 // Mean gets the average of a slice of numbers
-func Mean(__obf_12053c429f32e343 []float64) (float64, error) {
-	__obf_e6a935bbf21d899c := len(__obf_12053c429f32e343)
-	if __obf_e6a935bbf21d899c == 0 {
+func Mean(__obf_79ecf1e2364bfac6 []float64) (float64, error) {
+	__obf_327a83ba05aa82bd := len(__obf_79ecf1e2364bfac6)
+	if __obf_327a83ba05aa82bd == 0 {
 		return math.NaN(), ErrEmptyInput
 	}
-	__obf_d17d123a74652e66, _ := Sum(__obf_12053c429f32e343)
+	__obf_860bb2c3d69402d3, _ := Sum(__obf_79ecf1e2364bfac6)
 
-	return __obf_d17d123a74652e66 / float64(__obf_e6a935bbf21d899c), nil
+	return __obf_860bb2c3d69402d3 / float64(__obf_327a83ba05aa82bd), nil
 }
 
 // Median gets the median number in a slice of numbers
-func Median(__obf_12053c429f32e343 []float64) (__obf_69da0450328dbbf5 float64, __obf_79a8b5a43b28cb22 error) {
-	__obf_a8b8990b0ba5866c := // Start by sorting a copy of the slice
-		__obf_c06efca49e526820(__obf_12053c429f32e343)
-	__obf_e6a935bbf21d899c := // No math is needed if there are no numbers
+func Median(__obf_79ecf1e2364bfac6 []float64) (__obf_ef2a6753af11ffea float64, __obf_5cc22c21b7b4e9ff error) {
+	__obf_dc5d868b7e24cb30 := // Start by sorting a copy of the slice
+		__obf_78a9e1790a5bd3a2(__obf_79ecf1e2364bfac6)
+	__obf_327a83ba05aa82bd := // No math is needed if there are no numbers
 		// For even numbers we add the two middle numbers
 		// and divide by two using the mean function above
 		// For odd numbers we just use the middle number
-		len(__obf_a8b8990b0ba5866c)
-	if __obf_e6a935bbf21d899c == 0 {
+		len(__obf_dc5d868b7e24cb30)
+	if __obf_327a83ba05aa82bd == 0 {
 		return math.NaN(), ErrEmptyInput
-	} else if __obf_e6a935bbf21d899c%2 == 0 {
-		__obf_69da0450328dbbf5, _ = Mean(__obf_a8b8990b0ba5866c[__obf_e6a935bbf21d899c/2-1 : __obf_e6a935bbf21d899c/2+1])
+	} else if __obf_327a83ba05aa82bd%2 == 0 {
+		__obf_ef2a6753af11ffea, _ = Mean(__obf_dc5d868b7e24cb30[__obf_327a83ba05aa82bd/2-1 : __obf_327a83ba05aa82bd/2+1])
 	} else {
-		__obf_69da0450328dbbf5 = __obf_a8b8990b0ba5866c[__obf_e6a935bbf21d899c/2]
+		__obf_ef2a6753af11ffea = __obf_dc5d868b7e24cb30[__obf_327a83ba05aa82bd/2]
 	}
 
-	return __obf_69da0450328dbbf5, nil
+	return __obf_ef2a6753af11ffea, nil
 }
 
 // Sum adds all the numbers of a slice together
-func Sum(__obf_12053c429f32e343 []float64) (__obf_d17d123a74652e66 float64, __obf_79a8b5a43b28cb22 error) {
+func Sum(__obf_79ecf1e2364bfac6 []float64) (__obf_860bb2c3d69402d3 float64, __obf_5cc22c21b7b4e9ff error) {
 
-	if len(__obf_12053c429f32e343) == 0 {
+	if len(__obf_79ecf1e2364bfac6) == 0 {
 		return math.NaN(), ErrEmptyInput
 	}
 
 	// Add em up
-	for _, __obf_e71572e6e26a93c9 := range __obf_12053c429f32e343 {
-		__obf_d17d123a74652e66 += __obf_e71572e6e26a93c9
+	for _, __obf_78e5e22631997aa3 := range __obf_79ecf1e2364bfac6 {
+		__obf_860bb2c3d69402d3 += __obf_78e5e22631997aa3
 	}
 
-	return __obf_d17d123a74652e66, nil
+	return __obf_860bb2c3d69402d3, nil
 }
 
 // 得到一个区间map
-func RangeCount(__obf_3873afa06b013162 float64, __obf_23b8b0e1f131257e int, __obf_12053c429f32e343 []float64) (__obf_c18da580d416039d map[string]int, __obf_79a8b5a43b28cb22 error) {
-	if __obf_23b8b0e1f131257e <= 0 {
+func RangeCount(__obf_d598bd84af74ce05 float64, __obf_3c28c342210e3a60 int, __obf_79ecf1e2364bfac6 []float64) (__obf_7191614bcfb6086b map[string]int, __obf_5cc22c21b7b4e9ff error) {
+	if __obf_3c28c342210e3a60 <= 0 {
 		return nil, ErrIllegalNum
 	}
-	__obf_b10ec94b26b175e0 := // total, _ := Max(input)
-		__obf_f090a72098d77103(__obf_3873afa06b013162 / float64(__obf_23b8b0e1f131257e))
-	__obf_881c8ebda7baec3f := func(__obf_1e38cf5ca4344d72 float64) string {
-		for __obf_4888a164dbcc1e45 := 1; __obf_4888a164dbcc1e45 < __obf_23b8b0e1f131257e; __obf_4888a164dbcc1e45++ {
-			if __obf_1e38cf5ca4344d72 < float64(__obf_4888a164dbcc1e45*__obf_b10ec94b26b175e0) {
-				return fmt.Sprintf("%d~%d", (__obf_4888a164dbcc1e45-1)*__obf_b10ec94b26b175e0, __obf_4888a164dbcc1e45*__obf_b10ec94b26b175e0)
+	__obf_744965df6f3fa626 := // total, _ := Max(input)
+		__obf_dfb49e042673d42e(__obf_d598bd84af74ce05 / float64(__obf_3c28c342210e3a60))
+	__obf_89aa2be738b658dd := func(__obf_c11705c7df178947 float64) string {
+		for __obf_5a121396de114aab := 1; __obf_5a121396de114aab < __obf_3c28c342210e3a60; __obf_5a121396de114aab++ {
+			if __obf_c11705c7df178947 < float64(__obf_5a121396de114aab*__obf_744965df6f3fa626) {
+				return fmt.Sprintf("%d~%d", (__obf_5a121396de114aab-1)*__obf_744965df6f3fa626, __obf_5a121396de114aab*__obf_744965df6f3fa626)
 			}
 		}
-		return fmt.Sprintf("%d~", (__obf_23b8b0e1f131257e-1)*__obf_b10ec94b26b175e0)
+		return fmt.Sprintf("%d~", (__obf_3c28c342210e3a60-1)*__obf_744965df6f3fa626)
 	}
-	__obf_c18da580d416039d = make(map[string]int)
-	for _, __obf_38a4509bfc560c01 := range __obf_12053c429f32e343 {
-		__obf_c18da580d416039d[__obf_881c8ebda7baec3f(__obf_38a4509bfc560c01)] += 1
+	__obf_7191614bcfb6086b = make(map[string]int)
+	for _, __obf_9a182482973f940c := range __obf_79ecf1e2364bfac6 {
+		__obf_7191614bcfb6086b[__obf_89aa2be738b658dd(__obf_9a182482973f940c)] += 1
 	}
 
 	return
 }
 
 // 计算整型数多少位
-func GetDigits(__obf_4888a164dbcc1e45 uint) (__obf_a8b8990b0ba5866c uint) {
-	if __obf_4888a164dbcc1e45 == 0 {
+func GetDigits(__obf_5a121396de114aab uint) (__obf_dc5d868b7e24cb30 uint) {
+	if __obf_5a121396de114aab == 0 {
 		return 1
 	}
-	for __obf_4888a164dbcc1e45 != 0 {
-		__obf_4888a164dbcc1e45 /= 10
-		__obf_a8b8990b0ba5866c++
+	for __obf_5a121396de114aab != 0 {
+		__obf_5a121396de114aab /= 10
+		__obf_dc5d868b7e24cb30++
 	}
-	return __obf_a8b8990b0ba5866c
+	return __obf_dc5d868b7e24cb30
 }
 
 // 计算阶乘: n!
-func Factorial(__obf_e71572e6e26a93c9 int) (__obf_172cb9ba35af351f int) {
-	if __obf_e71572e6e26a93c9 > 0 {
-		__obf_172cb9ba35af351f = 1
-		for __obf_4888a164dbcc1e45 := 1; __obf_4888a164dbcc1e45 <= __obf_e71572e6e26a93c9; __obf_4888a164dbcc1e45++ {
-			__obf_172cb9ba35af351f *= __obf_4888a164dbcc1e45
+func Factorial(__obf_78e5e22631997aa3 int) (__obf_5e8a55a14064a364 int) {
+	if __obf_78e5e22631997aa3 > 0 {
+		__obf_5e8a55a14064a364 = 1
+		for __obf_5a121396de114aab := 1; __obf_5a121396de114aab <= __obf_78e5e22631997aa3; __obf_5a121396de114aab++ {
+			__obf_5e8a55a14064a364 *= __obf_5a121396de114aab
 		}
 	}
 
-	return __obf_172cb9ba35af351f
+	return __obf_5e8a55a14064a364
 }
 
 // base 的 exp 次方
-func IntPow(__obf_b7b57c599b13fb17, __obf_decd0af701f3ff68 int) int {
-	__obf_e6cfb7b5f80ea49f := 1
+func IntPow(__obf_328e1522ad41d047, __obf_00dec74cf741ff92 int) int {
+	__obf_f0843ff72420340f := 1
 	for {
-		if __obf_decd0af701f3ff68&1 == 1 {
-			__obf_e6cfb7b5f80ea49f *= __obf_b7b57c599b13fb17
+		if __obf_00dec74cf741ff92&1 == 1 {
+			__obf_f0843ff72420340f *= __obf_328e1522ad41d047
 		}
-		__obf_decd0af701f3ff68 >>= 1
-		if __obf_decd0af701f3ff68 == 0 {
+		__obf_00dec74cf741ff92 >>= 1
+		if __obf_00dec74cf741ff92 == 0 {
 			break
 		}
-		__obf_b7b57c599b13fb17 *= __obf_b7b57c599b13fb17
+		__obf_328e1522ad41d047 *= __obf_328e1522ad41d047
 	}
 
-	return __obf_e6cfb7b5f80ea49f
+	return __obf_f0843ff72420340f
 }

@@ -1,4 +1,4 @@
-package __obf_17ead779a85eda96
+package __obf_98b5a8dcfd7dc2e2
 
 import (
 	"flag"
@@ -11,79 +11,79 @@ import (
 )
 
 func main() {
-	var __obf_2872469b8477f1e5 = flag.String("i", "eth0", "Interface to get packets from")
-	var __obf_d092f39376feafe8 = flag.String("f", "", "BPF filter")
-	var __obf_4f3cfeb93bb47547 = flag.Int("s", 16<<10, "SnapLen for pcap packet capture")
-	var __obf_461c961b00616a98 = flag.Bool("v", false, "Logs every packet in great detail")
+	var __obf_7116fc0ee00b998d = flag.String("i", "eth0", "Interface to get packets from")
+	var __obf_7ed85862c710b55d = flag.String("f", "", "BPF filter")
+	var __obf_afc2bdcf99d7dd24 = flag.Int("s", 16<<10, "SnapLen for pcap packet capture")
+	var __obf_984966c6ce5f4df9 = flag.Bool("v", false, "Logs every packet in great detail")
 
 	flag.Parse()
-	__obf_1da25b2adb13968d, __obf_ace39ef064ca7954 := pcap.OpenLive(*__obf_2872469b8477f1e5, int32(*__obf_4f3cfeb93bb47547), true, pcap.BlockForever)
-	if __obf_ace39ef064ca7954 != nil {
-		log.Printf("Error: %s\n", __obf_ace39ef064ca7954)
+	__obf_89efdb701fe9364f, __obf_b8efb348229f026d := pcap.OpenLive(*__obf_7116fc0ee00b998d, int32(*__obf_afc2bdcf99d7dd24), true, pcap.BlockForever)
+	if __obf_b8efb348229f026d != nil {
+		log.Printf("Error: %s\n", __obf_b8efb348229f026d)
 		return
 	}
-	defer __obf_1da25b2adb13968d.Close()
+	defer __obf_89efdb701fe9364f.Close()
 
-	if *__obf_d092f39376feafe8 != "" {
-		if __obf_ace39ef064ca7954 := __obf_1da25b2adb13968d.SetBPFFilter(*__obf_d092f39376feafe8); __obf_ace39ef064ca7954 != nil {
-			panic(__obf_ace39ef064ca7954)
+	if *__obf_7ed85862c710b55d != "" {
+		if __obf_b8efb348229f026d := __obf_89efdb701fe9364f.SetBPFFilter(*__obf_7ed85862c710b55d); __obf_b8efb348229f026d != nil {
+			panic(__obf_b8efb348229f026d)
 		}
 	}
-	__obf_01933f6b60862535 := //Create a new PacketDataSource
-		gopacket.NewPacketSource(__obf_1da25b2adb13968d, layers.LayerTypeEthernet)
-	__obf_f9b6fe346ec835b8 := //Packets returns a channel of packets
-		__obf_01933f6b60862535.Packets()
+	__obf_4d6d33657bb60f7f := //Create a new PacketDataSource
+		gopacket.NewPacketSource(__obf_89efdb701fe9364f, layers.LayerTypeEthernet)
+	__obf_5e4de9d5f2e6e38f := //Packets returns a channel of packets
+		__obf_4d6d33657bb60f7f.Packets()
 
 	for {
-		__obf_2ced1c32bee17307 := // var packet gopacket.Packet
-			<-__obf_f9b6fe346ec835b8
-		if *__obf_461c961b00616a98 {
-			log.Println(__obf_2ced1c32bee17307)
+		__obf_232ad765f9c6fea1 := // var packet gopacket.Packet
+			<-__obf_5e4de9d5f2e6e38f
+		if *__obf_984966c6ce5f4df9 {
+			log.Println(__obf_232ad765f9c6fea1)
 		}
-		DstIpProxy(__obf_1da25b2adb13968d, __obf_2ced1c32bee17307)
+		DstIpProxy(__obf_89efdb701fe9364f, __obf_232ad765f9c6fea1)
 	}
 }
 
-func DstIpProxy(__obf_1da25b2adb13968d *pcap.Handle, __obf_2ced1c32bee17307 gopacket.Packet) {
-	__obf_8270abe0d1182f4d := // dstIp, err := net.LookupHost(domain)
+func DstIpProxy(__obf_89efdb701fe9364f *pcap.Handle, __obf_232ad765f9c6fea1 gopacket.Packet) {
+	__obf_39efdd7d9e81643e := // dstIp, err := net.LookupHost(domain)
 		// if err != nil {
 		// 	return nil, err
 		// }
 
 		// get all layers
-		__obf_2ced1c32bee17307.Layers()
+		__obf_232ad765f9c6fea1.Layers()
 	// replaceLayer := make([]gopacket.SerializableLayer, 0, len(allLayers))
-	var __obf_ace39ef064ca7954 error
-	for _, __obf_9d45b164a732a74a := range __obf_8270abe0d1182f4d {
-		switch __obf_9d45b164a732a74a.LayerType() {
+	var __obf_b8efb348229f026d error
+	for _, __obf_60aa08082cdee151 := range __obf_39efdd7d9e81643e {
+		switch __obf_60aa08082cdee151.LayerType() {
 		case layers.LayerTypeIPv4:
-			__obf_690fdeb6318f72db := __obf_9d45b164a732a74a.(*layers.IPv4)
-			__obf_690fdeb6318f72db.
+			__obf_3a3528b02208184d := __obf_60aa08082cdee151.(*layers.IPv4)
+			__obf_3a3528b02208184d.
 				DstIP = net.IPv4(127, 0, 0, 1)
-			__obf_8a0a3260d1bbcfe4 := gopacket.NewSerializeBuffer()
-			__obf_ace39ef064ca7954 = __obf_690fdeb6318f72db.SerializeTo(__obf_8a0a3260d1bbcfe4, gopacket.SerializeOptions{ComputeChecksums: true, FixLengths: true})
-			if __obf_ace39ef064ca7954 != nil {
-				log.Printf("Error: %s\n", __obf_ace39ef064ca7954)
+			__obf_a9246a45c0125f21 := gopacket.NewSerializeBuffer()
+			__obf_b8efb348229f026d = __obf_3a3528b02208184d.SerializeTo(__obf_a9246a45c0125f21, gopacket.SerializeOptions{ComputeChecksums: true, FixLengths: true})
+			if __obf_b8efb348229f026d != nil {
+				log.Printf("Error: %s\n", __obf_b8efb348229f026d)
 			}
-			__obf_ace39ef064ca7954 = // send the packet
-				__obf_1da25b2adb13968d.WritePacketData(__obf_8a0a3260d1bbcfe4.Bytes())
-			if __obf_ace39ef064ca7954 != nil {
-				log.Printf("Error: %s\n", __obf_ace39ef064ca7954)
+			__obf_b8efb348229f026d = // send the packet
+				__obf_89efdb701fe9364f.WritePacketData(__obf_a9246a45c0125f21.Bytes())
+			if __obf_b8efb348229f026d != nil {
+				log.Printf("Error: %s\n", __obf_b8efb348229f026d)
 			}
 
 		case layers.LayerTypeIPv6:
-			__obf_690fdeb6318f72db := __obf_9d45b164a732a74a.(*layers.IPv6)
-			__obf_690fdeb6318f72db.
+			__obf_3a3528b02208184d := __obf_60aa08082cdee151.(*layers.IPv6)
+			__obf_3a3528b02208184d.
 				DstIP = net.IPv6loopback
-			__obf_8a0a3260d1bbcfe4 := gopacket.NewSerializeBuffer()
-			__obf_ace39ef064ca7954 = __obf_690fdeb6318f72db.SerializeTo(__obf_8a0a3260d1bbcfe4, gopacket.SerializeOptions{ComputeChecksums: true, FixLengths: true})
-			if __obf_ace39ef064ca7954 != nil {
-				log.Printf("Error: %s\n", __obf_ace39ef064ca7954)
+			__obf_a9246a45c0125f21 := gopacket.NewSerializeBuffer()
+			__obf_b8efb348229f026d = __obf_3a3528b02208184d.SerializeTo(__obf_a9246a45c0125f21, gopacket.SerializeOptions{ComputeChecksums: true, FixLengths: true})
+			if __obf_b8efb348229f026d != nil {
+				log.Printf("Error: %s\n", __obf_b8efb348229f026d)
 			}
-			__obf_ace39ef064ca7954 = // send the packet
-				__obf_1da25b2adb13968d.WritePacketData(__obf_8a0a3260d1bbcfe4.Bytes())
-			if __obf_ace39ef064ca7954 != nil {
-				log.Printf("Error: %s\n", __obf_ace39ef064ca7954)
+			__obf_b8efb348229f026d = // send the packet
+				__obf_89efdb701fe9364f.WritePacketData(__obf_a9246a45c0125f21.Bytes())
+			if __obf_b8efb348229f026d != nil {
+				log.Printf("Error: %s\n", __obf_b8efb348229f026d)
 			}
 		}
 

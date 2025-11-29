@@ -1,4 +1,4 @@
-package __obf_426da37e60cac670
+package __obf_d7b39e56b82f7f57
 
 import (
 	"archive/zip"
@@ -14,216 +14,216 @@ import (
 	"strings"
 )
 
-func FileGzip(__obf_ea8da91a172a8512 *os.File) error {
-	__obf_e7bf3b74b0653d37 := __obf_ea8da91a172a8512.Name() + ".gz"
-	__obf_6317d2183b2a1e70, __obf_74916b80241ef1ff := os.Create(__obf_e7bf3b74b0653d37)
-	if __obf_74916b80241ef1ff != nil {
-		return fmt.Errorf("failed to create file, error(%v)", __obf_74916b80241ef1ff)
+func FileGzip(__obf_1615e38c49fb8375 *os.File) error {
+	__obf_fc566d7a0c766786 := __obf_1615e38c49fb8375.Name() + ".gz"
+	__obf_809a71b9939e3b59, __obf_3ccf8c32165eeb13 := os.Create(__obf_fc566d7a0c766786)
+	if __obf_3ccf8c32165eeb13 != nil {
+		return fmt.Errorf("failed to create file, error(%v)", __obf_3ccf8c32165eeb13)
 	}
-	defer __obf_6317d2183b2a1e70.Close()
-	__obf_c7f97b6f9ca45d13 := gzip.NewWriter(__obf_6317d2183b2a1e70)
+	defer __obf_809a71b9939e3b59.Close()
+	__obf_e844bc825768c1a5 := gzip.NewWriter(__obf_809a71b9939e3b59)
 	defer func() {
-		__obf_c7f97b6f9ca45d13.
+		__obf_e844bc825768c1a5.
 			Close()
-		if __obf_74916b80241ef1ff != nil {
-			_ = os.Remove(__obf_e7bf3b74b0653d37)
-			__obf_74916b80241ef1ff = fmt.Errorf("failed to compress file, error(%v)", __obf_74916b80241ef1ff)
+		if __obf_3ccf8c32165eeb13 != nil {
+			_ = os.Remove(__obf_fc566d7a0c766786)
+			__obf_3ccf8c32165eeb13 = fmt.Errorf("failed to compress file, error(%v)", __obf_3ccf8c32165eeb13)
 		}
 	}()
 
-	_, __obf_74916b80241ef1ff = io.Copy(__obf_c7f97b6f9ca45d13,
+	_, __obf_3ccf8c32165eeb13 = io.Copy(__obf_e844bc825768c1a5,
 
 		// 进行Sync读写时才需要使用Flush
 		// return w.Flush()
-		__obf_ea8da91a172a8512)
-	return __obf_74916b80241ef1ff
+		__obf_1615e38c49fb8375)
+	return __obf_3ccf8c32165eeb13
 
 }
 
-func PathGzip(__obf_0caa525ab196f9a7 string) error {
-	var __obf_74916b80241ef1ff error
-	__obf_0caa525ab196f9a7, __obf_74916b80241ef1ff = filepath.Abs(__obf_0caa525ab196f9a7)
-	if __obf_74916b80241ef1ff != nil {
-		return fmt.Errorf("failed to get absolute representation of path, error(%v)", __obf_74916b80241ef1ff)
+func PathGzip(__obf_845324066d8df0dd string) error {
+	var __obf_3ccf8c32165eeb13 error
+	__obf_845324066d8df0dd, __obf_3ccf8c32165eeb13 = filepath.Abs(__obf_845324066d8df0dd)
+	if __obf_3ccf8c32165eeb13 != nil {
+		return fmt.Errorf("failed to get absolute representation of path, error(%v)", __obf_3ccf8c32165eeb13)
 	}
 
-	var __obf_ea8da91a172a8512 *os.File
-	__obf_ea8da91a172a8512, __obf_74916b80241ef1ff = os.Open(__obf_0caa525ab196f9a7)
-	if __obf_74916b80241ef1ff != nil {
-		return fmt.Errorf("failed to open the path: %s, error(%v)", __obf_0caa525ab196f9a7, __obf_74916b80241ef1ff)
+	var __obf_1615e38c49fb8375 *os.File
+	__obf_1615e38c49fb8375, __obf_3ccf8c32165eeb13 = os.Open(__obf_845324066d8df0dd)
+	if __obf_3ccf8c32165eeb13 != nil {
+		return fmt.Errorf("failed to open the path: %s, error(%v)", __obf_845324066d8df0dd, __obf_3ccf8c32165eeb13)
 	}
-	defer __obf_ea8da91a172a8512.Close()
+	defer __obf_1615e38c49fb8375.Close()
 
-	return FileGzip(__obf_ea8da91a172a8512)
+	return FileGzip(__obf_1615e38c49fb8375)
 }
 
-func PathCopy(__obf_b9553aad25f4008f, __obf_b7333aa35a189ddf string) error {
-	var __obf_74916b80241ef1ff error
-	__obf_b9553aad25f4008f, __obf_74916b80241ef1ff = filepath.Abs(__obf_b9553aad25f4008f)
-	if __obf_74916b80241ef1ff != nil {
-		return fmt.Errorf("srcPath error: %s", __obf_74916b80241ef1ff)
+func PathCopy(__obf_92088373c173e2ad, __obf_c1d49ab7c494ed14 string) error {
+	var __obf_3ccf8c32165eeb13 error
+	__obf_92088373c173e2ad, __obf_3ccf8c32165eeb13 = filepath.Abs(__obf_92088373c173e2ad)
+	if __obf_3ccf8c32165eeb13 != nil {
+		return fmt.Errorf("srcPath error: %s", __obf_3ccf8c32165eeb13)
 	}
-	__obf_b7333aa35a189ddf, __obf_74916b80241ef1ff = filepath.Abs(__obf_b7333aa35a189ddf)
-	if __obf_74916b80241ef1ff != nil {
-		return fmt.Errorf("dstPath error: %s", __obf_74916b80241ef1ff)
-	}
-
-	var __obf_f524680743378a06 []byte
-	__obf_f524680743378a06, __obf_74916b80241ef1ff = os.ReadFile(__obf_b9553aad25f4008f)
-	if __obf_74916b80241ef1ff != nil {
-		return fmt.Errorf("read srcPath error: %s", __obf_74916b80241ef1ff)
+	__obf_c1d49ab7c494ed14, __obf_3ccf8c32165eeb13 = filepath.Abs(__obf_c1d49ab7c494ed14)
+	if __obf_3ccf8c32165eeb13 != nil {
+		return fmt.Errorf("dstPath error: %s", __obf_3ccf8c32165eeb13)
 	}
 
-	return os.WriteFile(__obf_b7333aa35a189ddf, __obf_f524680743378a06, 0644)
+	var __obf_574ecbf0cff9834b []byte
+	__obf_574ecbf0cff9834b, __obf_3ccf8c32165eeb13 = os.ReadFile(__obf_92088373c173e2ad)
+	if __obf_3ccf8c32165eeb13 != nil {
+		return fmt.Errorf("read srcPath error: %s", __obf_3ccf8c32165eeb13)
+	}
+
+	return os.WriteFile(__obf_c1d49ab7c494ed14, __obf_574ecbf0cff9834b, 0644)
 }
 
-func FileCopy(__obf_9558c4b7c50309ef *os.File, __obf_b7333aa35a189ddf string) error {
-	var __obf_74916b80241ef1ff error
-	__obf_b7333aa35a189ddf, __obf_74916b80241ef1ff = filepath.Abs(__obf_b7333aa35a189ddf)
-	if __obf_74916b80241ef1ff != nil {
-		return fmt.Errorf("dstPath error: %s", __obf_74916b80241ef1ff)
+func FileCopy(__obf_db2f02741885afcf *os.File, __obf_c1d49ab7c494ed14 string) error {
+	var __obf_3ccf8c32165eeb13 error
+	__obf_c1d49ab7c494ed14, __obf_3ccf8c32165eeb13 = filepath.Abs(__obf_c1d49ab7c494ed14)
+	if __obf_3ccf8c32165eeb13 != nil {
+		return fmt.Errorf("dstPath error: %s", __obf_3ccf8c32165eeb13)
 	}
-	__obf_eac92198fd2cd08f, __obf_74916b80241ef1ff := os.Create(__obf_b7333aa35a189ddf)
-	if __obf_74916b80241ef1ff != nil {
-		return fmt.Errorf("creat dstPath: %s", __obf_74916b80241ef1ff)
+	__obf_2fb73aaa77231bda, __obf_3ccf8c32165eeb13 := os.Create(__obf_c1d49ab7c494ed14)
+	if __obf_3ccf8c32165eeb13 != nil {
+		return fmt.Errorf("creat dstPath: %s", __obf_3ccf8c32165eeb13)
 	}
-	defer __obf_eac92198fd2cd08f.Close()
+	defer __obf_2fb73aaa77231bda.Close()
 
-	_, __obf_74916b80241ef1ff = io.Copy(__obf_eac92198fd2cd08f, __obf_9558c4b7c50309ef)
-	return __obf_74916b80241ef1ff
+	_, __obf_3ccf8c32165eeb13 = io.Copy(__obf_2fb73aaa77231bda, __obf_db2f02741885afcf)
+	return __obf_3ccf8c32165eeb13
 }
 
-func FileZip(__obf_e38180aaf342b779 io.Writer, __obf_f45530bfb696670d uint16, __obf_18b7ce7a2be7b8cb ...struct {
+func FileZip(__obf_d8f7b6afe67ad13b io.Writer, __obf_321bfaf6a5b20ce9 uint16, __obf_def516632b2b7340 ...struct {
 	Name string
 	Path string
 },
 ) error {
-	__obf_20ee94509a833934 := zip.NewWriter(__obf_e38180aaf342b779)
-	defer __obf_20ee94509a833934.Close()
+	__obf_75a67a5b4e76aa8e := zip.NewWriter(__obf_d8f7b6afe67ad13b)
+	defer __obf_75a67a5b4e76aa8e.Close()
 
 	var (
-		__obf_74916b80241ef1ff error
-		__obf_8e41d8667e33ef22 *os.File
-		__obf_1b9b80411c9452b5 io.Writer
-		__obf_90cf9b241b498b5d fs.FileInfo
-		__obf_58ad5e2feee96de5 *zip.FileHeader
+		__obf_3ccf8c32165eeb13 error
+		__obf_0d7f9f32f0948310 *os.File
+		__obf_51ee5cf062b26e8d io.Writer
+		__obf_f3eca6dca5babea5 fs.FileInfo
+		__obf_52f2d71bb987997f *zip.FileHeader
 	)
-	for _, __obf_c76af479674ee3d0 := range __obf_18b7ce7a2be7b8cb {
-		__obf_8e41d8667e33ef22, __obf_74916b80241ef1ff = os.Open(__obf_c76af479674ee3d0.Path)
-		if __obf_74916b80241ef1ff != nil {
-			return __obf_74916b80241ef1ff
+	for _, __obf_a30d33f1a4aa6e72 := range __obf_def516632b2b7340 {
+		__obf_0d7f9f32f0948310, __obf_3ccf8c32165eeb13 = os.Open(__obf_a30d33f1a4aa6e72.Path)
+		if __obf_3ccf8c32165eeb13 != nil {
+			return __obf_3ccf8c32165eeb13
 		}
-		defer __obf_8e41d8667e33ef22.Close()
-		__obf_90cf9b241b498b5d, __obf_74916b80241ef1ff = __obf_8e41d8667e33ef22.Stat()
-		if __obf_74916b80241ef1ff != nil {
-			return fmt.Errorf("failed to stat the file: %s, error(%v)", __obf_c76af479674ee3d0.Path, __obf_74916b80241ef1ff)
+		defer __obf_0d7f9f32f0948310.Close()
+		__obf_f3eca6dca5babea5, __obf_3ccf8c32165eeb13 = __obf_0d7f9f32f0948310.Stat()
+		if __obf_3ccf8c32165eeb13 != nil {
+			return fmt.Errorf("failed to stat the file: %s, error(%v)", __obf_a30d33f1a4aa6e72.Path, __obf_3ccf8c32165eeb13)
 		}
-		__obf_58ad5e2feee96de5, __obf_74916b80241ef1ff = zip.FileInfoHeader(__obf_90cf9b241b498b5d)
-		if __obf_74916b80241ef1ff != nil {
-			return fmt.Errorf("failed to get FileInfoHeader, error(%v)", __obf_74916b80241ef1ff)
+		__obf_52f2d71bb987997f, __obf_3ccf8c32165eeb13 = zip.FileInfoHeader(__obf_f3eca6dca5babea5)
+		if __obf_3ccf8c32165eeb13 != nil {
+			return fmt.Errorf("failed to get FileInfoHeader, error(%v)", __obf_3ccf8c32165eeb13)
 		}
-		__obf_58ad5e2feee96de5.
+		__obf_52f2d71bb987997f.
 			// 压缩算法
-			Method = __obf_f45530bfb696670d
+			Method = __obf_321bfaf6a5b20ce9
 		// header.Name = filepath.Base(v)
-		__obf_58ad5e2feee96de5.
-			Name = __obf_c76af479674ee3d0.Name
-		__obf_1b9b80411c9452b5, __obf_74916b80241ef1ff = __obf_20ee94509a833934.CreateHeader(__obf_58ad5e2feee96de5)
-		if __obf_74916b80241ef1ff != nil {
-			return fmt.Errorf("failed to create zip header, error(%v)", __obf_74916b80241ef1ff)
+		__obf_52f2d71bb987997f.
+			Name = __obf_a30d33f1a4aa6e72.Name
+		__obf_51ee5cf062b26e8d, __obf_3ccf8c32165eeb13 = __obf_75a67a5b4e76aa8e.CreateHeader(__obf_52f2d71bb987997f)
+		if __obf_3ccf8c32165eeb13 != nil {
+			return fmt.Errorf("failed to create zip header, error(%v)", __obf_3ccf8c32165eeb13)
 		}
-		_, __obf_74916b80241ef1ff = io.Copy(__obf_1b9b80411c9452b5, __obf_8e41d8667e33ef22)
-		if __obf_74916b80241ef1ff != nil {
-			return fmt.Errorf("failed to copy the file, error(%v)", __obf_74916b80241ef1ff)
+		_, __obf_3ccf8c32165eeb13 = io.Copy(__obf_51ee5cf062b26e8d, __obf_0d7f9f32f0948310)
+		if __obf_3ccf8c32165eeb13 != nil {
+			return fmt.Errorf("failed to copy the file, error(%v)", __obf_3ccf8c32165eeb13)
 		}
 	}
 	return nil
 }
 
-func WriteCSV(__obf_25ec75064e81d6e1 string, __obf_96894de1e88392eb [][]string) (__obf_74916b80241ef1ff error) {
-	var __obf_b609bf81c0e36d47 *os.File
-	__obf_b609bf81c0e36d47, __obf_74916b80241ef1ff = os.OpenFile(__obf_25ec75064e81d6e1+".csv", os.O_RDWR|os.O_APPEND|os.O_CREATE, 0666) // 创建文件句柄
-	if __obf_74916b80241ef1ff != nil {
+func WriteCSV(__obf_a65865c83781bbce string, __obf_c2744e465ce68a8d [][]string) (__obf_3ccf8c32165eeb13 error) {
+	var __obf_703917c59b37f1b8 *os.File
+	__obf_703917c59b37f1b8, __obf_3ccf8c32165eeb13 = os.OpenFile(__obf_a65865c83781bbce+".csv", os.O_RDWR|os.O_APPEND|os.O_CREATE, 0666) // 创建文件句柄
+	if __obf_3ccf8c32165eeb13 != nil {
 		return
 	}
-	defer __obf_b609bf81c0e36d47.Close()
-	_, __obf_74916b80241ef1ff = __obf_b609bf81c0e36d47.Write([]byte{0xEF, 0xBB, 0xBF}) // 写入UTF-8 BOM
+	defer __obf_703917c59b37f1b8.Close()
+	_, __obf_3ccf8c32165eeb13 = __obf_703917c59b37f1b8.Write([]byte{0xEF, 0xBB, 0xBF}) // 写入UTF-8 BOM
 
-	if __obf_74916b80241ef1ff != nil {
+	if __obf_3ccf8c32165eeb13 != nil {
 		return
 	}
-	__obf_c7f97b6f9ca45d13 := csv.NewWriter(__obf_b609bf81c0e36d47)
-	__obf_74916b80241ef1ff = __obf_c7f97b6f9ca45d13.WriteAll(__obf_96894de1e88392eb)
-	if __obf_74916b80241ef1ff != nil {
+	__obf_e844bc825768c1a5 := csv.NewWriter(__obf_703917c59b37f1b8)
+	__obf_3ccf8c32165eeb13 = __obf_e844bc825768c1a5.WriteAll(__obf_c2744e465ce68a8d)
+	if __obf_3ccf8c32165eeb13 != nil {
 		return
 	}
-	__obf_c7f97b6f9ca45d13.
+	__obf_e844bc825768c1a5.
 		Flush()
 	return
 }
 
-func ReadCSV(path string) (__obf_96894de1e88392eb [][]string, __obf_74916b80241ef1ff error) {
+func ReadCSV(path string) (__obf_c2744e465ce68a8d [][]string, __obf_3ccf8c32165eeb13 error) {
 	var fs *os.File
-	fs, __obf_74916b80241ef1ff = os.Open(path)
-	if __obf_74916b80241ef1ff != nil {
+	fs, __obf_3ccf8c32165eeb13 = os.Open(path)
+	if __obf_3ccf8c32165eeb13 != nil {
 		return
 	}
 	defer fs.Close()
-	__obf_3be342a2e8ac84dc := csv.NewReader(fs)
-	__obf_3be342a2e8ac84dc.
+	__obf_403793979a29000e := csv.NewReader(fs)
+	__obf_403793979a29000e.
 		TrimLeadingSpace = true
-	__obf_96894de1e88392eb, __obf_74916b80241ef1ff = __obf_3be342a2e8ac84dc.ReadAll()
-	if __obf_74916b80241ef1ff != nil {
+	__obf_c2744e465ce68a8d, __obf_3ccf8c32165eeb13 = __obf_403793979a29000e.ReadAll()
+	if __obf_3ccf8c32165eeb13 != nil {
 		return
 	}
 	return
 }
 
-func __obf_16e88952e16d55a2(__obf_04310e04e67ea058 string) bool {
-	_, __obf_74916b80241ef1ff := os.Stat(__obf_04310e04e67ea058)
-	return !os.IsNotExist(__obf_74916b80241ef1ff)
+func __obf_299bd152e171723b(__obf_5ad072acfd05203c string) bool {
+	_, __obf_3ccf8c32165eeb13 := os.Stat(__obf_5ad072acfd05203c)
+	return !os.IsNotExist(__obf_3ccf8c32165eeb13)
 }
 
-func GetFileExt(__obf_e454ce3773624d31 string) string {
-	return strings.ToLower(strings.TrimLeft(path.Ext(__obf_e454ce3773624d31), "."))
+func GetFileExt(__obf_625c67f1289ed5eb string) string {
+	return strings.ToLower(strings.TrimLeft(path.Ext(__obf_625c67f1289ed5eb), "."))
 }
 
 // 创建目录（可以是多级目录，任何一级不存在则创建）
-func TouchDir(__obf_6a1bd54a37d9409b string) error {
-	if !__obf_16e88952e16d55a2(__obf_6a1bd54a37d9409b) {
-		return os.MkdirAll(__obf_6a1bd54a37d9409b, os.ModePerm)
+func TouchDir(__obf_b9f8b2cbd7c7e158 string) error {
+	if !__obf_299bd152e171723b(__obf_b9f8b2cbd7c7e158) {
+		return os.MkdirAll(__obf_b9f8b2cbd7c7e158, os.ModePerm)
 	}
 	return nil
 }
 
-func CreateFile(__obf_25ec75064e81d6e1, __obf_f442da269b639645 string) *os.File {
-	if !__obf_16e88952e16d55a2(__obf_25ec75064e81d6e1) {
-		__obf_3be342a2e8ac84dc := []rune(__obf_25ec75064e81d6e1)
-		if __obf_f7eefc38acf35467 := strings.LastIndex(__obf_25ec75064e81d6e1, __obf_f442da269b639645); __obf_f7eefc38acf35467 != -1 {
-			if __obf_74916b80241ef1ff := os.MkdirAll(string(__obf_3be342a2e8ac84dc[:__obf_f7eefc38acf35467]), os.ModePerm); __obf_74916b80241ef1ff != nil {
-				log.Fatalln(`Mkdir`, __obf_74916b80241ef1ff)
+func CreateFile(__obf_a65865c83781bbce, __obf_bbd2c7f8b6865e3b string) *os.File {
+	if !__obf_299bd152e171723b(__obf_a65865c83781bbce) {
+		__obf_403793979a29000e := []rune(__obf_a65865c83781bbce)
+		if __obf_2688d2e7e665fec7 := strings.LastIndex(__obf_a65865c83781bbce, __obf_bbd2c7f8b6865e3b); __obf_2688d2e7e665fec7 != -1 {
+			if __obf_3ccf8c32165eeb13 := os.MkdirAll(string(__obf_403793979a29000e[:__obf_2688d2e7e665fec7]), os.ModePerm); __obf_3ccf8c32165eeb13 != nil {
+				log.Fatalln(`Mkdir`, __obf_3ccf8c32165eeb13)
 			}
 		}
 	}
-	__obf_ea8da91a172a8512, __obf_74916b80241ef1ff := os.Create(__obf_25ec75064e81d6e1) //创建文件
-	if __obf_74916b80241ef1ff != nil {
-		log.Fatalln(`file create`, __obf_74916b80241ef1ff)
+	__obf_1615e38c49fb8375, __obf_3ccf8c32165eeb13 := os.Create(__obf_a65865c83781bbce) //创建文件
+	if __obf_3ccf8c32165eeb13 != nil {
+		log.Fatalln(`file create`, __obf_3ccf8c32165eeb13)
 	}
-	return __obf_ea8da91a172a8512
+	return __obf_1615e38c49fb8375
 }
 
-func OpenFile(__obf_25ec75064e81d6e1, __obf_f442da269b639645 string) *os.File {
-	if !__obf_16e88952e16d55a2(__obf_25ec75064e81d6e1) {
-		__obf_3be342a2e8ac84dc := []rune(__obf_25ec75064e81d6e1)
-		if __obf_f7eefc38acf35467 := strings.LastIndex(__obf_25ec75064e81d6e1, __obf_f442da269b639645); __obf_f7eefc38acf35467 != -1 {
-			if __obf_74916b80241ef1ff := os.MkdirAll(string(__obf_3be342a2e8ac84dc[:__obf_f7eefc38acf35467]), os.ModePerm); __obf_74916b80241ef1ff != nil {
-				log.Fatalln(`Mkdir`, __obf_74916b80241ef1ff)
+func OpenFile(__obf_a65865c83781bbce, __obf_bbd2c7f8b6865e3b string) *os.File {
+	if !__obf_299bd152e171723b(__obf_a65865c83781bbce) {
+		__obf_403793979a29000e := []rune(__obf_a65865c83781bbce)
+		if __obf_2688d2e7e665fec7 := strings.LastIndex(__obf_a65865c83781bbce, __obf_bbd2c7f8b6865e3b); __obf_2688d2e7e665fec7 != -1 {
+			if __obf_3ccf8c32165eeb13 := os.MkdirAll(string(__obf_403793979a29000e[:__obf_2688d2e7e665fec7]), os.ModePerm); __obf_3ccf8c32165eeb13 != nil {
+				log.Fatalln(`Mkdir`, __obf_3ccf8c32165eeb13)
 			}
 		}
 	}
-	__obf_ea8da91a172a8512, __obf_74916b80241ef1ff := os.OpenFile(__obf_25ec75064e81d6e1, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0644)
-	if __obf_74916b80241ef1ff != nil {
-		log.Fatalln(`file create`, __obf_74916b80241ef1ff)
+	__obf_1615e38c49fb8375, __obf_3ccf8c32165eeb13 := os.OpenFile(__obf_a65865c83781bbce, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0644)
+	if __obf_3ccf8c32165eeb13 != nil {
+		log.Fatalln(`file create`, __obf_3ccf8c32165eeb13)
 	}
-	return __obf_ea8da91a172a8512
+	return __obf_1615e38c49fb8375
 }

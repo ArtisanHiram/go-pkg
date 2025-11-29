@@ -1,23 +1,23 @@
-package __obf_91620b895eeff9ed
+package __obf_5b802ce8d9ba56d6
 
 import (
 	"github.com/modern-go/reflect2"
 	"unsafe"
 )
 
-func __obf_06a295cf16fb16e3(__obf_2f9c5aed866cce75 *__obf_2f9c5aed866cce75, __obf_29ebd0f2c324f5ea reflect2.Type) ValDecoder {
-	__obf_f2fdafeb141957bd := __obf_29ebd0f2c324f5ea.(*reflect2.UnsafePtrType)
-	__obf_eef27b4522cbbab1 := __obf_f2fdafeb141957bd.Elem()
-	__obf_6fd3f72eb9b5574c := __obf_0b44a7afc1523314(__obf_2f9c5aed866cce75, __obf_eef27b4522cbbab1)
-	return &OptionalDecoder{__obf_eef27b4522cbbab1, __obf_6fd3f72eb9b5574c}
+func __obf_cb0144ac2d5afb8d(__obf_08da24be66d0d13c *__obf_08da24be66d0d13c, __obf_5efc66d8c338c133 reflect2.Type) ValDecoder {
+	__obf_d0cac7bfcf0092ea := __obf_5efc66d8c338c133.(*reflect2.UnsafePtrType)
+	__obf_0b19d2b7ea8e1be5 := __obf_d0cac7bfcf0092ea.Elem()
+	__obf_18f746d7b5b440ee := __obf_c3a46fc9dd10c84e(__obf_08da24be66d0d13c, __obf_0b19d2b7ea8e1be5)
+	return &OptionalDecoder{__obf_0b19d2b7ea8e1be5, __obf_18f746d7b5b440ee}
 }
 
-func __obf_0c129db9075e37b1(__obf_2f9c5aed866cce75 *__obf_2f9c5aed866cce75, __obf_29ebd0f2c324f5ea reflect2.Type) ValEncoder {
-	__obf_f2fdafeb141957bd := __obf_29ebd0f2c324f5ea.(*reflect2.UnsafePtrType)
-	__obf_eef27b4522cbbab1 := __obf_f2fdafeb141957bd.Elem()
-	__obf_11328395cf86586a := __obf_d1233db7a73cc96c(__obf_2f9c5aed866cce75, __obf_eef27b4522cbbab1)
-	__obf_96e65a4c8c4f2ce5 := &OptionalEncoder{__obf_11328395cf86586a}
-	return __obf_96e65a4c8c4f2ce5
+func __obf_7894a79375435eef(__obf_08da24be66d0d13c *__obf_08da24be66d0d13c, __obf_5efc66d8c338c133 reflect2.Type) ValEncoder {
+	__obf_d0cac7bfcf0092ea := __obf_5efc66d8c338c133.(*reflect2.UnsafePtrType)
+	__obf_0b19d2b7ea8e1be5 := __obf_d0cac7bfcf0092ea.Elem()
+	__obf_e57e229f9a2faf9a := __obf_3bb380f7abc03208(__obf_08da24be66d0d13c, __obf_0b19d2b7ea8e1be5)
+	__obf_29366c3ad76a8c51 := &OptionalEncoder{__obf_e57e229f9a2faf9a}
+	return __obf_29366c3ad76a8c51
 }
 
 type OptionalDecoder struct {
@@ -25,42 +25,42 @@ type OptionalDecoder struct {
 	ValueDecoder ValDecoder
 }
 
-func (__obf_6fd3f72eb9b5574c *OptionalDecoder) Decode(__obf_2a1474febb02279b unsafe.Pointer, __obf_1bb30e8a74ed8233 *Iterator) {
-	if __obf_1bb30e8a74ed8233.ReadNil() {
-		*((*unsafe.Pointer)(__obf_2a1474febb02279b)) = nil
+func (__obf_18f746d7b5b440ee *OptionalDecoder) Decode(__obf_d3c919547bf7e47a unsafe.Pointer, __obf_67008a6a9e5ba828 *Iterator) {
+	if __obf_67008a6a9e5ba828.ReadNil() {
+		*((*unsafe.Pointer)(__obf_d3c919547bf7e47a)) = nil
 	} else {
-		if *((*unsafe.Pointer)(__obf_2a1474febb02279b)) == nil {
-			__obf_81e4d61da9ac740f := //pointer to null, we have to allocate memory to hold the value
-				__obf_6fd3f72eb9b5574c.ValueType.UnsafeNew()
-			__obf_6fd3f72eb9b5574c.
-				ValueDecoder.Decode(__obf_81e4d61da9ac740f, __obf_1bb30e8a74ed8233)
-			*((*unsafe.Pointer)(__obf_2a1474febb02279b)) = __obf_81e4d61da9ac740f
+		if *((*unsafe.Pointer)(__obf_d3c919547bf7e47a)) == nil {
+			__obf_74d5f8c22a26960b := //pointer to null, we have to allocate memory to hold the value
+				__obf_18f746d7b5b440ee.ValueType.UnsafeNew()
+			__obf_18f746d7b5b440ee.
+				ValueDecoder.Decode(__obf_74d5f8c22a26960b, __obf_67008a6a9e5ba828)
+			*((*unsafe.Pointer)(__obf_d3c919547bf7e47a)) = __obf_74d5f8c22a26960b
 		} else {
-			__obf_6fd3f72eb9b5574c.
+			__obf_18f746d7b5b440ee.
 				//reuse existing instance
-				ValueDecoder.Decode(*((*unsafe.Pointer)(__obf_2a1474febb02279b)), __obf_1bb30e8a74ed8233)
+				ValueDecoder.Decode(*((*unsafe.Pointer)(__obf_d3c919547bf7e47a)), __obf_67008a6a9e5ba828)
 		}
 	}
 }
 
-type __obf_7a31d659954d3208 struct {
-	__obf_f47701e28c5effac reflect2. // only to deference a pointer
+type __obf_7ad15af757dc337b struct {
+	__obf_9ad2e389a2a6fdb8 reflect2. // only to deference a pointer
 				Type
-	__obf_4f68c814fce49229 ValDecoder
+	__obf_49b56423e80a9797 ValDecoder
 }
 
-func (__obf_6fd3f72eb9b5574c *__obf_7a31d659954d3208) Decode(__obf_2a1474febb02279b unsafe.Pointer, __obf_1bb30e8a74ed8233 *Iterator) {
-	if *((*unsafe.Pointer)(__obf_2a1474febb02279b)) == nil {
-		__obf_81e4d61da9ac740f := //pointer to null, we have to allocate memory to hold the value
-			__obf_6fd3f72eb9b5574c.__obf_f47701e28c5effac.UnsafeNew()
-		__obf_6fd3f72eb9b5574c.__obf_4f68c814fce49229.
-			Decode(__obf_81e4d61da9ac740f, __obf_1bb30e8a74ed8233)
-		*((*unsafe.Pointer)(__obf_2a1474febb02279b)) = __obf_81e4d61da9ac740f
+func (__obf_18f746d7b5b440ee *__obf_7ad15af757dc337b) Decode(__obf_d3c919547bf7e47a unsafe.Pointer, __obf_67008a6a9e5ba828 *Iterator) {
+	if *((*unsafe.Pointer)(__obf_d3c919547bf7e47a)) == nil {
+		__obf_74d5f8c22a26960b := //pointer to null, we have to allocate memory to hold the value
+			__obf_18f746d7b5b440ee.__obf_9ad2e389a2a6fdb8.UnsafeNew()
+		__obf_18f746d7b5b440ee.__obf_49b56423e80a9797.
+			Decode(__obf_74d5f8c22a26960b, __obf_67008a6a9e5ba828)
+		*((*unsafe.Pointer)(__obf_d3c919547bf7e47a)) = __obf_74d5f8c22a26960b
 	} else {
-		__obf_6fd3f72eb9b5574c.
+		__obf_18f746d7b5b440ee.
 			//reuse existing instance
-			__obf_4f68c814fce49229.
-			Decode(*((*unsafe.Pointer)(__obf_2a1474febb02279b)), __obf_1bb30e8a74ed8233)
+			__obf_49b56423e80a9797.
+			Decode(*((*unsafe.Pointer)(__obf_d3c919547bf7e47a)), __obf_67008a6a9e5ba828)
 	}
 }
 
@@ -68,73 +68,73 @@ type OptionalEncoder struct {
 	ValueEncoder ValEncoder
 }
 
-func (__obf_96e65a4c8c4f2ce5 *OptionalEncoder) Encode(__obf_2a1474febb02279b unsafe.Pointer, __obf_850a7457bb739a32 *Stream) {
-	if *((*unsafe.Pointer)(__obf_2a1474febb02279b)) == nil {
-		__obf_850a7457bb739a32.
+func (__obf_29366c3ad76a8c51 *OptionalEncoder) Encode(__obf_d3c919547bf7e47a unsafe.Pointer, __obf_00fc491caa967a74 *Stream) {
+	if *((*unsafe.Pointer)(__obf_d3c919547bf7e47a)) == nil {
+		__obf_00fc491caa967a74.
 			WriteNil()
 	} else {
-		__obf_96e65a4c8c4f2ce5.
-			ValueEncoder.Encode(*((*unsafe.Pointer)(__obf_2a1474febb02279b)), __obf_850a7457bb739a32)
+		__obf_29366c3ad76a8c51.
+			ValueEncoder.Encode(*((*unsafe.Pointer)(__obf_d3c919547bf7e47a)), __obf_00fc491caa967a74)
 	}
 }
 
-func (__obf_96e65a4c8c4f2ce5 *OptionalEncoder) IsEmpty(__obf_2a1474febb02279b unsafe.Pointer) bool {
-	return *((*unsafe.Pointer)(__obf_2a1474febb02279b)) == nil
+func (__obf_29366c3ad76a8c51 *OptionalEncoder) IsEmpty(__obf_d3c919547bf7e47a unsafe.Pointer) bool {
+	return *((*unsafe.Pointer)(__obf_d3c919547bf7e47a)) == nil
 }
 
-type __obf_9146060c74844107 struct {
+type __obf_b7df4ea38882225e struct {
 	ValueEncoder ValEncoder
 }
 
-func (__obf_96e65a4c8c4f2ce5 *__obf_9146060c74844107) Encode(__obf_2a1474febb02279b unsafe.Pointer, __obf_850a7457bb739a32 *Stream) {
-	if *((*unsafe.Pointer)(__obf_2a1474febb02279b)) == nil {
-		__obf_850a7457bb739a32.
+func (__obf_29366c3ad76a8c51 *__obf_b7df4ea38882225e) Encode(__obf_d3c919547bf7e47a unsafe.Pointer, __obf_00fc491caa967a74 *Stream) {
+	if *((*unsafe.Pointer)(__obf_d3c919547bf7e47a)) == nil {
+		__obf_00fc491caa967a74.
 			WriteNil()
 	} else {
-		__obf_96e65a4c8c4f2ce5.
-			ValueEncoder.Encode(*((*unsafe.Pointer)(__obf_2a1474febb02279b)), __obf_850a7457bb739a32)
+		__obf_29366c3ad76a8c51.
+			ValueEncoder.Encode(*((*unsafe.Pointer)(__obf_d3c919547bf7e47a)), __obf_00fc491caa967a74)
 	}
 }
 
-func (__obf_96e65a4c8c4f2ce5 *__obf_9146060c74844107) IsEmpty(__obf_2a1474febb02279b unsafe.Pointer) bool {
-	__obf_cdc115f93c6164b0 := *((*unsafe.Pointer)(__obf_2a1474febb02279b))
-	if __obf_cdc115f93c6164b0 == nil {
+func (__obf_29366c3ad76a8c51 *__obf_b7df4ea38882225e) IsEmpty(__obf_d3c919547bf7e47a unsafe.Pointer) bool {
+	__obf_43dffb9252574488 := *((*unsafe.Pointer)(__obf_d3c919547bf7e47a))
+	if __obf_43dffb9252574488 == nil {
 		return true
 	}
-	return __obf_96e65a4c8c4f2ce5.ValueEncoder.IsEmpty(__obf_cdc115f93c6164b0)
+	return __obf_29366c3ad76a8c51.ValueEncoder.IsEmpty(__obf_43dffb9252574488)
 }
 
-func (__obf_96e65a4c8c4f2ce5 *__obf_9146060c74844107) IsEmbeddedPtrNil(__obf_2a1474febb02279b unsafe.Pointer) bool {
-	__obf_8e4248b0a8cb631c := *((*unsafe.Pointer)(__obf_2a1474febb02279b))
-	if __obf_8e4248b0a8cb631c == nil {
+func (__obf_29366c3ad76a8c51 *__obf_b7df4ea38882225e) IsEmbeddedPtrNil(__obf_d3c919547bf7e47a unsafe.Pointer) bool {
+	__obf_4080b42e3a615d8e := *((*unsafe.Pointer)(__obf_d3c919547bf7e47a))
+	if __obf_4080b42e3a615d8e == nil {
 		return true
 	}
-	__obf_c96270edda65ae80, __obf_9fb2af2f6f03e773 := __obf_96e65a4c8c4f2ce5.ValueEncoder.(IsEmbeddedPtrNil)
-	if !__obf_9fb2af2f6f03e773 {
+	__obf_8fcef6e2878720af, __obf_ecd3f2241015639e := __obf_29366c3ad76a8c51.ValueEncoder.(IsEmbeddedPtrNil)
+	if !__obf_ecd3f2241015639e {
 		return false
 	}
-	__obf_43dac9f05df8fcc6 := unsafe.Pointer(__obf_8e4248b0a8cb631c)
-	return __obf_c96270edda65ae80.IsEmbeddedPtrNil(__obf_43dac9f05df8fcc6)
+	__obf_a6502f11c1c12aab := unsafe.Pointer(__obf_4080b42e3a615d8e)
+	return __obf_8fcef6e2878720af.IsEmbeddedPtrNil(__obf_a6502f11c1c12aab)
 }
 
-type __obf_9d9e26186edb63a5 struct {
-	__obf_96e65a4c8c4f2ce5 ValEncoder
+type __obf_f668640819fd46fc struct {
+	__obf_29366c3ad76a8c51 ValEncoder
 }
 
-func (__obf_96e65a4c8c4f2ce5 *__obf_9d9e26186edb63a5) Encode(__obf_2a1474febb02279b unsafe.Pointer, __obf_850a7457bb739a32 *Stream) {
-	__obf_96e65a4c8c4f2ce5.__obf_96e65a4c8c4f2ce5.
-		Encode(unsafe.Pointer(&__obf_2a1474febb02279b), __obf_850a7457bb739a32)
+func (__obf_29366c3ad76a8c51 *__obf_f668640819fd46fc) Encode(__obf_d3c919547bf7e47a unsafe.Pointer, __obf_00fc491caa967a74 *Stream) {
+	__obf_29366c3ad76a8c51.__obf_29366c3ad76a8c51.
+		Encode(unsafe.Pointer(&__obf_d3c919547bf7e47a), __obf_00fc491caa967a74)
 }
 
-func (__obf_96e65a4c8c4f2ce5 *__obf_9d9e26186edb63a5) IsEmpty(__obf_2a1474febb02279b unsafe.Pointer) bool {
-	return __obf_96e65a4c8c4f2ce5.__obf_96e65a4c8c4f2ce5.IsEmpty(unsafe.Pointer(&__obf_2a1474febb02279b))
+func (__obf_29366c3ad76a8c51 *__obf_f668640819fd46fc) IsEmpty(__obf_d3c919547bf7e47a unsafe.Pointer) bool {
+	return __obf_29366c3ad76a8c51.__obf_29366c3ad76a8c51.IsEmpty(unsafe.Pointer(&__obf_d3c919547bf7e47a))
 }
 
-type __obf_a82dfb83d40f1b70 struct {
-	__obf_6fd3f72eb9b5574c ValDecoder
+type __obf_46f8310df6424f3f struct {
+	__obf_18f746d7b5b440ee ValDecoder
 }
 
-func (__obf_6fd3f72eb9b5574c *__obf_a82dfb83d40f1b70) Decode(__obf_2a1474febb02279b unsafe.Pointer, __obf_1bb30e8a74ed8233 *Iterator) {
-	__obf_6fd3f72eb9b5574c.__obf_6fd3f72eb9b5574c.
-		Decode(unsafe.Pointer(&__obf_2a1474febb02279b), __obf_1bb30e8a74ed8233)
+func (__obf_18f746d7b5b440ee *__obf_46f8310df6424f3f) Decode(__obf_d3c919547bf7e47a unsafe.Pointer, __obf_67008a6a9e5ba828 *Iterator) {
+	__obf_18f746d7b5b440ee.__obf_18f746d7b5b440ee.
+		Decode(unsafe.Pointer(&__obf_d3c919547bf7e47a), __obf_67008a6a9e5ba828)
 }

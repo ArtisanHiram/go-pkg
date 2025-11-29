@@ -1,4 +1,4 @@
-package __obf_214d1e062aee9185
+package __obf_ea545e4bdf748fd2
 
 import (
 	"database/sql/driver"
@@ -13,27 +13,27 @@ type Str string
 // var nullBytes = []byte("")
 
 // Scan implements the Scanner interface for String
-func (__obf_39f34c7e1dead46b *Str) Scan(__obf_3027e28da59d2939 any) error {
-	if __obf_3027e28da59d2939 == nil {
+func (__obf_4c5a866ce1415830 *Str) Scan(__obf_3233962bdf9d4ee1 any) error {
+	if __obf_3233962bdf9d4ee1 == nil {
 		return nil
 	}
 
-	switch __obf_e7e84afe571f9ceb := __obf_3027e28da59d2939.(type) {
+	switch __obf_5f939ebac6d18417 := __obf_3233962bdf9d4ee1.(type) {
 	case []byte:
-		*__obf_39f34c7e1dead46b = Str(__obf_e7e84afe571f9ceb)
+		*__obf_4c5a866ce1415830 = Str(__obf_5f939ebac6d18417)
 	case string:
-		*__obf_39f34c7e1dead46b = Str(__obf_e7e84afe571f9ceb)
+		*__obf_4c5a866ce1415830 = Str(__obf_5f939ebac6d18417)
 	default:
-		return fmt.Errorf("unsupported type for %T", __obf_3027e28da59d2939)
+		return fmt.Errorf("unsupported type for %T", __obf_3233962bdf9d4ee1)
 	}
 	return nil
 }
 
-func (__obf_39f34c7e1dead46b *Str) Str() string {
-	if __obf_39f34c7e1dead46b == nil {
+func (__obf_4c5a866ce1415830 *Str) Str() string {
+	if __obf_4c5a866ce1415830 == nil {
 		return ""
 	}
-	return string(*__obf_39f34c7e1dead46b)
+	return string(*__obf_4c5a866ce1415830)
 }
 
 // UnmarshalJSON implements json.Unmarshaler.
@@ -60,30 +60,30 @@ func (__obf_39f34c7e1dead46b *Str) Str() string {
 
 type Int int64
 
-func (__obf_7c6c9e1512e37985 *Int) Scan(__obf_3027e28da59d2939 any) error {
-	if __obf_3027e28da59d2939 == nil {
+func (__obf_5f1ac33f5a6c1104 *Int) Scan(__obf_3233962bdf9d4ee1 any) error {
+	if __obf_3233962bdf9d4ee1 == nil {
 		return nil
 	}
 
-	switch __obf_e7e84afe571f9ceb := __obf_3027e28da59d2939.(type) {
+	switch __obf_5f939ebac6d18417 := __obf_3233962bdf9d4ee1.(type) {
 	case []byte:
-		__obf_a73e9633161d85ba, _ := strconv.ParseInt(string(__obf_e7e84afe571f9ceb), 10, 64)
-		*__obf_7c6c9e1512e37985 = Int(__obf_a73e9633161d85ba)
+		__obf_abd89eb645093144, _ := strconv.ParseInt(string(__obf_5f939ebac6d18417), 10, 64)
+		*__obf_5f1ac33f5a6c1104 = Int(__obf_abd89eb645093144)
 	case int64:
-		*__obf_7c6c9e1512e37985 = Int(__obf_e7e84afe571f9ceb)
+		*__obf_5f1ac33f5a6c1104 = Int(__obf_5f939ebac6d18417)
 	case uint64:
-		*__obf_7c6c9e1512e37985 = Int(__obf_e7e84afe571f9ceb)
+		*__obf_5f1ac33f5a6c1104 = Int(__obf_5f939ebac6d18417)
 	default:
-		return fmt.Errorf("unsupported type for %T", __obf_3027e28da59d2939)
+		return fmt.Errorf("unsupported type for %T", __obf_3233962bdf9d4ee1)
 	}
 	return nil
 }
 
-func (__obf_7c6c9e1512e37985 *Int) Int() int64 {
-	if __obf_7c6c9e1512e37985 == nil {
+func (__obf_5f1ac33f5a6c1104 *Int) Int() int64 {
+	if __obf_5f1ac33f5a6c1104 == nil {
 		return 0
 	}
-	return int64(*__obf_7c6c9e1512e37985)
+	return int64(*__obf_5f1ac33f5a6c1104)
 }
 
 // UnmarshalJSON implements json.Unmarshaler.
@@ -129,32 +129,32 @@ func (__obf_7c6c9e1512e37985 *Int) Int() int64 {
 
 type Float float64
 
-func (__obf_e242c9b073a9f4fe *Float) Scan(__obf_3027e28da59d2939 any) error {
-	if __obf_3027e28da59d2939 == nil {
+func (__obf_af66979cc7b3eb24 *Float) Scan(__obf_3233962bdf9d4ee1 any) error {
+	if __obf_3233962bdf9d4ee1 == nil {
 		return nil
 	}
 
-	switch __obf_e7e84afe571f9ceb := __obf_3027e28da59d2939.(type) {
+	switch __obf_5f939ebac6d18417 := __obf_3233962bdf9d4ee1.(type) {
 	case []byte:
-		if __obf_39f34c7e1dead46b, __obf_63349b4c89eea887 := strconv.ParseFloat(string(__obf_e7e84afe571f9ceb), 64); __obf_63349b4c89eea887 != nil {
-			return __obf_63349b4c89eea887
+		if __obf_4c5a866ce1415830, __obf_3220344ba911fc77 := strconv.ParseFloat(string(__obf_5f939ebac6d18417), 64); __obf_3220344ba911fc77 != nil {
+			return __obf_3220344ba911fc77
 		} else {
-			*__obf_e242c9b073a9f4fe = Float(__obf_39f34c7e1dead46b)
+			*__obf_af66979cc7b3eb24 = Float(__obf_4c5a866ce1415830)
 		}
 	case float64:
-		*__obf_e242c9b073a9f4fe = Float(__obf_e7e84afe571f9ceb)
+		*__obf_af66979cc7b3eb24 = Float(__obf_5f939ebac6d18417)
 	default:
-		return fmt.Errorf("unsupported type for: %T", __obf_3027e28da59d2939)
+		return fmt.Errorf("unsupported type for: %T", __obf_3233962bdf9d4ee1)
 	}
 
 	return nil
 }
 
-func (__obf_7c6c9e1512e37985 *Float) Float() float64 {
-	if __obf_7c6c9e1512e37985 == nil {
+func (__obf_5f1ac33f5a6c1104 *Float) Float() float64 {
+	if __obf_5f1ac33f5a6c1104 == nil {
 		return 0
 	}
-	return float64(*__obf_7c6c9e1512e37985)
+	return float64(*__obf_5f1ac33f5a6c1104)
 }
 
 // UnmarshalJSON implements json.Unmarshaler.
@@ -253,50 +253,50 @@ type Bool bool
 // }
 
 // obj 为指针类型
-func DoScan[T any](__obf_ef85a2cf30bcbb02 T, __obf_a73e9633161d85ba any) error {
-	if __obf_a73e9633161d85ba == nil {
+func DoScan[T any](__obf_bdb37dd60be9d858 T, __obf_abd89eb645093144 any) error {
+	if __obf_abd89eb645093144 == nil {
 		return nil
 	}
-	var __obf_3ca90ccbf2253f6f []byte
-	switch __obf_a73e9633161d85ba := __obf_a73e9633161d85ba.(type) {
+	var __obf_1d87051673d8e599 []byte
+	switch __obf_abd89eb645093144 := __obf_abd89eb645093144.(type) {
 	case T:
-		__obf_ef85a2cf30bcbb02 = __obf_a73e9633161d85ba
+		__obf_bdb37dd60be9d858 = __obf_abd89eb645093144
 		return nil
 	case string:
-		__obf_3ca90ccbf2253f6f = []byte(__obf_a73e9633161d85ba)
+		__obf_1d87051673d8e599 = []byte(__obf_abd89eb645093144)
 	case []byte:
-		__obf_3ca90ccbf2253f6f = __obf_a73e9633161d85ba
+		__obf_1d87051673d8e599 = __obf_abd89eb645093144
 	default:
-		return fmt.Errorf("incompatible type for %T", __obf_a73e9633161d85ba)
+		return fmt.Errorf("incompatible type for %T", __obf_abd89eb645093144)
 	}
 
-	if len(__obf_3ca90ccbf2253f6f) == 0 {
+	if len(__obf_1d87051673d8e599) == 0 {
 		return nil
 	}
-	return json.Unmarshal(__obf_3ca90ccbf2253f6f, &__obf_ef85a2cf30bcbb02)
+	return json.Unmarshal(__obf_1d87051673d8e599, &__obf_bdb37dd60be9d858)
 }
 
 type JsonMap map[string]any
 
 // Scan implements the sql.Scanner interface.
 // It unmarshals the JSON data from the database into the JsonMap.
-func (__obf_e7e84afe571f9ceb *JsonMap) Scan(__obf_5dbd5d199912b6ea any) error {
-	return DoScan(__obf_e7e84afe571f9ceb, __obf_5dbd5d199912b6ea)
+func (__obf_5f939ebac6d18417 *JsonMap) Scan(__obf_43a03d8b7535a35f any) error {
+	return DoScan(__obf_5f939ebac6d18417, __obf_43a03d8b7535a35f)
 }
 
-func (__obf_e7e84afe571f9ceb JsonMap) Value() (driver.Value, error) {
-	if len(__obf_e7e84afe571f9ceb) == 0 {
+func (__obf_5f939ebac6d18417 JsonMap) Value() (driver.Value, error) {
+	if len(__obf_5f939ebac6d18417) == 0 {
 		return []byte("{}"), nil // 空slice存为JSON空数组
 	}
-	return json.Marshal(__obf_e7e84afe571f9ceb)
+	return json.Marshal(__obf_5f939ebac6d18417)
 }
 
 type StringArray []string
 
 // Scan implements the sql.Scanner interface.
 // It unmarshals the JSON data from the database into the JsonMap.
-func (__obf_5749cb79bd3e35c1 *StringArray) Scan(__obf_5dbd5d199912b6ea any) error {
-	return DoScan(__obf_5749cb79bd3e35c1,
+func (__obf_2f9ae813edcaa1b8 *StringArray) Scan(__obf_43a03d8b7535a35f any) error {
+	return DoScan(__obf_2f9ae813edcaa1b8,
 
 		// var bytes []byte
 		// switch value := value.(type) {
@@ -308,46 +308,46 @@ func (__obf_5749cb79bd3e35c1 *StringArray) Scan(__obf_5dbd5d199912b6ea any) erro
 		// default:
 		// 	return fmt.Errorf("StringArray: scan source was not []byte")
 		// }
-		__obf_5dbd5d199912b6ea)
+		__obf_43a03d8b7535a35f)
 
 	// return json.Unmarshal(bytes, &ja)
 }
 
-func (__obf_e7e84afe571f9ceb StringArray) Value() (driver.Value, error) {
-	if len(__obf_e7e84afe571f9ceb) == 0 {
+func (__obf_5f939ebac6d18417 StringArray) Value() (driver.Value, error) {
+	if len(__obf_5f939ebac6d18417) == 0 {
 		return []byte("[]"), nil // 空slice存为JSON空数组
 	}
-	return json.Marshal(__obf_e7e84afe571f9ceb)
+	return json.Marshal(__obf_5f939ebac6d18417)
 }
 
 type IntArray []int
 
 // Scan implements the sql.Scanner interface.
 // It unmarshals the JSON data from the database into the JsonMap.
-func (__obf_e7e84afe571f9ceb *IntArray) Scan(__obf_5dbd5d199912b6ea any) error {
-	return DoScan(__obf_e7e84afe571f9ceb, __obf_5dbd5d199912b6ea)
+func (__obf_5f939ebac6d18417 *IntArray) Scan(__obf_43a03d8b7535a35f any) error {
+	return DoScan(__obf_5f939ebac6d18417, __obf_43a03d8b7535a35f)
 }
 
-func (__obf_e7e84afe571f9ceb IntArray) Value() (driver.Value, error) {
-	if len(__obf_e7e84afe571f9ceb) == 0 {
+func (__obf_5f939ebac6d18417 IntArray) Value() (driver.Value, error) {
+	if len(__obf_5f939ebac6d18417) == 0 {
 		return []byte("[]"), nil // 空slice存为JSON空数组
 	}
-	return json.Marshal(__obf_e7e84afe571f9ceb)
+	return json.Marshal(__obf_5f939ebac6d18417)
 }
 
 type MapArray []map[string]any
 
 // Scan implements the sql.Scanner interface.
 // It unmarshals the JSON data from the database into the JsonMap.
-func (__obf_e7e84afe571f9ceb *MapArray) Scan(__obf_5dbd5d199912b6ea any) error {
-	return DoScan(__obf_e7e84afe571f9ceb, __obf_5dbd5d199912b6ea)
+func (__obf_5f939ebac6d18417 *MapArray) Scan(__obf_43a03d8b7535a35f any) error {
+	return DoScan(__obf_5f939ebac6d18417, __obf_43a03d8b7535a35f)
 }
 
-func (__obf_e7e84afe571f9ceb MapArray) Value() (driver.Value, error) {
-	if len(__obf_e7e84afe571f9ceb) == 0 {
+func (__obf_5f939ebac6d18417 MapArray) Value() (driver.Value, error) {
+	if len(__obf_5f939ebac6d18417) == 0 {
 		return []byte("[]"), nil
 	}
-	return json.Marshal(__obf_e7e84afe571f9ceb)
+	return json.Marshal(__obf_5f939ebac6d18417)
 }
 
 type CaseTask []struct {
@@ -358,15 +358,15 @@ type CaseTask []struct {
 	Score  float32 `json:"score,omitempty" db:"score,omitempty"`
 }
 
-func (__obf_e7e84afe571f9ceb *CaseTask) Scan(__obf_5dbd5d199912b6ea any) error {
-	return DoScan(__obf_e7e84afe571f9ceb, __obf_5dbd5d199912b6ea)
+func (__obf_5f939ebac6d18417 *CaseTask) Scan(__obf_43a03d8b7535a35f any) error {
+	return DoScan(__obf_5f939ebac6d18417, __obf_43a03d8b7535a35f)
 }
 
-func (__obf_e7e84afe571f9ceb CaseTask) Value() (driver.Value, error) {
-	if len(__obf_e7e84afe571f9ceb) == 0 {
+func (__obf_5f939ebac6d18417 CaseTask) Value() (driver.Value, error) {
+	if len(__obf_5f939ebac6d18417) == 0 {
 		return []byte("[]"), nil
 	}
-	return json.Marshal(__obf_e7e84afe571f9ceb)
+	return json.Marshal(__obf_5f939ebac6d18417)
 }
 
 type Timeline []struct {
@@ -376,37 +376,37 @@ type Timeline []struct {
 	Title string `json:"title,omitempty" db:"title,omitempty"`
 }
 
-func (__obf_e7e84afe571f9ceb *Timeline) Scan(__obf_5dbd5d199912b6ea any) error {
-	return DoScan(__obf_e7e84afe571f9ceb, __obf_5dbd5d199912b6ea)
+func (__obf_5f939ebac6d18417 *Timeline) Scan(__obf_43a03d8b7535a35f any) error {
+	return DoScan(__obf_5f939ebac6d18417, __obf_43a03d8b7535a35f)
 }
 
-func (__obf_e7e84afe571f9ceb Timeline) Value() (driver.Value, error) {
-	if len(__obf_e7e84afe571f9ceb) == 0 {
+func (__obf_5f939ebac6d18417 Timeline) Value() (driver.Value, error) {
+	if len(__obf_5f939ebac6d18417) == 0 {
 		return []byte("[]"), nil
 	}
-	return json.Marshal(__obf_e7e84afe571f9ceb)
+	return json.Marshal(__obf_5f939ebac6d18417)
 }
 
 // TimeLeft 当前场次考试剩余时间
-func (__obf_e7e84afe571f9ceb Timeline) TimeLeft() int64 {
-	__obf_cfe49a2e057394a9 := time.Now().Unix()
+func (__obf_5f939ebac6d18417 Timeline) TimeLeft() int64 {
+	__obf_d7cc9de281829818 := time.Now().Unix()
 	// 遍历所有时间段
-	for _, __obf_f8fb2d3721af23b4 := range __obf_e7e84afe571f9ceb {
+	for _, __obf_cd315e33a9f6fe4e := range __obf_5f939ebac6d18417 {
 		// 检查当前时间是否在某个时间段的开始和结束之间（包含开始和结束时间）
-		if __obf_cfe49a2e057394a9 >= __obf_f8fb2d3721af23b4.Start && __obf_cfe49a2e057394a9 < __obf_f8fb2d3721af23b4.End {
-			return __obf_f8fb2d3721af23b4.End - __obf_cfe49a2e057394a9
+		if __obf_d7cc9de281829818 >= __obf_cd315e33a9f6fe4e.Start && __obf_d7cc9de281829818 < __obf_cd315e33a9f6fe4e.End {
+			return __obf_cd315e33a9f6fe4e.End - __obf_d7cc9de281829818
 		}
 	}
 
 	return 0
 }
 
-func (__obf_e7e84afe571f9ceb Timeline) IsUpcoming() bool {
-	__obf_cfe49a2e057394a9 := time.Now().Unix()
+func (__obf_5f939ebac6d18417 Timeline) IsUpcoming() bool {
+	__obf_d7cc9de281829818 := time.Now().Unix()
 	// 遍历所有时间段
-	for _, __obf_f8fb2d3721af23b4 := range __obf_e7e84afe571f9ceb {
+	for _, __obf_cd315e33a9f6fe4e := range __obf_5f939ebac6d18417 {
 		// 检查当前时间是否在某个时间段的开始和结束之间（包含开始和结束时间）
-		if __obf_f8fb2d3721af23b4.End > __obf_cfe49a2e057394a9 {
+		if __obf_cd315e33a9f6fe4e.End > __obf_d7cc9de281829818 {
 			return true
 		}
 	}
@@ -415,38 +415,38 @@ func (__obf_e7e84afe571f9ceb Timeline) IsUpcoming() bool {
 
 type RawJson json.RawMessage
 
-func (__obf_c946acaed56b4864 RawJson) Message() json.RawMessage {
-	if len(__obf_c946acaed56b4864) == 0 {
+func (__obf_c10bce80e1d2cd9e RawJson) Message() json.RawMessage {
+	if len(__obf_c10bce80e1d2cd9e) == 0 {
 		return nil
 	}
-	return json.RawMessage(__obf_c946acaed56b4864)
+	return json.RawMessage(__obf_c10bce80e1d2cd9e)
 }
 
 // Scan implements the Scanner interface.
-func (__obf_c946acaed56b4864 *RawJson) Scan(__obf_5dbd5d199912b6ea any) error {
-	if __obf_5dbd5d199912b6ea == nil {
-		*__obf_c946acaed56b4864 = nil // Set to nil if the database value is NULL
+func (__obf_c10bce80e1d2cd9e *RawJson) Scan(__obf_43a03d8b7535a35f any) error {
+	if __obf_43a03d8b7535a35f == nil {
+		*__obf_c10bce80e1d2cd9e = nil // Set to nil if the database value is NULL
 		return nil
 	}
-	__obf_de4c5fac44bd0b92, __obf_65bc54d69fb5f329 := __obf_5dbd5d199912b6ea.([]byte)
-	if !__obf_65bc54d69fb5f329 {
-		__obf_8342a8c0dcd918b7,
+	__obf_1e8e0c77f709c270, __obf_fcb98d9ec4b8d44c := __obf_43a03d8b7535a35f.([]byte)
+	if !__obf_fcb98d9ec4b8d44c {
+		__obf_1b9c3122b7c0647b,
 			// Handle other types if necessary, e.g., string
-			__obf_65bc54d69fb5f329 := __obf_5dbd5d199912b6ea.(string)
-		if __obf_65bc54d69fb5f329 {
-			__obf_de4c5fac44bd0b92 = []byte(__obf_8342a8c0dcd918b7)
+			__obf_fcb98d9ec4b8d44c := __obf_43a03d8b7535a35f.(string)
+		if __obf_fcb98d9ec4b8d44c {
+			__obf_1e8e0c77f709c270 = []byte(__obf_1b9c3122b7c0647b)
 		} else {
-			return fmt.Errorf("RawJson.Scan: unsupported type %T", __obf_5dbd5d199912b6ea)
+			return fmt.Errorf("RawJson.Scan: unsupported type %T", __obf_43a03d8b7535a35f)
 		}
 	}
-	*__obf_c946acaed56b4864 = RawJson(__obf_de4c5fac44bd0b92)
+	*__obf_c10bce80e1d2cd9e = RawJson(__obf_1e8e0c77f709c270)
 	return nil
 }
 
 // Value implements the Valuer interface.
-func (__obf_c946acaed56b4864 RawJson) Value() (driver.Value, error) {
-	if len(__obf_c946acaed56b4864) == 0 {
+func (__obf_c10bce80e1d2cd9e RawJson) Value() (driver.Value, error) {
+	if len(__obf_c10bce80e1d2cd9e) == 0 {
 		return nil, nil // Return NULL for empty or nil RawMessage
 	}
-	return []byte(__obf_c946acaed56b4864), nil
+	return []byte(__obf_c10bce80e1d2cd9e), nil
 }

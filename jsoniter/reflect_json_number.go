@@ -1,4 +1,4 @@
-package __obf_91620b895eeff9ed
+package __obf_5b802ce8d9ba56d6
 
 import (
 	"encoding/json"
@@ -11,105 +11,105 @@ import (
 type Number string
 
 // String returns the literal text of the number.
-func (__obf_c80a670e818798d8 Number) String() string { return string(__obf_c80a670e818798d8) }
+func (__obf_2c0ce853cb81f014 Number) String() string { return string(__obf_2c0ce853cb81f014) }
 
 // Float64 returns the number as a float64.
-func (__obf_c80a670e818798d8 Number) Float64() (float64, error) {
-	return strconv.ParseFloat(string(__obf_c80a670e818798d8), 64)
+func (__obf_2c0ce853cb81f014 Number) Float64() (float64, error) {
+	return strconv.ParseFloat(string(__obf_2c0ce853cb81f014), 64)
 }
 
 // Int64 returns the number as an int64.
-func (__obf_c80a670e818798d8 Number) Int64() (int64, error) {
-	return strconv.ParseInt(string(__obf_c80a670e818798d8), 10, 64)
+func (__obf_2c0ce853cb81f014 Number) Int64() (int64, error) {
+	return strconv.ParseInt(string(__obf_2c0ce853cb81f014), 10, 64)
 }
 
-func CastJsonNumber(__obf_bbfd2ac8618a6f0c any) (string, bool) {
-	switch __obf_c216af0b988110a5 := __obf_bbfd2ac8618a6f0c.(type) {
+func CastJsonNumber(__obf_5406b11e33b9d1d3 any) (string, bool) {
+	switch __obf_6cf8e62213a6c8a1 := __obf_5406b11e33b9d1d3.(type) {
 	case json.Number:
-		return string(__obf_c216af0b988110a5), true
+		return string(__obf_6cf8e62213a6c8a1), true
 	case Number:
-		return string(__obf_c216af0b988110a5), true
+		return string(__obf_6cf8e62213a6c8a1), true
 	}
 	return "", false
 }
 
-var __obf_f4b618955fc897b9 = reflect2.TypeOfPtr((*json.Number)(nil)).Elem()
-var __obf_7ccf1dff904af924 = reflect2.TypeOfPtr((*Number)(nil)).Elem()
+var __obf_813655adfe611f16 = reflect2.TypeOfPtr((*json.Number)(nil)).Elem()
+var __obf_8bdf27926c956099 = reflect2.TypeOfPtr((*Number)(nil)).Elem()
 
-func __obf_5a852a950afc440b(__obf_2f9c5aed866cce75 *__obf_2f9c5aed866cce75, __obf_29ebd0f2c324f5ea reflect2.Type) ValDecoder {
-	if __obf_29ebd0f2c324f5ea.AssignableTo(__obf_f4b618955fc897b9) {
-		return &__obf_e606fdbff86c4c4a{}
+func __obf_3fe7eb60741bd404(__obf_08da24be66d0d13c *__obf_08da24be66d0d13c, __obf_5efc66d8c338c133 reflect2.Type) ValDecoder {
+	if __obf_5efc66d8c338c133.AssignableTo(__obf_813655adfe611f16) {
+		return &__obf_8f17744532c03fb1{}
 	}
-	if __obf_29ebd0f2c324f5ea.AssignableTo(__obf_7ccf1dff904af924) {
-		return &__obf_3c1e78a4ba0e29a6{}
-	}
-	return nil
-}
-
-func __obf_2d74fdc730e873e9(__obf_2f9c5aed866cce75 *__obf_2f9c5aed866cce75, __obf_29ebd0f2c324f5ea reflect2.Type) ValEncoder {
-	if __obf_29ebd0f2c324f5ea.AssignableTo(__obf_f4b618955fc897b9) {
-		return &__obf_e606fdbff86c4c4a{}
-	}
-	if __obf_29ebd0f2c324f5ea.AssignableTo(__obf_7ccf1dff904af924) {
-		return &__obf_3c1e78a4ba0e29a6{}
+	if __obf_5efc66d8c338c133.AssignableTo(__obf_8bdf27926c956099) {
+		return &__obf_fa525ebe50d04cd4{}
 	}
 	return nil
 }
 
-type __obf_e606fdbff86c4c4a struct {
+func __obf_4e38aa1ee94cd7cf(__obf_08da24be66d0d13c *__obf_08da24be66d0d13c, __obf_5efc66d8c338c133 reflect2.Type) ValEncoder {
+	if __obf_5efc66d8c338c133.AssignableTo(__obf_813655adfe611f16) {
+		return &__obf_8f17744532c03fb1{}
+	}
+	if __obf_5efc66d8c338c133.AssignableTo(__obf_8bdf27926c956099) {
+		return &__obf_fa525ebe50d04cd4{}
+	}
+	return nil
 }
 
-func (__obf_be93ede593e1d304 *__obf_e606fdbff86c4c4a) Decode(__obf_2a1474febb02279b unsafe.Pointer, __obf_1bb30e8a74ed8233 *Iterator) {
-	switch __obf_1bb30e8a74ed8233.WhatIsNext() {
+type __obf_8f17744532c03fb1 struct {
+}
+
+func (__obf_0099bc81efe356aa *__obf_8f17744532c03fb1) Decode(__obf_d3c919547bf7e47a unsafe.Pointer, __obf_67008a6a9e5ba828 *Iterator) {
+	switch __obf_67008a6a9e5ba828.WhatIsNext() {
 	case StringValue:
-		*((*json.Number)(__obf_2a1474febb02279b)) = json.Number(__obf_1bb30e8a74ed8233.ReadString())
+		*((*json.Number)(__obf_d3c919547bf7e47a)) = json.Number(__obf_67008a6a9e5ba828.ReadString())
 	case NilValue:
-		__obf_1bb30e8a74ed8233.__obf_94a8e39928c8440c('n', 'u', 'l', 'l')
-		*((*json.Number)(__obf_2a1474febb02279b)) = ""
+		__obf_67008a6a9e5ba828.__obf_acc74c95f4492ff8('n', 'u', 'l', 'l')
+		*((*json.Number)(__obf_d3c919547bf7e47a)) = ""
 	default:
-		*((*json.Number)(__obf_2a1474febb02279b)) = json.Number([]byte(__obf_1bb30e8a74ed8233.__obf_9df99ebed87959cd()))
+		*((*json.Number)(__obf_d3c919547bf7e47a)) = json.Number([]byte(__obf_67008a6a9e5ba828.__obf_bad2e5b8bc5a6a05()))
 	}
 }
 
-func (__obf_be93ede593e1d304 *__obf_e606fdbff86c4c4a) Encode(__obf_2a1474febb02279b unsafe.Pointer, __obf_850a7457bb739a32 *Stream) {
-	__obf_7649f8370f217c73 := *((*json.Number)(__obf_2a1474febb02279b))
-	if len(__obf_7649f8370f217c73) == 0 {
-		__obf_850a7457bb739a32.__obf_72837f6fe737f078('0')
+func (__obf_0099bc81efe356aa *__obf_8f17744532c03fb1) Encode(__obf_d3c919547bf7e47a unsafe.Pointer, __obf_00fc491caa967a74 *Stream) {
+	__obf_553f22e0c3850071 := *((*json.Number)(__obf_d3c919547bf7e47a))
+	if len(__obf_553f22e0c3850071) == 0 {
+		__obf_00fc491caa967a74.__obf_487ee8035c7dd8f6('0')
 	} else {
-		__obf_850a7457bb739a32.
-			WriteRaw(string(__obf_7649f8370f217c73))
+		__obf_00fc491caa967a74.
+			WriteRaw(string(__obf_553f22e0c3850071))
 	}
 }
 
-func (__obf_be93ede593e1d304 *__obf_e606fdbff86c4c4a) IsEmpty(__obf_2a1474febb02279b unsafe.Pointer) bool {
-	return len(*((*json.Number)(__obf_2a1474febb02279b))) == 0
+func (__obf_0099bc81efe356aa *__obf_8f17744532c03fb1) IsEmpty(__obf_d3c919547bf7e47a unsafe.Pointer) bool {
+	return len(*((*json.Number)(__obf_d3c919547bf7e47a))) == 0
 }
 
-type __obf_3c1e78a4ba0e29a6 struct {
+type __obf_fa525ebe50d04cd4 struct {
 }
 
-func (__obf_be93ede593e1d304 *__obf_3c1e78a4ba0e29a6) Decode(__obf_2a1474febb02279b unsafe.Pointer, __obf_1bb30e8a74ed8233 *Iterator) {
-	switch __obf_1bb30e8a74ed8233.WhatIsNext() {
+func (__obf_0099bc81efe356aa *__obf_fa525ebe50d04cd4) Decode(__obf_d3c919547bf7e47a unsafe.Pointer, __obf_67008a6a9e5ba828 *Iterator) {
+	switch __obf_67008a6a9e5ba828.WhatIsNext() {
 	case StringValue:
-		*((*Number)(__obf_2a1474febb02279b)) = Number(__obf_1bb30e8a74ed8233.ReadString())
+		*((*Number)(__obf_d3c919547bf7e47a)) = Number(__obf_67008a6a9e5ba828.ReadString())
 	case NilValue:
-		__obf_1bb30e8a74ed8233.__obf_94a8e39928c8440c('n', 'u', 'l', 'l')
-		*((*Number)(__obf_2a1474febb02279b)) = ""
+		__obf_67008a6a9e5ba828.__obf_acc74c95f4492ff8('n', 'u', 'l', 'l')
+		*((*Number)(__obf_d3c919547bf7e47a)) = ""
 	default:
-		*((*Number)(__obf_2a1474febb02279b)) = Number([]byte(__obf_1bb30e8a74ed8233.__obf_9df99ebed87959cd()))
+		*((*Number)(__obf_d3c919547bf7e47a)) = Number([]byte(__obf_67008a6a9e5ba828.__obf_bad2e5b8bc5a6a05()))
 	}
 }
 
-func (__obf_be93ede593e1d304 *__obf_3c1e78a4ba0e29a6) Encode(__obf_2a1474febb02279b unsafe.Pointer, __obf_850a7457bb739a32 *Stream) {
-	__obf_7649f8370f217c73 := *((*Number)(__obf_2a1474febb02279b))
-	if len(__obf_7649f8370f217c73) == 0 {
-		__obf_850a7457bb739a32.__obf_72837f6fe737f078('0')
+func (__obf_0099bc81efe356aa *__obf_fa525ebe50d04cd4) Encode(__obf_d3c919547bf7e47a unsafe.Pointer, __obf_00fc491caa967a74 *Stream) {
+	__obf_553f22e0c3850071 := *((*Number)(__obf_d3c919547bf7e47a))
+	if len(__obf_553f22e0c3850071) == 0 {
+		__obf_00fc491caa967a74.__obf_487ee8035c7dd8f6('0')
 	} else {
-		__obf_850a7457bb739a32.
-			WriteRaw(string(__obf_7649f8370f217c73))
+		__obf_00fc491caa967a74.
+			WriteRaw(string(__obf_553f22e0c3850071))
 	}
 }
 
-func (__obf_be93ede593e1d304 *__obf_3c1e78a4ba0e29a6) IsEmpty(__obf_2a1474febb02279b unsafe.Pointer) bool {
-	return len(*((*Number)(__obf_2a1474febb02279b))) == 0
+func (__obf_0099bc81efe356aa *__obf_fa525ebe50d04cd4) IsEmpty(__obf_d3c919547bf7e47a unsafe.Pointer) bool {
+	return len(*((*Number)(__obf_d3c919547bf7e47a))) == 0
 }

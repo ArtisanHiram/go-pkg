@@ -13,10 +13,10 @@ import (
 )
 
 func main() {
-	__obf_abf9f67500079f7a := flag.String("o", "", "out PNG file prefix, empty for stdout")
-	__obf_a2c1bded25dcd1d3 := flag.Int("s", 256, "image size (pixel)")
-	__obf_319dec1a134e5c56 := flag.Bool("t", false, "print as text-art on stdout")
-	__obf_ebddd617ff5632c1 := flag.Bool("i", false, "invert black and white")
+	__obf_e248d8b7f3df44d4 := flag.String("o", "", "out PNG file prefix, empty for stdout")
+	__obf_6308ae60c5ccb4ed := flag.Int("s", 256, "image size (pixel)")
+	__obf_a90c9b150eb92bde := flag.Bool("t", false, "print as text-art on stdout")
+	__obf_db73c8705694a2d7 := flag.Bool("i", false, "invert black and white")
 	Borderless := flag.Bool("b", false, "QR Code borderless or not")
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, `qrcode -- QR Code encoder in Go https://github.com/carmel/go-qrcode
@@ -41,50 +41,50 @@ Usage:
 
 	if len(flag.Args()) == 0 {
 		flag.Usage()
-		__obf_ba452ab3ca18bde4(fmt.Errorf("error: no content given"))
+		__obf_753de98598b14a49(fmt.Errorf("error: no content given"))
 	}
-	__obf_d675106cfc2927e1 := strings.Join(flag.Args(), " ")
+	__obf_663be6e1c437776f := strings.Join(flag.Args(), " ")
 
-	var __obf_716299f548770a5a error
-	var __obf_f92063f9a2908c03 *qrcode.QRCode
-	__obf_f92063f9a2908c03, __obf_716299f548770a5a = qrcode.New(__obf_d675106cfc2927e1, qrcode.Highest)
-	__obf_ba452ab3ca18bde4(__obf_716299f548770a5a)
+	var __obf_6e0f9e653a73e22e error
+	var __obf_bbc609cb17d79925 *qrcode.QRCode
+	__obf_bbc609cb17d79925, __obf_6e0f9e653a73e22e = qrcode.New(__obf_663be6e1c437776f, qrcode.Highest)
+	__obf_753de98598b14a49(__obf_6e0f9e653a73e22e)
 
 	if *Borderless {
-		__obf_f92063f9a2908c03.
+		__obf_bbc609cb17d79925.
 			Borderless = true
 	}
 
-	if *__obf_319dec1a134e5c56 {
-		__obf_728ed67b96d6045c := __obf_f92063f9a2908c03.ToString(*__obf_ebddd617ff5632c1)
-		fmt.Println(__obf_728ed67b96d6045c)
+	if *__obf_a90c9b150eb92bde {
+		__obf_1c7442f0cc06d716 := __obf_bbc609cb17d79925.ToString(*__obf_db73c8705694a2d7)
+		fmt.Println(__obf_1c7442f0cc06d716)
 		return
 	}
 
-	if *__obf_ebddd617ff5632c1 {
-		__obf_f92063f9a2908c03.
-			ForegroundColor, __obf_f92063f9a2908c03.BackgroundColor = __obf_f92063f9a2908c03.BackgroundColor, __obf_f92063f9a2908c03.ForegroundColor
+	if *__obf_db73c8705694a2d7 {
+		__obf_bbc609cb17d79925.
+			ForegroundColor, __obf_bbc609cb17d79925.BackgroundColor = __obf_bbc609cb17d79925.BackgroundColor, __obf_bbc609cb17d79925.ForegroundColor
 	}
 
-	var __obf_56dbe61f7197d293 []byte
-	__obf_56dbe61f7197d293, __obf_716299f548770a5a = __obf_f92063f9a2908c03.PNG(*__obf_a2c1bded25dcd1d3)
-	__obf_ba452ab3ca18bde4(__obf_716299f548770a5a)
+	var __obf_24a4ccb8f420cbb6 []byte
+	__obf_24a4ccb8f420cbb6, __obf_6e0f9e653a73e22e = __obf_bbc609cb17d79925.PNG(*__obf_6308ae60c5ccb4ed)
+	__obf_753de98598b14a49(__obf_6e0f9e653a73e22e)
 
-	if *__obf_abf9f67500079f7a == "" {
-		os.Stdout.Write(__obf_56dbe61f7197d293)
+	if *__obf_e248d8b7f3df44d4 == "" {
+		os.Stdout.Write(__obf_24a4ccb8f420cbb6)
 	} else {
-		var __obf_81de63fbf6cc9551 *os.File
-		__obf_81de63fbf6cc9551, __obf_716299f548770a5a = os.Create(*__obf_abf9f67500079f7a + ".png")
-		__obf_ba452ab3ca18bde4(__obf_716299f548770a5a)
-		defer __obf_81de63fbf6cc9551.Close()
-		__obf_81de63fbf6cc9551.
-			Write(__obf_56dbe61f7197d293)
+		var __obf_149fc002fc8a1683 *os.File
+		__obf_149fc002fc8a1683, __obf_6e0f9e653a73e22e = os.Create(*__obf_e248d8b7f3df44d4 + ".png")
+		__obf_753de98598b14a49(__obf_6e0f9e653a73e22e)
+		defer __obf_149fc002fc8a1683.Close()
+		__obf_149fc002fc8a1683.
+			Write(__obf_24a4ccb8f420cbb6)
 	}
 }
 
-func __obf_ba452ab3ca18bde4(__obf_716299f548770a5a error) {
-	if __obf_716299f548770a5a != nil {
-		fmt.Fprintf(os.Stderr, "%s\n", __obf_716299f548770a5a)
+func __obf_753de98598b14a49(__obf_6e0f9e653a73e22e error) {
+	if __obf_6e0f9e653a73e22e != nil {
+		fmt.Fprintf(os.Stderr, "%s\n", __obf_6e0f9e653a73e22e)
 		os.Exit(1)
 	}
 }

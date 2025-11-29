@@ -1,4 +1,4 @@
-package __obf_1c2965545693a835
+package __obf_3860403e44e18318
 
 import (
 	"errors"
@@ -13,91 +13,91 @@ import (
 )
 
 // RotatePoint rotates a point's coordinates
-func RotatePoint(__obf_a63cad945e972fca, __obf_021ff6a91d01de34, __obf_6a9f0ab17a071c9a, __obf_bfe52e62046db6eb float64) (float64, float64) {
-	return __obf_a63cad945e972fca*__obf_bfe52e62046db6eb - __obf_021ff6a91d01de34*__obf_6a9f0ab17a071c9a,
+func RotatePoint(__obf_ad550545eb5e3492, __obf_aaa70bd6c198f22a, __obf_07e36924cf5fbe65, __obf_dcec6a3343cdd4fa float64) (float64, float64) {
+	return __obf_ad550545eb5e3492*__obf_dcec6a3343cdd4fa - __obf_aaa70bd6c198f22a*__obf_07e36924cf5fbe65,
 
 		// RotatedSize calculates the size after rotation
-		__obf_a63cad945e972fca*__obf_6a9f0ab17a071c9a + __obf_021ff6a91d01de34*__obf_bfe52e62046db6eb
+		__obf_ad550545eb5e3492*__obf_07e36924cf5fbe65 + __obf_aaa70bd6c198f22a*__obf_dcec6a3343cdd4fa
 }
 
-func RotatedSize(__obf_41b2dda21c56ae5b, __obf_732f9cfa854e40b8 int, __obf_eb4b86389b424112 float64) (int, int) {
-	if __obf_41b2dda21c56ae5b <= 0 || __obf_732f9cfa854e40b8 <= 0 {
+func RotatedSize(__obf_a285d9c6db7a6da4, __obf_a56fe594d81995d7 int, __obf_cd98204ea33509ad float64) (int, int) {
+	if __obf_a285d9c6db7a6da4 <= 0 || __obf_a56fe594d81995d7 <= 0 {
 		return 0, 0
 	}
-	__obf_6a9f0ab17a071c9a, __obf_bfe52e62046db6eb := math.Sincos(math.Pi * __obf_eb4b86389b424112 / 180)
-	__obf_58c9d87eca424963, __obf_381f3567196407f3 := RotatePoint(float64(__obf_41b2dda21c56ae5b-1), 0, __obf_6a9f0ab17a071c9a, __obf_bfe52e62046db6eb)
-	__obf_6e9faff7fc1b26bc, __obf_969af149658cf800 := RotatePoint(float64(__obf_41b2dda21c56ae5b-1), float64(__obf_732f9cfa854e40b8-1), __obf_6a9f0ab17a071c9a, __obf_bfe52e62046db6eb)
-	__obf_76d5e8339e68a1eb, __obf_d9bcf3367c0fe766 := RotatePoint(0, float64(__obf_732f9cfa854e40b8-1), __obf_6a9f0ab17a071c9a, __obf_bfe52e62046db6eb)
-	__obf_9568495e64fecb9a := min(__obf_58c9d87eca424963, min(__obf_6e9faff7fc1b26bc, min(__obf_76d5e8339e68a1eb, 0)))
-	__obf_3a3c24a586919612 := max(__obf_58c9d87eca424963, max(__obf_6e9faff7fc1b26bc, max(__obf_76d5e8339e68a1eb, 0)))
-	__obf_7dcb0c90f2108495 := min(__obf_381f3567196407f3, min(__obf_969af149658cf800, min(__obf_d9bcf3367c0fe766, 0)))
-	__obf_07770457a258d9ca := max(__obf_381f3567196407f3, max(__obf_969af149658cf800, max(__obf_d9bcf3367c0fe766, 0)))
-	__obf_10992b4ba77e618e := __obf_3a3c24a586919612 - __obf_9568495e64fecb9a + 1
-	if __obf_10992b4ba77e618e-math.Floor(__obf_10992b4ba77e618e) > 0.1 {
-		__obf_10992b4ba77e618e++
+	__obf_07e36924cf5fbe65, __obf_dcec6a3343cdd4fa := math.Sincos(math.Pi * __obf_cd98204ea33509ad / 180)
+	__obf_16b55da1edd70743, __obf_818ed87707ea7cf8 := RotatePoint(float64(__obf_a285d9c6db7a6da4-1), 0, __obf_07e36924cf5fbe65, __obf_dcec6a3343cdd4fa)
+	__obf_8942f8cd2b8a1d28, __obf_bd593e928cd4f120 := RotatePoint(float64(__obf_a285d9c6db7a6da4-1), float64(__obf_a56fe594d81995d7-1), __obf_07e36924cf5fbe65, __obf_dcec6a3343cdd4fa)
+	__obf_50c2e75c68eedef2, __obf_49dea2fe32387661 := RotatePoint(0, float64(__obf_a56fe594d81995d7-1), __obf_07e36924cf5fbe65, __obf_dcec6a3343cdd4fa)
+	__obf_50e0a08a80eed377 := min(__obf_16b55da1edd70743, min(__obf_8942f8cd2b8a1d28, min(__obf_50c2e75c68eedef2, 0)))
+	__obf_e4498efde7ac644e := max(__obf_16b55da1edd70743, max(__obf_8942f8cd2b8a1d28, max(__obf_50c2e75c68eedef2, 0)))
+	__obf_6962b9622d75675c := min(__obf_818ed87707ea7cf8, min(__obf_bd593e928cd4f120, min(__obf_49dea2fe32387661, 0)))
+	__obf_995e2f98dc5e0cdb := max(__obf_818ed87707ea7cf8, max(__obf_bd593e928cd4f120, max(__obf_49dea2fe32387661, 0)))
+	__obf_9b0052aae736215a := __obf_e4498efde7ac644e - __obf_50e0a08a80eed377 + 1
+	if __obf_9b0052aae736215a-math.Floor(__obf_9b0052aae736215a) > 0.1 {
+		__obf_9b0052aae736215a++
 	}
-	__obf_adf312b75aaf0c4e := __obf_07770457a258d9ca - __obf_7dcb0c90f2108495 + 1
-	if __obf_adf312b75aaf0c4e-math.Floor(__obf_adf312b75aaf0c4e) > 0.1 {
-		__obf_adf312b75aaf0c4e++
+	__obf_f857aea34adf2b31 := __obf_995e2f98dc5e0cdb - __obf_6962b9622d75675c + 1
+	if __obf_f857aea34adf2b31-math.Floor(__obf_f857aea34adf2b31) > 0.1 {
+		__obf_f857aea34adf2b31++
 	}
 
-	return int(__obf_10992b4ba77e618e), int(__obf_adf312b75aaf0c4e)
+	return int(__obf_9b0052aae736215a), int(__obf_f857aea34adf2b31)
 }
 
 // CalcResizedRect calculates the resized rectangle
-func CalcResizedRect(__obf_4671ef3b288bfa58 image.Rectangle, __obf_10992b4ba77e618e int, __obf_adf312b75aaf0c4e int, __obf_a649049b5a3072a5 bool) image.Rectangle {
-	var __obf_31a4d7a3133e3d72 image.Rectangle
-	if __obf_10992b4ba77e618e*__obf_4671ef3b288bfa58.Dy() < __obf_adf312b75aaf0c4e*__obf_4671ef3b288bfa58.Dx() {
-		__obf_d3d8b7cf93438a10 := float64(__obf_10992b4ba77e618e) / float64(__obf_4671ef3b288bfa58.Dx())
-		__obf_d83a3f89e1b7f449 := int(float64(__obf_4671ef3b288bfa58.Dy()) * __obf_d3d8b7cf93438a10)
-		__obf_6727410c0077ddc7 := 0
-		if __obf_a649049b5a3072a5 {
-			__obf_6727410c0077ddc7 = (__obf_adf312b75aaf0c4e - __obf_d83a3f89e1b7f449) / 2
+func CalcResizedRect(__obf_3166d2a36ec273c9 image.Rectangle, __obf_9b0052aae736215a int, __obf_f857aea34adf2b31 int, __obf_7bce4b5fb83b2de6 bool) image.Rectangle {
+	var __obf_d80306e25cc9472b image.Rectangle
+	if __obf_9b0052aae736215a*__obf_3166d2a36ec273c9.Dy() < __obf_f857aea34adf2b31*__obf_3166d2a36ec273c9.Dx() {
+		__obf_3598b3e9a331b37a := float64(__obf_9b0052aae736215a) / float64(__obf_3166d2a36ec273c9.Dx())
+		__obf_440940d65fc9fda4 := int(float64(__obf_3166d2a36ec273c9.Dy()) * __obf_3598b3e9a331b37a)
+		__obf_fc00d1e342a1ac98 := 0
+		if __obf_7bce4b5fb83b2de6 {
+			__obf_fc00d1e342a1ac98 = (__obf_f857aea34adf2b31 - __obf_440940d65fc9fda4) / 2
 		}
-		__obf_31a4d7a3133e3d72 = image.Rect(0, __obf_6727410c0077ddc7, __obf_10992b4ba77e618e, __obf_6727410c0077ddc7+__obf_d83a3f89e1b7f449)
+		__obf_d80306e25cc9472b = image.Rect(0, __obf_fc00d1e342a1ac98, __obf_9b0052aae736215a, __obf_fc00d1e342a1ac98+__obf_440940d65fc9fda4)
 	} else {
-		__obf_d3d8b7cf93438a10 := float64(__obf_adf312b75aaf0c4e) / float64(__obf_4671ef3b288bfa58.Dy())
-		__obf_6efec5daf220a986 := int(float64(__obf_4671ef3b288bfa58.Dx()) * __obf_d3d8b7cf93438a10)
-		__obf_6727410c0077ddc7 := 0
-		if __obf_a649049b5a3072a5 {
-			__obf_6727410c0077ddc7 = (__obf_10992b4ba77e618e - __obf_6efec5daf220a986) / 2
+		__obf_3598b3e9a331b37a := float64(__obf_f857aea34adf2b31) / float64(__obf_3166d2a36ec273c9.Dy())
+		__obf_1797961fb2a4cd9b := int(float64(__obf_3166d2a36ec273c9.Dx()) * __obf_3598b3e9a331b37a)
+		__obf_fc00d1e342a1ac98 := 0
+		if __obf_7bce4b5fb83b2de6 {
+			__obf_fc00d1e342a1ac98 = (__obf_9b0052aae736215a - __obf_1797961fb2a4cd9b) / 2
 		}
-		__obf_31a4d7a3133e3d72 = image.Rect(__obf_6727410c0077ddc7, 0, __obf_6727410c0077ddc7+__obf_6efec5daf220a986, __obf_adf312b75aaf0c4e)
+		__obf_d80306e25cc9472b = image.Rect(__obf_fc00d1e342a1ac98, 0, __obf_fc00d1e342a1ac98+__obf_1797961fb2a4cd9b, __obf_f857aea34adf2b31)
 	}
 
-	return __obf_31a4d7a3133e3d72
+	return __obf_d80306e25cc9472b
 }
 
 // t2x converts an integer to a hexadecimal string
-func __obf_c5f154f9eea9c774(__obf_5c4f633d83d5171c int64) string {
-	__obf_ffe10bbfa0be85de := strconv.FormatInt(__obf_5c4f633d83d5171c, 16)
-	if len(__obf_ffe10bbfa0be85de) == 1 {
-		__obf_ffe10bbfa0be85de = "0" + __obf_ffe10bbfa0be85de
+func __obf_5114fbe63f281a88(__obf_b52da4bcf1d25e87 int64) string {
+	__obf_af9c74186ab19d60 := strconv.FormatInt(__obf_b52da4bcf1d25e87, 16)
+	if len(__obf_af9c74186ab19d60) == 1 {
+		__obf_af9c74186ab19d60 = "0" + __obf_af9c74186ab19d60
 	}
-	return __obf_ffe10bbfa0be85de
+	return __obf_af9c74186ab19d60
 }
 
 // FormatAlpha formats the alpha value
-func FormatAlpha(__obf_dadb5bae15938891 float32) uint8 {
-	__obf_b9a92f4e2c80ee3c := min(float64(__obf_dadb5bae15938891), 1)
-	__obf_c42c4618284a204a := __obf_b9a92f4e2c80ee3c * 255
-	return uint8(__obf_c42c4618284a204a)
+func FormatAlpha(__obf_7cd816d005df8ffe float32) uint8 {
+	__obf_2cfffe814d05be73 := min(float64(__obf_7cd816d005df8ffe), 1)
+	__obf_8848ccfc7aa82c4d := __obf_2cfffe814d05be73 * 255
+	return uint8(__obf_8848ccfc7aa82c4d)
 }
 
 // RgbToHex converts RGB color to hexadecimal color
-func RgbToHex(__obf_af4af93c3e797ce7 int64, __obf_32a3d57ef91fb356 int64, __obf_3060f4edc961d1a9 int64) string {
-	__obf_7a0b47927c3bd3b0 := __obf_c5f154f9eea9c774(__obf_af4af93c3e797ce7)
-	__obf_2bfc60892655e239 := __obf_c5f154f9eea9c774(__obf_32a3d57ef91fb356)
-	__obf_d935b3348e7c0cef := __obf_c5f154f9eea9c774(__obf_3060f4edc961d1a9)
-	return __obf_7a0b47927c3bd3b0 + __obf_2bfc60892655e239 + __obf_d935b3348e7c0cef
+func RgbToHex(__obf_2061b72d263e5dc6 int64, __obf_560cafdc16698210 int64, __obf_e85c1a722e28507a int64) string {
+	__obf_3b0471d953e55548 := __obf_5114fbe63f281a88(__obf_2061b72d263e5dc6)
+	__obf_c09dade8b2b5ab0f := __obf_5114fbe63f281a88(__obf_560cafdc16698210)
+	__obf_3536db1209733836 := __obf_5114fbe63f281a88(__obf_e85c1a722e28507a)
+	return __obf_3b0471d953e55548 + __obf_c09dade8b2b5ab0f + __obf_3536db1209733836
 }
 
 // HexToRgb converts hexadecimal color to RGB color
-func HexToRgb(__obf_776fe5eb3ae78185 string) (int64, int64, int64) {
-	__obf_7a0b47927c3bd3b0, _ := strconv.ParseInt(__obf_776fe5eb3ae78185[:2], 16, 10)
-	__obf_2bfc60892655e239, _ := strconv.ParseInt(__obf_776fe5eb3ae78185[2:4], 16, 18)
-	__obf_d935b3348e7c0cef, _ := strconv.ParseInt(__obf_776fe5eb3ae78185[4:], 16, 10)
-	return __obf_7a0b47927c3bd3b0, __obf_2bfc60892655e239, __obf_d935b3348e7c0cef
+func HexToRgb(__obf_61e7fd6d844c52bc string) (int64, int64, int64) {
+	__obf_3b0471d953e55548, _ := strconv.ParseInt(__obf_61e7fd6d844c52bc[:2], 16, 10)
+	__obf_c09dade8b2b5ab0f, _ := strconv.ParseInt(__obf_61e7fd6d844c52bc[2:4], 16, 18)
+	__obf_3536db1209733836, _ := strconv.ParseInt(__obf_61e7fd6d844c52bc[4:], 16, 10)
+	return __obf_3b0471d953e55548, __obf_c09dade8b2b5ab0f, __obf_3536db1209733836
 }
 
 var (
@@ -106,63 +106,63 @@ var (
 )
 
 // ParseHexColor converts a hex color to an RGBA color
-func ParseHexColor(__obf_e7ca3654bc7cd9ec string) (__obf_ff426c14f40340c1 color.RGBA, __obf_675a3caf504b632f error) {
-	__obf_ff426c14f40340c1.
+func ParseHexColor(__obf_041320c70a794a0c string) (__obf_0c3c354bd419abd5 color.RGBA, __obf_7834a057dbd32804 error) {
+	__obf_0c3c354bd419abd5.
 		A = 0xff
-	if __obf_e7ca3654bc7cd9ec[0] != '#' {
-		return __obf_ff426c14f40340c1, ColorHexFormatErr
+	if __obf_041320c70a794a0c[0] != '#' {
+		return __obf_0c3c354bd419abd5, ColorHexFormatErr
 	}
-	__obf_145e87283d5c61cf := func(__obf_d935b3348e7c0cef byte) byte {
+	__obf_3b4a2837c49e697a := func(__obf_3536db1209733836 byte) byte {
 		switch {
-		case __obf_d935b3348e7c0cef >= '0' && __obf_d935b3348e7c0cef <= '9':
-			return __obf_d935b3348e7c0cef - '0'
-		case __obf_d935b3348e7c0cef >= 'a' && __obf_d935b3348e7c0cef <= 'f':
-			return __obf_d935b3348e7c0cef - 'a' + 10
-		case __obf_d935b3348e7c0cef >= 'A' && __obf_d935b3348e7c0cef <= 'F':
-			return __obf_d935b3348e7c0cef - 'A' + 10
+		case __obf_3536db1209733836 >= '0' && __obf_3536db1209733836 <= '9':
+			return __obf_3536db1209733836 - '0'
+		case __obf_3536db1209733836 >= 'a' && __obf_3536db1209733836 <= 'f':
+			return __obf_3536db1209733836 - 'a' + 10
+		case __obf_3536db1209733836 >= 'A' && __obf_3536db1209733836 <= 'F':
+			return __obf_3536db1209733836 - 'A' + 10
 		}
-		__obf_675a3caf504b632f = ColorInvalidErr
+		__obf_7834a057dbd32804 = ColorInvalidErr
 		return 0
 	}
 
-	switch len(__obf_e7ca3654bc7cd9ec) {
+	switch len(__obf_041320c70a794a0c) {
 	case 7:
-		__obf_ff426c14f40340c1.
-			R = __obf_145e87283d5c61cf(__obf_e7ca3654bc7cd9ec[1])<<4 + __obf_145e87283d5c61cf(__obf_e7ca3654bc7cd9ec[2])
-		__obf_ff426c14f40340c1.
-			G = __obf_145e87283d5c61cf(__obf_e7ca3654bc7cd9ec[3])<<4 + __obf_145e87283d5c61cf(__obf_e7ca3654bc7cd9ec[4])
-		__obf_ff426c14f40340c1.
-			B = __obf_145e87283d5c61cf(__obf_e7ca3654bc7cd9ec[5])<<4 + __obf_145e87283d5c61cf(__obf_e7ca3654bc7cd9ec[6])
+		__obf_0c3c354bd419abd5.
+			R = __obf_3b4a2837c49e697a(__obf_041320c70a794a0c[1])<<4 + __obf_3b4a2837c49e697a(__obf_041320c70a794a0c[2])
+		__obf_0c3c354bd419abd5.
+			G = __obf_3b4a2837c49e697a(__obf_041320c70a794a0c[3])<<4 + __obf_3b4a2837c49e697a(__obf_041320c70a794a0c[4])
+		__obf_0c3c354bd419abd5.
+			B = __obf_3b4a2837c49e697a(__obf_041320c70a794a0c[5])<<4 + __obf_3b4a2837c49e697a(__obf_041320c70a794a0c[6])
 
 	case 4:
-		__obf_ff426c14f40340c1.
-			R = __obf_145e87283d5c61cf(__obf_e7ca3654bc7cd9ec[1]) * 17
-		__obf_ff426c14f40340c1.
-			G = __obf_145e87283d5c61cf(__obf_e7ca3654bc7cd9ec[2]) * 17
-		__obf_ff426c14f40340c1.
-			B = __obf_145e87283d5c61cf(__obf_e7ca3654bc7cd9ec[3]) * 17
+		__obf_0c3c354bd419abd5.
+			R = __obf_3b4a2837c49e697a(__obf_041320c70a794a0c[1]) * 17
+		__obf_0c3c354bd419abd5.
+			G = __obf_3b4a2837c49e697a(__obf_041320c70a794a0c[2]) * 17
+		__obf_0c3c354bd419abd5.
+			B = __obf_3b4a2837c49e697a(__obf_041320c70a794a0c[3]) * 17
 	default:
-		__obf_675a3caf504b632f = ColorInvalidErr
+		__obf_7834a057dbd32804 = ColorInvalidErr
 	}
 	return
 }
 
 // PathExists checks if a file path exists
-func PathExists(__obf_5c264627f7ac7788 string) (bool, error) {
-	_, __obf_675a3caf504b632f := os.Stat(__obf_5c264627f7ac7788)
-	if __obf_675a3caf504b632f == nil {
+func PathExists(__obf_e33026515c109ace string) (bool, error) {
+	_, __obf_7834a057dbd32804 := os.Stat(__obf_e33026515c109ace)
+	if __obf_7834a057dbd32804 == nil {
 		return true, nil
 	}
-	if os.IsNotExist(__obf_675a3caf504b632f) {
+	if os.IsNotExist(__obf_7834a057dbd32804) {
 		return false, nil
 	}
-	return false, __obf_675a3caf504b632f
+	return false, __obf_7834a057dbd32804
 }
 
 // IsChineseChar checks if a string contains Chinese characters
-func IsChineseChar(__obf_d953bfdd181022ab string) bool {
-	for _, __obf_7a0b47927c3bd3b0 := range __obf_d953bfdd181022ab {
-		if unicode.Is(unicode.Scripts["Han"], __obf_7a0b47927c3bd3b0) {
+func IsChineseChar(__obf_13028d2043d852d7 string) bool {
+	for _, __obf_3b0471d953e55548 := range __obf_13028d2043d852d7 {
+		if unicode.Is(unicode.Scripts["Han"], __obf_3b0471d953e55548) {
 			return true
 		}
 	}
@@ -170,60 +170,60 @@ func IsChineseChar(__obf_d953bfdd181022ab string) bool {
 }
 
 // LenChineseChar calculates the character length of a string (supports Chinese)
-func LenChineseChar(__obf_d953bfdd181022ab string) int {
-	return utf8.RuneCountInString(__obf_d953bfdd181022ab)
+func LenChineseChar(__obf_13028d2043d852d7 string) int {
+	return utf8.RuneCountInString(__obf_13028d2043d852d7)
 }
 
 // RandColor randomly selects an RGBA color
-func RandColor(__obf_6b26b669d3176a85 []color.Color) color.RGBA {
-	__obf_c429d4e852f9aca2 := PickN(__obf_6b26b669d3176a85, 1)[0]
-	__obf_7a0b47927c3bd3b0, __obf_2bfc60892655e239, __obf_d935b3348e7c0cef, __obf_b9a92f4e2c80ee3c := __obf_c429d4e852f9aca2.RGBA()
-	return color.RGBA{R: uint8(__obf_7a0b47927c3bd3b0), G: uint8(__obf_2bfc60892655e239), B: uint8(__obf_d935b3348e7c0cef), A: uint8(__obf_b9a92f4e2c80ee3c)}
+func RandColor(__obf_e4a997e3bbea7348 []color.Color) color.RGBA {
+	__obf_cd08b2bfb29b0c32 := PickN(__obf_e4a997e3bbea7348, 1)[0]
+	__obf_3b0471d953e55548, __obf_c09dade8b2b5ab0f, __obf_3536db1209733836, __obf_2cfffe814d05be73 := __obf_cd08b2bfb29b0c32.RGBA()
+	return color.RGBA{R: uint8(__obf_3b0471d953e55548), G: uint8(__obf_c09dade8b2b5ab0f), B: uint8(__obf_3536db1209733836), A: uint8(__obf_2cfffe814d05be73)}
 }
 
 // RangCutImagePos randomly selects an image cropping position
-func RangCutImagePos(__obf_10992b4ba77e618e int, __obf_adf312b75aaf0c4e int, __obf_887e29ba67702921 image.Image) image.Point {
-	__obf_d935b3348e7c0cef := __obf_887e29ba67702921.Bounds()
-	__obf_2f14e3da9cff6d8b := __obf_d935b3348e7c0cef.Max.X
-	__obf_2a5d46f1de50f6bc := __obf_d935b3348e7c0cef.Max.Y
-	__obf_7ec94c3c601d1fcc := 0
-	__obf_9948708df2478d45 := 0
+func RangCutImagePos(__obf_9b0052aae736215a int, __obf_f857aea34adf2b31 int, __obf_29c6dafe17296cb0 image.Image) image.Point {
+	__obf_3536db1209733836 := __obf_29c6dafe17296cb0.Bounds()
+	__obf_7bb33930d21eacf3 := __obf_3536db1209733836.Max.X
+	__obf_9a34940961e5b500 := __obf_3536db1209733836.Max.Y
+	__obf_1519b886f64cb4a7 := 0
+	__obf_1835f23b20a3e5dd := 0
 
-	if __obf_2f14e3da9cff6d8b-__obf_10992b4ba77e618e > 0 {
-		__obf_7ec94c3c601d1fcc = rand.IntN(__obf_2f14e3da9cff6d8b - __obf_10992b4ba77e618e)
+	if __obf_7bb33930d21eacf3-__obf_9b0052aae736215a > 0 {
+		__obf_1519b886f64cb4a7 = rand.IntN(__obf_7bb33930d21eacf3 - __obf_9b0052aae736215a)
 	}
-	if __obf_2a5d46f1de50f6bc-__obf_adf312b75aaf0c4e > 0 {
-		__obf_9948708df2478d45 = rand.IntN(__obf_2a5d46f1de50f6bc - __obf_adf312b75aaf0c4e)
+	if __obf_9a34940961e5b500-__obf_f857aea34adf2b31 > 0 {
+		__obf_1835f23b20a3e5dd = rand.IntN(__obf_9a34940961e5b500 - __obf_f857aea34adf2b31)
 	}
 
 	return image.Point{
-		X: __obf_7ec94c3c601d1fcc,
-		Y: __obf_9948708df2478d45,
+		X: __obf_1519b886f64cb4a7,
+		Y: __obf_1835f23b20a3e5dd,
 	}
 }
 
-func RandString(__obf_a9363ce1ea8e03ee []string) string {
-	__obf_6e0409791c98a836 := rand.N(len(__obf_a9363ce1ea8e03ee))
-	return __obf_a9363ce1ea8e03ee[__obf_6e0409791c98a836]
+func RandString(__obf_997845342b507d6c []string) string {
+	__obf_49105b702a8ce36a := rand.N(len(__obf_997845342b507d6c))
+	return __obf_997845342b507d6c[__obf_49105b702a8ce36a]
 }
 
-func PickN[T any](__obf_2b31d7de3ecdf5d6 []T, __obf_cbba97241a66b5ac int) []T {
-	if __obf_cbba97241a66b5ac <= 0 || len(__obf_2b31d7de3ecdf5d6) == 0 {
+func PickN[T any](__obf_d2d1cf37b013667b []T, __obf_b506e48722ffcbf3 int) []T {
+	if __obf_b506e48722ffcbf3 <= 0 || len(__obf_d2d1cf37b013667b) == 0 {
 		return nil
 	}
-	if __obf_cbba97241a66b5ac >= len(__obf_2b31d7de3ecdf5d6) {
+	if __obf_b506e48722ffcbf3 >= len(__obf_d2d1cf37b013667b) {
 		// 返回一个副本，保证不修改原数组
-		return append([]T(nil), __obf_2b31d7de3ecdf5d6...)
+		return append([]T(nil), __obf_d2d1cf37b013667b...)
 	}
-	__obf_9682734013a951b6 := // 拷贝一份，避免影响原 slice
-		append([]T(nil), __obf_2b31d7de3ecdf5d6...)
+	__obf_187e224478c75a75 := // 拷贝一份，避免影响原 slice
+		append([]T(nil), __obf_d2d1cf37b013667b...)
 
 	// Fisher-Yates shuffle
-	rand.Shuffle(len(__obf_9682734013a951b6), func(__obf_f8f33cc0f340b365, __obf_79f85012b8eff081 int) {
-		__obf_9682734013a951b6[__obf_f8f33cc0f340b365], __obf_9682734013a951b6[__obf_79f85012b8eff081] = __obf_9682734013a951b6[__obf_79f85012b8eff081], __obf_9682734013a951b6[__obf_f8f33cc0f340b365]
+	rand.Shuffle(len(__obf_187e224478c75a75), func(__obf_539cce309b069944, __obf_65f87cc9bf783ef8 int) {
+		__obf_187e224478c75a75[__obf_539cce309b069944], __obf_187e224478c75a75[__obf_65f87cc9bf783ef8] = __obf_187e224478c75a75[__obf_65f87cc9bf783ef8], __obf_187e224478c75a75[__obf_539cce309b069944]
 	})
 
-	return __obf_9682734013a951b6[:__obf_cbba97241a66b5ac]
+	return __obf_187e224478c75a75[:__obf_b506e48722ffcbf3]
 }
 
 // RandInt generates a safe random number in the interval [min, max]

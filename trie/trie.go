@@ -1,4 +1,4 @@
-package __obf_e583e2630f62a7bc
+package __obf_7835dc7fc5eb2142
 
 import (
 	"bufio"
@@ -12,31 +12,31 @@ import (
 )
 
 const (
-	__obf_ea666664aed9d0d7 = 1024
-	__obf_ca10e198f26ff511 = 1_000_000
-	__obf_a336d1e49f3afa9a = // 1MB
+	__obf_4bf4a19d9834e88a = 1024
+	__obf_1c4cf1624975e748 = 1_000_000
+	__obf_398eebf92202c3d1 = // 1MB
 	3
-	__obf_1b6de80e1d075a56 = 100
-	__obf_b5584c9e1f4e82bf = 16
+	__obf_1ab0b5e6c9e44533 = 100
+	__obf_b1462bf48eca6147 = 16
 )
 
 // 位图实现
-type __obf_7c4cd9c117552a2a struct {
-	__obf_eb9a4fbd2c30fd31 []uint64
+type __obf_4f9594fd8ac9be45 struct {
+	__obf_71b1864061145367 []uint64
 }
 
-func __obf_aaa9eb14da5295df(__obf_914ad28fcf67ea88 int) *__obf_7c4cd9c117552a2a {
-	__obf_533959f4b300364a := // 每个 uint64 存储 64 位
-		(__obf_914ad28fcf67ea88 + 63) / 64
-	return &__obf_7c4cd9c117552a2a{__obf_eb9a4fbd2c30fd31: make([]uint64, __obf_533959f4b300364a)}
+func __obf_7277ed1d5d840270(__obf_3c0899c6f8ed2d7d int) *__obf_4f9594fd8ac9be45 {
+	__obf_67843b25c7ef5722 := // 每个 uint64 存储 64 位
+		(__obf_3c0899c6f8ed2d7d + 63) / 64
+	return &__obf_4f9594fd8ac9be45{__obf_71b1864061145367: make([]uint64, __obf_67843b25c7ef5722)}
 }
 
-func (__obf_49851572551c0ee5 *__obf_7c4cd9c117552a2a) __obf_e3160267df481474(__obf_e821b24c447a8d6a int) {
-	__obf_49851572551c0ee5.__obf_eb9a4fbd2c30fd31[__obf_e821b24c447a8d6a/64] |= 1 << (__obf_e821b24c447a8d6a % 64)
+func (__obf_2dfd6f91963d2f45 *__obf_4f9594fd8ac9be45) __obf_e9484a2ac2eaee12(__obf_03793896c47f8d30 int) {
+	__obf_2dfd6f91963d2f45.__obf_71b1864061145367[__obf_03793896c47f8d30/64] |= 1 << (__obf_03793896c47f8d30 % 64)
 }
 
-func (__obf_49851572551c0ee5 *__obf_7c4cd9c117552a2a) __obf_ef4fb51149c2589b(__obf_e821b24c447a8d6a int) bool {
-	return __obf_49851572551c0ee5.__obf_eb9a4fbd2c30fd31[__obf_e821b24c447a8d6a/64]&(1<<(__obf_e821b24c447a8d6a%64)) != 0
+func (__obf_2dfd6f91963d2f45 *__obf_4f9594fd8ac9be45) __obf_bd892b0121c27eac(__obf_03793896c47f8d30 int) bool {
+	return __obf_2dfd6f91963d2f45.__obf_71b1864061145367[__obf_03793896c47f8d30/64]&(1<<(__obf_03793896c47f8d30%64)) != 0
 }
 
 type MatchResult struct {
@@ -46,380 +46,380 @@ type MatchResult struct {
 }
 
 type SensitiveFilter struct {
-	__obf_7527f4f9a2ce135b *DATTrie
-	__obf_a0c045b4ddfac43d *WuManberMatcher
-	__obf_e06313f010e75b7b sync.RWMutex
+	__obf_50e83274a4fe755a *DATTrie
+	__obf_5cce43980a89c035 *WuManberMatcher
+	__obf_d46168803f411f26 sync.RWMutex
 }
 
-func (__obf_68366884350bf834 *SensitiveFilter) Contains(__obf_2f9bfc5f616e4c2e string) bool {
-	__obf_68366884350bf834.__obf_e06313f010e75b7b.
+func (__obf_e8b4dadf2a35b1d3 *SensitiveFilter) Contains(__obf_8fd45bd0d265008c string) bool {
+	__obf_e8b4dadf2a35b1d3.__obf_d46168803f411f26.
 		Lock()
-	defer __obf_68366884350bf834.__obf_e06313f010e75b7b.Unlock()
-	if len(__obf_2f9bfc5f616e4c2e) > __obf_1b6de80e1d075a56 {
-		if __obf_68366884350bf834.__obf_a0c045b4ddfac43d.Match(__obf_2f9bfc5f616e4c2e) {
+	defer __obf_e8b4dadf2a35b1d3.__obf_d46168803f411f26.Unlock()
+	if len(__obf_8fd45bd0d265008c) > __obf_1ab0b5e6c9e44533 {
+		if __obf_e8b4dadf2a35b1d3.__obf_5cce43980a89c035.Match(__obf_8fd45bd0d265008c) {
 			return true
 		} else {
 			return false
 		}
 	}
-	return __obf_68366884350bf834.__obf_7527f4f9a2ce135b.Contains(__obf_2f9bfc5f616e4c2e)
+	return __obf_e8b4dadf2a35b1d3.__obf_50e83274a4fe755a.Contains(__obf_8fd45bd0d265008c)
 }
 
-func (__obf_68366884350bf834 *SensitiveFilter) FindAll(__obf_2f9bfc5f616e4c2e string) []MatchResult {
-	if __obf_68366884350bf834 == nil || __obf_68366884350bf834.__obf_7527f4f9a2ce135b == nil {
+func (__obf_e8b4dadf2a35b1d3 *SensitiveFilter) FindAll(__obf_8fd45bd0d265008c string) []MatchResult {
+	if __obf_e8b4dadf2a35b1d3 == nil || __obf_e8b4dadf2a35b1d3.__obf_50e83274a4fe755a == nil {
 		return nil
 	}
-	if __obf_2f9bfc5f616e4c2e == "" {
+	if __obf_8fd45bd0d265008c == "" {
 		return []MatchResult{}
 	}
 	// 添加最大文本长度限制
-	if len(__obf_2f9bfc5f616e4c2e) > __obf_ca10e198f26ff511 {
+	if len(__obf_8fd45bd0d265008c) > __obf_1c4cf1624975e748 {
 		return nil // 或返回错误
 	}
-	__obf_1adc2820070ea2bc := // 1. 找出所有可能重叠的匹配项
-		__obf_68366884350bf834.__obf_7527f4f9a2ce135b.__obf_a3e898872b98d664([]rune(__obf_2f9bfc5f616e4c2e))
-	if len(__obf_1adc2820070ea2bc) < 2 {
-		return __obf_1adc2820070ea2bc
+	__obf_94dd07967f7a0179 := // 1. 找出所有可能重叠的匹配项
+		__obf_e8b4dadf2a35b1d3.__obf_50e83274a4fe755a.__obf_6ac3be995625316d([]rune(__obf_8fd45bd0d265008c))
+	if len(__obf_94dd07967f7a0179) < 2 {
+		return __obf_94dd07967f7a0179
 	}
 
 	// 2. 按长度降序排序，最长的词优先。如果长度相同，则按起点升序。
-	sort.Slice(__obf_1adc2820070ea2bc, func(__obf_09c4704e98f82128, __obf_8c2ffe965b3e6421 int) bool {
-		__obf_df42ecc7c0a92c48 := __obf_1adc2820070ea2bc[__obf_09c4704e98f82128].End - __obf_1adc2820070ea2bc[__obf_09c4704e98f82128].Start
-		__obf_07cb3860ba6b96b1 := __obf_1adc2820070ea2bc[__obf_8c2ffe965b3e6421].End - __obf_1adc2820070ea2bc[__obf_8c2ffe965b3e6421].Start
-		if __obf_df42ecc7c0a92c48 != __obf_07cb3860ba6b96b1 {
-			return __obf_df42ecc7c0a92c48 > __obf_07cb3860ba6b96b1
+	sort.Slice(__obf_94dd07967f7a0179, func(__obf_74e4c62962a40491, __obf_ec5c7f3e67ff13d2 int) bool {
+		__obf_9a3e673b6f6091f9 := __obf_94dd07967f7a0179[__obf_74e4c62962a40491].End - __obf_94dd07967f7a0179[__obf_74e4c62962a40491].Start
+		__obf_1c24892b066ba9ff := __obf_94dd07967f7a0179[__obf_ec5c7f3e67ff13d2].End - __obf_94dd07967f7a0179[__obf_ec5c7f3e67ff13d2].Start
+		if __obf_9a3e673b6f6091f9 != __obf_1c24892b066ba9ff {
+			return __obf_9a3e673b6f6091f9 > __obf_1c24892b066ba9ff
 		}
-		return __obf_1adc2820070ea2bc[__obf_09c4704e98f82128].Start < __obf_1adc2820070ea2bc[__obf_8c2ffe965b3e6421].Start
+		return __obf_94dd07967f7a0179[__obf_74e4c62962a40491].Start < __obf_94dd07967f7a0179[__obf_ec5c7f3e67ff13d2].Start
 	})
-	__obf_dff8bac0ab4de84d := // 3. 使用贪心算法，选择不重叠的最长匹配
-		make([]MatchResult, 0, len(__obf_1adc2820070ea2bc))
-	__obf_268cba24e31abaeb := // occupied := make([]bool, len(runes))
-		__obf_aaa9eb14da5295df(len([]rune(__obf_2f9bfc5f616e4c2e)))
+	__obf_ca57418c490e9c53 := // 3. 使用贪心算法，选择不重叠的最长匹配
+		make([]MatchResult, 0, len(__obf_94dd07967f7a0179))
+	__obf_6d51ababf5d5307a := // occupied := make([]bool, len(runes))
+		__obf_7277ed1d5d840270(len([]rune(__obf_8fd45bd0d265008c)))
 
-	for _, __obf_58d9d03c190988b1 := range __obf_1adc2820070ea2bc {
-		__obf_32b1197e0d5af7c5 := false
+	for _, __obf_92fb913565a85298 := range __obf_94dd07967f7a0179 {
+		__obf_6519b5e53c79566b := false
 		// 检查该词占据的位置是否已被更长的词占用
-		for __obf_09c4704e98f82128 := __obf_58d9d03c190988b1.Start; __obf_09c4704e98f82128 < __obf_58d9d03c190988b1.End; __obf_09c4704e98f82128++ {
+		for __obf_74e4c62962a40491 := __obf_92fb913565a85298.Start; __obf_74e4c62962a40491 < __obf_92fb913565a85298.End; __obf_74e4c62962a40491++ {
 			// if occupied[i] {
-			if __obf_268cba24e31abaeb.__obf_ef4fb51149c2589b(__obf_09c4704e98f82128) {
-				__obf_32b1197e0d5af7c5 = true
+			if __obf_6d51ababf5d5307a.__obf_bd892b0121c27eac(__obf_74e4c62962a40491) {
+				__obf_6519b5e53c79566b = true
 				break
 			}
 		}
 
 		// 如果未被占用，则接受该匹配
-		if !__obf_32b1197e0d5af7c5 {
-			__obf_dff8bac0ab4de84d = append(__obf_dff8bac0ab4de84d,
+		if !__obf_6519b5e53c79566b {
+			__obf_ca57418c490e9c53 = append(__obf_ca57418c490e9c53,
 				// 标记该位置已被占用
-				__obf_58d9d03c190988b1)
+				__obf_92fb913565a85298)
 
-			for __obf_09c4704e98f82128 := __obf_58d9d03c190988b1.Start; __obf_09c4704e98f82128 < __obf_58d9d03c190988b1.End; __obf_09c4704e98f82128++ {
-				__obf_268cba24e31abaeb.
+			for __obf_74e4c62962a40491 := __obf_92fb913565a85298.Start; __obf_74e4c62962a40491 < __obf_92fb913565a85298.End; __obf_74e4c62962a40491++ {
+				__obf_6d51ababf5d5307a.
 					// occupied[i] = true
-					__obf_e3160267df481474(__obf_09c4704e98f82128)
+					__obf_e9484a2ac2eaee12(__obf_74e4c62962a40491)
 			}
 		}
 	}
 
 	// 4. 为了方便 Replace 函数处理，将结果按起点排序后返回
-	sort.Slice(__obf_dff8bac0ab4de84d, func(__obf_09c4704e98f82128, __obf_8c2ffe965b3e6421 int) bool {
-		return __obf_dff8bac0ab4de84d[__obf_09c4704e98f82128].Start < __obf_dff8bac0ab4de84d[__obf_8c2ffe965b3e6421].Start
+	sort.Slice(__obf_ca57418c490e9c53, func(__obf_74e4c62962a40491, __obf_ec5c7f3e67ff13d2 int) bool {
+		return __obf_ca57418c490e9c53[__obf_74e4c62962a40491].Start < __obf_ca57418c490e9c53[__obf_ec5c7f3e67ff13d2].Start
 	})
 
-	return __obf_dff8bac0ab4de84d
+	return __obf_ca57418c490e9c53
 }
 
-func (__obf_68366884350bf834 *SensitiveFilter) Replace(__obf_2f9bfc5f616e4c2e string, __obf_0f3a84651c2341ba rune) string {
-	__obf_4611708a6d6f0a23 := __obf_68366884350bf834.FindAll(__obf_2f9bfc5f616e4c2e)
-	if len(__obf_4611708a6d6f0a23) == 0 {
-		return __obf_2f9bfc5f616e4c2e
+func (__obf_e8b4dadf2a35b1d3 *SensitiveFilter) Replace(__obf_8fd45bd0d265008c string, __obf_9f61e15faac45890 rune) string {
+	__obf_a9f58197f688732d := __obf_e8b4dadf2a35b1d3.FindAll(__obf_8fd45bd0d265008c)
+	if len(__obf_a9f58197f688732d) == 0 {
+		return __obf_8fd45bd0d265008c
 	}
-	__obf_c6569bea94c0c483 := []rune(__obf_2f9bfc5f616e4c2e)
-	for _, __obf_58d9d03c190988b1 := range __obf_4611708a6d6f0a23 {
-		for __obf_09c4704e98f82128 := __obf_58d9d03c190988b1.Start; __obf_09c4704e98f82128 < __obf_58d9d03c190988b1.End; __obf_09c4704e98f82128++ {
-			__obf_c6569bea94c0c483[__obf_09c4704e98f82128] = __obf_0f3a84651c2341ba
+	__obf_0e2c9fed14041ce5 := []rune(__obf_8fd45bd0d265008c)
+	for _, __obf_92fb913565a85298 := range __obf_a9f58197f688732d {
+		for __obf_74e4c62962a40491 := __obf_92fb913565a85298.Start; __obf_74e4c62962a40491 < __obf_92fb913565a85298.End; __obf_74e4c62962a40491++ {
+			__obf_0e2c9fed14041ce5[__obf_74e4c62962a40491] = __obf_9f61e15faac45890
 		}
 	}
-	return string(__obf_c6569bea94c0c483)
+	return string(__obf_0e2c9fed14041ce5)
 }
 
-func (__obf_68366884350bf834 *SensitiveFilter) ReplaceWithString(__obf_2f9bfc5f616e4c2e string, __obf_0f3a84651c2341ba string) string {
-	__obf_4611708a6d6f0a23 := __obf_68366884350bf834.FindAll(__obf_2f9bfc5f616e4c2e)
-	if len(__obf_4611708a6d6f0a23) == 0 {
-		return __obf_2f9bfc5f616e4c2e
+func (__obf_e8b4dadf2a35b1d3 *SensitiveFilter) ReplaceWithString(__obf_8fd45bd0d265008c string, __obf_9f61e15faac45890 string) string {
+	__obf_a9f58197f688732d := __obf_e8b4dadf2a35b1d3.FindAll(__obf_8fd45bd0d265008c)
+	if len(__obf_a9f58197f688732d) == 0 {
+		return __obf_8fd45bd0d265008c
 	}
 
-	var __obf_31cd6f1ad50b1472 strings.Builder
-	__obf_c6569bea94c0c483 := []rune(__obf_2f9bfc5f616e4c2e)
-	__obf_b92619b87bbd26e5 := 0
-	for _, __obf_58d9d03c190988b1 := range __obf_4611708a6d6f0a23 {
-		__obf_31cd6f1ad50b1472.
-			WriteString(string(__obf_c6569bea94c0c483[__obf_b92619b87bbd26e5:__obf_58d9d03c190988b1.Start]))
-		__obf_31cd6f1ad50b1472.
-			WriteString(__obf_0f3a84651c2341ba)
-		__obf_b92619b87bbd26e5 = __obf_58d9d03c190988b1.End
+	var __obf_f36021775f19eb30 strings.Builder
+	__obf_0e2c9fed14041ce5 := []rune(__obf_8fd45bd0d265008c)
+	__obf_28d4518c36cdcfc9 := 0
+	for _, __obf_92fb913565a85298 := range __obf_a9f58197f688732d {
+		__obf_f36021775f19eb30.
+			WriteString(string(__obf_0e2c9fed14041ce5[__obf_28d4518c36cdcfc9:__obf_92fb913565a85298.Start]))
+		__obf_f36021775f19eb30.
+			WriteString(__obf_9f61e15faac45890)
+		__obf_28d4518c36cdcfc9 = __obf_92fb913565a85298.End
 	}
-	__obf_31cd6f1ad50b1472.
-		WriteString(string(__obf_c6569bea94c0c483[__obf_b92619b87bbd26e5:]))
-	return __obf_31cd6f1ad50b1472.String()
+	__obf_f36021775f19eb30.
+		WriteString(string(__obf_0e2c9fed14041ce5[__obf_28d4518c36cdcfc9:]))
+	return __obf_f36021775f19eb30.String()
 }
 
-func (__obf_68366884350bf834 *SensitiveFilter) ReplaceWithFunc(__obf_2f9bfc5f616e4c2e string, __obf_f0145afe0d39988a func(__obf_58d9d03c190988b1 MatchResult) string) string {
-	__obf_4611708a6d6f0a23 := __obf_68366884350bf834.FindAll(__obf_2f9bfc5f616e4c2e)
-	if len(__obf_4611708a6d6f0a23) == 0 {
-		return __obf_2f9bfc5f616e4c2e
+func (__obf_e8b4dadf2a35b1d3 *SensitiveFilter) ReplaceWithFunc(__obf_8fd45bd0d265008c string, __obf_d9050ebc727558c1 func(__obf_92fb913565a85298 MatchResult) string) string {
+	__obf_a9f58197f688732d := __obf_e8b4dadf2a35b1d3.FindAll(__obf_8fd45bd0d265008c)
+	if len(__obf_a9f58197f688732d) == 0 {
+		return __obf_8fd45bd0d265008c
 	}
 
-	var __obf_31cd6f1ad50b1472 strings.Builder
-	__obf_c6569bea94c0c483 := []rune(__obf_2f9bfc5f616e4c2e)
-	__obf_b92619b87bbd26e5 := 0
-	for _, __obf_58d9d03c190988b1 := range __obf_4611708a6d6f0a23 {
-		__obf_31cd6f1ad50b1472.
-			WriteString(string(__obf_c6569bea94c0c483[__obf_b92619b87bbd26e5:__obf_58d9d03c190988b1.Start]))
-		__obf_31cd6f1ad50b1472.
-			WriteString(__obf_f0145afe0d39988a(__obf_58d9d03c190988b1))
-		__obf_b92619b87bbd26e5 = __obf_58d9d03c190988b1.End
+	var __obf_f36021775f19eb30 strings.Builder
+	__obf_0e2c9fed14041ce5 := []rune(__obf_8fd45bd0d265008c)
+	__obf_28d4518c36cdcfc9 := 0
+	for _, __obf_92fb913565a85298 := range __obf_a9f58197f688732d {
+		__obf_f36021775f19eb30.
+			WriteString(string(__obf_0e2c9fed14041ce5[__obf_28d4518c36cdcfc9:__obf_92fb913565a85298.Start]))
+		__obf_f36021775f19eb30.
+			WriteString(__obf_d9050ebc727558c1(__obf_92fb913565a85298))
+		__obf_28d4518c36cdcfc9 = __obf_92fb913565a85298.End
 	}
-	__obf_31cd6f1ad50b1472.
-		WriteString(string(__obf_c6569bea94c0c483[__obf_b92619b87bbd26e5:]))
-	return __obf_31cd6f1ad50b1472.String()
+	__obf_f36021775f19eb30.
+		WriteString(string(__obf_0e2c9fed14041ce5[__obf_28d4518c36cdcfc9:]))
+	return __obf_f36021775f19eb30.String()
 }
 
 // 添加 Close 方法释放资源
-func (__obf_68366884350bf834 *SensitiveFilter) Close() {
-	__obf_68366884350bf834.__obf_e06313f010e75b7b.
+func (__obf_e8b4dadf2a35b1d3 *SensitiveFilter) Close() {
+	__obf_e8b4dadf2a35b1d3.__obf_d46168803f411f26.
 		Lock()
-	defer __obf_68366884350bf834.__obf_e06313f010e75b7b.Unlock()
-	__obf_68366884350bf834.__obf_7527f4f9a2ce135b = nil
-	__obf_68366884350bf834.__obf_a0c045b4ddfac43d = nil
+	defer __obf_e8b4dadf2a35b1d3.__obf_d46168803f411f26.Unlock()
+	__obf_e8b4dadf2a35b1d3.__obf_50e83274a4fe755a = nil
+	__obf_e8b4dadf2a35b1d3.__obf_5cce43980a89c035 = nil
 }
 
 type FilterBuilder struct {
-	__obf_48321fda5b414a8a map[string]struct{}
-	__obf_5e405c455150a363 int
+	__obf_d703a722e273e59c map[string]struct{}
+	__obf_2569a480ce883fcb int
 }
 
 type FilterOption func(*FilterBuilder)
 
-func WithBlockSize(__obf_914ad28fcf67ea88 int) FilterOption {
-	return func(__obf_49851572551c0ee5 *FilterBuilder) {
-		if __obf_914ad28fcf67ea88 > 0 {
-			__obf_49851572551c0ee5.__obf_5e405c455150a363 = __obf_914ad28fcf67ea88
+func WithBlockSize(__obf_3c0899c6f8ed2d7d int) FilterOption {
+	return func(__obf_2dfd6f91963d2f45 *FilterBuilder) {
+		if __obf_3c0899c6f8ed2d7d > 0 {
+			__obf_2dfd6f91963d2f45.__obf_2569a480ce883fcb = __obf_3c0899c6f8ed2d7d
 		}
 	}
 }
 
-func WithWords(__obf_48321fda5b414a8a []string) FilterOption {
-	return func(__obf_49851572551c0ee5 *FilterBuilder) {
-		for _, __obf_9f840f939469d0dd := range __obf_48321fda5b414a8a {
-			if __obf_9f840f939469d0dd != "" {
-				__obf_49851572551c0ee5.__obf_48321fda5b414a8a[__obf_9f840f939469d0dd] = struct{}{}
+func WithWords(__obf_d703a722e273e59c []string) FilterOption {
+	return func(__obf_2dfd6f91963d2f45 *FilterBuilder) {
+		for _, __obf_5a086cc16b4aa89b := range __obf_d703a722e273e59c {
+			if __obf_5a086cc16b4aa89b != "" {
+				__obf_2dfd6f91963d2f45.__obf_d703a722e273e59c[__obf_5a086cc16b4aa89b] = struct{}{}
 			}
 		}
 	}
 }
 
-func NewFilterBuilder(__obf_c63dfbefaeba8018 ...FilterOption) *FilterBuilder {
-	__obf_49851572551c0ee5 := &FilterBuilder{__obf_48321fda5b414a8a: make(map[string]struct{}), __obf_5e405c455150a363: __obf_a336d1e49f3afa9a}
-	for _, __obf_6c2eba25ad4ffe58 := range __obf_c63dfbefaeba8018 {
-		__obf_6c2eba25ad4ffe58(__obf_49851572551c0ee5)
+func NewFilterBuilder(__obf_70877c70273e0436 ...FilterOption) *FilterBuilder {
+	__obf_2dfd6f91963d2f45 := &FilterBuilder{__obf_d703a722e273e59c: make(map[string]struct{}), __obf_2569a480ce883fcb: __obf_398eebf92202c3d1}
+	for _, __obf_6b46c05936b1460d := range __obf_70877c70273e0436 {
+		__obf_6b46c05936b1460d(__obf_2dfd6f91963d2f45)
 	}
-	return __obf_49851572551c0ee5
+	return __obf_2dfd6f91963d2f45
 }
 
-func (__obf_49851572551c0ee5 *FilterBuilder) AddWord(__obf_d68115d58b63f3f5 string) {
-	if __obf_d68115d58b63f3f5 != "" {
-		__obf_49851572551c0ee5.__obf_48321fda5b414a8a[__obf_d68115d58b63f3f5] = struct{}{}
-	}
-}
-
-func (__obf_49851572551c0ee5 *FilterBuilder) AddWords(__obf_48321fda5b414a8a []string) {
-	for _, __obf_d68115d58b63f3f5 := range __obf_48321fda5b414a8a {
-		__obf_49851572551c0ee5.
-			AddWord(__obf_d68115d58b63f3f5)
+func (__obf_2dfd6f91963d2f45 *FilterBuilder) AddWord(__obf_803effbcd3198ea6 string) {
+	if __obf_803effbcd3198ea6 != "" {
+		__obf_2dfd6f91963d2f45.__obf_d703a722e273e59c[__obf_803effbcd3198ea6] = struct{}{}
 	}
 }
 
-func (__obf_49851572551c0ee5 *FilterBuilder) LoadFromFile(__obf_63d3f4956ee55ec7 string) error {
-	__obf_0b187175dadb84d1, __obf_afafc45c4edea8e0 := os.Open(__obf_63d3f4956ee55ec7)
-	if __obf_afafc45c4edea8e0 != nil {
-		return __obf_afafc45c4edea8e0
+func (__obf_2dfd6f91963d2f45 *FilterBuilder) AddWords(__obf_d703a722e273e59c []string) {
+	for _, __obf_803effbcd3198ea6 := range __obf_d703a722e273e59c {
+		__obf_2dfd6f91963d2f45.
+			AddWord(__obf_803effbcd3198ea6)
 	}
-	defer __obf_0b187175dadb84d1.Close()
-	__obf_7ff1b65897e4f757 := bufio.NewReader(__obf_0b187175dadb84d1)
-	__obf_0eb572c122f2eddc := []byte{0xEF, 0xBB, 0xBF}
-	__obf_b020035bcdfe70a6, __obf_afafc45c4edea8e0 := __obf_7ff1b65897e4f757.Peek(3)
-	if __obf_afafc45c4edea8e0 == nil && bytes.Equal(__obf_b020035bcdfe70a6, __obf_0eb572c122f2eddc) {
-		_, _ = __obf_7ff1b65897e4f757.Discard(3)
-	}
-	__obf_878d013614e9b457 := bufio.NewScanner(__obf_7ff1b65897e4f757)
-	for __obf_878d013614e9b457.Scan() {
-		__obf_c22bc91659961b80 := strings.TrimSpace(__obf_878d013614e9b457.Text())
-		__obf_49851572551c0ee5.
-			AddWord(__obf_c22bc91659961b80)
-	}
-	return __obf_878d013614e9b457.Err()
 }
 
-func (__obf_49851572551c0ee5 *FilterBuilder) Build() *SensitiveFilter {
-	if len(__obf_49851572551c0ee5.__obf_48321fda5b414a8a) == 0 {
-		return &SensitiveFilter{__obf_7527f4f9a2ce135b: NewDATTrie(), __obf_a0c045b4ddfac43d: NewWuManberMatcher(__obf_49851572551c0ee5.__obf_5e405c455150a363)}
+func (__obf_2dfd6f91963d2f45 *FilterBuilder) LoadFromFile(__obf_138c6ddb796bb3c8 string) error {
+	__obf_ecfc306cae325dfb, __obf_24edb27520aab478 := os.Open(__obf_138c6ddb796bb3c8)
+	if __obf_24edb27520aab478 != nil {
+		return __obf_24edb27520aab478
 	}
-	__obf_785fefbaebb15956 := &__obf_9bffe14594ccb425{__obf_fcc5fb5d4c9e35ba: make(map[rune]*__obf_9bffe14594ccb425)}
-	__obf_e40c7e0ba76db350 := make([]string, 0, len(__obf_49851572551c0ee5.__obf_48321fda5b414a8a))
-	for __obf_d68115d58b63f3f5 := range __obf_49851572551c0ee5.__obf_48321fda5b414a8a {
-		__obf_e40c7e0ba76db350 = append(__obf_e40c7e0ba76db350, __obf_d68115d58b63f3f5)
-		__obf_785fefbaebb15956.__obf_7e3d3393aac1f60a(__obf_d68115d58b63f3f5)
+	defer __obf_ecfc306cae325dfb.Close()
+	__obf_5ebbac3b0d4801e5 := bufio.NewReader(__obf_ecfc306cae325dfb)
+	__obf_d03c507e81f35b1d := []byte{0xEF, 0xBB, 0xBF}
+	__obf_5b8b205a66101ba8, __obf_24edb27520aab478 := __obf_5ebbac3b0d4801e5.Peek(3)
+	if __obf_24edb27520aab478 == nil && bytes.Equal(__obf_5b8b205a66101ba8, __obf_d03c507e81f35b1d) {
+		_, _ = __obf_5ebbac3b0d4801e5.Discard(3)
 	}
-	__obf_7527f4f9a2ce135b := __obf_af34cbbbd81a522b(__obf_785fefbaebb15956)
-	__obf_a0c045b4ddfac43d := NewWuManberMatcher(__obf_49851572551c0ee5.__obf_5e405c455150a363)
-	__obf_a0c045b4ddfac43d.
-		AddPatterns(__obf_e40c7e0ba76db350)
-	__obf_a0c045b4ddfac43d.
+	__obf_48416c620ebbcbdb := bufio.NewScanner(__obf_5ebbac3b0d4801e5)
+	for __obf_48416c620ebbcbdb.Scan() {
+		__obf_4fdf9fa0e9555ea9 := strings.TrimSpace(__obf_48416c620ebbcbdb.Text())
+		__obf_2dfd6f91963d2f45.
+			AddWord(__obf_4fdf9fa0e9555ea9)
+	}
+	return __obf_48416c620ebbcbdb.Err()
+}
+
+func (__obf_2dfd6f91963d2f45 *FilterBuilder) Build() *SensitiveFilter {
+	if len(__obf_2dfd6f91963d2f45.__obf_d703a722e273e59c) == 0 {
+		return &SensitiveFilter{__obf_50e83274a4fe755a: NewDATTrie(), __obf_5cce43980a89c035: NewWuManberMatcher(__obf_2dfd6f91963d2f45.__obf_2569a480ce883fcb)}
+	}
+	__obf_b769105ac3ded9ee := &__obf_5ff12cd2cc7cfa19{__obf_14e88d925d6fa53a: make(map[rune]*__obf_5ff12cd2cc7cfa19)}
+	__obf_abd2e7d038288d8d := make([]string, 0, len(__obf_2dfd6f91963d2f45.__obf_d703a722e273e59c))
+	for __obf_803effbcd3198ea6 := range __obf_2dfd6f91963d2f45.__obf_d703a722e273e59c {
+		__obf_abd2e7d038288d8d = append(__obf_abd2e7d038288d8d, __obf_803effbcd3198ea6)
+		__obf_b769105ac3ded9ee.__obf_e25cc745772af301(__obf_803effbcd3198ea6)
+	}
+	__obf_50e83274a4fe755a := __obf_8bb0c199230eb484(__obf_b769105ac3ded9ee)
+	__obf_5cce43980a89c035 := NewWuManberMatcher(__obf_2dfd6f91963d2f45.__obf_2569a480ce883fcb)
+	__obf_5cce43980a89c035.
+		AddPatterns(__obf_abd2e7d038288d8d)
+	__obf_5cce43980a89c035.
 		Build()
 
-	return &SensitiveFilter{__obf_7527f4f9a2ce135b: __obf_7527f4f9a2ce135b, __obf_a0c045b4ddfac43d: __obf_a0c045b4ddfac43d}
+	return &SensitiveFilter{__obf_50e83274a4fe755a: __obf_50e83274a4fe755a, __obf_5cce43980a89c035: __obf_5cce43980a89c035}
 }
 
-func (__obf_49851572551c0ee5 *FilterBuilder) Clear() {
-	__obf_49851572551c0ee5.__obf_48321fda5b414a8a = make(map[string]struct{})
+func (__obf_2dfd6f91963d2f45 *FilterBuilder) Clear() {
+	__obf_2dfd6f91963d2f45.__obf_d703a722e273e59c = make(map[string]struct{})
 }
 
-type __obf_9bffe14594ccb425 struct {
-	__obf_fcc5fb5d4c9e35ba map[rune]*__obf_9bffe14594ccb425
-	__obf_f7281b41d9f98ac5 bool
+type __obf_5ff12cd2cc7cfa19 struct {
+	__obf_14e88d925d6fa53a map[rune]*__obf_5ff12cd2cc7cfa19
+	__obf_ef5ed10d7c6a1194 bool
 }
 
-func (__obf_533959f4b300364a *__obf_9bffe14594ccb425) __obf_7e3d3393aac1f60a(__obf_d68115d58b63f3f5 string) {
-	__obf_6b3585156999efd8 := __obf_533959f4b300364a
-	for _, __obf_bb5c99c8ba8010c0 := range __obf_d68115d58b63f3f5 {
-		if _, __obf_97c4a66ba64905ca := __obf_6b3585156999efd8.__obf_fcc5fb5d4c9e35ba[__obf_bb5c99c8ba8010c0]; !__obf_97c4a66ba64905ca {
-			__obf_6b3585156999efd8.__obf_fcc5fb5d4c9e35ba[__obf_bb5c99c8ba8010c0] = &__obf_9bffe14594ccb425{__obf_fcc5fb5d4c9e35ba: make(map[rune]*__obf_9bffe14594ccb425)}
+func (__obf_67843b25c7ef5722 *__obf_5ff12cd2cc7cfa19) __obf_e25cc745772af301(__obf_803effbcd3198ea6 string) {
+	__obf_6deee49b8dd788d8 := __obf_67843b25c7ef5722
+	for _, __obf_d5a6d0a1d55f42e3 := range __obf_803effbcd3198ea6 {
+		if _, __obf_de4222e243defcfd := __obf_6deee49b8dd788d8.__obf_14e88d925d6fa53a[__obf_d5a6d0a1d55f42e3]; !__obf_de4222e243defcfd {
+			__obf_6deee49b8dd788d8.__obf_14e88d925d6fa53a[__obf_d5a6d0a1d55f42e3] = &__obf_5ff12cd2cc7cfa19{__obf_14e88d925d6fa53a: make(map[rune]*__obf_5ff12cd2cc7cfa19)}
 		}
-		__obf_6b3585156999efd8 = __obf_6b3585156999efd8.__obf_fcc5fb5d4c9e35ba[__obf_bb5c99c8ba8010c0]
+		__obf_6deee49b8dd788d8 = __obf_6deee49b8dd788d8.__obf_14e88d925d6fa53a[__obf_d5a6d0a1d55f42e3]
 	}
-	__obf_6b3585156999efd8.__obf_f7281b41d9f98ac5 = true
+	__obf_6deee49b8dd788d8.__obf_ef5ed10d7c6a1194 = true
 }
 
 type DATTrie struct {
-	__obf_21e4a0c991098223 []int32
-	__obf_bdde4c8ff394b211 []int32
-	__obf_90e9f9cd57864c5a []bool
-	__obf_914ad28fcf67ea88 int32
+	__obf_da7ce5419e7c2ab3 []int32
+	__obf_00026af41d7782b2 []int32
+	__obf_97e93c9eccbe5a21 []bool
+	__obf_3c0899c6f8ed2d7d int32
 }
 
 func NewDATTrie() *DATTrie {
-	return &DATTrie{__obf_21e4a0c991098223: make([]int32, __obf_ea666664aed9d0d7), __obf_bdde4c8ff394b211: make([]int32, __obf_ea666664aed9d0d7), __obf_90e9f9cd57864c5a: make([]bool, __obf_ea666664aed9d0d7), __obf_914ad28fcf67ea88: 1}
+	return &DATTrie{__obf_da7ce5419e7c2ab3: make([]int32, __obf_4bf4a19d9834e88a), __obf_00026af41d7782b2: make([]int32, __obf_4bf4a19d9834e88a), __obf_97e93c9eccbe5a21: make([]bool, __obf_4bf4a19d9834e88a), __obf_3c0899c6f8ed2d7d: 1}
 }
 
-func __obf_af34cbbbd81a522b(__obf_44298884ebf65902 *__obf_9bffe14594ccb425) *DATTrie {
-	__obf_c858f7714608ec5c := NewDATTrie()
-	__obf_c858f7714608ec5c.__obf_bdde4c8ff394b211[1] = 1
+func __obf_8bb0c199230eb484(__obf_4f0ce1c7548b1bc0 *__obf_5ff12cd2cc7cfa19) *DATTrie {
+	__obf_5868836158514e2c := NewDATTrie()
+	__obf_5868836158514e2c.__obf_00026af41d7782b2[1] = 1
 
-	type __obf_7875de6b999ca66f struct {
-		__obf_278b706c401b5ddb int32
-		__obf_6b3585156999efd8 *__obf_9bffe14594ccb425
+	type __obf_ecc42234bc4ab0ef struct {
+		__obf_5c19df52406936fd int32
+		__obf_6deee49b8dd788d8 *__obf_5ff12cd2cc7cfa19
 	}
-	__obf_d0aa8f017b2b3732 := []__obf_7875de6b999ca66f{{__obf_278b706c401b5ddb: 1, __obf_6b3585156999efd8: __obf_44298884ebf65902}}
+	__obf_bfd639f9c3be7e80 := []__obf_ecc42234bc4ab0ef{{__obf_5c19df52406936fd: 1, __obf_6deee49b8dd788d8: __obf_4f0ce1c7548b1bc0}}
 
-	for len(__obf_d0aa8f017b2b3732) > 0 {
-		__obf_33f0987f7d28cef0 := __obf_d0aa8f017b2b3732[0]
-		__obf_d0aa8f017b2b3732 = __obf_d0aa8f017b2b3732[1:]
+	for len(__obf_bfd639f9c3be7e80) > 0 {
+		__obf_488431258beaf3e9 := __obf_bfd639f9c3be7e80[0]
+		__obf_bfd639f9c3be7e80 = __obf_bfd639f9c3be7e80[1:]
 
-		if len(__obf_33f0987f7d28cef0.__obf_6b3585156999efd8.__obf_fcc5fb5d4c9e35ba) == 0 {
+		if len(__obf_488431258beaf3e9.__obf_6deee49b8dd788d8.__obf_14e88d925d6fa53a) == 0 {
 			continue
 		}
-		__obf_b9a23a6874a06e96 := make([]rune, 0, len(__obf_33f0987f7d28cef0.__obf_6b3585156999efd8.__obf_fcc5fb5d4c9e35ba))
-		for __obf_bb5c99c8ba8010c0 := range __obf_33f0987f7d28cef0.__obf_6b3585156999efd8.__obf_fcc5fb5d4c9e35ba {
-			__obf_b9a23a6874a06e96 = append(__obf_b9a23a6874a06e96, __obf_bb5c99c8ba8010c0)
+		__obf_8ba5c725cacd5f3d := make([]rune, 0, len(__obf_488431258beaf3e9.__obf_6deee49b8dd788d8.__obf_14e88d925d6fa53a))
+		for __obf_d5a6d0a1d55f42e3 := range __obf_488431258beaf3e9.__obf_6deee49b8dd788d8.__obf_14e88d925d6fa53a {
+			__obf_8ba5c725cacd5f3d = append(__obf_8ba5c725cacd5f3d, __obf_d5a6d0a1d55f42e3)
 		}
-		slices.Sort(__obf_b9a23a6874a06e96)
-		__obf_73d1975284885f8e := __obf_c858f7714608ec5c.__obf_12a5075cdf951790(__obf_b9a23a6874a06e96)
-		__obf_c858f7714608ec5c.__obf_21e4a0c991098223[__obf_33f0987f7d28cef0.__obf_278b706c401b5ddb] = __obf_73d1975284885f8e
+		slices.Sort(__obf_8ba5c725cacd5f3d)
+		__obf_cbf8722190f9f75b := __obf_5868836158514e2c.__obf_f8e2472f3b89a228(__obf_8ba5c725cacd5f3d)
+		__obf_5868836158514e2c.__obf_da7ce5419e7c2ab3[__obf_488431258beaf3e9.__obf_5c19df52406936fd] = __obf_cbf8722190f9f75b
 
-		for _, __obf_8bbd017e129d91a4 := range __obf_b9a23a6874a06e96 {
-			__obf_959d45d8a85493a7 := __obf_33f0987f7d28cef0.__obf_6b3585156999efd8.__obf_fcc5fb5d4c9e35ba[__obf_8bbd017e129d91a4]
-			__obf_22c0ffbc9cbe43ff := __obf_73d1975284885f8e + int32(__obf_8bbd017e129d91a4)
-			__obf_c858f7714608ec5c.__obf_17efc3b49e94c9d5(__obf_22c0ffbc9cbe43ff + 1)
-			__obf_c858f7714608ec5c.__obf_bdde4c8ff394b211[__obf_22c0ffbc9cbe43ff] = __obf_33f0987f7d28cef0.__obf_278b706c401b5ddb
-			if __obf_959d45d8a85493a7.__obf_f7281b41d9f98ac5 {
-				__obf_c858f7714608ec5c.__obf_90e9f9cd57864c5a[__obf_22c0ffbc9cbe43ff] = true
+		for _, __obf_452697cd389e3134 := range __obf_8ba5c725cacd5f3d {
+			__obf_ceb17d4721b21808 := __obf_488431258beaf3e9.__obf_6deee49b8dd788d8.__obf_14e88d925d6fa53a[__obf_452697cd389e3134]
+			__obf_b97394cad50e288c := __obf_cbf8722190f9f75b + int32(__obf_452697cd389e3134)
+			__obf_5868836158514e2c.__obf_2e7a4d69845854bf(__obf_b97394cad50e288c + 1)
+			__obf_5868836158514e2c.__obf_00026af41d7782b2[__obf_b97394cad50e288c] = __obf_488431258beaf3e9.__obf_5c19df52406936fd
+			if __obf_ceb17d4721b21808.__obf_ef5ed10d7c6a1194 {
+				__obf_5868836158514e2c.__obf_97e93c9eccbe5a21[__obf_b97394cad50e288c] = true
 			}
-			if int32(len(__obf_c858f7714608ec5c.__obf_21e4a0c991098223)) <= __obf_22c0ffbc9cbe43ff {
-				__obf_c858f7714608ec5c.__obf_17efc3b49e94c9d5(__obf_22c0ffbc9cbe43ff + 1)
+			if int32(len(__obf_5868836158514e2c.__obf_da7ce5419e7c2ab3)) <= __obf_b97394cad50e288c {
+				__obf_5868836158514e2c.__obf_2e7a4d69845854bf(__obf_b97394cad50e288c + 1)
 			}
-			if __obf_c858f7714608ec5c.__obf_914ad28fcf67ea88 <= __obf_22c0ffbc9cbe43ff {
-				__obf_c858f7714608ec5c.__obf_914ad28fcf67ea88 = __obf_22c0ffbc9cbe43ff + 1
+			if __obf_5868836158514e2c.__obf_3c0899c6f8ed2d7d <= __obf_b97394cad50e288c {
+				__obf_5868836158514e2c.__obf_3c0899c6f8ed2d7d = __obf_b97394cad50e288c + 1
 			}
-			__obf_d0aa8f017b2b3732 = append(__obf_d0aa8f017b2b3732, __obf_7875de6b999ca66f{__obf_278b706c401b5ddb: __obf_22c0ffbc9cbe43ff, __obf_6b3585156999efd8: __obf_959d45d8a85493a7})
+			__obf_bfd639f9c3be7e80 = append(__obf_bfd639f9c3be7e80, __obf_ecc42234bc4ab0ef{__obf_5c19df52406936fd: __obf_b97394cad50e288c, __obf_6deee49b8dd788d8: __obf_ceb17d4721b21808})
 		}
 	}
-	return __obf_c858f7714608ec5c
+	return __obf_5868836158514e2c
 }
 
-func (__obf_c858f7714608ec5c *DATTrie) __obf_12a5075cdf951790(__obf_9dd002dfb645415b []rune) int32 {
-	for __obf_21e4a0c991098223 := int32(1); ; __obf_21e4a0c991098223++ {
-		__obf_e061af02650a336b := false
-		for _, __obf_e4aafdbcb1b13739 := range __obf_9dd002dfb645415b {
-			__obf_9a7f80ff75ced90f := __obf_21e4a0c991098223 + int32(__obf_e4aafdbcb1b13739)
-			if int32(len(__obf_c858f7714608ec5c.__obf_bdde4c8ff394b211)) <= __obf_9a7f80ff75ced90f {
-				__obf_c858f7714608ec5c.__obf_17efc3b49e94c9d5(__obf_9a7f80ff75ced90f + 1)
+func (__obf_5868836158514e2c *DATTrie) __obf_f8e2472f3b89a228(__obf_2d131eb3a30e7fc5 []rune) int32 {
+	for __obf_da7ce5419e7c2ab3 := int32(1); ; __obf_da7ce5419e7c2ab3++ {
+		__obf_5c2b0ea80ad819f1 := false
+		for _, __obf_8c6f7d98a27e343f := range __obf_2d131eb3a30e7fc5 {
+			__obf_ed1ddb116cf50801 := __obf_da7ce5419e7c2ab3 + int32(__obf_8c6f7d98a27e343f)
+			if int32(len(__obf_5868836158514e2c.__obf_00026af41d7782b2)) <= __obf_ed1ddb116cf50801 {
+				__obf_5868836158514e2c.__obf_2e7a4d69845854bf(__obf_ed1ddb116cf50801 + 1)
 			}
-			if __obf_c858f7714608ec5c.__obf_bdde4c8ff394b211[__obf_9a7f80ff75ced90f] != 0 {
-				__obf_e061af02650a336b = true
+			if __obf_5868836158514e2c.__obf_00026af41d7782b2[__obf_ed1ddb116cf50801] != 0 {
+				__obf_5c2b0ea80ad819f1 = true
 				break
 			}
 		}
-		if !__obf_e061af02650a336b {
-			return __obf_21e4a0c991098223
+		if !__obf_5c2b0ea80ad819f1 {
+			return __obf_da7ce5419e7c2ab3
 		}
 	}
 }
 
-func (__obf_c858f7714608ec5c *DATTrie) __obf_17efc3b49e94c9d5(__obf_4d12a09f61c200fb int32) {
-	if __obf_4d12a09f61c200fb < int32(len(__obf_c858f7714608ec5c.__obf_21e4a0c991098223)) {
+func (__obf_5868836158514e2c *DATTrie) __obf_2e7a4d69845854bf(__obf_1df64e12a3a5182f int32) {
+	if __obf_1df64e12a3a5182f < int32(len(__obf_5868836158514e2c.__obf_da7ce5419e7c2ab3)) {
 		return
 	}
-	__obf_b061b612945ad714 := max(int32(len(__obf_c858f7714608ec5c.__obf_21e4a0c991098223))+int32(len(__obf_c858f7714608ec5c.__obf_21e4a0c991098223))/2, __obf_4d12a09f61c200fb)
-	__obf_90dc784192571ec1 := make([]int32, __obf_b061b612945ad714)
-	__obf_d484d5f5b7eaf144 := make([]int32, __obf_b061b612945ad714)
-	__obf_c67d5df962c2e81a := make([]bool, __obf_b061b612945ad714)
-	copy(__obf_90dc784192571ec1, __obf_c858f7714608ec5c.__obf_21e4a0c991098223)
-	copy(__obf_d484d5f5b7eaf144, __obf_c858f7714608ec5c.__obf_bdde4c8ff394b211)
-	copy(__obf_c67d5df962c2e81a, __obf_c858f7714608ec5c.__obf_90e9f9cd57864c5a)
-	__obf_c858f7714608ec5c.__obf_21e4a0c991098223 = __obf_90dc784192571ec1
-	__obf_c858f7714608ec5c.__obf_bdde4c8ff394b211 = __obf_d484d5f5b7eaf144
-	__obf_c858f7714608ec5c.__obf_90e9f9cd57864c5a = __obf_c67d5df962c2e81a
+	__obf_7b2c2bf38599b5cb := max(int32(len(__obf_5868836158514e2c.__obf_da7ce5419e7c2ab3))+int32(len(__obf_5868836158514e2c.__obf_da7ce5419e7c2ab3))/2, __obf_1df64e12a3a5182f)
+	__obf_524a9ec0ee88eae3 := make([]int32, __obf_7b2c2bf38599b5cb)
+	__obf_7011fff19d30c04a := make([]int32, __obf_7b2c2bf38599b5cb)
+	__obf_9dd39681eeaed6d0 := make([]bool, __obf_7b2c2bf38599b5cb)
+	copy(__obf_524a9ec0ee88eae3, __obf_5868836158514e2c.__obf_da7ce5419e7c2ab3)
+	copy(__obf_7011fff19d30c04a, __obf_5868836158514e2c.__obf_00026af41d7782b2)
+	copy(__obf_9dd39681eeaed6d0, __obf_5868836158514e2c.__obf_97e93c9eccbe5a21)
+	__obf_5868836158514e2c.__obf_da7ce5419e7c2ab3 = __obf_524a9ec0ee88eae3
+	__obf_5868836158514e2c.__obf_00026af41d7782b2 = __obf_7011fff19d30c04a
+	__obf_5868836158514e2c.__obf_97e93c9eccbe5a21 = __obf_9dd39681eeaed6d0
 }
 
-func (__obf_c858f7714608ec5c *DATTrie) __obf_7426f753a0b18cca(__obf_97fab2dfcc31983d int32, __obf_e4aafdbcb1b13739 rune) int32 {
-	if __obf_97fab2dfcc31983d <= 0 || __obf_97fab2dfcc31983d >= int32(len(__obf_c858f7714608ec5c.__obf_21e4a0c991098223)) || __obf_c858f7714608ec5c.__obf_21e4a0c991098223[__obf_97fab2dfcc31983d] == 0 {
+func (__obf_5868836158514e2c *DATTrie) __obf_74d639d3361fde50(__obf_1b0cd6b59e2eb7eb int32, __obf_8c6f7d98a27e343f rune) int32 {
+	if __obf_1b0cd6b59e2eb7eb <= 0 || __obf_1b0cd6b59e2eb7eb >= int32(len(__obf_5868836158514e2c.__obf_da7ce5419e7c2ab3)) || __obf_5868836158514e2c.__obf_da7ce5419e7c2ab3[__obf_1b0cd6b59e2eb7eb] == 0 {
 		return -1
 	}
-	__obf_9a7f80ff75ced90f := __obf_c858f7714608ec5c.__obf_21e4a0c991098223[__obf_97fab2dfcc31983d] + int32(__obf_e4aafdbcb1b13739)
-	if __obf_9a7f80ff75ced90f > 0 && __obf_9a7f80ff75ced90f < int32(len(__obf_c858f7714608ec5c.__obf_bdde4c8ff394b211)) && __obf_c858f7714608ec5c.__obf_bdde4c8ff394b211[__obf_9a7f80ff75ced90f] == __obf_97fab2dfcc31983d {
-		return __obf_9a7f80ff75ced90f
+	__obf_ed1ddb116cf50801 := __obf_5868836158514e2c.__obf_da7ce5419e7c2ab3[__obf_1b0cd6b59e2eb7eb] + int32(__obf_8c6f7d98a27e343f)
+	if __obf_ed1ddb116cf50801 > 0 && __obf_ed1ddb116cf50801 < int32(len(__obf_5868836158514e2c.__obf_00026af41d7782b2)) && __obf_5868836158514e2c.__obf_00026af41d7782b2[__obf_ed1ddb116cf50801] == __obf_1b0cd6b59e2eb7eb {
+		return __obf_ed1ddb116cf50801
 	}
 	return -1
 }
 
-func (__obf_c858f7714608ec5c *DATTrie) __obf_f7281b41d9f98ac5(__obf_97fab2dfcc31983d int32) bool {
-	if __obf_97fab2dfcc31983d > 0 && __obf_97fab2dfcc31983d < int32(len(__obf_c858f7714608ec5c.__obf_90e9f9cd57864c5a)) {
-		return __obf_c858f7714608ec5c.__obf_90e9f9cd57864c5a[__obf_97fab2dfcc31983d]
+func (__obf_5868836158514e2c *DATTrie) __obf_ef5ed10d7c6a1194(__obf_1b0cd6b59e2eb7eb int32) bool {
+	if __obf_1b0cd6b59e2eb7eb > 0 && __obf_1b0cd6b59e2eb7eb < int32(len(__obf_5868836158514e2c.__obf_97e93c9eccbe5a21)) {
+		return __obf_5868836158514e2c.__obf_97e93c9eccbe5a21[__obf_1b0cd6b59e2eb7eb]
 	}
 	return false
 }
 
-func (__obf_c858f7714608ec5c *DATTrie) Contains(__obf_2f9bfc5f616e4c2e string) bool {
-	__obf_c6569bea94c0c483 := []rune(__obf_2f9bfc5f616e4c2e)
-	for __obf_09c4704e98f82128 := range __obf_c6569bea94c0c483 {
-		__obf_6b3585156999efd8 := int32(1)
-		for __obf_8c2ffe965b3e6421 := __obf_09c4704e98f82128; __obf_8c2ffe965b3e6421 < len(__obf_c6569bea94c0c483); __obf_8c2ffe965b3e6421++ {
-			__obf_6b3585156999efd8 = __obf_c858f7714608ec5c.__obf_7426f753a0b18cca(__obf_6b3585156999efd8, __obf_c6569bea94c0c483[__obf_8c2ffe965b3e6421])
-			if __obf_6b3585156999efd8 == -1 {
+func (__obf_5868836158514e2c *DATTrie) Contains(__obf_8fd45bd0d265008c string) bool {
+	__obf_0e2c9fed14041ce5 := []rune(__obf_8fd45bd0d265008c)
+	for __obf_74e4c62962a40491 := range __obf_0e2c9fed14041ce5 {
+		__obf_6deee49b8dd788d8 := int32(1)
+		for __obf_ec5c7f3e67ff13d2 := __obf_74e4c62962a40491; __obf_ec5c7f3e67ff13d2 < len(__obf_0e2c9fed14041ce5); __obf_ec5c7f3e67ff13d2++ {
+			__obf_6deee49b8dd788d8 = __obf_5868836158514e2c.__obf_74d639d3361fde50(__obf_6deee49b8dd788d8, __obf_0e2c9fed14041ce5[__obf_ec5c7f3e67ff13d2])
+			if __obf_6deee49b8dd788d8 == -1 {
 				break
 			}
-			if __obf_c858f7714608ec5c.__obf_f7281b41d9f98ac5(__obf_6b3585156999efd8) {
+			if __obf_5868836158514e2c.__obf_ef5ed10d7c6a1194(__obf_6deee49b8dd788d8) {
 				return true
 			}
 		}
@@ -427,110 +427,110 @@ func (__obf_c858f7714608ec5c *DATTrie) Contains(__obf_2f9bfc5f616e4c2e string) b
 	return false
 }
 
-func (__obf_c858f7714608ec5c *DATTrie) __obf_a3e898872b98d664(__obf_c6569bea94c0c483 []rune) []MatchResult {
-	__obf_92125008916bb172 := make([]MatchResult, 0, __obf_b5584c9e1f4e82bf)
-	for __obf_09c4704e98f82128 := range __obf_c6569bea94c0c483 {
-		__obf_6b3585156999efd8 := int32(1)
-		for __obf_8c2ffe965b3e6421 := __obf_09c4704e98f82128; __obf_8c2ffe965b3e6421 < len(__obf_c6569bea94c0c483); __obf_8c2ffe965b3e6421++ {
-			__obf_6b3585156999efd8 = __obf_c858f7714608ec5c.__obf_7426f753a0b18cca(__obf_6b3585156999efd8, __obf_c6569bea94c0c483[__obf_8c2ffe965b3e6421])
-			if __obf_6b3585156999efd8 == -1 {
+func (__obf_5868836158514e2c *DATTrie) __obf_6ac3be995625316d(__obf_0e2c9fed14041ce5 []rune) []MatchResult {
+	__obf_89f2c8dbe6260ce8 := make([]MatchResult, 0, __obf_b1462bf48eca6147)
+	for __obf_74e4c62962a40491 := range __obf_0e2c9fed14041ce5 {
+		__obf_6deee49b8dd788d8 := int32(1)
+		for __obf_ec5c7f3e67ff13d2 := __obf_74e4c62962a40491; __obf_ec5c7f3e67ff13d2 < len(__obf_0e2c9fed14041ce5); __obf_ec5c7f3e67ff13d2++ {
+			__obf_6deee49b8dd788d8 = __obf_5868836158514e2c.__obf_74d639d3361fde50(__obf_6deee49b8dd788d8, __obf_0e2c9fed14041ce5[__obf_ec5c7f3e67ff13d2])
+			if __obf_6deee49b8dd788d8 == -1 {
 				break
 			}
-			if __obf_c858f7714608ec5c.__obf_f7281b41d9f98ac5(__obf_6b3585156999efd8) {
-				__obf_92125008916bb172 = append(__obf_92125008916bb172, MatchResult{
-					Word:  string(__obf_c6569bea94c0c483[__obf_09c4704e98f82128 : __obf_8c2ffe965b3e6421+1]),
-					Start: __obf_09c4704e98f82128,
-					End:   __obf_8c2ffe965b3e6421 + 1,
+			if __obf_5868836158514e2c.__obf_ef5ed10d7c6a1194(__obf_6deee49b8dd788d8) {
+				__obf_89f2c8dbe6260ce8 = append(__obf_89f2c8dbe6260ce8, MatchResult{
+					Word:  string(__obf_0e2c9fed14041ce5[__obf_74e4c62962a40491 : __obf_ec5c7f3e67ff13d2+1]),
+					Start: __obf_74e4c62962a40491,
+					End:   __obf_ec5c7f3e67ff13d2 + 1,
 				})
 			}
 		}
 	}
-	return __obf_92125008916bb172
+	return __obf_89f2c8dbe6260ce8
 }
 
 type WuManberMatcher struct {
-	__obf_0d256bcc98a70c22 []string
-	__obf_5e405c455150a363 int
-	__obf_ecab505238341be1 map[string]int32
-	__obf_2e308ab2dce5055a map[string][]int
-	__obf_7197038eb37c915f int
+	__obf_33207bb7dda88884 []string
+	__obf_2569a480ce883fcb int
+	__obf_693546b9cb409350 map[string]int32
+	__obf_033004856de206c0 map[string][]int
+	__obf_4642d9d31ba5ea32 int
 }
 
-func NewWuManberMatcher(__obf_5e405c455150a363 int) *WuManberMatcher {
-	return &WuManberMatcher{__obf_0d256bcc98a70c22: make([]string, 0), __obf_5e405c455150a363: __obf_5e405c455150a363, __obf_ecab505238341be1: make(map[string]int32), __obf_2e308ab2dce5055a: make(map[string][]int), __obf_7197038eb37c915f: int(^uint(0) >> 1)}
+func NewWuManberMatcher(__obf_2569a480ce883fcb int) *WuManberMatcher {
+	return &WuManberMatcher{__obf_33207bb7dda88884: make([]string, 0), __obf_2569a480ce883fcb: __obf_2569a480ce883fcb, __obf_693546b9cb409350: make(map[string]int32), __obf_033004856de206c0: make(map[string][]int), __obf_4642d9d31ba5ea32: int(^uint(0) >> 1)}
 }
 
-func (__obf_eb0bdcb309ca17f2 *WuManberMatcher) AddPatterns(__obf_0d256bcc98a70c22 []string) {
-	__obf_eb0bdcb309ca17f2.__obf_0d256bcc98a70c22 = __obf_0d256bcc98a70c22
-	for _, __obf_6035c2599a071317 := range __obf_0d256bcc98a70c22 {
-		__obf_31c98cbf675c8e03 := utf8.RuneCountInString(__obf_6035c2599a071317)
-		if __obf_31c98cbf675c8e03 > 0 && __obf_31c98cbf675c8e03 < __obf_eb0bdcb309ca17f2.__obf_7197038eb37c915f {
-			__obf_eb0bdcb309ca17f2.__obf_7197038eb37c915f = __obf_31c98cbf675c8e03
+func (__obf_b3b2ce14beb9c7ee *WuManberMatcher) AddPatterns(__obf_33207bb7dda88884 []string) {
+	__obf_b3b2ce14beb9c7ee.__obf_33207bb7dda88884 = __obf_33207bb7dda88884
+	for _, __obf_8f49d9c682b3f0da := range __obf_33207bb7dda88884 {
+		__obf_e04796fdada640f9 := utf8.RuneCountInString(__obf_8f49d9c682b3f0da)
+		if __obf_e04796fdada640f9 > 0 && __obf_e04796fdada640f9 < __obf_b3b2ce14beb9c7ee.__obf_4642d9d31ba5ea32 {
+			__obf_b3b2ce14beb9c7ee.__obf_4642d9d31ba5ea32 = __obf_e04796fdada640f9
 		}
 	}
 }
 
-func (__obf_eb0bdcb309ca17f2 *WuManberMatcher) Build() {
-	if len(__obf_eb0bdcb309ca17f2.__obf_0d256bcc98a70c22) == 0 {
+func (__obf_b3b2ce14beb9c7ee *WuManberMatcher) Build() {
+	if len(__obf_b3b2ce14beb9c7ee.__obf_33207bb7dda88884) == 0 {
 		return
 	}
-	if __obf_eb0bdcb309ca17f2.__obf_7197038eb37c915f < __obf_eb0bdcb309ca17f2.__obf_5e405c455150a363 {
-		__obf_eb0bdcb309ca17f2.__obf_5e405c455150a363 = __obf_eb0bdcb309ca17f2.__obf_7197038eb37c915f
+	if __obf_b3b2ce14beb9c7ee.__obf_4642d9d31ba5ea32 < __obf_b3b2ce14beb9c7ee.__obf_2569a480ce883fcb {
+		__obf_b3b2ce14beb9c7ee.__obf_2569a480ce883fcb = __obf_b3b2ce14beb9c7ee.__obf_4642d9d31ba5ea32
 	}
-	if __obf_eb0bdcb309ca17f2.__obf_5e405c455150a363 <= 0 {
-		__obf_eb0bdcb309ca17f2.__obf_5e405c455150a363 = 1
+	if __obf_b3b2ce14beb9c7ee.__obf_2569a480ce883fcb <= 0 {
+		__obf_b3b2ce14beb9c7ee.__obf_2569a480ce883fcb = 1
 	}
 
-	for __obf_09c4704e98f82128, __obf_f139de00b7562515 := range __obf_eb0bdcb309ca17f2.__obf_0d256bcc98a70c22 {
-		__obf_c6569bea94c0c483 := []rune(__obf_f139de00b7562515)
-		__obf_468675188c263d34 := len(__obf_c6569bea94c0c483)
-		for __obf_8c2ffe965b3e6421 := 0; __obf_8c2ffe965b3e6421 <= __obf_468675188c263d34-__obf_eb0bdcb309ca17f2.__obf_5e405c455150a363; __obf_8c2ffe965b3e6421++ {
-			__obf_58d90450001daaac := string(__obf_c6569bea94c0c483[__obf_8c2ffe965b3e6421 : __obf_8c2ffe965b3e6421+__obf_eb0bdcb309ca17f2.__obf_5e405c455150a363])
-			__obf_cc429112e67f1d4e := int32(__obf_468675188c263d34 - __obf_8c2ffe965b3e6421 - __obf_eb0bdcb309ca17f2.__obf_5e405c455150a363)
-			if __obf_c9b6499c56fcac00, __obf_161bbfc9bfb30dc2 := __obf_eb0bdcb309ca17f2.__obf_ecab505238341be1[__obf_58d90450001daaac]; !__obf_161bbfc9bfb30dc2 || __obf_cc429112e67f1d4e < __obf_c9b6499c56fcac00 {
-				__obf_eb0bdcb309ca17f2.__obf_ecab505238341be1[__obf_58d90450001daaac] = __obf_cc429112e67f1d4e
+	for __obf_74e4c62962a40491, __obf_aeb38b7ab5c45dbb := range __obf_b3b2ce14beb9c7ee.__obf_33207bb7dda88884 {
+		__obf_0e2c9fed14041ce5 := []rune(__obf_aeb38b7ab5c45dbb)
+		__obf_85d67f13d49591ab := len(__obf_0e2c9fed14041ce5)
+		for __obf_ec5c7f3e67ff13d2 := 0; __obf_ec5c7f3e67ff13d2 <= __obf_85d67f13d49591ab-__obf_b3b2ce14beb9c7ee.__obf_2569a480ce883fcb; __obf_ec5c7f3e67ff13d2++ {
+			__obf_ec28b331372b9a42 := string(__obf_0e2c9fed14041ce5[__obf_ec5c7f3e67ff13d2 : __obf_ec5c7f3e67ff13d2+__obf_b3b2ce14beb9c7ee.__obf_2569a480ce883fcb])
+			__obf_a8978473506acb08 := int32(__obf_85d67f13d49591ab - __obf_ec5c7f3e67ff13d2 - __obf_b3b2ce14beb9c7ee.__obf_2569a480ce883fcb)
+			if __obf_6bd0f348f93114f0, __obf_e9f356cc30ce1244 := __obf_b3b2ce14beb9c7ee.__obf_693546b9cb409350[__obf_ec28b331372b9a42]; !__obf_e9f356cc30ce1244 || __obf_a8978473506acb08 < __obf_6bd0f348f93114f0 {
+				__obf_b3b2ce14beb9c7ee.__obf_693546b9cb409350[__obf_ec28b331372b9a42] = __obf_a8978473506acb08
 			}
 		}
 
-		if __obf_468675188c263d34 >= __obf_eb0bdcb309ca17f2.__obf_5e405c455150a363 {
-			__obf_2bc3793ec54c8dc4 := string(__obf_c6569bea94c0c483[__obf_468675188c263d34-__obf_eb0bdcb309ca17f2.__obf_5e405c455150a363:])
-			__obf_eb0bdcb309ca17f2.__obf_2e308ab2dce5055a[__obf_2bc3793ec54c8dc4] = append(__obf_eb0bdcb309ca17f2.__obf_2e308ab2dce5055a[__obf_2bc3793ec54c8dc4], __obf_09c4704e98f82128)
+		if __obf_85d67f13d49591ab >= __obf_b3b2ce14beb9c7ee.__obf_2569a480ce883fcb {
+			__obf_e05bcca3f4a38c43 := string(__obf_0e2c9fed14041ce5[__obf_85d67f13d49591ab-__obf_b3b2ce14beb9c7ee.__obf_2569a480ce883fcb:])
+			__obf_b3b2ce14beb9c7ee.__obf_033004856de206c0[__obf_e05bcca3f4a38c43] = append(__obf_b3b2ce14beb9c7ee.__obf_033004856de206c0[__obf_e05bcca3f4a38c43], __obf_74e4c62962a40491)
 		}
 	}
 }
 
-func (__obf_eb0bdcb309ca17f2 *WuManberMatcher) Match(__obf_2f9bfc5f616e4c2e string) bool {
-	if len(__obf_eb0bdcb309ca17f2.__obf_0d256bcc98a70c22) == 0 {
+func (__obf_b3b2ce14beb9c7ee *WuManberMatcher) Match(__obf_8fd45bd0d265008c string) bool {
+	if len(__obf_b3b2ce14beb9c7ee.__obf_33207bb7dda88884) == 0 {
 		return false
 	}
-	__obf_c6569bea94c0c483 := []rune(__obf_2f9bfc5f616e4c2e)
-	__obf_8d54d637e1c142b6 := len(__obf_c6569bea94c0c483)
-	if __obf_8d54d637e1c142b6 < __obf_eb0bdcb309ca17f2.__obf_7197038eb37c915f {
+	__obf_0e2c9fed14041ce5 := []rune(__obf_8fd45bd0d265008c)
+	__obf_097c9ee75c2d3dba := len(__obf_0e2c9fed14041ce5)
+	if __obf_097c9ee75c2d3dba < __obf_b3b2ce14beb9c7ee.__obf_4642d9d31ba5ea32 {
 		return false
 	}
-	__obf_e821b24c447a8d6a := __obf_eb0bdcb309ca17f2.__obf_7197038eb37c915f - 1
-	for __obf_e821b24c447a8d6a < __obf_8d54d637e1c142b6 {
-		__obf_72595a93817cdaa2 := max(__obf_e821b24c447a8d6a-__obf_eb0bdcb309ca17f2.__obf_5e405c455150a363+1, 0)
-		__obf_58d90450001daaac := string(__obf_c6569bea94c0c483[__obf_72595a93817cdaa2 : __obf_e821b24c447a8d6a+1])
-		__obf_ecab505238341be1, __obf_161bbfc9bfb30dc2 := __obf_eb0bdcb309ca17f2.__obf_ecab505238341be1[__obf_58d90450001daaac]
-		if !__obf_161bbfc9bfb30dc2 {
-			__obf_e821b24c447a8d6a += (__obf_eb0bdcb309ca17f2.__obf_7197038eb37c915f - __obf_eb0bdcb309ca17f2.__obf_5e405c455150a363 + 1)
+	__obf_03793896c47f8d30 := __obf_b3b2ce14beb9c7ee.__obf_4642d9d31ba5ea32 - 1
+	for __obf_03793896c47f8d30 < __obf_097c9ee75c2d3dba {
+		__obf_f020b87544fd5832 := max(__obf_03793896c47f8d30-__obf_b3b2ce14beb9c7ee.__obf_2569a480ce883fcb+1, 0)
+		__obf_ec28b331372b9a42 := string(__obf_0e2c9fed14041ce5[__obf_f020b87544fd5832 : __obf_03793896c47f8d30+1])
+		__obf_693546b9cb409350, __obf_e9f356cc30ce1244 := __obf_b3b2ce14beb9c7ee.__obf_693546b9cb409350[__obf_ec28b331372b9a42]
+		if !__obf_e9f356cc30ce1244 {
+			__obf_03793896c47f8d30 += (__obf_b3b2ce14beb9c7ee.__obf_4642d9d31ba5ea32 - __obf_b3b2ce14beb9c7ee.__obf_2569a480ce883fcb + 1)
 			continue
 		}
-		if __obf_ecab505238341be1 == 0 {
-			if __obf_7f17fdd3da1fdaec, __obf_97c4a66ba64905ca := __obf_eb0bdcb309ca17f2.__obf_2e308ab2dce5055a[__obf_58d90450001daaac]; __obf_97c4a66ba64905ca {
-				for _, __obf_a3f2e1d560217eae := range __obf_7f17fdd3da1fdaec {
-					__obf_f139de00b7562515 := __obf_eb0bdcb309ca17f2.__obf_0d256bcc98a70c22[__obf_a3f2e1d560217eae]
-					__obf_5c460035be1bcb7d := utf8.RuneCountInString(__obf_f139de00b7562515)
-					__obf_e92287697e7d7a89 := __obf_e821b24c447a8d6a - __obf_5c460035be1bcb7d + 1
-					if __obf_e92287697e7d7a89 >= 0 && string(__obf_c6569bea94c0c483[__obf_e92287697e7d7a89:__obf_e92287697e7d7a89+__obf_5c460035be1bcb7d]) == __obf_f139de00b7562515 {
+		if __obf_693546b9cb409350 == 0 {
+			if __obf_38c4744101e4e0a9, __obf_de4222e243defcfd := __obf_b3b2ce14beb9c7ee.__obf_033004856de206c0[__obf_ec28b331372b9a42]; __obf_de4222e243defcfd {
+				for _, __obf_33302d7af91ae0ae := range __obf_38c4744101e4e0a9 {
+					__obf_aeb38b7ab5c45dbb := __obf_b3b2ce14beb9c7ee.__obf_33207bb7dda88884[__obf_33302d7af91ae0ae]
+					__obf_89953d2883e95bd7 := utf8.RuneCountInString(__obf_aeb38b7ab5c45dbb)
+					__obf_893eb2049b9e2d6c := __obf_03793896c47f8d30 - __obf_89953d2883e95bd7 + 1
+					if __obf_893eb2049b9e2d6c >= 0 && string(__obf_0e2c9fed14041ce5[__obf_893eb2049b9e2d6c:__obf_893eb2049b9e2d6c+__obf_89953d2883e95bd7]) == __obf_aeb38b7ab5c45dbb {
 						return true
 					}
 				}
 			}
-			__obf_e821b24c447a8d6a++
+			__obf_03793896c47f8d30++
 		} else {
-			__obf_e821b24c447a8d6a += int(__obf_ecab505238341be1)
+			__obf_03793896c47f8d30 += int(__obf_693546b9cb409350)
 		}
 	}
 	return false

@@ -1,4 +1,4 @@
-package __obf_7142f8a9722c34c6
+package __obf_b1435a5edddb39ec
 
 // Config .config for 小程序
 type Config struct {

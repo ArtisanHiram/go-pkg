@@ -1,4 +1,4 @@
-package __obf_3edaa49e853afa16
+package __obf_a4aad98aaf3178f4
 
 import (
 	"fmt"
@@ -6,290 +6,290 @@ import (
 	"reflect"
 )
 
-func (__obf_015afbee33862a01 *Decoder) __obf_1a431295b897a1b7(__obf_56127cd370854f0b int) error {
-	_, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.__obf_2c3d4aa0a72cea84(__obf_56127cd370854f0b)
-	return __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) __obf_2bfec4fb91ed09f6(__obf_99a74e41c9c640c0 int) error {
+	_, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.__obf_4429146a43365de4(__obf_99a74e41c9c640c0)
+	return __obf_4061ca0039150c39
 }
 
-func (__obf_015afbee33862a01 *Decoder) uint8() (uint8, error) {
-	__obf_145c7a7d25eea2bd, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.__obf_4c5f8d154c9027ea()
-	if __obf_3aa78ad28f50ed46 != nil {
-		return 0, __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) uint8() (uint8, error) {
+	__obf_6dbe86b3d9d9b037, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.__obf_46b95b57ed5617b5()
+	if __obf_4061ca0039150c39 != nil {
+		return 0, __obf_4061ca0039150c39
 	}
-	return __obf_145c7a7d25eea2bd, nil
+	return __obf_6dbe86b3d9d9b037, nil
 }
 
-func (__obf_015afbee33862a01 *Decoder) int8() (int8, error) {
-	__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.uint8()
-	return int8(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) int8() (int8, error) {
+	__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.uint8()
+	return int8(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 }
 
-func (__obf_015afbee33862a01 *Decoder) uint16() (uint16, error) {
-	__obf_9b4a5a04bdad2347, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.__obf_2c3d4aa0a72cea84(2)
-	if __obf_3aa78ad28f50ed46 != nil {
-		return 0, __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) uint16() (uint16, error) {
+	__obf_f57209cfda8e17cf, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.__obf_4429146a43365de4(2)
+	if __obf_4061ca0039150c39 != nil {
+		return 0, __obf_4061ca0039150c39
 	}
-	return (uint16(__obf_9b4a5a04bdad2347[0]) << 8) | uint16(__obf_9b4a5a04bdad2347[1]), nil
+	return (uint16(__obf_f57209cfda8e17cf[0]) << 8) | uint16(__obf_f57209cfda8e17cf[1]), nil
 }
 
-func (__obf_015afbee33862a01 *Decoder) int16() (int16, error) {
-	__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.uint16()
-	return int16(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) int16() (int16, error) {
+	__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.uint16()
+	return int16(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 }
 
-func (__obf_015afbee33862a01 *Decoder) uint32() (uint32, error) {
-	__obf_9b4a5a04bdad2347, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.__obf_2c3d4aa0a72cea84(4)
-	if __obf_3aa78ad28f50ed46 != nil {
-		return 0, __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) uint32() (uint32, error) {
+	__obf_f57209cfda8e17cf, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.__obf_4429146a43365de4(4)
+	if __obf_4061ca0039150c39 != nil {
+		return 0, __obf_4061ca0039150c39
 	}
-	__obf_56127cd370854f0b := (uint32(__obf_9b4a5a04bdad2347[0]) << 24) |
-		(uint32(__obf_9b4a5a04bdad2347[1]) << 16) |
-		(uint32(__obf_9b4a5a04bdad2347[2]) << 8) |
-		uint32(__obf_9b4a5a04bdad2347[3])
-	return __obf_56127cd370854f0b, nil
+	__obf_99a74e41c9c640c0 := (uint32(__obf_f57209cfda8e17cf[0]) << 24) |
+		(uint32(__obf_f57209cfda8e17cf[1]) << 16) |
+		(uint32(__obf_f57209cfda8e17cf[2]) << 8) |
+		uint32(__obf_f57209cfda8e17cf[3])
+	return __obf_99a74e41c9c640c0, nil
 }
 
-func (__obf_015afbee33862a01 *Decoder) int32() (int32, error) {
-	__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.uint32()
-	return int32(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) int32() (int32, error) {
+	__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.uint32()
+	return int32(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 }
 
-func (__obf_015afbee33862a01 *Decoder) uint64() (uint64, error) {
-	__obf_9b4a5a04bdad2347, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.__obf_2c3d4aa0a72cea84(8)
-	if __obf_3aa78ad28f50ed46 != nil {
-		return 0, __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) uint64() (uint64, error) {
+	__obf_f57209cfda8e17cf, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.__obf_4429146a43365de4(8)
+	if __obf_4061ca0039150c39 != nil {
+		return 0, __obf_4061ca0039150c39
 	}
-	__obf_56127cd370854f0b := (uint64(__obf_9b4a5a04bdad2347[0]) << 56) |
-		(uint64(__obf_9b4a5a04bdad2347[1]) << 48) |
-		(uint64(__obf_9b4a5a04bdad2347[2]) << 40) |
-		(uint64(__obf_9b4a5a04bdad2347[3]) << 32) |
-		(uint64(__obf_9b4a5a04bdad2347[4]) << 24) |
-		(uint64(__obf_9b4a5a04bdad2347[5]) << 16) |
-		(uint64(__obf_9b4a5a04bdad2347[6]) << 8) |
-		uint64(__obf_9b4a5a04bdad2347[7])
-	return __obf_56127cd370854f0b, nil
+	__obf_99a74e41c9c640c0 := (uint64(__obf_f57209cfda8e17cf[0]) << 56) |
+		(uint64(__obf_f57209cfda8e17cf[1]) << 48) |
+		(uint64(__obf_f57209cfda8e17cf[2]) << 40) |
+		(uint64(__obf_f57209cfda8e17cf[3]) << 32) |
+		(uint64(__obf_f57209cfda8e17cf[4]) << 24) |
+		(uint64(__obf_f57209cfda8e17cf[5]) << 16) |
+		(uint64(__obf_f57209cfda8e17cf[6]) << 8) |
+		uint64(__obf_f57209cfda8e17cf[7])
+	return __obf_99a74e41c9c640c0, nil
 }
 
-func (__obf_015afbee33862a01 *Decoder) int64() (int64, error) {
-	__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.uint64()
-	return int64(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) int64() (int64, error) {
+	__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.uint64()
+	return int64(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 }
 
 // DecodeUint64 decodes msgpack int8/16/32/64 and uint8/16/32/64
 // into Go uint64.
-func (__obf_015afbee33862a01 *Decoder) DecodeUint64() (uint64, error) {
-	__obf_145c7a7d25eea2bd, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.__obf_4c5f8d154c9027ea()
-	if __obf_3aa78ad28f50ed46 != nil {
-		return 0, __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) DecodeUint64() (uint64, error) {
+	__obf_6dbe86b3d9d9b037, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.__obf_46b95b57ed5617b5()
+	if __obf_4061ca0039150c39 != nil {
+		return 0, __obf_4061ca0039150c39
 	}
-	return __obf_015afbee33862a01.uint(__obf_145c7a7d25eea2bd)
+	return __obf_613397fefdec0ed0.uint(__obf_6dbe86b3d9d9b037)
 }
 
-func (__obf_015afbee33862a01 *Decoder) uint(__obf_145c7a7d25eea2bd byte) (uint64, error) {
-	if __obf_145c7a7d25eea2bd == Nil {
+func (__obf_613397fefdec0ed0 *Decoder) uint(__obf_6dbe86b3d9d9b037 byte) (uint64, error) {
+	if __obf_6dbe86b3d9d9b037 == Nil {
 		return 0, nil
 	}
-	if IsFixedNum(__obf_145c7a7d25eea2bd) {
-		return uint64(int8(__obf_145c7a7d25eea2bd)), nil
+	if IsFixedNum(__obf_6dbe86b3d9d9b037) {
+		return uint64(int8(__obf_6dbe86b3d9d9b037)), nil
 	}
-	switch __obf_145c7a7d25eea2bd {
+	switch __obf_6dbe86b3d9d9b037 {
 	case Uint8:
-		__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.uint8()
-		return uint64(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+		__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.uint8()
+		return uint64(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 	case Int8:
-		__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.int8()
-		return uint64(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+		__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.int8()
+		return uint64(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 	case Uint16:
-		__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.uint16()
-		return uint64(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+		__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.uint16()
+		return uint64(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 	case Int16:
-		__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.int16()
-		return uint64(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+		__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.int16()
+		return uint64(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 	case Uint32:
-		__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.uint32()
-		return uint64(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+		__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.uint32()
+		return uint64(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 	case Int32:
-		__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.int32()
-		return uint64(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+		__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.int32()
+		return uint64(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 	case Uint64, Int64:
-		return __obf_015afbee33862a01.uint64()
+		return __obf_613397fefdec0ed0.uint64()
 	}
-	return 0, fmt.Errorf("msgpack: invalid code=%x decoding uint64", __obf_145c7a7d25eea2bd)
+	return 0, fmt.Errorf("msgpack: invalid code=%x decoding uint64", __obf_6dbe86b3d9d9b037)
 }
 
 // DecodeInt64 decodes msgpack int8/16/32/64 and uint8/16/32/64
 // into Go int64.
-func (__obf_015afbee33862a01 *Decoder) DecodeInt64() (int64, error) {
-	__obf_145c7a7d25eea2bd, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.__obf_4c5f8d154c9027ea()
-	if __obf_3aa78ad28f50ed46 != nil {
-		return 0, __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) DecodeInt64() (int64, error) {
+	__obf_6dbe86b3d9d9b037, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.__obf_46b95b57ed5617b5()
+	if __obf_4061ca0039150c39 != nil {
+		return 0, __obf_4061ca0039150c39
 	}
-	return __obf_015afbee33862a01.int(__obf_145c7a7d25eea2bd)
+	return __obf_613397fefdec0ed0.int(__obf_6dbe86b3d9d9b037)
 }
 
-func (__obf_015afbee33862a01 *Decoder) int(__obf_145c7a7d25eea2bd byte) (int64, error) {
-	if __obf_145c7a7d25eea2bd == Nil {
+func (__obf_613397fefdec0ed0 *Decoder) int(__obf_6dbe86b3d9d9b037 byte) (int64, error) {
+	if __obf_6dbe86b3d9d9b037 == Nil {
 		return 0, nil
 	}
-	if IsFixedNum(__obf_145c7a7d25eea2bd) {
-		return int64(int8(__obf_145c7a7d25eea2bd)), nil
+	if IsFixedNum(__obf_6dbe86b3d9d9b037) {
+		return int64(int8(__obf_6dbe86b3d9d9b037)), nil
 	}
-	switch __obf_145c7a7d25eea2bd {
+	switch __obf_6dbe86b3d9d9b037 {
 	case Uint8:
-		__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.uint8()
-		return int64(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+		__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.uint8()
+		return int64(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 	case Int8:
-		__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.uint8()
-		return int64(int8(__obf_56127cd370854f0b)), __obf_3aa78ad28f50ed46
+		__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.uint8()
+		return int64(int8(__obf_99a74e41c9c640c0)), __obf_4061ca0039150c39
 	case Uint16:
-		__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.uint16()
-		return int64(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+		__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.uint16()
+		return int64(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 	case Int16:
-		__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.uint16()
-		return int64(int16(__obf_56127cd370854f0b)), __obf_3aa78ad28f50ed46
+		__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.uint16()
+		return int64(int16(__obf_99a74e41c9c640c0)), __obf_4061ca0039150c39
 	case Uint32:
-		__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.uint32()
-		return int64(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+		__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.uint32()
+		return int64(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 	case Int32:
-		__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.uint32()
-		return int64(int32(__obf_56127cd370854f0b)), __obf_3aa78ad28f50ed46
+		__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.uint32()
+		return int64(int32(__obf_99a74e41c9c640c0)), __obf_4061ca0039150c39
 	case Uint64, Int64:
-		__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.uint64()
-		return int64(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+		__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.uint64()
+		return int64(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 	}
-	return 0, fmt.Errorf("msgpack: invalid code=%x decoding int64", __obf_145c7a7d25eea2bd)
+	return 0, fmt.Errorf("msgpack: invalid code=%x decoding int64", __obf_6dbe86b3d9d9b037)
 }
 
-func (__obf_015afbee33862a01 *Decoder) DecodeFloat32() (float32, error) {
-	__obf_145c7a7d25eea2bd, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.__obf_4c5f8d154c9027ea()
-	if __obf_3aa78ad28f50ed46 != nil {
-		return 0, __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) DecodeFloat32() (float32, error) {
+	__obf_6dbe86b3d9d9b037, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.__obf_46b95b57ed5617b5()
+	if __obf_4061ca0039150c39 != nil {
+		return 0, __obf_4061ca0039150c39
 	}
-	return __obf_015afbee33862a01.float32(__obf_145c7a7d25eea2bd)
+	return __obf_613397fefdec0ed0.float32(__obf_6dbe86b3d9d9b037)
 }
 
-func (__obf_015afbee33862a01 *Decoder) float32(__obf_145c7a7d25eea2bd byte) (float32, error) {
-	if __obf_145c7a7d25eea2bd == Float {
-		__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.uint32()
-		if __obf_3aa78ad28f50ed46 != nil {
-			return 0, __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) float32(__obf_6dbe86b3d9d9b037 byte) (float32, error) {
+	if __obf_6dbe86b3d9d9b037 == Float {
+		__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.uint32()
+		if __obf_4061ca0039150c39 != nil {
+			return 0, __obf_4061ca0039150c39
 		}
-		return math.Float32frombits(__obf_56127cd370854f0b), nil
+		return math.Float32frombits(__obf_99a74e41c9c640c0), nil
 	}
-	__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.int(__obf_145c7a7d25eea2bd)
-	if __obf_3aa78ad28f50ed46 != nil {
-		return 0, fmt.Errorf("msgpack: invalid code=%x decoding float32", __obf_145c7a7d25eea2bd)
+	__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.int(__obf_6dbe86b3d9d9b037)
+	if __obf_4061ca0039150c39 != nil {
+		return 0, fmt.Errorf("msgpack: invalid code=%x decoding float32", __obf_6dbe86b3d9d9b037)
 	}
-	return float32(__obf_56127cd370854f0b), nil
+	return float32(__obf_99a74e41c9c640c0), nil
 }
 
 // DecodeFloat64 decodes msgpack float32/64 into Go float64.
-func (__obf_015afbee33862a01 *Decoder) DecodeFloat64() (float64, error) {
-	__obf_145c7a7d25eea2bd, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.__obf_4c5f8d154c9027ea()
-	if __obf_3aa78ad28f50ed46 != nil {
-		return 0, __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) DecodeFloat64() (float64, error) {
+	__obf_6dbe86b3d9d9b037, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.__obf_46b95b57ed5617b5()
+	if __obf_4061ca0039150c39 != nil {
+		return 0, __obf_4061ca0039150c39
 	}
-	return __obf_015afbee33862a01.float64(__obf_145c7a7d25eea2bd)
+	return __obf_613397fefdec0ed0.float64(__obf_6dbe86b3d9d9b037)
 }
 
-func (__obf_015afbee33862a01 *Decoder) float64(__obf_145c7a7d25eea2bd byte) (float64, error) {
-	switch __obf_145c7a7d25eea2bd {
+func (__obf_613397fefdec0ed0 *Decoder) float64(__obf_6dbe86b3d9d9b037 byte) (float64, error) {
+	switch __obf_6dbe86b3d9d9b037 {
 	case Float:
-		__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.float32(__obf_145c7a7d25eea2bd)
-		if __obf_3aa78ad28f50ed46 != nil {
-			return 0, __obf_3aa78ad28f50ed46
+		__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.float32(__obf_6dbe86b3d9d9b037)
+		if __obf_4061ca0039150c39 != nil {
+			return 0, __obf_4061ca0039150c39
 		}
-		return float64(__obf_56127cd370854f0b), nil
+		return float64(__obf_99a74e41c9c640c0), nil
 	case Double:
-		__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.uint64()
-		if __obf_3aa78ad28f50ed46 != nil {
-			return 0, __obf_3aa78ad28f50ed46
+		__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.uint64()
+		if __obf_4061ca0039150c39 != nil {
+			return 0, __obf_4061ca0039150c39
 		}
-		return math.Float64frombits(__obf_56127cd370854f0b), nil
+		return math.Float64frombits(__obf_99a74e41c9c640c0), nil
 	}
-	__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.int(__obf_145c7a7d25eea2bd)
-	if __obf_3aa78ad28f50ed46 != nil {
-		return 0, fmt.Errorf("msgpack: invalid code=%x decoding float32", __obf_145c7a7d25eea2bd)
+	__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.int(__obf_6dbe86b3d9d9b037)
+	if __obf_4061ca0039150c39 != nil {
+		return 0, fmt.Errorf("msgpack: invalid code=%x decoding float32", __obf_6dbe86b3d9d9b037)
 	}
-	return float64(__obf_56127cd370854f0b), nil
+	return float64(__obf_99a74e41c9c640c0), nil
 }
 
-func (__obf_015afbee33862a01 *Decoder) DecodeUint() (uint, error) {
-	__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.DecodeUint64()
-	return uint(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) DecodeUint() (uint, error) {
+	__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.DecodeUint64()
+	return uint(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 }
 
-func (__obf_015afbee33862a01 *Decoder) DecodeUint8() (uint8, error) {
-	__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.DecodeUint64()
-	return uint8(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) DecodeUint8() (uint8, error) {
+	__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.DecodeUint64()
+	return uint8(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 }
 
-func (__obf_015afbee33862a01 *Decoder) DecodeUint16() (uint16, error) {
-	__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.DecodeUint64()
-	return uint16(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) DecodeUint16() (uint16, error) {
+	__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.DecodeUint64()
+	return uint16(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 }
 
-func (__obf_015afbee33862a01 *Decoder) DecodeUint32() (uint32, error) {
-	__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.DecodeUint64()
-	return uint32(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) DecodeUint32() (uint32, error) {
+	__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.DecodeUint64()
+	return uint32(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 }
 
-func (__obf_015afbee33862a01 *Decoder) DecodeInt() (int, error) {
-	__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.DecodeInt64()
-	return int(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) DecodeInt() (int, error) {
+	__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.DecodeInt64()
+	return int(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 }
 
-func (__obf_015afbee33862a01 *Decoder) DecodeInt8() (int8, error) {
-	__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.DecodeInt64()
-	return int8(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) DecodeInt8() (int8, error) {
+	__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.DecodeInt64()
+	return int8(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 }
 
-func (__obf_015afbee33862a01 *Decoder) DecodeInt16() (int16, error) {
-	__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.DecodeInt64()
-	return int16(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) DecodeInt16() (int16, error) {
+	__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.DecodeInt64()
+	return int16(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 }
 
-func (__obf_015afbee33862a01 *Decoder) DecodeInt32() (int32, error) {
-	__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.DecodeInt64()
-	return int32(__obf_56127cd370854f0b), __obf_3aa78ad28f50ed46
+func (__obf_613397fefdec0ed0 *Decoder) DecodeInt32() (int32, error) {
+	__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.DecodeInt64()
+	return int32(__obf_99a74e41c9c640c0), __obf_4061ca0039150c39
 }
 
-func __obf_fe8f515e5461c435(__obf_015afbee33862a01 *Decoder, __obf_85d270343a0dfe14 reflect.Value) error {
-	__obf_40a54345a49c3cd5, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.DecodeFloat32()
-	if __obf_3aa78ad28f50ed46 != nil {
-		return __obf_3aa78ad28f50ed46
+func __obf_60142f5a2be96546(__obf_613397fefdec0ed0 *Decoder, __obf_a1f43267eeb48a1a reflect.Value) error {
+	__obf_da4a2296298d318f, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.DecodeFloat32()
+	if __obf_4061ca0039150c39 != nil {
+		return __obf_4061ca0039150c39
 	}
-	__obf_85d270343a0dfe14.
-		SetFloat(float64(__obf_40a54345a49c3cd5))
+	__obf_a1f43267eeb48a1a.
+		SetFloat(float64(__obf_da4a2296298d318f))
 	return nil
 }
 
-func __obf_0ccce5c30ace0e82(__obf_015afbee33862a01 *Decoder, __obf_85d270343a0dfe14 reflect.Value) error {
-	__obf_40a54345a49c3cd5, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.DecodeFloat64()
-	if __obf_3aa78ad28f50ed46 != nil {
-		return __obf_3aa78ad28f50ed46
+func __obf_a14f56eca4c741e3(__obf_613397fefdec0ed0 *Decoder, __obf_a1f43267eeb48a1a reflect.Value) error {
+	__obf_da4a2296298d318f, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.DecodeFloat64()
+	if __obf_4061ca0039150c39 != nil {
+		return __obf_4061ca0039150c39
 	}
-	__obf_85d270343a0dfe14.
-		SetFloat(__obf_40a54345a49c3cd5)
+	__obf_a1f43267eeb48a1a.
+		SetFloat(__obf_da4a2296298d318f)
 	return nil
 }
 
-func __obf_69ca6ad8831c417d(__obf_015afbee33862a01 *Decoder, __obf_85d270343a0dfe14 reflect.Value) error {
-	__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.DecodeInt64()
-	if __obf_3aa78ad28f50ed46 != nil {
-		return __obf_3aa78ad28f50ed46
+func __obf_ee0f5bc124a2f6b4(__obf_613397fefdec0ed0 *Decoder, __obf_a1f43267eeb48a1a reflect.Value) error {
+	__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.DecodeInt64()
+	if __obf_4061ca0039150c39 != nil {
+		return __obf_4061ca0039150c39
 	}
-	__obf_85d270343a0dfe14.
-		SetInt(__obf_56127cd370854f0b)
+	__obf_a1f43267eeb48a1a.
+		SetInt(__obf_99a74e41c9c640c0)
 	return nil
 }
 
-func __obf_e4e267de4597ac4a(__obf_015afbee33862a01 *Decoder, __obf_85d270343a0dfe14 reflect.Value) error {
-	__obf_56127cd370854f0b, __obf_3aa78ad28f50ed46 := __obf_015afbee33862a01.DecodeUint64()
-	if __obf_3aa78ad28f50ed46 != nil {
-		return __obf_3aa78ad28f50ed46
+func __obf_4a99d79a1164a943(__obf_613397fefdec0ed0 *Decoder, __obf_a1f43267eeb48a1a reflect.Value) error {
+	__obf_99a74e41c9c640c0, __obf_4061ca0039150c39 := __obf_613397fefdec0ed0.DecodeUint64()
+	if __obf_4061ca0039150c39 != nil {
+		return __obf_4061ca0039150c39
 	}
-	__obf_85d270343a0dfe14.
-		SetUint(__obf_56127cd370854f0b)
+	__obf_a1f43267eeb48a1a.
+		SetUint(__obf_99a74e41c9c640c0)
 	return nil
 }

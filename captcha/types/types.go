@@ -1,4 +1,4 @@
-package __obf_244ef50d49151021
+package __obf_bda21a78cb74016a
 
 import (
 	"errors"
@@ -56,7 +56,7 @@ type CaptchaData interface {
 	GetSecondary() CaptchaImage
 	GetData() any
 	Type() CaptchaType
-	Verify(__obf_6544c3ce66f054cc any, __obf_ca3c6f396acc09ca int) bool
+	Verify(__obf_452f32a1d78021b5 any, __obf_eaf80d33307c2421 int) bool
 }
 
 type Captcha interface {
@@ -84,12 +84,12 @@ type AreaRect struct {
 }
 
 // MakeAreaRect creates an area rectangle
-func MakeAreaRect(__obf_1e1cf7aec767392f, __obf_4135b4099e87ad95, __obf_953be905ac791795, __obf_8a6b79e05b444849 int) *AreaRect {
+func MakeAreaRect(__obf_3e53c2c2bb910b9a, __obf_07246f35f00b04d8, __obf_e73af132ae74e0e7, __obf_543a25daa33286c0 int) *AreaRect {
 	return &AreaRect{
-		MinX: __obf_1e1cf7aec767392f,
-		MaxX: __obf_953be905ac791795,
-		MinY: __obf_4135b4099e87ad95,
-		MaxY: __obf_8a6b79e05b444849,
+		MinX: __obf_3e53c2c2bb910b9a,
+		MaxX: __obf_e73af132ae74e0e7,
+		MinY: __obf_07246f35f00b04d8,
+		MaxY: __obf_543a25daa33286c0,
 	}
 }
 
@@ -99,12 +99,12 @@ type PositionRect struct {
 }
 
 // MakePositionRect creates a position rectangle
-func MakePositionRect(__obf_e487b3618d36e102, __obf_8cbd87ef15403513, __obf_e0d45be06f8e29d9, __obf_b0bdb05fb01e5fd8 int) *PositionRect {
+func MakePositionRect(__obf_e22e7e43df48995e, __obf_a4dd1bd05990217f, __obf_b02fcc956b08e1ae, __obf_6f8e99209c36dd76 int) *PositionRect {
 	return &PositionRect{
-		X:      __obf_e487b3618d36e102,
-		Y:      __obf_8cbd87ef15403513,
-		Height: __obf_e0d45be06f8e29d9,
-		Width:  __obf_b0bdb05fb01e5fd8,
+		X:      __obf_e22e7e43df48995e,
+		Y:      __obf_a4dd1bd05990217f,
+		Height: __obf_b02fcc956b08e1ae,
+		Width:  __obf_6f8e99209c36dd76,
 	}
 }
 

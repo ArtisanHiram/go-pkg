@@ -1,4 +1,4 @@
-package __obf_9833fbfb1ccf920c
+package __obf_9ab9af27d860ed25
 
 import (
 	click "github.com/ArtisanHiram/go-pkg/captcha/internal/click"
@@ -9,8 +9,8 @@ import (
 	"golang.org/x/image/font"
 )
 
-func NewClickCaptcha(__obf_712cabc91cd7b883 click.Option) *click.Captcha {
-	__obf_1fde67f2789fcf6a := &click.Options{
+func NewClickCaptcha(__obf_af7eb7b2c450aa27 click.Option) *click.Captcha {
+	__obf_3bc0278cc015a685 := &click.Options{
 		FontDPI:     72, // Increased to 200 for high quality rendering
 		FontHinting: font.HintingNone,
 		Primary: click.Primary{
@@ -43,15 +43,15 @@ func NewClickCaptcha(__obf_712cabc91cd7b883 click.Option) *click.Captcha {
 		},
 	}
 
-	if __obf_712cabc91cd7b883 != nil {
-		__obf_712cabc91cd7b883(__obf_1fde67f2789fcf6a)
+	if __obf_af7eb7b2c450aa27 != nil {
+		__obf_af7eb7b2c450aa27(__obf_3bc0278cc015a685)
 	}
 
-	return click.NewCaptcha(__obf_1fde67f2789fcf6a)
+	return click.NewCaptcha(__obf_3bc0278cc015a685)
 }
 
-func NewRotateCaptcha(__obf_712cabc91cd7b883 rotate.Option) *rotate.Captcha {
-	__obf_1fde67f2789fcf6a := &rotate.Options{
+func NewRotateCaptcha(__obf_af7eb7b2c450aa27 rotate.Option) *rotate.Captcha {
+	__obf_3bc0278cc015a685 := &rotate.Options{
 		Primary: rotate.Primary{
 			Size:  220,
 			Alpha: 1,
@@ -65,14 +65,14 @@ func NewRotateCaptcha(__obf_712cabc91cd7b883 rotate.Option) *rotate.Captcha {
 		},
 	}
 
-	if __obf_712cabc91cd7b883 != nil {
-		__obf_712cabc91cd7b883(__obf_1fde67f2789fcf6a)
+	if __obf_af7eb7b2c450aa27 != nil {
+		__obf_af7eb7b2c450aa27(__obf_3bc0278cc015a685)
 	}
-	return rotate.NewCaptcha(__obf_1fde67f2789fcf6a)
+	return rotate.NewCaptcha(__obf_3bc0278cc015a685)
 }
 
-func NewMoveCaptcha(__obf_712cabc91cd7b883 slide.Option) *slide.Captcha {
-	__obf_1fde67f2789fcf6a := &slide.Options{
+func NewMoveCaptcha(__obf_af7eb7b2c450aa27 slide.Option) *slide.Captcha {
+	__obf_3bc0278cc015a685 := &slide.Options{
 		Type: slide.Move,
 		Primary: slide.Primary{
 			Size:  types.Size{Width: 400, Height: 340},
@@ -89,16 +89,16 @@ func NewMoveCaptcha(__obf_712cabc91cd7b883 slide.Option) *slide.Captcha {
 		},
 	}
 
-	if __obf_712cabc91cd7b883 != nil {
-		__obf_712cabc91cd7b883(__obf_1fde67f2789fcf6a)
+	if __obf_af7eb7b2c450aa27 != nil {
+		__obf_af7eb7b2c450aa27(__obf_3bc0278cc015a685)
 	}
 
-	return slide.NewCaptcha(__obf_1fde67f2789fcf6a)
+	return slide.NewCaptcha(__obf_3bc0278cc015a685)
 
 }
 
-func NewDragCaptcha(__obf_712cabc91cd7b883 slide.Option) *slide.Captcha {
-	__obf_1fde67f2789fcf6a := &slide.Options{
+func NewDragCaptcha(__obf_af7eb7b2c450aa27 slide.Option) *slide.Captcha {
+	__obf_3bc0278cc015a685 := &slide.Options{
 		Type: slide.Drag,
 		Primary: slide.Primary{
 			Size:  types.Size{Width: 400, Height: 340},
@@ -120,9 +120,9 @@ func NewDragCaptcha(__obf_712cabc91cd7b883 slide.Option) *slide.Captcha {
 		},
 	}
 
-	if __obf_712cabc91cd7b883 != nil {
-		__obf_712cabc91cd7b883(__obf_1fde67f2789fcf6a)
+	if __obf_af7eb7b2c450aa27 != nil {
+		__obf_af7eb7b2c450aa27(__obf_3bc0278cc015a685)
 	}
 
-	return slide.NewCaptcha(__obf_1fde67f2789fcf6a)
+	return slide.NewCaptcha(__obf_3bc0278cc015a685)
 }

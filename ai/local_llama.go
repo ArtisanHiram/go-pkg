@@ -23,100 +23,100 @@ type LLM struct {
 }
 
 // GetLLMProps reads the properties currently set to the LLM struct.
-func (__obf_af7a27176ba0382a *LLM) GetLLMProps() {
-	fmt.Println("Model Path: ", __obf_af7a27176ba0382a.Model)
-	fmt.Println("Llama.cpp Path: ", __obf_af7a27176ba0382a.Llamacpp)
-	fmt.Println("Indexes of Cuda devices to use: ", __obf_af7a27176ba0382a.CudaDevices)
-	fmt.Println("Size of the prompt context: ", __obf_af7a27176ba0382a.CtxSize)
-	fmt.Println("Temperature: ", __obf_af7a27176ba0382a.Temp)
-	fmt.Println("Top-k sampling: ", __obf_af7a27176ba0382a.TopK)
-	fmt.Println("Penalize repeat sequence of tokens: ", __obf_af7a27176ba0382a.RepeatPenalty)
-	fmt.Println("Number of layers to store in VRAM: ", __obf_af7a27176ba0382a.Ngl)
-	fmt.Println("Max number of tokens for model response: ", __obf_af7a27176ba0382a.MaxTokens)
-	fmt.Println("List of generation-stopping strings: ", __obf_af7a27176ba0382a.Stop)
+func (__obf_5420da665f8475f6 *LLM) GetLLMProps() {
+	fmt.Println("Model Path: ", __obf_5420da665f8475f6.Model)
+	fmt.Println("Llama.cpp Path: ", __obf_5420da665f8475f6.Llamacpp)
+	fmt.Println("Indexes of Cuda devices to use: ", __obf_5420da665f8475f6.CudaDevices)
+	fmt.Println("Size of the prompt context: ", __obf_5420da665f8475f6.CtxSize)
+	fmt.Println("Temperature: ", __obf_5420da665f8475f6.Temp)
+	fmt.Println("Top-k sampling: ", __obf_5420da665f8475f6.TopK)
+	fmt.Println("Penalize repeat sequence of tokens: ", __obf_5420da665f8475f6.RepeatPenalty)
+	fmt.Println("Number of layers to store in VRAM: ", __obf_5420da665f8475f6.Ngl)
+	fmt.Println("Max number of tokens for model response: ", __obf_5420da665f8475f6.MaxTokens)
+	fmt.Println("List of generation-stopping strings: ", __obf_5420da665f8475f6.Stop)
 }
 
 // llmDefaults sets the default values to LLM struct properties in case they are missing user input.
-func (__obf_af7a27176ba0382a *LLM) __obf_727c6c38a64e2a90() {
-	if __obf_af7a27176ba0382a.Model == "" {
-		__obf_af7a27176ba0382a.
+func (__obf_5420da665f8475f6 *LLM) __obf_352671a580433840() {
+	if __obf_5420da665f8475f6.Model == "" {
+		__obf_5420da665f8475f6.
 			Model = "./llama.cpp/models/ggml-vocab.bin"
 	}
-	if __obf_af7a27176ba0382a.Llamacpp == "" {
-		__obf_af7a27176ba0382a.
+	if __obf_5420da665f8475f6.Llamacpp == "" {
+		__obf_5420da665f8475f6.
 			Llamacpp = "./llama.cpp"
 	}
-	if __obf_af7a27176ba0382a.CudaDevices == nil {
-		__obf_af7a27176ba0382a.
+	if __obf_5420da665f8475f6.CudaDevices == nil {
+		__obf_5420da665f8475f6.
 			CudaDevices = []int{0}
 	}
-	if __obf_af7a27176ba0382a.CtxSize == 0 {
-		__obf_af7a27176ba0382a.
+	if __obf_5420da665f8475f6.CtxSize == 0 {
+		__obf_5420da665f8475f6.
 			CtxSize = 2048
 	}
-	if __obf_af7a27176ba0382a.Temp == 0 {
-		__obf_af7a27176ba0382a.
+	if __obf_5420da665f8475f6.Temp == 0 {
+		__obf_5420da665f8475f6.
 			Temp = 0.2
 	}
-	if __obf_af7a27176ba0382a.CpuCores == 0 {
-		__obf_af7a27176ba0382a.
+	if __obf_5420da665f8475f6.CpuCores == 0 {
+		__obf_5420da665f8475f6.
 			CpuCores = 8
 	}
-	if __obf_af7a27176ba0382a.TopK == 0 {
-		__obf_af7a27176ba0382a.
+	if __obf_5420da665f8475f6.TopK == 0 {
+		__obf_5420da665f8475f6.
 			TopK = 10000
 	}
-	if __obf_af7a27176ba0382a.RepeatPenalty == 0 {
-		__obf_af7a27176ba0382a.
+	if __obf_5420da665f8475f6.RepeatPenalty == 0 {
+		__obf_5420da665f8475f6.
 			RepeatPenalty = 1.1
 	}
-	if __obf_af7a27176ba0382a.MaxTokens == 0 {
-		__obf_af7a27176ba0382a.
+	if __obf_5420da665f8475f6.MaxTokens == 0 {
+		__obf_5420da665f8475f6.
 			MaxTokens = 1000
 	}
 }
 
 // createPipes method creates the running process of llama.cpp on which the LLM will be running. It also creates the communication pipes for GoLlama.
 // It returns the command to run llama.cpp, the communication pipes, and an error (in case something went wrong).
-func __obf_f10341eff3acae11(__obf_af7a27176ba0382a *LLM) (*exec.Cmd, io.WriteCloser, io.ReadCloser, error) {
-	__obf_e6ee2f91b519505f := __obf_af7a27176ba0382a.Llamacpp + "/main"
-	__obf_d8f16489bc95a82a := // By default, the models are to be ran on instruction mode hence the '-ins' flag
-		exec.Command(__obf_e6ee2f91b519505f, "-m", __obf_af7a27176ba0382a.Model, "--color", "--ctx_size", fmt.Sprint(__obf_af7a27176ba0382a.CtxSize), "-n", "-1", "-ins", "-b", "128", "--top_k",
-			fmt.Sprint(__obf_af7a27176ba0382a.TopK), "--temp", fmt.Sprint(__obf_af7a27176ba0382a.Temp), "--repeat_penalty", fmt.Sprint(__obf_af7a27176ba0382a.RepeatPenalty), "--n-gpu-layers", fmt.Sprint(__obf_af7a27176ba0382a.Ngl), "-t", fmt.Sprint(__obf_af7a27176ba0382a.CpuCores), "-ins")
-	__obf_dd6f0ba4250578dd,
+func __obf_a55eef140bab8cfd(__obf_5420da665f8475f6 *LLM) (*exec.Cmd, io.WriteCloser, io.ReadCloser, error) {
+	__obf_09bf891cab166074 := __obf_5420da665f8475f6.Llamacpp + "/main"
+	__obf_ed448ce9044e156b := // By default, the models are to be ran on instruction mode hence the '-ins' flag
+		exec.Command(__obf_09bf891cab166074, "-m", __obf_5420da665f8475f6.Model, "--color", "--ctx_size", fmt.Sprint(__obf_5420da665f8475f6.CtxSize), "-n", "-1", "-ins", "-b", "128", "--top_k",
+			fmt.Sprint(__obf_5420da665f8475f6.TopK), "--temp", fmt.Sprint(__obf_5420da665f8475f6.Temp), "--repeat_penalty", fmt.Sprint(__obf_5420da665f8475f6.RepeatPenalty), "--n-gpu-layers", fmt.Sprint(__obf_5420da665f8475f6.Ngl), "-t", fmt.Sprint(__obf_5420da665f8475f6.CpuCores), "-ins")
+	__obf_dd74bc9eca1bdfaa,
 
 		// Set the working directory if needed (for access to other directories)
 		// cmd.Dir = ""
-		__obf_809db486b2a49454 := // Create a writer for sending data to Python's stdin
-		__obf_d8f16489bc95a82a.StdinPipe()
-	if __obf_809db486b2a49454 != nil {
-		fmt.Println("Error creating stdin pipe:", __obf_809db486b2a49454)
-		return nil, nil, nil, __obf_809db486b2a49454
+		__obf_9098f73390632edc := // Create a writer for sending data to Python's stdin
+		__obf_ed448ce9044e156b.StdinPipe()
+	if __obf_9098f73390632edc != nil {
+		fmt.Println("Error creating stdin pipe:", __obf_9098f73390632edc)
+		return nil, nil, nil, __obf_9098f73390632edc
 	}
-	__obf_5a386f3c24877d35,
+	__obf_d4b9ca4c14b195d8,
 
 		// Create pipes for capturing Python's stdout and stderr
-		__obf_809db486b2a49454 := __obf_d8f16489bc95a82a.StdoutPipe()
-	if __obf_809db486b2a49454 != nil {
-		fmt.Println("Error creating stdout pipe:", __obf_809db486b2a49454)
-		return nil, nil, nil, __obf_809db486b2a49454
+		__obf_9098f73390632edc := __obf_ed448ce9044e156b.StdoutPipe()
+	if __obf_9098f73390632edc != nil {
+		fmt.Println("Error creating stdout pipe:", __obf_9098f73390632edc)
+		return nil, nil, nil, __obf_9098f73390632edc
 	}
 
-	return __obf_d8f16489bc95a82a, __obf_dd6f0ba4250578dd,
+	return __obf_ed448ce9044e156b, __obf_dd74bc9eca1bdfaa,
 
 		// closePipes function closes the provided pipes and closes the command process.
 		// func closePipes(cmd *exec.Cmd, stdin io.WriteCloser, stdout io.ReadCloser) {
-		__obf_5a386f3c24877d35, nil
+		__obf_d4b9ca4c14b195d8, nil
 }
 
-func __obf_fecbb97bd2dba020(__obf_d8f16489bc95a82a *exec.Cmd, __obf_dd6f0ba4250578dd io.WriteCloser) {
-	__obf_b89070e1e9029dd1 := // Close the stdin pipe to signal the end of input
-		__obf_dd6f0ba4250578dd.Close()
+func __obf_f170a27171868d9d(__obf_ed448ce9044e156b *exec.Cmd, __obf_dd74bc9eca1bdfaa io.WriteCloser) {
+	__obf_86630dc06fcf0905 := // Close the stdin pipe to signal the end of input
+		__obf_dd74bc9eca1bdfaa.Close()
 
-	if __obf_b89070e1e9029dd1 != nil {
-		fmt.Println("Error when closing the command:", __obf_b89070e1e9029dd1)
+	if __obf_86630dc06fcf0905 != nil {
+		fmt.Println("Error when closing the command:", __obf_86630dc06fcf0905)
 	}
-	__obf_d8f16489bc95a82a.
+	__obf_ed448ce9044e156b.
 
 		// Close the communication with the llm
 		Process.Kill()
@@ -124,127 +124,127 @@ func __obf_fecbb97bd2dba020(__obf_d8f16489bc95a82a *exec.Cmd, __obf_dd6f0ba42505
 
 // PromptModel method orderly prompts the LLM with the provided prompts in the array, engaging in a sort of conversation.
 // It returns an array with the respones of the LLM, each response matching with the index of its prompt.
-func (__obf_af7a27176ba0382a *LLM) PromptModel(__obf_a9687332caea4869 []string) ([]string, error) {
-	__obf_af7a27176ba0382a.__obf_727c6c38a64e2a90()
-	__obf_d8f16489bc95a82a, __obf_dd6f0ba4250578dd, __obf_5a386f3c24877d35, __obf_809db486b2a49454 := __obf_f10341eff3acae11(__obf_af7a27176ba0382a)
+func (__obf_5420da665f8475f6 *LLM) PromptModel(__obf_1b4298bce99a227c []string) ([]string, error) {
+	__obf_5420da665f8475f6.__obf_352671a580433840()
+	__obf_ed448ce9044e156b, __obf_dd74bc9eca1bdfaa, __obf_d4b9ca4c14b195d8, __obf_9098f73390632edc := __obf_a55eef140bab8cfd(__obf_5420da665f8475f6)
 
-	if __obf_809db486b2a49454 != nil {
-		fmt.Println("Error creating pipes:", __obf_809db486b2a49454)
-		return []string{"Error creating pipes."}, __obf_809db486b2a49454
+	if __obf_9098f73390632edc != nil {
+		fmt.Println("Error creating pipes:", __obf_9098f73390632edc)
+		return []string{"Error creating pipes."}, __obf_9098f73390632edc
 	}
-	__obf_e0a90ed617746bb1 := // Start the llama.cpp llm communication process
-		__obf_d8f16489bc95a82a.Start()
-	if __obf_e0a90ed617746bb1 != nil {
-		fmt.Println("Error starting command:", __obf_e0a90ed617746bb1)
-		return []string{"Error starting command."}, __obf_e0a90ed617746bb1
+	__obf_ed46ef7b5c00fcfc := // Start the llama.cpp llm communication process
+		__obf_ed448ce9044e156b.Start()
+	if __obf_ed46ef7b5c00fcfc != nil {
+		fmt.Println("Error starting command:", __obf_ed46ef7b5c00fcfc)
+		return []string{"Error starting command."}, __obf_ed46ef7b5c00fcfc
 	}
-	__obf_a8ef9f6f72b573ec := // Array for the collection of outputs
+	__obf_95a64401d7694465 := // Array for the collection of outputs
 		[]string{}
-	__obf_4c8d0634add11d18 := // Create a buffer for the stdout
+	__obf_fe1cb28da8a2bf13 := // Create a buffer for the stdout
 		make([]byte, 1024)
-	__obf_0e792b69753db82b := // Create a counter for the amount of completed inputs
+	__obf_af20f88a2aa885a5 := // Create a counter for the amount of completed inputs
 		0
 
 	// Prompt all the inputs
-	for __obf_7305c84c06b6530a, __obf_d7ddfe2c4ca4f885 := range __obf_a9687332caea4869 {
-		__obf_7305c84c06b6530a = // When a prompt is first sent, it creates a \n> character automatically, so 'i' is incremented by 1 to reflect this
-			__obf_7305c84c06b6530a + 1
-		__obf_d7ddfe2c4ca4f885 = // Add the instruction block to the input
-			__obf_af7a27176ba0382a.InstructionBlock + __obf_d7ddfe2c4ca4f885
+	for __obf_b20fd43df1cd8f24, __obf_0c8d58051c5d0722 := range __obf_1b4298bce99a227c {
+		__obf_b20fd43df1cd8f24 = // When a prompt is first sent, it creates a \n> character automatically, so 'i' is incremented by 1 to reflect this
+			__obf_b20fd43df1cd8f24 + 1
+		__obf_0c8d58051c5d0722 = // Add the instruction block to the input
+			__obf_5420da665f8475f6.InstructionBlock + __obf_0c8d58051c5d0722
 
 		// Input must contain an EOL for the LLM to correctly interpret the propmt's end
-		if !strings.Contains(__obf_d7ddfe2c4ca4f885, "\n") {
-			__obf_d7ddfe2c4ca4f885 += "\n"
+		if !strings.Contains(__obf_0c8d58051c5d0722, "\n") {
+			__obf_0c8d58051c5d0722 += "\n"
 		}
 
 		// Prompting the llm
-		io.WriteString(__obf_dd6f0ba4250578dd, __obf_d7ddfe2c4ca4f885)
-		__obf_09d4244727ab0b9d := ""
+		io.WriteString(__obf_dd74bc9eca1bdfaa, __obf_0c8d58051c5d0722)
+		__obf_e40a97c436716504 := ""
 		for {
-			__obf_494032745234b2f6, __obf_809db486b2a49454 := __obf_5a386f3c24877d35.Read(__obf_4c8d0634add11d18)
-			if __obf_809db486b2a49454 != nil {
-				if __obf_809db486b2a49454 != io.EOF {
-					fmt.Println("Error reading token:", __obf_809db486b2a49454)
+			__obf_52420a4f6eef7498, __obf_9098f73390632edc := __obf_d4b9ca4c14b195d8.Read(__obf_fe1cb28da8a2bf13)
+			if __obf_9098f73390632edc != nil {
+				if __obf_9098f73390632edc != io.EOF {
+					fmt.Println("Error reading token:", __obf_9098f73390632edc)
 				}
 				break
 			}
-			__obf_743870edc95d417a := string(__obf_4c8d0634add11d18[:__obf_494032745234b2f6])
-			__obf_09d4244727ab0b9d = __obf_09d4244727ab0b9d + __obf_743870edc95d417a
+			__obf_1e3b933339b47bc2 := string(__obf_fe1cb28da8a2bf13[:__obf_52420a4f6eef7498])
+			__obf_e40a97c436716504 = __obf_e40a97c436716504 + __obf_1e3b933339b47bc2
 
-			if strings.Contains(__obf_743870edc95d417a, "\n>") {
-				__obf_0e792b69753db82b += 1
-				if __obf_0e792b69753db82b > __obf_7305c84c06b6530a {
+			if strings.Contains(__obf_1e3b933339b47bc2, "\n>") {
+				__obf_af20f88a2aa885a5 += 1
+				if __obf_af20f88a2aa885a5 > __obf_b20fd43df1cd8f24 {
 					break
 				}
 			}
 		}
-		__obf_a8ef9f6f72b573ec = append(__obf_a8ef9f6f72b573ec, strings.ReplaceAll(strings.ReplaceAll(__obf_09d4244727ab0b9d, "\n", ""), ">", ""))
+		__obf_95a64401d7694465 = append(__obf_95a64401d7694465, strings.ReplaceAll(strings.ReplaceAll(__obf_e40a97c436716504, "\n", ""), ">", ""))
 	}
-	__obf_fecbb97bd2dba020( // Close the communication with the LLM
-		__obf_d8f16489bc95a82a,
+	__obf_f170a27171868d9d( // Close the communication with the LLM
+		__obf_ed448ce9044e156b,
 
 		// Return the LLM responses
-		__obf_dd6f0ba4250578dd)
+		__obf_dd74bc9eca1bdfaa)
 
-	return __obf_a8ef9f6f72b573ec, nil
+	return __obf_95a64401d7694465, nil
 }
 
 // BufferPromptModel prompts the model expecting the real time output, allowing you to use its response as it's being generated.
 // It sends the LLM response tokens as strings to the provided channel.
-func (__obf_af7a27176ba0382a *LLM) BufferPromptModel(__obf_73372ffe4f0a3260 string, __obf_3ac05d773af9181d chan<- string) {
-	__obf_af7a27176ba0382a.__obf_727c6c38a64e2a90()
-	__obf_d8f16489bc95a82a, __obf_dd6f0ba4250578dd, __obf_5a386f3c24877d35, __obf_809db486b2a49454 := __obf_f10341eff3acae11(__obf_af7a27176ba0382a)
+func (__obf_5420da665f8475f6 *LLM) BufferPromptModel(__obf_7b1e71cb2dd2176f string, __obf_566f2a0ee6059179 chan<- string) {
+	__obf_5420da665f8475f6.__obf_352671a580433840()
+	__obf_ed448ce9044e156b, __obf_dd74bc9eca1bdfaa, __obf_d4b9ca4c14b195d8, __obf_9098f73390632edc := __obf_a55eef140bab8cfd(__obf_5420da665f8475f6)
 
-	if __obf_809db486b2a49454 != nil {
-		fmt.Println("Error creating pipes:", __obf_809db486b2a49454)
+	if __obf_9098f73390632edc != nil {
+		fmt.Println("Error creating pipes:", __obf_9098f73390632edc)
 		return
 	}
-	__obf_e0a90ed617746bb1 := // Start the llama.cpp llm communication process
-		__obf_d8f16489bc95a82a.Start()
-	if __obf_e0a90ed617746bb1 != nil {
-		fmt.Println("Error starting command:", __obf_e0a90ed617746bb1)
+	__obf_ed46ef7b5c00fcfc := // Start the llama.cpp llm communication process
+		__obf_ed448ce9044e156b.Start()
+	if __obf_ed46ef7b5c00fcfc != nil {
+		fmt.Println("Error starting command:", __obf_ed46ef7b5c00fcfc)
 		return
 	}
-	__obf_4c8d0634add11d18 := // Create a buffer for the stdout
+	__obf_fe1cb28da8a2bf13 := // Create a buffer for the stdout
 		make([]byte, 1024)
-	__obf_d7ddfe2c4ca4f885 := // Add the instruction block to the input
-		__obf_af7a27176ba0382a.InstructionBlock + __obf_73372ffe4f0a3260
+	__obf_0c8d58051c5d0722 := // Add the instruction block to the input
+		__obf_5420da665f8475f6.InstructionBlock + __obf_7b1e71cb2dd2176f
 
 	// Input must contain an EOL for the LLM to correctly interpret the propmt's end
-	if !strings.Contains(__obf_d7ddfe2c4ca4f885, "\n") {
-		__obf_d7ddfe2c4ca4f885 += "\n"
+	if !strings.Contains(__obf_0c8d58051c5d0722, "\n") {
+		__obf_0c8d58051c5d0722 += "\n"
 	}
 
 	// Prompting the llm
-	io.WriteString(__obf_dd6f0ba4250578dd,
+	io.WriteString(__obf_dd74bc9eca1bdfaa,
 
 		// Create a counter to detect when the response is complete
-		__obf_d7ddfe2c4ca4f885)
-	__obf_0e792b69753db82b := 0
+		__obf_0c8d58051c5d0722)
+	__obf_af20f88a2aa885a5 := 0
 	for {
-		__obf_494032745234b2f6, __obf_809db486b2a49454 := __obf_5a386f3c24877d35.Read(__obf_4c8d0634add11d18)
-		if __obf_809db486b2a49454 != nil {
-			if __obf_809db486b2a49454 != io.EOF {
-				fmt.Println("Error reading token:", __obf_809db486b2a49454)
+		__obf_52420a4f6eef7498, __obf_9098f73390632edc := __obf_d4b9ca4c14b195d8.Read(__obf_fe1cb28da8a2bf13)
+		if __obf_9098f73390632edc != nil {
+			if __obf_9098f73390632edc != io.EOF {
+				fmt.Println("Error reading token:", __obf_9098f73390632edc)
 			}
 			break
 		}
-		__obf_743870edc95d417a := string(__obf_4c8d0634add11d18[:__obf_494032745234b2f6])
+		__obf_1e3b933339b47bc2 := string(__obf_fe1cb28da8a2bf13[:__obf_52420a4f6eef7498])
 
-		if strings.Contains(__obf_743870edc95d417a, "\n>") {
-			__obf_0e792b69753db82b += 1
-			if __obf_0e792b69753db82b > 1 {
+		if strings.Contains(__obf_1e3b933339b47bc2, "\n>") {
+			__obf_af20f88a2aa885a5 += 1
+			if __obf_af20f88a2aa885a5 > 1 {
 				break
 			}
 		} else {
-			__obf_3ac05d773af9181d <- __obf_743870edc95d417a
+			__obf_566f2a0ee6059179 <- __obf_1e3b933339b47bc2
 		}
 	}
-	__obf_fecbb97bd2dba020( // Close the communication with the LLM
-		__obf_d8f16489bc95a82a,
+	__obf_f170a27171868d9d( // Close the communication with the LLM
+		__obf_ed448ce9044e156b,
 
 		// Close the channel to signal end of data transferring
-		__obf_dd6f0ba4250578dd)
+		__obf_dd74bc9eca1bdfaa)
 
-	close(__obf_3ac05d773af9181d)
+	close(__obf_566f2a0ee6059179)
 }

@@ -1,26 +1,26 @@
-package __obf_e72ce603d10d02a1
+package __obf_038560a94647875f
 
 import consistent "github.com/ArtisanHiram/go-pkg/consistent"
 
-func Subset[M consistent.Member](__obf_9ae0d9fd67afd0d9 string, __obf_c2ca538d2769cd4b []M, __obf_b686586ed8451139 int) []M {
-	if len(__obf_c2ca538d2769cd4b) <= __obf_b686586ed8451139 {
-		return __obf_c2ca538d2769cd4b
+func Subset[M consistent.Member](__obf_3f292fb80e2ecea2 string, __obf_4752dc15522b0582 []M, __obf_32b938b15d5d4375 int) []M {
+	if len(__obf_4752dc15522b0582) <= __obf_32b938b15d5d4375 {
+		return __obf_4752dc15522b0582
 	}
-	__obf_fab71928d52cd4c8 := consistent.New[M]()
-	__obf_fab71928d52cd4c8.
+	__obf_07feaaa91a36a31a := consistent.New[M]()
+	__obf_07feaaa91a36a31a.
 		NumberOfReplicas = 160
-	__obf_fab71928d52cd4c8.
+	__obf_07feaaa91a36a31a.
 		UseFnv = true
-	__obf_fab71928d52cd4c8.
-		Set(__obf_c2ca538d2769cd4b)
+	__obf_07feaaa91a36a31a.
+		Set(__obf_4752dc15522b0582)
 
-	return __obf_e9c2692e9b7cba77(__obf_fab71928d52cd4c8, __obf_9ae0d9fd67afd0d9, __obf_c2ca538d2769cd4b, __obf_b686586ed8451139)
+	return __obf_8b937cd2a06565da(__obf_07feaaa91a36a31a, __obf_3f292fb80e2ecea2, __obf_4752dc15522b0582, __obf_32b938b15d5d4375)
 }
 
-func __obf_e9c2692e9b7cba77[M consistent.Member](__obf_fab71928d52cd4c8 *consistent.Consistent[M], __obf_9ae0d9fd67afd0d9 string, __obf_c2ca538d2769cd4b []M, __obf_b686586ed8451139 int) []M {
-	__obf_8e19b33164208f18, __obf_3674305c6f99212d := __obf_fab71928d52cd4c8.GetN(__obf_9ae0d9fd67afd0d9, __obf_b686586ed8451139)
-	if __obf_3674305c6f99212d != nil {
-		return __obf_c2ca538d2769cd4b
+func __obf_8b937cd2a06565da[M consistent.Member](__obf_07feaaa91a36a31a *consistent.Consistent[M], __obf_3f292fb80e2ecea2 string, __obf_4752dc15522b0582 []M, __obf_32b938b15d5d4375 int) []M {
+	__obf_0d8b959f6c1d21fc, __obf_ad71453048e280e8 := __obf_07feaaa91a36a31a.GetN(__obf_3f292fb80e2ecea2, __obf_32b938b15d5d4375)
+	if __obf_ad71453048e280e8 != nil {
+		return __obf_4752dc15522b0582
 	}
-	return __obf_8e19b33164208f18
+	return __obf_0d8b959f6c1d21fc
 }

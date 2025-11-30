@@ -1,4 +1,4 @@
-package __obf_de86cdc8ae98b45b
+package __obf_fd770cb9675903b0
 
 // Version is the current release version.
 func Version() string {

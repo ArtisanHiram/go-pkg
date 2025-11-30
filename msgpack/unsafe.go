@@ -1,23 +1,23 @@
 //go:build !appengine
 // +build !appengine
 
-package __obf_de86cdc8ae98b45b
+package __obf_fd770cb9675903b0
 
 import (
 	"unsafe"
 )
 
 // bytesToString converts byte slice to string.
-func __obf_16417a69f4ce2476(__obf_a7fd7acf2bd4435f []byte) string {
-	return *(*string)(unsafe.Pointer(&__obf_a7fd7acf2bd4435f))
+func __obf_8c86f40d3a80c733(__obf_94333af0f0facd65 []byte) string {
+	return *(*string)(unsafe.Pointer(&__obf_94333af0f0facd65))
 }
 
 // stringToBytes converts string to byte slice.
-func __obf_26e7c5987cb4f459(__obf_a93d004caac96500 string) []byte {
+func __obf_9b773961ed35818a(__obf_fe1ace7a2eb8bf9f string) []byte {
 	return *(*[]byte)(unsafe.Pointer(
 		&struct {
 			string
 			Cap int
-		}{__obf_a93d004caac96500, len(__obf_a93d004caac96500)},
+		}{__obf_fe1ace7a2eb8bf9f, len(__obf_fe1ace7a2eb8bf9f)},
 	))
 }

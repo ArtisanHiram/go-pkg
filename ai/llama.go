@@ -15,31 +15,31 @@ import (
 )
 
 func main() {
-	__obf_6ecb9477cf9a8e10 := context.Background()
-	__obf_9c0a2330b5355a48, __obf_809db486b2a49454 := gemini.NewModel(__obf_6ecb9477cf9a8e10, "gemini-2.5-flash", &genai.ClientConfig{
+	__obf_ff46371b160c48af := context.Background()
+	__obf_bf7bd6705556bd50, __obf_9098f73390632edc := gemini.NewModel(__obf_ff46371b160c48af, "gemini-2.5-flash", &genai.ClientConfig{
 		APIKey: "AIzaSyC-cHLX-B-cFe9YT5RVRIat-X77FEjyPSg", // os.Getenv("GOOGLE_API_KEY"),
 	})
-	if __obf_809db486b2a49454 != nil {
-		log.Fatalf("Failed to create model: %v", __obf_809db486b2a49454)
+	if __obf_9098f73390632edc != nil {
+		log.Fatalf("Failed to create model: %v", __obf_9098f73390632edc)
 	}
-	__obf_9881c1c620de7e72, __obf_809db486b2a49454 := llmagent.New(llmagent.Config{
+	__obf_09cd37438c67b4c1, __obf_9098f73390632edc := llmagent.New(llmagent.Config{
 		Name:        "hello_time_agent",
-		Model:       __obf_9c0a2330b5355a48,
+		Model:       __obf_bf7bd6705556bd50,
 		Description: "Tells the current time in a specified city.",
 		Instruction: "You are a helpful assistant that tells the current time in a city.",
 		Tools: []tool.Tool{
 			geminitool.GoogleSearch{},
 		},
 	})
-	if __obf_809db486b2a49454 != nil {
-		log.Fatalf("Failed to create agent: %v", __obf_809db486b2a49454)
+	if __obf_9098f73390632edc != nil {
+		log.Fatalf("Failed to create agent: %v", __obf_9098f73390632edc)
 	}
-	__obf_adba7d0c384d16e6 := &adk.Config{
-		AgentLoader: services.NewSingleAgentLoader(__obf_9881c1c620de7e72),
+	__obf_7df1b6ed71714c7a := &adk.Config{
+		AgentLoader: services.NewSingleAgentLoader(__obf_09cd37438c67b4c1),
 	}
-	__obf_17b8638195381e0c := full.NewLauncher()
-	__obf_809db486b2a49454 = __obf_17b8638195381e0c.Execute(__obf_6ecb9477cf9a8e10, __obf_adba7d0c384d16e6, nil)
-	if __obf_809db486b2a49454 != nil {
-		log.Fatalf("run failed: %v\n\n%s", __obf_809db486b2a49454, __obf_17b8638195381e0c.CommandLineSyntax())
+	__obf_2918f60099ee00bb := full.NewLauncher()
+	__obf_9098f73390632edc = __obf_2918f60099ee00bb.Execute(__obf_ff46371b160c48af, __obf_7df1b6ed71714c7a, nil)
+	if __obf_9098f73390632edc != nil {
+		log.Fatalf("run failed: %v\n\n%s", __obf_9098f73390632edc, __obf_2918f60099ee00bb.CommandLineSyntax())
 	}
 }

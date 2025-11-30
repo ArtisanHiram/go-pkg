@@ -1,4 +1,4 @@
-package __obf_90dd9b56c0f1bd65
+package __obf_f60326fd90eb13d9
 
 import (
 	"fmt"
@@ -6,24 +6,24 @@ import (
 )
 
 // urlFormat := fmt.Sprintf("http://localhost/segment/c7ghedehscu246733tl0/%d/%d\n", Resolution, SegmentIndex)
-func (__obf_073dee7a39e9dbe6 *HlsServer) GetPlaylist(__obf_9306c338b6a6c013 string, __obf_269e922f6c5f0020 float32, __obf_596cef7dccce398b io.Writer) {
-	fmt.Fprint(__obf_596cef7dccce398b, "#EXTM3U\n")
-	fmt.Fprint(__obf_596cef7dccce398b, "#EXT-X-VERSION:3\n")
-	fmt.Fprint(__obf_596cef7dccce398b, "#EXT-X-MEDIA-SEQUENCE:0\n")
-	fmt.Fprint(__obf_596cef7dccce398b, "#EXT-X-ALLOW-CACHE:YES\n")
-	fmt.Fprintf(__obf_596cef7dccce398b, "#EXT-X-TARGETDURATION:%.f\n", __obf_073dee7a39e9dbe6.Option.SegmentLen)
-	fmt.Fprint(__obf_596cef7dccce398b, "#EXT-X-PLAYLIST-TYPE:VOD\n")
-	__obf_c5623bd28785fd95 := 0
+func (__obf_dd04e55ec17d0ebf *HlsServer) GetPlaylist(__obf_8dcda82388970844 string, __obf_9b0f57fb67097ecf float32, __obf_811b158c28965ee0 io.Writer) {
+	fmt.Fprint(__obf_811b158c28965ee0, "#EXTM3U\n")
+	fmt.Fprint(__obf_811b158c28965ee0, "#EXT-X-VERSION:3\n")
+	fmt.Fprint(__obf_811b158c28965ee0, "#EXT-X-MEDIA-SEQUENCE:0\n")
+	fmt.Fprint(__obf_811b158c28965ee0, "#EXT-X-ALLOW-CACHE:YES\n")
+	fmt.Fprintf(__obf_811b158c28965ee0, "#EXT-X-TARGETDURATION:%.f\n", __obf_dd04e55ec17d0ebf.Option.SegmentLen)
+	fmt.Fprint(__obf_811b158c28965ee0, "#EXT-X-PLAYLIST-TYPE:VOD\n")
+	__obf_0b9bab109831a42d := 0
 
-	for __obf_269e922f6c5f0020 > 0 {
-		if __obf_269e922f6c5f0020 > __obf_073dee7a39e9dbe6.Option.SegmentLen {
-			fmt.Fprintf(__obf_596cef7dccce398b, "#EXTINF: %.3f,\n", __obf_073dee7a39e9dbe6.Option.SegmentLen)
+	for __obf_9b0f57fb67097ecf > 0 {
+		if __obf_9b0f57fb67097ecf > __obf_dd04e55ec17d0ebf.Option.SegmentLen {
+			fmt.Fprintf(__obf_811b158c28965ee0, "#EXTINF: %.3f,\n", __obf_dd04e55ec17d0ebf.Option.SegmentLen)
 		} else {
-			fmt.Fprintf(__obf_596cef7dccce398b, "#EXTINF: %.3f,\n", __obf_269e922f6c5f0020)
+			fmt.Fprintf(__obf_811b158c28965ee0, "#EXTINF: %.3f,\n", __obf_9b0f57fb67097ecf)
 		}
-		fmt.Fprintf(__obf_596cef7dccce398b, __obf_9306c338b6a6c013, __obf_c5623bd28785fd95)
-		__obf_c5623bd28785fd95++
-		__obf_269e922f6c5f0020 = __obf_269e922f6c5f0020 - __obf_073dee7a39e9dbe6.Option.SegmentLen
+		fmt.Fprintf(__obf_811b158c28965ee0, __obf_8dcda82388970844, __obf_0b9bab109831a42d)
+		__obf_0b9bab109831a42d++
+		__obf_9b0f57fb67097ecf = __obf_9b0f57fb67097ecf - __obf_dd04e55ec17d0ebf.Option.SegmentLen
 	}
-	fmt.Fprint(__obf_596cef7dccce398b, "#EXT-X-ENDLIST\n")
+	fmt.Fprint(__obf_811b158c28965ee0, "#EXT-X-ENDLIST\n")
 }

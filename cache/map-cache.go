@@ -1,4 +1,4 @@
-package __obf_72d962f6a40bc95f
+package __obf_3b8640e918b7e3ff
 
 import (
 	"encoding/gob"
@@ -16,11 +16,11 @@ type Item struct {
 }
 
 // Returns true if the item has expired.
-func (__obf_cdc238f327ed4e5c Item) Expired() bool {
-	if __obf_cdc238f327ed4e5c.Expiration == 0 {
+func (__obf_64869904d1dc9f43 Item) Expired() bool {
+	if __obf_64869904d1dc9f43.Expiration == 0 {
 		return false
 	}
-	return time.Now().UnixNano() > __obf_cdc238f327ed4e5c.Expiration
+	return time.Now().UnixNano() > __obf_64869904d1dc9f43.Expiration
 }
 
 const (
@@ -33,13 +33,13 @@ const (
 )
 
 type MapCache struct {
-	__obf_2a700263752d2e00 time. // *cache
+	__obf_113e9a23713e45c1 time. // *cache
 		// If this is confusing, see the comment at the bottom of New()
 		Duration
-	__obf_2c5da83e1dd3805c map[string]Item
-	__obf_09437e388e205e38 sync.RWMutex
-	__obf_ef9bf920f1ed755d func(string, any)
-	__obf_ed816f9c2df1d218 *__obf_ed816f9c2df1d218
+	__obf_717158131d1e5e98 map[string]Item
+	__obf_d8684d60a98e1a8c sync.RWMutex
+	__obf_2f7516313eb1f286 func(string, any)
+	__obf_b14857644ea2159c *__obf_b14857644ea2159c
 }
 
 // type cache struct {
@@ -53,164 +53,164 @@ type MapCache struct {
 // Add an item to the cache, replacing any existing item. If the duration is 0
 // (DefaultExpiration), the cache's default expiration time is used. If it is -1
 // (NoExpiration), the item never expires.
-func (__obf_89bd5bf0a2a3aefa *MapCache) Set(__obf_41bce9a58f43c231 string, __obf_4c4a641aafd95cda any, __obf_57a090cfb5a3e8b0 time.Duration) {
+func (__obf_5b354994d2d4bcf1 *MapCache) Set(__obf_ebdd4526b9b834d1 string, __obf_5c75aa5f1a5ca219 any, __obf_cad7cc30a9b8797e time.Duration) {
 	// "Inlining" of set
-	var __obf_d1618b4c9656c93c int64
-	if __obf_57a090cfb5a3e8b0 == DefaultExpiration {
-		__obf_57a090cfb5a3e8b0 = __obf_89bd5bf0a2a3aefa.__obf_2a700263752d2e00
+	var __obf_43b169a18e2edb05 int64
+	if __obf_cad7cc30a9b8797e == DefaultExpiration {
+		__obf_cad7cc30a9b8797e = __obf_5b354994d2d4bcf1.__obf_113e9a23713e45c1
 	}
-	if __obf_57a090cfb5a3e8b0 > 0 {
-		__obf_d1618b4c9656c93c = time.Now().Add(__obf_57a090cfb5a3e8b0).UnixNano()
+	if __obf_cad7cc30a9b8797e > 0 {
+		__obf_43b169a18e2edb05 = time.Now().Add(__obf_cad7cc30a9b8797e).UnixNano()
 	}
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = Item{
-		Object:     __obf_4c4a641aafd95cda,
-		Expiration: __obf_d1618b4c9656c93c,
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = Item{
+		Object:     __obf_5c75aa5f1a5ca219,
+		Expiration: __obf_43b169a18e2edb05,
 	}
-	__obf_89bd5bf0a2a3aefa.
+	__obf_5b354994d2d4bcf1.
 		// TODO: Calls to mu.Unlock are currently not deferred because defer
 		// adds ~200 ns (as of go1.)
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) __obf_3d57127afdc41dbd(__obf_41bce9a58f43c231 string, __obf_4c4a641aafd95cda any, __obf_57a090cfb5a3e8b0 time.Duration) {
-	var __obf_d1618b4c9656c93c int64
-	if __obf_57a090cfb5a3e8b0 == DefaultExpiration {
-		__obf_57a090cfb5a3e8b0 = __obf_89bd5bf0a2a3aefa.__obf_2a700263752d2e00
+func (__obf_5b354994d2d4bcf1 *MapCache) __obf_37106b9a1b5b0c1f(__obf_ebdd4526b9b834d1 string, __obf_5c75aa5f1a5ca219 any, __obf_cad7cc30a9b8797e time.Duration) {
+	var __obf_43b169a18e2edb05 int64
+	if __obf_cad7cc30a9b8797e == DefaultExpiration {
+		__obf_cad7cc30a9b8797e = __obf_5b354994d2d4bcf1.__obf_113e9a23713e45c1
 	}
-	if __obf_57a090cfb5a3e8b0 > 0 {
-		__obf_d1618b4c9656c93c = time.Now().Add(__obf_57a090cfb5a3e8b0).UnixNano()
+	if __obf_cad7cc30a9b8797e > 0 {
+		__obf_43b169a18e2edb05 = time.Now().Add(__obf_cad7cc30a9b8797e).UnixNano()
 	}
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = Item{
-		Object:     __obf_4c4a641aafd95cda,
-		Expiration: __obf_d1618b4c9656c93c,
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = Item{
+		Object:     __obf_5c75aa5f1a5ca219,
+		Expiration: __obf_43b169a18e2edb05,
 	}
 }
 
 // Add an item to the cache, replacing any existing item, using the default
 // expiration.
-func (__obf_89bd5bf0a2a3aefa *MapCache) SetDefault(__obf_41bce9a58f43c231 string, __obf_4c4a641aafd95cda any) {
-	__obf_89bd5bf0a2a3aefa.
-		Set(__obf_41bce9a58f43c231, __obf_4c4a641aafd95cda, DefaultExpiration)
+func (__obf_5b354994d2d4bcf1 *MapCache) SetDefault(__obf_ebdd4526b9b834d1 string, __obf_5c75aa5f1a5ca219 any) {
+	__obf_5b354994d2d4bcf1.
+		Set(__obf_ebdd4526b9b834d1, __obf_5c75aa5f1a5ca219, DefaultExpiration)
 }
 
 // Add an item to the cache only if an item doesn't already exist for the given
 // key, or if the existing item has expired. Returns an error otherwise.
-func (__obf_89bd5bf0a2a3aefa *MapCache) Add(__obf_41bce9a58f43c231 string, __obf_4c4a641aafd95cda any, __obf_57a090cfb5a3e8b0 time.Duration) error {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) Add(__obf_ebdd4526b9b834d1 string, __obf_5c75aa5f1a5ca219 any, __obf_cad7cc30a9b8797e time.Duration) error {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	_, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_f0343616f43c52e5(__obf_41bce9a58f43c231)
-	if __obf_29bd8183b37d202a {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	_, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_5a909fe103f858fd(__obf_ebdd4526b9b834d1)
+	if __obf_bbc8a02c23dc299e {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return fmt.Errorf("Item %s already exists", __obf_41bce9a58f43c231)
+		return fmt.Errorf("Item %s already exists", __obf_ebdd4526b9b834d1)
 	}
-	__obf_89bd5bf0a2a3aefa.__obf_3d57127afdc41dbd(__obf_41bce9a58f43c231, __obf_4c4a641aafd95cda,
+	__obf_5b354994d2d4bcf1.__obf_37106b9a1b5b0c1f(__obf_ebdd4526b9b834d1, __obf_5c75aa5f1a5ca219,
 
 		// Set a new value for the cache key only if it already exists, and the existing
 		// item hasn't expired. Returns an error otherwise.
-		__obf_57a090cfb5a3e8b0)
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+		__obf_cad7cc30a9b8797e)
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Unlock()
 	return nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) Replace(__obf_41bce9a58f43c231 string, __obf_4c4a641aafd95cda any, __obf_57a090cfb5a3e8b0 time.Duration) error {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) Replace(__obf_ebdd4526b9b834d1 string, __obf_5c75aa5f1a5ca219 any, __obf_cad7cc30a9b8797e time.Duration) error {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	_, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_f0343616f43c52e5(__obf_41bce9a58f43c231)
-	if !__obf_29bd8183b37d202a {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	_, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_5a909fe103f858fd(__obf_ebdd4526b9b834d1)
+	if !__obf_bbc8a02c23dc299e {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return fmt.Errorf("Item %s doesn't exist", __obf_41bce9a58f43c231)
+		return fmt.Errorf("Item %s doesn't exist", __obf_ebdd4526b9b834d1)
 	}
-	__obf_89bd5bf0a2a3aefa.__obf_3d57127afdc41dbd(__obf_41bce9a58f43c231, __obf_4c4a641aafd95cda,
+	__obf_5b354994d2d4bcf1.__obf_37106b9a1b5b0c1f(__obf_ebdd4526b9b834d1, __obf_5c75aa5f1a5ca219,
 
 		// Get an item from the cache. Returns the item or nil, and a bool indicating
 		// whether the key was found.
-		__obf_57a090cfb5a3e8b0)
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+		__obf_cad7cc30a9b8797e)
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Unlock()
 	return nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) Get(__obf_41bce9a58f43c231 string) (any, bool) {
-	__obf_89bd5bf0a2a3aefa.
+func (__obf_5b354994d2d4bcf1 *MapCache) Get(__obf_ebdd4526b9b834d1 string) (any, bool) {
+	__obf_5b354994d2d4bcf1.
 
 		// "Inlining" of get and Expired
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		RLock()
-	__obf_cdc238f327ed4e5c, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_64869904d1dc9f43, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			RUnlock()
 		return nil, false
 	}
-	if __obf_cdc238f327ed4e5c.Expiration > 0 {
-		if time.Now().UnixNano() > __obf_cdc238f327ed4e5c.Expiration {
-			__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	if __obf_64869904d1dc9f43.Expiration > 0 {
+		if time.Now().UnixNano() > __obf_64869904d1dc9f43.Expiration {
+			__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 				RUnlock()
 			return nil, false
 		}
 	}
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		RUnlock()
-	return __obf_cdc238f327ed4e5c.Object, true
+	return __obf_64869904d1dc9f43.Object, true
 }
 
 // GetWithExpiration returns an item and its expiration time from the cache.
 // It returns the item or nil, the expiration time if one is set (if the item
 // never expires a zero value for time.Time is returned), and a bool indicating
 // whether the key was found.
-func (__obf_89bd5bf0a2a3aefa *MapCache) GetWithExpiration(__obf_41bce9a58f43c231 string) (any, time.Time, bool) {
-	__obf_89bd5bf0a2a3aefa.
+func (__obf_5b354994d2d4bcf1 *MapCache) GetWithExpiration(__obf_ebdd4526b9b834d1 string) (any, time.Time, bool) {
+	__obf_5b354994d2d4bcf1.
 
 		// "Inlining" of get and Expired
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		RLock()
-	__obf_cdc238f327ed4e5c, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_64869904d1dc9f43, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			RUnlock()
 		return nil, time.Time{}, false
 	}
 
-	if __obf_cdc238f327ed4e5c.Expiration > 0 {
-		if time.Now().UnixNano() > __obf_cdc238f327ed4e5c.Expiration {
-			__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	if __obf_64869904d1dc9f43.Expiration > 0 {
+		if time.Now().UnixNano() > __obf_64869904d1dc9f43.Expiration {
+			__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 				RUnlock()
 			return nil, time.Time{}, false
 		}
-		__obf_89bd5bf0a2a3aefa.
+		__obf_5b354994d2d4bcf1.
 
 			// Return the item and the expiration time
-			__obf_09437e388e205e38.
+			__obf_d8684d60a98e1a8c.
 			RUnlock()
-		return __obf_cdc238f327ed4e5c.Object, time.Unix(0, __obf_cdc238f327ed4e5c.Expiration), true
+		return __obf_64869904d1dc9f43.Object, time.Unix(0, __obf_64869904d1dc9f43.Expiration), true
 	}
-	__obf_89bd5bf0a2a3aefa.
+	__obf_5b354994d2d4bcf1.
 
 		// If expiration <= 0 (i.e. no expiration time set) then return the item
 		// and a zeroed time.Time
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		RUnlock()
-	return __obf_cdc238f327ed4e5c.Object, time.Time{}, true
+	return __obf_64869904d1dc9f43.Object, time.Time{}, true
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) __obf_f0343616f43c52e5(__obf_41bce9a58f43c231 string) (any, bool) {
-	__obf_cdc238f327ed4e5c, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a {
+func (__obf_5b354994d2d4bcf1 *MapCache) __obf_5a909fe103f858fd(__obf_ebdd4526b9b834d1 string) (any, bool) {
+	__obf_64869904d1dc9f43, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e {
 		return nil, false
 	}
 	// "Inlining" of Expired
-	if __obf_cdc238f327ed4e5c.Expiration > 0 {
-		if time.Now().UnixNano() > __obf_cdc238f327ed4e5c.Expiration {
+	if __obf_64869904d1dc9f43.Expiration > 0 {
+		if time.Now().UnixNano() > __obf_64869904d1dc9f43.Expiration {
 			return nil, false
 		}
 	}
-	return __obf_cdc238f327ed4e5c.Object, true
+	return __obf_64869904d1dc9f43.Object, true
 }
 
 // Increment an item of type int, int8, int16, int32, int64, uintptr, uint,
@@ -218,1045 +218,1045 @@ func (__obf_89bd5bf0a2a3aefa *MapCache) __obf_f0343616f43c52e5(__obf_41bce9a58f4
 // item's value is not an integer, if it was not found, or if it is not
 // possible to increment it by n. To retrieve the incremented value, use one
 // of the specialized methods, e.g. IncrementInt64.
-func (__obf_89bd5bf0a2a3aefa *MapCache) Increment(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc int64) error {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) Increment(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 int64) error {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	switch __obf_b33efcc537be1290.Object.(type) {
+	switch __obf_fe4eccc509e2ba8c.Object.(type) {
 	case int:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(int) + int(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(int) + int(__obf_2b5886b254c22600)
 	case int8:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(int8) + int8(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(int8) + int8(__obf_2b5886b254c22600)
 	case int16:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(int16) + int16(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(int16) + int16(__obf_2b5886b254c22600)
 	case int32:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(int32) + int32(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(int32) + int32(__obf_2b5886b254c22600)
 	case int64:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(int64) + __obf_2bf733a50ac047cc
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(int64) + __obf_2b5886b254c22600
 	case uint:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(uint) + uint(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(uint) + uint(__obf_2b5886b254c22600)
 	case uintptr:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(uintptr) + uintptr(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(uintptr) + uintptr(__obf_2b5886b254c22600)
 	case uint8:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(uint8) + uint8(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(uint8) + uint8(__obf_2b5886b254c22600)
 	case uint16:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(uint16) + uint16(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(uint16) + uint16(__obf_2b5886b254c22600)
 	case uint32:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(uint32) + uint32(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(uint32) + uint32(__obf_2b5886b254c22600)
 	case uint64:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(uint64) + uint64(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(uint64) + uint64(__obf_2b5886b254c22600)
 	case float32:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(float32) + float32(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(float32) + float32(__obf_2b5886b254c22600)
 	case float64:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(float64) + float64(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(float64) + float64(__obf_2b5886b254c22600)
 	default:
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return fmt.Errorf("The value for %s is not an integer", __obf_41bce9a58f43c231)
+		return fmt.Errorf("The value for %s is not an integer", __obf_ebdd4526b9b834d1)
 	}
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Increment an item of type float32 or float64 by n. Returns an error if the
 		// item's value is not floating point, if it was not found, or if it is not
 		// possible to increment it by n. Pass a negative number to decrement the
 		// value. To retrieve the incremented value, use one of the specialized methods,
 		// e.g. IncrementFloat64.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
 	return nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) IncrementFloat(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc float64) error {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) IncrementFloat(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 float64) error {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	switch __obf_b33efcc537be1290.Object.(type) {
+	switch __obf_fe4eccc509e2ba8c.Object.(type) {
 	case float32:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(float32) + float32(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(float32) + float32(__obf_2b5886b254c22600)
 	case float64:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(float64) + __obf_2bf733a50ac047cc
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(float64) + __obf_2b5886b254c22600
 	default:
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return fmt.Errorf("The value for %s does not have type float32 or float64", __obf_41bce9a58f43c231)
+		return fmt.Errorf("The value for %s does not have type float32 or float64", __obf_ebdd4526b9b834d1)
 	}
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Increment an item of type int by n. Returns an error if the item's value is
 		// not an int, or if it was not found. If there is no error, the incremented
 		// value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
 	return nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) IncrementInt(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc int) (int, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) IncrementInt(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 int) (int, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(int)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(int)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an int", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an int", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 + __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 + __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Increment an item of type int8 by n. Returns an error if the item's value is
 		// not an int8, or if it was not found. If there is no error, the incremented
 		// value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) IncrementInt8(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc int8) (int8, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) IncrementInt8(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 int8) (int8, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(int8)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(int8)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an int8", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an int8", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 + __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 + __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Increment an item of type int16 by n. Returns an error if the item's value is
 		// not an int16, or if it was not found. If there is no error, the incremented
 		// value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) IncrementInt16(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc int16) (int16, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) IncrementInt16(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 int16) (int16, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(int16)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(int16)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an int16", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an int16", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 + __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 + __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Increment an item of type int32 by n. Returns an error if the item's value is
 		// not an int32, or if it was not found. If there is no error, the incremented
 		// value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) IncrementInt32(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc int32) (int32, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) IncrementInt32(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 int32) (int32, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(int32)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(int32)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an int32", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an int32", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 + __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 + __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Increment an item of type int64 by n. Returns an error if the item's value is
 		// not an int64, or if it was not found. If there is no error, the incremented
 		// value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) IncrementInt64(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc int64) (int64, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) IncrementInt64(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 int64) (int64, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(int64)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(int64)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an int64", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an int64", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 + __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 + __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Increment an item of type uint by n. Returns an error if the item's value is
 		// not an uint, or if it was not found. If there is no error, the incremented
 		// value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) IncrementUint(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc uint) (uint, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) IncrementUint(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 uint) (uint, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(uint)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(uint)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an uint", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an uint", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 + __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 + __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Increment an item of type uintptr by n. Returns an error if the item's value
 		// is not an uintptr, or if it was not found. If there is no error, the
 		// incremented value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) IncrementUintptr(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc uintptr) (uintptr, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) IncrementUintptr(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 uintptr) (uintptr, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(uintptr)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(uintptr)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an uintptr", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an uintptr", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 + __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 + __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Increment an item of type uint8 by n. Returns an error if the item's value
 		// is not an uint8, or if it was not found. If there is no error, the
 		// incremented value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) IncrementUint8(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc uint8) (uint8, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) IncrementUint8(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 uint8) (uint8, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(uint8)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(uint8)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an uint8", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an uint8", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 + __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 + __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Increment an item of type uint16 by n. Returns an error if the item's value
 		// is not an uint16, or if it was not found. If there is no error, the
 		// incremented value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) IncrementUint16(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc uint16) (uint16, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) IncrementUint16(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 uint16) (uint16, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(uint16)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(uint16)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an uint16", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an uint16", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 + __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 + __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Increment an item of type uint32 by n. Returns an error if the item's value
 		// is not an uint32, or if it was not found. If there is no error, the
 		// incremented value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) IncrementUint32(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc uint32) (uint32, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) IncrementUint32(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 uint32) (uint32, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(uint32)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(uint32)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an uint32", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an uint32", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 + __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 + __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Increment an item of type uint64 by n. Returns an error if the item's value
 		// is not an uint64, or if it was not found. If there is no error, the
 		// incremented value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) IncrementUint64(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc uint64) (uint64, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) IncrementUint64(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 uint64) (uint64, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(uint64)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(uint64)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an uint64", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an uint64", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 + __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 + __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Increment an item of type float32 by n. Returns an error if the item's value
 		// is not an float32, or if it was not found. If there is no error, the
 		// incremented value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) IncrementFloat32(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc float32) (float32, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) IncrementFloat32(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 float32) (float32, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(float32)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(float32)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an float32", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an float32", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 + __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 + __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Increment an item of type float64 by n. Returns an error if the item's value
 		// is not an float64, or if it was not found. If there is no error, the
 		// incremented value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) IncrementFloat64(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc float64) (float64, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) IncrementFloat64(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 float64) (float64, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(float64)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(float64)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an float64", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an float64", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 + __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 + __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Decrement an item of type int, int8, int16, int32, int64, uintptr, uint,
 		// uint8, uint32, or uint64, float32 or float64 by n. Returns an error if the
 		// item's value is not an integer, if it was not found, or if it is not
 		// possible to decrement it by n. To retrieve the decremented value, use one
 		// of the specialized methods, e.g. DecrementInt64.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) Decrement(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc int64) error {
-	__obf_89bd5bf0a2a3aefa.
+func (__obf_5b354994d2d4bcf1 *MapCache) Decrement(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 int64) error {
+	__obf_5b354994d2d4bcf1.
 		// TODO: Implement Increment and Decrement more cleanly.
 		// (Cannot do Increment(k, n*-1) for uints.)
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
 		return fmt.Errorf("Item not found")
 	}
-	switch __obf_b33efcc537be1290.Object.(type) {
+	switch __obf_fe4eccc509e2ba8c.Object.(type) {
 	case int:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(int) - int(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(int) - int(__obf_2b5886b254c22600)
 	case int8:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(int8) - int8(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(int8) - int8(__obf_2b5886b254c22600)
 	case int16:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(int16) - int16(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(int16) - int16(__obf_2b5886b254c22600)
 	case int32:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(int32) - int32(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(int32) - int32(__obf_2b5886b254c22600)
 	case int64:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(int64) - __obf_2bf733a50ac047cc
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(int64) - __obf_2b5886b254c22600
 	case uint:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(uint) - uint(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(uint) - uint(__obf_2b5886b254c22600)
 	case uintptr:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(uintptr) - uintptr(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(uintptr) - uintptr(__obf_2b5886b254c22600)
 	case uint8:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(uint8) - uint8(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(uint8) - uint8(__obf_2b5886b254c22600)
 	case uint16:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(uint16) - uint16(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(uint16) - uint16(__obf_2b5886b254c22600)
 	case uint32:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(uint32) - uint32(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(uint32) - uint32(__obf_2b5886b254c22600)
 	case uint64:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(uint64) - uint64(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(uint64) - uint64(__obf_2b5886b254c22600)
 	case float32:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(float32) - float32(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(float32) - float32(__obf_2b5886b254c22600)
 	case float64:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(float64) - float64(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(float64) - float64(__obf_2b5886b254c22600)
 	default:
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return fmt.Errorf("The value for %s is not an integer", __obf_41bce9a58f43c231)
+		return fmt.Errorf("The value for %s is not an integer", __obf_ebdd4526b9b834d1)
 	}
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Decrement an item of type float32 or float64 by n. Returns an error if the
 		// item's value is not floating point, if it was not found, or if it is not
 		// possible to decrement it by n. Pass a negative number to decrement the
 		// value. To retrieve the decremented value, use one of the specialized methods,
 		// e.g. DecrementFloat64.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
 	return nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) DecrementFloat(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc float64) error {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) DecrementFloat(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 float64) error {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	switch __obf_b33efcc537be1290.Object.(type) {
+	switch __obf_fe4eccc509e2ba8c.Object.(type) {
 	case float32:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(float32) - float32(__obf_2bf733a50ac047cc)
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(float32) - float32(__obf_2b5886b254c22600)
 	case float64:
-		__obf_b33efcc537be1290.
-			Object = __obf_b33efcc537be1290.Object.(float64) - __obf_2bf733a50ac047cc
+		__obf_fe4eccc509e2ba8c.
+			Object = __obf_fe4eccc509e2ba8c.Object.(float64) - __obf_2b5886b254c22600
 	default:
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return fmt.Errorf("The value for %s does not have type float32 or float64", __obf_41bce9a58f43c231)
+		return fmt.Errorf("The value for %s does not have type float32 or float64", __obf_ebdd4526b9b834d1)
 	}
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Decrement an item of type int by n. Returns an error if the item's value is
 		// not an int, or if it was not found. If there is no error, the decremented
 		// value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
 	return nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) DecrementInt(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc int) (int, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) DecrementInt(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 int) (int, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(int)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(int)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an int", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an int", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 - __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 - __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Decrement an item of type int8 by n. Returns an error if the item's value is
 		// not an int8, or if it was not found. If there is no error, the decremented
 		// value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) DecrementInt8(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc int8) (int8, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) DecrementInt8(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 int8) (int8, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(int8)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(int8)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an int8", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an int8", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 - __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 - __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Decrement an item of type int16 by n. Returns an error if the item's value is
 		// not an int16, or if it was not found. If there is no error, the decremented
 		// value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) DecrementInt16(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc int16) (int16, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) DecrementInt16(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 int16) (int16, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(int16)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(int16)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an int16", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an int16", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 - __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 - __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Decrement an item of type int32 by n. Returns an error if the item's value is
 		// not an int32, or if it was not found. If there is no error, the decremented
 		// value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) DecrementInt32(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc int32) (int32, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) DecrementInt32(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 int32) (int32, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(int32)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(int32)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an int32", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an int32", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 - __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 - __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Decrement an item of type int64 by n. Returns an error if the item's value is
 		// not an int64, or if it was not found. If there is no error, the decremented
 		// value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) DecrementInt64(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc int64) (int64, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) DecrementInt64(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 int64) (int64, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(int64)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(int64)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an int64", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an int64", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 - __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 - __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Decrement an item of type uint by n. Returns an error if the item's value is
 		// not an uint, or if it was not found. If there is no error, the decremented
 		// value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) DecrementUint(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc uint) (uint, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) DecrementUint(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 uint) (uint, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(uint)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(uint)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an uint", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an uint", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 - __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 - __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Decrement an item of type uintptr by n. Returns an error if the item's value
 		// is not an uintptr, or if it was not found. If there is no error, the
 		// decremented value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) DecrementUintptr(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc uintptr) (uintptr, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) DecrementUintptr(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 uintptr) (uintptr, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(uintptr)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(uintptr)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an uintptr", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an uintptr", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 - __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 - __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Decrement an item of type uint8 by n. Returns an error if the item's value is
 		// not an uint8, or if it was not found. If there is no error, the decremented
 		// value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) DecrementUint8(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc uint8) (uint8, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) DecrementUint8(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 uint8) (uint8, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(uint8)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(uint8)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an uint8", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an uint8", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 - __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 - __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Decrement an item of type uint16 by n. Returns an error if the item's value
 		// is not an uint16, or if it was not found. If there is no error, the
 		// decremented value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) DecrementUint16(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc uint16) (uint16, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) DecrementUint16(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 uint16) (uint16, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(uint16)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(uint16)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an uint16", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an uint16", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 - __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 - __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Decrement an item of type uint32 by n. Returns an error if the item's value
 		// is not an uint32, or if it was not found. If there is no error, the
 		// decremented value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) DecrementUint32(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc uint32) (uint32, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) DecrementUint32(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 uint32) (uint32, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(uint32)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(uint32)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an uint32", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an uint32", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 - __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 - __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Decrement an item of type uint64 by n. Returns an error if the item's value
 		// is not an uint64, or if it was not found. If there is no error, the
 		// decremented value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) DecrementUint64(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc uint64) (uint64, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) DecrementUint64(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 uint64) (uint64, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(uint64)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(uint64)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an uint64", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an uint64", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 - __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 - __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Decrement an item of type float32 by n. Returns an error if the item's value
 		// is not an float32, or if it was not found. If there is no error, the
 		// decremented value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) DecrementFloat32(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc float32) (float32, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) DecrementFloat32(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 float32) (float32, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(float32)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(float32)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an float32", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an float32", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 - __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 - __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Decrement an item of type float64 by n. Returns an error if the item's value
 		// is not an float64, or if it was not found. If there is no error, the
 		// decremented value is returned.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) DecrementFloat64(__obf_41bce9a58f43c231 string, __obf_2bf733a50ac047cc float64) (float64, error) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) DecrementFloat64(__obf_ebdd4526b9b834d1 string, __obf_2b5886b254c22600 float64) (float64, error) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-	if !__obf_29bd8183b37d202a || __obf_b33efcc537be1290.Expired() {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+	if !__obf_bbc8a02c23dc299e || __obf_fe4eccc509e2ba8c.Expired() {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("Item %s not found", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("Item %s not found", __obf_ebdd4526b9b834d1)
 	}
-	__obf_7387261227c81695, __obf_97faa3bbfe732802 := __obf_b33efcc537be1290.Object.(float64)
-	if !__obf_97faa3bbfe732802 {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_eae05f58ae327cd2, __obf_cddbfb0aefdf4145 := __obf_fe4eccc509e2ba8c.Object.(float64)
+	if !__obf_cddbfb0aefdf4145 {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Unlock()
-		return 0, fmt.Errorf("The value for %s is not an float64", __obf_41bce9a58f43c231)
+		return 0, fmt.Errorf("The value for %s is not an float64", __obf_ebdd4526b9b834d1)
 	}
-	__obf_046fb6b33a57df1a := __obf_7387261227c81695 - __obf_2bf733a50ac047cc
-	__obf_b33efcc537be1290.
-		Object = __obf_046fb6b33a57df1a
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
-	__obf_89bd5bf0a2a3aefa.
+	__obf_3649b3b5ddd0b17f := __obf_eae05f58ae327cd2 - __obf_2b5886b254c22600
+	__obf_fe4eccc509e2ba8c.
+		Object = __obf_3649b3b5ddd0b17f
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
+	__obf_5b354994d2d4bcf1.
 
 		// Delete an item from the cache. Does nothing if the key is not in the cache.
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
-	return __obf_046fb6b33a57df1a, nil
+	return __obf_3649b3b5ddd0b17f, nil
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) Delete(__obf_41bce9a58f43c231 string) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) Delete(__obf_ebdd4526b9b834d1 string) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_b33efcc537be1290, __obf_7bc1b66a7503946d := __obf_89bd5bf0a2a3aefa.delete(__obf_41bce9a58f43c231)
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_fe4eccc509e2ba8c, __obf_623bffab51b760c4 := __obf_5b354994d2d4bcf1.delete(__obf_ebdd4526b9b834d1)
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Unlock()
-	if __obf_7bc1b66a7503946d {
-		__obf_89bd5bf0a2a3aefa.__obf_ef9bf920f1ed755d(__obf_41bce9a58f43c231, __obf_b33efcc537be1290)
+	if __obf_623bffab51b760c4 {
+		__obf_5b354994d2d4bcf1.__obf_2f7516313eb1f286(__obf_ebdd4526b9b834d1, __obf_fe4eccc509e2ba8c)
 	}
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) delete(__obf_41bce9a58f43c231 string) (any, bool) {
-	if __obf_89bd5bf0a2a3aefa.__obf_ef9bf920f1ed755d != nil {
-		if __obf_b33efcc537be1290, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]; __obf_29bd8183b37d202a {
-			delete(__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c, __obf_41bce9a58f43c231)
-			return __obf_b33efcc537be1290.Object, true
+func (__obf_5b354994d2d4bcf1 *MapCache) delete(__obf_ebdd4526b9b834d1 string) (any, bool) {
+	if __obf_5b354994d2d4bcf1.__obf_2f7516313eb1f286 != nil {
+		if __obf_fe4eccc509e2ba8c, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]; __obf_bbc8a02c23dc299e {
+			delete(__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98, __obf_ebdd4526b9b834d1)
+			return __obf_fe4eccc509e2ba8c.Object, true
 		}
 	}
-	delete(__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c, __obf_41bce9a58f43c231)
+	delete(__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98, __obf_ebdd4526b9b834d1)
 	return nil, false
 }
 
-type __obf_735a0727bc120993 struct {
-	__obf_73cb8148cbf55699 string
-	__obf_82bf2d5ce3534205 any
+type __obf_d92bf28da7b167f5 struct {
+	__obf_3405c14f70aaa4d0 string
+	__obf_20c3560b9ea02863 any
 }
 
 // Delete all expired items from the cache.
-func (__obf_89bd5bf0a2a3aefa *MapCache) DeleteExpired() {
-	var __obf_dcc8a508d47b6469 []__obf_735a0727bc120993
-	__obf_77d958f49d42b249 := time.Now().UnixNano()
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) DeleteExpired() {
+	var __obf_59c6f51ae9717b32 []__obf_d92bf28da7b167f5
+	__obf_a083ea27f648e6e9 := time.Now().UnixNano()
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	for __obf_41bce9a58f43c231, __obf_b33efcc537be1290 := range __obf_89bd5bf0a2a3aefa.
+	for __obf_ebdd4526b9b834d1, __obf_fe4eccc509e2ba8c := range __obf_5b354994d2d4bcf1.
 		// "Inlining" of expired
-		__obf_2c5da83e1dd3805c {
+		__obf_717158131d1e5e98 {
 
-		if __obf_b33efcc537be1290.Expiration > 0 && __obf_77d958f49d42b249 > __obf_b33efcc537be1290.Expiration {
-			__obf_7b2bfb30845a2dbb, __obf_7bc1b66a7503946d := __obf_89bd5bf0a2a3aefa.delete(__obf_41bce9a58f43c231)
-			if __obf_7bc1b66a7503946d {
-				__obf_dcc8a508d47b6469 = append(__obf_dcc8a508d47b6469, __obf_735a0727bc120993{__obf_41bce9a58f43c231, __obf_7b2bfb30845a2dbb})
+		if __obf_fe4eccc509e2ba8c.Expiration > 0 && __obf_a083ea27f648e6e9 > __obf_fe4eccc509e2ba8c.Expiration {
+			__obf_2bac026612517f46, __obf_623bffab51b760c4 := __obf_5b354994d2d4bcf1.delete(__obf_ebdd4526b9b834d1)
+			if __obf_623bffab51b760c4 {
+				__obf_59c6f51ae9717b32 = append(__obf_59c6f51ae9717b32, __obf_d92bf28da7b167f5{__obf_ebdd4526b9b834d1, __obf_2bac026612517f46})
 			}
 		}
 	}
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Unlock()
-	for _, __obf_b33efcc537be1290 := range __obf_dcc8a508d47b6469 {
-		__obf_89bd5bf0a2a3aefa.__obf_ef9bf920f1ed755d(__obf_b33efcc537be1290.__obf_73cb8148cbf55699,
+	for _, __obf_fe4eccc509e2ba8c := range __obf_59c6f51ae9717b32 {
+		__obf_5b354994d2d4bcf1.__obf_2f7516313eb1f286(__obf_fe4eccc509e2ba8c.__obf_3405c14f70aaa4d0,
 
 			// Sets an (optional) function that is called with the key and value when an
 			// item is evicted from the cache. (Including when it is deleted manually, but
 			// not when it is overwritten.) Set to nil to disable.
-			__obf_b33efcc537be1290.__obf_82bf2d5ce3534205)
+			__obf_fe4eccc509e2ba8c.__obf_20c3560b9ea02863)
 	}
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) OnEvicted(__obf_1bfd87875172a06e func(string, any)) {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) OnEvicted(__obf_8d4805f0b73cf3cb func(string, any)) {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_89bd5bf0a2a3aefa.__obf_ef9bf920f1ed755d = __obf_1bfd87875172a06e
-	__obf_89bd5bf0a2a3aefa.
+	__obf_5b354994d2d4bcf1.__obf_2f7516313eb1f286 = __obf_8d4805f0b73cf3cb
+	__obf_5b354994d2d4bcf1.
 
 		// Write the cache's items (using Gob) to an io.Writer.
 		//
 		// NOTE: This method is deprecated in favor of c.Items() and NewFrom() (see the
 		// documentation for NewFrom().)
-		__obf_09437e388e205e38.
+		__obf_d8684d60a98e1a8c.
 		Unlock()
 }
 
-func (__obf_89bd5bf0a2a3aefa *MapCache) Save(__obf_62798b54046b78ec io.Writer) (__obf_2498adaec5f4c8f1 error) {
-	__obf_a1c49ffc65961848 := gob.NewEncoder(__obf_62798b54046b78ec)
+func (__obf_5b354994d2d4bcf1 *MapCache) Save(__obf_f4b55b696e5f4905 io.Writer) (__obf_8c6b39ef87b4061f error) {
+	__obf_a00d7036ec3b1731 := gob.NewEncoder(__obf_f4b55b696e5f4905)
 	defer func() {
-		if __obf_4c4a641aafd95cda := recover(); __obf_4c4a641aafd95cda != nil {
-			__obf_2498adaec5f4c8f1 = fmt.Errorf("Error registering item types with Gob library")
+		if __obf_5c75aa5f1a5ca219 := recover(); __obf_5c75aa5f1a5ca219 != nil {
+			__obf_8c6b39ef87b4061f = fmt.Errorf("Error registering item types with Gob library")
 		}
 	}()
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		RLock()
-	defer __obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.RUnlock()
-	for _, __obf_b33efcc537be1290 := range __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c {
-		gob.Register(__obf_b33efcc537be1290.Object)
+	defer __obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.RUnlock()
+	for _, __obf_fe4eccc509e2ba8c := range __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98 {
+		gob.Register(__obf_fe4eccc509e2ba8c.Object)
 	}
-	__obf_2498adaec5f4c8f1 = __obf_a1c49ffc65961848.Encode(&__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c)
+	__obf_8c6b39ef87b4061f = __obf_a00d7036ec3b1731.Encode(&__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98)
 	return
 }
 
@@ -1265,18 +1265,18 @@ func (__obf_89bd5bf0a2a3aefa *MapCache) Save(__obf_62798b54046b78ec io.Writer) (
 //
 // NOTE: This method is deprecated in favor of c.Items() and NewFrom() (see the
 // documentation for NewFrom().)
-func (__obf_89bd5bf0a2a3aefa *MapCache) SaveFile(__obf_613374bd45123e6e string) error {
-	__obf_4719b5d8aafb8e31, __obf_2498adaec5f4c8f1 := os.Create(__obf_613374bd45123e6e)
-	if __obf_2498adaec5f4c8f1 != nil {
-		return __obf_2498adaec5f4c8f1
+func (__obf_5b354994d2d4bcf1 *MapCache) SaveFile(__obf_7a6be275b828c84c string) error {
+	__obf_e78f50d97182661a, __obf_8c6b39ef87b4061f := os.Create(__obf_7a6be275b828c84c)
+	if __obf_8c6b39ef87b4061f != nil {
+		return __obf_8c6b39ef87b4061f
 	}
-	__obf_2498adaec5f4c8f1 = __obf_89bd5bf0a2a3aefa.Save(__obf_4719b5d8aafb8e31)
-	if __obf_2498adaec5f4c8f1 != nil {
-		__obf_4719b5d8aafb8e31.
+	__obf_8c6b39ef87b4061f = __obf_5b354994d2d4bcf1.Save(__obf_e78f50d97182661a)
+	if __obf_8c6b39ef87b4061f != nil {
+		__obf_e78f50d97182661a.
 			Close()
-		return __obf_2498adaec5f4c8f1
+		return __obf_8c6b39ef87b4061f
 	}
-	return __obf_4719b5d8aafb8e31.Close()
+	return __obf_e78f50d97182661a.Close()
 }
 
 // Add (Gob-serialized) cache items from an io.Reader, excluding any items with
@@ -1284,22 +1284,22 @@ func (__obf_89bd5bf0a2a3aefa *MapCache) SaveFile(__obf_613374bd45123e6e string) 
 //
 // NOTE: This method is deprecated in favor of c.Items() and NewFrom() (see the
 // documentation for NewFrom().)
-func (__obf_89bd5bf0a2a3aefa *MapCache) Load(__obf_d20240e4761bf874 io.Reader) error {
-	__obf_b4c775e6df07ccbd := gob.NewDecoder(__obf_d20240e4761bf874)
-	__obf_2c5da83e1dd3805c := map[string]Item{}
-	__obf_2498adaec5f4c8f1 := __obf_b4c775e6df07ccbd.Decode(&__obf_2c5da83e1dd3805c)
-	if __obf_2498adaec5f4c8f1 == nil {
-		__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) Load(__obf_f3a80f3795c3e8d5 io.Reader) error {
+	__obf_69c075eafbe6aec2 := gob.NewDecoder(__obf_f3a80f3795c3e8d5)
+	__obf_717158131d1e5e98 := map[string]Item{}
+	__obf_8c6b39ef87b4061f := __obf_69c075eafbe6aec2.Decode(&__obf_717158131d1e5e98)
+	if __obf_8c6b39ef87b4061f == nil {
+		__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 			Lock()
-		defer __obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.Unlock()
-		for __obf_41bce9a58f43c231, __obf_b33efcc537be1290 := range __obf_2c5da83e1dd3805c {
-			__obf_7b2bfb30845a2dbb, __obf_29bd8183b37d202a := __obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231]
-			if !__obf_29bd8183b37d202a || __obf_7b2bfb30845a2dbb.Expired() {
-				__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
+		defer __obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.Unlock()
+		for __obf_ebdd4526b9b834d1, __obf_fe4eccc509e2ba8c := range __obf_717158131d1e5e98 {
+			__obf_2bac026612517f46, __obf_bbc8a02c23dc299e := __obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1]
+			if !__obf_bbc8a02c23dc299e || __obf_2bac026612517f46.Expired() {
+				__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
 			}
 		}
 	}
-	return __obf_2498adaec5f4c8f1
+	return __obf_8c6b39ef87b4061f
 }
 
 // Load and add cache items from the given filename, excluding any items with
@@ -1307,116 +1307,116 @@ func (__obf_89bd5bf0a2a3aefa *MapCache) Load(__obf_d20240e4761bf874 io.Reader) e
 //
 // NOTE: This method is deprecated in favor of c.Items() and NewFrom() (see the
 // documentation for NewFrom().)
-func (__obf_89bd5bf0a2a3aefa *MapCache) LoadFile(__obf_613374bd45123e6e string) error {
-	__obf_4719b5d8aafb8e31, __obf_2498adaec5f4c8f1 := os.Open(__obf_613374bd45123e6e)
-	if __obf_2498adaec5f4c8f1 != nil {
-		return __obf_2498adaec5f4c8f1
+func (__obf_5b354994d2d4bcf1 *MapCache) LoadFile(__obf_7a6be275b828c84c string) error {
+	__obf_e78f50d97182661a, __obf_8c6b39ef87b4061f := os.Open(__obf_7a6be275b828c84c)
+	if __obf_8c6b39ef87b4061f != nil {
+		return __obf_8c6b39ef87b4061f
 	}
-	__obf_2498adaec5f4c8f1 = __obf_89bd5bf0a2a3aefa.Load(__obf_4719b5d8aafb8e31)
-	if __obf_2498adaec5f4c8f1 != nil {
-		__obf_4719b5d8aafb8e31.
+	__obf_8c6b39ef87b4061f = __obf_5b354994d2d4bcf1.Load(__obf_e78f50d97182661a)
+	if __obf_8c6b39ef87b4061f != nil {
+		__obf_e78f50d97182661a.
 			Close()
-		return __obf_2498adaec5f4c8f1
+		return __obf_8c6b39ef87b4061f
 	}
-	return __obf_4719b5d8aafb8e31.Close()
+	return __obf_e78f50d97182661a.Close()
 }
 
 // Copies all unexpired items in the cache into a new map and returns it.
-func (__obf_89bd5bf0a2a3aefa *MapCache) Items() map[string]Item {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) Items() map[string]Item {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		RLock()
-	defer __obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.RUnlock()
-	__obf_a5a77ce672c162a7 := make(map[string]Item, len(__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c))
-	__obf_77d958f49d42b249 := time.Now().UnixNano()
-	for __obf_41bce9a58f43c231, __obf_b33efcc537be1290 := range __obf_89bd5bf0a2a3aefa.
+	defer __obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.RUnlock()
+	__obf_885f88c1b206dbea := make(map[string]Item, len(__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98))
+	__obf_a083ea27f648e6e9 := time.Now().UnixNano()
+	for __obf_ebdd4526b9b834d1, __obf_fe4eccc509e2ba8c := range __obf_5b354994d2d4bcf1.
 		// "Inlining" of Expired
-		__obf_2c5da83e1dd3805c {
+		__obf_717158131d1e5e98 {
 
-		if __obf_b33efcc537be1290.Expiration > 0 {
-			if __obf_77d958f49d42b249 > __obf_b33efcc537be1290.Expiration {
+		if __obf_fe4eccc509e2ba8c.Expiration > 0 {
+			if __obf_a083ea27f648e6e9 > __obf_fe4eccc509e2ba8c.Expiration {
 				continue
 			}
 		}
-		__obf_a5a77ce672c162a7[__obf_41bce9a58f43c231] = __obf_b33efcc537be1290
+		__obf_885f88c1b206dbea[__obf_ebdd4526b9b834d1] = __obf_fe4eccc509e2ba8c
 	}
-	return __obf_a5a77ce672c162a7
+	return __obf_885f88c1b206dbea
 }
 
 // Returns the number of items in the cache. This may include items that have
 // expired, but have not yet been cleaned up.
-func (__obf_89bd5bf0a2a3aefa *MapCache) ItemCount() int {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) ItemCount() int {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		RLock()
-	__obf_2bf733a50ac047cc := len(__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c)
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_2b5886b254c22600 := len(__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98)
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		RUnlock()
-	return __obf_2bf733a50ac047cc
+	return __obf_2b5886b254c22600
 }
 
 // Delete all items from the cache.
-func (__obf_89bd5bf0a2a3aefa *MapCache) Flush() {
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+func (__obf_5b354994d2d4bcf1 *MapCache) Flush() {
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Lock()
-	__obf_89bd5bf0a2a3aefa.__obf_2c5da83e1dd3805c = map[string]Item{}
-	__obf_89bd5bf0a2a3aefa.__obf_09437e388e205e38.
+	__obf_5b354994d2d4bcf1.__obf_717158131d1e5e98 = map[string]Item{}
+	__obf_5b354994d2d4bcf1.__obf_d8684d60a98e1a8c.
 		Unlock()
 }
 
-type __obf_ed816f9c2df1d218 struct {
+type __obf_b14857644ea2159c struct {
 	Interval               time.Duration
-	__obf_c9c4e600abcc9229 chan bool
+	__obf_4db19207dc6c2b45 chan bool
 }
 
-func (__obf_c703205e5c1d8a6a *__obf_ed816f9c2df1d218) Run(__obf_89bd5bf0a2a3aefa *MapCache) {
-	__obf_6dc21ba030136b32 := time.NewTicker(__obf_c703205e5c1d8a6a.Interval)
+func (__obf_28f5603e4a9e37df *__obf_b14857644ea2159c) Run(__obf_5b354994d2d4bcf1 *MapCache) {
+	__obf_1186e195ec614c36 := time.NewTicker(__obf_28f5603e4a9e37df.Interval)
 	for {
 		select {
-		case <-__obf_6dc21ba030136b32.C:
-			__obf_89bd5bf0a2a3aefa.
+		case <-__obf_1186e195ec614c36.C:
+			__obf_5b354994d2d4bcf1.
 				DeleteExpired()
-		case <-__obf_c703205e5c1d8a6a.__obf_c9c4e600abcc9229:
-			__obf_6dc21ba030136b32.
+		case <-__obf_28f5603e4a9e37df.__obf_4db19207dc6c2b45:
+			__obf_1186e195ec614c36.
 				Stop()
 			return
 		}
 	}
 }
 
-func __obf_5bf862fe7cebc2f8(__obf_89bd5bf0a2a3aefa *MapCache) {
-	__obf_89bd5bf0a2a3aefa.__obf_ed816f9c2df1d218.__obf_c9c4e600abcc9229 <- true
+func __obf_332562983dd7d3ad(__obf_5b354994d2d4bcf1 *MapCache) {
+	__obf_5b354994d2d4bcf1.__obf_b14857644ea2159c.__obf_4db19207dc6c2b45 <- true
 }
 
-func __obf_2941414c774e9264(__obf_89bd5bf0a2a3aefa *MapCache, __obf_ac9020ec4f83a6e5 time.Duration) {
-	__obf_c703205e5c1d8a6a := &__obf_ed816f9c2df1d218{
-		Interval: __obf_ac9020ec4f83a6e5, __obf_c9c4e600abcc9229: make(chan bool),
+func __obf_43a3254f787aba60(__obf_5b354994d2d4bcf1 *MapCache, __obf_6d01edbf1aed1678 time.Duration) {
+	__obf_28f5603e4a9e37df := &__obf_b14857644ea2159c{
+		Interval: __obf_6d01edbf1aed1678, __obf_4db19207dc6c2b45: make(chan bool),
 	}
-	__obf_89bd5bf0a2a3aefa.__obf_ed816f9c2df1d218 = __obf_c703205e5c1d8a6a
-	go __obf_c703205e5c1d8a6a.Run(__obf_89bd5bf0a2a3aefa)
+	__obf_5b354994d2d4bcf1.__obf_b14857644ea2159c = __obf_28f5603e4a9e37df
+	go __obf_28f5603e4a9e37df.Run(__obf_5b354994d2d4bcf1)
 }
 
-func __obf_cf785d2b8d303ce1(__obf_64c99bd794d570f1 time.Duration, __obf_a5a77ce672c162a7 map[string]Item) *MapCache {
-	if __obf_64c99bd794d570f1 == 0 {
-		__obf_64c99bd794d570f1 = -1
+func __obf_960123d08fbebbc2(__obf_3945db68ae5aaa00 time.Duration, __obf_885f88c1b206dbea map[string]Item) *MapCache {
+	if __obf_3945db68ae5aaa00 == 0 {
+		__obf_3945db68ae5aaa00 = -1
 	}
-	__obf_89bd5bf0a2a3aefa := &MapCache{__obf_2a700263752d2e00: __obf_64c99bd794d570f1, __obf_2c5da83e1dd3805c: __obf_a5a77ce672c162a7}
-	return __obf_89bd5bf0a2a3aefa
+	__obf_5b354994d2d4bcf1 := &MapCache{__obf_113e9a23713e45c1: __obf_3945db68ae5aaa00, __obf_717158131d1e5e98: __obf_885f88c1b206dbea}
+	return __obf_5b354994d2d4bcf1
 }
 
-func __obf_d483f71dd7cfc3bd(__obf_64c99bd794d570f1 time.Duration, __obf_ac9020ec4f83a6e5 time.Duration, __obf_a5a77ce672c162a7 map[string]Item) *MapCache {
-	__obf_89bd5bf0a2a3aefa := __obf_cf785d2b8d303ce1(__obf_64c99bd794d570f1,
+func __obf_d7ac0beec78a8ed5(__obf_3945db68ae5aaa00 time.Duration, __obf_6d01edbf1aed1678 time.Duration, __obf_885f88c1b206dbea map[string]Item) *MapCache {
+	__obf_5b354994d2d4bcf1 := __obf_960123d08fbebbc2(__obf_3945db68ae5aaa00,
 		// This trick ensures that the janitor goroutine (which--granted it
 		// was enabled--is running DeleteExpired on c forever) does not keep
 		// the returned C object from being garbage collected. When it is
 		// garbage collected, the finalizer stops the janitor goroutine, after
 		// which c can be collected.
 		// C := &MapCache{c}
-		__obf_a5a77ce672c162a7)
+		__obf_885f88c1b206dbea)
 
-	if __obf_ac9020ec4f83a6e5 > 0 {
-		__obf_2941414c774e9264(__obf_89bd5bf0a2a3aefa, __obf_ac9020ec4f83a6e5)
-		runtime.SetFinalizer(__obf_89bd5bf0a2a3aefa, __obf_5bf862fe7cebc2f8)
+	if __obf_6d01edbf1aed1678 > 0 {
+		__obf_43a3254f787aba60(__obf_5b354994d2d4bcf1, __obf_6d01edbf1aed1678)
+		runtime.SetFinalizer(__obf_5b354994d2d4bcf1, __obf_332562983dd7d3ad)
 	}
-	return __obf_89bd5bf0a2a3aefa
+	return __obf_5b354994d2d4bcf1
 }
 
 // Return a new cache with a given default expiration duration and cleanup
@@ -1424,9 +1424,9 @@ func __obf_d483f71dd7cfc3bd(__obf_64c99bd794d570f1 time.Duration, __obf_ac9020ec
 // the items in the cache never expire (by default), and must be deleted
 // manually. If the cleanup interval is less than one, expired items are not
 // deleted from the cache before calling c.DeleteExpired().
-func New(__obf_2a700263752d2e00, __obf_df2f08adafb6e156 time.Duration) *MapCache {
-	__obf_2c5da83e1dd3805c := make(map[string]Item)
-	return __obf_d483f71dd7cfc3bd(__obf_2a700263752d2e00, __obf_df2f08adafb6e156, __obf_2c5da83e1dd3805c)
+func New(__obf_113e9a23713e45c1, __obf_c716a6869b1c3396 time.Duration) *MapCache {
+	__obf_717158131d1e5e98 := make(map[string]Item)
+	return __obf_d7ac0beec78a8ed5(__obf_113e9a23713e45c1, __obf_c716a6869b1c3396, __obf_717158131d1e5e98)
 }
 
 // Return a new cache with a given default expiration duration and cleanup
@@ -1450,6 +1450,6 @@ func New(__obf_2a700263752d2e00, __obf_df2f08adafb6e156 time.Duration) *MapCache
 // gob.Register() the individual types stored in the cache before encoding a
 // map retrieved with c.Items(), and to register those same types before
 // decoding a blob containing an items map.
-func NewFrom(__obf_2a700263752d2e00, __obf_df2f08adafb6e156 time.Duration, __obf_2c5da83e1dd3805c map[string]Item) *MapCache {
-	return __obf_d483f71dd7cfc3bd(__obf_2a700263752d2e00, __obf_df2f08adafb6e156, __obf_2c5da83e1dd3805c)
+func NewFrom(__obf_113e9a23713e45c1, __obf_c716a6869b1c3396 time.Duration, __obf_717158131d1e5e98 map[string]Item) *MapCache {
+	return __obf_d7ac0beec78a8ed5(__obf_113e9a23713e45c1, __obf_c716a6869b1c3396, __obf_717158131d1e5e98)
 }

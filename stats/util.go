@@ -1,4 +1,4 @@
-package __obf_bae661114bf2a601
+package __obf_5865d4dc61043b11
 
 import (
 	"sort"
@@ -6,26 +6,26 @@ import (
 )
 
 // float64ToInt rounds a float64 to an int
-func __obf_91d2ecb5786b6fc2(__obf_c5a1fa438321e828 float64) (__obf_935ae667db647873 int) {
-	__obf_a2088af72211e851, _ := Round(__obf_c5a1fa438321e828, 0)
-	return int(__obf_a2088af72211e851)
+func __obf_f602652101083886(__obf_b0bc5503bc2661cc float64) (__obf_37ef2768c239ad7c int) {
+	__obf_bc1c068e07610bb4, _ := Round(__obf_b0bc5503bc2661cc, 0)
+	return int(__obf_bc1c068e07610bb4)
 }
 
 // unixnano returns nanoseconds from UTC epoch
-func __obf_c0925987c8c2abf1() int64 {
+func __obf_d77f0e285f2cf6a1() int64 {
 	return time.Now().UTC().UnixNano()
 }
 
 // copyslice copies a slice of float64s
-func __obf_ea1bc02dcef2d2da(__obf_c5a1fa438321e828 []float64) []float64 {
-	__obf_52c56453a486a111 := make([]float64, len(__obf_c5a1fa438321e828))
-	copy(__obf_52c56453a486a111, __obf_c5a1fa438321e828)
-	return __obf_52c56453a486a111
+func __obf_e27e88b10ae29364(__obf_b0bc5503bc2661cc []float64) []float64 {
+	__obf_02161123be315268 := make([]float64, len(__obf_b0bc5503bc2661cc))
+	copy(__obf_02161123be315268, __obf_b0bc5503bc2661cc)
+	return __obf_02161123be315268
 }
 
 // sortedCopy returns a sorted copy of float64s
-func __obf_083545a4cd904204(__obf_c5a1fa438321e828 []float64) (copy []float64) {
-	copy = __obf_ea1bc02dcef2d2da(__obf_c5a1fa438321e828)
+func __obf_713a257c97207840(__obf_b0bc5503bc2661cc []float64) (copy []float64) {
+	copy = __obf_e27e88b10ae29364(__obf_b0bc5503bc2661cc)
 	sort.Float64s(copy)
 	return
 }
@@ -33,11 +33,11 @@ func __obf_083545a4cd904204(__obf_c5a1fa438321e828 []float64) (copy []float64) {
 // sortedCopyDif returns a sorted copy of float64s
 // only if the original data isn't sorted.
 // Only use this if returned slice won't be manipulated!
-func __obf_e0b2761114041739(__obf_c5a1fa438321e828 []float64) (copy []float64) {
-	if sort.Float64sAreSorted(__obf_c5a1fa438321e828) {
-		return __obf_c5a1fa438321e828
+func __obf_87d0671c67fc5a81(__obf_b0bc5503bc2661cc []float64) (copy []float64) {
+	if sort.Float64sAreSorted(__obf_b0bc5503bc2661cc) {
+		return __obf_b0bc5503bc2661cc
 	}
-	copy = __obf_ea1bc02dcef2d2da(__obf_c5a1fa438321e828)
+	copy = __obf_e27e88b10ae29364(__obf_b0bc5503bc2661cc)
 	sort.Float64s(copy)
 	return
 }

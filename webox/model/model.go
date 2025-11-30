@@ -1,4 +1,4 @@
-package __obf_f2adff344f58f8c4
+package __obf_897f9e0eb9ea847e
 
 import (
 	"encoding/xml"
@@ -56,26 +56,26 @@ type UnifiedOrderRequest struct {
 	// ... 其他可选参数，根据需要添加
 }
 
-func (__obf_5e9573219804daba UnifiedOrderRequest) ToMap() map[string]string {
-	__obf_088a108397dd7e24 := map[string]string{
-		"appid":            __obf_5e9573219804daba.AppID,
-		"mch_id":           __obf_5e9573219804daba.MchID,
-		"nonce_str":        __obf_5e9573219804daba.NonceStr,
-		"openid":           __obf_5e9573219804daba.OpenID,
-		"notify_url":       __obf_5e9573219804daba.NotifyURL,
-		"body":             __obf_5e9573219804daba.Body,
-		"out_trade_no":     __obf_5e9573219804daba.OutTradeNo,
-		"total_fee":        fmt.Sprint(__obf_5e9573219804daba.TotalFee),
-		"product_id":       __obf_5e9573219804daba.ProductID,
-		"spbill_create_ip": __obf_5e9573219804daba.SpbillCreateIP,
-		"attach":           __obf_5e9573219804daba.Attach,
-		"sign_type":        __obf_5e9573219804daba.SignType,
-		"trade_type":       __obf_5e9573219804daba.TradeType,
-		"time_expire":      __obf_5e9573219804daba.TimeExpire,
+func (__obf_7d52efd4040ed7bc UnifiedOrderRequest) ToMap() map[string]string {
+	__obf_1da207ca1b3851ae := map[string]string{
+		"appid":            __obf_7d52efd4040ed7bc.AppID,
+		"mch_id":           __obf_7d52efd4040ed7bc.MchID,
+		"nonce_str":        __obf_7d52efd4040ed7bc.NonceStr,
+		"openid":           __obf_7d52efd4040ed7bc.OpenID,
+		"notify_url":       __obf_7d52efd4040ed7bc.NotifyURL,
+		"body":             __obf_7d52efd4040ed7bc.Body,
+		"out_trade_no":     __obf_7d52efd4040ed7bc.OutTradeNo,
+		"total_fee":        fmt.Sprint(__obf_7d52efd4040ed7bc.TotalFee),
+		"product_id":       __obf_7d52efd4040ed7bc.ProductID,
+		"spbill_create_ip": __obf_7d52efd4040ed7bc.SpbillCreateIP,
+		"attach":           __obf_7d52efd4040ed7bc.Attach,
+		"sign_type":        __obf_7d52efd4040ed7bc.SignType,
+		"trade_type":       __obf_7d52efd4040ed7bc.TradeType,
+		"time_expire":      __obf_7d52efd4040ed7bc.TimeExpire,
 		// "sign":      r.Sign,
 	}
 
-	return __obf_088a108397dd7e24
+	return __obf_1da207ca1b3851ae
 
 }
 
@@ -106,22 +106,22 @@ type RefundRequest struct {
 	// ... 其他可选参数
 }
 
-func (__obf_5e9573219804daba RefundRequest) ToMap() map[string]string {
-	__obf_088a108397dd7e24 := map[string]string{
-		"appid":          __obf_5e9573219804daba.AppID,
-		"mch_id":         __obf_5e9573219804daba.MchID,
-		"nonce_str":      __obf_5e9573219804daba.NonceStr,
-		"notify_url":     __obf_5e9573219804daba.NotifyURL,
-		"out_refund_no":  __obf_5e9573219804daba.OutRefundNo,
-		"total_fee":      fmt.Sprint(__obf_5e9573219804daba.TotalFee),
-		"refund_fee":     fmt.Sprint(__obf_5e9573219804daba.RefundFee),
-		"sign_type":      __obf_5e9573219804daba.SignType,
-		"transaction_id": __obf_5e9573219804daba.TransactionID,
-		"out_trade_no":   __obf_5e9573219804daba.OutTradeNo,
+func (__obf_7d52efd4040ed7bc RefundRequest) ToMap() map[string]string {
+	__obf_1da207ca1b3851ae := map[string]string{
+		"appid":          __obf_7d52efd4040ed7bc.AppID,
+		"mch_id":         __obf_7d52efd4040ed7bc.MchID,
+		"nonce_str":      __obf_7d52efd4040ed7bc.NonceStr,
+		"notify_url":     __obf_7d52efd4040ed7bc.NotifyURL,
+		"out_refund_no":  __obf_7d52efd4040ed7bc.OutRefundNo,
+		"total_fee":      fmt.Sprint(__obf_7d52efd4040ed7bc.TotalFee),
+		"refund_fee":     fmt.Sprint(__obf_7d52efd4040ed7bc.RefundFee),
+		"sign_type":      __obf_7d52efd4040ed7bc.SignType,
+		"transaction_id": __obf_7d52efd4040ed7bc.TransactionID,
+		"out_trade_no":   __obf_7d52efd4040ed7bc.OutTradeNo,
 		// "sign":      r.Sign,
 	}
 
-	return __obf_088a108397dd7e24
+	return __obf_1da207ca1b3851ae
 
 }
 
@@ -154,19 +154,19 @@ type TransBankRequest struct {
 	// ... 其他可选参数
 }
 
-func (__obf_5e9573219804daba TransBankRequest) ToMap() map[string]string {
-	__obf_088a108397dd7e24 := map[string]string{
-		"appid":            __obf_5e9573219804daba.AppID,
-		"mch_id":           __obf_5e9573219804daba.MchID,
-		"nonce_str":        __obf_5e9573219804daba.NonceStr,
-		"partner_trade_no": __obf_5e9573219804daba.PartnerTradeNo,
-		"enc_bank_no":      __obf_5e9573219804daba.EncBankNo,
-		"enc_true_name":    __obf_5e9573219804daba.EncTrueName,
-		"bank_code":        __obf_5e9573219804daba.BankCode,
-		"amount":           fmt.Sprint(__obf_5e9573219804daba.Amount),
+func (__obf_7d52efd4040ed7bc TransBankRequest) ToMap() map[string]string {
+	__obf_1da207ca1b3851ae := map[string]string{
+		"appid":            __obf_7d52efd4040ed7bc.AppID,
+		"mch_id":           __obf_7d52efd4040ed7bc.MchID,
+		"nonce_str":        __obf_7d52efd4040ed7bc.NonceStr,
+		"partner_trade_no": __obf_7d52efd4040ed7bc.PartnerTradeNo,
+		"enc_bank_no":      __obf_7d52efd4040ed7bc.EncBankNo,
+		"enc_true_name":    __obf_7d52efd4040ed7bc.EncTrueName,
+		"bank_code":        __obf_7d52efd4040ed7bc.BankCode,
+		"amount":           fmt.Sprint(__obf_7d52efd4040ed7bc.Amount),
 	}
 
-	return __obf_088a108397dd7e24
+	return __obf_1da207ca1b3851ae
 }
 
 // TransBankResponse 付款到银行响应参数
@@ -205,24 +205,24 @@ type PayNotifyRequest struct {
 	// ... 其他可能返回的字段
 }
 
-func (__obf_5e9573219804daba PayNotifyRequest) ToMap() map[string]string {
+func (__obf_7d52efd4040ed7bc PayNotifyRequest) ToMap() map[string]string {
 	return map[string]string{
-		"appid":          __obf_5e9573219804daba.AppID,
-		"mch_id":         __obf_5e9573219804daba.MchID,
-		"nonce_str":      __obf_5e9573219804daba.NonceStr,
-		"sign":           __obf_5e9573219804daba.Sign,
-		"openid":         __obf_5e9573219804daba.OpenID,
-		"is_subscribe":   __obf_5e9573219804daba.IsSubscribe,
-		"trade_type":     __obf_5e9573219804daba.TradeType,
-		"bank_type":      __obf_5e9573219804daba.BankType,
-		"total_fee":      fmt.Sprint(__obf_5e9573219804daba.TotalFee),
-		"cash_fee":       fmt.Sprint(__obf_5e9573219804daba.CashFee),
-		"fee_type":       __obf_5e9573219804daba.FeeType,
-		"transaction_id": __obf_5e9573219804daba.TransactionID,
-		"out_trade_no":   __obf_5e9573219804daba.OutTradeNo,
-		"attach":         __obf_5e9573219804daba.Attach,
-		"time_end":       __obf_5e9573219804daba.TimeEnd,
-		"result_code":    __obf_5e9573219804daba.ResultCode,
-		"return_code":    __obf_5e9573219804daba.ReturnCode,
+		"appid":          __obf_7d52efd4040ed7bc.AppID,
+		"mch_id":         __obf_7d52efd4040ed7bc.MchID,
+		"nonce_str":      __obf_7d52efd4040ed7bc.NonceStr,
+		"sign":           __obf_7d52efd4040ed7bc.Sign,
+		"openid":         __obf_7d52efd4040ed7bc.OpenID,
+		"is_subscribe":   __obf_7d52efd4040ed7bc.IsSubscribe,
+		"trade_type":     __obf_7d52efd4040ed7bc.TradeType,
+		"bank_type":      __obf_7d52efd4040ed7bc.BankType,
+		"total_fee":      fmt.Sprint(__obf_7d52efd4040ed7bc.TotalFee),
+		"cash_fee":       fmt.Sprint(__obf_7d52efd4040ed7bc.CashFee),
+		"fee_type":       __obf_7d52efd4040ed7bc.FeeType,
+		"transaction_id": __obf_7d52efd4040ed7bc.TransactionID,
+		"out_trade_no":   __obf_7d52efd4040ed7bc.OutTradeNo,
+		"attach":         __obf_7d52efd4040ed7bc.Attach,
+		"time_end":       __obf_7d52efd4040ed7bc.TimeEnd,
+		"result_code":    __obf_7d52efd4040ed7bc.ResultCode,
+		"return_code":    __obf_7d52efd4040ed7bc.ReturnCode,
 	}
 }

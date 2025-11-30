@@ -1,4 +1,4 @@
-package __obf_54406b1a1de84196
+package __obf_6dcb1d06bd949756
 
 import (
 	"errors"
@@ -56,7 +56,7 @@ type CaptchaData interface {
 	GetSecondary() CaptchaImage
 	GetData() any
 	Type() CaptchaType
-	Verify(__obf_36c313afd5cadd12 any, __obf_ddf5266a6f4224d9 int) bool
+	Verify(__obf_21a09cfd5c7d4748 any, __obf_7fb86c457aa6cf23 int) bool
 }
 
 type Captcha interface {
@@ -66,11 +66,6 @@ type Captcha interface {
 // RangeVal .
 type Range struct {
 	Min, Max int
-}
-
-// Size .
-type Size struct {
-	Width, Height int
 }
 
 // Point .
@@ -84,12 +79,12 @@ type AreaRect struct {
 }
 
 // MakeAreaRect creates an area rectangle
-func MakeAreaRect(__obf_e8cf2dd52fedfa9e, __obf_81e79046ae17fba8, __obf_ecdc860838e3baf1, __obf_3093f2ae86219c18 int) *AreaRect {
+func MakeAreaRect(__obf_00f34bb6aaa3ea80, __obf_f1a0ff8eaf634306, __obf_cf2653fb9a7ca32d, __obf_db9ce805f0c741cf int) *AreaRect {
 	return &AreaRect{
-		MinX: __obf_e8cf2dd52fedfa9e,
-		MaxX: __obf_ecdc860838e3baf1,
-		MinY: __obf_81e79046ae17fba8,
-		MaxY: __obf_3093f2ae86219c18,
+		MinX: __obf_00f34bb6aaa3ea80,
+		MaxX: __obf_cf2653fb9a7ca32d,
+		MinY: __obf_f1a0ff8eaf634306,
+		MaxY: __obf_db9ce805f0c741cf,
 	}
 }
 
@@ -99,12 +94,12 @@ type PositionRect struct {
 }
 
 // MakePositionRect creates a position rectangle
-func MakePositionRect(__obf_48afb3005cd4a35c, __obf_33a1f511b09ac2af, __obf_daaeaddeff0e74f7, __obf_2366a8ab85b2ae47 int) *PositionRect {
+func MakePositionRect(__obf_57d99e8bd0a3444e, __obf_3376ebf4b35235fa, __obf_ac11522e37274a9b, __obf_1f037513843595bc int) *PositionRect {
 	return &PositionRect{
-		X:      __obf_48afb3005cd4a35c,
-		Y:      __obf_33a1f511b09ac2af,
-		Height: __obf_daaeaddeff0e74f7,
-		Width:  __obf_2366a8ab85b2ae47,
+		X:      __obf_57d99e8bd0a3444e,
+		Y:      __obf_3376ebf4b35235fa,
+		Height: __obf_ac11522e37274a9b,
+		Width:  __obf_1f037513843595bc,
 	}
 }
 
@@ -166,8 +161,9 @@ const (
 
 // Primary defines the main image configuration
 type SlidePrimary struct {
-	Size  Size    // Image size
-	Alpha float32 // Image alpha
+	Width  int
+	Height int
+	Alpha  float32 // Image alpha
 }
 
 // GraphConfig defines the graph configuration
@@ -206,7 +202,8 @@ type RotateOption struct {
 }
 
 type ClickPrimary struct {
-	Size          Size    // Primary.Size
+	Width         int
+	Height        int
 	LenRange      Range   // rangeLen
 	AnglePosRange []Range // rangeAnglePos
 	SizeRange     Range   // rangeSize
@@ -215,7 +212,8 @@ type ClickPrimary struct {
 }
 
 type ClickSecondary struct {
-	Size           Size  // Secondary.Size
+	Width          int
+	Height         int
 	VerifyLenRange Range // rangeVerifyLen
 	SizeRange      Range // rangeThumbSize
 	BgDistort      int   // thumbBgDistort

@@ -1,4 +1,4 @@
-package __obf_ddeaac61ff7fc4bb
+package __obf_611d3abd867098c0
 
 import (
 	"bytes"
@@ -9,72 +9,72 @@ import (
 )
 
 const (
-	__obf_6a9a79a93865e754 = "data:image/png;base64,"
-	__obf_96e54acce993c199 = "data:image/jpeg;base64,"
+	__obf_e5059269513abf4a = "data:image/png;base64,"
+	__obf_05b2a0c110348747 = "data:image/jpeg;base64,"
 )
 
 // EncodePNGToByte encodes a PNG image to a byte array
-func EncodePNGToByte(__obf_e730a61923e268ec image.Image) (__obf_c77942a7d5578a17 []byte, __obf_630bf6ccf46ac8b5 error) {
-	var __obf_9457d53ef27a1d39 bytes.Buffer
-	if __obf_630bf6ccf46ac8b5 = png.Encode(&__obf_9457d53ef27a1d39, __obf_e730a61923e268ec); __obf_630bf6ccf46ac8b5 != nil {
+func EncodePNGToByte(__obf_6922282326d724ae image.Image) (__obf_44aa4aac478bf881 []byte, __obf_e9ef0dd78ff22cdd error) {
+	var __obf_3bb978316365351e bytes.Buffer
+	if __obf_e9ef0dd78ff22cdd = png.Encode(&__obf_3bb978316365351e, __obf_6922282326d724ae); __obf_e9ef0dd78ff22cdd != nil {
 		return
 	}
-	__obf_c77942a7d5578a17 = __obf_9457d53ef27a1d39.Bytes()
-	__obf_9457d53ef27a1d39.
+	__obf_44aa4aac478bf881 = __obf_3bb978316365351e.Bytes()
+	__obf_3bb978316365351e.
 		Reset()
 	return
 }
 
 // EncodeJPEGToByte encodes a JPEG image to a byte array
-func EncodeJPEGToByte(__obf_e730a61923e268ec image.Image, __obf_9f35251f7917e75e int) (__obf_c77942a7d5578a17 []byte, __obf_630bf6ccf46ac8b5 error) {
-	var __obf_9457d53ef27a1d39 bytes.Buffer
-	if __obf_630bf6ccf46ac8b5 = jpeg.Encode(&__obf_9457d53ef27a1d39, __obf_e730a61923e268ec, &jpeg.Options{Quality: __obf_9f35251f7917e75e}); __obf_630bf6ccf46ac8b5 != nil {
+func EncodeJPEGToByte(__obf_6922282326d724ae image.Image, __obf_d4c6fbd36d49b11e int) (__obf_44aa4aac478bf881 []byte, __obf_e9ef0dd78ff22cdd error) {
+	var __obf_3bb978316365351e bytes.Buffer
+	if __obf_e9ef0dd78ff22cdd = jpeg.Encode(&__obf_3bb978316365351e, __obf_6922282326d724ae, &jpeg.Options{Quality: __obf_d4c6fbd36d49b11e}); __obf_e9ef0dd78ff22cdd != nil {
 		return
 	}
-	__obf_c77942a7d5578a17 = __obf_9457d53ef27a1d39.Bytes()
-	__obf_9457d53ef27a1d39.
+	__obf_44aa4aac478bf881 = __obf_3bb978316365351e.Bytes()
+	__obf_3bb978316365351e.
 		Reset()
 	return
 }
 
 // DecodeByteToJpeg decodes a byte array to a JPEG image
-func DecodeByteToJpeg(__obf_7723b6938513fa3a []byte) (__obf_e730a61923e268ec image.Image, __obf_630bf6ccf46ac8b5 error) {
-	var __obf_9457d53ef27a1d39 bytes.Buffer
-	__obf_9457d53ef27a1d39.
-		Write(__obf_7723b6938513fa3a)
-	__obf_e730a61923e268ec, __obf_630bf6ccf46ac8b5 = jpeg.Decode(&__obf_9457d53ef27a1d39)
-	__obf_9457d53ef27a1d39.
+func DecodeByteToJpeg(__obf_39012e53e716527b []byte) (__obf_6922282326d724ae image.Image, __obf_e9ef0dd78ff22cdd error) {
+	var __obf_3bb978316365351e bytes.Buffer
+	__obf_3bb978316365351e.
+		Write(__obf_39012e53e716527b)
+	__obf_6922282326d724ae, __obf_e9ef0dd78ff22cdd = jpeg.Decode(&__obf_3bb978316365351e)
+	__obf_3bb978316365351e.
 		Reset()
 	return
 }
 
 // DecodeByteToPng decodes a byte array to a PNG image
-func DecodeByteToPng(__obf_7723b6938513fa3a []byte) (__obf_e730a61923e268ec image.Image, __obf_630bf6ccf46ac8b5 error) {
-	var __obf_9457d53ef27a1d39 bytes.Buffer
-	__obf_9457d53ef27a1d39.
-		Write(__obf_7723b6938513fa3a)
-	__obf_e730a61923e268ec, __obf_630bf6ccf46ac8b5 = png.Decode(&__obf_9457d53ef27a1d39)
-	__obf_9457d53ef27a1d39.
+func DecodeByteToPng(__obf_39012e53e716527b []byte) (__obf_6922282326d724ae image.Image, __obf_e9ef0dd78ff22cdd error) {
+	var __obf_3bb978316365351e bytes.Buffer
+	__obf_3bb978316365351e.
+		Write(__obf_39012e53e716527b)
+	__obf_6922282326d724ae, __obf_e9ef0dd78ff22cdd = png.Decode(&__obf_3bb978316365351e)
+	__obf_3bb978316365351e.
 		Reset()
 	return
 }
 
 // EncodePNGToBase64 encodes a PNG image to a Base64 string
-func EncodePNGToBase64(__obf_e730a61923e268ec image.Image) (string, error) {
-	__obf_71207d7cf5e36098, __obf_630bf6ccf46ac8b5 := EncodePNGToByte(__obf_e730a61923e268ec)
-	if __obf_630bf6ccf46ac8b5 != nil {
-		return "", __obf_630bf6ccf46ac8b5
+func EncodePNGToBase64(__obf_6922282326d724ae image.Image) (string, error) {
+	__obf_f5cbaa92f9ee0606, __obf_e9ef0dd78ff22cdd := EncodePNGToByte(__obf_6922282326d724ae)
+	if __obf_e9ef0dd78ff22cdd != nil {
+		return "", __obf_e9ef0dd78ff22cdd
 	}
-	__obf_b6a59d8f5ab1d2cc := base64.StdEncoding.EncodeToString(__obf_71207d7cf5e36098)
-	return __obf_6a9a79a93865e754 + __obf_b6a59d8f5ab1d2cc, nil
+	__obf_a8c4402c7870814a := base64.StdEncoding.EncodeToString(__obf_f5cbaa92f9ee0606)
+	return __obf_e5059269513abf4a + __obf_a8c4402c7870814a, nil
 }
 
 // EncodeJPEGToBase64 encodes a JPEG image to a Base64 string
-func EncodeJPEGToBase64(__obf_e730a61923e268ec image.Image, __obf_9f35251f7917e75e int) (string, error) {
-	__obf_71207d7cf5e36098, __obf_630bf6ccf46ac8b5 := EncodeJPEGToByte(__obf_e730a61923e268ec, __obf_9f35251f7917e75e)
-	if __obf_630bf6ccf46ac8b5 != nil {
-		return "", __obf_630bf6ccf46ac8b5
+func EncodeJPEGToBase64(__obf_6922282326d724ae image.Image, __obf_d4c6fbd36d49b11e int) (string, error) {
+	__obf_f5cbaa92f9ee0606, __obf_e9ef0dd78ff22cdd := EncodeJPEGToByte(__obf_6922282326d724ae, __obf_d4c6fbd36d49b11e)
+	if __obf_e9ef0dd78ff22cdd != nil {
+		return "", __obf_e9ef0dd78ff22cdd
 	}
-	__obf_b6a59d8f5ab1d2cc := base64.StdEncoding.EncodeToString(__obf_71207d7cf5e36098)
-	return __obf_96e54acce993c199 + __obf_b6a59d8f5ab1d2cc, nil
+	__obf_a8c4402c7870814a := base64.StdEncoding.EncodeToString(__obf_f5cbaa92f9ee0606)
+	return __obf_05b2a0c110348747 + __obf_a8c4402c7870814a, nil
 }

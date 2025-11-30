@@ -1,7 +1,7 @@
 // 参考1: gopkg.in/natefinch/lumberjack.v2
 // 参考2: https://github.com/gggwvg/logrotate
 
-package __obf_10b299a6084cd5a7
+package __obf_0f05083f0caeeb4d
 
 import (
 	"errors"
@@ -20,8 +20,8 @@ import (
 var _ io.WriteCloser = (*LogWriter)(nil)
 
 const (
-	__obf_8ca40483052a410a = "2006-01-02_15:04:05.000"
-	__obf_4db8fa8f3d59c873 = ".gz"
+	__obf_9b4cf408039d10df = "2006-01-02_15:04:05.000"
+	__obf_ce9e41b835caf00a = ".gz"
 )
 
 type Option struct {
@@ -37,96 +37,96 @@ type Option struct {
 
 // LogWriter is a logger with rotation function
 type LogWriter struct {
-	__obf_67789ce2eb931f27 Option
-	__obf_a142fe1a109f3f49 *os.File
-	__obf_e853b9057c6d5b00 int64
-	__obf_eba0e5c8d96035dc string
-	__obf_18ec5a3164d017f4 sync.Mutex
-	__obf_62cc36e79dec1d75 sync.Once
-	__obf_242f58652c116d22 chan bool
+	__obf_1b9dd506cd45ee02 Option
+	__obf_70f2d96a7c56d8e7 *os.File
+	__obf_00f262893f08e1e1 int64
+	__obf_c075281f4170a2bf string
+	__obf_1534f2715af3f787 sync.Mutex
+	__obf_e497ee5818e27459 sync.Once
+	__obf_0c08a2ac3a79cedc chan bool
 }
 
 // NewLogWriter creates a new logger
-func NewLogWriter(__obf_67789ce2eb931f27 Option) *LogWriter {
-	__obf_eba0e5c8d96035dc := filepath.Dir(__obf_67789ce2eb931f27.LogPath)
-	__obf_67789ce2eb931f27.
-		MaxAge = __obf_67789ce2eb931f27.MaxAge * time.Hour * 24
-	__obf_67789ce2eb931f27.
-		MaxSize = __obf_67789ce2eb931f27.MaxSize * 1024 * 1024
-	__obf_4decaaabe0b09b1c := &LogWriter{__obf_67789ce2eb931f27: __obf_67789ce2eb931f27, __obf_eba0e5c8d96035dc: __obf_eba0e5c8d96035dc}
+func NewLogWriter(__obf_1b9dd506cd45ee02 Option) *LogWriter {
+	__obf_c075281f4170a2bf := filepath.Dir(__obf_1b9dd506cd45ee02.LogPath)
+	__obf_1b9dd506cd45ee02.
+		MaxAge = __obf_1b9dd506cd45ee02.MaxAge * time.Hour * 24
+	__obf_1b9dd506cd45ee02.
+		MaxSize = __obf_1b9dd506cd45ee02.MaxSize * 1024 * 1024
+	__obf_3d83cb1ce9baad05 := &LogWriter{__obf_1b9dd506cd45ee02: __obf_1b9dd506cd45ee02, __obf_c075281f4170a2bf: __obf_c075281f4170a2bf}
 
-	return __obf_4decaaabe0b09b1c
+	return __obf_3d83cb1ce9baad05
 }
 
 // Write writes content into file.
-func (__obf_f04ff4cd068c6a02 *LogWriter) Write(__obf_f95b1d7cdffecebe []byte) (__obf_dbc5cb4fca09f913 int, __obf_88fc930ea296b3ad error) {
-	__obf_f04ff4cd068c6a02.__obf_18ec5a3164d017f4.
+func (__obf_71761bf6a852ebd6 *LogWriter) Write(__obf_8229f195d9b845b5 []byte) (__obf_d570e13cbf48109f int, __obf_c336006ef0dba3b9 error) {
+	__obf_71761bf6a852ebd6.__obf_1534f2715af3f787.
 		Lock()
-	defer __obf_f04ff4cd068c6a02.__obf_18ec5a3164d017f4.Unlock()
-	__obf_7f12b5626533c9a4 := int64(len(__obf_f95b1d7cdffecebe))
+	defer __obf_71761bf6a852ebd6.__obf_1534f2715af3f787.Unlock()
+	__obf_39f8b0fa8b89a70b := int64(len(__obf_8229f195d9b845b5))
 
-	if __obf_f04ff4cd068c6a02.__obf_a142fe1a109f3f49 == nil {
-		if __obf_88fc930ea296b3ad = __obf_f04ff4cd068c6a02.__obf_701c9639f0fc0de0(__obf_7f12b5626533c9a4); __obf_88fc930ea296b3ad != nil {
+	if __obf_71761bf6a852ebd6.__obf_70f2d96a7c56d8e7 == nil {
+		if __obf_c336006ef0dba3b9 = __obf_71761bf6a852ebd6.__obf_545578855cf0fab8(__obf_39f8b0fa8b89a70b); __obf_c336006ef0dba3b9 != nil {
 			return
 		}
 	}
-	if __obf_f04ff4cd068c6a02.__obf_5c58a4cae6324385(__obf_7f12b5626533c9a4 + __obf_f04ff4cd068c6a02.__obf_e853b9057c6d5b00) {
-		if __obf_88fc930ea296b3ad = __obf_f04ff4cd068c6a02.__obf_25e27b727c8d6b3c(); __obf_88fc930ea296b3ad != nil {
+	if __obf_71761bf6a852ebd6.__obf_d6536274e9cb0bc9(__obf_39f8b0fa8b89a70b + __obf_71761bf6a852ebd6.__obf_00f262893f08e1e1) {
+		if __obf_c336006ef0dba3b9 = __obf_71761bf6a852ebd6.__obf_b72f6cb1fe0cabe5(); __obf_c336006ef0dba3b9 != nil {
 			return
 		}
 	}
-	__obf_dbc5cb4fca09f913, __obf_88fc930ea296b3ad = __obf_f04ff4cd068c6a02.__obf_a142fe1a109f3f49.Write(__obf_f95b1d7cdffecebe)
-	__obf_f04ff4cd068c6a02.__obf_e853b9057c6d5b00 += int64(__obf_dbc5cb4fca09f913)
+	__obf_d570e13cbf48109f, __obf_c336006ef0dba3b9 = __obf_71761bf6a852ebd6.__obf_70f2d96a7c56d8e7.Write(__obf_8229f195d9b845b5)
+	__obf_71761bf6a852ebd6.__obf_00f262893f08e1e1 += int64(__obf_d570e13cbf48109f)
 	return
 }
 
 // Close closes file resource
-func (__obf_f04ff4cd068c6a02 *LogWriter) Close() error {
-	__obf_f04ff4cd068c6a02.__obf_18ec5a3164d017f4.
+func (__obf_71761bf6a852ebd6 *LogWriter) Close() error {
+	__obf_71761bf6a852ebd6.__obf_1534f2715af3f787.
 		Lock()
-	defer __obf_f04ff4cd068c6a02.__obf_18ec5a3164d017f4.Unlock()
-	return __obf_f04ff4cd068c6a02.close()
+	defer __obf_71761bf6a852ebd6.__obf_1534f2715af3f787.Unlock()
+	return __obf_71761bf6a852ebd6.close()
 }
 
-func (__obf_f04ff4cd068c6a02 *LogWriter) close() error {
-	if __obf_f04ff4cd068c6a02.__obf_a142fe1a109f3f49 == nil {
+func (__obf_71761bf6a852ebd6 *LogWriter) close() error {
+	if __obf_71761bf6a852ebd6.__obf_70f2d96a7c56d8e7 == nil {
 		return nil
 	}
-	__obf_88fc930ea296b3ad := __obf_f04ff4cd068c6a02.__obf_a142fe1a109f3f49.Close()
-	if __obf_88fc930ea296b3ad != nil {
-		return fmt.Errorf("failed to close log file: %s", __obf_88fc930ea296b3ad)
+	__obf_c336006ef0dba3b9 := __obf_71761bf6a852ebd6.__obf_70f2d96a7c56d8e7.Close()
+	if __obf_c336006ef0dba3b9 != nil {
+		return fmt.Errorf("failed to close log file: %s", __obf_c336006ef0dba3b9)
 	}
-	__obf_f04ff4cd068c6a02.__obf_a142fe1a109f3f49 = nil
-	__obf_f04ff4cd068c6a02.__obf_e853b9057c6d5b00 = 0
+	__obf_71761bf6a852ebd6.__obf_70f2d96a7c56d8e7 = nil
+	__obf_71761bf6a852ebd6.__obf_00f262893f08e1e1 = 0
 	return nil
 }
 
-func (__obf_f04ff4cd068c6a02 *LogWriter) __obf_5c58a4cae6324385(__obf_e853b9057c6d5b00 int64) bool {
-	return __obf_f04ff4cd068c6a02.__obf_67789ce2eb931f27.MaxSize > 0 && __obf_e853b9057c6d5b00 > __obf_f04ff4cd068c6a02.
+func (__obf_71761bf6a852ebd6 *LogWriter) __obf_d6536274e9cb0bc9(__obf_00f262893f08e1e1 int64) bool {
+	return __obf_71761bf6a852ebd6.__obf_1b9dd506cd45ee02.MaxSize > 0 && __obf_00f262893f08e1e1 > __obf_71761bf6a852ebd6.
 
 		// openFile 负责打开日志文件以供写入。
 		// 它会检查日志文件是否存在，如果不存在则创建一个新文件。
 		// 如果文件存在，它会判断是否需要轮换日志文件。
-		__obf_67789ce2eb931f27.MaxSize
+		__obf_1b9dd506cd45ee02.MaxSize
 }
 
-func (__obf_f04ff4cd068c6a02 *LogWriter) __obf_701c9639f0fc0de0(__obf_2d54451d2945dc30 int64) error {
-	__obf_ebbe957de3c5593d, __obf_88fc930ea296b3ad := os.Stat(__obf_f04ff4cd068c6a02.__obf_67789ce2eb931f27.LogPath)
-	if os.IsNotExist(__obf_88fc930ea296b3ad) {
-		return __obf_f04ff4cd068c6a02.__obf_ee8ef983984f3a5c()
+func (__obf_71761bf6a852ebd6 *LogWriter) __obf_545578855cf0fab8(__obf_ea0ec17a7a34e6af int64) error {
+	__obf_72f88a35a594bd11, __obf_c336006ef0dba3b9 := os.Stat(__obf_71761bf6a852ebd6.__obf_1b9dd506cd45ee02.LogPath)
+	if os.IsNotExist(__obf_c336006ef0dba3b9) {
+		return __obf_71761bf6a852ebd6.__obf_2c904fb2a6e23a2c()
 	}
-	if __obf_88fc930ea296b3ad != nil {
-		return fmt.Errorf("failed to get file info: %w", __obf_88fc930ea296b3ad)
+	if __obf_c336006ef0dba3b9 != nil {
+		return fmt.Errorf("failed to get file info: %w", __obf_c336006ef0dba3b9)
 	}
-	if __obf_f04ff4cd068c6a02.__obf_5c58a4cae6324385(__obf_ebbe957de3c5593d.Size() + __obf_2d54451d2945dc30) {
-		return __obf_f04ff4cd068c6a02.__obf_25e27b727c8d6b3c()
+	if __obf_71761bf6a852ebd6.__obf_d6536274e9cb0bc9(__obf_72f88a35a594bd11.Size() + __obf_ea0ec17a7a34e6af) {
+		return __obf_71761bf6a852ebd6.__obf_b72f6cb1fe0cabe5()
 	}
-	__obf_a142fe1a109f3f49, __obf_88fc930ea296b3ad := os.OpenFile(__obf_f04ff4cd068c6a02.__obf_67789ce2eb931f27.LogPath, os.O_APPEND|os.O_WRONLY, 0644)
-	if __obf_88fc930ea296b3ad != nil {
-		return fmt.Errorf("failed to open log file: %w", __obf_88fc930ea296b3ad)
+	__obf_70f2d96a7c56d8e7, __obf_c336006ef0dba3b9 := os.OpenFile(__obf_71761bf6a852ebd6.__obf_1b9dd506cd45ee02.LogPath, os.O_APPEND|os.O_WRONLY, 0644)
+	if __obf_c336006ef0dba3b9 != nil {
+		return fmt.Errorf("failed to open log file: %w", __obf_c336006ef0dba3b9)
 	}
-	__obf_f04ff4cd068c6a02.__obf_a142fe1a109f3f49 = __obf_a142fe1a109f3f49
-	__obf_f04ff4cd068c6a02.
+	__obf_71761bf6a852ebd6.__obf_70f2d96a7c56d8e7 = __obf_70f2d96a7c56d8e7
+	__obf_71761bf6a852ebd6.
 
 		// openNewFile 创建一个新的日志文件。
 		// 如果日志文件已存在，它会通过重命名并附加时间戳的方式对现有文件进行归档。
@@ -138,32 +138,32 @@ func (__obf_f04ff4cd068c6a02 *LogWriter) __obf_701c9639f0fc0de0(__obf_2d54451d29
 		// - 无法创建或打开新的日志文件。
 		//
 		// 新日志文件的权限将继承自现有日志文件（如果存在），否则默认为 0644。
-		__obf_e853b9057c6d5b00 = __obf_ebbe957de3c5593d.Size()
+		__obf_00f262893f08e1e1 = __obf_72f88a35a594bd11.Size()
 	return nil
 }
 
-func (__obf_f04ff4cd068c6a02 *LogWriter) __obf_ee8ef983984f3a5c() error {
-	if __obf_88fc930ea296b3ad := os.MkdirAll(__obf_f04ff4cd068c6a02.__obf_eba0e5c8d96035dc, os.ModePerm); __obf_88fc930ea296b3ad != nil {
-		return fmt.Errorf("can't make directories for new logfile, error(%v)", __obf_88fc930ea296b3ad)
+func (__obf_71761bf6a852ebd6 *LogWriter) __obf_2c904fb2a6e23a2c() error {
+	if __obf_c336006ef0dba3b9 := os.MkdirAll(__obf_71761bf6a852ebd6.__obf_c075281f4170a2bf, os.ModePerm); __obf_c336006ef0dba3b9 != nil {
+		return fmt.Errorf("can't make directories for new logfile, error(%v)", __obf_c336006ef0dba3b9)
 	}
-	__obf_56f91509125b253b := os.FileMode(0644)
-	__obf_ebbe957de3c5593d, __obf_88fc930ea296b3ad := os.Stat(__obf_f04ff4cd068c6a02.__obf_67789ce2eb931f27.LogPath)
-	if __obf_88fc930ea296b3ad == nil {
-		__obf_56f91509125b253b = __obf_ebbe957de3c5593d.Mode()
-		__obf_b76bcc3e40966c0a, __obf_f44031ec5e35abd3 := util.SplitFilename(__obf_f04ff4cd068c6a02.__obf_67789ce2eb931f27.LogPath)
-		__obf_26addbed0cb5bd5b := time.Now().Format(__obf_8ca40483052a410a)
-		__obf_22b39bbb73cd8e99 := filepath.Join(__obf_f04ff4cd068c6a02.__obf_eba0e5c8d96035dc, fmt.Sprintf("%s-%s%s", __obf_b76bcc3e40966c0a, __obf_26addbed0cb5bd5b, __obf_f44031ec5e35abd3))
+	__obf_a8a474ec05171236 := os.FileMode(0644)
+	__obf_72f88a35a594bd11, __obf_c336006ef0dba3b9 := os.Stat(__obf_71761bf6a852ebd6.__obf_1b9dd506cd45ee02.LogPath)
+	if __obf_c336006ef0dba3b9 == nil {
+		__obf_a8a474ec05171236 = __obf_72f88a35a594bd11.Mode()
+		__obf_f7a1a239ce328200, __obf_a08842b02ff18dcf := util.SplitFilename(__obf_71761bf6a852ebd6.__obf_1b9dd506cd45ee02.LogPath)
+		__obf_f26b469c3552f8f9 := time.Now().Format(__obf_9b4cf408039d10df)
+		__obf_c700791ceb615649 := filepath.Join(__obf_71761bf6a852ebd6.__obf_c075281f4170a2bf, fmt.Sprintf("%s-%s%s", __obf_f7a1a239ce328200, __obf_f26b469c3552f8f9, __obf_a08842b02ff18dcf))
 
-		if __obf_88fc930ea296b3ad = os.Rename(__obf_f04ff4cd068c6a02.__obf_67789ce2eb931f27.LogPath, __obf_22b39bbb73cd8e99); __obf_88fc930ea296b3ad != nil {
-			return fmt.Errorf("can't archive(%s) error(%v)", __obf_22b39bbb73cd8e99, __obf_88fc930ea296b3ad)
+		if __obf_c336006ef0dba3b9 = os.Rename(__obf_71761bf6a852ebd6.__obf_1b9dd506cd45ee02.LogPath, __obf_c700791ceb615649); __obf_c336006ef0dba3b9 != nil {
+			return fmt.Errorf("can't archive(%s) error(%v)", __obf_c700791ceb615649, __obf_c336006ef0dba3b9)
 		}
 	}
-	__obf_9caf613daadcc6e3, __obf_88fc930ea296b3ad := os.OpenFile(__obf_f04ff4cd068c6a02.__obf_67789ce2eb931f27.LogPath, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, __obf_56f91509125b253b)
-	if __obf_88fc930ea296b3ad != nil {
-		return fmt.Errorf("can't open new log file(%s) error(%v)", __obf_f04ff4cd068c6a02.__obf_67789ce2eb931f27.LogPath, __obf_88fc930ea296b3ad)
+	__obf_4f2668ae3f0a4dea, __obf_c336006ef0dba3b9 := os.OpenFile(__obf_71761bf6a852ebd6.__obf_1b9dd506cd45ee02.LogPath, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, __obf_a8a474ec05171236)
+	if __obf_c336006ef0dba3b9 != nil {
+		return fmt.Errorf("can't open new log file(%s) error(%v)", __obf_71761bf6a852ebd6.__obf_1b9dd506cd45ee02.LogPath, __obf_c336006ef0dba3b9)
 	}
-	__obf_f04ff4cd068c6a02.__obf_a142fe1a109f3f49 = __obf_9caf613daadcc6e3
-	__obf_f04ff4cd068c6a02.
+	__obf_71761bf6a852ebd6.__obf_70f2d96a7c56d8e7 = __obf_4f2668ae3f0a4dea
+	__obf_71761bf6a852ebd6.
 
 		// rotate 处理 LogWriter 的日志文件轮换过程。
 		// 它首先关闭当前日志文件并打开一个新文件。如果这是第一次执行轮换操作，
@@ -171,30 +171,30 @@ func (__obf_f04ff4cd068c6a02 *LogWriter) __obf_ee8ef983984f3a5c() error {
 		// 此方法确保在通道已被占用时，归档过程可以被触发而不会阻塞。
 		//
 		// 如果关闭当前文件或打开新文件失败，则返回错误。
-		__obf_e853b9057c6d5b00 = 0
+		__obf_00f262893f08e1e1 = 0
 	return nil
 }
 
-func (__obf_f04ff4cd068c6a02 *LogWriter) __obf_25e27b727c8d6b3c() error {
-	if __obf_88fc930ea296b3ad := __obf_f04ff4cd068c6a02.close(); __obf_88fc930ea296b3ad != nil {
-		return __obf_88fc930ea296b3ad
+func (__obf_71761bf6a852ebd6 *LogWriter) __obf_b72f6cb1fe0cabe5() error {
+	if __obf_c336006ef0dba3b9 := __obf_71761bf6a852ebd6.close(); __obf_c336006ef0dba3b9 != nil {
+		return __obf_c336006ef0dba3b9
 	}
-	if __obf_88fc930ea296b3ad := __obf_f04ff4cd068c6a02.__obf_ee8ef983984f3a5c(); __obf_88fc930ea296b3ad != nil {
-		return __obf_88fc930ea296b3ad
+	if __obf_c336006ef0dba3b9 := __obf_71761bf6a852ebd6.__obf_2c904fb2a6e23a2c(); __obf_c336006ef0dba3b9 != nil {
+		return __obf_c336006ef0dba3b9
 	}
-	__obf_f04ff4cd068c6a02.__obf_62cc36e79dec1d75.
+	__obf_71761bf6a852ebd6.__obf_e497ee5818e27459.
 		Do(func() {
-			__obf_f04ff4cd068c6a02.__obf_242f58652c116d22 = make(chan bool, 1)
+			__obf_71761bf6a852ebd6.__obf_0c08a2ac3a79cedc = make(chan bool, 1)
 			go func() {
-				for range __obf_f04ff4cd068c6a02.__obf_242f58652c116d22 {
-					if __obf_f1c585298a3ec26a := __obf_f04ff4cd068c6a02.__obf_ca4f914e28976e59(); __obf_f1c585298a3ec26a != nil {
-						println(__obf_f1c585298a3ec26a.Error())
+				for range __obf_71761bf6a852ebd6.__obf_0c08a2ac3a79cedc {
+					if __obf_fd88e5b40cbceecd := __obf_71761bf6a852ebd6.__obf_948959f414e7a2e2(); __obf_fd88e5b40cbceecd != nil {
+						println(__obf_fd88e5b40cbceecd.Error())
 					}
 				}
 			}()
 		})
 	select {
-	case __obf_f04ff4cd068c6a02.__obf_242f58652c116d22 <- true:
+	case __obf_71761bf6a852ebd6.__obf_0c08a2ac3a79cedc <- true:
 	default:
 	}
 	return nil
@@ -216,52 +216,52 @@ func (__obf_f04ff4cd068c6a02 *LogWriter) __obf_25e27b727c8d6b3c() error {
 // 返回值：
 // - 如果所有操作成功或不需要任何操作，则返回 nil。
 // - 如果一个或多个操作失败，则返回聚合错误。
-func (__obf_f04ff4cd068c6a02 *LogWriter) __obf_ca4f914e28976e59() error {
-	if __obf_f04ff4cd068c6a02.__obf_67789ce2eb931f27.MaxSize == 0 {
+func (__obf_71761bf6a852ebd6 *LogWriter) __obf_948959f414e7a2e2() error {
+	if __obf_71761bf6a852ebd6.__obf_1b9dd506cd45ee02.MaxSize == 0 {
 		return nil
 	}
-	__obf_bcd2bb7860a8fa09, __obf_88fc930ea296b3ad := __obf_f04ff4cd068c6a02.__obf_727e0b614dea7f4d()
-	if __obf_88fc930ea296b3ad != nil {
-		return __obf_88fc930ea296b3ad
+	__obf_3cac69f7a848b5ee, __obf_c336006ef0dba3b9 := __obf_71761bf6a852ebd6.__obf_02a574cdc7424d76()
+	if __obf_c336006ef0dba3b9 != nil {
+		return __obf_c336006ef0dba3b9
 	}
-	var __obf_ccd89ac504de58c3, __obf_e3fa4b5e90f684b8 []__obf_a4fab20f59280310
-	if __obf_f04ff4cd068c6a02.__obf_67789ce2eb931f27.MaxAge > 0 {
-		__obf_d7505bd684c4edd8 := time.Now().Add(-1 * __obf_f04ff4cd068c6a02.__obf_67789ce2eb931f27.MaxAge)
-		for _, __obf_9caf613daadcc6e3 := range __obf_bcd2bb7860a8fa09 {
-			if __obf_9caf613daadcc6e3.__obf_726eedcb41ef526e.Before(__obf_d7505bd684c4edd8) {
-				__obf_ccd89ac504de58c3 = append(__obf_ccd89ac504de58c3, __obf_9caf613daadcc6e3)
+	var __obf_fd356382eced3335, __obf_9571a42384b76f19 []__obf_09a57e372039e976
+	if __obf_71761bf6a852ebd6.__obf_1b9dd506cd45ee02.MaxAge > 0 {
+		__obf_b51e84a88880d711 := time.Now().Add(-1 * __obf_71761bf6a852ebd6.__obf_1b9dd506cd45ee02.MaxAge)
+		for _, __obf_4f2668ae3f0a4dea := range __obf_3cac69f7a848b5ee {
+			if __obf_4f2668ae3f0a4dea.__obf_4e58f20f26e0463d.Before(__obf_b51e84a88880d711) {
+				__obf_fd356382eced3335 = append(__obf_fd356382eced3335, __obf_4f2668ae3f0a4dea)
 			} else {
-				__obf_e3fa4b5e90f684b8 = append(__obf_e3fa4b5e90f684b8, __obf_9caf613daadcc6e3)
+				__obf_9571a42384b76f19 = append(__obf_9571a42384b76f19, __obf_4f2668ae3f0a4dea)
 			}
 		}
 	}
 
-	var __obf_487cba220a5f0852 []error
-	for _, __obf_9caf613daadcc6e3 := range __obf_ccd89ac504de58c3 {
-		if __obf_88fc930ea296b3ad = os.Remove(filepath.Join(__obf_f04ff4cd068c6a02.__obf_eba0e5c8d96035dc, __obf_9caf613daadcc6e3.Name())); __obf_88fc930ea296b3ad != nil {
-			__obf_487cba220a5f0852 = append(__obf_487cba220a5f0852, fmt.Errorf("remove %s: %w", __obf_9caf613daadcc6e3.Name(), __obf_88fc930ea296b3ad))
+	var __obf_47638f41a4dc72d4 []error
+	for _, __obf_4f2668ae3f0a4dea := range __obf_fd356382eced3335 {
+		if __obf_c336006ef0dba3b9 = os.Remove(filepath.Join(__obf_71761bf6a852ebd6.__obf_c075281f4170a2bf, __obf_4f2668ae3f0a4dea.Name())); __obf_c336006ef0dba3b9 != nil {
+			__obf_47638f41a4dc72d4 = append(__obf_47638f41a4dc72d4, fmt.Errorf("remove %s: %w", __obf_4f2668ae3f0a4dea.Name(), __obf_c336006ef0dba3b9))
 		}
 	}
-	if len(__obf_487cba220a5f0852) > 0 {
-		return errors.Join(__obf_487cba220a5f0852...)
+	if len(__obf_47638f41a4dc72d4) > 0 {
+		return errors.Join(__obf_47638f41a4dc72d4...)
 	}
 
-	for _, __obf_9caf613daadcc6e3 := range __obf_e3fa4b5e90f684b8 {
-		if strings.HasSuffix(__obf_9caf613daadcc6e3.Name(), __obf_4db8fa8f3d59c873) {
+	for _, __obf_4f2668ae3f0a4dea := range __obf_9571a42384b76f19 {
+		if strings.HasSuffix(__obf_4f2668ae3f0a4dea.Name(), __obf_ce9e41b835caf00a) {
 			continue
 		}
-		__obf_ee1a4f9a119be494 := filepath.Join(__obf_f04ff4cd068c6a02.__obf_eba0e5c8d96035dc, __obf_9caf613daadcc6e3.Name())
-		__obf_88fc930ea296b3ad = util.PathGzip(__obf_ee1a4f9a119be494)
-		if __obf_88fc930ea296b3ad != nil {
-			__obf_487cba220a5f0852 = append(__obf_487cba220a5f0852, fmt.Errorf("compress %s: %w", __obf_9caf613daadcc6e3.Name(), __obf_88fc930ea296b3ad))
+		__obf_444b53e517c97948 := filepath.Join(__obf_71761bf6a852ebd6.__obf_c075281f4170a2bf, __obf_4f2668ae3f0a4dea.Name())
+		__obf_c336006ef0dba3b9 = util.PathGzip(__obf_444b53e517c97948)
+		if __obf_c336006ef0dba3b9 != nil {
+			__obf_47638f41a4dc72d4 = append(__obf_47638f41a4dc72d4, fmt.Errorf("compress %s: %w", __obf_4f2668ae3f0a4dea.Name(), __obf_c336006ef0dba3b9))
 		} else {
-			if __obf_88fc930ea296b3ad = os.Remove(__obf_ee1a4f9a119be494); __obf_88fc930ea296b3ad != nil {
-				__obf_487cba220a5f0852 = append(__obf_487cba220a5f0852, fmt.Errorf("remove %s: %w", __obf_ee1a4f9a119be494, __obf_88fc930ea296b3ad))
+			if __obf_c336006ef0dba3b9 = os.Remove(__obf_444b53e517c97948); __obf_c336006ef0dba3b9 != nil {
+				__obf_47638f41a4dc72d4 = append(__obf_47638f41a4dc72d4, fmt.Errorf("remove %s: %w", __obf_444b53e517c97948, __obf_c336006ef0dba3b9))
 			}
 		}
 	}
 
-	return errors.Join(__obf_487cba220a5f0852...)
+	return errors.Join(__obf_47638f41a4dc72d4...)
 }
 
 // archives 从 LogWriter 的配置中指定的目录中检索日志文件的排序列表。
@@ -271,51 +271,51 @@ func (__obf_f04ff4cd068c6a02 *LogWriter) __obf_ca4f914e28976e59() error {
 // 返回值:
 // - 一个 logFile 结构体切片，每个结构体包含一个文件及其关联的时间戳。
 // - 如果目录无法读取或解析文件名时出现问题，则返回错误。
-func (__obf_f04ff4cd068c6a02 *LogWriter) __obf_727e0b614dea7f4d() ([]__obf_a4fab20f59280310, error) {
-	__obf_bcd2bb7860a8fa09, __obf_88fc930ea296b3ad := os.ReadDir(__obf_f04ff4cd068c6a02.__obf_eba0e5c8d96035dc)
-	if __obf_88fc930ea296b3ad != nil {
-		return nil, __obf_88fc930ea296b3ad
+func (__obf_71761bf6a852ebd6 *LogWriter) __obf_02a574cdc7424d76() ([]__obf_09a57e372039e976, error) {
+	__obf_3cac69f7a848b5ee, __obf_c336006ef0dba3b9 := os.ReadDir(__obf_71761bf6a852ebd6.__obf_c075281f4170a2bf)
+	if __obf_c336006ef0dba3b9 != nil {
+		return nil, __obf_c336006ef0dba3b9
 	}
 	var (
-		__obf_26addbed0cb5bd5b                         time.Time
-		__obf_df61cb30e896144d                         []__obf_a4fab20f59280310
-		__obf_b76bcc3e40966c0a, __obf_f44031ec5e35abd3 = util.SplitFilename(__obf_f04ff4cd068c6a02.__obf_67789ce2eb931f27.LogPath)
+		__obf_f26b469c3552f8f9                         time.Time
+		__obf_4c65daabf27a895b                         []__obf_09a57e372039e976
+		__obf_f7a1a239ce328200, __obf_a08842b02ff18dcf = util.SplitFilename(__obf_71761bf6a852ebd6.__obf_1b9dd506cd45ee02.LogPath)
 	)
-	__obf_b76bcc3e40966c0a += "-"
-	for _, __obf_9caf613daadcc6e3 := range __obf_bcd2bb7860a8fa09 {
-		if __obf_9caf613daadcc6e3.IsDir() {
+	__obf_f7a1a239ce328200 += "-"
+	for _, __obf_4f2668ae3f0a4dea := range __obf_3cac69f7a848b5ee {
+		if __obf_4f2668ae3f0a4dea.IsDir() {
 			continue
 		}
-		if __obf_26addbed0cb5bd5b, __obf_88fc930ea296b3ad = __obf_c8bf81cdcd160e09(__obf_8ca40483052a410a, __obf_9caf613daadcc6e3.Name(), __obf_b76bcc3e40966c0a, __obf_f44031ec5e35abd3); __obf_88fc930ea296b3ad == nil {
-			__obf_df61cb30e896144d = append(__obf_df61cb30e896144d, __obf_a4fab20f59280310{__obf_9caf613daadcc6e3, __obf_26addbed0cb5bd5b})
+		if __obf_f26b469c3552f8f9, __obf_c336006ef0dba3b9 = __obf_6536055a11acb4e2(__obf_9b4cf408039d10df, __obf_4f2668ae3f0a4dea.Name(), __obf_f7a1a239ce328200, __obf_a08842b02ff18dcf); __obf_c336006ef0dba3b9 == nil {
+			__obf_4c65daabf27a895b = append(__obf_4c65daabf27a895b, __obf_09a57e372039e976{__obf_4f2668ae3f0a4dea, __obf_f26b469c3552f8f9})
 			continue
 		}
-		if __obf_26addbed0cb5bd5b, __obf_88fc930ea296b3ad = __obf_c8bf81cdcd160e09(__obf_8ca40483052a410a, __obf_9caf613daadcc6e3.Name(), __obf_b76bcc3e40966c0a, __obf_f44031ec5e35abd3+__obf_4db8fa8f3d59c873); __obf_88fc930ea296b3ad == nil {
-			__obf_df61cb30e896144d = append(__obf_df61cb30e896144d, __obf_a4fab20f59280310{__obf_9caf613daadcc6e3, __obf_26addbed0cb5bd5b})
+		if __obf_f26b469c3552f8f9, __obf_c336006ef0dba3b9 = __obf_6536055a11acb4e2(__obf_9b4cf408039d10df, __obf_4f2668ae3f0a4dea.Name(), __obf_f7a1a239ce328200, __obf_a08842b02ff18dcf+__obf_ce9e41b835caf00a); __obf_c336006ef0dba3b9 == nil {
+			__obf_4c65daabf27a895b = append(__obf_4c65daabf27a895b, __obf_09a57e372039e976{__obf_4f2668ae3f0a4dea, __obf_f26b469c3552f8f9})
 			continue
 		}
 	}
-	sort.Sort(__obf_0dbd5c06f3a9230e(__obf_df61cb30e896144d))
-	return __obf_df61cb30e896144d, nil
+	sort.Sort(__obf_447c7a2a6ac43bce(__obf_4c65daabf27a895b))
+	return __obf_4c65daabf27a895b, nil
 }
 
-type __obf_a4fab20f59280310 struct {
+type __obf_09a57e372039e976 struct {
 	os.DirEntry
-	__obf_726eedcb41ef526e time.Time
+	__obf_4e58f20f26e0463d time.Time
 }
 
-type __obf_0dbd5c06f3a9230e []__obf_a4fab20f59280310
+type __obf_447c7a2a6ac43bce []__obf_09a57e372039e976
 
-func (__obf_4562e80108455e70 __obf_0dbd5c06f3a9230e) Less(__obf_47c9a29e8b2c582d, __obf_d91802ac36a2c1e5 int) bool {
-	return __obf_4562e80108455e70[__obf_47c9a29e8b2c582d].__obf_726eedcb41ef526e.After(__obf_4562e80108455e70[__obf_d91802ac36a2c1e5].__obf_726eedcb41ef526e)
+func (__obf_83381a02823ae02c __obf_447c7a2a6ac43bce) Less(__obf_d2fbf106aa46d62a, __obf_0ab578d52bdc16d1 int) bool {
+	return __obf_83381a02823ae02c[__obf_d2fbf106aa46d62a].__obf_4e58f20f26e0463d.After(__obf_83381a02823ae02c[__obf_0ab578d52bdc16d1].__obf_4e58f20f26e0463d)
 }
 
-func (__obf_4562e80108455e70 __obf_0dbd5c06f3a9230e) Swap(__obf_47c9a29e8b2c582d, __obf_d91802ac36a2c1e5 int) {
-	__obf_4562e80108455e70[__obf_47c9a29e8b2c582d], __obf_4562e80108455e70[__obf_d91802ac36a2c1e5] = __obf_4562e80108455e70[__obf_d91802ac36a2c1e5], __obf_4562e80108455e70[__obf_47c9a29e8b2c582d]
+func (__obf_83381a02823ae02c __obf_447c7a2a6ac43bce) Swap(__obf_d2fbf106aa46d62a, __obf_0ab578d52bdc16d1 int) {
+	__obf_83381a02823ae02c[__obf_d2fbf106aa46d62a], __obf_83381a02823ae02c[__obf_0ab578d52bdc16d1] = __obf_83381a02823ae02c[__obf_0ab578d52bdc16d1], __obf_83381a02823ae02c[__obf_d2fbf106aa46d62a]
 }
 
-func (__obf_4562e80108455e70 __obf_0dbd5c06f3a9230e) Len() int {
-	return len(__obf_4562e80108455e70)
+func (__obf_83381a02823ae02c __obf_447c7a2a6ac43bce) Len() int {
+	return len(__obf_83381a02823ae02c)
 }
 
 // timeFromName 从文件名中提取并解析时间戳，根据提供的时间格式、前缀和扩展名进行验证。
@@ -330,13 +330,13 @@ func (__obf_4562e80108455e70 __obf_0dbd5c06f3a9230e) Len() int {
 // 返回值:
 //   - time.Time: 如果解析成功，返回解析的时间戳。
 //   - error: 如果文件名与前缀或扩展名不匹配，或者时间戳无法解析，则返回错误。
-func __obf_c8bf81cdcd160e09(__obf_8ca40483052a410a, __obf_4ce0d54bd043e736, __obf_b76bcc3e40966c0a, __obf_f44031ec5e35abd3 string) (time.Time, error) {
-	if !strings.HasPrefix(__obf_4ce0d54bd043e736, __obf_b76bcc3e40966c0a) {
-		return time.Time{}, fmt.Errorf("mismatched prefix(%s) filename(%s)", __obf_b76bcc3e40966c0a, __obf_4ce0d54bd043e736)
+func __obf_6536055a11acb4e2(__obf_9b4cf408039d10df, __obf_6770791b53a0efa5, __obf_f7a1a239ce328200, __obf_a08842b02ff18dcf string) (time.Time, error) {
+	if !strings.HasPrefix(__obf_6770791b53a0efa5, __obf_f7a1a239ce328200) {
+		return time.Time{}, fmt.Errorf("mismatched prefix(%s) filename(%s)", __obf_f7a1a239ce328200, __obf_6770791b53a0efa5)
 	}
-	if !strings.HasSuffix(__obf_4ce0d54bd043e736, __obf_f44031ec5e35abd3) {
-		return time.Time{}, fmt.Errorf("mismatched extension(%s) filename(%s)", __obf_f44031ec5e35abd3, __obf_4ce0d54bd043e736)
+	if !strings.HasSuffix(__obf_6770791b53a0efa5, __obf_a08842b02ff18dcf) {
+		return time.Time{}, fmt.Errorf("mismatched extension(%s) filename(%s)", __obf_a08842b02ff18dcf, __obf_6770791b53a0efa5)
 	}
-	__obf_5dc294347e067e22 := __obf_4ce0d54bd043e736[len(__obf_b76bcc3e40966c0a) : len(__obf_4ce0d54bd043e736)-len(__obf_f44031ec5e35abd3)]
-	return time.Parse(__obf_8ca40483052a410a, __obf_5dc294347e067e22)
+	__obf_e4d937abd52f1454 := __obf_6770791b53a0efa5[len(__obf_f7a1a239ce328200) : len(__obf_6770791b53a0efa5)-len(__obf_a08842b02ff18dcf)]
+	return time.Parse(__obf_9b4cf408039d10df, __obf_e4d937abd52f1454)
 }

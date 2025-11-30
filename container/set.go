@@ -1,66 +1,66 @@
 // 非线程安全set集合
-package __obf_e72ce603d10d02a1
+package __obf_038560a94647875f
 
 import "fmt"
 
-type Set[T comparable] map[T]__obf_6b8a0e2afb80d958
-type __obf_6b8a0e2afb80d958 struct{}
+type Set[T comparable] map[T]__obf_75885acf59b596f4
+type __obf_75885acf59b596f4 struct{}
 
-func NewSet[E comparable](__obf_84503acd3fedd4ef []E) *Set[E] {
-	__obf_bdd29c369052a035 :=// 获取Set的地址
+func NewSet[E comparable](__obf_218b8d5ae68c5552 []E) *Set[E] {
+	__obf_06832686dcef705f :=// 获取Set的地址
 	Set[E]{}
 	// 声明map类型的数据结构
-	for _, __obf_c480cb5c2a20f5dd := range __obf_84503acd3fedd4ef {
-		__obf_bdd29c369052a035[// unsafe.Sizeof(void{}) // 结果为0
-		__obf_c480cb5c2a20f5dd] = __obf_6b8a0e2afb80d958{}
+	for _, __obf_e8eb1854ef7cf459 := range __obf_218b8d5ae68c5552 {
+		__obf_06832686dcef705f[// unsafe.Sizeof(void{}) // 结果为0
+		__obf_e8eb1854ef7cf459] = __obf_75885acf59b596f4{}
 	}
-	return &__obf_bdd29c369052a035
+	return &__obf_06832686dcef705f
 }
 
-func (__obf_bdd29c369052a035 *Set[T]) Add(__obf_c03cf6504cc3cf88 T) bool {
-	if _, __obf_b95641e1ff7de824 := (*__obf_bdd29c369052a035)[__obf_c03cf6504cc3cf88]; __obf_b95641e1ff7de824 {
+func (__obf_06832686dcef705f *Set[T]) Add(__obf_d2ea251c77215677 T) bool {
+	if _, __obf_5904187971b4cb86 := (*__obf_06832686dcef705f)[__obf_d2ea251c77215677]; __obf_5904187971b4cb86 {
 		return false
 	}
 
 	// unsafe.Sizeof(void{}) // 结果为0
-	(*__obf_bdd29c369052a035)[__obf_c03cf6504cc3cf88] = __obf_6b8a0e2afb80d958{}
+	(*__obf_06832686dcef705f)[__obf_d2ea251c77215677] = __obf_75885acf59b596f4{}
 	return true
 }
 
-func (__obf_bdd29c369052a035 *Set[T]) Contains(__obf_c480cb5c2a20f5dd T) bool {
-	_, __obf_b95641e1ff7de824 := (*__obf_bdd29c369052a035)[__obf_c480cb5c2a20f5dd]
-	return __obf_b95641e1ff7de824
+func (__obf_06832686dcef705f *Set[T]) Contains(__obf_e8eb1854ef7cf459 T) bool {
+	_, __obf_5904187971b4cb86 := (*__obf_06832686dcef705f)[__obf_e8eb1854ef7cf459]
+	return __obf_5904187971b4cb86
 }
 
-func (__obf_bdd29c369052a035 *Set[T]) Size() int {
-	return len(*__obf_bdd29c369052a035)
+func (__obf_06832686dcef705f *Set[T]) Size() int {
+	return len(*__obf_06832686dcef705f)
 }
 
-func (__obf_bdd29c369052a035 *Set[T]) Elem() []T {
-	__obf_e4afa361e4970b8e := make([]T, 0, len(*__obf_bdd29c369052a035))
-	for __obf_cce6a084cb2eec1f := range *__obf_bdd29c369052a035 {
-		__obf_e4afa361e4970b8e = append(__obf_e4afa361e4970b8e, __obf_cce6a084cb2eec1f)
+func (__obf_06832686dcef705f *Set[T]) Elem() []T {
+	__obf_0414b3afaf21f9fa := make([]T, 0, len(*__obf_06832686dcef705f))
+	for __obf_ed002d86aefb8e41 := range *__obf_06832686dcef705f {
+		__obf_0414b3afaf21f9fa = append(__obf_0414b3afaf21f9fa, __obf_ed002d86aefb8e41)
 	}
-	return __obf_e4afa361e4970b8e
+	return __obf_0414b3afaf21f9fa
 }
 
-func (__obf_bdd29c369052a035 *Set[T]) Remove(__obf_c03cf6504cc3cf88 T) {
-	delete(*__obf_bdd29c369052a035, __obf_c03cf6504cc3cf88)
+func (__obf_06832686dcef705f *Set[T]) Remove(__obf_d2ea251c77215677 T) {
+	delete(*__obf_06832686dcef705f, __obf_d2ea251c77215677)
 }
 
-func (__obf_bdd29c369052a035 *Set[T]) Clear() {
-	*__obf_bdd29c369052a035 = make(map[T]__obf_6b8a0e2afb80d958)
+func (__obf_06832686dcef705f *Set[T]) Clear() {
+	*__obf_06832686dcef705f = make(map[T]__obf_75885acf59b596f4)
 }
 
 // 相等
-func (__obf_bdd29c369052a035 *Set[T]) Equal(__obf_20fdf4ef89f645eb *Set[T]) bool {
+func (__obf_06832686dcef705f *Set[T]) Equal(__obf_8045619291d56510 *Set[T]) bool {
 	// _ = other.(*Set)
 	// 如果两者Size不相等，就不用比较了
-	if __obf_bdd29c369052a035.Size() != __obf_20fdf4ef89f645eb.Size() {
+	if __obf_06832686dcef705f.Size() != __obf_8045619291d56510.Size() {
 		return false
 	}
-	for __obf_9148a001224202b7 := range *__obf_bdd29c369052a035 {
-		if !__obf_20fdf4ef89f645eb.Contains(__obf_9148a001224202b7) {
+	for __obf_3c623453454fedc7 := range *__obf_06832686dcef705f {
+		if !__obf_8045619291d56510.Contains(__obf_3c623453454fedc7) {
 			return false
 		}
 	}
@@ -69,14 +69,14 @@ func (__obf_bdd29c369052a035 *Set[T]) Equal(__obf_20fdf4ef89f645eb *Set[T]) bool
 }
 
 // 子集
-func (__obf_bdd29c369052a035 *Set[T]) IsSubset(__obf_20fdf4ef89f645eb *Set[T]) bool {
+func (__obf_06832686dcef705f *Set[T]) IsSubset(__obf_8045619291d56510 *Set[T]) bool {
 	// s的size长于other，不用说了
-	if __obf_bdd29c369052a035.Size() > __obf_20fdf4ef89f645eb.Size() {
+	if __obf_06832686dcef705f.Size() > __obf_8045619291d56510.Size() {
 		return false
 	}
 	// 迭代遍历
-	for __obf_9dd08479fe906662 := range *__obf_bdd29c369052a035 {
-		if !__obf_20fdf4ef89f645eb.Contains(__obf_9dd08479fe906662) {
+	for __obf_52e73bb48e810dd2 := range *__obf_06832686dcef705f {
+		if !__obf_8045619291d56510.Contains(__obf_52e73bb48e810dd2) {
 			return false
 		}
 	}
@@ -84,68 +84,68 @@ func (__obf_bdd29c369052a035 *Set[T]) IsSubset(__obf_20fdf4ef89f645eb *Set[T]) b
 }
 
 // 并集
-func (__obf_1ebe440f7503b18d *Set[T]) Union(__obf_20fdf4ef89f645eb *Set[T]) *Set[T] {
-	__obf_c41a381a52126db3 := Set[T]{}
-	for __obf_9148a001224202b7 := range *__obf_1ebe440f7503b18d {
-		__obf_c41a381a52126db3.
-			Add(__obf_9148a001224202b7)
+func (__obf_096e79c377ff1b0d *Set[T]) Union(__obf_8045619291d56510 *Set[T]) *Set[T] {
+	__obf_71dc1136337b167c := Set[T]{}
+	for __obf_3c623453454fedc7 := range *__obf_096e79c377ff1b0d {
+		__obf_71dc1136337b167c.
+			Add(__obf_3c623453454fedc7)
 	}
-	for __obf_9148a001224202b7 := range *__obf_20fdf4ef89f645eb {
-		__obf_c41a381a52126db3.
-			Add(__obf_9148a001224202b7)
+	for __obf_3c623453454fedc7 := range *__obf_8045619291d56510 {
+		__obf_71dc1136337b167c.
+			Add(__obf_3c623453454fedc7)
 	}
-	return &__obf_c41a381a52126db3
+	return &__obf_71dc1136337b167c
 }
 
 // 交集
-func (__obf_bdd29c369052a035 *Set[T]) Intersect(__obf_20fdf4ef89f645eb *Set[T]) *Set[T] {
-	__obf_5510f7d21107236b := Set[T]{}
+func (__obf_06832686dcef705f *Set[T]) Intersect(__obf_8045619291d56510 *Set[T]) *Set[T] {
+	__obf_7f6ceb9c2052a400 := Set[T]{}
 	// loop over smaller set
-	if __obf_bdd29c369052a035.Size() < __obf_20fdf4ef89f645eb.Size() {
-		for __obf_9148a001224202b7 := range *__obf_bdd29c369052a035 {
-			if __obf_20fdf4ef89f645eb.Contains(__obf_9148a001224202b7) {
-				__obf_5510f7d21107236b.
-					Add(__obf_9148a001224202b7)
+	if __obf_06832686dcef705f.Size() < __obf_8045619291d56510.Size() {
+		for __obf_3c623453454fedc7 := range *__obf_06832686dcef705f {
+			if __obf_8045619291d56510.Contains(__obf_3c623453454fedc7) {
+				__obf_7f6ceb9c2052a400.
+					Add(__obf_3c623453454fedc7)
 			}
 		}
 	} else {
-		for __obf_9148a001224202b7 := range *__obf_20fdf4ef89f645eb {
-			if __obf_bdd29c369052a035.Contains(__obf_9148a001224202b7) {
-				__obf_5510f7d21107236b.
-					Add(__obf_9148a001224202b7)
+		for __obf_3c623453454fedc7 := range *__obf_8045619291d56510 {
+			if __obf_06832686dcef705f.Contains(__obf_3c623453454fedc7) {
+				__obf_7f6ceb9c2052a400.
+					Add(__obf_3c623453454fedc7)
 			}
 		}
 	}
-	return &__obf_5510f7d21107236b
+	return &__obf_7f6ceb9c2052a400
 }
 
 // 差集
-func (__obf_bdd29c369052a035 *Set[T]) Difference(__obf_20fdf4ef89f645eb *Set[T]) *Set[T] {
-	__obf_22cd859a9dc1a5a8 := Set[T]{}
-	for __obf_9148a001224202b7 := range *__obf_bdd29c369052a035 {
-		if !__obf_20fdf4ef89f645eb.Contains(__obf_9148a001224202b7) {
-			__obf_22cd859a9dc1a5a8.
-				Add(__obf_9148a001224202b7)
+func (__obf_06832686dcef705f *Set[T]) Difference(__obf_8045619291d56510 *Set[T]) *Set[T] {
+	__obf_c4102e5a023963b5 := Set[T]{}
+	for __obf_3c623453454fedc7 := range *__obf_06832686dcef705f {
+		if !__obf_8045619291d56510.Contains(__obf_3c623453454fedc7) {
+			__obf_c4102e5a023963b5.
+				Add(__obf_3c623453454fedc7)
 		}
 	}
-	return &__obf_22cd859a9dc1a5a8
+	return &__obf_c4102e5a023963b5
 }
 
 // 函数遍历
-func (__obf_bdd29c369052a035 *Set[T]) Each(__obf_966f331a674c59ef func(any) bool) {
-	for __obf_9148a001224202b7 := range *__obf_bdd29c369052a035 {
-		if __obf_966f331a674c59ef(__obf_9148a001224202b7) {
+func (__obf_06832686dcef705f *Set[T]) Each(__obf_df5c7b9ab33daa5f func(any) bool) {
+	for __obf_3c623453454fedc7 := range *__obf_06832686dcef705f {
+		if __obf_df5c7b9ab33daa5f(__obf_3c623453454fedc7) {
 			break
 		}
 	}
 }
 
 // 返回string数组
-func (__obf_bdd29c369052a035 *Set[T]) StringElem() []string {
-	__obf_84503acd3fedd4ef := make([]string, 0, len(*__obf_bdd29c369052a035))
+func (__obf_06832686dcef705f *Set[T]) StringElem() []string {
+	__obf_218b8d5ae68c5552 := make([]string, 0, len(*__obf_06832686dcef705f))
 
-	for __obf_9148a001224202b7 := range *__obf_bdd29c369052a035 {
-		__obf_84503acd3fedd4ef = append(__obf_84503acd3fedd4ef, fmt.Sprintf("%v", __obf_9148a001224202b7))
+	for __obf_3c623453454fedc7 := range *__obf_06832686dcef705f {
+		__obf_218b8d5ae68c5552 = append(__obf_218b8d5ae68c5552, fmt.Sprintf("%v", __obf_3c623453454fedc7))
 	}
-	return __obf_84503acd3fedd4ef
+	return __obf_218b8d5ae68c5552
 }

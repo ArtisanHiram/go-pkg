@@ -23,7 +23,7 @@ THIS SOFTWARE.
 // Example:
 //
 //	imgResized := resize.Resize(1000, 0, imgOld, resize.MitchellNetravali)
-package __obf_d24101647651f4c3
+package __obf_ac510735d4d13cdd
 
 import (
 	"image"
@@ -53,26 +53,26 @@ const (
 )
 
 // kernal, returns an InterpolationFunctions taps and kernel.
-func (__obf_41043e9a68df34f8 InterpolationFunction) __obf_0a5c3b331d82d518() (int, func(float64) float64) {
-	switch __obf_41043e9a68df34f8 {
+func (__obf_7326873273fab46e InterpolationFunction) __obf_0a93ef33b92d5d34() (int, func(float64) float64) {
+	switch __obf_7326873273fab46e {
 	case Bilinear:
-		return 2, __obf_d66ee4de441cbd66
+		return 2, __obf_75f6718d0c68ce45
 	case Bicubic:
-		return 4, __obf_a619d5b55f4394a4
+		return 4, __obf_6dbe12e595f20b30
 	case MitchellNetravali:
-		return 4, __obf_7a44659276a985b3
+		return 4, __obf_4f5e93c03ec56195
 	case Lanczos2:
-		return 4, __obf_b3d8a34685baa99a
+		return 4, __obf_55ba6e33e6203680
 	case Lanczos3:
-		return 6, __obf_d668a1e333340f8d
+		return 6, __obf_bc625d1a66a5919f
 	default:
 		// Default to NearestNeighbor.
-		return 2, __obf_e958fd3b8bea8d9c
+		return 2, __obf_6a3a721569bbf375
 	}
 }
 
 // values <1 will sharpen the image
-var __obf_b8f04e12843e5823 = 1.0
+var __obf_b5313b280a820ad0 = 1.0
 
 // Resize scales an image to new width and height using the interpolation function interp.
 // A new image with the given dimensions will be returned.
@@ -80,643 +80,643 @@ var __obf_b8f04e12843e5823 = 1.0
 // the aspect ratio is that of the originating image.
 // The resizing algorithm uses channels for parallel computation.
 // If the input image has width or height of 0, it is returned unchanged.
-func Resize(__obf_a22ab8344dedd519, __obf_2667e7551de50ad4 uint, __obf_b9c5bf10bfae0f7a image.Image, __obf_0c2c83d39fca0ad5 InterpolationFunction) image.Image {
-	__obf_5ba5939ea89ea0de, __obf_e469e0e79b6f8761 := __obf_0c8f992b82cb1c93(__obf_a22ab8344dedd519, __obf_2667e7551de50ad4, float64(__obf_b9c5bf10bfae0f7a.Bounds().Dx()), float64(__obf_b9c5bf10bfae0f7a.Bounds().Dy()))
-	if __obf_a22ab8344dedd519 == 0 {
-		__obf_a22ab8344dedd519 = uint(0.7 + float64(__obf_b9c5bf10bfae0f7a.Bounds().Dx())/__obf_5ba5939ea89ea0de)
+func Resize(__obf_bc571956a33c8293, __obf_5a5a28ca143a2f3f uint, __obf_4f5a8d0b34527afc image.Image, __obf_00264b26e01a01f0 InterpolationFunction) image.Image {
+	__obf_d5b7dea7a78fd48e, __obf_cbfadbd3718a054b := __obf_46b5846e696e2e9f(__obf_bc571956a33c8293, __obf_5a5a28ca143a2f3f, float64(__obf_4f5a8d0b34527afc.Bounds().Dx()), float64(__obf_4f5a8d0b34527afc.Bounds().Dy()))
+	if __obf_bc571956a33c8293 == 0 {
+		__obf_bc571956a33c8293 = uint(0.7 + float64(__obf_4f5a8d0b34527afc.Bounds().Dx())/__obf_d5b7dea7a78fd48e)
 	}
-	if __obf_2667e7551de50ad4 == 0 {
-		__obf_2667e7551de50ad4 = uint(0.7 + float64(__obf_b9c5bf10bfae0f7a.Bounds().Dy())/__obf_e469e0e79b6f8761)
+	if __obf_5a5a28ca143a2f3f == 0 {
+		__obf_5a5a28ca143a2f3f = uint(0.7 + float64(__obf_4f5a8d0b34527afc.Bounds().Dy())/__obf_cbfadbd3718a054b)
 	}
 
 	// Trivial case: return input image
-	if int(__obf_a22ab8344dedd519) == __obf_b9c5bf10bfae0f7a.Bounds().Dx() && int(__obf_2667e7551de50ad4) == __obf_b9c5bf10bfae0f7a.Bounds().Dy() {
-		return __obf_b9c5bf10bfae0f7a
+	if int(__obf_bc571956a33c8293) == __obf_4f5a8d0b34527afc.Bounds().Dx() && int(__obf_5a5a28ca143a2f3f) == __obf_4f5a8d0b34527afc.Bounds().Dy() {
+		return __obf_4f5a8d0b34527afc
 	}
 
 	// Input image has no pixels
-	if __obf_b9c5bf10bfae0f7a.Bounds().Dx() <= 0 || __obf_b9c5bf10bfae0f7a.Bounds().Dy() <= 0 {
-		return __obf_b9c5bf10bfae0f7a
+	if __obf_4f5a8d0b34527afc.Bounds().Dx() <= 0 || __obf_4f5a8d0b34527afc.Bounds().Dy() <= 0 {
+		return __obf_4f5a8d0b34527afc
 	}
 
-	if __obf_0c2c83d39fca0ad5 == NearestNeighbor {
-		return __obf_13e95d81671719c7(__obf_a22ab8344dedd519, __obf_2667e7551de50ad4, __obf_5ba5939ea89ea0de, __obf_e469e0e79b6f8761, __obf_b9c5bf10bfae0f7a, __obf_0c2c83d39fca0ad5)
+	if __obf_00264b26e01a01f0 == NearestNeighbor {
+		return __obf_fb6a667917811534(__obf_bc571956a33c8293, __obf_5a5a28ca143a2f3f, __obf_d5b7dea7a78fd48e, __obf_cbfadbd3718a054b, __obf_4f5a8d0b34527afc, __obf_00264b26e01a01f0)
 	}
-	__obf_3a126acc9d6ba2c1, __obf_0a5c3b331d82d518 := __obf_0c2c83d39fca0ad5.__obf_0a5c3b331d82d518()
-	__obf_ca7e6a5f6d539d14 := runtime.GOMAXPROCS(0)
-	__obf_e9b9d04aa0aee136 := sync.WaitGroup{}
+	__obf_d028ed8a4cd5fa47, __obf_0a93ef33b92d5d34 := __obf_00264b26e01a01f0.__obf_0a93ef33b92d5d34()
+	__obf_47cc8a0a92b92912 := runtime.GOMAXPROCS(0)
+	__obf_cd504da1ae38dec4 := sync.WaitGroup{}
 
 	// Generic access to image.Image is slow in tight loops.
 	// The optimal access has to be determined from the concrete image type.
-	switch __obf_2f9019f1e31b6623 := __obf_b9c5bf10bfae0f7a.(type) {
+	switch __obf_e40229e8249ca178 := __obf_4f5a8d0b34527afc.(type) {
 	case *image.RGBA:
-		__obf_0c62244a1c8127bf := // 8-bit precision
-			image.NewRGBA(image.Rect(0, 0, __obf_2f9019f1e31b6623.Bounds().Dy(), int(__obf_a22ab8344dedd519)))
-		__obf_050e6c4f8fdd3826 := image.NewRGBA(image.Rect(0, 0, int(__obf_a22ab8344dedd519), int(__obf_2667e7551de50ad4)))
-		__obf_779a7f81421e09ef,
+		__obf_30b4a81a5645f273 := // 8-bit precision
+			image.NewRGBA(image.Rect(0, 0, __obf_e40229e8249ca178.Bounds().Dy(), int(__obf_bc571956a33c8293)))
+		__obf_c27c5a7dd11abfd7 := image.NewRGBA(image.Rect(0, 0, int(__obf_bc571956a33c8293), int(__obf_5a5a28ca143a2f3f)))
+		__obf_46e0cb0caad4034a,
 
 			// horizontal filter, results in transposed temporary image
-			__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e := __obf_b32cca196c808fe4(__obf_0c62244a1c8127bf.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_5ba5939ea89ea0de, __obf_0a5c3b331d82d518)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_0c62244a1c8127bf, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.RGBA)
+			__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d := __obf_ce2a9e53779a9624(__obf_30b4a81a5645f273.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_d5b7dea7a78fd48e, __obf_0a93ef33b92d5d34)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_30b4a81a5645f273, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.RGBA)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_8ec8d60aa6453477(__obf_2f9019f1e31b6623, __obf_a51405ad505373a9, __obf_5ba5939ea89ea0de, __obf_779a7f81421e09ef,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_a81ef026a03961f8(__obf_e40229e8249ca178, __obf_dc36ea2ab56fb609, __obf_d5b7dea7a78fd48e, __obf_46e0cb0caad4034a,
 
 					// horizontal filter on transposed image, result is not transposed
-					__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e)
+					__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		__obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e = __obf_b32cca196c808fe4(__obf_050e6c4f8fdd3826.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_e469e0e79b6f8761, __obf_0a5c3b331d82d518)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_050e6c4f8fdd3826, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.RGBA)
+		__obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d = __obf_ce2a9e53779a9624(__obf_c27c5a7dd11abfd7.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_cbfadbd3718a054b, __obf_0a93ef33b92d5d34)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_c27c5a7dd11abfd7, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.RGBA)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_8ec8d60aa6453477(__obf_0c62244a1c8127bf, __obf_a51405ad505373a9, __obf_e469e0e79b6f8761, __obf_779a7f81421e09ef, __obf_04772264944a3f8f,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_a81ef026a03961f8(__obf_30b4a81a5645f273, __obf_dc36ea2ab56fb609, __obf_cbfadbd3718a054b, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b,
 
 					// 8-bit precision
-					__obf_277f8fd7946d0e2e)
+					__obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		return __obf_050e6c4f8fdd3826
+		return __obf_c27c5a7dd11abfd7
 	case *image.NRGBA:
-		__obf_0c62244a1c8127bf := image.NewRGBA(image.Rect(0, 0, __obf_2f9019f1e31b6623.Bounds().Dy(), int(__obf_a22ab8344dedd519)))
-		__obf_050e6c4f8fdd3826 := image.NewRGBA(image.Rect(0, 0, int(__obf_a22ab8344dedd519), int(__obf_2667e7551de50ad4)))
-		__obf_779a7f81421e09ef,
+		__obf_30b4a81a5645f273 := image.NewRGBA(image.Rect(0, 0, __obf_e40229e8249ca178.Bounds().Dy(), int(__obf_bc571956a33c8293)))
+		__obf_c27c5a7dd11abfd7 := image.NewRGBA(image.Rect(0, 0, int(__obf_bc571956a33c8293), int(__obf_5a5a28ca143a2f3f)))
+		__obf_46e0cb0caad4034a,
 
 			// horizontal filter, results in transposed temporary image
-			__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e := __obf_b32cca196c808fe4(__obf_0c62244a1c8127bf.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_5ba5939ea89ea0de, __obf_0a5c3b331d82d518)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := 0; __obf_41043e9a68df34f8 < __obf_ca7e6a5f6d539d14; __obf_41043e9a68df34f8++ {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_0c62244a1c8127bf, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.RGBA)
+			__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d := __obf_ce2a9e53779a9624(__obf_30b4a81a5645f273.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_d5b7dea7a78fd48e, __obf_0a93ef33b92d5d34)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := 0; __obf_7326873273fab46e < __obf_47cc8a0a92b92912; __obf_7326873273fab46e++ {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_30b4a81a5645f273, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.RGBA)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_f38f8e4e927a9b1f(__obf_2f9019f1e31b6623, __obf_a51405ad505373a9, __obf_5ba5939ea89ea0de, __obf_779a7f81421e09ef,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_e01bcd08df027a03(__obf_e40229e8249ca178, __obf_dc36ea2ab56fb609, __obf_d5b7dea7a78fd48e, __obf_46e0cb0caad4034a,
 
 					// horizontal filter on transposed image, result is not transposed
-					__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e)
+					__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		__obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e = __obf_b32cca196c808fe4(__obf_050e6c4f8fdd3826.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_e469e0e79b6f8761, __obf_0a5c3b331d82d518)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_050e6c4f8fdd3826, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.RGBA)
+		__obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d = __obf_ce2a9e53779a9624(__obf_c27c5a7dd11abfd7.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_cbfadbd3718a054b, __obf_0a93ef33b92d5d34)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_c27c5a7dd11abfd7, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.RGBA)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_8ec8d60aa6453477(__obf_0c62244a1c8127bf, __obf_a51405ad505373a9, __obf_e469e0e79b6f8761, __obf_779a7f81421e09ef, __obf_04772264944a3f8f,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_a81ef026a03961f8(__obf_30b4a81a5645f273, __obf_dc36ea2ab56fb609, __obf_cbfadbd3718a054b, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b,
 
 					// 8-bit precision
 					// accessing the YCbCr arrays in a tight loop is slow.
 					// converting the image to ycc increases performance by 2x.
-					__obf_277f8fd7946d0e2e)
+					__obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		return __obf_050e6c4f8fdd3826
+		return __obf_c27c5a7dd11abfd7
 
 	case *image.YCbCr:
-		__obf_0c62244a1c8127bf := __obf_526e91fd49ed301d(image.Rect(0, 0, __obf_2f9019f1e31b6623.Bounds().Dy(), int(__obf_a22ab8344dedd519)), __obf_2f9019f1e31b6623.SubsampleRatio)
-		__obf_050e6c4f8fdd3826 := __obf_526e91fd49ed301d(image.Rect(0, 0, int(__obf_a22ab8344dedd519), int(__obf_2667e7551de50ad4)), image.YCbCrSubsampleRatio444)
-		__obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e := __obf_b32cca196c808fe4(__obf_0c62244a1c8127bf.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_5ba5939ea89ea0de, __obf_0a5c3b331d82d518)
-		__obf_2a764779fc1401ce := __obf_47343abcf82d0c31(__obf_2f9019f1e31b6623)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := 0; __obf_41043e9a68df34f8 < __obf_ca7e6a5f6d539d14; __obf_41043e9a68df34f8++ {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_0c62244a1c8127bf, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*__obf_489a9befc4898050)
+		__obf_30b4a81a5645f273 := __obf_57395a4603262f46(image.Rect(0, 0, __obf_e40229e8249ca178.Bounds().Dy(), int(__obf_bc571956a33c8293)), __obf_e40229e8249ca178.SubsampleRatio)
+		__obf_c27c5a7dd11abfd7 := __obf_57395a4603262f46(image.Rect(0, 0, int(__obf_bc571956a33c8293), int(__obf_5a5a28ca143a2f3f)), image.YCbCrSubsampleRatio444)
+		__obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d := __obf_ce2a9e53779a9624(__obf_30b4a81a5645f273.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_d5b7dea7a78fd48e, __obf_0a93ef33b92d5d34)
+		__obf_3ccd19e51488be10 := __obf_76286d70dcc66ea1(__obf_e40229e8249ca178)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := 0; __obf_7326873273fab46e < __obf_47cc8a0a92b92912; __obf_7326873273fab46e++ {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_30b4a81a5645f273, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*__obf_9474021cedba6d1a)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_5df6e1d64c485b9f(__obf_2a764779fc1401ce, __obf_a51405ad505373a9, __obf_5ba5939ea89ea0de, __obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e)
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_76c3d32722dd59f4(__obf_3ccd19e51488be10, __obf_dc36ea2ab56fb609, __obf_d5b7dea7a78fd48e, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		__obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e = __obf_b32cca196c808fe4(__obf_050e6c4f8fdd3826.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_e469e0e79b6f8761, __obf_0a5c3b331d82d518)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := 0; __obf_41043e9a68df34f8 < __obf_ca7e6a5f6d539d14; __obf_41043e9a68df34f8++ {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_050e6c4f8fdd3826, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*__obf_489a9befc4898050)
+		__obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d = __obf_ce2a9e53779a9624(__obf_c27c5a7dd11abfd7.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_cbfadbd3718a054b, __obf_0a93ef33b92d5d34)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := 0; __obf_7326873273fab46e < __obf_47cc8a0a92b92912; __obf_7326873273fab46e++ {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_c27c5a7dd11abfd7, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*__obf_9474021cedba6d1a)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_5df6e1d64c485b9f(__obf_0c62244a1c8127bf, __obf_a51405ad505373a9, __obf_e469e0e79b6f8761, __obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e)
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_76c3d32722dd59f4(__obf_30b4a81a5645f273, __obf_dc36ea2ab56fb609, __obf_cbfadbd3718a054b, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		return __obf_050e6c4f8fdd3826.YCbCr()
+		return __obf_c27c5a7dd11abfd7.YCbCr()
 	case *image.RGBA64:
-		__obf_0c62244a1c8127bf := // 16-bit precision
-			image.NewRGBA64(image.Rect(0, 0, __obf_2f9019f1e31b6623.Bounds().Dy(), int(__obf_a22ab8344dedd519)))
-		__obf_050e6c4f8fdd3826 := image.NewRGBA64(image.Rect(0, 0, int(__obf_a22ab8344dedd519), int(__obf_2667e7551de50ad4)))
-		__obf_779a7f81421e09ef,
+		__obf_30b4a81a5645f273 := // 16-bit precision
+			image.NewRGBA64(image.Rect(0, 0, __obf_e40229e8249ca178.Bounds().Dy(), int(__obf_bc571956a33c8293)))
+		__obf_c27c5a7dd11abfd7 := image.NewRGBA64(image.Rect(0, 0, int(__obf_bc571956a33c8293), int(__obf_5a5a28ca143a2f3f)))
+		__obf_46e0cb0caad4034a,
 
 			// horizontal filter, results in transposed temporary image
-			__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e := __obf_2a2dd68742b912d4(__obf_0c62244a1c8127bf.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_5ba5939ea89ea0de, __obf_0a5c3b331d82d518)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_0c62244a1c8127bf, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.RGBA64)
+			__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d := __obf_9e73f2386e0e3872(__obf_30b4a81a5645f273.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_d5b7dea7a78fd48e, __obf_0a93ef33b92d5d34)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_30b4a81a5645f273, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.RGBA64)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_454a0ae091c9479b(__obf_2f9019f1e31b6623, __obf_a51405ad505373a9, __obf_5ba5939ea89ea0de, __obf_779a7f81421e09ef,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_fd9e808f1958058e(__obf_e40229e8249ca178, __obf_dc36ea2ab56fb609, __obf_d5b7dea7a78fd48e, __obf_46e0cb0caad4034a,
 
 					// horizontal filter on transposed image, result is not transposed
-					__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e)
+					__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		__obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e = __obf_2a2dd68742b912d4(__obf_050e6c4f8fdd3826.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_e469e0e79b6f8761, __obf_0a5c3b331d82d518)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_050e6c4f8fdd3826, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.RGBA64)
+		__obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d = __obf_9e73f2386e0e3872(__obf_c27c5a7dd11abfd7.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_cbfadbd3718a054b, __obf_0a93ef33b92d5d34)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_c27c5a7dd11abfd7, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.RGBA64)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_454a0ae091c9479b(__obf_0c62244a1c8127bf, __obf_a51405ad505373a9, __obf_e469e0e79b6f8761, __obf_779a7f81421e09ef, __obf_04772264944a3f8f,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_fd9e808f1958058e(__obf_30b4a81a5645f273, __obf_dc36ea2ab56fb609, __obf_cbfadbd3718a054b, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b,
 
 					// 16-bit precision
-					__obf_277f8fd7946d0e2e)
+					__obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		return __obf_050e6c4f8fdd3826
+		return __obf_c27c5a7dd11abfd7
 	case *image.NRGBA64:
-		__obf_0c62244a1c8127bf := image.NewRGBA64(image.Rect(0, 0, __obf_2f9019f1e31b6623.Bounds().Dy(), int(__obf_a22ab8344dedd519)))
-		__obf_050e6c4f8fdd3826 := image.NewRGBA64(image.Rect(0, 0, int(__obf_a22ab8344dedd519), int(__obf_2667e7551de50ad4)))
-		__obf_779a7f81421e09ef,
+		__obf_30b4a81a5645f273 := image.NewRGBA64(image.Rect(0, 0, __obf_e40229e8249ca178.Bounds().Dy(), int(__obf_bc571956a33c8293)))
+		__obf_c27c5a7dd11abfd7 := image.NewRGBA64(image.Rect(0, 0, int(__obf_bc571956a33c8293), int(__obf_5a5a28ca143a2f3f)))
+		__obf_46e0cb0caad4034a,
 
 			// horizontal filter, results in transposed temporary image
-			__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e := __obf_2a2dd68742b912d4(__obf_0c62244a1c8127bf.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_5ba5939ea89ea0de, __obf_0a5c3b331d82d518)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_0c62244a1c8127bf, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.RGBA64)
+			__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d := __obf_9e73f2386e0e3872(__obf_30b4a81a5645f273.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_d5b7dea7a78fd48e, __obf_0a93ef33b92d5d34)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_30b4a81a5645f273, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.RGBA64)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_a658dbd4fd6775a7(__obf_2f9019f1e31b6623, __obf_a51405ad505373a9, __obf_5ba5939ea89ea0de, __obf_779a7f81421e09ef,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_3d8976013120b419(__obf_e40229e8249ca178, __obf_dc36ea2ab56fb609, __obf_d5b7dea7a78fd48e, __obf_46e0cb0caad4034a,
 
 					// horizontal filter on transposed image, result is not transposed
-					__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e)
+					__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		__obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e = __obf_2a2dd68742b912d4(__obf_050e6c4f8fdd3826.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_e469e0e79b6f8761, __obf_0a5c3b331d82d518)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_050e6c4f8fdd3826, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.RGBA64)
+		__obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d = __obf_9e73f2386e0e3872(__obf_c27c5a7dd11abfd7.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_cbfadbd3718a054b, __obf_0a93ef33b92d5d34)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_c27c5a7dd11abfd7, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.RGBA64)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_454a0ae091c9479b(__obf_0c62244a1c8127bf, __obf_a51405ad505373a9, __obf_e469e0e79b6f8761, __obf_779a7f81421e09ef, __obf_04772264944a3f8f,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_fd9e808f1958058e(__obf_30b4a81a5645f273, __obf_dc36ea2ab56fb609, __obf_cbfadbd3718a054b, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b,
 
 					// 8-bit precision
-					__obf_277f8fd7946d0e2e)
+					__obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		return __obf_050e6c4f8fdd3826
+		return __obf_c27c5a7dd11abfd7
 	case *image.Gray:
-		__obf_0c62244a1c8127bf := image.NewGray(image.Rect(0, 0, __obf_2f9019f1e31b6623.Bounds().Dy(), int(__obf_a22ab8344dedd519)))
-		__obf_050e6c4f8fdd3826 := image.NewGray(image.Rect(0, 0, int(__obf_a22ab8344dedd519), int(__obf_2667e7551de50ad4)))
-		__obf_779a7f81421e09ef,
+		__obf_30b4a81a5645f273 := image.NewGray(image.Rect(0, 0, __obf_e40229e8249ca178.Bounds().Dy(), int(__obf_bc571956a33c8293)))
+		__obf_c27c5a7dd11abfd7 := image.NewGray(image.Rect(0, 0, int(__obf_bc571956a33c8293), int(__obf_5a5a28ca143a2f3f)))
+		__obf_46e0cb0caad4034a,
 
 			// horizontal filter, results in transposed temporary image
-			__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e := __obf_b32cca196c808fe4(__obf_0c62244a1c8127bf.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_5ba5939ea89ea0de, __obf_0a5c3b331d82d518)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := 0; __obf_41043e9a68df34f8 < __obf_ca7e6a5f6d539d14; __obf_41043e9a68df34f8++ {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_0c62244a1c8127bf, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.Gray)
+			__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d := __obf_ce2a9e53779a9624(__obf_30b4a81a5645f273.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_d5b7dea7a78fd48e, __obf_0a93ef33b92d5d34)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := 0; __obf_7326873273fab46e < __obf_47cc8a0a92b92912; __obf_7326873273fab46e++ {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_30b4a81a5645f273, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.Gray)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_1eb0358183feb59b(__obf_2f9019f1e31b6623, __obf_a51405ad505373a9, __obf_5ba5939ea89ea0de, __obf_779a7f81421e09ef,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_e7b82bf93376b1f1(__obf_e40229e8249ca178, __obf_dc36ea2ab56fb609, __obf_d5b7dea7a78fd48e, __obf_46e0cb0caad4034a,
 
 					// horizontal filter on transposed image, result is not transposed
-					__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e)
+					__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		__obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e = __obf_b32cca196c808fe4(__obf_050e6c4f8fdd3826.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_e469e0e79b6f8761, __obf_0a5c3b331d82d518)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_050e6c4f8fdd3826, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.Gray)
+		__obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d = __obf_ce2a9e53779a9624(__obf_c27c5a7dd11abfd7.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_cbfadbd3718a054b, __obf_0a93ef33b92d5d34)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_c27c5a7dd11abfd7, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.Gray)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_1eb0358183feb59b(__obf_0c62244a1c8127bf, __obf_a51405ad505373a9, __obf_e469e0e79b6f8761, __obf_779a7f81421e09ef, __obf_04772264944a3f8f,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_e7b82bf93376b1f1(__obf_30b4a81a5645f273, __obf_dc36ea2ab56fb609, __obf_cbfadbd3718a054b, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b,
 
 					// 16-bit precision
-					__obf_277f8fd7946d0e2e)
+					__obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		return __obf_050e6c4f8fdd3826
+		return __obf_c27c5a7dd11abfd7
 	case *image.Gray16:
-		__obf_0c62244a1c8127bf := image.NewGray16(image.Rect(0, 0, __obf_2f9019f1e31b6623.Bounds().Dy(), int(__obf_a22ab8344dedd519)))
-		__obf_050e6c4f8fdd3826 := image.NewGray16(image.Rect(0, 0, int(__obf_a22ab8344dedd519), int(__obf_2667e7551de50ad4)))
-		__obf_779a7f81421e09ef,
+		__obf_30b4a81a5645f273 := image.NewGray16(image.Rect(0, 0, __obf_e40229e8249ca178.Bounds().Dy(), int(__obf_bc571956a33c8293)))
+		__obf_c27c5a7dd11abfd7 := image.NewGray16(image.Rect(0, 0, int(__obf_bc571956a33c8293), int(__obf_5a5a28ca143a2f3f)))
+		__obf_46e0cb0caad4034a,
 
 			// horizontal filter, results in transposed temporary image
-			__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e := __obf_2a2dd68742b912d4(__obf_0c62244a1c8127bf.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_5ba5939ea89ea0de, __obf_0a5c3b331d82d518)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_0c62244a1c8127bf, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.Gray16)
+			__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d := __obf_9e73f2386e0e3872(__obf_30b4a81a5645f273.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_d5b7dea7a78fd48e, __obf_0a93ef33b92d5d34)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_30b4a81a5645f273, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.Gray16)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_a51435ed23b2f46f(__obf_2f9019f1e31b6623, __obf_a51405ad505373a9, __obf_5ba5939ea89ea0de, __obf_779a7f81421e09ef,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_88dc9a250ceb45c4(__obf_e40229e8249ca178, __obf_dc36ea2ab56fb609, __obf_d5b7dea7a78fd48e, __obf_46e0cb0caad4034a,
 
 					// horizontal filter on transposed image, result is not transposed
-					__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e)
+					__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		__obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e = __obf_2a2dd68742b912d4(__obf_050e6c4f8fdd3826.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_e469e0e79b6f8761, __obf_0a5c3b331d82d518)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_050e6c4f8fdd3826, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.Gray16)
+		__obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d = __obf_9e73f2386e0e3872(__obf_c27c5a7dd11abfd7.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_cbfadbd3718a054b, __obf_0a93ef33b92d5d34)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_c27c5a7dd11abfd7, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.Gray16)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_a51435ed23b2f46f(__obf_0c62244a1c8127bf, __obf_a51405ad505373a9, __obf_e469e0e79b6f8761, __obf_779a7f81421e09ef, __obf_04772264944a3f8f,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_88dc9a250ceb45c4(__obf_30b4a81a5645f273, __obf_dc36ea2ab56fb609, __obf_cbfadbd3718a054b, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b,
 
 					// 16-bit precision
-					__obf_277f8fd7946d0e2e)
+					__obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		return __obf_050e6c4f8fdd3826
+		return __obf_c27c5a7dd11abfd7
 	default:
-		__obf_0c62244a1c8127bf := image.NewRGBA64(image.Rect(0, 0, __obf_b9c5bf10bfae0f7a.Bounds().Dy(), int(__obf_a22ab8344dedd519)))
-		__obf_050e6c4f8fdd3826 := image.NewRGBA64(image.Rect(0, 0, int(__obf_a22ab8344dedd519), int(__obf_2667e7551de50ad4)))
-		__obf_779a7f81421e09ef,
+		__obf_30b4a81a5645f273 := image.NewRGBA64(image.Rect(0, 0, __obf_4f5a8d0b34527afc.Bounds().Dy(), int(__obf_bc571956a33c8293)))
+		__obf_c27c5a7dd11abfd7 := image.NewRGBA64(image.Rect(0, 0, int(__obf_bc571956a33c8293), int(__obf_5a5a28ca143a2f3f)))
+		__obf_46e0cb0caad4034a,
 
 			// horizontal filter, results in transposed temporary image
-			__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e := __obf_2a2dd68742b912d4(__obf_0c62244a1c8127bf.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_5ba5939ea89ea0de, __obf_0a5c3b331d82d518)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_0c62244a1c8127bf, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.RGBA64)
+			__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d := __obf_9e73f2386e0e3872(__obf_30b4a81a5645f273.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_d5b7dea7a78fd48e, __obf_0a93ef33b92d5d34)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_30b4a81a5645f273, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.RGBA64)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_989e6431922ef0ad(__obf_b9c5bf10bfae0f7a, __obf_a51405ad505373a9, __obf_5ba5939ea89ea0de, __obf_779a7f81421e09ef,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_1e8dec540911dfe5(__obf_4f5a8d0b34527afc, __obf_dc36ea2ab56fb609, __obf_d5b7dea7a78fd48e, __obf_46e0cb0caad4034a,
 
 					// horizontal filter on transposed image, result is not transposed
-					__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e)
+					__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		__obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e = __obf_2a2dd68742b912d4(__obf_050e6c4f8fdd3826.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_e469e0e79b6f8761, __obf_0a5c3b331d82d518)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_050e6c4f8fdd3826, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.RGBA64)
+		__obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d = __obf_9e73f2386e0e3872(__obf_c27c5a7dd11abfd7.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_cbfadbd3718a054b, __obf_0a93ef33b92d5d34)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_c27c5a7dd11abfd7, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.RGBA64)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_454a0ae091c9479b(__obf_0c62244a1c8127bf, __obf_a51405ad505373a9, __obf_e469e0e79b6f8761, __obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e)
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_fd9e808f1958058e(__obf_30b4a81a5645f273, __obf_dc36ea2ab56fb609, __obf_cbfadbd3718a054b, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		return __obf_050e6c4f8fdd3826
+		return __obf_c27c5a7dd11abfd7
 	}
 }
 
-func __obf_13e95d81671719c7(__obf_a22ab8344dedd519, __obf_2667e7551de50ad4 uint, __obf_5ba5939ea89ea0de, __obf_e469e0e79b6f8761 float64, __obf_b9c5bf10bfae0f7a image.Image, __obf_0c2c83d39fca0ad5 InterpolationFunction) image.Image {
-	__obf_3a126acc9d6ba2c1, _ := __obf_0c2c83d39fca0ad5.__obf_0a5c3b331d82d518()
-	__obf_ca7e6a5f6d539d14 := runtime.GOMAXPROCS(0)
-	__obf_e9b9d04aa0aee136 := sync.WaitGroup{}
+func __obf_fb6a667917811534(__obf_bc571956a33c8293, __obf_5a5a28ca143a2f3f uint, __obf_d5b7dea7a78fd48e, __obf_cbfadbd3718a054b float64, __obf_4f5a8d0b34527afc image.Image, __obf_00264b26e01a01f0 InterpolationFunction) image.Image {
+	__obf_d028ed8a4cd5fa47, _ := __obf_00264b26e01a01f0.__obf_0a93ef33b92d5d34()
+	__obf_47cc8a0a92b92912 := runtime.GOMAXPROCS(0)
+	__obf_cd504da1ae38dec4 := sync.WaitGroup{}
 
-	switch __obf_2f9019f1e31b6623 := __obf_b9c5bf10bfae0f7a.(type) {
+	switch __obf_e40229e8249ca178 := __obf_4f5a8d0b34527afc.(type) {
 	case *image.RGBA:
-		__obf_0c62244a1c8127bf := // 8-bit precision
-			image.NewRGBA(image.Rect(0, 0, __obf_2f9019f1e31b6623.Bounds().Dy(), int(__obf_a22ab8344dedd519)))
-		__obf_050e6c4f8fdd3826 := image.NewRGBA(image.Rect(0, 0, int(__obf_a22ab8344dedd519), int(__obf_2667e7551de50ad4)))
-		__obf_779a7f81421e09ef,
+		__obf_30b4a81a5645f273 := // 8-bit precision
+			image.NewRGBA(image.Rect(0, 0, __obf_e40229e8249ca178.Bounds().Dy(), int(__obf_bc571956a33c8293)))
+		__obf_c27c5a7dd11abfd7 := image.NewRGBA(image.Rect(0, 0, int(__obf_bc571956a33c8293), int(__obf_5a5a28ca143a2f3f)))
+		__obf_46e0cb0caad4034a,
 
 			// horizontal filter, results in transposed temporary image
-			__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e := __obf_073d620566900e2c(__obf_0c62244a1c8127bf.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_5ba5939ea89ea0de)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := 0; __obf_41043e9a68df34f8 < __obf_ca7e6a5f6d539d14; __obf_41043e9a68df34f8++ {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_0c62244a1c8127bf, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.RGBA)
+			__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d := __obf_b8bb0d275d8b4e0d(__obf_30b4a81a5645f273.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_d5b7dea7a78fd48e)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := 0; __obf_7326873273fab46e < __obf_47cc8a0a92b92912; __obf_7326873273fab46e++ {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_30b4a81a5645f273, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.RGBA)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_f6fedca77d332791(__obf_2f9019f1e31b6623, __obf_a51405ad505373a9, __obf_779a7f81421e09ef, __obf_04772264944a3f8f,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_9dfa6bb18b3e659e(__obf_e40229e8249ca178, __obf_dc36ea2ab56fb609, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b,
 
 					// horizontal filter on transposed image, result is not transposed
-					__obf_277f8fd7946d0e2e)
+					__obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		__obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e = __obf_073d620566900e2c(__obf_050e6c4f8fdd3826.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_e469e0e79b6f8761)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_050e6c4f8fdd3826, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.RGBA)
+		__obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d = __obf_b8bb0d275d8b4e0d(__obf_c27c5a7dd11abfd7.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_cbfadbd3718a054b)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_c27c5a7dd11abfd7, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.RGBA)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_f6fedca77d332791(__obf_0c62244a1c8127bf, __obf_a51405ad505373a9, __obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e)
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_9dfa6bb18b3e659e(__obf_30b4a81a5645f273, __obf_dc36ea2ab56fb609, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		return __obf_050e6c4f8fdd3826
+		return __obf_c27c5a7dd11abfd7
 	case *image.NRGBA:
-		__obf_0c62244a1c8127bf := // 8-bit precision
-			image.NewNRGBA(image.Rect(0, 0, __obf_2f9019f1e31b6623.Bounds().Dy(), int(__obf_a22ab8344dedd519)))
-		__obf_050e6c4f8fdd3826 := image.NewNRGBA(image.Rect(0, 0, int(__obf_a22ab8344dedd519), int(__obf_2667e7551de50ad4)))
-		__obf_779a7f81421e09ef,
+		__obf_30b4a81a5645f273 := // 8-bit precision
+			image.NewNRGBA(image.Rect(0, 0, __obf_e40229e8249ca178.Bounds().Dy(), int(__obf_bc571956a33c8293)))
+		__obf_c27c5a7dd11abfd7 := image.NewNRGBA(image.Rect(0, 0, int(__obf_bc571956a33c8293), int(__obf_5a5a28ca143a2f3f)))
+		__obf_46e0cb0caad4034a,
 
 			// horizontal filter, results in transposed temporary image
-			__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e := __obf_073d620566900e2c(__obf_0c62244a1c8127bf.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_5ba5939ea89ea0de)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_0c62244a1c8127bf, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.NRGBA)
+			__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d := __obf_b8bb0d275d8b4e0d(__obf_30b4a81a5645f273.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_d5b7dea7a78fd48e)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_30b4a81a5645f273, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.NRGBA)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_bdf16a224669ff32(__obf_2f9019f1e31b6623, __obf_a51405ad505373a9, __obf_779a7f81421e09ef, __obf_04772264944a3f8f,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_d3929eb1ff5d9a81(__obf_e40229e8249ca178, __obf_dc36ea2ab56fb609, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b,
 
 					// horizontal filter on transposed image, result is not transposed
-					__obf_277f8fd7946d0e2e)
+					__obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		__obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e = __obf_073d620566900e2c(__obf_050e6c4f8fdd3826.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_e469e0e79b6f8761)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_050e6c4f8fdd3826, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.NRGBA)
+		__obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d = __obf_b8bb0d275d8b4e0d(__obf_c27c5a7dd11abfd7.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_cbfadbd3718a054b)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_c27c5a7dd11abfd7, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.NRGBA)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_bdf16a224669ff32(__obf_0c62244a1c8127bf, __obf_a51405ad505373a9, __obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e)
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_d3929eb1ff5d9a81(__obf_30b4a81a5645f273, __obf_dc36ea2ab56fb609, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		return __obf_050e6c4f8fdd3826
+		return __obf_c27c5a7dd11abfd7
 	case *image.YCbCr:
-		__obf_0c62244a1c8127bf := // 8-bit precision
+		__obf_30b4a81a5645f273 := // 8-bit precision
 			// accessing the YCbCr arrays in a tight loop is slow.
 			// converting the image to ycc increases performance by 2x.
-			__obf_526e91fd49ed301d(image.Rect(0, 0, __obf_2f9019f1e31b6623.Bounds().Dy(), int(__obf_a22ab8344dedd519)), __obf_2f9019f1e31b6623.SubsampleRatio)
-		__obf_050e6c4f8fdd3826 := __obf_526e91fd49ed301d(image.Rect(0, 0, int(__obf_a22ab8344dedd519), int(__obf_2667e7551de50ad4)), image.YCbCrSubsampleRatio444)
-		__obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e := __obf_073d620566900e2c(__obf_0c62244a1c8127bf.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_5ba5939ea89ea0de)
-		__obf_2a764779fc1401ce := __obf_47343abcf82d0c31(__obf_2f9019f1e31b6623)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_0c62244a1c8127bf, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*__obf_489a9befc4898050)
+			__obf_57395a4603262f46(image.Rect(0, 0, __obf_e40229e8249ca178.Bounds().Dy(), int(__obf_bc571956a33c8293)), __obf_e40229e8249ca178.SubsampleRatio)
+		__obf_c27c5a7dd11abfd7 := __obf_57395a4603262f46(image.Rect(0, 0, int(__obf_bc571956a33c8293), int(__obf_5a5a28ca143a2f3f)), image.YCbCrSubsampleRatio444)
+		__obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d := __obf_b8bb0d275d8b4e0d(__obf_30b4a81a5645f273.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_d5b7dea7a78fd48e)
+		__obf_3ccd19e51488be10 := __obf_76286d70dcc66ea1(__obf_e40229e8249ca178)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_30b4a81a5645f273, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*__obf_9474021cedba6d1a)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_8b9375bb53904eb4(__obf_2a764779fc1401ce, __obf_a51405ad505373a9, __obf_5ba5939ea89ea0de, __obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e)
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_cb273764563e26fc(__obf_3ccd19e51488be10, __obf_dc36ea2ab56fb609, __obf_d5b7dea7a78fd48e, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		__obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e = __obf_073d620566900e2c(__obf_050e6c4f8fdd3826.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_e469e0e79b6f8761)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_050e6c4f8fdd3826, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*__obf_489a9befc4898050)
+		__obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d = __obf_b8bb0d275d8b4e0d(__obf_c27c5a7dd11abfd7.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_cbfadbd3718a054b)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_c27c5a7dd11abfd7, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*__obf_9474021cedba6d1a)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_8b9375bb53904eb4(__obf_0c62244a1c8127bf, __obf_a51405ad505373a9, __obf_e469e0e79b6f8761, __obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e)
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_cb273764563e26fc(__obf_30b4a81a5645f273, __obf_dc36ea2ab56fb609, __obf_cbfadbd3718a054b, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		return __obf_050e6c4f8fdd3826.YCbCr()
+		return __obf_c27c5a7dd11abfd7.YCbCr()
 	case *image.RGBA64:
-		__obf_0c62244a1c8127bf := // 16-bit precision
-			image.NewRGBA64(image.Rect(0, 0, __obf_2f9019f1e31b6623.Bounds().Dy(), int(__obf_a22ab8344dedd519)))
-		__obf_050e6c4f8fdd3826 := image.NewRGBA64(image.Rect(0, 0, int(__obf_a22ab8344dedd519), int(__obf_2667e7551de50ad4)))
-		__obf_779a7f81421e09ef,
+		__obf_30b4a81a5645f273 := // 16-bit precision
+			image.NewRGBA64(image.Rect(0, 0, __obf_e40229e8249ca178.Bounds().Dy(), int(__obf_bc571956a33c8293)))
+		__obf_c27c5a7dd11abfd7 := image.NewRGBA64(image.Rect(0, 0, int(__obf_bc571956a33c8293), int(__obf_5a5a28ca143a2f3f)))
+		__obf_46e0cb0caad4034a,
 
 			// horizontal filter, results in transposed temporary image
-			__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e := __obf_073d620566900e2c(__obf_0c62244a1c8127bf.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_5ba5939ea89ea0de)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_0c62244a1c8127bf, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.RGBA64)
+			__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d := __obf_b8bb0d275d8b4e0d(__obf_30b4a81a5645f273.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_d5b7dea7a78fd48e)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_30b4a81a5645f273, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.RGBA64)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_bb156615cc9077bb(__obf_2f9019f1e31b6623, __obf_a51405ad505373a9, __obf_779a7f81421e09ef, __obf_04772264944a3f8f,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_e7f8b39bc0d4199a(__obf_e40229e8249ca178, __obf_dc36ea2ab56fb609, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b,
 
 					// horizontal filter on transposed image, result is not transposed
-					__obf_277f8fd7946d0e2e)
+					__obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		__obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e = __obf_073d620566900e2c(__obf_050e6c4f8fdd3826.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_e469e0e79b6f8761)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_050e6c4f8fdd3826, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.RGBA64)
+		__obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d = __obf_b8bb0d275d8b4e0d(__obf_c27c5a7dd11abfd7.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_cbfadbd3718a054b)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_c27c5a7dd11abfd7, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.RGBA64)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_bb156615cc9077bb(__obf_0c62244a1c8127bf, __obf_a51405ad505373a9, __obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e)
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_e7f8b39bc0d4199a(__obf_30b4a81a5645f273, __obf_dc36ea2ab56fb609, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		return __obf_050e6c4f8fdd3826
+		return __obf_c27c5a7dd11abfd7
 	case *image.NRGBA64:
-		__obf_0c62244a1c8127bf := // 16-bit precision
-			image.NewNRGBA64(image.Rect(0, 0, __obf_2f9019f1e31b6623.Bounds().Dy(), int(__obf_a22ab8344dedd519)))
-		__obf_050e6c4f8fdd3826 := image.NewNRGBA64(image.Rect(0, 0, int(__obf_a22ab8344dedd519), int(__obf_2667e7551de50ad4)))
-		__obf_779a7f81421e09ef,
+		__obf_30b4a81a5645f273 := // 16-bit precision
+			image.NewNRGBA64(image.Rect(0, 0, __obf_e40229e8249ca178.Bounds().Dy(), int(__obf_bc571956a33c8293)))
+		__obf_c27c5a7dd11abfd7 := image.NewNRGBA64(image.Rect(0, 0, int(__obf_bc571956a33c8293), int(__obf_5a5a28ca143a2f3f)))
+		__obf_46e0cb0caad4034a,
 
 			// horizontal filter, results in transposed temporary image
-			__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e := __obf_073d620566900e2c(__obf_0c62244a1c8127bf.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_5ba5939ea89ea0de)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_0c62244a1c8127bf, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.NRGBA64)
+			__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d := __obf_b8bb0d275d8b4e0d(__obf_30b4a81a5645f273.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_d5b7dea7a78fd48e)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_30b4a81a5645f273, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.NRGBA64)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_cd535ce510158a2c(__obf_2f9019f1e31b6623, __obf_a51405ad505373a9, __obf_779a7f81421e09ef, __obf_04772264944a3f8f,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_2cf1e988bdf22f40(__obf_e40229e8249ca178, __obf_dc36ea2ab56fb609, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b,
 
 					// horizontal filter on transposed image, result is not transposed
-					__obf_277f8fd7946d0e2e)
+					__obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		__obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e = __obf_073d620566900e2c(__obf_050e6c4f8fdd3826.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_e469e0e79b6f8761)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_050e6c4f8fdd3826, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.NRGBA64)
+		__obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d = __obf_b8bb0d275d8b4e0d(__obf_c27c5a7dd11abfd7.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_cbfadbd3718a054b)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_c27c5a7dd11abfd7, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.NRGBA64)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_cd535ce510158a2c(__obf_0c62244a1c8127bf, __obf_a51405ad505373a9, __obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e)
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_2cf1e988bdf22f40(__obf_30b4a81a5645f273, __obf_dc36ea2ab56fb609, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		return __obf_050e6c4f8fdd3826
+		return __obf_c27c5a7dd11abfd7
 	case *image.Gray:
-		__obf_0c62244a1c8127bf := // 8-bit precision
-			image.NewGray(image.Rect(0, 0, __obf_2f9019f1e31b6623.Bounds().Dy(), int(__obf_a22ab8344dedd519)))
-		__obf_050e6c4f8fdd3826 := image.NewGray(image.Rect(0, 0, int(__obf_a22ab8344dedd519), int(__obf_2667e7551de50ad4)))
-		__obf_779a7f81421e09ef,
+		__obf_30b4a81a5645f273 := // 8-bit precision
+			image.NewGray(image.Rect(0, 0, __obf_e40229e8249ca178.Bounds().Dy(), int(__obf_bc571956a33c8293)))
+		__obf_c27c5a7dd11abfd7 := image.NewGray(image.Rect(0, 0, int(__obf_bc571956a33c8293), int(__obf_5a5a28ca143a2f3f)))
+		__obf_46e0cb0caad4034a,
 
 			// horizontal filter, results in transposed temporary image
-			__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e := __obf_073d620566900e2c(__obf_0c62244a1c8127bf.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_5ba5939ea89ea0de)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_0c62244a1c8127bf, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.Gray)
+			__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d := __obf_b8bb0d275d8b4e0d(__obf_30b4a81a5645f273.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_d5b7dea7a78fd48e)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_30b4a81a5645f273, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.Gray)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_5fc478f60b2eec87(__obf_2f9019f1e31b6623, __obf_a51405ad505373a9, __obf_779a7f81421e09ef, __obf_04772264944a3f8f,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_220524a8a738e132(__obf_e40229e8249ca178, __obf_dc36ea2ab56fb609, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b,
 
 					// horizontal filter on transposed image, result is not transposed
-					__obf_277f8fd7946d0e2e)
+					__obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		__obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e = __obf_073d620566900e2c(__obf_050e6c4f8fdd3826.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_e469e0e79b6f8761)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_050e6c4f8fdd3826, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.Gray)
+		__obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d = __obf_b8bb0d275d8b4e0d(__obf_c27c5a7dd11abfd7.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_cbfadbd3718a054b)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_c27c5a7dd11abfd7, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.Gray)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_5fc478f60b2eec87(__obf_0c62244a1c8127bf, __obf_a51405ad505373a9, __obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e)
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_220524a8a738e132(__obf_30b4a81a5645f273, __obf_dc36ea2ab56fb609, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		return __obf_050e6c4f8fdd3826
+		return __obf_c27c5a7dd11abfd7
 	case *image.Gray16:
-		__obf_0c62244a1c8127bf := // 16-bit precision
-			image.NewGray16(image.Rect(0, 0, __obf_2f9019f1e31b6623.Bounds().Dy(), int(__obf_a22ab8344dedd519)))
-		__obf_050e6c4f8fdd3826 := image.NewGray16(image.Rect(0, 0, int(__obf_a22ab8344dedd519), int(__obf_2667e7551de50ad4)))
-		__obf_779a7f81421e09ef,
+		__obf_30b4a81a5645f273 := // 16-bit precision
+			image.NewGray16(image.Rect(0, 0, __obf_e40229e8249ca178.Bounds().Dy(), int(__obf_bc571956a33c8293)))
+		__obf_c27c5a7dd11abfd7 := image.NewGray16(image.Rect(0, 0, int(__obf_bc571956a33c8293), int(__obf_5a5a28ca143a2f3f)))
+		__obf_46e0cb0caad4034a,
 
 			// horizontal filter, results in transposed temporary image
-			__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e := __obf_073d620566900e2c(__obf_0c62244a1c8127bf.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_5ba5939ea89ea0de)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_0c62244a1c8127bf, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.Gray16)
+			__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d := __obf_b8bb0d275d8b4e0d(__obf_30b4a81a5645f273.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_d5b7dea7a78fd48e)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_30b4a81a5645f273, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.Gray16)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_a8f9385dd16a2f12(__obf_2f9019f1e31b6623, __obf_a51405ad505373a9, __obf_779a7f81421e09ef, __obf_04772264944a3f8f,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_b46a659aaf06ae03(__obf_e40229e8249ca178, __obf_dc36ea2ab56fb609, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b,
 
 					// horizontal filter on transposed image, result is not transposed
-					__obf_277f8fd7946d0e2e)
+					__obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		__obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e = __obf_073d620566900e2c(__obf_050e6c4f8fdd3826.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_e469e0e79b6f8761)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_050e6c4f8fdd3826, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.Gray16)
+		__obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d = __obf_b8bb0d275d8b4e0d(__obf_c27c5a7dd11abfd7.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_cbfadbd3718a054b)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_c27c5a7dd11abfd7, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.Gray16)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_a8f9385dd16a2f12(__obf_0c62244a1c8127bf, __obf_a51405ad505373a9, __obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e)
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_b46a659aaf06ae03(__obf_30b4a81a5645f273, __obf_dc36ea2ab56fb609, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		return __obf_050e6c4f8fdd3826
+		return __obf_c27c5a7dd11abfd7
 	default:
-		__obf_0c62244a1c8127bf := // 16-bit precision
-			image.NewRGBA64(image.Rect(0, 0, __obf_b9c5bf10bfae0f7a.Bounds().Dy(), int(__obf_a22ab8344dedd519)))
-		__obf_050e6c4f8fdd3826 := image.NewRGBA64(image.Rect(0, 0, int(__obf_a22ab8344dedd519), int(__obf_2667e7551de50ad4)))
-		__obf_779a7f81421e09ef,
+		__obf_30b4a81a5645f273 := // 16-bit precision
+			image.NewRGBA64(image.Rect(0, 0, __obf_4f5a8d0b34527afc.Bounds().Dy(), int(__obf_bc571956a33c8293)))
+		__obf_c27c5a7dd11abfd7 := image.NewRGBA64(image.Rect(0, 0, int(__obf_bc571956a33c8293), int(__obf_5a5a28ca143a2f3f)))
+		__obf_46e0cb0caad4034a,
 
 			// horizontal filter, results in transposed temporary image
-			__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e := __obf_073d620566900e2c(__obf_0c62244a1c8127bf.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_5ba5939ea89ea0de)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_0c62244a1c8127bf, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.RGBA64)
+			__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d := __obf_b8bb0d275d8b4e0d(__obf_30b4a81a5645f273.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_d5b7dea7a78fd48e)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_30b4a81a5645f273, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.RGBA64)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_92a9ee3518f7cb1f(__obf_b9c5bf10bfae0f7a, __obf_a51405ad505373a9, __obf_5ba5939ea89ea0de, __obf_779a7f81421e09ef,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_d4c3da6972dfb241(__obf_4f5a8d0b34527afc, __obf_dc36ea2ab56fb609, __obf_d5b7dea7a78fd48e, __obf_46e0cb0caad4034a,
 
 					// horizontal filter on transposed image, result is not transposed
-					__obf_04772264944a3f8f, __obf_277f8fd7946d0e2e)
+					__obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		__obf_779a7f81421e09ef, __obf_04772264944a3f8f, __obf_277f8fd7946d0e2e = __obf_073d620566900e2c(__obf_050e6c4f8fdd3826.Bounds().Dy(), __obf_3a126acc9d6ba2c1, __obf_b8f04e12843e5823, __obf_e469e0e79b6f8761)
-		__obf_e9b9d04aa0aee136.
-			Add(__obf_ca7e6a5f6d539d14)
-		for __obf_41043e9a68df34f8 := range __obf_ca7e6a5f6d539d14 {
-			__obf_a51405ad505373a9 := __obf_bd75b5bfd7ac8518(__obf_050e6c4f8fdd3826, __obf_41043e9a68df34f8, __obf_ca7e6a5f6d539d14).(*image.RGBA64)
+		__obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b, __obf_052b80a7daaa449d = __obf_b8bb0d275d8b4e0d(__obf_c27c5a7dd11abfd7.Bounds().Dy(), __obf_d028ed8a4cd5fa47, __obf_b5313b280a820ad0, __obf_cbfadbd3718a054b)
+		__obf_cd504da1ae38dec4.
+			Add(__obf_47cc8a0a92b92912)
+		for __obf_7326873273fab46e := range __obf_47cc8a0a92b92912 {
+			__obf_dc36ea2ab56fb609 := __obf_0a10803f6145f736(__obf_c27c5a7dd11abfd7, __obf_7326873273fab46e, __obf_47cc8a0a92b92912).(*image.RGBA64)
 			go func() {
-				defer __obf_e9b9d04aa0aee136.Done()
-				__obf_bb156615cc9077bb(__obf_0c62244a1c8127bf, __obf_a51405ad505373a9, __obf_779a7f81421e09ef, __obf_04772264944a3f8f,
+				defer __obf_cd504da1ae38dec4.Done()
+				__obf_e7f8b39bc0d4199a(__obf_30b4a81a5645f273, __obf_dc36ea2ab56fb609, __obf_46e0cb0caad4034a, __obf_cf2c82255bf7ee2b,
 
 					// Calculates scaling factors using old and new image dimensions.
-					__obf_277f8fd7946d0e2e)
+					__obf_052b80a7daaa449d)
 			}()
 		}
-		__obf_e9b9d04aa0aee136.
+		__obf_cd504da1ae38dec4.
 			Wait()
-		return __obf_050e6c4f8fdd3826
+		return __obf_c27c5a7dd11abfd7
 	}
 
 }
 
-func __obf_0c8f992b82cb1c93(__obf_a22ab8344dedd519, __obf_2667e7551de50ad4 uint, __obf_c3f789899b3b05f4, __obf_cd01440d64e39479 float64) (__obf_5ba5939ea89ea0de, __obf_e469e0e79b6f8761 float64) {
-	if __obf_a22ab8344dedd519 == 0 {
-		if __obf_2667e7551de50ad4 == 0 {
-			__obf_5ba5939ea89ea0de = 1.0
-			__obf_e469e0e79b6f8761 = 1.0
+func __obf_46b5846e696e2e9f(__obf_bc571956a33c8293, __obf_5a5a28ca143a2f3f uint, __obf_8877583a5ecc7d86, __obf_6c3c4bd8256403ef float64) (__obf_d5b7dea7a78fd48e, __obf_cbfadbd3718a054b float64) {
+	if __obf_bc571956a33c8293 == 0 {
+		if __obf_5a5a28ca143a2f3f == 0 {
+			__obf_d5b7dea7a78fd48e = 1.0
+			__obf_cbfadbd3718a054b = 1.0
 		} else {
-			__obf_e469e0e79b6f8761 = __obf_cd01440d64e39479 / float64(__obf_2667e7551de50ad4)
-			__obf_5ba5939ea89ea0de = __obf_e469e0e79b6f8761
+			__obf_cbfadbd3718a054b = __obf_6c3c4bd8256403ef / float64(__obf_5a5a28ca143a2f3f)
+			__obf_d5b7dea7a78fd48e = __obf_cbfadbd3718a054b
 		}
 	} else {
-		__obf_5ba5939ea89ea0de = __obf_c3f789899b3b05f4 / float64(__obf_a22ab8344dedd519)
-		if __obf_2667e7551de50ad4 == 0 {
-			__obf_e469e0e79b6f8761 = __obf_5ba5939ea89ea0de
+		__obf_d5b7dea7a78fd48e = __obf_8877583a5ecc7d86 / float64(__obf_bc571956a33c8293)
+		if __obf_5a5a28ca143a2f3f == 0 {
+			__obf_cbfadbd3718a054b = __obf_d5b7dea7a78fd48e
 		} else {
-			__obf_e469e0e79b6f8761 = __obf_cd01440d64e39479 / float64(__obf_2667e7551de50ad4)
+			__obf_cbfadbd3718a054b = __obf_6c3c4bd8256403ef / float64(__obf_5a5a28ca143a2f3f)
 		}
 	}
 	return
 }
 
-type __obf_ebabb0c464b3cb0c interface {
+type __obf_400bbffddada8b3f interface {
 	image.Image
 	SubImage(image.Rectangle) image.Image
 }
 
-func __obf_bd75b5bfd7ac8518(__obf_b9c5bf10bfae0f7a __obf_ebabb0c464b3cb0c, __obf_41043e9a68df34f8, __obf_ad1856af42b6f59d int) image.Image {
-	return __obf_b9c5bf10bfae0f7a.SubImage(image.Rect(__obf_b9c5bf10bfae0f7a.Bounds().Min.X, __obf_b9c5bf10bfae0f7a.Bounds().Min.Y+__obf_41043e9a68df34f8*__obf_b9c5bf10bfae0f7a.Bounds().Dy()/__obf_ad1856af42b6f59d, __obf_b9c5bf10bfae0f7a.Bounds().Max.X, __obf_b9c5bf10bfae0f7a.Bounds().Min.Y+(__obf_41043e9a68df34f8+1)*__obf_b9c5bf10bfae0f7a.Bounds().Dy()/__obf_ad1856af42b6f59d))
+func __obf_0a10803f6145f736(__obf_4f5a8d0b34527afc __obf_400bbffddada8b3f, __obf_7326873273fab46e, __obf_ba0c9781114791b5 int) image.Image {
+	return __obf_4f5a8d0b34527afc.SubImage(image.Rect(__obf_4f5a8d0b34527afc.Bounds().Min.X, __obf_4f5a8d0b34527afc.Bounds().Min.Y+__obf_7326873273fab46e*__obf_4f5a8d0b34527afc.Bounds().Dy()/__obf_ba0c9781114791b5, __obf_4f5a8d0b34527afc.Bounds().Max.X, __obf_4f5a8d0b34527afc.Bounds().Min.Y+(__obf_7326873273fab46e+1)*__obf_4f5a8d0b34527afc.Bounds().Dy()/__obf_ba0c9781114791b5))
 }

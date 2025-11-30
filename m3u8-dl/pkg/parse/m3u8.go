@@ -1,4 +1,4 @@
-package __obf_73049aff9f20feb6
+package __obf_13e34d0e1e6d5a3a
 
 import (
 	"bufio"
@@ -24,7 +24,7 @@ const (
 )
 
 // extracting 'key = value' regex
-var __obf_7e2dc12f0fb1d929 = regexp.MustCompile(`([a-zA-Z-]+)=("[^"]+"|[^",]+)`)
+var __obf_2d204c1a83dc7daf = regexp.MustCompile(`([a-zA-Z-]+)=("[^"]+"|[^",]+)`)
 
 // M3u8 m3u8 Data struct definition
 type M3u8 struct {
@@ -71,214 +71,214 @@ type Key struct {
 }
 
 // @param reader
-func __obf_73049aff9f20feb6(__obf_6731eec6097ad6a3 io.Reader) (*M3u8, error) {
-	__obf_ea385fc14e5ef8d0 := bufio.NewScanner(__obf_6731eec6097ad6a3)
-	var __obf_f24fe726d92f0e38 []string
-	for __obf_ea385fc14e5ef8d0.Scan() {
-		__obf_f24fe726d92f0e38 = append(__obf_f24fe726d92f0e38, __obf_ea385fc14e5ef8d0.Text())
+func __obf_13e34d0e1e6d5a3a(__obf_7c6259d5ef161e22 io.Reader) (*M3u8, error) {
+	__obf_f912d17e4b4a93ba := bufio.NewScanner(__obf_7c6259d5ef161e22)
+	var __obf_8ac279997f31e521 []string
+	for __obf_f912d17e4b4a93ba.Scan() {
+		__obf_8ac279997f31e521 = append(__obf_8ac279997f31e521, __obf_f912d17e4b4a93ba.Text())
 	}
 
 	var (
-		__obf_1de1feee1e49aa61 = 0
-		__obf_409676e28dd0bd0b = len(__obf_f24fe726d92f0e38)
-		__obf_bae86baf40186d8d = &M3u8{
+		__obf_e71f93ee091092d8 = 0
+		__obf_8686a243937b4113 = len(__obf_8ac279997f31e521)
+		__obf_5f60c6671d122931 = &M3u8{
 			Keys: make(map[int]*Key),
 		}
-		__obf_577459675089d47b = 0
-		__obf_e6b5c32ce5643ea2 *Key
-		__obf_bc50a2ddebe89d25 *Segment
-		__obf_6f7e37d652728bca bool
-		__obf_0a53e61d7a300cf2 bool
+		__obf_8f2722bc76623cdd = 0
+		__obf_34815b5c820544ed *Key
+		__obf_6581871659ad468c *Segment
+		__obf_5a920a364053c1cf bool
+		__obf_372dcfcfe36ba24a bool
 	)
 
-	for ; __obf_1de1feee1e49aa61 < __obf_409676e28dd0bd0b; __obf_1de1feee1e49aa61++ {
-		__obf_758d6b93b26fc650 := strings.TrimSpace(__obf_f24fe726d92f0e38[__obf_1de1feee1e49aa61])
-		if __obf_1de1feee1e49aa61 == 0 {
-			if "#EXTM3U" != __obf_758d6b93b26fc650 {
+	for ; __obf_e71f93ee091092d8 < __obf_8686a243937b4113; __obf_e71f93ee091092d8++ {
+		__obf_e859567c0f7014ee := strings.TrimSpace(__obf_8ac279997f31e521[__obf_e71f93ee091092d8])
+		if __obf_e71f93ee091092d8 == 0 {
+			if "#EXTM3U" != __obf_e859567c0f7014ee {
 				return nil, fmt.Errorf("invalid m3u8, missing #EXTM3U in line 1")
 			}
 			continue
 		}
 		switch {
-		case __obf_758d6b93b26fc650 == "":
+		case __obf_e859567c0f7014ee == "":
 			continue
-		case strings.HasPrefix(__obf_758d6b93b26fc650, "#EXT-X-PLAYLIST-TYPE:"):
-			if _, __obf_5159af91c7c96fc8 := fmt.Sscanf(__obf_758d6b93b26fc650, "#EXT-X-PLAYLIST-TYPE:%s", &__obf_bae86baf40186d8d.PlaylistType); __obf_5159af91c7c96fc8 != nil {
-				return nil, __obf_5159af91c7c96fc8
+		case strings.HasPrefix(__obf_e859567c0f7014ee, "#EXT-X-PLAYLIST-TYPE:"):
+			if _, __obf_2480b83375e43a4e := fmt.Sscanf(__obf_e859567c0f7014ee, "#EXT-X-PLAYLIST-TYPE:%s", &__obf_5f60c6671d122931.PlaylistType); __obf_2480b83375e43a4e != nil {
+				return nil, __obf_2480b83375e43a4e
 			}
-			__obf_6f8f48f27c0a4367 := __obf_bae86baf40186d8d.PlaylistType == "" || __obf_bae86baf40186d8d.PlaylistType == PlaylistTypeVOD || __obf_bae86baf40186d8d.PlaylistType == PlaylistTypeEvent
-			if !__obf_6f8f48f27c0a4367 {
-				return nil, fmt.Errorf("invalid playlist type: %s, line: %d", __obf_bae86baf40186d8d.PlaylistType, __obf_1de1feee1e49aa61+1)
+			__obf_f34f4eb5cd29a9a3 := __obf_5f60c6671d122931.PlaylistType == "" || __obf_5f60c6671d122931.PlaylistType == PlaylistTypeVOD || __obf_5f60c6671d122931.PlaylistType == PlaylistTypeEvent
+			if !__obf_f34f4eb5cd29a9a3 {
+				return nil, fmt.Errorf("invalid playlist type: %s, line: %d", __obf_5f60c6671d122931.PlaylistType, __obf_e71f93ee091092d8+1)
 			}
-		case strings.HasPrefix(__obf_758d6b93b26fc650, "#EXT-X-TARGETDURATION:"):
-			if _, __obf_5159af91c7c96fc8 := fmt.Sscanf(__obf_758d6b93b26fc650, "#EXT-X-TARGETDURATION:%f", &__obf_bae86baf40186d8d.TargetDuration); __obf_5159af91c7c96fc8 != nil {
-				return nil, __obf_5159af91c7c96fc8
+		case strings.HasPrefix(__obf_e859567c0f7014ee, "#EXT-X-TARGETDURATION:"):
+			if _, __obf_2480b83375e43a4e := fmt.Sscanf(__obf_e859567c0f7014ee, "#EXT-X-TARGETDURATION:%f", &__obf_5f60c6671d122931.TargetDuration); __obf_2480b83375e43a4e != nil {
+				return nil, __obf_2480b83375e43a4e
 			}
-		case strings.HasPrefix(__obf_758d6b93b26fc650, "#EXT-X-MEDIA-SEQUENCE:"):
-			if _, __obf_5159af91c7c96fc8 := fmt.Sscanf(__obf_758d6b93b26fc650, "#EXT-X-MEDIA-SEQUENCE:%d", &__obf_bae86baf40186d8d.MediaSequence); __obf_5159af91c7c96fc8 != nil {
-				return nil, __obf_5159af91c7c96fc8
+		case strings.HasPrefix(__obf_e859567c0f7014ee, "#EXT-X-MEDIA-SEQUENCE:"):
+			if _, __obf_2480b83375e43a4e := fmt.Sscanf(__obf_e859567c0f7014ee, "#EXT-X-MEDIA-SEQUENCE:%d", &__obf_5f60c6671d122931.MediaSequence); __obf_2480b83375e43a4e != nil {
+				return nil, __obf_2480b83375e43a4e
 			}
-		case strings.HasPrefix(__obf_758d6b93b26fc650, "#EXT-X-VERSION:"):
-			if _, __obf_5159af91c7c96fc8 := fmt.Sscanf(__obf_758d6b93b26fc650, "#EXT-X-VERSION:%d", &__obf_bae86baf40186d8d.Version); __obf_5159af91c7c96fc8 != nil {
-				return nil, __obf_5159af91c7c96fc8
+		case strings.HasPrefix(__obf_e859567c0f7014ee, "#EXT-X-VERSION:"):
+			if _, __obf_2480b83375e43a4e := fmt.Sscanf(__obf_e859567c0f7014ee, "#EXT-X-VERSION:%d", &__obf_5f60c6671d122931.Version); __obf_2480b83375e43a4e != nil {
+				return nil, __obf_2480b83375e43a4e
 			}
 		// Parse master playlist
-		case strings.HasPrefix(__obf_758d6b93b26fc650, "#EXT-X-STREAM-INF:"):
-			__obf_93895255bb6edd3b, __obf_5159af91c7c96fc8 := __obf_c90ec429c2fc3f58(__obf_758d6b93b26fc650)
-			if __obf_5159af91c7c96fc8 != nil {
-				return nil, __obf_5159af91c7c96fc8
+		case strings.HasPrefix(__obf_e859567c0f7014ee, "#EXT-X-STREAM-INF:"):
+			__obf_23652a372dd01652, __obf_2480b83375e43a4e := __obf_38f55bab0e4dd3ea(__obf_e859567c0f7014ee)
+			if __obf_2480b83375e43a4e != nil {
+				return nil, __obf_2480b83375e43a4e
 			}
-			__obf_1de1feee1e49aa61++
-			__obf_93895255bb6edd3b.
-				URI = __obf_f24fe726d92f0e38[__obf_1de1feee1e49aa61]
-			if __obf_93895255bb6edd3b.URI == "" || strings.HasPrefix(__obf_93895255bb6edd3b.URI, "#") {
-				return nil, fmt.Errorf("invalid EXT-X-STREAM-INF URI, line: %d", __obf_1de1feee1e49aa61+1)
+			__obf_e71f93ee091092d8++
+			__obf_23652a372dd01652.
+				URI = __obf_8ac279997f31e521[__obf_e71f93ee091092d8]
+			if __obf_23652a372dd01652.URI == "" || strings.HasPrefix(__obf_23652a372dd01652.URI, "#") {
+				return nil, fmt.Errorf("invalid EXT-X-STREAM-INF URI, line: %d", __obf_e71f93ee091092d8+1)
 			}
-			__obf_bae86baf40186d8d.
-				MasterPlaylist = append(__obf_bae86baf40186d8d.MasterPlaylist, __obf_93895255bb6edd3b)
+			__obf_5f60c6671d122931.
+				MasterPlaylist = append(__obf_5f60c6671d122931.MasterPlaylist, __obf_23652a372dd01652)
 			continue
-		case strings.HasPrefix(__obf_758d6b93b26fc650, "#EXTINF:"):
-			if __obf_6f7e37d652728bca {
-				return nil, fmt.Errorf("duplicate EXTINF: %s, line: %d", __obf_758d6b93b26fc650, __obf_1de1feee1e49aa61+1)
+		case strings.HasPrefix(__obf_e859567c0f7014ee, "#EXTINF:"):
+			if __obf_5a920a364053c1cf {
+				return nil, fmt.Errorf("duplicate EXTINF: %s, line: %d", __obf_e859567c0f7014ee, __obf_e71f93ee091092d8+1)
 			}
-			if __obf_bc50a2ddebe89d25 == nil {
-				__obf_bc50a2ddebe89d25 = new(Segment)
+			if __obf_6581871659ad468c == nil {
+				__obf_6581871659ad468c = new(Segment)
 			}
-			var __obf_ea385fc14e5ef8d0 string
-			if _, __obf_5159af91c7c96fc8 := fmt.Sscanf(__obf_758d6b93b26fc650, "#EXTINF:%s", &__obf_ea385fc14e5ef8d0); __obf_5159af91c7c96fc8 != nil {
-				return nil, __obf_5159af91c7c96fc8
+			var __obf_f912d17e4b4a93ba string
+			if _, __obf_2480b83375e43a4e := fmt.Sscanf(__obf_e859567c0f7014ee, "#EXTINF:%s", &__obf_f912d17e4b4a93ba); __obf_2480b83375e43a4e != nil {
+				return nil, __obf_2480b83375e43a4e
 			}
-			if strings.Contains(__obf_ea385fc14e5ef8d0, ",") {
-				__obf_9959b249a3c51032 := strings.Split(__obf_ea385fc14e5ef8d0, ",")
-				__obf_bc50a2ddebe89d25.
-					Title = __obf_9959b249a3c51032[1]
-				__obf_ea385fc14e5ef8d0 = __obf_9959b249a3c51032[0]
+			if strings.Contains(__obf_f912d17e4b4a93ba, ",") {
+				__obf_39444d873157f285 := strings.Split(__obf_f912d17e4b4a93ba, ",")
+				__obf_6581871659ad468c.
+					Title = __obf_39444d873157f285[1]
+				__obf_f912d17e4b4a93ba = __obf_39444d873157f285[0]
 			}
-			__obf_dcd0a29a5368c9d6, __obf_5159af91c7c96fc8 := strconv.ParseFloat(__obf_ea385fc14e5ef8d0, 32)
-			if __obf_5159af91c7c96fc8 != nil {
-				return nil, __obf_5159af91c7c96fc8
+			__obf_7325f62b13e75e2b, __obf_2480b83375e43a4e := strconv.ParseFloat(__obf_f912d17e4b4a93ba, 32)
+			if __obf_2480b83375e43a4e != nil {
+				return nil, __obf_2480b83375e43a4e
 			}
-			__obf_bc50a2ddebe89d25.
-				Duration = float32(__obf_dcd0a29a5368c9d6)
-			__obf_bc50a2ddebe89d25.
-				KeyIndex = __obf_577459675089d47b
-			__obf_6f7e37d652728bca = true
-		case strings.HasPrefix(__obf_758d6b93b26fc650, "#EXT-X-BYTERANGE:"):
-			if __obf_0a53e61d7a300cf2 {
-				return nil, fmt.Errorf("duplicate EXT-X-BYTERANGE: %s, line: %d", __obf_758d6b93b26fc650, __obf_1de1feee1e49aa61+1)
+			__obf_6581871659ad468c.
+				Duration = float32(__obf_7325f62b13e75e2b)
+			__obf_6581871659ad468c.
+				KeyIndex = __obf_8f2722bc76623cdd
+			__obf_5a920a364053c1cf = true
+		case strings.HasPrefix(__obf_e859567c0f7014ee, "#EXT-X-BYTERANGE:"):
+			if __obf_372dcfcfe36ba24a {
+				return nil, fmt.Errorf("duplicate EXT-X-BYTERANGE: %s, line: %d", __obf_e859567c0f7014ee, __obf_e71f93ee091092d8+1)
 			}
-			if __obf_bc50a2ddebe89d25 == nil {
-				__obf_bc50a2ddebe89d25 = new(Segment)
+			if __obf_6581871659ad468c == nil {
+				__obf_6581871659ad468c = new(Segment)
 			}
-			var __obf_5ac92ddd0bc77437 string
-			if _, __obf_5159af91c7c96fc8 := fmt.Sscanf(__obf_758d6b93b26fc650, "#EXT-X-BYTERANGE:%s", &__obf_5ac92ddd0bc77437); __obf_5159af91c7c96fc8 != nil {
-				return nil, __obf_5159af91c7c96fc8
+			var __obf_4ace321aacb5e1fc string
+			if _, __obf_2480b83375e43a4e := fmt.Sscanf(__obf_e859567c0f7014ee, "#EXT-X-BYTERANGE:%s", &__obf_4ace321aacb5e1fc); __obf_2480b83375e43a4e != nil {
+				return nil, __obf_2480b83375e43a4e
 			}
-			if __obf_5ac92ddd0bc77437 == "" {
-				return nil, fmt.Errorf("invalid EXT-X-BYTERANGE, line: %d", __obf_1de1feee1e49aa61+1)
+			if __obf_4ace321aacb5e1fc == "" {
+				return nil, fmt.Errorf("invalid EXT-X-BYTERANGE, line: %d", __obf_e71f93ee091092d8+1)
 			}
-			if strings.Contains(__obf_5ac92ddd0bc77437, "@") {
-				__obf_9959b249a3c51032 := strings.Split(__obf_5ac92ddd0bc77437, "@")
-				__obf_7d49d4e739670bc7, __obf_5159af91c7c96fc8 := strconv.ParseUint(__obf_9959b249a3c51032[1], 10, 64)
-				if __obf_5159af91c7c96fc8 != nil {
-					return nil, __obf_5159af91c7c96fc8
+			if strings.Contains(__obf_4ace321aacb5e1fc, "@") {
+				__obf_39444d873157f285 := strings.Split(__obf_4ace321aacb5e1fc, "@")
+				__obf_5326cc5163392a32, __obf_2480b83375e43a4e := strconv.ParseUint(__obf_39444d873157f285[1], 10, 64)
+				if __obf_2480b83375e43a4e != nil {
+					return nil, __obf_2480b83375e43a4e
 				}
-				__obf_bc50a2ddebe89d25.
-					Offset = uint64(__obf_7d49d4e739670bc7)
-				__obf_5ac92ddd0bc77437 = __obf_9959b249a3c51032[0]
+				__obf_6581871659ad468c.
+					Offset = uint64(__obf_5326cc5163392a32)
+				__obf_4ace321aacb5e1fc = __obf_39444d873157f285[0]
 			}
-			__obf_1679a5bbeae80917, __obf_5159af91c7c96fc8 := strconv.ParseUint(__obf_5ac92ddd0bc77437, 10, 64)
-			if __obf_5159af91c7c96fc8 != nil {
-				return nil, __obf_5159af91c7c96fc8
+			__obf_3eec249983936482, __obf_2480b83375e43a4e := strconv.ParseUint(__obf_4ace321aacb5e1fc, 10, 64)
+			if __obf_2480b83375e43a4e != nil {
+				return nil, __obf_2480b83375e43a4e
 			}
-			__obf_bc50a2ddebe89d25.
-				Length = uint64(__obf_1679a5bbeae80917)
-			__obf_0a53e61d7a300cf2 = true
+			__obf_6581871659ad468c.
+				Length = uint64(__obf_3eec249983936482)
+			__obf_372dcfcfe36ba24a = true
 		// Parse segments URI
-		case !strings.HasPrefix(__obf_758d6b93b26fc650, "#"):
-			if __obf_6f7e37d652728bca {
-				if __obf_bc50a2ddebe89d25 == nil {
-					return nil, fmt.Errorf("invalid line: %s", __obf_758d6b93b26fc650)
+		case !strings.HasPrefix(__obf_e859567c0f7014ee, "#"):
+			if __obf_5a920a364053c1cf {
+				if __obf_6581871659ad468c == nil {
+					return nil, fmt.Errorf("invalid line: %s", __obf_e859567c0f7014ee)
 				}
-				__obf_bc50a2ddebe89d25.
-					URI = __obf_758d6b93b26fc650
-				__obf_0a53e61d7a300cf2 = false
-				__obf_6f7e37d652728bca = false
-				__obf_bae86baf40186d8d.
-					Segments = append(__obf_bae86baf40186d8d.Segments, __obf_bc50a2ddebe89d25)
-				__obf_bc50a2ddebe89d25 = nil
+				__obf_6581871659ad468c.
+					URI = __obf_e859567c0f7014ee
+				__obf_372dcfcfe36ba24a = false
+				__obf_5a920a364053c1cf = false
+				__obf_5f60c6671d122931.
+					Segments = append(__obf_5f60c6671d122931.Segments, __obf_6581871659ad468c)
+				__obf_6581871659ad468c = nil
 				continue
 			}
 		// Parse key
-		case strings.HasPrefix(__obf_758d6b93b26fc650, "#EXT-X-KEY"):
-			__obf_a30a1ca4e0239f95 := __obf_303ed0550e240542(__obf_758d6b93b26fc650)
-			if len(__obf_a30a1ca4e0239f95) == 0 {
-				return nil, fmt.Errorf("invalid EXT-X-KEY: %s, line: %d", __obf_758d6b93b26fc650, __obf_1de1feee1e49aa61+1)
+		case strings.HasPrefix(__obf_e859567c0f7014ee, "#EXT-X-KEY"):
+			__obf_06f10035a9011a83 := __obf_a8c7444ee3045896(__obf_e859567c0f7014ee)
+			if len(__obf_06f10035a9011a83) == 0 {
+				return nil, fmt.Errorf("invalid EXT-X-KEY: %s, line: %d", __obf_e859567c0f7014ee, __obf_e71f93ee091092d8+1)
 			}
-			__obf_73420cef7f380c22 := CryptMethod(__obf_a30a1ca4e0239f95["METHOD"])
-			if __obf_73420cef7f380c22 != "" && __obf_73420cef7f380c22 != CryptMethodAES && __obf_73420cef7f380c22 != CryptMethodNONE {
-				return nil, fmt.Errorf("invalid EXT-X-KEY method: %s, line: %d", __obf_73420cef7f380c22, __obf_1de1feee1e49aa61+1)
+			__obf_e7245fba48f524aa := CryptMethod(__obf_06f10035a9011a83["METHOD"])
+			if __obf_e7245fba48f524aa != "" && __obf_e7245fba48f524aa != CryptMethodAES && __obf_e7245fba48f524aa != CryptMethodNONE {
+				return nil, fmt.Errorf("invalid EXT-X-KEY method: %s, line: %d", __obf_e7245fba48f524aa, __obf_e71f93ee091092d8+1)
 			}
-			__obf_577459675089d47b++
-			__obf_e6b5c32ce5643ea2 = new(Key)
-			__obf_e6b5c32ce5643ea2.
-				Method = __obf_73420cef7f380c22
-			__obf_e6b5c32ce5643ea2.
-				URI = __obf_a30a1ca4e0239f95["URI"]
-			__obf_e6b5c32ce5643ea2.
-				IV = __obf_a30a1ca4e0239f95["IV"]
-			__obf_bae86baf40186d8d.
-				Keys[__obf_577459675089d47b] = __obf_e6b5c32ce5643ea2
-		case __obf_758d6b93b26fc650 == "#EndList":
-			__obf_bae86baf40186d8d.
+			__obf_8f2722bc76623cdd++
+			__obf_34815b5c820544ed = new(Key)
+			__obf_34815b5c820544ed.
+				Method = __obf_e7245fba48f524aa
+			__obf_34815b5c820544ed.
+				URI = __obf_06f10035a9011a83["URI"]
+			__obf_34815b5c820544ed.
+				IV = __obf_06f10035a9011a83["IV"]
+			__obf_5f60c6671d122931.
+				Keys[__obf_8f2722bc76623cdd] = __obf_34815b5c820544ed
+		case __obf_e859567c0f7014ee == "#EndList":
+			__obf_5f60c6671d122931.
 				EndList = true
 		default:
 			continue
 		}
 	}
 
-	return __obf_bae86baf40186d8d, nil
+	return __obf_5f60c6671d122931, nil
 }
 
-func __obf_c90ec429c2fc3f58(__obf_758d6b93b26fc650 string) (*MasterPlaylist, error) {
-	__obf_a30a1ca4e0239f95 := __obf_303ed0550e240542(__obf_758d6b93b26fc650)
-	if len(__obf_a30a1ca4e0239f95) == 0 {
+func __obf_38f55bab0e4dd3ea(__obf_e859567c0f7014ee string) (*MasterPlaylist, error) {
+	__obf_06f10035a9011a83 := __obf_a8c7444ee3045896(__obf_e859567c0f7014ee)
+	if len(__obf_06f10035a9011a83) == 0 {
 		return nil, errors.New("empty parameter")
 	}
-	__obf_93895255bb6edd3b := new(MasterPlaylist)
-	for __obf_095464ee1993f2c9, __obf_201a5ce6f5a18794 := range __obf_a30a1ca4e0239f95 {
+	__obf_23652a372dd01652 := new(MasterPlaylist)
+	for __obf_0931910163550cb2, __obf_16531318deccf55e := range __obf_06f10035a9011a83 {
 		switch {
-		case __obf_095464ee1993f2c9 == "BANDWIDTH":
-			__obf_201a5ce6f5a18794, __obf_5159af91c7c96fc8 := strconv.ParseUint(__obf_201a5ce6f5a18794, 10, 32)
-			if __obf_5159af91c7c96fc8 != nil {
-				return nil, __obf_5159af91c7c96fc8
+		case __obf_0931910163550cb2 == "BANDWIDTH":
+			__obf_16531318deccf55e, __obf_2480b83375e43a4e := strconv.ParseUint(__obf_16531318deccf55e, 10, 32)
+			if __obf_2480b83375e43a4e != nil {
+				return nil, __obf_2480b83375e43a4e
 			}
-			__obf_93895255bb6edd3b.
-				BandWidth = uint32(__obf_201a5ce6f5a18794)
-		case __obf_095464ee1993f2c9 == "RESOLUTION":
-			__obf_93895255bb6edd3b.
-				Resolution = __obf_201a5ce6f5a18794
-		case __obf_095464ee1993f2c9 == "PROGRAM-ID":
-			__obf_201a5ce6f5a18794, __obf_5159af91c7c96fc8 := strconv.ParseUint(__obf_201a5ce6f5a18794, 10, 32)
-			if __obf_5159af91c7c96fc8 != nil {
-				return nil, __obf_5159af91c7c96fc8
+			__obf_23652a372dd01652.
+				BandWidth = uint32(__obf_16531318deccf55e)
+		case __obf_0931910163550cb2 == "RESOLUTION":
+			__obf_23652a372dd01652.
+				Resolution = __obf_16531318deccf55e
+		case __obf_0931910163550cb2 == "PROGRAM-ID":
+			__obf_16531318deccf55e, __obf_2480b83375e43a4e := strconv.ParseUint(__obf_16531318deccf55e, 10, 32)
+			if __obf_2480b83375e43a4e != nil {
+				return nil, __obf_2480b83375e43a4e
 			}
-			__obf_93895255bb6edd3b.
-				ProgramID = uint32(__obf_201a5ce6f5a18794)
-		case __obf_095464ee1993f2c9 == "CODECS":
-			__obf_93895255bb6edd3b.
-				Codecs = __obf_201a5ce6f5a18794
+			__obf_23652a372dd01652.
+				ProgramID = uint32(__obf_16531318deccf55e)
+		case __obf_0931910163550cb2 == "CODECS":
+			__obf_23652a372dd01652.
+				Codecs = __obf_16531318deccf55e
 		}
 	}
-	return __obf_93895255bb6edd3b, nil
+	return __obf_23652a372dd01652, nil
 }
 
 // parseLineParameters extra parameters in string `line`
-func __obf_303ed0550e240542(__obf_758d6b93b26fc650 string) map[string]string {
-	__obf_acec7657b362e547 := __obf_7e2dc12f0fb1d929.FindAllStringSubmatch(__obf_758d6b93b26fc650, -1)
-	__obf_a30a1ca4e0239f95 := make(map[string]string)
-	for _, __obf_0f99f30fa91aca58 := range __obf_acec7657b362e547 {
-		__obf_a30a1ca4e0239f95[__obf_0f99f30fa91aca58[1]] = strings.Trim(__obf_0f99f30fa91aca58[2], "\"")
+func __obf_a8c7444ee3045896(__obf_e859567c0f7014ee string) map[string]string {
+	__obf_7b0e689392466bf2 := __obf_2d204c1a83dc7daf.FindAllStringSubmatch(__obf_e859567c0f7014ee, -1)
+	__obf_06f10035a9011a83 := make(map[string]string)
+	for _, __obf_5b4e287cff60ee14 := range __obf_7b0e689392466bf2 {
+		__obf_06f10035a9011a83[__obf_5b4e287cff60ee14[1]] = strings.Trim(__obf_5b4e287cff60ee14[2], "\"")
 	}
-	return __obf_a30a1ca4e0239f95
+	return __obf_06f10035a9011a83
 }

@@ -1,4 +1,4 @@
-package __obf_4d7a51f8e2f0494a
+package __obf_a51a64e21f311927
 
 import (
 	"errors"
@@ -9,11 +9,11 @@ import (
 
 // IdWorker Struct
 type IDWorker struct {
-	__obf_2103bbb91aba9b10 int64
-	__obf_45f6ec9d07383a8c int64
-	__obf_de8c2d4f1a1d02ed int64
-	__obf_5d51e76f7973f04b int64
-	__obf_f1cabaa526197d15 *sync.Mutex
+	__obf_fd14b2689ab4f0d7 int64
+	__obf_09e0c19d9eab9bb3 int64
+	__obf_97426f7ecb5d7ca6 int64
+	__obf_41a95c1e40e67035 int64
+	__obf_6b1f7f3376bfd1d2 *sync.Mutex
 }
 
 const (
@@ -29,74 +29,74 @@ const (
 )
 
 // NewIdWorker Func: Generate NewIdWorker with Given workerid
-func NewIdWorker(__obf_b01cd8c5178ba3dd int64) (__obf_6bac90a21c725eff *IDWorker, __obf_38c5d446257f8d9a error) {
-	__obf_6bac90a21c725eff = new(IDWorker)
-	__obf_6bac90a21c725eff.__obf_5d51e76f7973f04b = __obf_ce7052d902a49d7a()
+func NewIdWorker(__obf_741b6fa555c343ee int64) (__obf_1e118d648d470158 *IDWorker, __obf_886df8acc7f50b76 error) {
+	__obf_1e118d648d470158 = new(IDWorker)
+	__obf_1e118d648d470158.__obf_41a95c1e40e67035 = __obf_589dd7a566364483()
 
-	if __obf_b01cd8c5178ba3dd > __obf_6bac90a21c725eff.__obf_5d51e76f7973f04b || __obf_b01cd8c5178ba3dd < 0 {
+	if __obf_741b6fa555c343ee > __obf_1e118d648d470158.__obf_41a95c1e40e67035 || __obf_741b6fa555c343ee < 0 {
 		return nil, errors.New("worker not fit")
 	}
-	__obf_6bac90a21c725eff.__obf_2103bbb91aba9b10 = __obf_b01cd8c5178ba3dd
-	__obf_6bac90a21c725eff.__obf_45f6ec9d07383a8c = -1
-	__obf_6bac90a21c725eff.__obf_de8c2d4f1a1d02ed = 0
-	__obf_6bac90a21c725eff.__obf_f1cabaa526197d15 = new(sync.Mutex)
-	return __obf_6bac90a21c725eff, nil
+	__obf_1e118d648d470158.__obf_fd14b2689ab4f0d7 = __obf_741b6fa555c343ee
+	__obf_1e118d648d470158.__obf_09e0c19d9eab9bb3 = -1
+	__obf_1e118d648d470158.__obf_97426f7ecb5d7ca6 = 0
+	__obf_1e118d648d470158.__obf_6b1f7f3376bfd1d2 = new(sync.Mutex)
+	return __obf_1e118d648d470158, nil
 }
 
-func __obf_ce7052d902a49d7a() int64 {
+func __obf_589dd7a566364483() int64 {
 	return -1 ^ -1<<CWorkerIdBits
 }
 
-func __obf_1b67fc205a49905d() int64 {
+func __obf_3b0d4d538ada96e4() int64 {
 	return -1 ^ -1<<CSenquenceBits
 }
 
 // return in ms
-func (__obf_6bac90a21c725eff *IDWorker) __obf_d4a5a084d81da9aa() int64 {
+func (__obf_1e118d648d470158 *IDWorker) __obf_5ed3be5021b105fa() int64 {
 	return time.Now().UnixNano() / 1000 / 1000
 }
 
-func (__obf_6bac90a21c725eff *IDWorker) __obf_f79ebadf6d8f59e6(__obf_e44f0a7bde3d82a4 int64) int64 {
-	__obf_8a68cc6e94529446 := time.Now().UnixNano() / 1000 / 1000
+func (__obf_1e118d648d470158 *IDWorker) __obf_bc8ca894e29cd584(__obf_357a600734311b17 int64) int64 {
+	__obf_26c99594a4c81bf5 := time.Now().UnixNano() / 1000 / 1000
 	for {
-		if __obf_8a68cc6e94529446 <= __obf_e44f0a7bde3d82a4 {
-			__obf_8a68cc6e94529446 = __obf_6bac90a21c725eff.__obf_d4a5a084d81da9aa()
+		if __obf_26c99594a4c81bf5 <= __obf_357a600734311b17 {
+			__obf_26c99594a4c81bf5 = __obf_1e118d648d470158.__obf_5ed3be5021b105fa()
 		} else {
 			break
 		}
 	}
-	return __obf_8a68cc6e94529446
+	return __obf_26c99594a4c81bf5
 }
 
 // NewId Func: Generate next id
-func (__obf_6bac90a21c725eff *IDWorker) NextID() (__obf_721283c42292359f string, __obf_38c5d446257f8d9a error) {
-	__obf_6bac90a21c725eff.__obf_f1cabaa526197d15.
+func (__obf_1e118d648d470158 *IDWorker) NextID() (__obf_4c112818117e5211 string, __obf_886df8acc7f50b76 error) {
+	__obf_1e118d648d470158.__obf_6b1f7f3376bfd1d2.
 		Lock()
-	defer __obf_6bac90a21c725eff.__obf_f1cabaa526197d15.Unlock()
-	__obf_8a68cc6e94529446 := __obf_6bac90a21c725eff.__obf_d4a5a084d81da9aa()
-	if __obf_8a68cc6e94529446 == __obf_6bac90a21c725eff.__obf_45f6ec9d07383a8c {
-		__obf_6bac90a21c725eff.__obf_de8c2d4f1a1d02ed = (__obf_6bac90a21c725eff.__obf_de8c2d4f1a1d02ed + 1) & CSequenceMask
-		if __obf_6bac90a21c725eff.__obf_de8c2d4f1a1d02ed == 0 {
-			__obf_8a68cc6e94529446 = __obf_6bac90a21c725eff.__obf_f79ebadf6d8f59e6(__obf_8a68cc6e94529446)
+	defer __obf_1e118d648d470158.__obf_6b1f7f3376bfd1d2.Unlock()
+	__obf_26c99594a4c81bf5 := __obf_1e118d648d470158.__obf_5ed3be5021b105fa()
+	if __obf_26c99594a4c81bf5 == __obf_1e118d648d470158.__obf_09e0c19d9eab9bb3 {
+		__obf_1e118d648d470158.__obf_97426f7ecb5d7ca6 = (__obf_1e118d648d470158.__obf_97426f7ecb5d7ca6 + 1) & CSequenceMask
+		if __obf_1e118d648d470158.__obf_97426f7ecb5d7ca6 == 0 {
+			__obf_26c99594a4c81bf5 = __obf_1e118d648d470158.__obf_bc8ca894e29cd584(__obf_26c99594a4c81bf5)
 		}
 	} else {
-		__obf_6bac90a21c725eff.__obf_de8c2d4f1a1d02ed = 0
+		__obf_1e118d648d470158.__obf_97426f7ecb5d7ca6 = 0
 	}
 
-	if __obf_8a68cc6e94529446 < __obf_6bac90a21c725eff.__obf_45f6ec9d07383a8c {
-		__obf_38c5d446257f8d9a = errors.New("clock moved backwards, refuse gen id")
-		return "", __obf_38c5d446257f8d9a
+	if __obf_26c99594a4c81bf5 < __obf_1e118d648d470158.__obf_09e0c19d9eab9bb3 {
+		__obf_886df8acc7f50b76 = errors.New("clock moved backwards, refuse gen id")
+		return "", __obf_886df8acc7f50b76
 	}
-	__obf_6bac90a21c725eff.__obf_45f6ec9d07383a8c = __obf_8a68cc6e94529446
-	__obf_8a68cc6e94529446 = (__obf_8a68cc6e94529446-CEpoch)<<CTimeStampShift | __obf_6bac90a21c725eff.__obf_2103bbb91aba9b10<<CWorkerIdShift | __obf_6bac90a21c725eff.__obf_de8c2d4f1a1d02ed
-	return fmt.Sprintf("%X", __obf_8a68cc6e94529446), nil
+	__obf_1e118d648d470158.__obf_09e0c19d9eab9bb3 = __obf_26c99594a4c81bf5
+	__obf_26c99594a4c81bf5 = (__obf_26c99594a4c81bf5-CEpoch)<<CTimeStampShift | __obf_1e118d648d470158.__obf_fd14b2689ab4f0d7<<CWorkerIdShift | __obf_1e118d648d470158.__obf_97426f7ecb5d7ca6
+	return fmt.Sprintf("%X", __obf_26c99594a4c81bf5), nil
 }
 
 // ParseId Func: reverse uid to timestamp, workid, seq
-func ParseId(__obf_721283c42292359f int64) (__obf_d5aaddb5c5a3e313 time.Time, __obf_8a68cc6e94529446 int64, __obf_2103bbb91aba9b10 int64, __obf_4e18f31cbea3d556 int64) {
-	__obf_4e18f31cbea3d556 = __obf_721283c42292359f & CSequenceMask
-	__obf_2103bbb91aba9b10 = (__obf_721283c42292359f >> CWorkerIdShift) & CMaxWorker
-	__obf_8a68cc6e94529446 = (__obf_721283c42292359f >> CTimeStampShift) + CEpoch
-	__obf_d5aaddb5c5a3e313 = time.Unix(__obf_8a68cc6e94529446/1000, (__obf_8a68cc6e94529446%1000)*1000000)
+func ParseId(__obf_4c112818117e5211 int64) (__obf_c5969bc7b424c7a8 time.Time, __obf_26c99594a4c81bf5 int64, __obf_fd14b2689ab4f0d7 int64, __obf_6176ddf512a087e0 int64) {
+	__obf_6176ddf512a087e0 = __obf_4c112818117e5211 & CSequenceMask
+	__obf_fd14b2689ab4f0d7 = (__obf_4c112818117e5211 >> CWorkerIdShift) & CMaxWorker
+	__obf_26c99594a4c81bf5 = (__obf_4c112818117e5211 >> CTimeStampShift) + CEpoch
+	__obf_c5969bc7b424c7a8 = time.Unix(__obf_26c99594a4c81bf5/1000, (__obf_26c99594a4c81bf5%1000)*1000000)
 	return
 }

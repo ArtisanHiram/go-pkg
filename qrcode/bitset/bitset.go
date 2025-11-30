@@ -18,7 +18,7 @@
 //	v = b.At(1)                       // 1
 //	v = b.At(2)                       // 0
 //	v = b.At(8)                       // 0
-package __obf_398820583db81f0b
+package __obf_09471402236bac99
 
 import (
 	"bytes"
@@ -27,49 +27,49 @@ import (
 )
 
 const (
-	__obf_c9c4efc0550c45f4 = false
-	__obf_cb72ac9cdf0d4086 = true
+	__obf_40b6879463fc98c0 = false
+	__obf_3d368a5192cfddb0 = true
 )
 
 // Bitset stores an array of bits.
 type Bitset struct {
-	__obf_65933c337060b280 int // The number of bits stored.
-	__obf_7cced0d732b68faa []byte// Storage for individual bits.
+	__obf_b40d2843659b7788 int // The number of bits stored.
+	__obf_a98e0f33b9379401 []byte// Storage for individual bits.
 
 }
 
 // New returns an initialised Bitset with optional initial bits v.
-func New(__obf_5a0db15d4d044eaa ...bool) *Bitset {
-	__obf_603da838f6d2be62 := &Bitset{__obf_65933c337060b280: 0, __obf_7cced0d732b68faa: make([]byte, 0)}
-	__obf_603da838f6d2be62.
-		AppendBools(__obf_5a0db15d4d044eaa...)
+func New(__obf_88fd8473d9750335 ...bool) *Bitset {
+	__obf_ce8d978dad4a08f9 := &Bitset{__obf_b40d2843659b7788: 0, __obf_a98e0f33b9379401: make([]byte, 0)}
+	__obf_ce8d978dad4a08f9.
+		AppendBools(__obf_88fd8473d9750335...)
 
-	return __obf_603da838f6d2be62
+	return __obf_ce8d978dad4a08f9
 }
 
 // Clone returns a copy.
-func Clone(__obf_acae70369510e9ca *Bitset) *Bitset {
-	return &Bitset{__obf_65933c337060b280: __obf_acae70369510e9ca.__obf_65933c337060b280,
+func Clone(__obf_5a485949ab60b3af *Bitset) *Bitset {
+	return &Bitset{__obf_b40d2843659b7788: __obf_5a485949ab60b3af.__obf_b40d2843659b7788,
 
 		// Substr returns a substring, consisting of the bits from indexes start to end.
-		__obf_7cced0d732b68faa: __obf_acae70369510e9ca.__obf_7cced0d732b68faa[:]}
+		__obf_a98e0f33b9379401: __obf_5a485949ab60b3af.__obf_a98e0f33b9379401[:]}
 }
 
-func (__obf_603da838f6d2be62 *Bitset) Substr(__obf_6e2017ca8140cbf5 int, __obf_09ab9b819b7184da int) *Bitset {
-	if __obf_6e2017ca8140cbf5 > __obf_09ab9b819b7184da || __obf_09ab9b819b7184da > __obf_603da838f6d2be62.__obf_65933c337060b280 {
-		log.Panicf("Out of range start=%d end=%d numBits=%d", __obf_6e2017ca8140cbf5, __obf_09ab9b819b7184da, __obf_603da838f6d2be62.__obf_65933c337060b280)
+func (__obf_ce8d978dad4a08f9 *Bitset) Substr(__obf_ac2631eda8fb742e int, __obf_f2c58c08c4e51323 int) *Bitset {
+	if __obf_ac2631eda8fb742e > __obf_f2c58c08c4e51323 || __obf_f2c58c08c4e51323 > __obf_ce8d978dad4a08f9.__obf_b40d2843659b7788 {
+		log.Panicf("Out of range start=%d end=%d numBits=%d", __obf_ac2631eda8fb742e, __obf_f2c58c08c4e51323, __obf_ce8d978dad4a08f9.__obf_b40d2843659b7788)
 	}
-	__obf_ac2c247125beb5e3 := New()
-	__obf_ac2c247125beb5e3.__obf_360842d0953f7673(__obf_09ab9b819b7184da - __obf_6e2017ca8140cbf5)
+	__obf_7588920eb3600640 := New()
+	__obf_7588920eb3600640.__obf_3891c5b40504d5b2(__obf_f2c58c08c4e51323 - __obf_ac2631eda8fb742e)
 
-	for __obf_06aa0aefebeb4d0e := __obf_6e2017ca8140cbf5; __obf_06aa0aefebeb4d0e < __obf_09ab9b819b7184da; __obf_06aa0aefebeb4d0e++ {
-		if __obf_603da838f6d2be62.At(__obf_06aa0aefebeb4d0e) {
-			__obf_ac2c247125beb5e3.__obf_7cced0d732b68faa[__obf_ac2c247125beb5e3.__obf_65933c337060b280/8] |= 0x80 >> uint(__obf_ac2c247125beb5e3.__obf_65933c337060b280%8)
+	for __obf_190a54ebba5c6dbd := __obf_ac2631eda8fb742e; __obf_190a54ebba5c6dbd < __obf_f2c58c08c4e51323; __obf_190a54ebba5c6dbd++ {
+		if __obf_ce8d978dad4a08f9.At(__obf_190a54ebba5c6dbd) {
+			__obf_7588920eb3600640.__obf_a98e0f33b9379401[__obf_7588920eb3600640.__obf_b40d2843659b7788/8] |= 0x80 >> uint(__obf_7588920eb3600640.__obf_b40d2843659b7788%8)
 		}
-		__obf_ac2c247125beb5e3.__obf_65933c337060b280++
+		__obf_7588920eb3600640.__obf_b40d2843659b7788++
 	}
 
-	return __obf_ac2c247125beb5e3
+	return __obf_7588920eb3600640
 }
 
 // NewFromBase2String constructs and returns a Bitset from a string. The string
@@ -78,190 +78,190 @@ func (__obf_603da838f6d2be62 *Bitset) Substr(__obf_6e2017ca8140cbf5 int, __obf_0
 // ignored.
 //
 // The function panics if the input string contains other characters.
-func NewFromBase2String(__obf_58feb0540864c644 string) *Bitset {
-	__obf_603da838f6d2be62 := &Bitset{__obf_65933c337060b280: 0, __obf_7cced0d732b68faa: make([]byte, 0)}
+func NewFromBase2String(__obf_dd11079532ba21a3 string) *Bitset {
+	__obf_ce8d978dad4a08f9 := &Bitset{__obf_b40d2843659b7788: 0, __obf_a98e0f33b9379401: make([]byte, 0)}
 
-	for _, __obf_fc1e37010fdeac08 := range __obf_58feb0540864c644 {
-		switch __obf_fc1e37010fdeac08 {
+	for _, __obf_27f077878e760398 := range __obf_dd11079532ba21a3 {
+		switch __obf_27f077878e760398 {
 		case '1':
-			__obf_603da838f6d2be62.
+			__obf_ce8d978dad4a08f9.
 				AppendBools(true)
 		case '0':
-			__obf_603da838f6d2be62.
+			__obf_ce8d978dad4a08f9.
 				AppendBools(false)
 		case ' ':
 		default:
-			log.Panicf("Invalid char %c in NewFromBase2String", __obf_fc1e37010fdeac08)
+			log.Panicf("Invalid char %c in NewFromBase2String", __obf_27f077878e760398)
 		}
 	}
 
-	return __obf_603da838f6d2be62
+	return __obf_ce8d978dad4a08f9
 }
 
 // AppendBytes appends a list of whole bytes.
-func (__obf_603da838f6d2be62 *Bitset) AppendBytes(__obf_f562011de6b4ca24 []byte) {
-	for _, __obf_258b0a3956abee9e := range __obf_f562011de6b4ca24 {
-		__obf_603da838f6d2be62.
-			AppendByte(__obf_258b0a3956abee9e, 8)
+func (__obf_ce8d978dad4a08f9 *Bitset) AppendBytes(__obf_b17981c2861ff761 []byte) {
+	for _, __obf_c0cf69cb87dcb29a := range __obf_b17981c2861ff761 {
+		__obf_ce8d978dad4a08f9.
+			AppendByte(__obf_c0cf69cb87dcb29a, 8)
 	}
 }
 
 // AppendByte appends the numBits least significant bits from value.
-func (__obf_603da838f6d2be62 *Bitset) AppendByte(__obf_3e4678302f69bc01 byte, __obf_65933c337060b280 int) {
-	__obf_603da838f6d2be62.__obf_360842d0953f7673(__obf_65933c337060b280)
+func (__obf_ce8d978dad4a08f9 *Bitset) AppendByte(__obf_302acd64ae07b1d1 byte, __obf_b40d2843659b7788 int) {
+	__obf_ce8d978dad4a08f9.__obf_3891c5b40504d5b2(__obf_b40d2843659b7788)
 
-	if __obf_65933c337060b280 > 8 {
-		log.Panicf("numBits %d out of range 0-8", __obf_65933c337060b280)
+	if __obf_b40d2843659b7788 > 8 {
+		log.Panicf("numBits %d out of range 0-8", __obf_b40d2843659b7788)
 	}
 
-	for __obf_06aa0aefebeb4d0e := __obf_65933c337060b280 - 1; __obf_06aa0aefebeb4d0e >= 0; __obf_06aa0aefebeb4d0e-- {
-		if __obf_3e4678302f69bc01&(1<<uint(__obf_06aa0aefebeb4d0e)) != 0 {
-			__obf_603da838f6d2be62.__obf_7cced0d732b68faa[__obf_603da838f6d2be62.__obf_65933c337060b280/8] |= 0x80 >> uint(__obf_603da838f6d2be62.__obf_65933c337060b280%8)
+	for __obf_190a54ebba5c6dbd := __obf_b40d2843659b7788 - 1; __obf_190a54ebba5c6dbd >= 0; __obf_190a54ebba5c6dbd-- {
+		if __obf_302acd64ae07b1d1&(1<<uint(__obf_190a54ebba5c6dbd)) != 0 {
+			__obf_ce8d978dad4a08f9.__obf_a98e0f33b9379401[__obf_ce8d978dad4a08f9.__obf_b40d2843659b7788/8] |= 0x80 >> uint(__obf_ce8d978dad4a08f9.__obf_b40d2843659b7788%8)
 		}
-		__obf_603da838f6d2be62.
+		__obf_ce8d978dad4a08f9.
 
 			// AppendUint32 appends the numBits least significant bits from value.
-			__obf_65933c337060b280++
+			__obf_b40d2843659b7788++
 	}
 }
 
-func (__obf_603da838f6d2be62 *Bitset) AppendUint32(__obf_3e4678302f69bc01 uint32, __obf_65933c337060b280 int) {
-	__obf_603da838f6d2be62.__obf_360842d0953f7673(__obf_65933c337060b280)
+func (__obf_ce8d978dad4a08f9 *Bitset) AppendUint32(__obf_302acd64ae07b1d1 uint32, __obf_b40d2843659b7788 int) {
+	__obf_ce8d978dad4a08f9.__obf_3891c5b40504d5b2(__obf_b40d2843659b7788)
 
-	if __obf_65933c337060b280 > 32 {
-		log.Panicf("numBits %d out of range 0-32", __obf_65933c337060b280)
+	if __obf_b40d2843659b7788 > 32 {
+		log.Panicf("numBits %d out of range 0-32", __obf_b40d2843659b7788)
 	}
 
-	for __obf_06aa0aefebeb4d0e := __obf_65933c337060b280 - 1; __obf_06aa0aefebeb4d0e >= 0; __obf_06aa0aefebeb4d0e-- {
-		if __obf_3e4678302f69bc01&(1<<uint(__obf_06aa0aefebeb4d0e)) != 0 {
-			__obf_603da838f6d2be62.__obf_7cced0d732b68faa[__obf_603da838f6d2be62.__obf_65933c337060b280/8] |= 0x80 >> uint(__obf_603da838f6d2be62.__obf_65933c337060b280%8)
+	for __obf_190a54ebba5c6dbd := __obf_b40d2843659b7788 - 1; __obf_190a54ebba5c6dbd >= 0; __obf_190a54ebba5c6dbd-- {
+		if __obf_302acd64ae07b1d1&(1<<uint(__obf_190a54ebba5c6dbd)) != 0 {
+			__obf_ce8d978dad4a08f9.__obf_a98e0f33b9379401[__obf_ce8d978dad4a08f9.__obf_b40d2843659b7788/8] |= 0x80 >> uint(__obf_ce8d978dad4a08f9.__obf_b40d2843659b7788%8)
 		}
-		__obf_603da838f6d2be62.
+		__obf_ce8d978dad4a08f9.
 
 			// ensureCapacity ensures the Bitset can store an additional |numBits|.
 			//
 			// The underlying array is expanded if necessary. To prevent frequent
 			// reallocation, expanding the underlying array at least doubles its capacity.
-			__obf_65933c337060b280++
+			__obf_b40d2843659b7788++
 	}
 }
 
-func (__obf_603da838f6d2be62 *Bitset) __obf_360842d0953f7673(__obf_65933c337060b280 int) {
-	__obf_65933c337060b280 += __obf_603da838f6d2be62.__obf_65933c337060b280
-	__obf_8a72a823317d8860 := __obf_65933c337060b280 / 8
-	if __obf_65933c337060b280%8 != 0 {
-		__obf_8a72a823317d8860++
+func (__obf_ce8d978dad4a08f9 *Bitset) __obf_3891c5b40504d5b2(__obf_b40d2843659b7788 int) {
+	__obf_b40d2843659b7788 += __obf_ce8d978dad4a08f9.__obf_b40d2843659b7788
+	__obf_fcd23d37d0512d32 := __obf_b40d2843659b7788 / 8
+	if __obf_b40d2843659b7788%8 != 0 {
+		__obf_fcd23d37d0512d32++
 	}
 
-	if len(__obf_603da838f6d2be62.__obf_7cced0d732b68faa) >= __obf_8a72a823317d8860 {
+	if len(__obf_ce8d978dad4a08f9.__obf_a98e0f33b9379401) >= __obf_fcd23d37d0512d32 {
 		return
 	}
-	__obf_603da838f6d2be62.__obf_7cced0d732b68faa = append(__obf_603da838f6d2be62.__obf_7cced0d732b68faa, make([]byte, __obf_8a72a823317d8860+2*len(__obf_603da838f6d2be62.
+	__obf_ce8d978dad4a08f9.__obf_a98e0f33b9379401 = append(__obf_ce8d978dad4a08f9.__obf_a98e0f33b9379401, make([]byte, __obf_fcd23d37d0512d32+2*len(__obf_ce8d978dad4a08f9.
 
 		// Append bits copied from |other|.
 		//
 		// The new length is b.Len() + other.Len().
-		__obf_7cced0d732b68faa))...)
+		__obf_a98e0f33b9379401))...)
 }
 
-func (__obf_603da838f6d2be62 *Bitset) Append(__obf_73b72717567272f8 *Bitset) {
-	__obf_603da838f6d2be62.__obf_360842d0953f7673(__obf_73b72717567272f8.__obf_65933c337060b280)
+func (__obf_ce8d978dad4a08f9 *Bitset) Append(__obf_e8824b83eeeef871 *Bitset) {
+	__obf_ce8d978dad4a08f9.__obf_3891c5b40504d5b2(__obf_e8824b83eeeef871.__obf_b40d2843659b7788)
 
-	for __obf_06aa0aefebeb4d0e := 0; __obf_06aa0aefebeb4d0e < __obf_73b72717567272f8.__obf_65933c337060b280; __obf_06aa0aefebeb4d0e++ {
-		if __obf_73b72717567272f8.At(__obf_06aa0aefebeb4d0e) {
-			__obf_603da838f6d2be62.__obf_7cced0d732b68faa[__obf_603da838f6d2be62.__obf_65933c337060b280/8] |= 0x80 >> uint(__obf_603da838f6d2be62.__obf_65933c337060b280%8)
+	for __obf_190a54ebba5c6dbd := 0; __obf_190a54ebba5c6dbd < __obf_e8824b83eeeef871.__obf_b40d2843659b7788; __obf_190a54ebba5c6dbd++ {
+		if __obf_e8824b83eeeef871.At(__obf_190a54ebba5c6dbd) {
+			__obf_ce8d978dad4a08f9.__obf_a98e0f33b9379401[__obf_ce8d978dad4a08f9.__obf_b40d2843659b7788/8] |= 0x80 >> uint(__obf_ce8d978dad4a08f9.__obf_b40d2843659b7788%8)
 		}
-		__obf_603da838f6d2be62.
+		__obf_ce8d978dad4a08f9.
 
 			// AppendBools appends bits to the Bitset.
-			__obf_65933c337060b280++
+			__obf_b40d2843659b7788++
 	}
 }
 
-func (__obf_603da838f6d2be62 *Bitset) AppendBools(__obf_7cced0d732b68faa ...bool) {
-	__obf_603da838f6d2be62.__obf_360842d0953f7673(len(__obf_7cced0d732b68faa))
+func (__obf_ce8d978dad4a08f9 *Bitset) AppendBools(__obf_a98e0f33b9379401 ...bool) {
+	__obf_ce8d978dad4a08f9.__obf_3891c5b40504d5b2(len(__obf_a98e0f33b9379401))
 
-	for _, __obf_5a0db15d4d044eaa := range __obf_7cced0d732b68faa {
-		if __obf_5a0db15d4d044eaa {
-			__obf_603da838f6d2be62.__obf_7cced0d732b68faa[__obf_603da838f6d2be62.__obf_65933c337060b280/8] |= 0x80 >> uint(__obf_603da838f6d2be62.__obf_65933c337060b280%8)
+	for _, __obf_88fd8473d9750335 := range __obf_a98e0f33b9379401 {
+		if __obf_88fd8473d9750335 {
+			__obf_ce8d978dad4a08f9.__obf_a98e0f33b9379401[__obf_ce8d978dad4a08f9.__obf_b40d2843659b7788/8] |= 0x80 >> uint(__obf_ce8d978dad4a08f9.__obf_b40d2843659b7788%8)
 		}
-		__obf_603da838f6d2be62.
+		__obf_ce8d978dad4a08f9.
 
 			// AppendNumBools appends num bits of value value.
-			__obf_65933c337060b280++
+			__obf_b40d2843659b7788++
 	}
 }
 
-func (__obf_603da838f6d2be62 *Bitset) AppendNumBools(__obf_36d4e6f313c88552 int, __obf_3e4678302f69bc01 bool) {
-	for __obf_06aa0aefebeb4d0e := 0; __obf_06aa0aefebeb4d0e < __obf_36d4e6f313c88552; __obf_06aa0aefebeb4d0e++ {
-		__obf_603da838f6d2be62.
-			AppendBools(__obf_3e4678302f69bc01)
+func (__obf_ce8d978dad4a08f9 *Bitset) AppendNumBools(__obf_07450b319560c242 int, __obf_302acd64ae07b1d1 bool) {
+	for __obf_190a54ebba5c6dbd := 0; __obf_190a54ebba5c6dbd < __obf_07450b319560c242; __obf_190a54ebba5c6dbd++ {
+		__obf_ce8d978dad4a08f9.
+			AppendBools(__obf_302acd64ae07b1d1)
 	}
 }
 
 // String returns a human readable representation of the Bitset's contents.
-func (__obf_603da838f6d2be62 *Bitset) String() string {
-	var __obf_7a3abef36de513ee string
-	for __obf_06aa0aefebeb4d0e := 0; __obf_06aa0aefebeb4d0e < __obf_603da838f6d2be62.__obf_65933c337060b280; __obf_06aa0aefebeb4d0e++ {
-		if (__obf_06aa0aefebeb4d0e % 8) == 0 {
-			__obf_7a3abef36de513ee += " "
+func (__obf_ce8d978dad4a08f9 *Bitset) String() string {
+	var __obf_c1410dd79428c12b string
+	for __obf_190a54ebba5c6dbd := 0; __obf_190a54ebba5c6dbd < __obf_ce8d978dad4a08f9.__obf_b40d2843659b7788; __obf_190a54ebba5c6dbd++ {
+		if (__obf_190a54ebba5c6dbd % 8) == 0 {
+			__obf_c1410dd79428c12b += " "
 		}
 
-		if (__obf_603da838f6d2be62.__obf_7cced0d732b68faa[__obf_06aa0aefebeb4d0e/8] & (0x80 >> byte(__obf_06aa0aefebeb4d0e%8))) != 0 {
-			__obf_7a3abef36de513ee += "1"
+		if (__obf_ce8d978dad4a08f9.__obf_a98e0f33b9379401[__obf_190a54ebba5c6dbd/8] & (0x80 >> byte(__obf_190a54ebba5c6dbd%8))) != 0 {
+			__obf_c1410dd79428c12b += "1"
 		} else {
-			__obf_7a3abef36de513ee += "0"
+			__obf_c1410dd79428c12b += "0"
 		}
 	}
 
-	return fmt.Sprintf("numBits=%d, bits=%s", __obf_603da838f6d2be62.__obf_65933c337060b280,
+	return fmt.Sprintf("numBits=%d, bits=%s", __obf_ce8d978dad4a08f9.__obf_b40d2843659b7788,
 
 		// Len returns the length of the Bitset in bits.
-		__obf_7a3abef36de513ee)
+		__obf_c1410dd79428c12b)
 }
 
-func (__obf_603da838f6d2be62 *Bitset) Len() int {
-	return __obf_603da838f6d2be62.
+func (__obf_ce8d978dad4a08f9 *Bitset) Len() int {
+	return __obf_ce8d978dad4a08f9.
 
 		// Bits returns the contents of the Bitset.
-		__obf_65933c337060b280
+		__obf_b40d2843659b7788
 }
 
-func (__obf_603da838f6d2be62 *Bitset) Bits() []bool {
-	__obf_ac2c247125beb5e3 := make([]bool, __obf_603da838f6d2be62.__obf_65933c337060b280)
+func (__obf_ce8d978dad4a08f9 *Bitset) Bits() []bool {
+	__obf_7588920eb3600640 := make([]bool, __obf_ce8d978dad4a08f9.__obf_b40d2843659b7788)
 
-	var __obf_06aa0aefebeb4d0e int
-	for __obf_06aa0aefebeb4d0e = 0; __obf_06aa0aefebeb4d0e < __obf_603da838f6d2be62.__obf_65933c337060b280; __obf_06aa0aefebeb4d0e++ {
-		__obf_ac2c247125beb5e3[__obf_06aa0aefebeb4d0e] = (__obf_603da838f6d2be62.__obf_7cced0d732b68faa[__obf_06aa0aefebeb4d0e/8] & (0x80 >> byte(__obf_06aa0aefebeb4d0e%8))) != 0
+	var __obf_190a54ebba5c6dbd int
+	for __obf_190a54ebba5c6dbd = 0; __obf_190a54ebba5c6dbd < __obf_ce8d978dad4a08f9.__obf_b40d2843659b7788; __obf_190a54ebba5c6dbd++ {
+		__obf_7588920eb3600640[__obf_190a54ebba5c6dbd] = (__obf_ce8d978dad4a08f9.__obf_a98e0f33b9379401[__obf_190a54ebba5c6dbd/8] & (0x80 >> byte(__obf_190a54ebba5c6dbd%8))) != 0
 	}
 
-	return __obf_ac2c247125beb5e3
+	return __obf_7588920eb3600640
 }
 
 // At returns the value of the bit at |index|.
-func (__obf_603da838f6d2be62 *Bitset) At(__obf_d1d1e246f38f48a2 int) bool {
-	if __obf_d1d1e246f38f48a2 >= __obf_603da838f6d2be62.__obf_65933c337060b280 {
-		log.Panicf("Index %d out of range", __obf_d1d1e246f38f48a2)
+func (__obf_ce8d978dad4a08f9 *Bitset) At(__obf_d3883037cd77e231 int) bool {
+	if __obf_d3883037cd77e231 >= __obf_ce8d978dad4a08f9.__obf_b40d2843659b7788 {
+		log.Panicf("Index %d out of range", __obf_d3883037cd77e231)
 	}
 
-	return (__obf_603da838f6d2be62.__obf_7cced0d732b68faa[__obf_d1d1e246f38f48a2/8] & (0x80 >> byte(__obf_d1d1e246f38f48a2%8))) != 0
+	return (__obf_ce8d978dad4a08f9.__obf_a98e0f33b9379401[__obf_d3883037cd77e231/8] & (0x80 >> byte(__obf_d3883037cd77e231%8))) != 0
 }
 
 // Equals returns true if the Bitset equals other.
-func (__obf_603da838f6d2be62 *Bitset) Equals(__obf_73b72717567272f8 *Bitset) bool {
-	if __obf_603da838f6d2be62.__obf_65933c337060b280 != __obf_73b72717567272f8.__obf_65933c337060b280 {
+func (__obf_ce8d978dad4a08f9 *Bitset) Equals(__obf_e8824b83eeeef871 *Bitset) bool {
+	if __obf_ce8d978dad4a08f9.__obf_b40d2843659b7788 != __obf_e8824b83eeeef871.__obf_b40d2843659b7788 {
 		return false
 	}
 
-	if !bytes.Equal(__obf_603da838f6d2be62.__obf_7cced0d732b68faa[0:__obf_603da838f6d2be62.__obf_65933c337060b280/8], __obf_73b72717567272f8.__obf_7cced0d732b68faa[0:__obf_603da838f6d2be62.__obf_65933c337060b280/8]) {
+	if !bytes.Equal(__obf_ce8d978dad4a08f9.__obf_a98e0f33b9379401[0:__obf_ce8d978dad4a08f9.__obf_b40d2843659b7788/8], __obf_e8824b83eeeef871.__obf_a98e0f33b9379401[0:__obf_ce8d978dad4a08f9.__obf_b40d2843659b7788/8]) {
 		return false
 	}
 
-	for __obf_06aa0aefebeb4d0e := 8 * (__obf_603da838f6d2be62.__obf_65933c337060b280 / 8); __obf_06aa0aefebeb4d0e < __obf_603da838f6d2be62.__obf_65933c337060b280; __obf_06aa0aefebeb4d0e++ {
-		__obf_2c2ec262f0459cc4 := (__obf_603da838f6d2be62.__obf_7cced0d732b68faa[__obf_06aa0aefebeb4d0e/8] & (0x80 >> byte(__obf_06aa0aefebeb4d0e%8)))
-		__obf_603da838f6d2be62 := (__obf_73b72717567272f8.__obf_7cced0d732b68faa[__obf_06aa0aefebeb4d0e/8] & (0x80 >> byte(__obf_06aa0aefebeb4d0e%8)))
+	for __obf_190a54ebba5c6dbd := 8 * (__obf_ce8d978dad4a08f9.__obf_b40d2843659b7788 / 8); __obf_190a54ebba5c6dbd < __obf_ce8d978dad4a08f9.__obf_b40d2843659b7788; __obf_190a54ebba5c6dbd++ {
+		__obf_a4612b72fb7e5b62 := (__obf_ce8d978dad4a08f9.__obf_a98e0f33b9379401[__obf_190a54ebba5c6dbd/8] & (0x80 >> byte(__obf_190a54ebba5c6dbd%8)))
+		__obf_ce8d978dad4a08f9 := (__obf_e8824b83eeeef871.__obf_a98e0f33b9379401[__obf_190a54ebba5c6dbd/8] & (0x80 >> byte(__obf_190a54ebba5c6dbd%8)))
 
-		if __obf_2c2ec262f0459cc4 != __obf_603da838f6d2be62 {
+		if __obf_a4612b72fb7e5b62 != __obf_ce8d978dad4a08f9 {
 			return false
 		}
 	}
@@ -270,19 +270,19 @@ func (__obf_603da838f6d2be62 *Bitset) Equals(__obf_73b72717567272f8 *Bitset) boo
 }
 
 // ByteAt returns a byte consisting of upto 8 bits starting at index.
-func (__obf_603da838f6d2be62 *Bitset) ByteAt(__obf_d1d1e246f38f48a2 int) byte {
-	if __obf_d1d1e246f38f48a2 < 0 || __obf_d1d1e246f38f48a2 >= __obf_603da838f6d2be62.__obf_65933c337060b280 {
-		log.Panicf("Index %d out of range", __obf_d1d1e246f38f48a2)
+func (__obf_ce8d978dad4a08f9 *Bitset) ByteAt(__obf_d3883037cd77e231 int) byte {
+	if __obf_d3883037cd77e231 < 0 || __obf_d3883037cd77e231 >= __obf_ce8d978dad4a08f9.__obf_b40d2843659b7788 {
+		log.Panicf("Index %d out of range", __obf_d3883037cd77e231)
 	}
 
-	var __obf_ac2c247125beb5e3 byte
+	var __obf_7588920eb3600640 byte
 
-	for __obf_06aa0aefebeb4d0e := __obf_d1d1e246f38f48a2; __obf_06aa0aefebeb4d0e < __obf_d1d1e246f38f48a2+8 && __obf_06aa0aefebeb4d0e < __obf_603da838f6d2be62.__obf_65933c337060b280; __obf_06aa0aefebeb4d0e++ {
-		__obf_ac2c247125beb5e3 <<= 1
-		if __obf_603da838f6d2be62.At(__obf_06aa0aefebeb4d0e) {
-			__obf_ac2c247125beb5e3 |= 1
+	for __obf_190a54ebba5c6dbd := __obf_d3883037cd77e231; __obf_190a54ebba5c6dbd < __obf_d3883037cd77e231+8 && __obf_190a54ebba5c6dbd < __obf_ce8d978dad4a08f9.__obf_b40d2843659b7788; __obf_190a54ebba5c6dbd++ {
+		__obf_7588920eb3600640 <<= 1
+		if __obf_ce8d978dad4a08f9.At(__obf_190a54ebba5c6dbd) {
+			__obf_7588920eb3600640 |= 1
 		}
 	}
 
-	return __obf_ac2c247125beb5e3
+	return __obf_7588920eb3600640
 }

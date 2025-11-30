@@ -1,4 +1,4 @@
-package __obf_c3cd04a15c56f32f
+package __obf_030d39f7a8de96c6
 
 import (
 	"io"
@@ -6,45 +6,45 @@ import (
 
 // IteratorPool a thread safe pool of iterators with same configuration
 type IteratorPool interface {
-	BorrowIterator(__obf_905295f6bd29aafe []byte) *Iterator
-	ReturnIterator(__obf_edd9fe48d39445e4 *Iterator)
+	BorrowIterator(__obf_c28f0e30eceb6d4a []byte) *Iterator
+	ReturnIterator(__obf_4ab56a99965952e7 *Iterator)
 }
 
 // StreamPool a thread safe pool of streams with same configuration
 type StreamPool interface {
-	BorrowStream(__obf_b1699a146b20b28e io.Writer) *Stream
-	ReturnStream(__obf_2361f5214e84c60f *Stream)
+	BorrowStream(__obf_ae48508e054620bd io.Writer) *Stream
+	ReturnStream(__obf_8a2c51fe22775655 *Stream)
 }
 
-func (__obf_0c8065c219ccf0ab *__obf_3a25fb4c9a8342bb) BorrowStream(__obf_b1699a146b20b28e io.Writer) *Stream {
-	__obf_2361f5214e84c60f := __obf_0c8065c219ccf0ab.__obf_456a3a3023fd9656.Get().(*Stream)
-	__obf_2361f5214e84c60f.
-		Reset(__obf_b1699a146b20b28e)
-	return __obf_2361f5214e84c60f
+func (__obf_679611dc56ff465b *__obf_81639538813814ff) BorrowStream(__obf_ae48508e054620bd io.Writer) *Stream {
+	__obf_8a2c51fe22775655 := __obf_679611dc56ff465b.__obf_e195df3f11517e00.Get().(*Stream)
+	__obf_8a2c51fe22775655.
+		Reset(__obf_ae48508e054620bd)
+	return __obf_8a2c51fe22775655
 }
 
-func (__obf_0c8065c219ccf0ab *__obf_3a25fb4c9a8342bb) ReturnStream(__obf_2361f5214e84c60f *Stream) {
-	__obf_2361f5214e84c60f.__obf_743aba00c5d1ef26 = nil
-	__obf_2361f5214e84c60f.
+func (__obf_679611dc56ff465b *__obf_81639538813814ff) ReturnStream(__obf_8a2c51fe22775655 *Stream) {
+	__obf_8a2c51fe22775655.__obf_238de3ec07c7e9da = nil
+	__obf_8a2c51fe22775655.
 		Error = nil
-	__obf_2361f5214e84c60f.
+	__obf_8a2c51fe22775655.
 		Attachment = nil
-	__obf_0c8065c219ccf0ab.__obf_456a3a3023fd9656.
-		Put(__obf_2361f5214e84c60f)
+	__obf_679611dc56ff465b.__obf_e195df3f11517e00.
+		Put(__obf_8a2c51fe22775655)
 }
 
-func (__obf_0c8065c219ccf0ab *__obf_3a25fb4c9a8342bb) BorrowIterator(__obf_905295f6bd29aafe []byte) *Iterator {
-	__obf_edd9fe48d39445e4 := __obf_0c8065c219ccf0ab.__obf_7e0b4a46cc5f35d8.Get().(*Iterator)
-	__obf_edd9fe48d39445e4.
-		ResetBytes(__obf_905295f6bd29aafe)
-	return __obf_edd9fe48d39445e4
+func (__obf_679611dc56ff465b *__obf_81639538813814ff) BorrowIterator(__obf_c28f0e30eceb6d4a []byte) *Iterator {
+	__obf_4ab56a99965952e7 := __obf_679611dc56ff465b.__obf_4522de1f25b34c0b.Get().(*Iterator)
+	__obf_4ab56a99965952e7.
+		ResetBytes(__obf_c28f0e30eceb6d4a)
+	return __obf_4ab56a99965952e7
 }
 
-func (__obf_0c8065c219ccf0ab *__obf_3a25fb4c9a8342bb) ReturnIterator(__obf_edd9fe48d39445e4 *Iterator) {
-	__obf_edd9fe48d39445e4.
+func (__obf_679611dc56ff465b *__obf_81639538813814ff) ReturnIterator(__obf_4ab56a99965952e7 *Iterator) {
+	__obf_4ab56a99965952e7.
 		Error = nil
-	__obf_edd9fe48d39445e4.
+	__obf_4ab56a99965952e7.
 		Attachment = nil
-	__obf_0c8065c219ccf0ab.__obf_7e0b4a46cc5f35d8.
-		Put(__obf_edd9fe48d39445e4)
+	__obf_679611dc56ff465b.__obf_4522de1f25b34c0b.
+		Put(__obf_4ab56a99965952e7)
 }

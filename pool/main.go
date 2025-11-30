@@ -1,4 +1,4 @@
-package __obf_5ee0ed5311c3f8e6
+package __obf_f36428c4eaad9d20
 
 import (
 	"sync"
@@ -7,26 +7,26 @@ import (
 // type Work func()
 
 type WorkPool struct {
-	__obf_31c1875c16c1811b chan struct{}
-	__obf_15ae9a7c79af352e *sync.WaitGroup
+	__obf_d13ba12356730919 chan struct{}
+	__obf_e2a6b3c150ee6356 *sync.WaitGroup
 }
 
-func NewPool(__obf_d5d37558f41bbf8f int, __obf_15ae9a7c79af352e *sync.WaitGroup) *WorkPool {
-	return &WorkPool{make(chan struct{}, __obf_d5d37558f41bbf8f), __obf_15ae9a7c79af352e}
+func NewPool(__obf_90b81aad1e98b8e8 int, __obf_e2a6b3c150ee6356 *sync.WaitGroup) *WorkPool {
+	return &WorkPool{make(chan struct{}, __obf_90b81aad1e98b8e8), __obf_e2a6b3c150ee6356}
 }
 
-func (__obf_a241047fea0d393a *WorkPool) Acquire() {
-	defer __obf_a241047fea0d393a.__obf_15ae9a7c79af352e.Add(1)
-	__obf_a241047fea0d393a.__obf_31c1875c16c1811b <- struct{}{}
+func (__obf_37fbd405a22e6324 *WorkPool) Acquire() {
+	defer __obf_37fbd405a22e6324.__obf_e2a6b3c150ee6356.Add(1)
+	__obf_37fbd405a22e6324.__obf_d13ba12356730919 <- struct{}{}
 }
 
-func (__obf_a241047fea0d393a *WorkPool) Release() {
-	defer __obf_a241047fea0d393a.__obf_15ae9a7c79af352e.Done()
-	<-__obf_a241047fea0d393a.__obf_31c1875c16c1811b
+func (__obf_37fbd405a22e6324 *WorkPool) Release() {
+	defer __obf_37fbd405a22e6324.__obf_e2a6b3c150ee6356.Done()
+	<-__obf_37fbd405a22e6324.__obf_d13ba12356730919
 }
 
-func (__obf_a241047fea0d393a *WorkPool) Wait() {
-	defer close(__obf_a241047fea0d393a.__obf_31c1875c16c1811b)
-	__obf_a241047fea0d393a.__obf_15ae9a7c79af352e.
+func (__obf_37fbd405a22e6324 *WorkPool) Wait() {
+	defer close(__obf_37fbd405a22e6324.__obf_d13ba12356730919)
+	__obf_37fbd405a22e6324.__obf_e2a6b3c150ee6356.
 		Wait()
 }

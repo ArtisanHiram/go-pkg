@@ -1,4 +1,4 @@
-package __obf_ae0bbdaffaa1f242
+package __obf_7621171b3eab50e9
 
 import (
 	types "github.com/ArtisanHiram/go-pkg/captcha/types"

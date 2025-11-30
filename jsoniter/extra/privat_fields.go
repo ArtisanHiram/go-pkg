@@ -1,4 +1,4 @@
-package __obf_38f1d2f091ad74e0
+package __obf_9a397ef96534ad45
 
 import (
 	jsoniter "github.com/ArtisanHiram/go-pkg/jsoniter"
@@ -8,51 +8,51 @@ import (
 
 // SupportPrivateFields include private fields when encoding/decoding
 func SupportPrivateFields() {
-	jsoniter.RegisterExtension(&__obf_cd6b67693812e1cb{})
+	jsoniter.RegisterExtension(&__obf_0c6963813fdfb0d9{})
 }
 
-type __obf_cd6b67693812e1cb struct {
+type __obf_0c6963813fdfb0d9 struct {
 	jsoniter.DummyExtension
 }
 
-func (__obf_9c280f4c530aab7f *__obf_cd6b67693812e1cb) UpdateStructDescriptor(__obf_cf80c64718a9d630 *jsoniter.StructDescriptor) {
-	for _, __obf_5ac789aeaf7879e1 := range __obf_cf80c64718a9d630.Fields {
-		__obf_3b28129690e3ff31 := unicode.IsLower(rune(__obf_5ac789aeaf7879e1.Field.Name()[0]))
-		if __obf_3b28129690e3ff31 {
-			__obf_8f18cfca726ca2b1, __obf_691758d45d138fc7 := __obf_5ac789aeaf7879e1.Field.Tag().Lookup("json")
-			if !__obf_691758d45d138fc7 {
-				__obf_5ac789aeaf7879e1.
-					FromNames = []string{__obf_5ac789aeaf7879e1.Field.Name()}
-				__obf_5ac789aeaf7879e1.
-					ToNames = []string{__obf_5ac789aeaf7879e1.Field.Name()}
+func (__obf_454cba947156c7ed *__obf_0c6963813fdfb0d9) UpdateStructDescriptor(__obf_44b5443a119ac92f *jsoniter.StructDescriptor) {
+	for _, __obf_3c7c779fd3d51e1a := range __obf_44b5443a119ac92f.Fields {
+		__obf_cd6cf7a381e55119 := unicode.IsLower(rune(__obf_3c7c779fd3d51e1a.Field.Name()[0]))
+		if __obf_cd6cf7a381e55119 {
+			__obf_3d974a4e3139d5d8, __obf_b09e0e0d5c507063 := __obf_3c7c779fd3d51e1a.Field.Tag().Lookup("json")
+			if !__obf_b09e0e0d5c507063 {
+				__obf_3c7c779fd3d51e1a.
+					FromNames = []string{__obf_3c7c779fd3d51e1a.Field.Name()}
+				__obf_3c7c779fd3d51e1a.
+					ToNames = []string{__obf_3c7c779fd3d51e1a.Field.Name()}
 				continue
 			}
-			__obf_86cb161c59473cad := strings.Split(__obf_8f18cfca726ca2b1, ",")
-			__obf_218caee415bee8ff := __obf_b75177ede013c874(__obf_5ac789aeaf7879e1.Field.Name(), __obf_86cb161c59473cad[0], __obf_8f18cfca726ca2b1)
-			__obf_5ac789aeaf7879e1.
-				FromNames = __obf_218caee415bee8ff
-			__obf_5ac789aeaf7879e1.
-				ToNames = __obf_218caee415bee8ff
+			__obf_9b9c76ccfbe36390 := strings.Split(__obf_3d974a4e3139d5d8, ",")
+			__obf_b787d8eef1d5d957 := __obf_1ad0312523b7ae84(__obf_3c7c779fd3d51e1a.Field.Name(), __obf_9b9c76ccfbe36390[0], __obf_3d974a4e3139d5d8)
+			__obf_3c7c779fd3d51e1a.
+				FromNames = __obf_b787d8eef1d5d957
+			__obf_3c7c779fd3d51e1a.
+				ToNames = __obf_b787d8eef1d5d957
 		}
 	}
 }
 
-func __obf_b75177ede013c874(__obf_185e5ff1fc2038f8 string, __obf_34e8a5e6af542b28 string, __obf_1a53c39df833133c string) []string {
+func __obf_1ad0312523b7ae84(__obf_635724196001dd2a string, __obf_628ac40cb26c672f string, __obf_76722ee82ba114cd string) []string {
 	// ignore?
-	if __obf_1a53c39df833133c == "-" {
+	if __obf_76722ee82ba114cd == "-" {
 		return []string{}
 	}
 	// rename?
-	var __obf_f9ed816a19e02856 []string
-	if __obf_34e8a5e6af542b28 == "" {
-		__obf_f9ed816a19e02856 = []string{__obf_185e5ff1fc2038f8}
+	var __obf_8e0e35b4a5d4bad6 []string
+	if __obf_628ac40cb26c672f == "" {
+		__obf_8e0e35b4a5d4bad6 = []string{__obf_635724196001dd2a}
 	} else {
-		__obf_f9ed816a19e02856 = []string{__obf_34e8a5e6af542b28}
+		__obf_8e0e35b4a5d4bad6 = []string{__obf_628ac40cb26c672f}
 	}
-	__obf_3bd272a3c35bbc8f := // private?
-		unicode.IsLower(rune(__obf_185e5ff1fc2038f8[0]))
-	if __obf_3bd272a3c35bbc8f {
-		__obf_f9ed816a19e02856 = []string{}
+	__obf_c63e51f7a514b9cf := // private?
+		unicode.IsLower(rune(__obf_635724196001dd2a[0]))
+	if __obf_c63e51f7a514b9cf {
+		__obf_8e0e35b4a5d4bad6 = []string{}
 	}
-	return __obf_f9ed816a19e02856
+	return __obf_8e0e35b4a5d4bad6
 }

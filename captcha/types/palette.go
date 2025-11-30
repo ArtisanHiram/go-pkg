@@ -1,4 +1,4 @@
-package __obf_6dcb1d06bd949756
+package __obf_738b46210fdb4199
 
 import (
 	"image"
@@ -7,12 +7,12 @@ import (
 )
 
 // NewPalette creates a palette canvas
-func NewPalette(__obf_22f909fc49d8ec44 image.Rectangle, __obf_285d17dd3dece463 color.Palette) *Palette {
+func NewPalette(__obf_c09045abdc5d3619 image.Rectangle, __obf_24dca18af6feb178 color.Palette) *Palette {
 	return &Palette{
-		image.NewPaletted(__obf_22f909fc49d8ec44,
+		image.NewPaletted(__obf_c09045abdc5d3619,
 
 			// palette struct for palette canvas
-			__obf_285d17dd3dece463),
+			__obf_24dca18af6feb178),
 	}
 }
 
@@ -21,191 +21,191 @@ type Palette struct {
 }
 
 // Rotate rotates the canvas by any angle
-func (__obf_285d17dd3dece463 *Palette) Rotate(__obf_dadbdf6b4f60b255 int) {
-	if __obf_dadbdf6b4f60b255 == 0 {
+func (__obf_24dca18af6feb178 *Palette) Rotate(__obf_3a2dad55c354b1d6 int) {
+	if __obf_3a2dad55c354b1d6 == 0 {
 		return
 	}
-	__obf_b0d9330f2201d023 := __obf_285d17dd3dece463
-	__obf_aa6eacf895705c67 := __obf_b0d9330f2201d023.Bounds().Max.X
-	__obf_b1f64ca00d21b5ce := __obf_b0d9330f2201d023.Bounds().Max.Y
-	__obf_22f909fc49d8ec44 := __obf_aa6eacf895705c67 / 2
-	__obf_ccecbfc5a8b45ab2 := image.NewPaletted(image.Rect(0, 0, __obf_aa6eacf895705c67, __obf_b1f64ca00d21b5ce), __obf_b0d9330f2201d023.Palette)
-	for __obf_57d99e8bd0a3444e := 0; __obf_57d99e8bd0a3444e <= __obf_ccecbfc5a8b45ab2.Bounds().Max.X; __obf_57d99e8bd0a3444e++ {
-		for __obf_3376ebf4b35235fa := 0; __obf_3376ebf4b35235fa <= __obf_ccecbfc5a8b45ab2.Bounds().Max.Y; __obf_3376ebf4b35235fa++ {
-			__obf_55ce7a8f0436e128, __obf_8b9ee5dbffbff0e7 := __obf_285d17dd3dece463.AngleSwapPoint(float64(__obf_57d99e8bd0a3444e), float64(__obf_3376ebf4b35235fa), float64(__obf_22f909fc49d8ec44), float64(__obf_dadbdf6b4f60b255))
-			__obf_ccecbfc5a8b45ab2.
-				SetColorIndex(__obf_57d99e8bd0a3444e, __obf_3376ebf4b35235fa, __obf_b0d9330f2201d023.ColorIndexAt(int(__obf_55ce7a8f0436e128), int(__obf_8b9ee5dbffbff0e7)))
+	__obf_f311aa0c4c36a5d7 := __obf_24dca18af6feb178
+	__obf_da28b3bb7dbcda2b := __obf_f311aa0c4c36a5d7.Bounds().Max.X
+	__obf_fa37a5ce5b7fe70f := __obf_f311aa0c4c36a5d7.Bounds().Max.Y
+	__obf_c09045abdc5d3619 := __obf_da28b3bb7dbcda2b / 2
+	__obf_cc502ad9d0d21dd8 := image.NewPaletted(image.Rect(0, 0, __obf_da28b3bb7dbcda2b, __obf_fa37a5ce5b7fe70f), __obf_f311aa0c4c36a5d7.Palette)
+	for __obf_bd372f9dc9e16d75 := 0; __obf_bd372f9dc9e16d75 <= __obf_cc502ad9d0d21dd8.Bounds().Max.X; __obf_bd372f9dc9e16d75++ {
+		for __obf_a69b4d01937bfbfc := 0; __obf_a69b4d01937bfbfc <= __obf_cc502ad9d0d21dd8.Bounds().Max.Y; __obf_a69b4d01937bfbfc++ {
+			__obf_aaefdfdd53ea9958, __obf_9e4dc95d0b70d96a := __obf_24dca18af6feb178.AngleSwapPoint(float64(__obf_bd372f9dc9e16d75), float64(__obf_a69b4d01937bfbfc), float64(__obf_c09045abdc5d3619), float64(__obf_3a2dad55c354b1d6))
+			__obf_cc502ad9d0d21dd8.
+				SetColorIndex(__obf_bd372f9dc9e16d75, __obf_a69b4d01937bfbfc, __obf_f311aa0c4c36a5d7.ColorIndexAt(int(__obf_aaefdfdd53ea9958), int(__obf_9e4dc95d0b70d96a)))
 		}
 	}
-	__obf_4d379dc6f44f3aa1 := __obf_ccecbfc5a8b45ab2.Bounds().Max.X
-	__obf_d334e96f1dfe592d := __obf_ccecbfc5a8b45ab2.Bounds().Max.Y
-	for __obf_57d99e8bd0a3444e := range __obf_4d379dc6f44f3aa1 {
-		for __obf_3376ebf4b35235fa := range __obf_d334e96f1dfe592d {
-			__obf_285d17dd3dece463.
-				SetColorIndex(__obf_57d99e8bd0a3444e, __obf_3376ebf4b35235fa,
+	__obf_d17e3b2fb9b48db3 := __obf_cc502ad9d0d21dd8.Bounds().Max.X
+	__obf_e0ad449835d092e9 := __obf_cc502ad9d0d21dd8.Bounds().Max.Y
+	for __obf_bd372f9dc9e16d75 := range __obf_d17e3b2fb9b48db3 {
+		for __obf_a69b4d01937bfbfc := range __obf_e0ad449835d092e9 {
+			__obf_24dca18af6feb178.
+				SetColorIndex(__obf_bd372f9dc9e16d75, __obf_a69b4d01937bfbfc,
 
 					// DrawCircle draws a circle
-					__obf_ccecbfc5a8b45ab2.ColorIndexAt(__obf_57d99e8bd0a3444e, __obf_3376ebf4b35235fa))
+					__obf_cc502ad9d0d21dd8.ColorIndexAt(__obf_bd372f9dc9e16d75, __obf_a69b4d01937bfbfc))
 		}
 	}
 }
 
-func (__obf_285d17dd3dece463 *Palette) DrawCircle(__obf_57d99e8bd0a3444e, __obf_3376ebf4b35235fa, __obf_99fb896ae843f26c int, __obf_6b14c339de9bea34 color.RGBA) {
-	__obf_e06cc2e37ea49439 := 1 - __obf_99fb896ae843f26c
-	__obf_80c9703017ab091f := 1
-	__obf_157b9f2f8bafc210 := -2 * __obf_99fb896ae843f26c
-	__obf_b1a049ae887c59f4 := 0
-	__obf_931e87dc1858f367 := __obf_99fb896ae843f26c
-	__obf_285d17dd3dece463.
-		Set(__obf_57d99e8bd0a3444e, __obf_3376ebf4b35235fa+__obf_99fb896ae843f26c, __obf_6b14c339de9bea34)
-	__obf_285d17dd3dece463.
-		Set(__obf_57d99e8bd0a3444e, __obf_3376ebf4b35235fa-__obf_99fb896ae843f26c, __obf_6b14c339de9bea34)
-	__obf_285d17dd3dece463.
-		DrawHorizLine(__obf_57d99e8bd0a3444e-__obf_99fb896ae843f26c, __obf_57d99e8bd0a3444e+__obf_99fb896ae843f26c, __obf_3376ebf4b35235fa, __obf_6b14c339de9bea34)
+func (__obf_24dca18af6feb178 *Palette) DrawCircle(__obf_bd372f9dc9e16d75, __obf_a69b4d01937bfbfc, __obf_6b93bc026df65fff int, __obf_cf060e7b58cbd8c5 color.RGBA) {
+	__obf_73086ebe1aad30bd := 1 - __obf_6b93bc026df65fff
+	__obf_b17acf1df0c592bf := 1
+	__obf_ce47915aa5adb906 := -2 * __obf_6b93bc026df65fff
+	__obf_5951423922edb364 := 0
+	__obf_95281919c4d87261 := __obf_6b93bc026df65fff
+	__obf_24dca18af6feb178.
+		Set(__obf_bd372f9dc9e16d75, __obf_a69b4d01937bfbfc+__obf_6b93bc026df65fff, __obf_cf060e7b58cbd8c5)
+	__obf_24dca18af6feb178.
+		Set(__obf_bd372f9dc9e16d75, __obf_a69b4d01937bfbfc-__obf_6b93bc026df65fff, __obf_cf060e7b58cbd8c5)
+	__obf_24dca18af6feb178.
+		DrawHorizLine(__obf_bd372f9dc9e16d75-__obf_6b93bc026df65fff, __obf_bd372f9dc9e16d75+__obf_6b93bc026df65fff, __obf_a69b4d01937bfbfc, __obf_cf060e7b58cbd8c5)
 
-	for __obf_b1a049ae887c59f4 < __obf_931e87dc1858f367 {
-		if __obf_e06cc2e37ea49439 >= 0 {
-			__obf_931e87dc1858f367--
-			__obf_157b9f2f8bafc210 += 2
-			__obf_e06cc2e37ea49439 += __obf_157b9f2f8bafc210
+	for __obf_5951423922edb364 < __obf_95281919c4d87261 {
+		if __obf_73086ebe1aad30bd >= 0 {
+			__obf_95281919c4d87261--
+			__obf_ce47915aa5adb906 += 2
+			__obf_73086ebe1aad30bd += __obf_ce47915aa5adb906
 		}
-		__obf_b1a049ae887c59f4++
-		__obf_80c9703017ab091f += 2
-		__obf_e06cc2e37ea49439 += __obf_80c9703017ab091f
-		__obf_285d17dd3dece463.
-			DrawHorizLine(__obf_57d99e8bd0a3444e-__obf_b1a049ae887c59f4, __obf_57d99e8bd0a3444e+__obf_b1a049ae887c59f4, __obf_3376ebf4b35235fa+__obf_931e87dc1858f367, __obf_6b14c339de9bea34)
-		__obf_285d17dd3dece463.
-			DrawHorizLine(__obf_57d99e8bd0a3444e-__obf_b1a049ae887c59f4, __obf_57d99e8bd0a3444e+__obf_b1a049ae887c59f4, __obf_3376ebf4b35235fa-__obf_931e87dc1858f367, __obf_6b14c339de9bea34)
-		__obf_285d17dd3dece463.
-			DrawHorizLine(__obf_57d99e8bd0a3444e-__obf_931e87dc1858f367, __obf_57d99e8bd0a3444e+__obf_931e87dc1858f367, __obf_3376ebf4b35235fa+__obf_b1a049ae887c59f4, __obf_6b14c339de9bea34)
-		__obf_285d17dd3dece463.
-			DrawHorizLine(__obf_57d99e8bd0a3444e-__obf_931e87dc1858f367, __obf_57d99e8bd0a3444e+__obf_931e87dc1858f367,
+		__obf_5951423922edb364++
+		__obf_b17acf1df0c592bf += 2
+		__obf_73086ebe1aad30bd += __obf_b17acf1df0c592bf
+		__obf_24dca18af6feb178.
+			DrawHorizLine(__obf_bd372f9dc9e16d75-__obf_5951423922edb364, __obf_bd372f9dc9e16d75+__obf_5951423922edb364, __obf_a69b4d01937bfbfc+__obf_95281919c4d87261, __obf_cf060e7b58cbd8c5)
+		__obf_24dca18af6feb178.
+			DrawHorizLine(__obf_bd372f9dc9e16d75-__obf_5951423922edb364, __obf_bd372f9dc9e16d75+__obf_5951423922edb364, __obf_a69b4d01937bfbfc-__obf_95281919c4d87261, __obf_cf060e7b58cbd8c5)
+		__obf_24dca18af6feb178.
+			DrawHorizLine(__obf_bd372f9dc9e16d75-__obf_95281919c4d87261, __obf_bd372f9dc9e16d75+__obf_95281919c4d87261, __obf_a69b4d01937bfbfc+__obf_5951423922edb364, __obf_cf060e7b58cbd8c5)
+		__obf_24dca18af6feb178.
+			DrawHorizLine(__obf_bd372f9dc9e16d75-__obf_95281919c4d87261, __obf_bd372f9dc9e16d75+__obf_95281919c4d87261,
 
 				// DrawHorizLine draws a horizontal line
-				__obf_3376ebf4b35235fa-__obf_b1a049ae887c59f4, __obf_6b14c339de9bea34)
+				__obf_a69b4d01937bfbfc-__obf_5951423922edb364, __obf_cf060e7b58cbd8c5)
 	}
 }
 
-func (__obf_285d17dd3dece463 *Palette) DrawHorizLine(__obf_18f6397e0daeb2c5, __obf_9c2e9bae92fc2001, __obf_3376ebf4b35235fa int, __obf_6b14c339de9bea34 color.RGBA) {
-	for __obf_57d99e8bd0a3444e := __obf_18f6397e0daeb2c5; __obf_57d99e8bd0a3444e <= __obf_9c2e9bae92fc2001; __obf_57d99e8bd0a3444e++ {
-		__obf_285d17dd3dece463.
-			Set(__obf_57d99e8bd0a3444e,
+func (__obf_24dca18af6feb178 *Palette) DrawHorizLine(__obf_1fc3777fd512c47a, __obf_b51b4e665b0fad85, __obf_a69b4d01937bfbfc int, __obf_cf060e7b58cbd8c5 color.RGBA) {
+	for __obf_bd372f9dc9e16d75 := __obf_1fc3777fd512c47a; __obf_bd372f9dc9e16d75 <= __obf_b51b4e665b0fad85; __obf_bd372f9dc9e16d75++ {
+		__obf_24dca18af6feb178.
+			Set(__obf_bd372f9dc9e16d75,
 
 				// Distort distorts the canvas
-				__obf_3376ebf4b35235fa, __obf_6b14c339de9bea34)
+				__obf_a69b4d01937bfbfc, __obf_cf060e7b58cbd8c5)
 	}
 }
 
-func (__obf_285d17dd3dece463 *Palette) Distort(__obf_cc1000eb1d86a6f4 float64, __obf_859a83c0bbaa9f68 float64) {
-	__obf_1f037513843595bc := __obf_285d17dd3dece463.Bounds().Max.X
-	__obf_ac11522e37274a9b := __obf_285d17dd3dece463.Bounds().Max.Y
-	__obf_f0325dce455ca156 := NewPalette(image.Rect(0, 0, __obf_1f037513843595bc, __obf_ac11522e37274a9b), __obf_285d17dd3dece463.Palette)
-	__obf_e56a0193d7dbf602 := 2.0 * math.Pi / __obf_859a83c0bbaa9f68
-	for __obf_57d99e8bd0a3444e := range __obf_1f037513843595bc {
-		for __obf_3376ebf4b35235fa := 0; __obf_3376ebf4b35235fa < __obf_ac11522e37274a9b; __obf_3376ebf4b35235fa++ {
-			__obf_b1a049ae887c59f4 := __obf_cc1000eb1d86a6f4 * math.Sin(float64(__obf_3376ebf4b35235fa)*__obf_e56a0193d7dbf602)
-			__obf_931e87dc1858f367 := __obf_cc1000eb1d86a6f4 * math.Cos(float64(__obf_57d99e8bd0a3444e)*__obf_e56a0193d7dbf602)
-			__obf_f0325dce455ca156.
-				SetColorIndex(__obf_57d99e8bd0a3444e, __obf_3376ebf4b35235fa, __obf_285d17dd3dece463.ColorIndexAt(__obf_57d99e8bd0a3444e+int(__obf_b1a049ae887c59f4), __obf_3376ebf4b35235fa+int(__obf_931e87dc1858f367)))
+func (__obf_24dca18af6feb178 *Palette) Distort(__obf_3edcdb7c63c485fe float64, __obf_d7226a471a8a0a36 float64) {
+	__obf_ccd0c8ac1f16e3bd := __obf_24dca18af6feb178.Bounds().Max.X
+	__obf_90a966c355c00010 := __obf_24dca18af6feb178.Bounds().Max.Y
+	__obf_e9eccf4e599e5cbc := NewPalette(image.Rect(0, 0, __obf_ccd0c8ac1f16e3bd, __obf_90a966c355c00010), __obf_24dca18af6feb178.Palette)
+	__obf_936088d1b4a69899 := 2.0 * math.Pi / __obf_d7226a471a8a0a36
+	for __obf_bd372f9dc9e16d75 := range __obf_ccd0c8ac1f16e3bd {
+		for __obf_a69b4d01937bfbfc := 0; __obf_a69b4d01937bfbfc < __obf_90a966c355c00010; __obf_a69b4d01937bfbfc++ {
+			__obf_5951423922edb364 := __obf_3edcdb7c63c485fe * math.Sin(float64(__obf_a69b4d01937bfbfc)*__obf_936088d1b4a69899)
+			__obf_95281919c4d87261 := __obf_3edcdb7c63c485fe * math.Cos(float64(__obf_bd372f9dc9e16d75)*__obf_936088d1b4a69899)
+			__obf_e9eccf4e599e5cbc.
+				SetColorIndex(__obf_bd372f9dc9e16d75, __obf_a69b4d01937bfbfc, __obf_24dca18af6feb178.ColorIndexAt(__obf_bd372f9dc9e16d75+int(__obf_5951423922edb364), __obf_a69b4d01937bfbfc+int(__obf_95281919c4d87261)))
 		}
 	}
-	__obf_4d379dc6f44f3aa1 := __obf_f0325dce455ca156.Bounds().Max.X
-	__obf_d334e96f1dfe592d := __obf_f0325dce455ca156.Bounds().Max.Y
-	for __obf_57d99e8bd0a3444e := range __obf_4d379dc6f44f3aa1 {
-		for __obf_3376ebf4b35235fa := 0; __obf_3376ebf4b35235fa < __obf_d334e96f1dfe592d; __obf_3376ebf4b35235fa++ {
-			__obf_285d17dd3dece463.
-				SetColorIndex(__obf_57d99e8bd0a3444e, __obf_3376ebf4b35235fa, __obf_f0325dce455ca156.ColorIndexAt(__obf_57d99e8bd0a3444e, __obf_3376ebf4b35235fa))
+	__obf_d17e3b2fb9b48db3 := __obf_e9eccf4e599e5cbc.Bounds().Max.X
+	__obf_e0ad449835d092e9 := __obf_e9eccf4e599e5cbc.Bounds().Max.Y
+	for __obf_bd372f9dc9e16d75 := range __obf_d17e3b2fb9b48db3 {
+		for __obf_a69b4d01937bfbfc := 0; __obf_a69b4d01937bfbfc < __obf_e0ad449835d092e9; __obf_a69b4d01937bfbfc++ {
+			__obf_24dca18af6feb178.
+				SetColorIndex(__obf_bd372f9dc9e16d75, __obf_a69b4d01937bfbfc, __obf_e9eccf4e599e5cbc.ColorIndexAt(__obf_bd372f9dc9e16d75, __obf_a69b4d01937bfbfc))
 		}
 	}
-	__obf_f0325dce455ca156.
+	__obf_e9eccf4e599e5cbc.
 		Palette = nil
 }
 
 // DrawBeeline draws a straight line
-func (__obf_285d17dd3dece463 *Palette) DrawBeeline(__obf_9e0c3e490ad8f2d5 image.Point, __obf_7370cc7161f48ae9 image.Point, __obf_67447fed68871f04 color.RGBA) {
-	__obf_e56a0193d7dbf602 := math.Abs(float64(__obf_9e0c3e490ad8f2d5.X - __obf_7370cc7161f48ae9.X))
-	__obf_f23a92c76d13cc24 := math.Abs(float64(__obf_7370cc7161f48ae9.Y - __obf_9e0c3e490ad8f2d5.Y))
-	__obf_a4ececaaee4cdbbe, __obf_e00ef5c3b0a1efb9 := 1, 1
-	if __obf_9e0c3e490ad8f2d5.X >= __obf_7370cc7161f48ae9.X {
-		__obf_a4ececaaee4cdbbe = -1
+func (__obf_24dca18af6feb178 *Palette) DrawBeeline(__obf_23281d9c04e41cb6 image.Point, __obf_f72b82b64fc402eb image.Point, __obf_ff10c1bbb8d2fdda color.RGBA) {
+	__obf_936088d1b4a69899 := math.Abs(float64(__obf_23281d9c04e41cb6.X - __obf_f72b82b64fc402eb.X))
+	__obf_141144958ec0757c := math.Abs(float64(__obf_f72b82b64fc402eb.Y - __obf_23281d9c04e41cb6.Y))
+	__obf_53be3572988aceca, __obf_ed348ff651e7f60e := 1, 1
+	if __obf_23281d9c04e41cb6.X >= __obf_f72b82b64fc402eb.X {
+		__obf_53be3572988aceca = -1
 	}
-	if __obf_9e0c3e490ad8f2d5.Y >= __obf_7370cc7161f48ae9.Y {
-		__obf_e00ef5c3b0a1efb9 = -1
+	if __obf_23281d9c04e41cb6.Y >= __obf_f72b82b64fc402eb.Y {
+		__obf_ed348ff651e7f60e = -1
 	}
-	__obf_d349b3521516d4ce := __obf_e56a0193d7dbf602 - __obf_f23a92c76d13cc24
+	__obf_95d84a130cd584e5 := __obf_936088d1b4a69899 - __obf_141144958ec0757c
 	for {
-		__obf_285d17dd3dece463.
-			Set(__obf_9e0c3e490ad8f2d5.X, __obf_9e0c3e490ad8f2d5.Y, __obf_67447fed68871f04)
-		__obf_285d17dd3dece463.
-			Set(__obf_9e0c3e490ad8f2d5.X+1, __obf_9e0c3e490ad8f2d5.Y, __obf_67447fed68871f04)
-		__obf_285d17dd3dece463.
-			Set(__obf_9e0c3e490ad8f2d5.X-1, __obf_9e0c3e490ad8f2d5.Y, __obf_67447fed68871f04)
-		__obf_285d17dd3dece463.
-			Set(__obf_9e0c3e490ad8f2d5.X+2, __obf_9e0c3e490ad8f2d5.Y, __obf_67447fed68871f04)
-		__obf_285d17dd3dece463.
-			Set(__obf_9e0c3e490ad8f2d5.X-2, __obf_9e0c3e490ad8f2d5.Y, __obf_67447fed68871f04)
-		if __obf_9e0c3e490ad8f2d5.X == __obf_7370cc7161f48ae9.X && __obf_9e0c3e490ad8f2d5.Y == __obf_7370cc7161f48ae9.Y {
+		__obf_24dca18af6feb178.
+			Set(__obf_23281d9c04e41cb6.X, __obf_23281d9c04e41cb6.Y, __obf_ff10c1bbb8d2fdda)
+		__obf_24dca18af6feb178.
+			Set(__obf_23281d9c04e41cb6.X+1, __obf_23281d9c04e41cb6.Y, __obf_ff10c1bbb8d2fdda)
+		__obf_24dca18af6feb178.
+			Set(__obf_23281d9c04e41cb6.X-1, __obf_23281d9c04e41cb6.Y, __obf_ff10c1bbb8d2fdda)
+		__obf_24dca18af6feb178.
+			Set(__obf_23281d9c04e41cb6.X+2, __obf_23281d9c04e41cb6.Y, __obf_ff10c1bbb8d2fdda)
+		__obf_24dca18af6feb178.
+			Set(__obf_23281d9c04e41cb6.X-2, __obf_23281d9c04e41cb6.Y, __obf_ff10c1bbb8d2fdda)
+		if __obf_23281d9c04e41cb6.X == __obf_f72b82b64fc402eb.X && __obf_23281d9c04e41cb6.Y == __obf_f72b82b64fc402eb.Y {
 			return
 		}
-		__obf_488d04945f49f309 := __obf_d349b3521516d4ce * 2
-		if __obf_488d04945f49f309 > -__obf_f23a92c76d13cc24 {
-			__obf_d349b3521516d4ce -= __obf_f23a92c76d13cc24
-			__obf_9e0c3e490ad8f2d5.
-				X += __obf_a4ececaaee4cdbbe
+		__obf_258c750098c7731d := __obf_95d84a130cd584e5 * 2
+		if __obf_258c750098c7731d > -__obf_141144958ec0757c {
+			__obf_95d84a130cd584e5 -= __obf_141144958ec0757c
+			__obf_23281d9c04e41cb6.
+				X += __obf_53be3572988aceca
 		}
-		if __obf_488d04945f49f309 < __obf_e56a0193d7dbf602 {
-			__obf_d349b3521516d4ce += __obf_e56a0193d7dbf602
-			__obf_9e0c3e490ad8f2d5.
-				Y += __obf_e00ef5c3b0a1efb9
+		if __obf_258c750098c7731d < __obf_936088d1b4a69899 {
+			__obf_95d84a130cd584e5 += __obf_936088d1b4a69899
+			__obf_23281d9c04e41cb6.
+				Y += __obf_ed348ff651e7f60e
 		}
 	}
 }
 
 // AngleSwapPoint converts point coordinates based on angle
-func (__obf_285d17dd3dece463 *Palette) AngleSwapPoint(__obf_57d99e8bd0a3444e, __obf_3376ebf4b35235fa, __obf_22f909fc49d8ec44, __obf_dadbdf6b4f60b255 float64) (__obf_22568cf301d6f9f7, __obf_0c631971ef2432dc float64) {
-	__obf_57d99e8bd0a3444e -= __obf_22f909fc49d8ec44
-	__obf_3376ebf4b35235fa = __obf_22f909fc49d8ec44 - __obf_3376ebf4b35235fa
-	__obf_e272b3fae3b09432 := math.Sin(__obf_dadbdf6b4f60b255 * (math.Pi / 180))
-	__obf_b35b7c9644fc6fb5 := math.Cos(__obf_dadbdf6b4f60b255 * (math.Pi / 180))
-	__obf_22568cf301d6f9f7 = __obf_57d99e8bd0a3444e*__obf_b35b7c9644fc6fb5 + __obf_3376ebf4b35235fa*__obf_e272b3fae3b09432
-	__obf_0c631971ef2432dc = -__obf_57d99e8bd0a3444e*__obf_e272b3fae3b09432 + __obf_3376ebf4b35235fa*__obf_b35b7c9644fc6fb5
-	__obf_22568cf301d6f9f7 += __obf_22f909fc49d8ec44
-	__obf_0c631971ef2432dc = __obf_22f909fc49d8ec44 - __obf_0c631971ef2432dc
+func (__obf_24dca18af6feb178 *Palette) AngleSwapPoint(__obf_bd372f9dc9e16d75, __obf_a69b4d01937bfbfc, __obf_c09045abdc5d3619, __obf_3a2dad55c354b1d6 float64) (__obf_d4a0b02e6b76c897, __obf_2c96eb9d5bf6b705 float64) {
+	__obf_bd372f9dc9e16d75 -= __obf_c09045abdc5d3619
+	__obf_a69b4d01937bfbfc = __obf_c09045abdc5d3619 - __obf_a69b4d01937bfbfc
+	__obf_00eeb677fb04234b := math.Sin(__obf_3a2dad55c354b1d6 * (math.Pi / 180))
+	__obf_cd19e570ab31e612 := math.Cos(__obf_3a2dad55c354b1d6 * (math.Pi / 180))
+	__obf_d4a0b02e6b76c897 = __obf_bd372f9dc9e16d75*__obf_cd19e570ab31e612 + __obf_a69b4d01937bfbfc*__obf_00eeb677fb04234b
+	__obf_2c96eb9d5bf6b705 = -__obf_bd372f9dc9e16d75*__obf_00eeb677fb04234b + __obf_a69b4d01937bfbfc*__obf_cd19e570ab31e612
+	__obf_d4a0b02e6b76c897 += __obf_c09045abdc5d3619
+	__obf_2c96eb9d5bf6b705 = __obf_c09045abdc5d3619 - __obf_2c96eb9d5bf6b705
 	return
 }
 
 // CalcMarginBlankArea calculates the blank area of the canvas
-func (__obf_285d17dd3dece463 *Palette) CalcMarginBlankArea() *AreaRect {
-	__obf_4d379dc6f44f3aa1 := __obf_285d17dd3dece463.Bounds().Max.X
-	__obf_d334e96f1dfe592d := __obf_285d17dd3dece463.Bounds().Max.Y
-	__obf_872716a227557da0 := __obf_4d379dc6f44f3aa1
-	__obf_04cdedc6038048f9 := 0
-	__obf_3bbf802af4ff2cdd := __obf_d334e96f1dfe592d
-	__obf_97e0ab00d4cde441 := 0
-	for __obf_57d99e8bd0a3444e := range __obf_4d379dc6f44f3aa1 {
-		for __obf_3376ebf4b35235fa := range __obf_d334e96f1dfe592d {
-			__obf_2039314a03b948f3 := __obf_285d17dd3dece463.At(__obf_57d99e8bd0a3444e, __obf_3376ebf4b35235fa)
-			if _, _, _, __obf_59e7114cb8b11964 := __obf_2039314a03b948f3.RGBA(); __obf_59e7114cb8b11964 > 0 {
-				if __obf_57d99e8bd0a3444e < __obf_872716a227557da0 {
-					__obf_872716a227557da0 = __obf_57d99e8bd0a3444e
+func (__obf_24dca18af6feb178 *Palette) CalcMarginBlankArea() *AreaRect {
+	__obf_d17e3b2fb9b48db3 := __obf_24dca18af6feb178.Bounds().Max.X
+	__obf_e0ad449835d092e9 := __obf_24dca18af6feb178.Bounds().Max.Y
+	__obf_ba97c5a5606ddd7e := __obf_d17e3b2fb9b48db3
+	__obf_c6b746bbb5d1f238 := 0
+	__obf_36f26cd4c2083cc6 := __obf_e0ad449835d092e9
+	__obf_7d40f40942b754c0 := 0
+	for __obf_bd372f9dc9e16d75 := range __obf_d17e3b2fb9b48db3 {
+		for __obf_a69b4d01937bfbfc := range __obf_e0ad449835d092e9 {
+			__obf_e4c726f405e92dc2 := __obf_24dca18af6feb178.At(__obf_bd372f9dc9e16d75, __obf_a69b4d01937bfbfc)
+			if _, _, _, __obf_5eeb26a04aed8320 := __obf_e4c726f405e92dc2.RGBA(); __obf_5eeb26a04aed8320 > 0 {
+				if __obf_bd372f9dc9e16d75 < __obf_ba97c5a5606ddd7e {
+					__obf_ba97c5a5606ddd7e = __obf_bd372f9dc9e16d75
 				}
-				if __obf_57d99e8bd0a3444e > __obf_04cdedc6038048f9 {
-					__obf_04cdedc6038048f9 = __obf_57d99e8bd0a3444e
+				if __obf_bd372f9dc9e16d75 > __obf_c6b746bbb5d1f238 {
+					__obf_c6b746bbb5d1f238 = __obf_bd372f9dc9e16d75
 				}
 
-				if __obf_3376ebf4b35235fa < __obf_3bbf802af4ff2cdd {
-					__obf_3bbf802af4ff2cdd = __obf_3376ebf4b35235fa
+				if __obf_a69b4d01937bfbfc < __obf_36f26cd4c2083cc6 {
+					__obf_36f26cd4c2083cc6 = __obf_a69b4d01937bfbfc
 				}
-				if __obf_3376ebf4b35235fa > __obf_97e0ab00d4cde441 {
-					__obf_97e0ab00d4cde441 = __obf_3376ebf4b35235fa
+				if __obf_a69b4d01937bfbfc > __obf_7d40f40942b754c0 {
+					__obf_7d40f40942b754c0 = __obf_a69b4d01937bfbfc
 				}
 			}
 		}
 	}
-	__obf_872716a227557da0 = int(max(0, float64(__obf_872716a227557da0-2)))
-	__obf_04cdedc6038048f9 = int(min(float64(__obf_4d379dc6f44f3aa1), float64(__obf_04cdedc6038048f9+2)))
-	__obf_3bbf802af4ff2cdd = int(max(0, float64(__obf_3bbf802af4ff2cdd-2)))
-	__obf_97e0ab00d4cde441 = int(min(float64(__obf_d334e96f1dfe592d), float64(__obf_97e0ab00d4cde441+2)))
+	__obf_ba97c5a5606ddd7e = int(max(0, float64(__obf_ba97c5a5606ddd7e-2)))
+	__obf_c6b746bbb5d1f238 = int(min(float64(__obf_d17e3b2fb9b48db3), float64(__obf_c6b746bbb5d1f238+2)))
+	__obf_36f26cd4c2083cc6 = int(max(0, float64(__obf_36f26cd4c2083cc6-2)))
+	__obf_7d40f40942b754c0 = int(min(float64(__obf_e0ad449835d092e9), float64(__obf_7d40f40942b754c0+2)))
 
-	return &AreaRect{__obf_872716a227557da0, __obf_04cdedc6038048f9, __obf_3bbf802af4ff2cdd, __obf_97e0ab00d4cde441}
+	return &AreaRect{__obf_ba97c5a5606ddd7e, __obf_c6b746bbb5d1f238, __obf_36f26cd4c2083cc6, __obf_7d40f40942b754c0}
 }

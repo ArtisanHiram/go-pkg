@@ -1,26 +1,26 @@
-package __obf_038560a94647875f
+package __obf_9004b47202f9204b
 
 import consistent "github.com/ArtisanHiram/go-pkg/consistent"
 
-func Subset[M consistent.Member](__obf_3f292fb80e2ecea2 string, __obf_4752dc15522b0582 []M, __obf_32b938b15d5d4375 int) []M {
-	if len(__obf_4752dc15522b0582) <= __obf_32b938b15d5d4375 {
-		return __obf_4752dc15522b0582
+func Subset[M consistent.Member](__obf_fa71c403e75a023f string, __obf_d6d9c150ce481970 []M, __obf_c33e6799eff4e4a8 int) []M {
+	if len(__obf_d6d9c150ce481970) <= __obf_c33e6799eff4e4a8 {
+		return __obf_d6d9c150ce481970
 	}
-	__obf_07feaaa91a36a31a := consistent.New[M]()
-	__obf_07feaaa91a36a31a.
+	__obf_4162b39e2a9c29bf := consistent.New[M]()
+	__obf_4162b39e2a9c29bf.
 		NumberOfReplicas = 160
-	__obf_07feaaa91a36a31a.
+	__obf_4162b39e2a9c29bf.
 		UseFnv = true
-	__obf_07feaaa91a36a31a.
-		Set(__obf_4752dc15522b0582)
+	__obf_4162b39e2a9c29bf.
+		Set(__obf_d6d9c150ce481970)
 
-	return __obf_8b937cd2a06565da(__obf_07feaaa91a36a31a, __obf_3f292fb80e2ecea2, __obf_4752dc15522b0582, __obf_32b938b15d5d4375)
+	return __obf_6ec7f401c6cf8afd(__obf_4162b39e2a9c29bf, __obf_fa71c403e75a023f, __obf_d6d9c150ce481970, __obf_c33e6799eff4e4a8)
 }
 
-func __obf_8b937cd2a06565da[M consistent.Member](__obf_07feaaa91a36a31a *consistent.Consistent[M], __obf_3f292fb80e2ecea2 string, __obf_4752dc15522b0582 []M, __obf_32b938b15d5d4375 int) []M {
-	__obf_0d8b959f6c1d21fc, __obf_ad71453048e280e8 := __obf_07feaaa91a36a31a.GetN(__obf_3f292fb80e2ecea2, __obf_32b938b15d5d4375)
-	if __obf_ad71453048e280e8 != nil {
-		return __obf_4752dc15522b0582
+func __obf_6ec7f401c6cf8afd[M consistent.Member](__obf_4162b39e2a9c29bf *consistent.Consistent[M], __obf_fa71c403e75a023f string, __obf_d6d9c150ce481970 []M, __obf_c33e6799eff4e4a8 int) []M {
+	__obf_2a182f2e0d56f550, __obf_4a0f6bb7d9302e64 := __obf_4162b39e2a9c29bf.GetN(__obf_fa71c403e75a023f, __obf_c33e6799eff4e4a8)
+	if __obf_4a0f6bb7d9302e64 != nil {
+		return __obf_d6d9c150ce481970
 	}
-	return __obf_0d8b959f6c1d21fc
+	return __obf_2a182f2e0d56f550
 }

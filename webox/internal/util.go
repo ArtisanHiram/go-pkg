@@ -1,4 +1,4 @@
-package __obf_abe10294567bade2
+package __obf_e79e1b0b12d02d0b
 
 import (
 	"bytes"
@@ -26,13 +26,13 @@ const (
 
 // GenerateNonceStr 生成32位随机字符串
 func GenerateNonceStr() string {
-	__obf_dd50ddf79e12c9be := "abcdefghijklmnopqrstuvwxyz0123456789"
-	__obf_c4d3ca237ede8853 := 32
-	__obf_4c1868560aff3869 := make([]byte, __obf_c4d3ca237ede8853)
-	for __obf_8324582c8d29e92f := range __obf_4c1868560aff3869 {
-		__obf_4c1868560aff3869[__obf_8324582c8d29e92f] = __obf_dd50ddf79e12c9be[rand.IntN(len(__obf_dd50ddf79e12c9be))]
+	__obf_5c29fefb6113fa4a := "abcdefghijklmnopqrstuvwxyz0123456789"
+	__obf_049fadfb61efc62d := 32
+	__obf_61a2594eea4ae9c0 := make([]byte, __obf_049fadfb61efc62d)
+	for __obf_33d1c6b9ec98c730 := range __obf_61a2594eea4ae9c0 {
+		__obf_61a2594eea4ae9c0[__obf_33d1c6b9ec98c730] = __obf_5c29fefb6113fa4a[rand.IntN(len(__obf_5c29fefb6113fa4a))]
 	}
-	return string(__obf_4c1868560aff3869)
+	return string(__obf_61a2594eea4ae9c0)
 }
 
 // CreateSign 为微信支付请求生成签名
@@ -41,198 +41,198 @@ func GenerateNonceStr() string {
 // 2. 使用URL键值对的格式（即key1=value1&key2=value2...）拼接成字符串
 // 3. 在字符串最后拼接上 &key=APIKey
 // 4. 对拼接好的字符串进行MD5加密，得到大写签名
-func CreateSign(__obf_6ac433a3ac03fe1b string, __obf_4c338de14b6a6627 map[string]string) string {
-	__obf_af373e8aecc99f30 := make([]string, 0, len(__obf_4c338de14b6a6627))
-	for __obf_685e68f3451766f3 := range __obf_4c338de14b6a6627 {
-		if __obf_685e68f3451766f3 == "sign" { // 签名参数不参与签名计算
+func CreateSign(__obf_434013c08d7e96ff string, __obf_349df6ea515f02e1 map[string]string) string {
+	__obf_b87bc669672328e4 := make([]string, 0, len(__obf_349df6ea515f02e1))
+	for __obf_8004953ba26bf329 := range __obf_349df6ea515f02e1 {
+		if __obf_8004953ba26bf329 == "sign" { // 签名参数不参与签名计算
 			continue
 		}
-		__obf_af373e8aecc99f30 = append(__obf_af373e8aecc99f30, __obf_685e68f3451766f3)
+		__obf_b87bc669672328e4 = append(__obf_b87bc669672328e4, __obf_8004953ba26bf329)
 	}
-	sort.Strings(__obf_af373e8aecc99f30) // 字典序排序
+	sort.Strings(__obf_b87bc669672328e4) // 字典序排序
 
-	var __obf_a3c74837d6f72b93 bytes.Buffer
-	for _, __obf_685e68f3451766f3 := range __obf_af373e8aecc99f30 {
-		if __obf_4c338de14b6a6627[__obf_685e68f3451766f3] != "" {
-			__obf_a3c74837d6f72b93. // 空值不参与签名
-						WriteString(__obf_685e68f3451766f3)
-			__obf_a3c74837d6f72b93.
+	var __obf_974eeae9b46c93f1 bytes.Buffer
+	for _, __obf_8004953ba26bf329 := range __obf_b87bc669672328e4 {
+		if __obf_349df6ea515f02e1[__obf_8004953ba26bf329] != "" {
+			__obf_974eeae9b46c93f1. // 空值不参与签名
+						WriteString(__obf_8004953ba26bf329)
+			__obf_974eeae9b46c93f1.
 				WriteString("=")
-			__obf_a3c74837d6f72b93.
-				WriteString(__obf_4c338de14b6a6627[__obf_685e68f3451766f3])
-			__obf_a3c74837d6f72b93.
+			__obf_974eeae9b46c93f1.
+				WriteString(__obf_349df6ea515f02e1[__obf_8004953ba26bf329])
+			__obf_974eeae9b46c93f1.
 				WriteString("&")
 		}
 	}
-	__obf_a3c74837d6f72b93.
+	__obf_974eeae9b46c93f1.
 		WriteString("key=")
-	__obf_a3c74837d6f72b93.
-		WriteString(__obf_6ac433a3ac03fe1b)
+	__obf_974eeae9b46c93f1.
+		WriteString(__obf_434013c08d7e96ff)
 
-	var __obf_417107f550f14e2c hash.Hash
-	if __obf_4c338de14b6a6627["sign_type"] == SIGN_HMACSHA256 {
-		__obf_417107f550f14e2c = hmac.New(sha256.New, []byte(__obf_6ac433a3ac03fe1b))
+	var __obf_983b33218441aeeb hash.Hash
+	if __obf_349df6ea515f02e1["sign_type"] == SIGN_HMACSHA256 {
+		__obf_983b33218441aeeb = hmac.New(sha256.New, []byte(__obf_434013c08d7e96ff))
 	} else {
-		__obf_417107f550f14e2c = md5.New()
+		__obf_983b33218441aeeb = md5.New()
 	}
-	__obf_417107f550f14e2c.
-		Write(__obf_a3c74837d6f72b93.Bytes())
+	__obf_983b33218441aeeb.
+		Write(__obf_974eeae9b46c93f1.Bytes())
 	// fmt.Println("创建签名：", buf.String())
-	return strings.ToUpper(hex.EncodeToString(__obf_417107f550f14e2c.Sum(nil)))
+	return strings.ToUpper(hex.EncodeToString(__obf_983b33218441aeeb.Sum(nil)))
 }
 
 // VerifySign 验证微信支付响应或回调的签名
 // params: 包含所有参数的map，其中应包含"sign"字段
 // apiKey: 商户API密钥
-func VerifySign(__obf_6ac433a3ac03fe1b string, __obf_4c338de14b6a6627 map[string]string) bool {
-	__obf_52c86176472b73fd, __obf_6e392fab483ffd08 := __obf_4c338de14b6a6627["sign"]
-	if !__obf_6e392fab483ffd08 {
+func VerifySign(__obf_434013c08d7e96ff string, __obf_349df6ea515f02e1 map[string]string) bool {
+	__obf_b55be4625826e956, __obf_e604613b3e6dc6cf := __obf_349df6ea515f02e1["sign"]
+	if !__obf_e604613b3e6dc6cf {
 		return false // 没有sign字段
 	}
-	delete(__obf_4c338de14b6a6627, "sign")
-	__obf_6c89934e64d4c833 := // 签名时需要移除sign字段
+	delete(__obf_349df6ea515f02e1, "sign")
+	__obf_7faa55095c72cfd3 := // 签名时需要移除sign字段
 
-		CreateSign(__obf_6ac433a3ac03fe1b, __obf_4c338de14b6a6627)
+		CreateSign(__obf_434013c08d7e96ff, __obf_349df6ea515f02e1)
 
-	return __obf_6c89934e64d4c833 == __obf_52c86176472b73fd
+	return __obf_7faa55095c72cfd3 == __obf_b55be4625826e956
 }
 
 // MapToXML 使用map来构建XML请求，适用于灵活的参数
-func MapToXML(__obf_ee2c872ef85c5b21 map[string]string) []byte {
-	var __obf_a3c74837d6f72b93 bytes.Buffer
-	__obf_a3c74837d6f72b93.
+func MapToXML(__obf_e8c254e95f1ffc9e map[string]string) []byte {
+	var __obf_974eeae9b46c93f1 bytes.Buffer
+	__obf_974eeae9b46c93f1.
 		WriteString("<xml>")
-	for __obf_685e68f3451766f3, __obf_7ef4adf3e75f965e := range __obf_ee2c872ef85c5b21 {
-		__obf_a3c74837d6f72b93.
-			WriteString(fmt.Sprintf("<%s><![CDATA[%s]]></%s>", __obf_685e68f3451766f3, __obf_7ef4adf3e75f965e, __obf_685e68f3451766f3))
+	for __obf_8004953ba26bf329, __obf_2ad96ff371650fa9 := range __obf_e8c254e95f1ffc9e {
+		__obf_974eeae9b46c93f1.
+			WriteString(fmt.Sprintf("<%s><![CDATA[%s]]></%s>", __obf_8004953ba26bf329, __obf_2ad96ff371650fa9, __obf_8004953ba26bf329))
 	}
-	__obf_a3c74837d6f72b93.
+	__obf_974eeae9b46c93f1.
 		WriteString("</xml>")
-	return __obf_a3c74837d6f72b93.Bytes()
+	return __obf_974eeae9b46c93f1.Bytes()
 }
 
 // XMLToMap 将XML字符串解析为map[string]string
-func XMLToMap(__obf_b8c9404f9cff1593 []byte) (map[string]string, error) {
-	__obf_8ec4b4e87b316fd4 := xml.NewDecoder(bytes.NewReader(__obf_b8c9404f9cff1593))
-	__obf_ee2c872ef85c5b21 := make(map[string]string)
+func XMLToMap(__obf_208b6368e1923c12 []byte) (map[string]string, error) {
+	__obf_5cae921f379521aa := xml.NewDecoder(bytes.NewReader(__obf_208b6368e1923c12))
+	__obf_e8c254e95f1ffc9e := make(map[string]string)
 	for {
-		__obf_32b80744ca58c61c, __obf_02af51ab07084000 := __obf_8ec4b4e87b316fd4.Token()
-		if __obf_02af51ab07084000 != nil {
-			if __obf_02af51ab07084000.Error() == "EOF" {
+		__obf_3165fe535c548d0a, __obf_d6bcde9761346c61 := __obf_5cae921f379521aa.Token()
+		if __obf_d6bcde9761346c61 != nil {
+			if __obf_d6bcde9761346c61.Error() == "EOF" {
 				break
 			}
-			return nil, fmt.Errorf("decode XML token failed: %w", __obf_02af51ab07084000)
+			return nil, fmt.Errorf("decode XML token failed: %w", __obf_d6bcde9761346c61)
 		}
 
-		switch __obf_047bad33031b4f38 := __obf_32b80744ca58c61c.(type) {
+		switch __obf_f6e7ebb2b44b6445 := __obf_3165fe535c548d0a.(type) {
 		case xml.StartElement:
-			if __obf_047bad33031b4f38.Name.Local != "xml" { // 跳过根元素
-				var __obf_f30b84aa25ea2632 string
-				if __obf_02af51ab07084000 := __obf_8ec4b4e87b316fd4.DecodeElement(&__obf_f30b84aa25ea2632, &__obf_047bad33031b4f38); __obf_02af51ab07084000 != nil {
-					return nil, fmt.Errorf("decode XML element failed: %w", __obf_02af51ab07084000)
+			if __obf_f6e7ebb2b44b6445.Name.Local != "xml" { // 跳过根元素
+				var __obf_7149453815d49dec string
+				if __obf_d6bcde9761346c61 := __obf_5cae921f379521aa.DecodeElement(&__obf_7149453815d49dec, &__obf_f6e7ebb2b44b6445); __obf_d6bcde9761346c61 != nil {
+					return nil, fmt.Errorf("decode XML element failed: %w", __obf_d6bcde9761346c61)
 				}
-				__obf_ee2c872ef85c5b21[__obf_047bad33031b4f38.Name.Local] = __obf_f30b84aa25ea2632
+				__obf_e8c254e95f1ffc9e[__obf_f6e7ebb2b44b6445.Name.Local] = __obf_7149453815d49dec
 			}
 		}
 	}
-	return __obf_ee2c872ef85c5b21, nil
+	return __obf_e8c254e95f1ffc9e, nil
 }
 
 // EncryptMsg 加密消息
-func EncryptMsg(__obf_7d4f90ac6ebea097, __obf_37068d23d996d5dd []byte, __obf_d7d23d6d36d0093b, __obf_7db5d45df7d59e10 string) (__obf_e8feb47b77130570 []byte, __obf_02af51ab07084000 error) {
+func EncryptMsg(__obf_1ae149d5839818f1, __obf_7c6444a58ba68f42 []byte, __obf_5e1666c18a4df0aa, __obf_143005d8e3eba02d string) (__obf_b62846ff51788094 []byte, __obf_d6bcde9761346c61 error) {
 	defer func() {
-		if __obf_2f7f340198b510d8 := recover(); __obf_2f7f340198b510d8 != nil {
-			__obf_02af51ab07084000 = fmt.Errorf("panic error: err=%v", __obf_2f7f340198b510d8)
+		if __obf_eeaddc22e30f34f6 := recover(); __obf_eeaddc22e30f34f6 != nil {
+			__obf_d6bcde9761346c61 = fmt.Errorf("panic error: err=%v", __obf_eeaddc22e30f34f6)
 			return
 		}
 	}()
-	var __obf_2c9789f1f6d4df1a []byte
-	__obf_2c9789f1f6d4df1a, __obf_02af51ab07084000 = __obf_96e615ccbec8449f(__obf_7db5d45df7d59e10)
-	if __obf_02af51ab07084000 != nil {
-		panic(__obf_02af51ab07084000)
+	var __obf_7dca2452dd625e20 []byte
+	__obf_7dca2452dd625e20, __obf_d6bcde9761346c61 = __obf_ed31cc08c741f1cb(__obf_143005d8e3eba02d)
+	if __obf_d6bcde9761346c61 != nil {
+		panic(__obf_d6bcde9761346c61)
 	}
-	__obf_a1ae217992a1ccec := AESEncryptMsg(__obf_7d4f90ac6ebea097, __obf_37068d23d996d5dd, __obf_d7d23d6d36d0093b, __obf_2c9789f1f6d4df1a)
-	__obf_e8feb47b77130570 = []byte(base64.StdEncoding.EncodeToString(__obf_a1ae217992a1ccec))
+	__obf_a7ede658d77da976 := AESEncryptMsg(__obf_1ae149d5839818f1, __obf_7c6444a58ba68f42, __obf_5e1666c18a4df0aa, __obf_7dca2452dd625e20)
+	__obf_b62846ff51788094 = []byte(base64.StdEncoding.EncodeToString(__obf_a7ede658d77da976))
 	return
 }
 
 // AESEncryptMsg ciphertext = AES_Encrypt[random(16B) + msg_len(4B) + rawXMLMsg + appId]
 // 参考：github.com/chanxuehong/wechat.v2
-func AESEncryptMsg(__obf_7d4f90ac6ebea097, __obf_37068d23d996d5dd []byte, __obf_d7d23d6d36d0093b string, __obf_7db5d45df7d59e10 []byte) (__obf_a1ae217992a1ccec []byte) {
+func AESEncryptMsg(__obf_1ae149d5839818f1, __obf_7c6444a58ba68f42 []byte, __obf_5e1666c18a4df0aa string, __obf_143005d8e3eba02d []byte) (__obf_a7ede658d77da976 []byte) {
 	const (
 		BlockSize = 32            // PKCS#7
 		BlockMask = BlockSize - 1 // BLOCK_SIZE 为 2^n 时, 可以用 mask 获取针对 BLOCK_SIZE 的余数
 	)
-	__obf_ce623e6926cb682c := 20 + len(__obf_37068d23d996d5dd)
-	__obf_289986fbeb4beee1 := __obf_ce623e6926cb682c + len(__obf_d7d23d6d36d0093b)
-	__obf_2eb343c77f621d55 := BlockSize - __obf_289986fbeb4beee1&BlockMask
-	__obf_76ce1c6fb444b944 := __obf_289986fbeb4beee1 + __obf_2eb343c77f621d55
-	__obf_dd5032c155e4a98e := make([]byte, __obf_76ce1c6fb444b944)
+	__obf_1aa946ad14b68289 := 20 + len(__obf_7c6444a58ba68f42)
+	__obf_cdf97f9ee643ab58 := __obf_1aa946ad14b68289 + len(__obf_5e1666c18a4df0aa)
+	__obf_51bc49e015ec3843 := BlockSize - __obf_cdf97f9ee643ab58&BlockMask
+	__obf_fc7b4df0f8413832 := __obf_cdf97f9ee643ab58 + __obf_51bc49e015ec3843
+	__obf_d85e7a22f93decb3 := make([]byte, __obf_fc7b4df0f8413832)
 
 	// 拼接
-	copy(__obf_dd5032c155e4a98e[:16], __obf_7d4f90ac6ebea097)
-	__obf_6a3807747bdb5477(__obf_dd5032c155e4a98e[16:20], uint32(len(__obf_37068d23d996d5dd)))
-	copy(__obf_dd5032c155e4a98e[20:], __obf_37068d23d996d5dd)
-	copy(__obf_dd5032c155e4a98e[__obf_ce623e6926cb682c:], __obf_d7d23d6d36d0093b)
+	copy(__obf_d85e7a22f93decb3[:16], __obf_1ae149d5839818f1)
+	__obf_273989ebd12999e1(__obf_d85e7a22f93decb3[16:20], uint32(len(__obf_7c6444a58ba68f42)))
+	copy(__obf_d85e7a22f93decb3[20:], __obf_7c6444a58ba68f42)
+	copy(__obf_d85e7a22f93decb3[__obf_1aa946ad14b68289:], __obf_5e1666c18a4df0aa)
 
 	// PKCS#7 补位
-	for __obf_8324582c8d29e92f := __obf_289986fbeb4beee1; __obf_8324582c8d29e92f < __obf_76ce1c6fb444b944; __obf_8324582c8d29e92f++ {
-		__obf_dd5032c155e4a98e[__obf_8324582c8d29e92f] = byte(__obf_2eb343c77f621d55)
+	for __obf_33d1c6b9ec98c730 := __obf_cdf97f9ee643ab58; __obf_33d1c6b9ec98c730 < __obf_fc7b4df0f8413832; __obf_33d1c6b9ec98c730++ {
+		__obf_d85e7a22f93decb3[__obf_33d1c6b9ec98c730] = byte(__obf_51bc49e015ec3843)
 	}
-	__obf_7c87d86ff2b2ece6,
+	__obf_78c51e8a1f2ea866,
 
 		// 加密
-		__obf_02af51ab07084000 := aes.NewCipher(__obf_7db5d45df7d59e10)
-	if __obf_02af51ab07084000 != nil {
-		panic(__obf_02af51ab07084000)
+		__obf_d6bcde9761346c61 := aes.NewCipher(__obf_143005d8e3eba02d)
+	if __obf_d6bcde9761346c61 != nil {
+		panic(__obf_d6bcde9761346c61)
 	}
-	__obf_1d4f4676515a51ea := cipher.NewCBCEncrypter(__obf_7c87d86ff2b2ece6, __obf_7db5d45df7d59e10[:16])
-	__obf_1d4f4676515a51ea.
-		CryptBlocks(__obf_dd5032c155e4a98e, __obf_dd5032c155e4a98e)
-	__obf_a1ae217992a1ccec = __obf_dd5032c155e4a98e
+	__obf_60e008e2cef713de := cipher.NewCBCEncrypter(__obf_78c51e8a1f2ea866, __obf_143005d8e3eba02d[:16])
+	__obf_60e008e2cef713de.
+		CryptBlocks(__obf_d85e7a22f93decb3, __obf_d85e7a22f93decb3)
+	__obf_a7ede658d77da976 = __obf_d85e7a22f93decb3
 	return
 }
 
 // DecryptMsg 消息解密
-func DecryptMsg(__obf_d7d23d6d36d0093b, __obf_02f4d34adc54c238, __obf_7db5d45df7d59e10 string) (__obf_7d4f90ac6ebea097, __obf_f303784bb3a48954 []byte, __obf_02af51ab07084000 error) {
+func DecryptMsg(__obf_5e1666c18a4df0aa, __obf_6f800b635c41f634, __obf_143005d8e3eba02d string) (__obf_1ae149d5839818f1, __obf_a21cf7bb974d0655 []byte, __obf_d6bcde9761346c61 error) {
 	defer func() {
-		if __obf_2f7f340198b510d8 := recover(); __obf_2f7f340198b510d8 != nil {
-			__obf_02af51ab07084000 = fmt.Errorf("panic error: err=%v", __obf_2f7f340198b510d8)
+		if __obf_eeaddc22e30f34f6 := recover(); __obf_eeaddc22e30f34f6 != nil {
+			__obf_d6bcde9761346c61 = fmt.Errorf("panic error: err=%v", __obf_eeaddc22e30f34f6)
 			return
 		}
 	}()
-	var __obf_a50c7651df5c743a, __obf_2c9789f1f6d4df1a, __obf_368abe72164def5b []byte
-	__obf_a50c7651df5c743a, __obf_02af51ab07084000 = base64.StdEncoding.DecodeString(__obf_02f4d34adc54c238)
-	if __obf_02af51ab07084000 != nil {
+	var __obf_6efbc9be32122ace, __obf_7dca2452dd625e20, __obf_beef9095bf1d9edb []byte
+	__obf_6efbc9be32122ace, __obf_d6bcde9761346c61 = base64.StdEncoding.DecodeString(__obf_6f800b635c41f634)
+	if __obf_d6bcde9761346c61 != nil {
 		return
 	}
-	__obf_2c9789f1f6d4df1a, __obf_02af51ab07084000 = __obf_96e615ccbec8449f(__obf_7db5d45df7d59e10)
-	if __obf_02af51ab07084000 != nil {
-		panic(__obf_02af51ab07084000)
+	__obf_7dca2452dd625e20, __obf_d6bcde9761346c61 = __obf_ed31cc08c741f1cb(__obf_143005d8e3eba02d)
+	if __obf_d6bcde9761346c61 != nil {
+		panic(__obf_d6bcde9761346c61)
 	}
-	__obf_7d4f90ac6ebea097, __obf_f303784bb3a48954, __obf_368abe72164def5b, __obf_02af51ab07084000 = AESDecryptMsg(__obf_a50c7651df5c743a, __obf_2c9789f1f6d4df1a)
-	if __obf_02af51ab07084000 != nil {
-		__obf_02af51ab07084000 = fmt.Errorf("消息解密失败,%v", __obf_02af51ab07084000)
+	__obf_1ae149d5839818f1, __obf_a21cf7bb974d0655, __obf_beef9095bf1d9edb, __obf_d6bcde9761346c61 = AESDecryptMsg(__obf_6efbc9be32122ace, __obf_7dca2452dd625e20)
+	if __obf_d6bcde9761346c61 != nil {
+		__obf_d6bcde9761346c61 = fmt.Errorf("消息解密失败,%v", __obf_d6bcde9761346c61)
 		return
 	}
-	if __obf_d7d23d6d36d0093b != string(__obf_368abe72164def5b) {
-		__obf_02af51ab07084000 = fmt.Errorf("消息解密校验APPID失败")
+	if __obf_5e1666c18a4df0aa != string(__obf_beef9095bf1d9edb) {
+		__obf_d6bcde9761346c61 = fmt.Errorf("消息解密校验APPID失败")
 		return
 	}
 	return
 }
 
-func __obf_96e615ccbec8449f(__obf_b80cec427f5543d5 string) (__obf_2c9789f1f6d4df1a []byte, __obf_02af51ab07084000 error) {
-	if len(__obf_b80cec427f5543d5) != 43 {
-		__obf_02af51ab07084000 = fmt.Errorf("the length of encodedAESKey must be equal to 43")
+func __obf_ed31cc08c741f1cb(__obf_724765d2e748d926 string) (__obf_7dca2452dd625e20 []byte, __obf_d6bcde9761346c61 error) {
+	if len(__obf_724765d2e748d926) != 43 {
+		__obf_d6bcde9761346c61 = fmt.Errorf("the length of encodedAESKey must be equal to 43")
 		return
 	}
-	__obf_2c9789f1f6d4df1a, __obf_02af51ab07084000 = base64.StdEncoding.DecodeString(__obf_b80cec427f5543d5 + "=")
-	if __obf_02af51ab07084000 != nil {
+	__obf_7dca2452dd625e20, __obf_d6bcde9761346c61 = base64.StdEncoding.DecodeString(__obf_724765d2e748d926 + "=")
+	if __obf_d6bcde9761346c61 != nil {
 		return
 	}
-	if len(__obf_2c9789f1f6d4df1a) != 32 {
-		__obf_02af51ab07084000 = fmt.Errorf("encodingAESKey invalid")
+	if len(__obf_7dca2452dd625e20) != 32 {
+		__obf_d6bcde9761346c61 = fmt.Errorf("encodingAESKey invalid")
 		return
 	}
 	return
@@ -240,72 +240,72 @@ func __obf_96e615ccbec8449f(__obf_b80cec427f5543d5 string) (__obf_2c9789f1f6d4df
 
 // AESDecryptMsg ciphertext = AES_Encrypt[random(16B) + msg_len(4B) + rawXMLMsg + appId]
 // 参考：github.com/chanxuehong/wechat.v2
-func AESDecryptMsg(__obf_a1ae217992a1ccec []byte, __obf_7db5d45df7d59e10 []byte) (__obf_7d4f90ac6ebea097, __obf_37068d23d996d5dd, __obf_d7d23d6d36d0093b []byte, __obf_02af51ab07084000 error) {
+func AESDecryptMsg(__obf_a7ede658d77da976 []byte, __obf_143005d8e3eba02d []byte) (__obf_1ae149d5839818f1, __obf_7c6444a58ba68f42, __obf_5e1666c18a4df0aa []byte, __obf_d6bcde9761346c61 error) {
 	const (
 		BlockSize = 32            // PKCS#7
 		BlockMask = BlockSize - 1 // BLOCK_SIZE 为 2^n 时, 可以用 mask 获取针对 BLOCK_SIZE 的余数
 	)
 
-	if len(__obf_a1ae217992a1ccec) < BlockSize {
-		__obf_02af51ab07084000 = fmt.Errorf("the length of ciphertext too short: %d", len(__obf_a1ae217992a1ccec))
+	if len(__obf_a7ede658d77da976) < BlockSize {
+		__obf_d6bcde9761346c61 = fmt.Errorf("the length of ciphertext too short: %d", len(__obf_a7ede658d77da976))
 		return
 	}
-	if len(__obf_a1ae217992a1ccec)&BlockMask != 0 {
-		__obf_02af51ab07084000 = fmt.Errorf("ciphertext is not a multiple of the block size, the length is %d", len(__obf_a1ae217992a1ccec))
+	if len(__obf_a7ede658d77da976)&BlockMask != 0 {
+		__obf_d6bcde9761346c61 = fmt.Errorf("ciphertext is not a multiple of the block size, the length is %d", len(__obf_a7ede658d77da976))
 		return
 	}
-	__obf_dd5032c155e4a98e := make([]byte, len(__obf_a1ae217992a1ccec))
-	__obf_7c87d86ff2b2ece6, // len(plaintext) >= BLOCK_SIZE
-		__obf_02af51ab07084000 := // 解密
-		aes.NewCipher(__obf_7db5d45df7d59e10)
-	if __obf_02af51ab07084000 != nil {
-		panic(__obf_02af51ab07084000)
+	__obf_d85e7a22f93decb3 := make([]byte, len(__obf_a7ede658d77da976))
+	__obf_78c51e8a1f2ea866, // len(plaintext) >= BLOCK_SIZE
+		__obf_d6bcde9761346c61 := // 解密
+		aes.NewCipher(__obf_143005d8e3eba02d)
+	if __obf_d6bcde9761346c61 != nil {
+		panic(__obf_d6bcde9761346c61)
 	}
-	__obf_1d4f4676515a51ea := cipher.NewCBCDecrypter(__obf_7c87d86ff2b2ece6, __obf_7db5d45df7d59e10[:16])
-	__obf_1d4f4676515a51ea.
-		CryptBlocks(__obf_dd5032c155e4a98e, __obf_a1ae217992a1ccec)
-	__obf_2eb343c77f621d55 := // PKCS#7 去除补位
-		int(__obf_dd5032c155e4a98e[len(__obf_dd5032c155e4a98e)-1])
-	if __obf_2eb343c77f621d55 < 1 || __obf_2eb343c77f621d55 > BlockSize {
-		__obf_02af51ab07084000 = fmt.Errorf("the amount to pad is incorrect: %d", __obf_2eb343c77f621d55)
+	__obf_60e008e2cef713de := cipher.NewCBCDecrypter(__obf_78c51e8a1f2ea866, __obf_143005d8e3eba02d[:16])
+	__obf_60e008e2cef713de.
+		CryptBlocks(__obf_d85e7a22f93decb3, __obf_a7ede658d77da976)
+	__obf_51bc49e015ec3843 := // PKCS#7 去除补位
+		int(__obf_d85e7a22f93decb3[len(__obf_d85e7a22f93decb3)-1])
+	if __obf_51bc49e015ec3843 < 1 || __obf_51bc49e015ec3843 > BlockSize {
+		__obf_d6bcde9761346c61 = fmt.Errorf("the amount to pad is incorrect: %d", __obf_51bc49e015ec3843)
 		return
 	}
-	__obf_dd5032c155e4a98e = __obf_dd5032c155e4a98e[:len(__obf_dd5032c155e4a98e)-__obf_2eb343c77f621d55]
+	__obf_d85e7a22f93decb3 = __obf_d85e7a22f93decb3[:len(__obf_d85e7a22f93decb3)-__obf_51bc49e015ec3843]
 
 	// 反拼接
 	// len(plaintext) == 16+4+len(rawXMLMsg)+len(appId)
-	if len(__obf_dd5032c155e4a98e) <= 20 {
-		__obf_02af51ab07084000 = fmt.Errorf("plaintext too short, the length is %d", len(__obf_dd5032c155e4a98e))
+	if len(__obf_d85e7a22f93decb3) <= 20 {
+		__obf_d6bcde9761346c61 = fmt.Errorf("plaintext too short, the length is %d", len(__obf_d85e7a22f93decb3))
 		return
 	}
-	__obf_27f666aff77b13a9 := int(__obf_79396da1185205f7(__obf_dd5032c155e4a98e[16:20]))
-	if __obf_27f666aff77b13a9 < 0 {
-		__obf_02af51ab07084000 = fmt.Errorf("incorrect msg length: %d", __obf_27f666aff77b13a9)
+	__obf_dfe342826161d3b1 := int(__obf_92ca0f252284dc7b(__obf_d85e7a22f93decb3[16:20]))
+	if __obf_dfe342826161d3b1 < 0 {
+		__obf_d6bcde9761346c61 = fmt.Errorf("incorrect msg length: %d", __obf_dfe342826161d3b1)
 		return
 	}
-	__obf_ce623e6926cb682c := 20 + __obf_27f666aff77b13a9
-	if len(__obf_dd5032c155e4a98e) <= __obf_ce623e6926cb682c {
-		__obf_02af51ab07084000 = fmt.Errorf("msg length too large: %d", __obf_27f666aff77b13a9)
+	__obf_1aa946ad14b68289 := 20 + __obf_dfe342826161d3b1
+	if len(__obf_d85e7a22f93decb3) <= __obf_1aa946ad14b68289 {
+		__obf_d6bcde9761346c61 = fmt.Errorf("msg length too large: %d", __obf_dfe342826161d3b1)
 		return
 	}
-	__obf_7d4f90ac6ebea097 = __obf_dd5032c155e4a98e[:16:20]
-	__obf_37068d23d996d5dd = __obf_dd5032c155e4a98e[20:__obf_ce623e6926cb682c:__obf_ce623e6926cb682c]
-	__obf_d7d23d6d36d0093b = __obf_dd5032c155e4a98e[__obf_ce623e6926cb682c:]
+	__obf_1ae149d5839818f1 = __obf_d85e7a22f93decb3[:16:20]
+	__obf_7c6444a58ba68f42 = __obf_d85e7a22f93decb3[20:__obf_1aa946ad14b68289:__obf_1aa946ad14b68289]
+	__obf_5e1666c18a4df0aa = __obf_d85e7a22f93decb3[__obf_1aa946ad14b68289:]
 	return
 }
 
 // 把整数 n 格式化成 4 字节的网络字节序
-func __obf_6a3807747bdb5477(__obf_9ef7c9385ad4f6b5 []byte, __obf_c539d66e88884c35 uint32) {
-	__obf_9ef7c9385ad4f6b5[0] = byte(__obf_c539d66e88884c35 >> 24)
-	__obf_9ef7c9385ad4f6b5[1] = byte(__obf_c539d66e88884c35 >> 16)
-	__obf_9ef7c9385ad4f6b5[2] = byte(__obf_c539d66e88884c35 >> 8)
-	__obf_9ef7c9385ad4f6b5[3] = byte(__obf_c539d66e88884c35)
+func __obf_273989ebd12999e1(__obf_5ccfbf1a565023f7 []byte, __obf_07ea9c75768fe319 uint32) {
+	__obf_5ccfbf1a565023f7[0] = byte(__obf_07ea9c75768fe319 >> 24)
+	__obf_5ccfbf1a565023f7[1] = byte(__obf_07ea9c75768fe319 >> 16)
+	__obf_5ccfbf1a565023f7[2] = byte(__obf_07ea9c75768fe319 >> 8)
+	__obf_5ccfbf1a565023f7[3] = byte(__obf_07ea9c75768fe319)
 }
 
 // 从 4 字节的网络字节序里解析出整数
-func __obf_79396da1185205f7(__obf_9ef7c9385ad4f6b5 []byte) (__obf_c539d66e88884c35 uint32) {
-	return uint32(__obf_9ef7c9385ad4f6b5[0])<<24 |
-		uint32(__obf_9ef7c9385ad4f6b5[1])<<16 |
-		uint32(__obf_9ef7c9385ad4f6b5[2])<<8 |
-		uint32(__obf_9ef7c9385ad4f6b5[3])
+func __obf_92ca0f252284dc7b(__obf_5ccfbf1a565023f7 []byte) (__obf_07ea9c75768fe319 uint32) {
+	return uint32(__obf_5ccfbf1a565023f7[0])<<24 |
+		uint32(__obf_5ccfbf1a565023f7[1])<<16 |
+		uint32(__obf_5ccfbf1a565023f7[2])<<8 |
+		uint32(__obf_5ccfbf1a565023f7[3])
 }

@@ -1,4 +1,4 @@
-package __obf_db8bd7ea4a5f8615
+package __obf_3219206a409d9df7
 
 type Payload struct {
 	Lang    string          `json:"lang"`

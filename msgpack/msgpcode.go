@@ -1,4 +1,4 @@
-package __obf_fd770cb9675903b0
+package __obf_3e0c303610a19bd4
 
 var (
 	PosFixedNumHigh byte = 0x7f
@@ -55,34 +55,34 @@ var (
 	Ext32    byte = 0xc9
 )
 
-func IsFixedNum(__obf_4148125b350dfea2 byte) bool {
-	return __obf_4148125b350dfea2 <= PosFixedNumHigh || __obf_4148125b350dfea2 >= NegFixedNumLow
+func IsFixedNum(__obf_e46289218af709bf byte) bool {
+	return __obf_e46289218af709bf <= PosFixedNumHigh || __obf_e46289218af709bf >= NegFixedNumLow
 }
 
-func IsFixedMap(__obf_4148125b350dfea2 byte) bool {
-	return __obf_4148125b350dfea2 >= FixedMapLow && __obf_4148125b350dfea2 <= FixedMapHigh
+func IsFixedMap(__obf_e46289218af709bf byte) bool {
+	return __obf_e46289218af709bf >= FixedMapLow && __obf_e46289218af709bf <= FixedMapHigh
 }
 
-func IsFixedArray(__obf_4148125b350dfea2 byte) bool {
-	return __obf_4148125b350dfea2 >= FixedArrayLow && __obf_4148125b350dfea2 <= FixedArrayHigh
+func IsFixedArray(__obf_e46289218af709bf byte) bool {
+	return __obf_e46289218af709bf >= FixedArrayLow && __obf_e46289218af709bf <= FixedArrayHigh
 }
 
-func IsFixedString(__obf_4148125b350dfea2 byte) bool {
-	return __obf_4148125b350dfea2 >= FixedStrLow && __obf_4148125b350dfea2 <= FixedStrHigh
+func IsFixedString(__obf_e46289218af709bf byte) bool {
+	return __obf_e46289218af709bf >= FixedStrLow && __obf_e46289218af709bf <= FixedStrHigh
 }
 
-func IsString(__obf_4148125b350dfea2 byte) bool {
-	return IsFixedString(__obf_4148125b350dfea2) || __obf_4148125b350dfea2 == Str8 || __obf_4148125b350dfea2 == Str16 || __obf_4148125b350dfea2 == Str32
+func IsString(__obf_e46289218af709bf byte) bool {
+	return IsFixedString(__obf_e46289218af709bf) || __obf_e46289218af709bf == Str8 || __obf_e46289218af709bf == Str16 || __obf_e46289218af709bf == Str32
 }
 
-func IsBin(__obf_4148125b350dfea2 byte) bool {
-	return __obf_4148125b350dfea2 == Bin8 || __obf_4148125b350dfea2 == Bin16 || __obf_4148125b350dfea2 == Bin32
+func IsBin(__obf_e46289218af709bf byte) bool {
+	return __obf_e46289218af709bf == Bin8 || __obf_e46289218af709bf == Bin16 || __obf_e46289218af709bf == Bin32
 }
 
-func IsFixedExt(__obf_4148125b350dfea2 byte) bool {
-	return __obf_4148125b350dfea2 >= FixExt1 && __obf_4148125b350dfea2 <= FixExt16
+func IsFixedExt(__obf_e46289218af709bf byte) bool {
+	return __obf_e46289218af709bf >= FixExt1 && __obf_e46289218af709bf <= FixExt16
 }
 
-func IsExt(__obf_4148125b350dfea2 byte) bool {
-	return IsFixedExt(__obf_4148125b350dfea2) || __obf_4148125b350dfea2 == Ext8 || __obf_4148125b350dfea2 == Ext16 || __obf_4148125b350dfea2 == Ext32
+func IsExt(__obf_e46289218af709bf byte) bool {
+	return IsFixedExt(__obf_e46289218af709bf) || __obf_e46289218af709bf == Ext8 || __obf_e46289218af709bf == Ext16 || __obf_e46289218af709bf == Ext32
 }

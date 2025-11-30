@@ -1,4 +1,4 @@
-package __obf_ce68e709ffad86c7
+package __obf_097dcda73a8f146b
 
 import (
 	cpp "github.com/ArtisanHiram/go-pkg/runner/lang/cpp"
@@ -10,9 +10,9 @@ import (
 	typescript "github.com/ArtisanHiram/go-pkg/runner/lang/typescript"
 )
 
-type __obf_19952cd758271b88 func(string, string, []string) (string, string, error)
+type __obf_1a3145c84fb7aedb func(string, string, []string) (string, string, error)
 
-var __obf_32414073ae402561 = map[string]__obf_19952cd758271b88{
+var __obf_18052c42b1f72015 = map[string]__obf_1a3145c84fb7aedb{
 	"cpp":        cpp.Run,
 	"go":         golang.Run,
 	"groovy":     groovy.Run,
@@ -22,11 +22,11 @@ var __obf_32414073ae402561 = map[string]__obf_19952cd758271b88{
 	"typescript": typescript.Run,
 }
 
-func IsSupported(__obf_ce68e709ffad86c7 string) bool {
-	_, __obf_ea722bf866afcda2 := __obf_32414073ae402561[__obf_ce68e709ffad86c7]
-	return __obf_ea722bf866afcda2
+func IsSupported(__obf_097dcda73a8f146b string) bool {
+	_, __obf_f9e99382294ee51c := __obf_18052c42b1f72015[__obf_097dcda73a8f146b]
+	return __obf_f9e99382294ee51c
 }
 
-func Run(__obf_ce68e709ffad86c7 string, __obf_aaf970f7207b7551, __obf_9f4c2587953dd0b9 string, __obf_f4c6263732ced88a []string) (string, string, error) {
-	return __obf_32414073ae402561[__obf_ce68e709ffad86c7](__obf_aaf970f7207b7551, __obf_9f4c2587953dd0b9, __obf_f4c6263732ced88a)
+func Run(__obf_097dcda73a8f146b string, __obf_f1555f62b28d62a5, __obf_773cbd1e367c3b6d string, __obf_432a95a38ed6a5b1 []string) (string, string, error) {
+	return __obf_18052c42b1f72015[__obf_097dcda73a8f146b](__obf_f1555f62b28d62a5, __obf_773cbd1e367c3b6d, __obf_432a95a38ed6a5b1)
 }

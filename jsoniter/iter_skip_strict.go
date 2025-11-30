@@ -1,61 +1,61 @@
 //go:build !jsoniter_sloppy
 // +build !jsoniter_sloppy
 
-package __obf_c3cd04a15c56f32f
+package __obf_030d39f7a8de96c6
 
 import (
 	"fmt"
 	"io"
 )
 
-func (__obf_edd9fe48d39445e4 *Iterator) __obf_fdeaf1c2cbe3aa15() {
-	if !__obf_edd9fe48d39445e4.__obf_a949c49878771368() {
-		__obf_edd9fe48d39445e4.__obf_a0622aded2d86ded()
-		if __obf_edd9fe48d39445e4.Error != nil && __obf_edd9fe48d39445e4.Error != io.EOF {
+func (__obf_4ab56a99965952e7 *Iterator) __obf_38c33066e8f2b292() {
+	if !__obf_4ab56a99965952e7.__obf_4deca1324d600f9e() {
+		__obf_4ab56a99965952e7.__obf_ba6d0be9a7ab6ae4()
+		if __obf_4ab56a99965952e7.Error != nil && __obf_4ab56a99965952e7.Error != io.EOF {
 			return
 		}
-		__obf_edd9fe48d39445e4.
+		__obf_4ab56a99965952e7.
 			ReadFloat64()
-		if __obf_edd9fe48d39445e4.Error != nil && __obf_edd9fe48d39445e4.Error != io.EOF {
-			__obf_edd9fe48d39445e4.
+		if __obf_4ab56a99965952e7.Error != nil && __obf_4ab56a99965952e7.Error != io.EOF {
+			__obf_4ab56a99965952e7.
 				Error = nil
-			__obf_edd9fe48d39445e4.
+			__obf_4ab56a99965952e7.
 				ReadBigFloat()
 		}
 	}
 }
 
-func (__obf_edd9fe48d39445e4 *Iterator) __obf_a949c49878771368() bool {
-	__obf_1d30c55eef676224 := false
-	for __obf_28d099df85f083a8 := __obf_edd9fe48d39445e4.__obf_edd3c3885447229b; __obf_28d099df85f083a8 < __obf_edd9fe48d39445e4.__obf_3a475d1c1ae2cd57; __obf_28d099df85f083a8++ {
-		__obf_0c1bc1e511a43120 := __obf_edd9fe48d39445e4.__obf_ace979f6622823f3[__obf_28d099df85f083a8]
-		switch __obf_0c1bc1e511a43120 {
+func (__obf_4ab56a99965952e7 *Iterator) __obf_4deca1324d600f9e() bool {
+	__obf_eb25c0abd054cef0 := false
+	for __obf_82c6e05b9d226c58 := __obf_4ab56a99965952e7.__obf_5e22d6270d27491f; __obf_82c6e05b9d226c58 < __obf_4ab56a99965952e7.__obf_7c17042d9b4e73cc; __obf_82c6e05b9d226c58++ {
+		__obf_24309b3b0ff9ba22 := __obf_4ab56a99965952e7.__obf_0b1656d7ef4bd9df[__obf_82c6e05b9d226c58]
+		switch __obf_24309b3b0ff9ba22 {
 		case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9':
 		case '.':
-			if __obf_1d30c55eef676224 {
-				__obf_edd9fe48d39445e4.
+			if __obf_eb25c0abd054cef0 {
+				__obf_4ab56a99965952e7.
 					ReportError("validateNumber", `more than one dot found in number`)
 				return true // already failed
 			}
-			if __obf_28d099df85f083a8+1 == __obf_edd9fe48d39445e4.__obf_3a475d1c1ae2cd57 {
+			if __obf_82c6e05b9d226c58+1 == __obf_4ab56a99965952e7.__obf_7c17042d9b4e73cc {
 				return false
 			}
-			__obf_0c1bc1e511a43120 = __obf_edd9fe48d39445e4.__obf_ace979f6622823f3[__obf_28d099df85f083a8+1]
-			switch __obf_0c1bc1e511a43120 {
+			__obf_24309b3b0ff9ba22 = __obf_4ab56a99965952e7.__obf_0b1656d7ef4bd9df[__obf_82c6e05b9d226c58+1]
+			switch __obf_24309b3b0ff9ba22 {
 			case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9':
 			default:
-				__obf_edd9fe48d39445e4.
+				__obf_4ab56a99965952e7.
 					ReportError("validateNumber", `missing digit after dot`)
 				return true // already failed
 			}
-			__obf_1d30c55eef676224 = true
+			__obf_eb25c0abd054cef0 = true
 		default:
-			switch __obf_0c1bc1e511a43120 {
+			switch __obf_24309b3b0ff9ba22 {
 			case ',', ']', '}', ' ', '\t', '\n', '\r':
-				if __obf_edd9fe48d39445e4.__obf_edd3c3885447229b == __obf_28d099df85f083a8 {
+				if __obf_4ab56a99965952e7.__obf_5e22d6270d27491f == __obf_82c6e05b9d226c58 {
 					return false // if - without following digits
 				}
-				__obf_edd9fe48d39445e4.__obf_edd3c3885447229b = __obf_28d099df85f083a8
+				__obf_4ab56a99965952e7.__obf_5e22d6270d27491f = __obf_82c6e05b9d226c58
 				return true // must be valid
 			}
 			return false // may be invalid
@@ -64,47 +64,47 @@ func (__obf_edd9fe48d39445e4 *Iterator) __obf_a949c49878771368() bool {
 	return false
 }
 
-func (__obf_edd9fe48d39445e4 *Iterator) __obf_d743935ecad873a7() {
-	if !__obf_edd9fe48d39445e4.__obf_774a800868ae1136() {
-		__obf_edd9fe48d39445e4.__obf_a0622aded2d86ded()
-		__obf_edd9fe48d39445e4.
+func (__obf_4ab56a99965952e7 *Iterator) __obf_ab668369e47b63de() {
+	if !__obf_4ab56a99965952e7.__obf_4246b78598a3743b() {
+		__obf_4ab56a99965952e7.__obf_ba6d0be9a7ab6ae4()
+		__obf_4ab56a99965952e7.
 			ReadString()
 	}
 }
 
-func (__obf_edd9fe48d39445e4 *Iterator) __obf_774a800868ae1136() bool {
-	for __obf_28d099df85f083a8 := __obf_edd9fe48d39445e4.__obf_edd3c3885447229b; __obf_28d099df85f083a8 < __obf_edd9fe48d39445e4.__obf_3a475d1c1ae2cd57; __obf_28d099df85f083a8++ {
-		__obf_0c1bc1e511a43120 := __obf_edd9fe48d39445e4.__obf_ace979f6622823f3[__obf_28d099df85f083a8]
-		if __obf_0c1bc1e511a43120 == '"' {
-			__obf_edd9fe48d39445e4.__obf_edd3c3885447229b = __obf_28d099df85f083a8 + 1
+func (__obf_4ab56a99965952e7 *Iterator) __obf_4246b78598a3743b() bool {
+	for __obf_82c6e05b9d226c58 := __obf_4ab56a99965952e7.__obf_5e22d6270d27491f; __obf_82c6e05b9d226c58 < __obf_4ab56a99965952e7.__obf_7c17042d9b4e73cc; __obf_82c6e05b9d226c58++ {
+		__obf_24309b3b0ff9ba22 := __obf_4ab56a99965952e7.__obf_0b1656d7ef4bd9df[__obf_82c6e05b9d226c58]
+		if __obf_24309b3b0ff9ba22 == '"' {
+			__obf_4ab56a99965952e7.__obf_5e22d6270d27491f = __obf_82c6e05b9d226c58 + 1
 			return true // valid
-		} else if __obf_0c1bc1e511a43120 == '\\' {
+		} else if __obf_24309b3b0ff9ba22 == '\\' {
 			return false
-		} else if __obf_0c1bc1e511a43120 < ' ' {
-			__obf_edd9fe48d39445e4.
+		} else if __obf_24309b3b0ff9ba22 < ' ' {
+			__obf_4ab56a99965952e7.
 				ReportError("trySkipString",
-					fmt.Sprintf(`invalid control character found: %d`, __obf_0c1bc1e511a43120))
+					fmt.Sprintf(`invalid control character found: %d`, __obf_24309b3b0ff9ba22))
 			return true // already failed
 		}
 	}
 	return false
 }
 
-func (__obf_edd9fe48d39445e4 *Iterator) __obf_0704e073eacf05e6() {
-	__obf_edd9fe48d39445e4.__obf_a0622aded2d86ded()
-	__obf_edd9fe48d39445e4.
-		ReadObjectCB(func(__obf_edd9fe48d39445e4 *Iterator, __obf_f992c91036745ca0 string) bool {
-			__obf_edd9fe48d39445e4.
+func (__obf_4ab56a99965952e7 *Iterator) __obf_56cafb6b2d847244() {
+	__obf_4ab56a99965952e7.__obf_ba6d0be9a7ab6ae4()
+	__obf_4ab56a99965952e7.
+		ReadObjectCB(func(__obf_4ab56a99965952e7 *Iterator, __obf_cd4d02f264b18d55 string) bool {
+			__obf_4ab56a99965952e7.
 				Skip()
 			return true
 		})
 }
 
-func (__obf_edd9fe48d39445e4 *Iterator) __obf_5566b22788a0a705() {
-	__obf_edd9fe48d39445e4.__obf_a0622aded2d86ded()
-	__obf_edd9fe48d39445e4.
-		ReadArrayCB(func(__obf_edd9fe48d39445e4 *Iterator) bool {
-			__obf_edd9fe48d39445e4.
+func (__obf_4ab56a99965952e7 *Iterator) __obf_e8e6ee2ef6c27f13() {
+	__obf_4ab56a99965952e7.__obf_ba6d0be9a7ab6ae4()
+	__obf_4ab56a99965952e7.
+		ReadArrayCB(func(__obf_4ab56a99965952e7 *Iterator) bool {
+			__obf_4ab56a99965952e7.
 				Skip()
 			return true
 		})

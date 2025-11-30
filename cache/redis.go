@@ -1,4 +1,4 @@
-package __obf_3b8640e918b7e3ff
+package __obf_9e1ee87c6b054458
 
 import (
 	"context"
@@ -10,10 +10,10 @@ import (
 	"github.com/redis/go-redis/v9"
 )
 
-var __obf_5646268b50e6cca3 = context.Background()
+var __obf_587fbfd39d5c3d3d = context.Background()
 
 type Redis struct {
-	__obf_ba155ff6eaecf5d8 *redis.Client
+	__obf_8d6b225703446deb *redis.Client
 }
 
 type RdOption struct {
@@ -24,13 +24,13 @@ type RdOption struct {
 	IdleTimeout int    `yaml:"idle-timeout"`
 }
 
-func NewRedis(__obf_379860bacbefcca8 RdOption) *Redis {
-	return &Redis{__obf_ba155ff6eaecf5d8: redis.NewClient(&redis.Options{
-		Addr:            __obf_379860bacbefcca8.Host,
-		Password:        __obf_379860bacbefcca8.Password,
-		DB:              __obf_379860bacbefcca8.DB,
-		MaxIdleConns:    __obf_379860bacbefcca8.MaxIdle,
-		ConnMaxIdleTime: time.Duration(__obf_379860bacbefcca8.IdleTimeout) * time.Minute,
+func NewRedis(__obf_b1eb39bec362723a RdOption) *Redis {
+	return &Redis{__obf_8d6b225703446deb: redis.NewClient(&redis.Options{
+		Addr:            __obf_b1eb39bec362723a.Host,
+		Password:        __obf_b1eb39bec362723a.Password,
+		DB:              __obf_b1eb39bec362723a.DB,
+		MaxIdleConns:    __obf_b1eb39bec362723a.MaxIdle,
+		ConnMaxIdleTime: time.Duration(__obf_b1eb39bec362723a.IdleTimeout) * time.Minute,
 	})}
 }
 
@@ -38,76 +38,76 @@ func NewRedis(__obf_379860bacbefcca8 RdOption) *Redis {
 // 	return r.cli.Keys(ctx, key).Result()
 // }
 
-func (__obf_f3a80f3795c3e8d5 *Redis) Delete(__obf_4298344c079705aa string) {
-	__obf_f3126ec576b86993, __obf_8c6b39ef87b4061f := __obf_f3a80f3795c3e8d5.__obf_ba155ff6eaecf5d8.Keys(__obf_5646268b50e6cca3, __obf_4298344c079705aa).Result()
-	if __obf_8c6b39ef87b4061f != nil {
-		for _, __obf_ebdd4526b9b834d1 := range __obf_f3126ec576b86993 {
-			__obf_f3a80f3795c3e8d5.
-				Remove(__obf_ebdd4526b9b834d1)
+func (__obf_171f9f68d8286408 *Redis) Delete(__obf_14a292fb641d1b3d string) {
+	__obf_361ee2f90c430d53, __obf_498673050542660c := __obf_171f9f68d8286408.__obf_8d6b225703446deb.Keys(__obf_587fbfd39d5c3d3d, __obf_14a292fb641d1b3d).Result()
+	if __obf_498673050542660c != nil {
+		for _, __obf_ffc285490d834437 := range __obf_361ee2f90c430d53 {
+			__obf_171f9f68d8286408.
+				Remove(__obf_ffc285490d834437)
 		}
 	}
 }
 
-func (__obf_f3a80f3795c3e8d5 *Redis) Add(__obf_3405c14f70aaa4d0 string, __obf_13458218654a7f13 any) error {
-	return __obf_f3a80f3795c3e8d5.Set(__obf_3405c14f70aaa4d0, __obf_13458218654a7f13, 0)
+func (__obf_171f9f68d8286408 *Redis) Add(__obf_3c13197612c6b39f string, __obf_7d0a67e130b6e9b4 any) error {
+	return __obf_171f9f68d8286408.Set(__obf_3c13197612c6b39f, __obf_7d0a67e130b6e9b4, 0)
 }
 
-func (__obf_f3a80f3795c3e8d5 *Redis) Set(__obf_3405c14f70aaa4d0 string, __obf_13458218654a7f13 any, __obf_433bae995cf2f1ae time.Duration) error {
-	if __obf_fe4eccc509e2ba8c, __obf_cddbfb0aefdf4145 := __obf_13458218654a7f13.([]byte); __obf_cddbfb0aefdf4145 {
-		return __obf_f3a80f3795c3e8d5.__obf_ba155ff6eaecf5d8.Set(__obf_5646268b50e6cca3, __obf_3405c14f70aaa4d0, __obf_fe4eccc509e2ba8c, __obf_433bae995cf2f1ae).Err()
+func (__obf_171f9f68d8286408 *Redis) Set(__obf_3c13197612c6b39f string, __obf_7d0a67e130b6e9b4 any, __obf_5a47a67359bdcb92 time.Duration) error {
+	if __obf_aa24543fddec7b80, __obf_40eed10588aa6cec := __obf_7d0a67e130b6e9b4.([]byte); __obf_40eed10588aa6cec {
+		return __obf_171f9f68d8286408.__obf_8d6b225703446deb.Set(__obf_587fbfd39d5c3d3d, __obf_3c13197612c6b39f, __obf_aa24543fddec7b80, __obf_5a47a67359bdcb92).Err()
 	} else {
-		__obf_12b0b98285fac904, __obf_8c6b39ef87b4061f := util.AnyToBytes(__obf_13458218654a7f13)
-		if __obf_8c6b39ef87b4061f != nil {
-			return fmt.Errorf("serialize error: %s", __obf_8c6b39ef87b4061f)
+		__obf_c08337b0eb1cc1cf, __obf_498673050542660c := util.AnyToBytes(__obf_7d0a67e130b6e9b4)
+		if __obf_498673050542660c != nil {
+			return fmt.Errorf("serialize error: %s", __obf_498673050542660c)
 		}
-		return __obf_f3a80f3795c3e8d5.__obf_ba155ff6eaecf5d8.Set(__obf_5646268b50e6cca3, __obf_3405c14f70aaa4d0, __obf_12b0b98285fac904, __obf_433bae995cf2f1ae).Err()
+		return __obf_171f9f68d8286408.__obf_8d6b225703446deb.Set(__obf_587fbfd39d5c3d3d, __obf_3c13197612c6b39f, __obf_c08337b0eb1cc1cf, __obf_5a47a67359bdcb92).Err()
 	}
 }
 
-func (__obf_f3a80f3795c3e8d5 *Redis) Get(__obf_3405c14f70aaa4d0 string) ([]byte, error) {
-	return __obf_f3a80f3795c3e8d5.__obf_ba155ff6eaecf5d8.Get(__obf_5646268b50e6cca3, __obf_3405c14f70aaa4d0).Bytes()
+func (__obf_171f9f68d8286408 *Redis) Get(__obf_3c13197612c6b39f string) ([]byte, error) {
+	return __obf_171f9f68d8286408.__obf_8d6b225703446deb.Get(__obf_587fbfd39d5c3d3d, __obf_3c13197612c6b39f).Bytes()
 }
 
-func (__obf_f3a80f3795c3e8d5 *Redis) Remove(__obf_3405c14f70aaa4d0 string) error {
-	return __obf_f3a80f3795c3e8d5.__obf_ba155ff6eaecf5d8.Del(__obf_5646268b50e6cca3,
+func (__obf_171f9f68d8286408 *Redis) Remove(__obf_3c13197612c6b39f string) error {
+	return __obf_171f9f68d8286408.__obf_8d6b225703446deb.Del(__obf_587fbfd39d5c3d3d,
 
 		// ClearAll clears all cache in memcache.
-		__obf_3405c14f70aaa4d0).Err()
+		__obf_3c13197612c6b39f).Err()
 }
 
-func (__obf_f3a80f3795c3e8d5 *Redis) Clear() error {
-	__obf_2148c66210a82787 := __obf_f3a80f3795c3e8d5.__obf_ba155ff6eaecf5d8.FlushAll(__obf_5646268b50e6cca3)
-	return __obf_2148c66210a82787.Err()
+func (__obf_171f9f68d8286408 *Redis) Clear() error {
+	__obf_9b87ab3d195e3899 := __obf_171f9f68d8286408.__obf_8d6b225703446deb.FlushAll(__obf_587fbfd39d5c3d3d)
+	return __obf_9b87ab3d195e3899.Err()
 }
 
-func (__obf_f3a80f3795c3e8d5 *Redis) Has(__obf_3405c14f70aaa4d0 string) bool {
-	return __obf_f3a80f3795c3e8d5.__obf_ba155ff6eaecf5d8.Exists(__obf_5646268b50e6cca3, __obf_3405c14f70aaa4d0).Val() == 1
+func (__obf_171f9f68d8286408 *Redis) Has(__obf_3c13197612c6b39f string) bool {
+	return __obf_171f9f68d8286408.__obf_8d6b225703446deb.Exists(__obf_587fbfd39d5c3d3d, __obf_3c13197612c6b39f).Val() == 1
 }
 
-func (__obf_f3a80f3795c3e8d5 *Redis) Renew(__obf_3405c14f70aaa4d0 string, __obf_433bae995cf2f1ae time.Duration) error {
-	__obf_13458218654a7f13, __obf_8c6b39ef87b4061f := __obf_f3a80f3795c3e8d5.Get(__obf_3405c14f70aaa4d0)
-	if __obf_8c6b39ef87b4061f != nil {
-		return fmt.Errorf("'%s' not exists: %s", __obf_3405c14f70aaa4d0, __obf_8c6b39ef87b4061f)
+func (__obf_171f9f68d8286408 *Redis) Renew(__obf_3c13197612c6b39f string, __obf_5a47a67359bdcb92 time.Duration) error {
+	__obf_7d0a67e130b6e9b4, __obf_498673050542660c := __obf_171f9f68d8286408.Get(__obf_3c13197612c6b39f)
+	if __obf_498673050542660c != nil {
+		return fmt.Errorf("'%s' not exists: %s", __obf_3c13197612c6b39f, __obf_498673050542660c)
 	}
-	return __obf_f3a80f3795c3e8d5.Set(__obf_3405c14f70aaa4d0, __obf_13458218654a7f13, __obf_433bae995cf2f1ae)
+	return __obf_171f9f68d8286408.Set(__obf_3c13197612c6b39f, __obf_7d0a67e130b6e9b4, __obf_5a47a67359bdcb92)
 }
 
-func (__obf_f3a80f3795c3e8d5 *Redis) HSet(__obf_5646268b50e6cca3 context.Context, __obf_3405c14f70aaa4d0 string, __obf_48493cfe7e66a294 ...any) error {
-	return __obf_f3a80f3795c3e8d5.__obf_ba155ff6eaecf5d8.HSet(__obf_5646268b50e6cca3, __obf_3405c14f70aaa4d0, __obf_48493cfe7e66a294...).Err()
+func (__obf_171f9f68d8286408 *Redis) HSet(__obf_587fbfd39d5c3d3d context.Context, __obf_3c13197612c6b39f string, __obf_2238e5c9d845bc31 ...any) error {
+	return __obf_171f9f68d8286408.__obf_8d6b225703446deb.HSet(__obf_587fbfd39d5c3d3d, __obf_3c13197612c6b39f, __obf_2238e5c9d845bc31...).Err()
 }
 
-func (__obf_f3a80f3795c3e8d5 *Redis) HGet(__obf_5646268b50e6cca3 context.Context, __obf_3405c14f70aaa4d0, __obf_931e6622ad04c5ff string) error {
-	return __obf_f3a80f3795c3e8d5.__obf_ba155ff6eaecf5d8.HGet(__obf_5646268b50e6cca3, __obf_3405c14f70aaa4d0, __obf_931e6622ad04c5ff).Err()
+func (__obf_171f9f68d8286408 *Redis) HGet(__obf_587fbfd39d5c3d3d context.Context, __obf_3c13197612c6b39f, __obf_8e77b02a8c9cdaf2 string) error {
+	return __obf_171f9f68d8286408.__obf_8d6b225703446deb.HGet(__obf_587fbfd39d5c3d3d, __obf_3c13197612c6b39f, __obf_8e77b02a8c9cdaf2).Err()
 }
 
-func (__obf_f3a80f3795c3e8d5 *Redis) HGetAll(__obf_5646268b50e6cca3 context.Context, __obf_3405c14f70aaa4d0 string) (map[string]string, error) {
-	return __obf_f3a80f3795c3e8d5.__obf_ba155ff6eaecf5d8.HGetAll(__obf_5646268b50e6cca3, __obf_3405c14f70aaa4d0).Result()
+func (__obf_171f9f68d8286408 *Redis) HGetAll(__obf_587fbfd39d5c3d3d context.Context, __obf_3c13197612c6b39f string) (map[string]string, error) {
+	return __obf_171f9f68d8286408.__obf_8d6b225703446deb.HGetAll(__obf_587fbfd39d5c3d3d, __obf_3c13197612c6b39f).Result()
 }
 
-func (__obf_f3a80f3795c3e8d5 *Redis) TxPipeline() redis.Pipeliner {
-	return __obf_f3a80f3795c3e8d5.__obf_ba155ff6eaecf5d8.TxPipeline()
+func (__obf_171f9f68d8286408 *Redis) TxPipeline() redis.Pipeliner {
+	return __obf_171f9f68d8286408.__obf_8d6b225703446deb.TxPipeline()
 }
 
-func (__obf_f3a80f3795c3e8d5 *Redis) HDel(__obf_5646268b50e6cca3 context.Context, __obf_3405c14f70aaa4d0, __obf_e733d110f0d170ba string) error {
-	return __obf_f3a80f3795c3e8d5.__obf_ba155ff6eaecf5d8.HDel(__obf_5646268b50e6cca3, __obf_3405c14f70aaa4d0, __obf_e733d110f0d170ba).Err()
+func (__obf_171f9f68d8286408 *Redis) HDel(__obf_587fbfd39d5c3d3d context.Context, __obf_3c13197612c6b39f, __obf_d23c4c277bd011fe string) error {
+	return __obf_171f9f68d8286408.__obf_8d6b225703446deb.HDel(__obf_587fbfd39d5c3d3d, __obf_3c13197612c6b39f, __obf_d23c4c277bd011fe).Err()
 }

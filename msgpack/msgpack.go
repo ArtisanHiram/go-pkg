@@ -1,4 +1,4 @@
-package __obf_fd770cb9675903b0
+package __obf_3e0c303610a19bd4
 
 import "fmt"
 
@@ -27,26 +27,26 @@ var (
 	_ CustomDecoder = (*RawMessage)(nil)
 )
 
-func (__obf_777489ec8e6b2044 RawMessage) EncodeMsgpack(__obf_a7b5a0ca650f48ee *Encoder) error {
-	return __obf_a7b5a0ca650f48ee.__obf_af6d14a7babbd464(__obf_777489ec8e6b2044)
+func (__obf_b416b6a4555be5c8 RawMessage) EncodeMsgpack(__obf_9721a7bc6b8fa008 *Encoder) error {
+	return __obf_9721a7bc6b8fa008.__obf_4432f415b3007804(__obf_b416b6a4555be5c8)
 }
 
-func (__obf_777489ec8e6b2044 *RawMessage) DecodeMsgpack(__obf_2f8f01810a02d049 *Decoder) error {
-	__obf_21691f6d5038a3f0, __obf_45342a3a754d12f5 := __obf_2f8f01810a02d049.DecodeRaw()
-	if __obf_45342a3a754d12f5 != nil {
-		return __obf_45342a3a754d12f5
+func (__obf_b416b6a4555be5c8 *RawMessage) DecodeMsgpack(__obf_0ed630deb24db696 *Decoder) error {
+	__obf_ea75b6610bb8e3c5, __obf_8882f6cf6e378ded := __obf_0ed630deb24db696.DecodeRaw()
+	if __obf_8882f6cf6e378ded != nil {
+		return __obf_8882f6cf6e378ded
 	}
-	*__obf_777489ec8e6b2044 = __obf_21691f6d5038a3f0
+	*__obf_b416b6a4555be5c8 = __obf_ea75b6610bb8e3c5
 	return nil
 }
 
 //------------------------------------------------------------------------------
 
-type __obf_b1f4502463d63ed9 struct {
-	__obf_d6c122c727b9e88f string
-	__obf_cde82889ba8e4822 byte
+type __obf_dc8806ddbc8f0bfa struct {
+	__obf_41a3520de571ca37 string
+	__obf_545372fefbb733e5 byte
 }
 
-func (__obf_45342a3a754d12f5 __obf_b1f4502463d63ed9,) Error() string {
-	return fmt.Sprintf("msgpack: unexpected code=%x decoding %s", __obf_45342a3a754d12f5.__obf_cde82889ba8e4822, __obf_45342a3a754d12f5.__obf_d6c122c727b9e88f)
+func (__obf_8882f6cf6e378ded __obf_dc8806ddbc8f0bfa,) Error() string {
+	return fmt.Sprintf("msgpack: unexpected code=%x decoding %s", __obf_8882f6cf6e378ded.__obf_545372fefbb733e5, __obf_8882f6cf6e378ded.__obf_41a3520de571ca37)
 }

@@ -1,4 +1,4 @@
-package __obf_8fd9db4a493b531f
+package __obf_7e36788fbb5a0b79
 
 import (
 	msgpack "github.com/ArtisanHiram/go-pkg/msgpack"
@@ -7,58 +7,58 @@ import (
 )
 
 func init() {
-	msgpack.Register((*ds.Key)(nil), __obf_94d227b6d60dc56c, __obf_b8d62cf18ea15481)
-	msgpack.Register((*ds.Cursor)(nil), __obf_3659ca27e634fd20, __obf_14b633cd159f3698)
+	msgpack.Register((*ds.Key)(nil), __obf_129f5532ad76ad77, __obf_075569303cc24bf1)
+	msgpack.Register((*ds.Cursor)(nil), __obf_148512d35a5d3dd6, __obf_947db997759bade7)
 }
 
-func EncodeDatastoreKey(__obf_713fbf9577717da8 *msgpack.Encoder, __obf_994cdbcd2230267d *ds.Key) error {
-	if __obf_994cdbcd2230267d == nil {
-		return __obf_713fbf9577717da8.EncodeNil()
+func EncodeDatastoreKey(__obf_95675f385e1b5ed2 *msgpack.Encoder, __obf_f1b95a7f649e8810 *ds.Key) error {
+	if __obf_f1b95a7f649e8810 == nil {
+		return __obf_95675f385e1b5ed2.EncodeNil()
 	}
-	return __obf_713fbf9577717da8.EncodeString(__obf_994cdbcd2230267d.Encode())
+	return __obf_95675f385e1b5ed2.EncodeString(__obf_f1b95a7f649e8810.Encode())
 }
 
-func __obf_94d227b6d60dc56c(__obf_713fbf9577717da8 *msgpack.Encoder, __obf_b15f1066f0f4f665 reflect.Value) error {
-	__obf_994cdbcd2230267d := __obf_b15f1066f0f4f665.Interface().(*ds.Key)
-	return EncodeDatastoreKey(__obf_713fbf9577717da8, __obf_994cdbcd2230267d)
+func __obf_129f5532ad76ad77(__obf_95675f385e1b5ed2 *msgpack.Encoder, __obf_7a99ed6469499f7b reflect.Value) error {
+	__obf_f1b95a7f649e8810 := __obf_7a99ed6469499f7b.Interface().(*ds.Key)
+	return EncodeDatastoreKey(__obf_95675f385e1b5ed2, __obf_f1b95a7f649e8810)
 }
 
-func DecodeDatastoreKey(__obf_04c5b7ecde089247 *msgpack.Decoder) (*ds.Key, error) {
-	__obf_b15f1066f0f4f665, __obf_dda9f7294d0c88e9 := __obf_04c5b7ecde089247.DecodeString()
-	if __obf_dda9f7294d0c88e9 != nil {
-		return nil, __obf_dda9f7294d0c88e9
+func DecodeDatastoreKey(__obf_f1968e9edc9b5015 *msgpack.Decoder) (*ds.Key, error) {
+	__obf_7a99ed6469499f7b, __obf_4452d599739d773a := __obf_f1968e9edc9b5015.DecodeString()
+	if __obf_4452d599739d773a != nil {
+		return nil, __obf_4452d599739d773a
 	}
-	if __obf_b15f1066f0f4f665 == "" {
+	if __obf_7a99ed6469499f7b == "" {
 		return nil, nil
 	}
-	return ds.DecodeKey(__obf_b15f1066f0f4f665)
+	return ds.DecodeKey(__obf_7a99ed6469499f7b)
 }
 
-func __obf_b8d62cf18ea15481(__obf_04c5b7ecde089247 *msgpack.Decoder, __obf_b15f1066f0f4f665 reflect.Value) error {
-	__obf_994cdbcd2230267d, __obf_dda9f7294d0c88e9 := DecodeDatastoreKey(__obf_04c5b7ecde089247)
-	if __obf_dda9f7294d0c88e9 != nil {
-		return __obf_dda9f7294d0c88e9
+func __obf_075569303cc24bf1(__obf_f1968e9edc9b5015 *msgpack.Decoder, __obf_7a99ed6469499f7b reflect.Value) error {
+	__obf_f1b95a7f649e8810, __obf_4452d599739d773a := DecodeDatastoreKey(__obf_f1968e9edc9b5015)
+	if __obf_4452d599739d773a != nil {
+		return __obf_4452d599739d773a
 	}
-	__obf_b15f1066f0f4f665.
-		Set(reflect.ValueOf(__obf_994cdbcd2230267d))
+	__obf_7a99ed6469499f7b.
+		Set(reflect.ValueOf(__obf_f1b95a7f649e8810))
 	return nil
 }
 
-func __obf_3659ca27e634fd20(__obf_713fbf9577717da8 *msgpack.Encoder, __obf_b15f1066f0f4f665 reflect.Value) error {
-	__obf_ec9a1006b05d6f00 := __obf_b15f1066f0f4f665.Interface().(ds.Cursor)
-	return __obf_713fbf9577717da8.Encode(__obf_ec9a1006b05d6f00.String())
+func __obf_148512d35a5d3dd6(__obf_95675f385e1b5ed2 *msgpack.Encoder, __obf_7a99ed6469499f7b reflect.Value) error {
+	__obf_34959fafc7e4dd6a := __obf_7a99ed6469499f7b.Interface().(ds.Cursor)
+	return __obf_95675f385e1b5ed2.Encode(__obf_34959fafc7e4dd6a.String())
 }
 
-func __obf_14b633cd159f3698(__obf_04c5b7ecde089247 *msgpack.Decoder, __obf_b15f1066f0f4f665 reflect.Value) error {
-	__obf_040b711b12696910, __obf_dda9f7294d0c88e9 := __obf_04c5b7ecde089247.DecodeString()
-	if __obf_dda9f7294d0c88e9 != nil {
-		return __obf_dda9f7294d0c88e9
+func __obf_947db997759bade7(__obf_f1968e9edc9b5015 *msgpack.Decoder, __obf_7a99ed6469499f7b reflect.Value) error {
+	__obf_21ab7f8853f2d79d, __obf_4452d599739d773a := __obf_f1968e9edc9b5015.DecodeString()
+	if __obf_4452d599739d773a != nil {
+		return __obf_4452d599739d773a
 	}
-	__obf_ec9a1006b05d6f00, __obf_dda9f7294d0c88e9 := ds.DecodeCursor(__obf_040b711b12696910)
-	if __obf_dda9f7294d0c88e9 != nil {
-		return __obf_dda9f7294d0c88e9
+	__obf_34959fafc7e4dd6a, __obf_4452d599739d773a := ds.DecodeCursor(__obf_21ab7f8853f2d79d)
+	if __obf_4452d599739d773a != nil {
+		return __obf_4452d599739d773a
 	}
-	__obf_b15f1066f0f4f665.
-		Set(reflect.ValueOf(__obf_ec9a1006b05d6f00))
+	__obf_7a99ed6469499f7b.
+		Set(reflect.ValueOf(__obf_34959fafc7e4dd6a))
 	return nil
 }

@@ -1,4 +1,4 @@
-package __obf_3b8640e918b7e3ff
+package __obf_9e1ee87c6b054458
 
 import (
 	"time"
@@ -9,88 +9,88 @@ import (
 
 // Cache Memcache adapter.
 type Memcache struct {
-	__obf_59534d8923f168d9 *memcache.Client
+	__obf_add8c597f733ba00 *memcache.Client
 }
 
-func (__obf_0a017f229603a007 *Memcache) Has(__obf_3405c14f70aaa4d0 string) bool {
-	_, __obf_8c6b39ef87b4061f := __obf_0a017f229603a007.__obf_59534d8923f168d9.Get(__obf_3405c14f70aaa4d0)
-	return __obf_8c6b39ef87b4061f == nil
+func (__obf_1185c88950520004 *Memcache) Has(__obf_3c13197612c6b39f string) bool {
+	_, __obf_498673050542660c := __obf_1185c88950520004.__obf_add8c597f733ba00.Get(__obf_3c13197612c6b39f)
+	return __obf_498673050542660c == nil
 }
 
 // Delete implements Cache.
-func (__obf_0a017f229603a007 *Memcache) Delete(__obf_4298344c079705aa string) {
+func (__obf_1185c88950520004 *Memcache) Delete(__obf_14a292fb641d1b3d string) {
 	panic("unimplemented")
 }
 
 // NewMemCache creates a new memcache adapter.
-func NewMemCache(__obf_abb2cf3daed6c1dd []string) Cache {
-	return &Memcache{memcache.New(__obf_abb2cf3daed6c1dd...)}
+func NewMemCache(__obf_07adfd25a67384d0 []string) Cache {
+	return &Memcache{memcache.New(__obf_07adfd25a67384d0...)}
 }
 
 // Get get value from memcache.
-func (__obf_0a017f229603a007 *Memcache) Get(__obf_3405c14f70aaa4d0 string) (__obf_ac534eb14660defa []byte, __obf_8c6b39ef87b4061f error) {
-	if __obf_64869904d1dc9f43, __obf_8c6b39ef87b4061f := __obf_0a017f229603a007.__obf_59534d8923f168d9.Get(__obf_3405c14f70aaa4d0); __obf_8c6b39ef87b4061f == nil {
+func (__obf_1185c88950520004 *Memcache) Get(__obf_3c13197612c6b39f string) (__obf_870890d378c0cf36 []byte, __obf_498673050542660c error) {
+	if __obf_755d49269b07cedb, __obf_498673050542660c := __obf_1185c88950520004.__obf_add8c597f733ba00.Get(__obf_3c13197612c6b39f); __obf_498673050542660c == nil {
 
-		return __obf_64869904d1dc9f43.Value, nil
+		return __obf_755d49269b07cedb.Value, nil
 	} else {
-		return nil, __obf_8c6b39ef87b4061f
+		return nil, __obf_498673050542660c
 	}
 }
 
-func (__obf_0a017f229603a007 *Memcache) Set(__obf_3405c14f70aaa4d0 string, __obf_13458218654a7f13 any, __obf_433bae995cf2f1ae time.Duration) error {
-	__obf_64869904d1dc9f43 := memcache.Item{Key: __obf_3405c14f70aaa4d0, Expiration: int32(__obf_433bae995cf2f1ae / time.Second)}
-	var __obf_8c6b39ef87b4061f error
-	__obf_64869904d1dc9f43.
-		Value, __obf_8c6b39ef87b4061f = util.AnyToBytes(__obf_13458218654a7f13)
-	if __obf_8c6b39ef87b4061f != nil {
-		return __obf_8c6b39ef87b4061f
+func (__obf_1185c88950520004 *Memcache) Set(__obf_3c13197612c6b39f string, __obf_7d0a67e130b6e9b4 any, __obf_5a47a67359bdcb92 time.Duration) error {
+	__obf_755d49269b07cedb := memcache.Item{Key: __obf_3c13197612c6b39f, Expiration: int32(__obf_5a47a67359bdcb92 / time.Second)}
+	var __obf_498673050542660c error
+	__obf_755d49269b07cedb.
+		Value, __obf_498673050542660c = util.AnyToBytes(__obf_7d0a67e130b6e9b4)
+	if __obf_498673050542660c != nil {
+		return __obf_498673050542660c
 	}
-	return __obf_0a017f229603a007.__obf_59534d8923f168d9.Set(&__obf_64869904d1dc9f43)
+	return __obf_1185c88950520004.__obf_add8c597f733ba00.Set(&__obf_755d49269b07cedb)
 }
 
-func (__obf_0a017f229603a007 *Memcache) Add(__obf_3405c14f70aaa4d0 string, __obf_13458218654a7f13 any) error {
-	__obf_64869904d1dc9f43 := memcache.Item{Key: __obf_3405c14f70aaa4d0}
+func (__obf_1185c88950520004 *Memcache) Add(__obf_3c13197612c6b39f string, __obf_7d0a67e130b6e9b4 any) error {
+	__obf_755d49269b07cedb := memcache.Item{Key: __obf_3c13197612c6b39f}
 
-	var __obf_8c6b39ef87b4061f error
-	__obf_64869904d1dc9f43.
-		Value, __obf_8c6b39ef87b4061f = util.AnyToBytes(__obf_13458218654a7f13)
-	if __obf_8c6b39ef87b4061f != nil {
-		return __obf_8c6b39ef87b4061f
+	var __obf_498673050542660c error
+	__obf_755d49269b07cedb.
+		Value, __obf_498673050542660c = util.AnyToBytes(__obf_7d0a67e130b6e9b4)
+	if __obf_498673050542660c != nil {
+		return __obf_498673050542660c
 	}
 
-	return __obf_0a017f229603a007.__obf_59534d8923f168d9.Set(&__obf_64869904d1dc9f43)
+	return __obf_1185c88950520004.__obf_add8c597f733ba00.Set(&__obf_755d49269b07cedb)
 }
 
 // ClearAll clears all cache in memcache.
-func (__obf_0a017f229603a007 *Memcache) Clear() error {
-	return __obf_0a017f229603a007.__obf_59534d8923f168d9.FlushAll()
+func (__obf_1185c88950520004 *Memcache) Clear() error {
+	return __obf_1185c88950520004.__obf_add8c597f733ba00.FlushAll()
 }
 
 // Incr increases counter.
-func (__obf_0a017f229603a007 *Memcache) Incr(__obf_3405c14f70aaa4d0 string) error {
-	_, __obf_8c6b39ef87b4061f := __obf_0a017f229603a007.__obf_59534d8923f168d9.Increment(__obf_3405c14f70aaa4d0, 1)
-	return __obf_8c6b39ef87b4061f
+func (__obf_1185c88950520004 *Memcache) Incr(__obf_3c13197612c6b39f string) error {
+	_, __obf_498673050542660c := __obf_1185c88950520004.__obf_add8c597f733ba00.Increment(__obf_3c13197612c6b39f, 1)
+	return __obf_498673050542660c
 }
 
 // Decr decreases counter.
-func (__obf_0a017f229603a007 *Memcache) Decr(__obf_3405c14f70aaa4d0 string) error {
-	_, __obf_8c6b39ef87b4061f := __obf_0a017f229603a007.__obf_59534d8923f168d9.Decrement(__obf_3405c14f70aaa4d0, 1)
-	return __obf_8c6b39ef87b4061f
+func (__obf_1185c88950520004 *Memcache) Decr(__obf_3c13197612c6b39f string) error {
+	_, __obf_498673050542660c := __obf_1185c88950520004.__obf_add8c597f733ba00.Decrement(__obf_3c13197612c6b39f, 1)
+	return __obf_498673050542660c
 }
 
-func (__obf_0a017f229603a007 *Memcache) Renew(__obf_3405c14f70aaa4d0 string, __obf_433bae995cf2f1ae time.Duration) error {
-	if __obf_64869904d1dc9f43, __obf_8c6b39ef87b4061f := __obf_0a017f229603a007.__obf_59534d8923f168d9.Get(__obf_3405c14f70aaa4d0); __obf_8c6b39ef87b4061f == nil {
-		return __obf_0a017f229603a007.Set(__obf_3405c14f70aaa4d0, __obf_64869904d1dc9f43, __obf_433bae995cf2f1ae)
+func (__obf_1185c88950520004 *Memcache) Renew(__obf_3c13197612c6b39f string, __obf_5a47a67359bdcb92 time.Duration) error {
+	if __obf_755d49269b07cedb, __obf_498673050542660c := __obf_1185c88950520004.__obf_add8c597f733ba00.Get(__obf_3c13197612c6b39f); __obf_498673050542660c == nil {
+		return __obf_1185c88950520004.Set(__obf_3c13197612c6b39f, __obf_755d49269b07cedb, __obf_5a47a67359bdcb92)
 	} else {
-		return __obf_8c6b39ef87b4061f
+		return __obf_498673050542660c
 	}
 }
 
-func (__obf_0a017f229603a007 *Memcache) IsExist(__obf_3405c14f70aaa4d0 string) bool {
-	_, __obf_8c6b39ef87b4061f := __obf_0a017f229603a007.__obf_59534d8923f168d9.Get(__obf_3405c14f70aaa4d0)
-	return __obf_8c6b39ef87b4061f == nil
+func (__obf_1185c88950520004 *Memcache) IsExist(__obf_3c13197612c6b39f string) bool {
+	_, __obf_498673050542660c := __obf_1185c88950520004.__obf_add8c597f733ba00.Get(__obf_3c13197612c6b39f)
+	return __obf_498673050542660c == nil
 }
 
-func (__obf_0a017f229603a007 *Memcache) Remove(__obf_3405c14f70aaa4d0 string) error {
-	return __obf_0a017f229603a007.__obf_59534d8923f168d9.Delete(__obf_3405c14f70aaa4d0)
+func (__obf_1185c88950520004 *Memcache) Remove(__obf_3c13197612c6b39f string) error {
+	return __obf_1185c88950520004.__obf_add8c597f733ba00.Delete(__obf_3c13197612c6b39f)
 }

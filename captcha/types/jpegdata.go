@@ -1,4 +1,4 @@
-package __obf_6dcb1d06bd949756
+package __obf_738b46210fdb4199
 
 import (
 	util "github.com/ArtisanHiram/go-pkg/captcha/util"
@@ -14,81 +14,81 @@ type JPEGImage struct {
 }
 
 // NewJPEGImage creates a new JPEG image data instance
-func NewJPEGImage(__obf_587078e38cdb4111 image.Image) *JPEGImage {
-	return &JPEGImage{__obf_587078e38cdb4111}
+func NewJPEGImage(__obf_0912be1955a21fd1 image.Image) *JPEGImage {
+	return &JPEGImage{__obf_0912be1955a21fd1}
 }
 
 // Get retrieves the original image
-func (__obf_6b14c339de9bea34 *JPEGImage) Get() image.Image {
-	return __obf_6b14c339de9bea34.Image
+func (__obf_cf060e7b58cbd8c5 *JPEGImage) Get() image.Image {
+	return __obf_cf060e7b58cbd8c5.Image
 }
 
 // SaveToFile saves the JPEG image to a file
-func (__obf_6b14c339de9bea34 *JPEGImage) SaveToFile(__obf_b62b8c1a0e618495 string, __obf_0baf5d2b0b6ed705 int) error {
-	if __obf_6b14c339de9bea34.Image == nil {
+func (__obf_cf060e7b58cbd8c5 *JPEGImage) SaveToFile(__obf_c2783f7dad1650bd string, __obf_36d89c55cc4e8880 int) error {
+	if __obf_cf060e7b58cbd8c5.Image == nil {
 		return ImageMissingDataErr
 	}
 
 	var (
-		__obf_6e11aba9569a8248 *os.File
-		__obf_d349b3521516d4ce error
+		__obf_70803e315fbd275e *os.File
+		__obf_95d84a130cd584e5 error
 	)
-	__obf_d349b3521516d4ce = os.MkdirAll(path.Dir(__obf_b62b8c1a0e618495), os.ModePerm)
-	if __obf_d349b3521516d4ce != nil {
-		return __obf_d349b3521516d4ce
+	__obf_95d84a130cd584e5 = os.MkdirAll(path.Dir(__obf_c2783f7dad1650bd), os.ModePerm)
+	if __obf_95d84a130cd584e5 != nil {
+		return __obf_95d84a130cd584e5
 	}
 
-	if _, __obf_d349b3521516d4ce = os.Stat(__obf_b62b8c1a0e618495); os.IsNotExist(__obf_d349b3521516d4ce) {
-		__obf_6e11aba9569a8248, __obf_d349b3521516d4ce = os.Create(__obf_b62b8c1a0e618495)
+	if _, __obf_95d84a130cd584e5 = os.Stat(__obf_c2783f7dad1650bd); os.IsNotExist(__obf_95d84a130cd584e5) {
+		__obf_70803e315fbd275e, __obf_95d84a130cd584e5 = os.Create(__obf_c2783f7dad1650bd)
 	} else {
-		__obf_6e11aba9569a8248, __obf_d349b3521516d4ce = os.OpenFile(__obf_b62b8c1a0e618495, os.O_RDWR, 0666)
+		__obf_70803e315fbd275e, __obf_95d84a130cd584e5 = os.OpenFile(__obf_c2783f7dad1650bd, os.O_RDWR, 0666)
 	}
-	if __obf_d349b3521516d4ce != nil {
-		return __obf_d349b3521516d4ce
+	if __obf_95d84a130cd584e5 != nil {
+		return __obf_95d84a130cd584e5
 	}
-	defer __obf_6e11aba9569a8248.Close()
-	return jpeg.Encode(__obf_6e11aba9569a8248, __obf_6b14c339de9bea34.Image, &jpeg.Options{Quality: __obf_0baf5d2b0b6ed705})
+	defer __obf_70803e315fbd275e.Close()
+	return jpeg.Encode(__obf_70803e315fbd275e, __obf_cf060e7b58cbd8c5.Image, &jpeg.Options{Quality: __obf_36d89c55cc4e8880})
 
 }
 
 // ToBytes converts the JPEG image to a byte array
-func (__obf_6b14c339de9bea34 *JPEGImage) ToBytes() ([]byte, error) {
-	if __obf_6b14c339de9bea34.Image == nil {
+func (__obf_cf060e7b58cbd8c5 *JPEGImage) ToBytes() ([]byte, error) {
+	if __obf_cf060e7b58cbd8c5.Image == nil {
 		return []byte{}, ImageEmptyErr
 	}
 
-	return util.EncodeJPEGToByte(__obf_6b14c339de9bea34.Image, QualityNone)
+	return util.EncodeJPEGToByte(__obf_cf060e7b58cbd8c5.Image, QualityNone)
 }
 
 // ToBytesWithQuality converts the JPEG image to a byte array with specified quality
-func (__obf_6b14c339de9bea34 *JPEGImage) ToBytesWithQuality(__obf_b51052a6e71a1227 int) ([]byte, error) {
-	if __obf_6b14c339de9bea34.Image == nil {
+func (__obf_cf060e7b58cbd8c5 *JPEGImage) ToBytesWithQuality(__obf_aaad69feaf1cb657 int) ([]byte, error) {
+	if __obf_cf060e7b58cbd8c5.Image == nil {
 		return []byte{}, ImageEmptyErr
 	}
 
-	if __obf_b51052a6e71a1227 <= QualityNone && __obf_b51052a6e71a1227 >= QualityLevel5 {
-		return util.EncodeJPEGToByte(__obf_6b14c339de9bea34.Image, __obf_b51052a6e71a1227)
+	if __obf_aaad69feaf1cb657 <= QualityNone && __obf_aaad69feaf1cb657 >= QualityLevel5 {
+		return util.EncodeJPEGToByte(__obf_cf060e7b58cbd8c5.Image, __obf_aaad69feaf1cb657)
 	}
-	return util.EncodeJPEGToByte(__obf_6b14c339de9bea34.Image, QualityNone)
+	return util.EncodeJPEGToByte(__obf_cf060e7b58cbd8c5.Image, QualityNone)
 }
 
 // ToBase64 converts the JPEG image to a Base64 string
-func (__obf_6b14c339de9bea34 *JPEGImage) ToBase64() (string, error) {
-	if __obf_6b14c339de9bea34.Image == nil {
+func (__obf_cf060e7b58cbd8c5 *JPEGImage) ToBase64() (string, error) {
+	if __obf_cf060e7b58cbd8c5.Image == nil {
 		return "", ImageEmptyErr
 	}
 
-	return util.EncodeJPEGToBase64(__obf_6b14c339de9bea34.Image, QualityNone)
+	return util.EncodeJPEGToBase64(__obf_cf060e7b58cbd8c5.Image, QualityNone)
 }
 
 // ToBase64WithQuality converts the JPEG image to a Base64 string with specified quality
-func (__obf_6b14c339de9bea34 *JPEGImage) ToBase64WithQuality(__obf_b51052a6e71a1227 int) (string, error) {
-	if __obf_6b14c339de9bea34.Image == nil {
+func (__obf_cf060e7b58cbd8c5 *JPEGImage) ToBase64WithQuality(__obf_aaad69feaf1cb657 int) (string, error) {
+	if __obf_cf060e7b58cbd8c5.Image == nil {
 		return "", ImageEmptyErr
 	}
 
-	if __obf_b51052a6e71a1227 <= QualityNone && __obf_b51052a6e71a1227 >= QualityLevel5 {
-		return util.EncodeJPEGToBase64(__obf_6b14c339de9bea34.Image, __obf_b51052a6e71a1227)
+	if __obf_aaad69feaf1cb657 <= QualityNone && __obf_aaad69feaf1cb657 >= QualityLevel5 {
+		return util.EncodeJPEGToBase64(__obf_cf060e7b58cbd8c5.Image, __obf_aaad69feaf1cb657)
 	}
-	return util.EncodeJPEGToBase64(__obf_6b14c339de9bea34.Image, QualityNone)
+	return util.EncodeJPEGToBase64(__obf_cf060e7b58cbd8c5.Image, QualityNone)
 }

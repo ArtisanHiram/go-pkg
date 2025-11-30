@@ -1,4 +1,4 @@
-package __obf_c953b7a5114a5dbe
+package __obf_ec2f65f16fa88470
 
 import (
 	"errors"
@@ -13,37 +13,37 @@ type Error struct {
 	Errors []string
 }
 
-func (__obf_d0a59ae5b9841a8a *Error) Error() string {
-	__obf_81638d6b05b24a0e := make([]string, len(__obf_d0a59ae5b9841a8a.Errors))
-	for __obf_507d21ee6c71f742, __obf_fb7fbd58154fa1dd := range __obf_d0a59ae5b9841a8a.Errors {
-		__obf_81638d6b05b24a0e[__obf_507d21ee6c71f742] = fmt.Sprintf("* %s", __obf_fb7fbd58154fa1dd)
+func (__obf_a640902971632406 *Error) Error() string {
+	__obf_7bfbe95d7012106a := make([]string, len(__obf_a640902971632406.Errors))
+	for __obf_6cbf6487a01daf31, __obf_6d8ef670b0943b3c := range __obf_a640902971632406.Errors {
+		__obf_7bfbe95d7012106a[__obf_6cbf6487a01daf31] = fmt.Sprintf("* %s", __obf_6d8ef670b0943b3c)
 	}
 
-	sort.Strings(__obf_81638d6b05b24a0e)
+	sort.Strings(__obf_7bfbe95d7012106a)
 	return fmt.Sprintf(
 		"%d error(s) decoding:\n\n%s",
-		len(__obf_d0a59ae5b9841a8a.Errors), strings.Join(__obf_81638d6b05b24a0e, "\n"))
+		len(__obf_a640902971632406.Errors), strings.Join(__obf_7bfbe95d7012106a, "\n"))
 }
 
 // WrappedErrors implements the errwrap.Wrapper interface to make this
 // return value more useful with the errwrap and go-multierror libraries.
-func (__obf_d0a59ae5b9841a8a *Error) WrappedErrors() []error {
-	if __obf_d0a59ae5b9841a8a == nil {
+func (__obf_a640902971632406 *Error) WrappedErrors() []error {
+	if __obf_a640902971632406 == nil {
 		return nil
 	}
-	__obf_47a3e13e334b0913 := make([]error, len(__obf_d0a59ae5b9841a8a.Errors))
-	for __obf_507d21ee6c71f742, __obf_d0a59ae5b9841a8a := range __obf_d0a59ae5b9841a8a.Errors {
-		__obf_47a3e13e334b0913[__obf_507d21ee6c71f742] = errors.New(__obf_d0a59ae5b9841a8a)
+	__obf_bb9d1909c7b1c125 := make([]error, len(__obf_a640902971632406.Errors))
+	for __obf_6cbf6487a01daf31, __obf_a640902971632406 := range __obf_a640902971632406.Errors {
+		__obf_bb9d1909c7b1c125[__obf_6cbf6487a01daf31] = errors.New(__obf_a640902971632406)
 	}
 
-	return __obf_47a3e13e334b0913
+	return __obf_bb9d1909c7b1c125
 }
 
-func __obf_b59ff522c1d88f2e(errors []string, __obf_fb7fbd58154fa1dd error) []string {
-	switch __obf_d0a59ae5b9841a8a := __obf_fb7fbd58154fa1dd.(type) {
+func __obf_9ddf59feabf88c65(errors []string, __obf_6d8ef670b0943b3c error) []string {
+	switch __obf_a640902971632406 := __obf_6d8ef670b0943b3c.(type) {
 	case *Error:
-		return append(errors, __obf_d0a59ae5b9841a8a.Errors...)
+		return append(errors, __obf_a640902971632406.Errors...)
 	default:
-		return append(errors, __obf_d0a59ae5b9841a8a.Error())
+		return append(errors, __obf_a640902971632406.Error())
 	}
 }

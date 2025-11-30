@@ -1,7 +1,7 @@
 // go-qrcode
 // Copyright 2014 Tom Harwood
 
-package __obf_8d73621f5856b288
+package __obf_63dc7f87a7750084
 
 import (
 	"log"
@@ -33,34 +33,34 @@ const (
 // qrCodeVersion describes the data length and encoding order of a single QR
 // Code version. There are 40 versions numbers x 4 recovery levels == 160
 // possible qrCodeVersion structures.
-type __obf_c64ed2c3cfb19b80 struct {
-	__obf_4139f181d582c6ec int           // Version number (1-40 inclusive).
-	__obf_877aa2e5148b2067 RecoveryLevel // Error recovery level.
-	__obf_a9d4704514b6286c __obf_a9d4704514b6286c
+type __obf_987afc77278a1676 struct {
+	__obf_2066e640e4e50f14 int           // Version number (1-40 inclusive).
+	__obf_47158df92f26b0f4 RecoveryLevel // Error recovery level.
+	__obf_40700b751bbe7fa9 __obf_40700b751bbe7fa9
 
 	// Encoded data can be split into multiple blocks. Each block contains data
 	// and error recovery bytes.
 	//
 	// Larger QR Codes contain more blocks.
-	__obf_d8d8b9663688ea90 []__obf_d8d8b9663688ea90
+	__obf_497bb62bbd9ebbf5 []__obf_497bb62bbd9ebbf5
 
 	// Number of bits required to pad the combined data & error correction bit
 	// stream up to the symbol's full capacity.
-	__obf_297bf7a24bf7fde6 int
+	__obf_4bd5e5d599d53519 int
 }
 
-type __obf_d8d8b9663688ea90 struct {
-	__obf_cb93cbffbdb0156c int
-	__obf_431c275946223cee int // Total codewords (numCodewords == numErrorCodewords+numDataCodewords).
-	__obf_5a1d504b8645501c int // Number of data codewords.
+type __obf_497bb62bbd9ebbf5 struct {
+	__obf_211dc13f80ab3495 int
+	__obf_cd96a3f45948faa6 int // Total codewords (numCodewords == numErrorCodewords+numDataCodewords).
+	__obf_d1b26b395ae776d9 int // Number of data codewords.
 
 }
 
 var (
-	__obf_240c3968ce8cff96 = []__obf_c64ed2c3cfb19b80{
+	__obf_1a342db7c15b8903 = []__obf_987afc77278a1676{
 		{
 			1,
-			Low, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					1,
 					26,
@@ -71,7 +71,7 @@ var (
 		},
 		{
 			1,
-			Medium, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					1,
 					26,
@@ -82,7 +82,7 @@ var (
 		},
 		{
 			1,
-			High, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			High, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					1,
 					26,
@@ -93,7 +93,7 @@ var (
 		},
 		{
 			1,
-			Highest, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					1,
 					26,
@@ -104,7 +104,7 @@ var (
 		},
 		{
 			2,
-			Low, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					1,
 					44,
@@ -115,7 +115,7 @@ var (
 		},
 		{
 			2,
-			Medium, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					1,
 					44,
@@ -126,7 +126,7 @@ var (
 		},
 		{
 			2,
-			High, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			High, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					1,
 					44,
@@ -137,7 +137,7 @@ var (
 		},
 		{
 			2,
-			Highest, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					1,
 					44,
@@ -148,7 +148,7 @@ var (
 		},
 		{
 			3,
-			Low, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					1,
 					70,
@@ -159,7 +159,7 @@ var (
 		},
 		{
 			3,
-			Medium, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					1,
 					70,
@@ -170,7 +170,7 @@ var (
 		},
 		{
 			3,
-			High, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			High, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					35,
@@ -181,7 +181,7 @@ var (
 		},
 		{
 			3,
-			Highest, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					35,
@@ -192,7 +192,7 @@ var (
 		},
 		{
 			4,
-			Low, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					1,
 					100,
@@ -203,7 +203,7 @@ var (
 		},
 		{
 			4,
-			Medium, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					50,
@@ -214,7 +214,7 @@ var (
 		},
 		{
 			4,
-			High, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			High, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					50,
@@ -225,7 +225,7 @@ var (
 		},
 		{
 			4,
-			Highest, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					25,
@@ -236,7 +236,7 @@ var (
 		},
 		{
 			5,
-			Low, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					1,
 					134,
@@ -247,7 +247,7 @@ var (
 		},
 		{
 			5,
-			Medium, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					67,
@@ -258,7 +258,7 @@ var (
 		},
 		{
 			5,
-			High, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			High, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					33,
@@ -274,7 +274,7 @@ var (
 		},
 		{
 			5,
-			Highest, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					33,
@@ -290,7 +290,7 @@ var (
 		},
 		{
 			6,
-			Low, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					86,
@@ -301,7 +301,7 @@ var (
 		},
 		{
 			6,
-			Medium, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					43,
@@ -312,7 +312,7 @@ var (
 		},
 		{
 			6,
-			High, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			High, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					43,
@@ -323,7 +323,7 @@ var (
 		},
 		{
 			6,
-			Highest, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					43,
@@ -334,7 +334,7 @@ var (
 		},
 		{
 			7,
-			Low, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					98,
@@ -345,7 +345,7 @@ var (
 		},
 		{
 			7,
-			Medium, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					49,
@@ -356,7 +356,7 @@ var (
 		},
 		{
 			7,
-			High, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			High, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					32,
@@ -372,7 +372,7 @@ var (
 		},
 		{
 			7,
-			Highest, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					39,
@@ -388,7 +388,7 @@ var (
 		},
 		{
 			8,
-			Low, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					121,
@@ -399,7 +399,7 @@ var (
 		},
 		{
 			8,
-			Medium, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					60,
@@ -415,7 +415,7 @@ var (
 		},
 		{
 			8,
-			High, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			High, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					40,
@@ -431,7 +431,7 @@ var (
 		},
 		{
 			8,
-			Highest, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					40,
@@ -447,7 +447,7 @@ var (
 		},
 		{
 			9,
-			Low, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					146,
@@ -458,7 +458,7 @@ var (
 		},
 		{
 			9,
-			Medium, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					3,
 					58,
@@ -474,7 +474,7 @@ var (
 		},
 		{
 			9,
-			High, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			High, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					36,
@@ -490,7 +490,7 @@ var (
 		},
 		{
 			9,
-			Highest, __obf_80807e9626ee48fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_4ef346b16a795892, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					36,
@@ -506,7 +506,7 @@ var (
 		},
 		{
 			10,
-			Low, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Low, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					86,
@@ -522,7 +522,7 @@ var (
 		},
 		{
 			10,
-			Medium, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Medium, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					69,
@@ -538,7 +538,7 @@ var (
 		},
 		{
 			10,
-			High, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			High, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					6,
 					43,
@@ -554,7 +554,7 @@ var (
 		},
 		{
 			10,
-			Highest, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Highest, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					6,
 					43,
@@ -570,7 +570,7 @@ var (
 		},
 		{
 			11,
-			Low, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Low, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					101,
@@ -581,7 +581,7 @@ var (
 		},
 		{
 			11,
-			Medium, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Medium, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					1,
 					80,
@@ -597,7 +597,7 @@ var (
 		},
 		{
 			11,
-			High, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			High, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					50,
@@ -613,7 +613,7 @@ var (
 		},
 		{
 			11,
-			Highest, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Highest, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					3,
 					36,
@@ -629,7 +629,7 @@ var (
 		},
 		{
 			12,
-			Low, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Low, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					116,
@@ -645,7 +645,7 @@ var (
 		},
 		{
 			12,
-			Medium, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Medium, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					6,
 					58,
@@ -661,7 +661,7 @@ var (
 		},
 		{
 			12,
-			High, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			High, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					46,
@@ -677,7 +677,7 @@ var (
 		},
 		{
 			12,
-			Highest, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Highest, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					7,
 					42,
@@ -693,7 +693,7 @@ var (
 		},
 		{
 			13,
-			Low, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Low, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					133,
@@ -704,7 +704,7 @@ var (
 		},
 		{
 			13,
-			Medium, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Medium, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					8,
 					59,
@@ -720,7 +720,7 @@ var (
 		},
 		{
 			13,
-			High, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			High, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					8,
 					44,
@@ -736,7 +736,7 @@ var (
 		},
 		{
 			13,
-			Highest, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Highest, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					12,
 					33,
@@ -752,7 +752,7 @@ var (
 		},
 		{
 			14,
-			Low, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Low, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					3,
 					145,
@@ -768,7 +768,7 @@ var (
 		},
 		{
 			14,
-			Medium, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Medium, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					64,
@@ -784,7 +784,7 @@ var (
 		},
 		{
 			14,
-			High, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			High, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					11,
 					36,
@@ -800,7 +800,7 @@ var (
 		},
 		{
 			14,
-			Highest, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Highest, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					11,
 					36,
@@ -816,7 +816,7 @@ var (
 		},
 		{
 			15,
-			Low, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Low, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					5,
 					109,
@@ -832,7 +832,7 @@ var (
 		},
 		{
 			15,
-			Medium, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Medium, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					5,
 					65,
@@ -848,7 +848,7 @@ var (
 		},
 		{
 			15,
-			High, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			High, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					5,
 					54,
@@ -864,7 +864,7 @@ var (
 		},
 		{
 			15,
-			Highest, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Highest, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					11,
 					36,
@@ -880,7 +880,7 @@ var (
 		},
 		{
 			16,
-			Low, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Low, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					5,
 					122,
@@ -896,7 +896,7 @@ var (
 		},
 		{
 			16,
-			Medium, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Medium, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					7,
 					73,
@@ -912,7 +912,7 @@ var (
 		},
 		{
 			16,
-			High, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			High, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					15,
 					43,
@@ -928,7 +928,7 @@ var (
 		},
 		{
 			16,
-			Highest, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Highest, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					3,
 					45,
@@ -944,7 +944,7 @@ var (
 		},
 		{
 			17,
-			Low, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Low, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					1,
 					135,
@@ -960,7 +960,7 @@ var (
 		},
 		{
 			17,
-			Medium, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Medium, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					10,
 					74,
@@ -976,7 +976,7 @@ var (
 		},
 		{
 			17,
-			High, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			High, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					1,
 					50,
@@ -992,7 +992,7 @@ var (
 		},
 		{
 			17,
-			Highest, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Highest, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					42,
@@ -1008,7 +1008,7 @@ var (
 		},
 		{
 			18,
-			Low, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Low, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					5,
 					150,
@@ -1024,7 +1024,7 @@ var (
 		},
 		{
 			18,
-			Medium, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Medium, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					9,
 					69,
@@ -1040,7 +1040,7 @@ var (
 		},
 		{
 			18,
-			High, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			High, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					17,
 					50,
@@ -1056,7 +1056,7 @@ var (
 		},
 		{
 			18,
-			Highest, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Highest, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					42,
@@ -1072,7 +1072,7 @@ var (
 		},
 		{
 			19,
-			Low, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Low, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					3,
 					141,
@@ -1088,7 +1088,7 @@ var (
 		},
 		{
 			19,
-			Medium, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Medium, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					3,
 					70,
@@ -1104,7 +1104,7 @@ var (
 		},
 		{
 			19,
-			High, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			High, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					17,
 					47,
@@ -1120,7 +1120,7 @@ var (
 		},
 		{
 			19,
-			Highest, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Highest, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					9,
 					39,
@@ -1136,7 +1136,7 @@ var (
 		},
 		{
 			20,
-			Low, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Low, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					3,
 					135,
@@ -1152,7 +1152,7 @@ var (
 		},
 		{
 			20,
-			Medium, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Medium, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					3,
 					67,
@@ -1168,7 +1168,7 @@ var (
 		},
 		{
 			20,
-			High, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			High, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					15,
 					54,
@@ -1184,7 +1184,7 @@ var (
 		},
 		{
 			20,
-			Highest, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Highest, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					15,
 					43,
@@ -1200,7 +1200,7 @@ var (
 		},
 		{
 			21,
-			Low, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Low, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					144,
@@ -1216,7 +1216,7 @@ var (
 		},
 		{
 			21,
-			Medium, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Medium, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					17,
 					68,
@@ -1227,7 +1227,7 @@ var (
 		},
 		{
 			21,
-			High, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			High, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					17,
 					50,
@@ -1243,7 +1243,7 @@ var (
 		},
 		{
 			21,
-			Highest, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Highest, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					19,
 					46,
@@ -1259,7 +1259,7 @@ var (
 		},
 		{
 			22,
-			Low, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Low, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					139,
@@ -1275,7 +1275,7 @@ var (
 		},
 		{
 			22,
-			Medium, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Medium, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					17,
 					74,
@@ -1286,7 +1286,7 @@ var (
 		},
 		{
 			22,
-			High, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			High, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					7,
 					54,
@@ -1302,7 +1302,7 @@ var (
 		},
 		{
 			22,
-			Highest, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Highest, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					34,
 					37,
@@ -1313,7 +1313,7 @@ var (
 		},
 		{
 			23,
-			Low, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Low, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					151,
@@ -1329,7 +1329,7 @@ var (
 		},
 		{
 			23,
-			Medium, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Medium, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					75,
@@ -1345,7 +1345,7 @@ var (
 		},
 		{
 			23,
-			High, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			High, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					11,
 					54,
@@ -1361,7 +1361,7 @@ var (
 		},
 		{
 			23,
-			Highest, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Highest, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					16,
 					45,
@@ -1377,7 +1377,7 @@ var (
 		},
 		{
 			24,
-			Low, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Low, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					6,
 					147,
@@ -1393,7 +1393,7 @@ var (
 		},
 		{
 			24,
-			Medium, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Medium, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					6,
 					73,
@@ -1409,7 +1409,7 @@ var (
 		},
 		{
 			24,
-			High, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			High, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					11,
 					54,
@@ -1425,7 +1425,7 @@ var (
 		},
 		{
 			24,
-			Highest, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Highest, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					30,
 					46,
@@ -1441,7 +1441,7 @@ var (
 		},
 		{
 			25,
-			Low, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Low, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					8,
 					132,
@@ -1457,7 +1457,7 @@ var (
 		},
 		{
 			25,
-			Medium, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Medium, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					8,
 					75,
@@ -1473,7 +1473,7 @@ var (
 		},
 		{
 			25,
-			High, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			High, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					7,
 					54,
@@ -1489,7 +1489,7 @@ var (
 		},
 		{
 			25,
-			Highest, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Highest, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					22,
 					45,
@@ -1505,7 +1505,7 @@ var (
 		},
 		{
 			26,
-			Low, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Low, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					10,
 					142,
@@ -1521,7 +1521,7 @@ var (
 		},
 		{
 			26,
-			Medium, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Medium, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					19,
 					74,
@@ -1537,7 +1537,7 @@ var (
 		},
 		{
 			26,
-			High, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			High, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					28,
 					50,
@@ -1553,7 +1553,7 @@ var (
 		},
 		{
 			26,
-			Highest, __obf_9bb2ab43c09df8ad, []__obf_d8d8b9663688ea90{
+			Highest, __obf_e891267bd1bcc38a, []__obf_497bb62bbd9ebbf5{
 				{
 					33,
 					46,
@@ -1569,7 +1569,7 @@ var (
 		},
 		{
 			27,
-			Low, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					8,
 					152,
@@ -1585,7 +1585,7 @@ var (
 		},
 		{
 			27,
-			Medium, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					22,
 					73,
@@ -1601,7 +1601,7 @@ var (
 		},
 		{
 			27,
-			High, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			High, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					8,
 					53,
@@ -1617,7 +1617,7 @@ var (
 		},
 		{
 			27,
-			Highest, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					12,
 					45,
@@ -1633,7 +1633,7 @@ var (
 		},
 		{
 			28,
-			Low, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					3,
 					147,
@@ -1649,7 +1649,7 @@ var (
 		},
 		{
 			28,
-			Medium, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					3,
 					73,
@@ -1665,7 +1665,7 @@ var (
 		},
 		{
 			28,
-			High, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			High, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					54,
@@ -1681,7 +1681,7 @@ var (
 		},
 		{
 			28,
-			Highest, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					11,
 					45,
@@ -1697,7 +1697,7 @@ var (
 		},
 		{
 			29,
-			Low, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					7,
 					146,
@@ -1713,7 +1713,7 @@ var (
 		},
 		{
 			29,
-			Medium, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					21,
 					73,
@@ -1729,7 +1729,7 @@ var (
 		},
 		{
 			29,
-			High, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			High, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					1,
 					53,
@@ -1745,7 +1745,7 @@ var (
 		},
 		{
 			29,
-			Highest, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					19,
 					45,
@@ -1761,7 +1761,7 @@ var (
 		},
 		{
 			30,
-			Low, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					5,
 					145,
@@ -1777,7 +1777,7 @@ var (
 		},
 		{
 			30,
-			Medium, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					19,
 					75,
@@ -1793,7 +1793,7 @@ var (
 		},
 		{
 			30,
-			High, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			High, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					15,
 					54,
@@ -1809,7 +1809,7 @@ var (
 		},
 		{
 			30,
-			Highest, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					23,
 					45,
@@ -1825,7 +1825,7 @@ var (
 		},
 		{
 			31,
-			Low, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					13,
 					145,
@@ -1841,7 +1841,7 @@ var (
 		},
 		{
 			31,
-			Medium, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					74,
@@ -1857,7 +1857,7 @@ var (
 		},
 		{
 			31,
-			High, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			High, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					42,
 					54,
@@ -1873,7 +1873,7 @@ var (
 		},
 		{
 			31,
-			Highest, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					23,
 					45,
@@ -1889,7 +1889,7 @@ var (
 		},
 		{
 			32,
-			Low, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					17,
 					145,
@@ -1900,7 +1900,7 @@ var (
 		},
 		{
 			32,
-			Medium, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					10,
 					74,
@@ -1916,7 +1916,7 @@ var (
 		},
 		{
 			32,
-			High, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			High, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					10,
 					54,
@@ -1932,7 +1932,7 @@ var (
 		},
 		{
 			32,
-			Highest, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					19,
 					45,
@@ -1948,7 +1948,7 @@ var (
 		},
 		{
 			33,
-			Low, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					17,
 					145,
@@ -1964,7 +1964,7 @@ var (
 		},
 		{
 			33,
-			Medium, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					14,
 					74,
@@ -1980,7 +1980,7 @@ var (
 		},
 		{
 			33,
-			High, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			High, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					29,
 					54,
@@ -1996,7 +1996,7 @@ var (
 		},
 		{
 			33,
-			Highest, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					11,
 					45,
@@ -2012,7 +2012,7 @@ var (
 		},
 		{
 			34,
-			Low, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					13,
 					145,
@@ -2028,7 +2028,7 @@ var (
 		},
 		{
 			34,
-			Medium, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					14,
 					74,
@@ -2044,7 +2044,7 @@ var (
 		},
 		{
 			34,
-			High, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			High, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					44,
 					54,
@@ -2060,7 +2060,7 @@ var (
 		},
 		{
 			34,
-			Highest, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					59,
 					46,
@@ -2076,7 +2076,7 @@ var (
 		},
 		{
 			35,
-			Low, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					12,
 					151,
@@ -2092,7 +2092,7 @@ var (
 		},
 		{
 			35,
-			Medium, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					12,
 					75,
@@ -2108,7 +2108,7 @@ var (
 		},
 		{
 			35,
-			High, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			High, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					39,
 					54,
@@ -2124,7 +2124,7 @@ var (
 		},
 		{
 			35,
-			Highest, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					22,
 					45,
@@ -2140,7 +2140,7 @@ var (
 		},
 		{
 			36,
-			Low, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					6,
 					151,
@@ -2156,7 +2156,7 @@ var (
 		},
 		{
 			36,
-			Medium, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					6,
 					75,
@@ -2172,7 +2172,7 @@ var (
 		},
 		{
 			36,
-			High, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			High, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					46,
 					54,
@@ -2188,7 +2188,7 @@ var (
 		},
 		{
 			36,
-			Highest, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					2,
 					45,
@@ -2204,7 +2204,7 @@ var (
 		},
 		{
 			37,
-			Low, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					17,
 					152,
@@ -2220,7 +2220,7 @@ var (
 		},
 		{
 			37,
-			Medium, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					29,
 					74,
@@ -2236,7 +2236,7 @@ var (
 		},
 		{
 			37,
-			High, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			High, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					49,
 					54,
@@ -2252,7 +2252,7 @@ var (
 		},
 		{
 			37,
-			Highest, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					24,
 					45,
@@ -2268,7 +2268,7 @@ var (
 		},
 		{
 			38,
-			Low, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					4,
 					152,
@@ -2284,7 +2284,7 @@ var (
 		},
 		{
 			38,
-			Medium, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					13,
 					74,
@@ -2300,7 +2300,7 @@ var (
 		},
 		{
 			38,
-			High, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			High, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					48,
 					54,
@@ -2316,7 +2316,7 @@ var (
 		},
 		{
 			38,
-			Highest, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					42,
 					45,
@@ -2332,7 +2332,7 @@ var (
 		},
 		{
 			39,
-			Low, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					20,
 					147,
@@ -2348,7 +2348,7 @@ var (
 		},
 		{
 			39,
-			Medium, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					40,
 					75,
@@ -2364,7 +2364,7 @@ var (
 		},
 		{
 			39,
-			High, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			High, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					43,
 					54,
@@ -2380,7 +2380,7 @@ var (
 		},
 		{
 			39,
-			Highest, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					10,
 					45,
@@ -2396,7 +2396,7 @@ var (
 		},
 		{
 			40,
-			Low, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Low, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					19,
 					148,
@@ -2412,7 +2412,7 @@ var (
 		},
 		{
 			40,
-			Medium, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Medium, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					18,
 					75,
@@ -2428,7 +2428,7 @@ var (
 		},
 		{
 			40,
-			High, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			High, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					34,
 					54,
@@ -2444,7 +2444,7 @@ var (
 		},
 		{
 			40,
-			Highest, __obf_7f04905a311519fa, []__obf_d8d8b9663688ea90{
+			Highest, __obf_054184439c33471a, []__obf_497bb62bbd9ebbf5{
 				{
 					20,
 					45,
@@ -2462,7 +2462,7 @@ var (
 )
 
 var (
-	__obf_7e3030848f33c029 =
+	__obf_6a358a2071425485 =
 	// Each QR Code contains a 15-bit Format Information value.  The 15 bits
 	// consist of 5 data bits concatenated with 10 error correction bits.
 	//
@@ -2479,8 +2479,8 @@ var (
 	// 01 | 001 = 01001 = 0x9
 	// formatBitSequence[0x9].qrCode = 0x72f3 = 111001011110011
 	[]struct {
-		__obf_abfe14a0b57a8118 uint32
-		__obf_ccb3bd02f041d51d uint32
+		__obf_2b68c2d953fdd85e uint32
+		__obf_d755cb38bc5e4e73 uint32
 	}{
 		{0x5412, 0x4445},
 		{0x5125, 0x4172},
@@ -2515,7 +2515,7 @@ var (
 		{0x2eda, 0x3e8d},
 		{0x2bed, 0x3bba},
 	}
-	__obf_52b09146d38a5d3f =
+	__obf_96bc334c0addcfc4 =
 
 	// QR Codes version 7 and higher contain an 18-bit Version Information value,
 	// consisting of a 6 data bits and 12 error correction bits.
@@ -2571,63 +2571,63 @@ var (
 )
 
 const (
-	__obf_469647425722868f = 15
-	__obf_c607ddeecd71cf73 = 18
+	__obf_c53d809fc2566978 = 15
+	__obf_2c1de9756abde0bc = 18
 )
 
 // formatInfo returns the 15-bit Format Information value for a QR
 // code.
-func (__obf_1b6e726e11cd9194 __obf_c64ed2c3cfb19b80) __obf_eb897d889fd00bc5(__obf_7574768912c04b93 int) *bitset.Bitset {
-	__obf_474ca153f789cf78 := 0
+func (__obf_d3308b8b9ec8593a __obf_987afc77278a1676) __obf_7e7c85854deb3954(__obf_f15a428b96866533 int) *bitset.Bitset {
+	__obf_792f54e622f267cf := 0
 
-	switch __obf_1b6e726e11cd9194.__obf_877aa2e5148b2067 {
+	switch __obf_d3308b8b9ec8593a.__obf_47158df92f26b0f4 {
 	case Low:
-		__obf_474ca153f789cf78 = 0x08 // 0b01000
+		__obf_792f54e622f267cf = 0x08 // 0b01000
 	case Medium:
-		__obf_474ca153f789cf78 = 0x00 // 0b00000
+		__obf_792f54e622f267cf = 0x00 // 0b00000
 	case High:
-		__obf_474ca153f789cf78 = 0x18 // 0b11000
+		__obf_792f54e622f267cf = 0x18 // 0b11000
 	case Highest:
-		__obf_474ca153f789cf78 = 0x10 // 0b10000
+		__obf_792f54e622f267cf = 0x10 // 0b10000
 	default:
-		log.Panicf("Invalid level %d", __obf_1b6e726e11cd9194.__obf_877aa2e5148b2067)
+		log.Panicf("Invalid level %d", __obf_d3308b8b9ec8593a.__obf_47158df92f26b0f4)
 	}
 
-	if __obf_7574768912c04b93 < 0 || __obf_7574768912c04b93 > 7 {
-		log.Panicf("Invalid maskPattern %d", __obf_7574768912c04b93)
+	if __obf_f15a428b96866533 < 0 || __obf_f15a428b96866533 > 7 {
+		log.Panicf("Invalid maskPattern %d", __obf_f15a428b96866533)
 	}
-	__obf_474ca153f789cf78 |= __obf_7574768912c04b93 & 0x7
-	__obf_e81697a14e2164ea := bitset.New()
-	__obf_e81697a14e2164ea.
-		AppendUint32(__obf_7e3030848f33c029[__obf_474ca153f789cf78].__obf_abfe14a0b57a8118, __obf_469647425722868f)
+	__obf_792f54e622f267cf |= __obf_f15a428b96866533 & 0x7
+	__obf_5f9887ab3541002d := bitset.New()
+	__obf_5f9887ab3541002d.
+		AppendUint32(__obf_6a358a2071425485[__obf_792f54e622f267cf].__obf_2b68c2d953fdd85e, __obf_c53d809fc2566978)
 
-	return __obf_e81697a14e2164ea
+	return __obf_5f9887ab3541002d
 }
 
 // versionInfo returns the 18-bit Version Information value for a QR Code.
 //
 // Version Information is applicable only to QR Codes versions 7-40 inclusive.
 // nil is returned if Version Information is not required.
-func (__obf_1b6e726e11cd9194 __obf_c64ed2c3cfb19b80) __obf_fb94e8b8d4e8de8e() *bitset.Bitset {
-	if __obf_1b6e726e11cd9194.__obf_4139f181d582c6ec < 7 {
+func (__obf_d3308b8b9ec8593a __obf_987afc77278a1676) __obf_64ac1f8e5c75aec6() *bitset.Bitset {
+	if __obf_d3308b8b9ec8593a.__obf_2066e640e4e50f14 < 7 {
 		return nil
 	}
-	__obf_e81697a14e2164ea := bitset.New()
-	__obf_e81697a14e2164ea.
-		AppendUint32(__obf_52b09146d38a5d3f[__obf_1b6e726e11cd9194.__obf_4139f181d582c6ec], 18)
+	__obf_5f9887ab3541002d := bitset.New()
+	__obf_5f9887ab3541002d.
+		AppendUint32(__obf_96bc334c0addcfc4[__obf_d3308b8b9ec8593a.__obf_2066e640e4e50f14], 18)
 
-	return __obf_e81697a14e2164ea
+	return __obf_5f9887ab3541002d
 }
 
 // numDataBits returns the data capacity in bits.
-func (__obf_1b6e726e11cd9194 __obf_c64ed2c3cfb19b80) __obf_fbab2e67c946f055() int {
-	__obf_fbab2e67c946f055 := 0
-	for _, __obf_22b7af99cfb59bff := range __obf_1b6e726e11cd9194.__obf_d8d8b9663688ea90 {
-		__obf_fbab2e67c946f055 += 8 * __obf_22b7af99cfb59bff.__obf_cb93cbffbdb0156c * __obf_22b7af99cfb59bff. // 8 bits in a byte
-															__obf_5a1d504b8645501c
+func (__obf_d3308b8b9ec8593a __obf_987afc77278a1676) __obf_6ca1f14a38153ca1() int {
+	__obf_6ca1f14a38153ca1 := 0
+	for _, __obf_0de44d307506fdeb := range __obf_d3308b8b9ec8593a.__obf_497bb62bbd9ebbf5 {
+		__obf_6ca1f14a38153ca1 += 8 * __obf_0de44d307506fdeb.__obf_211dc13f80ab3495 * __obf_0de44d307506fdeb. // 8 bits in a byte
+															__obf_d1b26b395ae776d9
 	}
 
-	return __obf_fbab2e67c946f055
+	return __obf_6ca1f14a38153ca1
 }
 
 // chooseQRCodeVersion chooses the most suitable QR Code version for a stated
@@ -2638,86 +2638,86 @@ func (__obf_1b6e726e11cd9194 __obf_c64ed2c3cfb19b80) __obf_fbab2e67c946f055() in
 // and the optional terminator bits required by the specified encoder.
 //
 // On success the chosen QR Code version is returned.
-func __obf_6fffebea060112f9(__obf_877aa2e5148b2067 RecoveryLevel, __obf_a0f443901f570b73 *__obf_db79b5bc73d5a614, __obf_fbab2e67c946f055 int) *__obf_c64ed2c3cfb19b80 {
-	var __obf_64f4c3b68809189b *__obf_c64ed2c3cfb19b80
+func __obf_361e6bfddb7983f8(__obf_47158df92f26b0f4 RecoveryLevel, __obf_2753e87a957b69f8 *__obf_3ee8d058dd75e4b0, __obf_6ca1f14a38153ca1 int) *__obf_987afc77278a1676 {
+	var __obf_1d6b91b9673acb44 *__obf_987afc77278a1676
 
-	for _, __obf_1b6e726e11cd9194 := range __obf_240c3968ce8cff96 {
-		if __obf_1b6e726e11cd9194.__obf_877aa2e5148b2067 != __obf_877aa2e5148b2067 {
+	for _, __obf_d3308b8b9ec8593a := range __obf_1a342db7c15b8903 {
+		if __obf_d3308b8b9ec8593a.__obf_47158df92f26b0f4 != __obf_47158df92f26b0f4 {
 			continue
-		} else if __obf_1b6e726e11cd9194.__obf_4139f181d582c6ec < __obf_a0f443901f570b73.__obf_1423e711ab2d7104 {
+		} else if __obf_d3308b8b9ec8593a.__obf_2066e640e4e50f14 < __obf_2753e87a957b69f8.__obf_2cbe93d8b68961b6 {
 			continue
-		} else if __obf_1b6e726e11cd9194.__obf_4139f181d582c6ec > __obf_a0f443901f570b73.__obf_a9a6d1fd09e8597b {
+		} else if __obf_d3308b8b9ec8593a.__obf_2066e640e4e50f14 > __obf_2753e87a957b69f8.__obf_88dda467e700acbf {
 			break
 		}
-		__obf_21f268c0263a9c3d := __obf_1b6e726e11cd9194.__obf_fbab2e67c946f055() - __obf_fbab2e67c946f055
+		__obf_ea5238576b26026f := __obf_d3308b8b9ec8593a.__obf_6ca1f14a38153ca1() - __obf_6ca1f14a38153ca1
 
-		if __obf_21f268c0263a9c3d >= 0 {
-			__obf_64f4c3b68809189b = &__obf_1b6e726e11cd9194
+		if __obf_ea5238576b26026f >= 0 {
+			__obf_1d6b91b9673acb44 = &__obf_d3308b8b9ec8593a
 			break
 		}
 	}
 
-	return __obf_64f4c3b68809189b
+	return __obf_1d6b91b9673acb44
 }
 
-func (__obf_1b6e726e11cd9194 __obf_c64ed2c3cfb19b80) __obf_f5b9e51105940fc3(__obf_fbab2e67c946f055 int) int {
-	__obf_21f268c0263a9c3d := __obf_1b6e726e11cd9194.__obf_fbab2e67c946f055() - __obf_fbab2e67c946f055
+func (__obf_d3308b8b9ec8593a __obf_987afc77278a1676) __obf_3955f9cbbeb36b7e(__obf_6ca1f14a38153ca1 int) int {
+	__obf_ea5238576b26026f := __obf_d3308b8b9ec8593a.__obf_6ca1f14a38153ca1() - __obf_6ca1f14a38153ca1
 
-	var __obf_90c19e0e3bc06fff int
+	var __obf_1d07d10e4aa75fd1 int
 
 	switch {
-	case __obf_21f268c0263a9c3d >= 4:
-		__obf_90c19e0e3bc06fff = 4
+	case __obf_ea5238576b26026f >= 4:
+		__obf_1d07d10e4aa75fd1 = 4
 	default:
-		__obf_90c19e0e3bc06fff = __obf_21f268c0263a9c3d
+		__obf_1d07d10e4aa75fd1 = __obf_ea5238576b26026f
 	}
 
-	return __obf_90c19e0e3bc06fff
+	return __obf_1d07d10e4aa75fd1
 }
 
 // numBlocks returns the number of blocks.
-func (__obf_1b6e726e11cd9194 __obf_c64ed2c3cfb19b80) __obf_cb93cbffbdb0156c() int {
-	__obf_cb93cbffbdb0156c := 0
+func (__obf_d3308b8b9ec8593a __obf_987afc77278a1676) __obf_211dc13f80ab3495() int {
+	__obf_211dc13f80ab3495 := 0
 
-	for _, __obf_22b7af99cfb59bff := range __obf_1b6e726e11cd9194.__obf_d8d8b9663688ea90 {
-		__obf_cb93cbffbdb0156c += __obf_22b7af99cfb59bff.__obf_cb93cbffbdb0156c
+	for _, __obf_0de44d307506fdeb := range __obf_d3308b8b9ec8593a.__obf_497bb62bbd9ebbf5 {
+		__obf_211dc13f80ab3495 += __obf_0de44d307506fdeb.__obf_211dc13f80ab3495
 	}
 
-	return __obf_cb93cbffbdb0156c
+	return __obf_211dc13f80ab3495
 }
 
 // numBitsToPadToCodeword returns the number of bits required to pad data of
 // length numDataBits upto the nearest codeword size.
-func (__obf_1b6e726e11cd9194 __obf_c64ed2c3cfb19b80) __obf_d2760344a3799976(__obf_fbab2e67c946f055 int) int {
-	if __obf_fbab2e67c946f055 == __obf_1b6e726e11cd9194.__obf_fbab2e67c946f055() {
+func (__obf_d3308b8b9ec8593a __obf_987afc77278a1676) __obf_8f66da0487eb5a9c(__obf_6ca1f14a38153ca1 int) int {
+	if __obf_6ca1f14a38153ca1 == __obf_d3308b8b9ec8593a.__obf_6ca1f14a38153ca1() {
 		return 0
 	}
 
-	return (8 - __obf_fbab2e67c946f055%8) % 8
+	return (8 - __obf_6ca1f14a38153ca1%8) % 8
 }
 
 // symbolSize returns the size of the QR Code symbol in number of modules (which
 // is both the width and height, since QR codes are square). The QR Code has
 // size symbolSize() x symbolSize() pixels. This does not include the quiet
 // zone.
-func (__obf_1b6e726e11cd9194 __obf_c64ed2c3cfb19b80) __obf_3065d5392ebc294f() int {
-	return 21 + (__obf_1b6e726e11cd9194.
+func (__obf_d3308b8b9ec8593a __obf_987afc77278a1676) __obf_f2408f5081085d49() int {
+	return 21 + (__obf_d3308b8b9ec8593a.
 
 		// quietZoneSize returns the number of pixels of border space on each side of
 		// the QR Code. The quiet space assists with decoding.
-		__obf_4139f181d582c6ec-1)*4
+		__obf_2066e640e4e50f14-1)*4
 }
 
-func (__obf_1b6e726e11cd9194 __obf_c64ed2c3cfb19b80) __obf_b4e60978957de1cf() int {
+func (__obf_d3308b8b9ec8593a __obf_987afc77278a1676) __obf_33b2b94fa59e1169() int {
 	return 4
 }
 
 // getQRCodeVersion returns the QR Code version by version number and recovery
 // level. Returns nil if the requested combination is not defined.
-func __obf_4af69a6c1a68877b(__obf_877aa2e5148b2067 RecoveryLevel, __obf_4139f181d582c6ec int) *__obf_c64ed2c3cfb19b80 {
-	for _, __obf_1b6e726e11cd9194 := range __obf_240c3968ce8cff96 {
-		if __obf_1b6e726e11cd9194.__obf_877aa2e5148b2067 == __obf_877aa2e5148b2067 && __obf_1b6e726e11cd9194.__obf_4139f181d582c6ec == __obf_4139f181d582c6ec {
-			return &__obf_1b6e726e11cd9194
+func __obf_7704d615d7f75575(__obf_47158df92f26b0f4 RecoveryLevel, __obf_2066e640e4e50f14 int) *__obf_987afc77278a1676 {
+	for _, __obf_d3308b8b9ec8593a := range __obf_1a342db7c15b8903 {
+		if __obf_d3308b8b9ec8593a.__obf_47158df92f26b0f4 == __obf_47158df92f26b0f4 && __obf_d3308b8b9ec8593a.__obf_2066e640e4e50f14 == __obf_2066e640e4e50f14 {
+			return &__obf_d3308b8b9ec8593a
 		}
 	}
 

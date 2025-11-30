@@ -1,12 +1,12 @@
-package __obf_f60326fd90eb13d9
+package __obf_08ee9322ff6adb83
 
 import "io"
 
-func (__obf_dd04e55ec17d0ebf *HlsServer) GetCaption(__obf_2c7a65b2dac56e8a string, __obf_811b158c28965ee0 io.Writer) error {
-	__obf_4790050703cb3251 := []string{
-		"-i", __obf_2c7a65b2dac56e8a, "-f", "webvtt",
+func (__obf_504413fedee71524 *HlsServer) GetCaption(__obf_489cc4007c169b0b string, __obf_63e18a6991b3d10e io.Writer) error {
+	__obf_b8bccd5d97f55f0d := []string{
+		"-i", __obf_489cc4007c169b0b, "-f", "webvtt",
 		"pipe:",
 		// 2> /dev/null
 	}
-	return __obf_dd04e55ec17d0ebf.__obf_9b2fbfd16e499a01.Serve(FFMpegPath, __obf_4790050703cb3251, __obf_811b158c28965ee0)
+	return __obf_504413fedee71524.__obf_1a9d4d2fd79eae45.Serve(FFMpegPath, __obf_b8bccd5d97f55f0d, __obf_63e18a6991b3d10e)
 }

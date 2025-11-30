@@ -1,70 +1,70 @@
-package __obf_5b802ce8d9ba56d6
+package __obf_703d23ba520c3295
 
-type __obf_d46f328cec1c970b struct {
-	__obf_fb75d4e4562132ae
+type __obf_dcb3a6cf344e0d42 struct {
+	__obf_b2a2e31336581ab8
 }
 
-func (any *__obf_d46f328cec1c970b,) LastError() error {
+func (any *__obf_dcb3a6cf344e0d42,) LastError() error {
 	return nil
 }
 
-func (any *__obf_d46f328cec1c970b,) ValueType() ValueType {
+func (any *__obf_dcb3a6cf344e0d42,) ValueType() ValueType {
 	return NilValue
 }
 
-func (any *__obf_d46f328cec1c970b,) MustBeValid() Any {
+func (any *__obf_dcb3a6cf344e0d42,) MustBeValid() Any {
 	return any
 }
 
-func (any *__obf_d46f328cec1c970b,) ToBool() bool {
+func (any *__obf_dcb3a6cf344e0d42,) ToBool() bool {
 	return false
 }
 
-func (any *__obf_d46f328cec1c970b,) ToInt() int {
+func (any *__obf_dcb3a6cf344e0d42,) ToInt() int {
 	return 0
 }
 
-func (any *__obf_d46f328cec1c970b,) ToInt32() int32 {
+func (any *__obf_dcb3a6cf344e0d42,) ToInt32() int32 {
 	return 0
 }
 
-func (any *__obf_d46f328cec1c970b,) ToInt64() int64 {
+func (any *__obf_dcb3a6cf344e0d42,) ToInt64() int64 {
 	return 0
 }
 
-func (any *__obf_d46f328cec1c970b,) ToUint() uint {
+func (any *__obf_dcb3a6cf344e0d42,) ToUint() uint {
 	return 0
 }
 
-func (any *__obf_d46f328cec1c970b,) ToUint32() uint32 {
+func (any *__obf_dcb3a6cf344e0d42,) ToUint32() uint32 {
 	return 0
 }
 
-func (any *__obf_d46f328cec1c970b,) ToUint64() uint64 {
+func (any *__obf_dcb3a6cf344e0d42,) ToUint64() uint64 {
 	return 0
 }
 
-func (any *__obf_d46f328cec1c970b,) ToFloat32() float32 {
+func (any *__obf_dcb3a6cf344e0d42,) ToFloat32() float32 {
 	return 0
 }
 
-func (any *__obf_d46f328cec1c970b,) ToFloat64() float64 {
+func (any *__obf_dcb3a6cf344e0d42,) ToFloat64() float64 {
 	return 0
 }
 
-func (any *__obf_d46f328cec1c970b,) ToString() string {
+func (any *__obf_dcb3a6cf344e0d42,) ToString() string {
 	return ""
 }
 
-func (any *__obf_d46f328cec1c970b,) WriteTo(__obf_00fc491caa967a74 *Stream) {
-	__obf_00fc491caa967a74.
+func (any *__obf_dcb3a6cf344e0d42,) WriteTo(__obf_9a34f62857fb1d1d *Stream) {
+	__obf_9a34f62857fb1d1d.
 		WriteNil()
 }
 
-func (any *__obf_d46f328cec1c970b,) Parse() *Iterator {
+func (any *__obf_dcb3a6cf344e0d42,) Parse() *Iterator {
 	return nil
 }
 
-func (any *__obf_d46f328cec1c970b,) GetInterface() any {
+func (any *__obf_dcb3a6cf344e0d42,) GetInterface() any {
 	return nil
 }

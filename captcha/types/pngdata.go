@@ -1,4 +1,4 @@
-package __obf_bda21a78cb74016a
+package __obf_54406b1a1de84196
 
 import (
 	util "github.com/ArtisanHiram/go-pkg/captcha/util"
@@ -14,57 +14,57 @@ type PNGImage struct {
 }
 
 // NewPNGImage creates a new PNG image data instance
-func NewPNGImage(__obf_65fb97e6a605e786 image.Image) *PNGImage {
-	return &PNGImage{__obf_65fb97e6a605e786}
+func NewPNGImage(__obf_10d21d6285312279 image.Image) *PNGImage {
+	return &PNGImage{__obf_10d21d6285312279}
 }
 
 // Get retrieves the original image
-func (__obf_6ac27ae0c7f24e19 *PNGImage) Get() image.Image {
-	return __obf_6ac27ae0c7f24e19.Image
+func (__obf_a26ee860b3cee35b *PNGImage) Get() image.Image {
+	return __obf_a26ee860b3cee35b.Image
 }
 
 // SaveToFile is to save PNG as a file
-func (__obf_6ac27ae0c7f24e19 *PNGImage) SaveToFile(__obf_0494682892f936e3 string) error {
-	if __obf_6ac27ae0c7f24e19.Image == nil {
+func (__obf_a26ee860b3cee35b *PNGImage) SaveToFile(__obf_0a97a8569823a471 string) error {
+	if __obf_a26ee860b3cee35b.Image == nil {
 		return ImageMissingDataErr
 	}
 
 	var (
-		__obf_a20d63a4458733fc *os.File
-		__obf_eb4c912f039240f3 error
+		__obf_4279250641db8149 *os.File
+		__obf_d99742a1139768da error
 	)
-	__obf_eb4c912f039240f3 = os.MkdirAll(path.Dir(__obf_0494682892f936e3), os.ModePerm)
-	if __obf_eb4c912f039240f3 != nil {
-		return __obf_eb4c912f039240f3
+	__obf_d99742a1139768da = os.MkdirAll(path.Dir(__obf_0a97a8569823a471), os.ModePerm)
+	if __obf_d99742a1139768da != nil {
+		return __obf_d99742a1139768da
 	}
 
-	if _, __obf_eb4c912f039240f3 = os.Stat(__obf_0494682892f936e3); os.IsNotExist(__obf_eb4c912f039240f3) {
-		__obf_a20d63a4458733fc, __obf_eb4c912f039240f3 = os.Create(__obf_0494682892f936e3)
+	if _, __obf_d99742a1139768da = os.Stat(__obf_0a97a8569823a471); os.IsNotExist(__obf_d99742a1139768da) {
+		__obf_4279250641db8149, __obf_d99742a1139768da = os.Create(__obf_0a97a8569823a471)
 	} else {
-		__obf_a20d63a4458733fc, __obf_eb4c912f039240f3 = os.OpenFile(__obf_0494682892f936e3, os.O_RDWR, 0666)
+		__obf_4279250641db8149, __obf_d99742a1139768da = os.OpenFile(__obf_0a97a8569823a471, os.O_RDWR, 0666)
 	}
-	if __obf_eb4c912f039240f3 != nil {
-		return __obf_eb4c912f039240f3
+	if __obf_d99742a1139768da != nil {
+		return __obf_d99742a1139768da
 	}
-	defer __obf_a20d63a4458733fc.Close()
+	defer __obf_4279250641db8149.Close()
 
-	return png.Encode(__obf_a20d63a4458733fc,
+	return png.Encode(__obf_4279250641db8149,
 
 		// ToBytes converts the PNG image to a byte array
-		__obf_6ac27ae0c7f24e19.Image)
+		__obf_a26ee860b3cee35b.Image)
 }
 
-func (__obf_6ac27ae0c7f24e19 *PNGImage) ToBytes() ([]byte, error) {
-	if __obf_6ac27ae0c7f24e19.Image == nil {
+func (__obf_a26ee860b3cee35b *PNGImage) ToBytes() ([]byte, error) {
+	if __obf_a26ee860b3cee35b.Image == nil {
 		return []byte{}, ImageEmptyErr
 	}
-	return util.EncodePNGToByte(__obf_6ac27ae0c7f24e19.Image)
+	return util.EncodePNGToByte(__obf_a26ee860b3cee35b.Image)
 }
 
 // ToBase64 converts the PNG image to a Base64 string
-func (__obf_6ac27ae0c7f24e19 *PNGImage) ToBase64() (string, error) {
-	if __obf_6ac27ae0c7f24e19.Image == nil {
+func (__obf_a26ee860b3cee35b *PNGImage) ToBase64() (string, error) {
+	if __obf_a26ee860b3cee35b.Image == nil {
 		return "", ImageEmptyErr
 	}
-	return util.EncodePNGToBase64(__obf_6ac27ae0c7f24e19.Image)
+	return util.EncodePNGToBase64(__obf_a26ee860b3cee35b.Image)
 }

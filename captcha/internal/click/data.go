@@ -1,4 +1,4 @@
-package __obf_f075990603c6fd45
+package __obf_59290109f8ce9c8f
 
 import (
 	types "github.com/ArtisanHiram/go-pkg/captcha/types"
@@ -7,9 +7,9 @@ import (
 
 // CaptchaData is the concrete implementation of the CaptchaData interface
 type CaptchaData struct {
-	__obf_e0fb28c1ab249b67 []*types.Dot
-	__obf_8eb85ea5aa7dca32 *types.JPEGImage
-	__obf_5e5bc037f5f349e0 *types.PNGImage
+	__obf_7f68597a0d34a028 []*types.Dot
+	__obf_f7894dfc7807a63d *types.JPEGImage
+	__obf_feb6cb098a8949dd *types.PNGImage
 }
 
 // Ensure CaptchaData implements util.CaptchaData interface
@@ -17,26 +17,26 @@ var _ types.CaptchaData = (*CaptchaData)(nil)
 
 // GetPrimary gets the main captcha image
 // return: Main image as CaptchaImage interface
-func (__obf_b3aecd711f830444 *CaptchaData) GetPrimary() types.CaptchaImage {
-	return __obf_b3aecd711f830444.
+func (__obf_e0f9d59d598c10d8 *CaptchaData) GetPrimary() types.CaptchaImage {
+	return __obf_e0f9d59d598c10d8.
 
 		// GetSecondary gets the thumbnail image
 		// return: Thumbnail image as CaptchaImage interface
-		__obf_8eb85ea5aa7dca32
+		__obf_f7894dfc7807a63d
 }
 
-func (__obf_b3aecd711f830444 *CaptchaData) GetSecondary() types.CaptchaImage {
-	return __obf_b3aecd711f830444.
+func (__obf_e0f9d59d598c10d8 *CaptchaData) GetSecondary() types.CaptchaImage {
+	return __obf_e0f9d59d598c10d8.
 
 		// GetData gets the target dots data
-		__obf_5e5bc037f5f349e0
+		__obf_feb6cb098a8949dd
 }
 
-func (__obf_b3aecd711f830444 *CaptchaData) GetData() any {
-	return __obf_b3aecd711f830444.__obf_e0fb28c1ab249b67
+func (__obf_e0f9d59d598c10d8 *CaptchaData) GetData() any {
+	return __obf_e0f9d59d598c10d8.__obf_7f68597a0d34a028
 }
 
-func (__obf_b3aecd711f830444 *CaptchaData) Type() types.CaptchaType {
+func (__obf_e0f9d59d598c10d8 *CaptchaData) Type() types.CaptchaType {
 	return types.ClickCaptchat
 }
 
@@ -44,42 +44,42 @@ func (__obf_b3aecd711f830444 *CaptchaData) Type() types.CaptchaType {
 // clicks: slice of clicked coordinates
 // tolerance: allowed pixel deviation for matching
 // Returns true if all target dots are clicked correctly in order
-func (__obf_b3aecd711f830444 *CaptchaData) Verify(__obf_d32cfa3665d90729 any, __obf_ccce17755f09ae37 int) bool {
+func (__obf_e0f9d59d598c10d8 *CaptchaData) Verify(__obf_b9964f514fedda4c any, __obf_96791cdf6f0abeec int) bool {
 	// if len(clicks) != len(c.dots)*2 {
 	// 	return false
 	// }
 
-	var __obf_e0fb28c1ab249b67 []*types.Dot
-	__obf_65224995171d0c31 := // 配置 mapstructure
+	var __obf_7f68597a0d34a028 []*types.Dot
+	__obf_592faf099fbe3ec3 := // 配置 mapstructure
 		&mapstructure.DecoderConfig{
-			Result:           &__obf_e0fb28c1ab249b67,
+			Result:           &__obf_7f68597a0d34a028,
 			TagName:          "json",
 			WeaklyTypedInput: true, // 关键：允许弱类型转换（如 float64 -> int）
 		}
-	__obf_255ef17b714ee970, __obf_6090e69b7a7b925f := mapstructure.NewDecoder(__obf_65224995171d0c31)
-	if __obf_6090e69b7a7b925f != nil {
+	__obf_558a72f4577d6119, __obf_573fb4e2cef8adee := mapstructure.NewDecoder(__obf_592faf099fbe3ec3)
+	if __obf_573fb4e2cef8adee != nil {
 		return false
 	}
 
-	if __obf_6090e69b7a7b925f := __obf_255ef17b714ee970.Decode(__obf_d32cfa3665d90729); __obf_6090e69b7a7b925f != nil {
+	if __obf_573fb4e2cef8adee := __obf_558a72f4577d6119.Decode(__obf_b9964f514fedda4c); __obf_573fb4e2cef8adee != nil {
 		return false
 	}
 
-	if len(__obf_e0fb28c1ab249b67) != len(__obf_b3aecd711f830444.__obf_e0fb28c1ab249b67) {
+	if len(__obf_7f68597a0d34a028) != len(__obf_e0f9d59d598c10d8.__obf_7f68597a0d34a028) {
 		return false
 	}
-	for __obf_339c01a0f79fa1a4, __obf_c6ea6b2418e24fc3 := range __obf_b3aecd711f830444.
+	for __obf_c599f3c3680a56f5, __obf_d179dd23c6d2014b := range __obf_e0f9d59d598c10d8.
 		// clickX := clicks[i*2]
 		// clickY := clicks[i*2+1]
-		__obf_e0fb28c1ab249b67 {
-		__obf_bab260193d5ee7d1 := __obf_e0fb28c1ab249b67[__obf_339c01a0f79fa1a4].X
-		__obf_f47f093400bade31 := __obf_e0fb28c1ab249b67[__obf_339c01a0f79fa1a4].Y
-		__obf_2da36a0db21f0582 := // Calculate the center point of the dot
-			__obf_c6ea6b2418e24fc3.X + __obf_c6ea6b2418e24fc3.Size/2
-		__obf_ee833d82d1c436b2 := __obf_c6ea6b2418e24fc3.Y + __obf_c6ea6b2418e24fc3.Size/2
+		__obf_7f68597a0d34a028 {
+		__obf_2a33393e72d7cf17 := __obf_7f68597a0d34a028[__obf_c599f3c3680a56f5].X
+		__obf_a8fc99032f1de08b := __obf_7f68597a0d34a028[__obf_c599f3c3680a56f5].Y
+		__obf_147cc71c328277eb := // Calculate the center point of the dot
+			__obf_d179dd23c6d2014b.X + __obf_d179dd23c6d2014b.Size/2
+		__obf_a6736922d7fa7a7b := __obf_d179dd23c6d2014b.Y + __obf_d179dd23c6d2014b.Size/2
 
 		// Check if click is within tolerance range
-		if __obf_bab260193d5ee7d1 < __obf_2da36a0db21f0582-__obf_ccce17755f09ae37 || __obf_bab260193d5ee7d1 > __obf_2da36a0db21f0582+__obf_ccce17755f09ae37 || __obf_f47f093400bade31 < __obf_ee833d82d1c436b2-__obf_ccce17755f09ae37 || __obf_f47f093400bade31 > __obf_ee833d82d1c436b2+__obf_ccce17755f09ae37 {
+		if __obf_2a33393e72d7cf17 < __obf_147cc71c328277eb-__obf_96791cdf6f0abeec || __obf_2a33393e72d7cf17 > __obf_147cc71c328277eb+__obf_96791cdf6f0abeec || __obf_a8fc99032f1de08b < __obf_a6736922d7fa7a7b-__obf_96791cdf6f0abeec || __obf_a8fc99032f1de08b > __obf_a6736922d7fa7a7b+__obf_96791cdf6f0abeec {
 			return false
 		}
 	}

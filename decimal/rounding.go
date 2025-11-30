@@ -9,26 +9,26 @@
 // because 2 divides 10; cannot do decimal floating point
 // in multiprecision binary precisely.
 
-package __obf_3e0a215d3ac5298d
+package __obf_b0e21776b9d45e13
 
-type __obf_b9da0d5925fb006e struct {
-	__obf_179bd2684cdde9cd uint
-	__obf_1eecfa2ca0d4455f uint
-	__obf_b1391270660d97a8 int
+type __obf_7361d3b42dd22c09 struct {
+	__obf_2f2d498924addd14 uint
+	__obf_96af297d4e88f620 uint
+	__obf_0628d944dfc724b5 int
 }
 
-var __obf_9381b591902a5ca1 = __obf_b9da0d5925fb006e{23, 8, -127}
-var __obf_dc4c42ad9bdcae6e = __obf_b9da0d5925fb006e{52, 11, -1023}
+var __obf_2ea0d484844c6331 = __obf_7361d3b42dd22c09{23, 8, -127}
+var __obf_0e52bd84f2e0c5e5 = __obf_7361d3b42dd22c09{52, 11, -1023}
 
 // roundShortest rounds d (= mant * 2^exp) to the shortest number of digits
 // that will let the original floating point value be precisely reconstructed.
-func __obf_4e452f472f313f6b(__obf_e498fd1d3feac2c4 *__obf_3e0a215d3ac5298d, __obf_a8350a62e8fe3cad uint64, __obf_4b33f2812f2bcc7e int, __obf_414bae728c6159e7 *__obf_b9da0d5925fb006e,) {
+func __obf_96ba681e9a854a03(__obf_df803c2772cc0386 *__obf_b0e21776b9d45e13, __obf_22ce9de7558a3141 uint64, __obf_97e810ed39f8ac3f int, __obf_c19e228d4278835d *__obf_7361d3b42dd22c09,) {
 	// If mantissa is zero, the number is zero; stop now.
-	if __obf_a8350a62e8fe3cad == 0 {
-		__obf_e498fd1d3feac2c4.__obf_7a088d2e01e4cd05 = 0
+	if __obf_22ce9de7558a3141 == 0 {
+		__obf_df803c2772cc0386.__obf_2841543582033a23 = 0
 		return
 	}
-	__obf_5f93232b668d88e3 :=// Compute upper and lower such that any decimal number
+	__obf_edd5970b7263bf62 :=// Compute upper and lower such that any decimal number
 	// between upper and lower (possibly inclusive)
 	// will round to the original floating point number.
 
@@ -42,22 +42,22 @@ func __obf_4e452f472f313f6b(__obf_e498fd1d3feac2c4 *__obf_3e0a215d3ac5298d, __ob
 	// So the number is already shortest if 10^(dp-nd) > 2^(exp-mantbits),
 	// or equivalently log2(10)*(dp-nd) > exp-mantbits.
 	// It is true if 332/100*(dp-nd) >= exp-mantbits (log2(10) > 3.32).
-	__obf_414bae728c6159e7. // minimum possible exponent
-	__obf_b1391270660d97a8 + 1
-	if __obf_4b33f2812f2bcc7e > __obf_5f93232b668d88e3 && 332*(__obf_e498fd1d3feac2c4.__obf_164d07da7c832f2c-__obf_e498fd1d3feac2c4.__obf_7a088d2e01e4cd05) >= 100*(__obf_4b33f2812f2bcc7e-int(__obf_414bae728c6159e7.
+	__obf_c19e228d4278835d. // minimum possible exponent
+	__obf_0628d944dfc724b5 + 1
+	if __obf_97e810ed39f8ac3f > __obf_edd5970b7263bf62 && 332*(__obf_df803c2772cc0386.__obf_b4c2d4c5eeb9a307-__obf_df803c2772cc0386.__obf_2841543582033a23) >= 100*(__obf_97e810ed39f8ac3f-int(__obf_c19e228d4278835d.
 	// The number is already shortest.
-	__obf_179bd2684cdde9cd)) {
+	__obf_2f2d498924addd14)) {
 
 		return
 	}
-	__obf_88a335dba8c72a3b :=// d = mant << (exp - mantbits)
+	__obf_df5a436834d581a3 :=// d = mant << (exp - mantbits)
 	// Next highest floating point number is mant+1 << exp-mantbits.
 	// Our upper bound is halfway between, mant*2+1 << exp-mantbits-1.
-	new(__obf_3e0a215d3ac5298d)
-	__obf_88a335dba8c72a3b.
-		Assign(__obf_a8350a62e8fe3cad*2 + 1)
-	__obf_88a335dba8c72a3b.
-		Shift(__obf_4b33f2812f2bcc7e - int(__obf_414bae728c6159e7.
+	new(__obf_b0e21776b9d45e13)
+	__obf_df5a436834d581a3.
+		Assign(__obf_22ce9de7558a3141*2 + 1)
+	__obf_df5a436834d581a3.
+		Shift(__obf_97e810ed39f8ac3f - int(__obf_c19e228d4278835d.
 
 		// d = mant << (exp - mantbits)
 		// Next lowest floating point number is mant-1 << exp-mantbits,
@@ -65,28 +65,28 @@ func __obf_4e452f472f313f6b(__obf_e498fd1d3feac2c4 *__obf_3e0a215d3ac5298d, __ob
 		// in which case the next lowest is mant*2-1 << exp-mantbits-1.
 		// Either way, call it mantlo << explo-mantbits.
 		// Our lower bound is halfway between, mantlo*2+1 << explo-mantbits-1.
-		__obf_179bd2684cdde9cd) - 1)
+		__obf_2f2d498924addd14) - 1)
 
-	var __obf_d2ada3d19efc81ac uint64
-	var __obf_81245a83477ecf38 int
-	if __obf_a8350a62e8fe3cad > 1<<__obf_414bae728c6159e7.__obf_179bd2684cdde9cd || __obf_4b33f2812f2bcc7e == __obf_5f93232b668d88e3 {
-		__obf_d2ada3d19efc81ac = __obf_a8350a62e8fe3cad - 1
-		__obf_81245a83477ecf38 = __obf_4b33f2812f2bcc7e
+	var __obf_83a13514fbb817f8 uint64
+	var __obf_b3d2d58036f46115 int
+	if __obf_22ce9de7558a3141 > 1<<__obf_c19e228d4278835d.__obf_2f2d498924addd14 || __obf_97e810ed39f8ac3f == __obf_edd5970b7263bf62 {
+		__obf_83a13514fbb817f8 = __obf_22ce9de7558a3141 - 1
+		__obf_b3d2d58036f46115 = __obf_97e810ed39f8ac3f
 	} else {
-		__obf_d2ada3d19efc81ac = __obf_a8350a62e8fe3cad*2 - 1
-		__obf_81245a83477ecf38 = __obf_4b33f2812f2bcc7e - 1
+		__obf_83a13514fbb817f8 = __obf_22ce9de7558a3141*2 - 1
+		__obf_b3d2d58036f46115 = __obf_97e810ed39f8ac3f - 1
 	}
-	__obf_5a1148a0ba21d5a8 := new(__obf_3e0a215d3ac5298d)
-	__obf_5a1148a0ba21d5a8.
-		Assign(__obf_d2ada3d19efc81ac*2 + 1)
-	__obf_5a1148a0ba21d5a8.
-		Shift(__obf_81245a83477ecf38 - int(__obf_414bae728c6159e7.
+	__obf_40f9b405cbd46946 := new(__obf_b0e21776b9d45e13)
+	__obf_40f9b405cbd46946.
+		Assign(__obf_83a13514fbb817f8*2 + 1)
+	__obf_40f9b405cbd46946.
+		Shift(__obf_b3d2d58036f46115 - int(__obf_c19e228d4278835d.
 
 		// The upper and lower bounds are possible outputs only if
 		// the original mantissa is even, so that IEEE round-to-even
 		// would round to the original mantissa and not the neighbors.
-		__obf_179bd2684cdde9cd) - 1)
-	__obf_04e21ea4ee469d56 := __obf_a8350a62e8fe3cad%2 == 0
+		__obf_2f2d498924addd14) - 1)
+	__obf_8cd47ad8fbacff78 := __obf_22ce9de7558a3141%2 == 0
 
 	// As we walk the digits we want to know whether rounding up would fall
 	// within the upper bound. This is tracked by upperdelta:
@@ -99,76 +99,76 @@ func __obf_4e452f472f313f6b(__obf_e498fd1d3feac2c4 *__obf_3e0a215d3ac5298d, __ob
 	//
 	// If upperdelta == 2, then the difference is greater than 1
 	// and we know that rounding up falls within the bound.
-	var __obf_812d0bfa6f2e2d24 uint8
+	var __obf_e8f899030e8c9120 uint8
 
 	// Now we can figure out the minimum number of digits required.
 	// Walk along until d has distinguished itself from upper and lower.
-	for __obf_a5a24b56813aa7d6 := 0; ; __obf_a5a24b56813aa7d6++ {
-		__obf_d45c5cf2fd7ba95c :=// lower, d, and upper may have the decimal points at different
+	for __obf_4629c791017603c0 := 0; ; __obf_4629c791017603c0++ {
+		__obf_451e6a8232afef31 :=// lower, d, and upper may have the decimal points at different
 		// places. In this case upper is the longest, so we iterate from
 		// ui==0 and start li and mi at (possibly) -1.
-		__obf_a5a24b56813aa7d6 - __obf_88a335dba8c72a3b.__obf_164d07da7c832f2c + __obf_e498fd1d3feac2c4.__obf_164d07da7c832f2c
-		if __obf_d45c5cf2fd7ba95c >= __obf_e498fd1d3feac2c4.__obf_7a088d2e01e4cd05 {
+		__obf_4629c791017603c0 - __obf_df5a436834d581a3.__obf_b4c2d4c5eeb9a307 + __obf_df803c2772cc0386.__obf_b4c2d4c5eeb9a307
+		if __obf_451e6a8232afef31 >= __obf_df803c2772cc0386.__obf_2841543582033a23 {
 			break
 		}
-		__obf_49b77fb32eef3139 := __obf_a5a24b56813aa7d6 - __obf_88a335dba8c72a3b.__obf_164d07da7c832f2c + __obf_5a1148a0ba21d5a8.__obf_164d07da7c832f2c
+		__obf_04b95390bc141ba8 := __obf_4629c791017603c0 - __obf_df5a436834d581a3.__obf_b4c2d4c5eeb9a307 + __obf_40f9b405cbd46946.__obf_b4c2d4c5eeb9a307
 		// lower digit
-		__obf_2555792e3e804add := byte('0')
-		if __obf_49b77fb32eef3139 >= 0 && __obf_49b77fb32eef3139 < __obf_5a1148a0ba21d5a8.__obf_7a088d2e01e4cd05 {
-			__obf_2555792e3e804add = __obf_5a1148a0ba21d5a8.__obf_e498fd1d3feac2c4[__obf_49b77fb32eef3139]
+		__obf_9f7df88c606a79dc := byte('0')
+		if __obf_04b95390bc141ba8 >= 0 && __obf_04b95390bc141ba8 < __obf_40f9b405cbd46946.__obf_2841543582033a23 {
+			__obf_9f7df88c606a79dc = __obf_40f9b405cbd46946.__obf_df803c2772cc0386[__obf_04b95390bc141ba8]
 		}
-		__obf_e524d5ae197a0bbb := byte('0') // middle digit
-		if __obf_d45c5cf2fd7ba95c >= 0 {
-			__obf_e524d5ae197a0bbb = __obf_e498fd1d3feac2c4.__obf_e498fd1d3feac2c4[__obf_d45c5cf2fd7ba95c]
+		__obf_cb9fa5e90307ec38 := byte('0') // middle digit
+		if __obf_451e6a8232afef31 >= 0 {
+			__obf_cb9fa5e90307ec38 = __obf_df803c2772cc0386.__obf_df803c2772cc0386[__obf_451e6a8232afef31]
 		}
-		__obf_b9289f6e07c1c649 := byte('0') // upper digit
-		if __obf_a5a24b56813aa7d6 < __obf_88a335dba8c72a3b.__obf_7a088d2e01e4cd05 {
-			__obf_b9289f6e07c1c649 = __obf_88a335dba8c72a3b.
+		__obf_7185e6ffce2bb589 := byte('0') // upper digit
+		if __obf_4629c791017603c0 < __obf_df5a436834d581a3.__obf_2841543582033a23 {
+			__obf_7185e6ffce2bb589 = __obf_df5a436834d581a3.
 
 			// Okay to round down (truncate) if lower has a different digit
 			// or if lower is inclusive and is exactly the result of rounding
 			// down (i.e., and we have reached the final digit of lower).
-			__obf_e498fd1d3feac2c4[__obf_a5a24b56813aa7d6]
+			__obf_df803c2772cc0386[__obf_4629c791017603c0]
 		}
-		__obf_d5e2dd50a172b254 := __obf_2555792e3e804add != __obf_e524d5ae197a0bbb || __obf_04e21ea4ee469d56 && __obf_49b77fb32eef3139+1 == __obf_5a1148a0ba21d5a8.__obf_7a088d2e01e4cd05
+		__obf_16b564be3fb20bed := __obf_9f7df88c606a79dc != __obf_cb9fa5e90307ec38 || __obf_8cd47ad8fbacff78 && __obf_04b95390bc141ba8+1 == __obf_40f9b405cbd46946.__obf_2841543582033a23
 
 		switch {
-		case __obf_812d0bfa6f2e2d24 == 0 && __obf_e524d5ae197a0bbb+1 < __obf_b9289f6e07c1c649:
-			__obf_812d0bfa6f2e2d24 =// Example:
+		case __obf_e8f899030e8c9120 == 0 && __obf_cb9fa5e90307ec38+1 < __obf_7185e6ffce2bb589:
+			__obf_e8f899030e8c9120 =// Example:
 			// m = 12345xxx
 			// u = 12347xxx
 			2
-		case __obf_812d0bfa6f2e2d24 == 0 && __obf_e524d5ae197a0bbb != __obf_b9289f6e07c1c649:
-			__obf_812d0bfa6f2e2d24 =// Example:
+		case __obf_e8f899030e8c9120 == 0 && __obf_cb9fa5e90307ec38 != __obf_7185e6ffce2bb589:
+			__obf_e8f899030e8c9120 =// Example:
 			// m = 12345xxx
 			// u = 12346xxx
 			1
-		case __obf_812d0bfa6f2e2d24 == 1 && (__obf_e524d5ae197a0bbb != '9' || __obf_b9289f6e07c1c649 != '0'):
-			__obf_812d0bfa6f2e2d24 =// Example:
+		case __obf_e8f899030e8c9120 == 1 && (__obf_cb9fa5e90307ec38 != '9' || __obf_7185e6ffce2bb589 != '0'):
+			__obf_e8f899030e8c9120 =// Example:
 			// m = 1234598x
 			// u = 1234600x
 			2
 		}
-		__obf_1083bb983af0dd7b :=// Okay to round up if upper has a different digit and either upper
+		__obf_300a37fd5252a419 :=// Okay to round up if upper has a different digit and either upper
 		// is inclusive or upper is bigger than the result of rounding up.
-		__obf_812d0bfa6f2e2d24 > 0 && (__obf_04e21ea4ee469d56 || __obf_812d0bfa6f2e2d24 > 1 || __obf_a5a24b56813aa7d6+1 < __obf_88a335dba8c72a3b.
+		__obf_e8f899030e8c9120 > 0 && (__obf_8cd47ad8fbacff78 || __obf_e8f899030e8c9120 > 1 || __obf_4629c791017603c0+1 < __obf_df5a436834d581a3.
 
 		// If it's okay to do either, then round to the nearest one.
 		// If it's okay to do only one, do it.
-		__obf_7a088d2e01e4cd05)
+		__obf_2841543582033a23)
 
 		switch {
-		case __obf_d5e2dd50a172b254 && __obf_1083bb983af0dd7b:
-			__obf_e498fd1d3feac2c4.
-				Round(__obf_d45c5cf2fd7ba95c + 1)
+		case __obf_16b564be3fb20bed && __obf_300a37fd5252a419:
+			__obf_df803c2772cc0386.
+				Round(__obf_451e6a8232afef31 + 1)
 			return
-		case __obf_d5e2dd50a172b254:
-			__obf_e498fd1d3feac2c4.
-				RoundDown(__obf_d45c5cf2fd7ba95c + 1)
+		case __obf_16b564be3fb20bed:
+			__obf_df803c2772cc0386.
+				RoundDown(__obf_451e6a8232afef31 + 1)
 			return
-		case __obf_1083bb983af0dd7b:
-			__obf_e498fd1d3feac2c4.
-				RoundUp(__obf_d45c5cf2fd7ba95c + 1)
+		case __obf_300a37fd5252a419:
+			__obf_df803c2772cc0386.
+				RoundUp(__obf_451e6a8232afef31 + 1)
 			return
 		}
 	}

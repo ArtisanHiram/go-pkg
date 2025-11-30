@@ -1,26 +1,26 @@
-package __obf_b0bebe5eb45b8ad6
+package __obf_e72ce603d10d02a1
 
 import consistent "github.com/ArtisanHiram/go-pkg/consistent"
 
-func Subset[M consistent.Member](__obf_e177826ca867ebb3 string, __obf_c350ddf11727d77a []M, __obf_03c75b3ae8ffc020 int) []M {
-	if len(__obf_c350ddf11727d77a) <= __obf_03c75b3ae8ffc020 {
-		return __obf_c350ddf11727d77a
+func Subset[M consistent.Member](__obf_9ae0d9fd67afd0d9 string, __obf_c2ca538d2769cd4b []M, __obf_b686586ed8451139 int) []M {
+	if len(__obf_c2ca538d2769cd4b) <= __obf_b686586ed8451139 {
+		return __obf_c2ca538d2769cd4b
 	}
-	__obf_13be556fca486f9c := consistent.New[M]()
-	__obf_13be556fca486f9c.
+	__obf_fab71928d52cd4c8 := consistent.New[M]()
+	__obf_fab71928d52cd4c8.
 		NumberOfReplicas = 160
-	__obf_13be556fca486f9c.
+	__obf_fab71928d52cd4c8.
 		UseFnv = true
-	__obf_13be556fca486f9c.
-		Set(__obf_c350ddf11727d77a)
+	__obf_fab71928d52cd4c8.
+		Set(__obf_c2ca538d2769cd4b)
 
-	return __obf_0ee40a86043cf1b6(__obf_13be556fca486f9c, __obf_e177826ca867ebb3, __obf_c350ddf11727d77a, __obf_03c75b3ae8ffc020)
+	return __obf_e9c2692e9b7cba77(__obf_fab71928d52cd4c8, __obf_9ae0d9fd67afd0d9, __obf_c2ca538d2769cd4b, __obf_b686586ed8451139)
 }
 
-func __obf_0ee40a86043cf1b6[M consistent.Member](__obf_13be556fca486f9c *consistent.Consistent[M], __obf_e177826ca867ebb3 string, __obf_c350ddf11727d77a []M, __obf_03c75b3ae8ffc020 int) []M {
-	__obf_dc45440d8379a116, __obf_805eb0b5dd52f7ba := __obf_13be556fca486f9c.GetN(__obf_e177826ca867ebb3, __obf_03c75b3ae8ffc020)
-	if __obf_805eb0b5dd52f7ba != nil {
-		return __obf_c350ddf11727d77a
+func __obf_e9c2692e9b7cba77[M consistent.Member](__obf_fab71928d52cd4c8 *consistent.Consistent[M], __obf_9ae0d9fd67afd0d9 string, __obf_c2ca538d2769cd4b []M, __obf_b686586ed8451139 int) []M {
+	__obf_8e19b33164208f18, __obf_3674305c6f99212d := __obf_fab71928d52cd4c8.GetN(__obf_9ae0d9fd67afd0d9, __obf_b686586ed8451139)
+	if __obf_3674305c6f99212d != nil {
+		return __obf_c2ca538d2769cd4b
 	}
-	return __obf_dc45440d8379a116
+	return __obf_8e19b33164208f18
 }

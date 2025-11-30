@@ -1,4 +1,4 @@
-package __obf_bda21a78cb74016a
+package __obf_54406b1a1de84196
 
 import "math"
 
@@ -8,29 +8,29 @@ type Matrix struct {
 }
 
 // Translate performs matrix translation calculation
-func (__obf_6ed92d728f70797c Matrix) Translate(__obf_e22e7e43df48995e, __obf_a4dd1bd05990217f float64) Matrix {
+func (__obf_23448ffa2f9aadbc Matrix) Translate(__obf_48afb3005cd4a35c, __obf_33a1f511b09ac2af float64) Matrix {
 	return Matrix{
 		1, 0,
-		0, 1, __obf_e22e7e43df48995e, __obf_a4dd1bd05990217f,
-	}.Multiply(__obf_6ed92d728f70797c)
+		0, 1, __obf_48afb3005cd4a35c, __obf_33a1f511b09ac2af,
+	}.Multiply(__obf_23448ffa2f9aadbc)
 }
 
 // Multiply performs matrix multiplication
-func (__obf_6ed92d728f70797c Matrix) Multiply(__obf_cd225e6d73fa2d13 Matrix) Matrix {
-	return Matrix{__obf_6ed92d728f70797c.
-		XX*__obf_cd225e6d73fa2d13.XX + __obf_6ed92d728f70797c.YX*__obf_cd225e6d73fa2d13.XY, __obf_6ed92d728f70797c.
-		XX*__obf_cd225e6d73fa2d13.YX + __obf_6ed92d728f70797c.YX*__obf_cd225e6d73fa2d13.YY, __obf_6ed92d728f70797c.
-		XY*__obf_cd225e6d73fa2d13.XX + __obf_6ed92d728f70797c.YY*__obf_cd225e6d73fa2d13.XY, __obf_6ed92d728f70797c.
-		XY*__obf_cd225e6d73fa2d13.YX + __obf_6ed92d728f70797c.YY*__obf_cd225e6d73fa2d13.YY, __obf_6ed92d728f70797c.
-		X0*__obf_cd225e6d73fa2d13.XX + __obf_6ed92d728f70797c.Y0*__obf_cd225e6d73fa2d13.XY + __obf_cd225e6d73fa2d13.X0, __obf_6ed92d728f70797c.
-		X0*__obf_cd225e6d73fa2d13.YX + __obf_6ed92d728f70797c.Y0*__obf_cd225e6d73fa2d13.YY + __obf_cd225e6d73fa2d13.Y0,
+func (__obf_23448ffa2f9aadbc Matrix) Multiply(__obf_0f18c71e80ef2569 Matrix) Matrix {
+	return Matrix{__obf_23448ffa2f9aadbc.
+		XX*__obf_0f18c71e80ef2569.XX + __obf_23448ffa2f9aadbc.YX*__obf_0f18c71e80ef2569.XY, __obf_23448ffa2f9aadbc.
+		XX*__obf_0f18c71e80ef2569.YX + __obf_23448ffa2f9aadbc.YX*__obf_0f18c71e80ef2569.YY, __obf_23448ffa2f9aadbc.
+		XY*__obf_0f18c71e80ef2569.XX + __obf_23448ffa2f9aadbc.YY*__obf_0f18c71e80ef2569.XY, __obf_23448ffa2f9aadbc.
+		XY*__obf_0f18c71e80ef2569.YX + __obf_23448ffa2f9aadbc.YY*__obf_0f18c71e80ef2569.YY, __obf_23448ffa2f9aadbc.
+		X0*__obf_0f18c71e80ef2569.XX + __obf_23448ffa2f9aadbc.Y0*__obf_0f18c71e80ef2569.XY + __obf_0f18c71e80ef2569.X0, __obf_23448ffa2f9aadbc.
+		X0*__obf_0f18c71e80ef2569.YX + __obf_23448ffa2f9aadbc.Y0*__obf_0f18c71e80ef2569.YY + __obf_0f18c71e80ef2569.Y0,
 	}
 }
 
 // Rotate performs matrix rotation calculation
-func (__obf_6ed92d728f70797c Matrix) Rotate(__obf_1ed21c16a991a4c4 float64) Matrix {
-	__obf_6ac27ae0c7f24e19 := math.Cos(__obf_1ed21c16a991a4c4)
-	__obf_f2659f3da765dd14 := math.Sin(__obf_1ed21c16a991a4c4)
-	return Matrix{__obf_6ac27ae0c7f24e19, __obf_f2659f3da765dd14, -__obf_f2659f3da765dd14, __obf_6ac27ae0c7f24e19, 0, 0,
-	}.Multiply(__obf_6ed92d728f70797c)
+func (__obf_23448ffa2f9aadbc Matrix) Rotate(__obf_27c01b4675c92ab0 float64) Matrix {
+	__obf_a26ee860b3cee35b := math.Cos(__obf_27c01b4675c92ab0)
+	__obf_0f0924068fb8be37 := math.Sin(__obf_27c01b4675c92ab0)
+	return Matrix{__obf_a26ee860b3cee35b, __obf_0f0924068fb8be37, -__obf_0f0924068fb8be37, __obf_a26ee860b3cee35b, 0, 0,
+	}.Multiply(__obf_23448ffa2f9aadbc)
 }

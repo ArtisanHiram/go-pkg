@@ -1,4 +1,4 @@
-package __obf_18f8d68b9095d0e0
+package __obf_b5bcac367b722f8a
 
 // 小程序相关URL
 const (

@@ -14,248 +14,248 @@ import (
 )
 
 const (
-	__obf_8134ed3b40be5ec0 = ".ts"
-	__obf_2a4429725b53e4f1 = "ts"
-	__obf_3efda21d9cb3dadc = "main.ts"
-	__obf_cfdbcb71f0de2169 = "_tmp"
-	__obf_13326195de1124fb = 40
+	__obf_412f29766929b45a = ".ts"
+	__obf_dd2bbf033b0e083f = "ts"
+	__obf_0a27001219a6287c = "main.ts"
+	__obf_14fb6f7b461646ca = "_tmp"
+	__obf_74e246ed5dfcfa3b = 40
 )
 
 // Downloader A task definition to download
 type Downloader struct {
-	__obf_25d51c9d676b4ae0 sync.Mutex
-	__obf_9d62fc2ea68dbc90 []int
-	__obf_f2f5d889f82413c8 string
-	__obf_89fa31665130ded7 string
-	__obf_3a501d820e48bd04 int32
-	__obf_40556a43ecb1a12f int
-	__obf_9e5ac2f699f8eb94 *parse.Result
+	__obf_7328558709def097 sync.Mutex
+	__obf_443bdea9870aa393 []int
+	__obf_8668dd1d7cbf68d4 string
+	__obf_40d94e32155209e0 string
+	__obf_4130e670c70f620a int32
+	__obf_774318f00ce2acad int
+	__obf_02b78213e8219b62 *parse.Result
 }
 
 // NewTask Returns a Task instance
 // @param output string  file output folder path
 // @param url    string  m3u8 http url
-func NewTask(__obf_10b0d572c2650427 string, __obf_c0fb6d8692497149 string) (*Downloader, error) {
-	__obf_9e5ac2f699f8eb94, __obf_e4142ef6a9f97155 := parse.ParseFromNet(__obf_c0fb6d8692497149)
-	if __obf_e4142ef6a9f97155 != nil {
-		return nil, __obf_e4142ef6a9f97155
+func NewTask(__obf_75dc0fa65ea3ee4a string, __obf_fba5742c8939d4d5 string) (*Downloader, error) {
+	__obf_02b78213e8219b62, __obf_c3746095cbc77276 := parse.ParseFromNet(__obf_fba5742c8939d4d5)
+	if __obf_c3746095cbc77276 != nil {
+		return nil, __obf_c3746095cbc77276
 	}
-	var __obf_f2f5d889f82413c8 string
+	var __obf_8668dd1d7cbf68d4 string
 	// If no output folder specified, use current directory
-	if __obf_10b0d572c2650427 == "" {
-		__obf_fa11f70f79569523, __obf_e4142ef6a9f97155 := tool.CurrentDir()
-		if __obf_e4142ef6a9f97155 != nil {
-			return nil, __obf_e4142ef6a9f97155
+	if __obf_75dc0fa65ea3ee4a == "" {
+		__obf_d859d0f728498cfb, __obf_c3746095cbc77276 := tool.CurrentDir()
+		if __obf_c3746095cbc77276 != nil {
+			return nil, __obf_c3746095cbc77276
 		}
-		__obf_f2f5d889f82413c8 = filepath.Join(__obf_fa11f70f79569523, __obf_10b0d572c2650427)
+		__obf_8668dd1d7cbf68d4 = filepath.Join(__obf_d859d0f728498cfb, __obf_75dc0fa65ea3ee4a)
 	} else {
-		__obf_f2f5d889f82413c8 = __obf_10b0d572c2650427
+		__obf_8668dd1d7cbf68d4 = __obf_75dc0fa65ea3ee4a
 	}
-	if __obf_e4142ef6a9f97155 := os.MkdirAll(__obf_f2f5d889f82413c8, os.ModePerm); __obf_e4142ef6a9f97155 != nil {
-		return nil, fmt.Errorf("create storage folder failed: %s", __obf_e4142ef6a9f97155.Error())
+	if __obf_c3746095cbc77276 := os.MkdirAll(__obf_8668dd1d7cbf68d4, os.ModePerm); __obf_c3746095cbc77276 != nil {
+		return nil, fmt.Errorf("create storage folder failed: %s", __obf_c3746095cbc77276.Error())
 	}
-	__obf_89fa31665130ded7 := filepath.Join(__obf_f2f5d889f82413c8, __obf_2a4429725b53e4f1)
-	if __obf_e4142ef6a9f97155 := os.MkdirAll(__obf_89fa31665130ded7, os.ModePerm); __obf_e4142ef6a9f97155 != nil {
-		return nil, fmt.Errorf("create ts folder '[%s]' failed: %s", __obf_89fa31665130ded7, __obf_e4142ef6a9f97155.Error())
+	__obf_40d94e32155209e0 := filepath.Join(__obf_8668dd1d7cbf68d4, __obf_dd2bbf033b0e083f)
+	if __obf_c3746095cbc77276 := os.MkdirAll(__obf_40d94e32155209e0, os.ModePerm); __obf_c3746095cbc77276 != nil {
+		return nil, fmt.Errorf("create ts folder '[%s]' failed: %s", __obf_40d94e32155209e0, __obf_c3746095cbc77276.Error())
 	}
-	__obf_fd24043101b08638 := &Downloader{__obf_f2f5d889f82413c8: __obf_f2f5d889f82413c8, __obf_89fa31665130ded7: __obf_89fa31665130ded7, __obf_9e5ac2f699f8eb94: __obf_9e5ac2f699f8eb94}
-	__obf_fd24043101b08638.
+	__obf_73861903bc064f83 := &Downloader{__obf_8668dd1d7cbf68d4: __obf_8668dd1d7cbf68d4, __obf_40d94e32155209e0: __obf_40d94e32155209e0, __obf_02b78213e8219b62: __obf_02b78213e8219b62}
+	__obf_73861903bc064f83.
 		// segment length
-		__obf_40556a43ecb1a12f = len(__obf_9e5ac2f699f8eb94.M3u8.Segments)
-	__obf_fd24043101b08638.__obf_9d62fc2ea68dbc90 = __obf_d7fefa73b06977df(__obf_fd24043101b08638.__obf_40556a43ecb1a12f)
-	return __obf_fd24043101b08638, nil
+		__obf_774318f00ce2acad = len(__obf_02b78213e8219b62.M3u8.Segments)
+	__obf_73861903bc064f83.__obf_443bdea9870aa393 = __obf_34bcc24b4504f48e(__obf_73861903bc064f83.__obf_774318f00ce2acad)
+	return __obf_73861903bc064f83, nil
 }
 
 // Start Current downloader runs
 // Use goroutine to download parallel
-func (__obf_fd24043101b08638 *Downloader) Start(__obf_8e57269ee4925374 int) error {
-	var __obf_53d040c6dd8b08e1 sync.WaitGroup
+func (__obf_73861903bc064f83 *Downloader) Start(__obf_f0bae1bec99f1840 int) error {
+	var __obf_2b37cb05c9916766 sync.WaitGroup
 	for {
-		__obf_2f55b442f88aae44, __obf_bfb95eebc5e13071, __obf_e4142ef6a9f97155 := __obf_fd24043101b08638.__obf_44b7fcc7ee626cad()
-		if __obf_e4142ef6a9f97155 != nil {
-			if __obf_bfb95eebc5e13071 {
+		__obf_8359bb0a6d11dd9a, __obf_6ff5eadfa557e5dd, __obf_c3746095cbc77276 := __obf_73861903bc064f83.__obf_8d733be0011f8684()
+		if __obf_c3746095cbc77276 != nil {
+			if __obf_6ff5eadfa557e5dd {
 				break
 			}
 			continue
 		}
-		__obf_53d040c6dd8b08e1.
+		__obf_2b37cb05c9916766.
 			Add(1)
-		go func(__obf_0a3fc1c23d8a6530 int) {
-			defer __obf_53d040c6dd8b08e1.Done()
-			if __obf_e4142ef6a9f97155 := __obf_fd24043101b08638.__obf_78c84d64eed36d3d(__obf_0a3fc1c23d8a6530); __obf_e4142ef6a9f97155 != nil {
+		go func(__obf_fd818d512f67597a int) {
+			defer __obf_2b37cb05c9916766.Done()
+			if __obf_c3746095cbc77276 := __obf_73861903bc064f83.__obf_dd7ccee14355ced4(__obf_fd818d512f67597a); __obf_c3746095cbc77276 != nil {
 				// Back into the queue, retry request
-				fmt.Printf("[failed] %s\n", __obf_e4142ef6a9f97155.Error())
-				if __obf_e4142ef6a9f97155 := __obf_fd24043101b08638.__obf_b413c90d56ac4fb5(__obf_0a3fc1c23d8a6530); __obf_e4142ef6a9f97155 != nil {
-					fmt.Println(__obf_e4142ef6a9f97155.Error())
+				fmt.Printf("[failed] %s\n", __obf_c3746095cbc77276.Error())
+				if __obf_c3746095cbc77276 := __obf_73861903bc064f83.__obf_6315c945e3a63686(__obf_fd818d512f67597a); __obf_c3746095cbc77276 != nil {
+					fmt.Println(__obf_c3746095cbc77276.Error())
 				}
 			}
-		}(__obf_2f55b442f88aae44)
+		}(__obf_8359bb0a6d11dd9a)
 	}
-	__obf_53d040c6dd8b08e1.
+	__obf_2b37cb05c9916766.
 		Wait()
-	if __obf_e4142ef6a9f97155 := __obf_fd24043101b08638.__obf_5b59d34954c034e7(); __obf_e4142ef6a9f97155 != nil {
-		return __obf_e4142ef6a9f97155
+	if __obf_c3746095cbc77276 := __obf_73861903bc064f83.__obf_0a8ab6aecda9e2f7(); __obf_c3746095cbc77276 != nil {
+		return __obf_c3746095cbc77276
 	}
 	return nil
 }
 
 // download Current downloader to down specific index segment
-func (__obf_fd24043101b08638 *Downloader) __obf_78c84d64eed36d3d(__obf_c0be86a4073a9ff6 int) error {
-	__obf_0f053e4f910a2b8f := __obf_0f053e4f910a2b8f(__obf_c0be86a4073a9ff6)
-	__obf_55146efecadaa805 := __obf_fd24043101b08638.__obf_3484741e53c56a80(__obf_c0be86a4073a9ff6)
-	__obf_54375b0959069213, __obf_8f979500c83a748b := tool.Get(__obf_55146efecadaa805)
-	if __obf_8f979500c83a748b != nil {
-		return fmt.Errorf("request %s, %s", __obf_55146efecadaa805, __obf_8f979500c83a748b.Error())
+func (__obf_73861903bc064f83 *Downloader) __obf_dd7ccee14355ced4(__obf_1d028addd8c6408e int) error {
+	__obf_8dfd8db98341fadd := __obf_8dfd8db98341fadd(__obf_1d028addd8c6408e)
+	__obf_d44ae8bff844914a := __obf_73861903bc064f83.__obf_2dcb27a19875b1b3(__obf_1d028addd8c6408e)
+	__obf_bbde3be857e9fe98, __obf_410b1db13ff670f6 := tool.Get(__obf_d44ae8bff844914a)
+	if __obf_410b1db13ff670f6 != nil {
+		return fmt.Errorf("request %s, %s", __obf_d44ae8bff844914a, __obf_410b1db13ff670f6.Error())
 	}
 	//noinspection GoUnhandledErrorResult
-	defer __obf_54375b0959069213.Close()
-	__obf_fc854cc0a8652d8d := filepath.Join(__obf_fd24043101b08638.__obf_89fa31665130ded7, __obf_0f053e4f910a2b8f)
-	__obf_44e38527396dda6d := __obf_fc854cc0a8652d8d + __obf_cfdbcb71f0de2169
-	__obf_51dbed2d2291578d, __obf_e4142ef6a9f97155 := os.Create(__obf_44e38527396dda6d)
-	if __obf_e4142ef6a9f97155 != nil {
-		return fmt.Errorf("create file: %s, %s", __obf_0f053e4f910a2b8f, __obf_e4142ef6a9f97155.Error())
+	defer __obf_bbde3be857e9fe98.Close()
+	__obf_da5f7b49cfcb3b0e := filepath.Join(__obf_73861903bc064f83.__obf_40d94e32155209e0, __obf_8dfd8db98341fadd)
+	__obf_9e697a8fddc13b6f := __obf_da5f7b49cfcb3b0e + __obf_14fb6f7b461646ca
+	__obf_79c36d25f225f02a, __obf_c3746095cbc77276 := os.Create(__obf_9e697a8fddc13b6f)
+	if __obf_c3746095cbc77276 != nil {
+		return fmt.Errorf("create file: %s, %s", __obf_8dfd8db98341fadd, __obf_c3746095cbc77276.Error())
 	}
-	__obf_55287880a927d1dc, __obf_e4142ef6a9f97155 := io.ReadAll(__obf_54375b0959069213)
-	if __obf_e4142ef6a9f97155 != nil {
-		return fmt.Errorf("read bytes: %s, %s", __obf_55146efecadaa805, __obf_e4142ef6a9f97155.Error())
+	__obf_b1079be0a1721c29, __obf_c3746095cbc77276 := io.ReadAll(__obf_bbde3be857e9fe98)
+	if __obf_c3746095cbc77276 != nil {
+		return fmt.Errorf("read bytes: %s, %s", __obf_d44ae8bff844914a, __obf_c3746095cbc77276.Error())
 	}
-	__obf_eae1901d07da7ef1 := __obf_fd24043101b08638.__obf_9e5ac2f699f8eb94.M3u8.Segments[__obf_c0be86a4073a9ff6]
-	if __obf_eae1901d07da7ef1 == nil {
-		return fmt.Errorf("invalid segment index: %d", __obf_c0be86a4073a9ff6)
+	__obf_9d6240cf1635ca5e := __obf_73861903bc064f83.__obf_02b78213e8219b62.M3u8.Segments[__obf_1d028addd8c6408e]
+	if __obf_9d6240cf1635ca5e == nil {
+		return fmt.Errorf("invalid segment index: %d", __obf_1d028addd8c6408e)
 	}
-	__obf_2e138e70c2e8d0b7, __obf_9f4deb31efb767e9 := __obf_fd24043101b08638.__obf_9e5ac2f699f8eb94.Keys[__obf_eae1901d07da7ef1.KeyIndex]
-	if __obf_9f4deb31efb767e9 && __obf_2e138e70c2e8d0b7 != "" {
-		__obf_55287880a927d1dc, __obf_e4142ef6a9f97155 = tool.AES128Decrypt(__obf_55287880a927d1dc, []byte(__obf_2e138e70c2e8d0b7),
-			[]byte(__obf_fd24043101b08638.__obf_9e5ac2f699f8eb94.M3u8.Keys[__obf_eae1901d07da7ef1.KeyIndex].IV))
-		if __obf_e4142ef6a9f97155 != nil {
-			return fmt.Errorf("decryt: %s, %s", __obf_55146efecadaa805, __obf_e4142ef6a9f97155.Error())
+	__obf_cb50115d219fd014, __obf_743eff2093de61dc := __obf_73861903bc064f83.__obf_02b78213e8219b62.Keys[__obf_9d6240cf1635ca5e.KeyIndex]
+	if __obf_743eff2093de61dc && __obf_cb50115d219fd014 != "" {
+		__obf_b1079be0a1721c29, __obf_c3746095cbc77276 = tool.AES128Decrypt(__obf_b1079be0a1721c29, []byte(__obf_cb50115d219fd014),
+			[]byte(__obf_73861903bc064f83.__obf_02b78213e8219b62.M3u8.Keys[__obf_9d6240cf1635ca5e.KeyIndex].IV))
+		if __obf_c3746095cbc77276 != nil {
+			return fmt.Errorf("decryt: %s, %s", __obf_d44ae8bff844914a, __obf_c3746095cbc77276.Error())
 		}
 	}
-	__obf_ee460da7247562d1 := // https://en.wikipedia.org/wiki/MPEG_transport_stream
+	__obf_ee37e9fa938219c9 := // https://en.wikipedia.org/wiki/MPEG_transport_stream
 		// Some TS files do not start with SyncByte 0x47, they can not be played after merging,
 		// Need to remove the bytes before the SyncByte 0x47(71).
 		uint8(71)
-	__obf_6bf8f6457ac7abb7 := //0x47
-		len(__obf_55287880a927d1dc)
-	for __obf_8acc6b7163bcbd5c := 0; __obf_8acc6b7163bcbd5c < __obf_6bf8f6457ac7abb7; __obf_8acc6b7163bcbd5c++ {
-		if __obf_55287880a927d1dc[__obf_8acc6b7163bcbd5c] == __obf_ee460da7247562d1 {
-			__obf_55287880a927d1dc = __obf_55287880a927d1dc[__obf_8acc6b7163bcbd5c:]
+	__obf_ddcc0d5c5fbb10f2 := //0x47
+		len(__obf_b1079be0a1721c29)
+	for __obf_f0ee9690de857e2f := 0; __obf_f0ee9690de857e2f < __obf_ddcc0d5c5fbb10f2; __obf_f0ee9690de857e2f++ {
+		if __obf_b1079be0a1721c29[__obf_f0ee9690de857e2f] == __obf_ee37e9fa938219c9 {
+			__obf_b1079be0a1721c29 = __obf_b1079be0a1721c29[__obf_f0ee9690de857e2f:]
 			break
 		}
 	}
-	__obf_be982d30b47873dc := bufio.NewWriter(__obf_51dbed2d2291578d)
-	if _, __obf_e4142ef6a9f97155 := __obf_be982d30b47873dc.Write(__obf_55287880a927d1dc); __obf_e4142ef6a9f97155 != nil {
-		return fmt.Errorf("write to %s: %s", __obf_44e38527396dda6d, __obf_e4142ef6a9f97155.Error())
+	__obf_385a02d97affe848 := bufio.NewWriter(__obf_79c36d25f225f02a)
+	if _, __obf_c3746095cbc77276 := __obf_385a02d97affe848.Write(__obf_b1079be0a1721c29); __obf_c3746095cbc77276 != nil {
+		return fmt.Errorf("write to %s: %s", __obf_9e697a8fddc13b6f, __obf_c3746095cbc77276.Error())
 	}
 	// Release file resource to rename file
-	_ = __obf_51dbed2d2291578d.Close()
-	if __obf_e4142ef6a9f97155 = os.Rename(__obf_44e38527396dda6d, __obf_fc854cc0a8652d8d); __obf_e4142ef6a9f97155 != nil {
-		return __obf_e4142ef6a9f97155
+	_ = __obf_79c36d25f225f02a.Close()
+	if __obf_c3746095cbc77276 = os.Rename(__obf_9e697a8fddc13b6f, __obf_da5f7b49cfcb3b0e); __obf_c3746095cbc77276 != nil {
+		return __obf_c3746095cbc77276
 	}
 	// Maybe it will be safer in this way...
-	atomic.AddInt32(&__obf_fd24043101b08638.
+	atomic.AddInt32(&__obf_73861903bc064f83.
 		//tool.DrawProgressBar("Downloading", float32(d.finish)/float32(d.segLen), progressWidth)
-		__obf_3a501d820e48bd04, 1)
+		__obf_4130e670c70f620a, 1)
 
-	fmt.Printf("[download %6.2f%%] %s\n", float32(__obf_fd24043101b08638.__obf_3a501d820e48bd04)/float32(__obf_fd24043101b08638.__obf_40556a43ecb1a12f)*100, __obf_55146efecadaa805)
+	fmt.Printf("[download %6.2f%%] %s\n", float32(__obf_73861903bc064f83.__obf_4130e670c70f620a)/float32(__obf_73861903bc064f83.__obf_774318f00ce2acad)*100, __obf_d44ae8bff844914a)
 	return nil
 }
 
 // next Obtains a next segment index
-func (__obf_fd24043101b08638 *Downloader) __obf_44b7fcc7ee626cad() (__obf_c0be86a4073a9ff6 int, __obf_bfb95eebc5e13071 bool, __obf_e4142ef6a9f97155 error) {
-	__obf_fd24043101b08638.__obf_25d51c9d676b4ae0.
+func (__obf_73861903bc064f83 *Downloader) __obf_8d733be0011f8684() (__obf_1d028addd8c6408e int, __obf_6ff5eadfa557e5dd bool, __obf_c3746095cbc77276 error) {
+	__obf_73861903bc064f83.__obf_7328558709def097.
 		Lock()
-	defer __obf_fd24043101b08638.__obf_25d51c9d676b4ae0.Unlock()
-	if len(__obf_fd24043101b08638.__obf_9d62fc2ea68dbc90) == 0 {
-		__obf_e4142ef6a9f97155 = fmt.Errorf("queue empty")
-		if __obf_fd24043101b08638.__obf_3a501d820e48bd04 == int32(__obf_fd24043101b08638.__obf_40556a43ecb1a12f) {
-			__obf_bfb95eebc5e13071 = true
+	defer __obf_73861903bc064f83.__obf_7328558709def097.Unlock()
+	if len(__obf_73861903bc064f83.__obf_443bdea9870aa393) == 0 {
+		__obf_c3746095cbc77276 = fmt.Errorf("queue empty")
+		if __obf_73861903bc064f83.__obf_4130e670c70f620a == int32(__obf_73861903bc064f83.__obf_774318f00ce2acad) {
+			__obf_6ff5eadfa557e5dd = true
 			return
 		}
-		__obf_bfb95eebc5e13071 = // Some segment indexes are still running.
+		__obf_6ff5eadfa557e5dd = // Some segment indexes are still running.
 			false
 		return
 	}
-	__obf_c0be86a4073a9ff6 = __obf_fd24043101b08638.__obf_9d62fc2ea68dbc90[0]
-	__obf_fd24043101b08638.__obf_9d62fc2ea68dbc90 = __obf_fd24043101b08638.__obf_9d62fc2ea68dbc90[1:]
+	__obf_1d028addd8c6408e = __obf_73861903bc064f83.__obf_443bdea9870aa393[0]
+	__obf_73861903bc064f83.__obf_443bdea9870aa393 = __obf_73861903bc064f83.__obf_443bdea9870aa393[1:]
 	return
 }
 
 // back For retry while download failed
-func (__obf_fd24043101b08638 *Downloader) __obf_b413c90d56ac4fb5(__obf_c0be86a4073a9ff6 int) error {
-	__obf_fd24043101b08638.__obf_25d51c9d676b4ae0.
+func (__obf_73861903bc064f83 *Downloader) __obf_6315c945e3a63686(__obf_1d028addd8c6408e int) error {
+	__obf_73861903bc064f83.__obf_7328558709def097.
 		Lock()
-	defer __obf_fd24043101b08638.__obf_25d51c9d676b4ae0.Unlock()
-	if __obf_eae1901d07da7ef1 := __obf_fd24043101b08638.__obf_9e5ac2f699f8eb94.M3u8.Segments[__obf_c0be86a4073a9ff6]; __obf_eae1901d07da7ef1 == nil {
-		return fmt.Errorf("invalid segment index: %d", __obf_c0be86a4073a9ff6)
+	defer __obf_73861903bc064f83.__obf_7328558709def097.Unlock()
+	if __obf_9d6240cf1635ca5e := __obf_73861903bc064f83.__obf_02b78213e8219b62.M3u8.Segments[__obf_1d028addd8c6408e]; __obf_9d6240cf1635ca5e == nil {
+		return fmt.Errorf("invalid segment index: %d", __obf_1d028addd8c6408e)
 	}
-	__obf_fd24043101b08638.__obf_9d62fc2ea68dbc90 = append(__obf_fd24043101b08638.__obf_9d62fc2ea68dbc90,
+	__obf_73861903bc064f83.__obf_443bdea9870aa393 = append(__obf_73861903bc064f83.__obf_443bdea9870aa393,
 
 		// merge Merge all ts segment after 'download' 'finish'
-		__obf_c0be86a4073a9ff6)
+		__obf_1d028addd8c6408e)
 	return nil
 }
 
-func (__obf_fd24043101b08638 *Downloader) __obf_5b59d34954c034e7() error {
-	__obf_39393a4f7f590b80 := // In fact, the number of downloaded segments should be equal to number of m3u8 segments
+func (__obf_73861903bc064f83 *Downloader) __obf_0a8ab6aecda9e2f7() error {
+	__obf_4713e513031d785d := // In fact, the number of downloaded segments should be equal to number of m3u8 segments
 		0
-	for __obf_0a3fc1c23d8a6530 := 0; __obf_0a3fc1c23d8a6530 < __obf_fd24043101b08638.__obf_40556a43ecb1a12f; __obf_0a3fc1c23d8a6530++ {
-		__obf_0f053e4f910a2b8f := __obf_0f053e4f910a2b8f(__obf_0a3fc1c23d8a6530)
-		__obf_51dbed2d2291578d := filepath.Join(__obf_fd24043101b08638.__obf_89fa31665130ded7, __obf_0f053e4f910a2b8f)
-		if _, __obf_e4142ef6a9f97155 := os.Stat(__obf_51dbed2d2291578d); __obf_e4142ef6a9f97155 != nil {
-			__obf_39393a4f7f590b80++
+	for __obf_fd818d512f67597a := 0; __obf_fd818d512f67597a < __obf_73861903bc064f83.__obf_774318f00ce2acad; __obf_fd818d512f67597a++ {
+		__obf_8dfd8db98341fadd := __obf_8dfd8db98341fadd(__obf_fd818d512f67597a)
+		__obf_79c36d25f225f02a := filepath.Join(__obf_73861903bc064f83.__obf_40d94e32155209e0, __obf_8dfd8db98341fadd)
+		if _, __obf_c3746095cbc77276 := os.Stat(__obf_79c36d25f225f02a); __obf_c3746095cbc77276 != nil {
+			__obf_4713e513031d785d++
 		}
 	}
-	if __obf_39393a4f7f590b80 > 0 {
-		fmt.Printf("[warning] %d files missing\n", __obf_39393a4f7f590b80)
+	if __obf_4713e513031d785d > 0 {
+		fmt.Printf("[warning] %d files missing\n", __obf_4713e513031d785d)
 	}
-	__obf_b756b21b369ce28a := // Create a TS file for merging, all segment files will be written to this file.
-		filepath.Join(__obf_fd24043101b08638.__obf_f2f5d889f82413c8, __obf_3efda21d9cb3dadc)
-	__obf_14490e384dec455a, __obf_e4142ef6a9f97155 := os.Create(__obf_b756b21b369ce28a)
-	if __obf_e4142ef6a9f97155 != nil {
-		return fmt.Errorf("create main TS file failed：%s", __obf_e4142ef6a9f97155.Error())
+	__obf_f32ba27c948c9455 := // Create a TS file for merging, all segment files will be written to this file.
+		filepath.Join(__obf_73861903bc064f83.__obf_8668dd1d7cbf68d4, __obf_0a27001219a6287c)
+	__obf_f357eb7c083fa4ea, __obf_c3746095cbc77276 := os.Create(__obf_f32ba27c948c9455)
+	if __obf_c3746095cbc77276 != nil {
+		return fmt.Errorf("create main TS file failed：%s", __obf_c3746095cbc77276.Error())
 	}
 	//noinspection GoUnhandledErrorResult
-	defer __obf_14490e384dec455a.Close()
-	__obf_7c48766fff85de69 := bufio.NewWriter(__obf_14490e384dec455a)
-	__obf_96b1fcae764dba3e := 0
-	for __obf_c0be86a4073a9ff6 := 0; __obf_c0be86a4073a9ff6 < __obf_fd24043101b08638.__obf_40556a43ecb1a12f; __obf_c0be86a4073a9ff6++ {
-		__obf_0f053e4f910a2b8f := __obf_0f053e4f910a2b8f(__obf_c0be86a4073a9ff6)
-		__obf_55287880a927d1dc, __obf_e4142ef6a9f97155 := os.ReadFile(filepath.Join(__obf_fd24043101b08638.__obf_89fa31665130ded7, __obf_0f053e4f910a2b8f))
-		_, __obf_e4142ef6a9f97155 = __obf_7c48766fff85de69.Write(__obf_55287880a927d1dc)
-		if __obf_e4142ef6a9f97155 != nil {
+	defer __obf_f357eb7c083fa4ea.Close()
+	__obf_daa0704b419e8b20 := bufio.NewWriter(__obf_f357eb7c083fa4ea)
+	__obf_068c735f3b6474c5 := 0
+	for __obf_1d028addd8c6408e := 0; __obf_1d028addd8c6408e < __obf_73861903bc064f83.__obf_774318f00ce2acad; __obf_1d028addd8c6408e++ {
+		__obf_8dfd8db98341fadd := __obf_8dfd8db98341fadd(__obf_1d028addd8c6408e)
+		__obf_b1079be0a1721c29, __obf_c3746095cbc77276 := os.ReadFile(filepath.Join(__obf_73861903bc064f83.__obf_40d94e32155209e0, __obf_8dfd8db98341fadd))
+		_, __obf_c3746095cbc77276 = __obf_daa0704b419e8b20.Write(__obf_b1079be0a1721c29)
+		if __obf_c3746095cbc77276 != nil {
 			continue
 		}
-		__obf_96b1fcae764dba3e++
+		__obf_068c735f3b6474c5++
 		tool.DrawProgressBar("merge",
-			float32(__obf_96b1fcae764dba3e)/float32(__obf_fd24043101b08638.__obf_40556a43ecb1a12f), __obf_13326195de1124fb)
+			float32(__obf_068c735f3b6474c5)/float32(__obf_73861903bc064f83.__obf_774318f00ce2acad), __obf_74e246ed5dfcfa3b)
 	}
-	_ = __obf_7c48766fff85de69.Flush()
+	_ = __obf_daa0704b419e8b20.Flush()
 	// Remove `ts` folder
-	_ = os.RemoveAll(__obf_fd24043101b08638.__obf_89fa31665130ded7)
+	_ = os.RemoveAll(__obf_73861903bc064f83.__obf_40d94e32155209e0)
 
-	if __obf_96b1fcae764dba3e != __obf_fd24043101b08638.__obf_40556a43ecb1a12f {
-		fmt.Printf("[warning] \n%d files merge failed", __obf_fd24043101b08638.__obf_40556a43ecb1a12f-__obf_96b1fcae764dba3e)
+	if __obf_068c735f3b6474c5 != __obf_73861903bc064f83.__obf_774318f00ce2acad {
+		fmt.Printf("[warning] \n%d files merge failed", __obf_73861903bc064f83.__obf_774318f00ce2acad-__obf_068c735f3b6474c5)
 	}
 
-	fmt.Printf("\n[output] %s\n", __obf_b756b21b369ce28a)
+	fmt.Printf("\n[output] %s\n", __obf_f32ba27c948c9455)
 
 	return nil
 }
 
-func (__obf_fd24043101b08638 *Downloader) __obf_3484741e53c56a80(__obf_c0be86a4073a9ff6 int) string {
-	__obf_babfb9bf227c7bd1 := __obf_fd24043101b08638.__obf_9e5ac2f699f8eb94.M3u8.Segments[__obf_c0be86a4073a9ff6]
-	return tool.ResolveURL(__obf_fd24043101b08638.__obf_9e5ac2f699f8eb94.URL, __obf_babfb9bf227c7bd1.URI)
+func (__obf_73861903bc064f83 *Downloader) __obf_2dcb27a19875b1b3(__obf_1d028addd8c6408e int) string {
+	__obf_dd29599e1291ed63 := __obf_73861903bc064f83.__obf_02b78213e8219b62.M3u8.Segments[__obf_1d028addd8c6408e]
+	return tool.ResolveURL(__obf_73861903bc064f83.__obf_02b78213e8219b62.URL, __obf_dd29599e1291ed63.URI)
 }
 
-func __obf_0f053e4f910a2b8f(__obf_acb8fd4bf8e7bf04 int) string {
-	return strconv.Itoa(__obf_acb8fd4bf8e7bf04) + __obf_8134ed3b40be5ec0
+func __obf_8dfd8db98341fadd(__obf_5fb5eeb3b64381cb int) string {
+	return strconv.Itoa(__obf_5fb5eeb3b64381cb) + __obf_412f29766929b45a
 }
 
-func __obf_d7fefa73b06977df(len int) []int {
-	__obf_708f90e50471206e := make([]int, 0)
-	for __obf_bff5d8ee2cb013b3 := 0; __obf_bff5d8ee2cb013b3 < len; __obf_bff5d8ee2cb013b3++ {
-		__obf_708f90e50471206e = append(__obf_708f90e50471206e, __obf_bff5d8ee2cb013b3)
+func __obf_34bcc24b4504f48e(len int) []int {
+	__obf_9817e0163cbaa0f3 := make([]int, 0)
+	for __obf_c4564db7753c2c1f := 0; __obf_c4564db7753c2c1f < len; __obf_c4564db7753c2c1f++ {
+		__obf_9817e0163cbaa0f3 = append(__obf_9817e0163cbaa0f3, __obf_c4564db7753c2c1f)
 	}
-	return __obf_708f90e50471206e
+	return __obf_9817e0163cbaa0f3
 }

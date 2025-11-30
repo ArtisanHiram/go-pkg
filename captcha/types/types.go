@@ -1,4 +1,4 @@
-package __obf_bda21a78cb74016a
+package __obf_54406b1a1de84196
 
 import (
 	"errors"
@@ -56,7 +56,7 @@ type CaptchaData interface {
 	GetSecondary() CaptchaImage
 	GetData() any
 	Type() CaptchaType
-	Verify(__obf_452f32a1d78021b5 any, __obf_eaf80d33307c2421 int) bool
+	Verify(__obf_36c313afd5cadd12 any, __obf_ddf5266a6f4224d9 int) bool
 }
 
 type Captcha interface {
@@ -84,12 +84,12 @@ type AreaRect struct {
 }
 
 // MakeAreaRect creates an area rectangle
-func MakeAreaRect(__obf_3e53c2c2bb910b9a, __obf_07246f35f00b04d8, __obf_e73af132ae74e0e7, __obf_543a25daa33286c0 int) *AreaRect {
+func MakeAreaRect(__obf_e8cf2dd52fedfa9e, __obf_81e79046ae17fba8, __obf_ecdc860838e3baf1, __obf_3093f2ae86219c18 int) *AreaRect {
 	return &AreaRect{
-		MinX: __obf_3e53c2c2bb910b9a,
-		MaxX: __obf_e73af132ae74e0e7,
-		MinY: __obf_07246f35f00b04d8,
-		MaxY: __obf_543a25daa33286c0,
+		MinX: __obf_e8cf2dd52fedfa9e,
+		MaxX: __obf_ecdc860838e3baf1,
+		MinY: __obf_81e79046ae17fba8,
+		MaxY: __obf_3093f2ae86219c18,
 	}
 }
 
@@ -99,12 +99,12 @@ type PositionRect struct {
 }
 
 // MakePositionRect creates a position rectangle
-func MakePositionRect(__obf_e22e7e43df48995e, __obf_a4dd1bd05990217f, __obf_b02fcc956b08e1ae, __obf_6f8e99209c36dd76 int) *PositionRect {
+func MakePositionRect(__obf_48afb3005cd4a35c, __obf_33a1f511b09ac2af, __obf_daaeaddeff0e74f7, __obf_2366a8ab85b2ae47 int) *PositionRect {
 	return &PositionRect{
-		X:      __obf_e22e7e43df48995e,
-		Y:      __obf_a4dd1bd05990217f,
-		Height: __obf_b02fcc956b08e1ae,
-		Width:  __obf_6f8e99209c36dd76,
+		X:      __obf_48afb3005cd4a35c,
+		Y:      __obf_33a1f511b09ac2af,
+		Height: __obf_daaeaddeff0e74f7,
+		Width:  __obf_2366a8ab85b2ae47,
 	}
 }
 
@@ -144,4 +144,94 @@ type Block struct {
 	Height int         `json:"height" msgpack:"-"`
 	Angle  int         `json:"angle" msgpack:"-"`
 	Shape  image.Image `json:"shape" msgpack:"-"`
+}
+
+// Mode defines the slide CAPTCHA mode
+type SlideType int
+
+const (
+	MoveSlide SlideType = iota // Move mode - slide to left
+	DragSlide                  // Drag mode - drag to any direction
+)
+
+// DeadZoneDirectionType defines the dead zone direction
+type DeadZoneDirectionType int
+
+const (
+	DeadZoneDirectionTypeLeft DeadZoneDirectionType = iota
+	DeadZoneDirectionTypeRight
+	DeadZoneDirectionTypeTop
+	DeadZoneDirectionTypeBottom
+)
+
+// Primary defines the main image configuration
+type SlidePrimary struct {
+	Size  Size    // Image size
+	Alpha float32 // Image alpha
+}
+
+// GraphConfig defines the graph configuration
+type SlideSecondary struct {
+	CountRange           Range                   // Number of graphs to generate
+	SizeRange            Range                   // Graph size range
+	AnglePosRange        []Range                 // Angle position range
+	DeadZoneDirections   []DeadZoneDirectionType // Dead zone directions
+	EnableVerticalRandom bool                    // Enable vertical random positioning
+}
+
+// Options defines the configuration options for the captcha
+type SlideOption struct {
+	Primary   SlidePrimary
+	Secondary SlideSecondary
+	Type      SlideType
+}
+
+// Primary defines the main image configuration
+type RotatePrimary struct {
+	Size          int     // Image size
+	Alpha         float32 // Image alpha
+	AnglePosRange []Range // Angle position range
+}
+
+// Secondary defines the thumbnail image configuration
+type RotateSecondary struct {
+	Alpha     float32 // Thumbnail alpha
+	SizeRange []int   // Thumbnail size range
+}
+
+// Options defines the configuration options for the captcha
+type RotateOption struct {
+	Primary   RotatePrimary
+	Secondary RotateSecondary
+}
+
+type ClickPrimary struct {
+	Size          Size    // Primary.Size
+	LenRange      Range   // rangeLen
+	AnglePosRange []Range // rangeAnglePos
+	SizeRange     Range   // rangeSize
+	Alpha         float32 // imageAlpha
+	DotPadding    int
+}
+
+type ClickSecondary struct {
+	Size           Size  // Secondary.Size
+	VerifyLenRange Range // rangeVerifyLen
+	SizeRange      Range // rangeThumbSize
+	BgDistort      int   // thumbBgDistort
+	BgCircles      int   // thumbBgCirclesNum
+	BgSlimLines    int   // thumbBgSlimLineNum
+	NonDeformAble  bool  // isThumbNonDeformAbility
+	DisturbAlpha   float32
+	DotPadding     int
+}
+
+type ClickOption struct {
+	Primary     ClickPrimary
+	Secondary   ClickSecondary
+	FontDPI     int
+	FontHinting font.Hinting
+	ShowShadow  bool
+	ShadowPoint Point
+	UseRGBA     bool
 }

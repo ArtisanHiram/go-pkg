@@ -1,4 +1,4 @@
-package __obf_f075990603c6fd45
+package __obf_59290109f8ce9c8f
 
 import (
 	types "github.com/ArtisanHiram/go-pkg/captcha/types"
@@ -29,36 +29,4 @@ type DrawImageParams struct {
 	ThumbDisturbAlpha float32
 }
 
-type Primary struct {
-	Size          types.Size    // Primary.Size
-	LenRange      types.Range   // rangeLen
-	AnglePosRange []types.Range // rangeAnglePos
-	SizeRange     types.Range   // rangeSize
-	Alpha         float32       // imageAlpha
-	DotPadding    int
-}
-
-type Secondary struct {
-	Size           types.Size  // Secondary.Size
-	VerifyLenRange types.Range // rangeVerifyLen
-	SizeRange      types.Range // rangeThumbSize
-	BgDistort      int         // thumbBgDistort
-	BgCircles      int         // thumbBgCirclesNum
-	BgSlimLines    int         // thumbBgSlimLineNum
-	NonDeformAble  bool        // isThumbNonDeformAbility
-	DisturbAlpha   float32
-	DotPadding     int
-}
-
-// Options defines the configuration options for the captcha
-type Options struct {
-	Primary
-	Secondary
-	FontDPI     int
-	FontHinting font.Hinting
-	ShowShadow  bool
-	ShadowPoint types.Point
-	UseRGBA     bool
-}
-
-type Option func(*Options)
+type SetOption func(*types.ClickOption)

@@ -1,4 +1,4 @@
-package __obf_2f51f7d26a2bcdf8
+package __obf_3747a7e09ff475ee
 
 import (
 	"bufio"
@@ -68,7 +68,7 @@ var (
 // method will be used instead of Read.
 type MonotonicReader interface {
 	io.Reader
-	MonotonicRead(__obf_4450a2d1c70a6bed uint64, __obf_3cd6b42eee80d806 []byte) error
+	MonotonicRead(__obf_b65816d8a2627aaa uint64, __obf_51c25155de9addfb []byte) error
 }
 
 // New returns an ULID with the given Unix milliseconds timestamp and an
@@ -80,33 +80,33 @@ type MonotonicReader interface {
 //
 // Safety for concurrent use is only dependent on the safety of the
 // entropy source.
-func New(__obf_4450a2d1c70a6bed uint64, __obf_64686fca0f92edfe io.Reader) (__obf_8b246d7b3659af37 ULID, __obf_37e8e388755917c0 error) {
-	if __obf_37e8e388755917c0 = __obf_8b246d7b3659af37.SetTime(__obf_4450a2d1c70a6bed); __obf_37e8e388755917c0 != nil {
-		return __obf_8b246d7b3659af37, __obf_37e8e388755917c0
+func New(__obf_b65816d8a2627aaa uint64, __obf_921ce66321acc48d io.Reader) (__obf_413d3a76ff8ab79e ULID, __obf_57cef2f010b4ce9a error) {
+	if __obf_57cef2f010b4ce9a = __obf_413d3a76ff8ab79e.SetTime(__obf_b65816d8a2627aaa); __obf_57cef2f010b4ce9a != nil {
+		return __obf_413d3a76ff8ab79e, __obf_57cef2f010b4ce9a
 	}
 
-	switch __obf_8b3554b161bd95b9 := __obf_64686fca0f92edfe.(type) {
+	switch __obf_b9b0ed2418aa36c1 := __obf_921ce66321acc48d.(type) {
 	case nil:
-		return __obf_8b246d7b3659af37, __obf_37e8e388755917c0
+		return __obf_413d3a76ff8ab79e, __obf_57cef2f010b4ce9a
 	case MonotonicReader:
-		__obf_37e8e388755917c0 = __obf_8b3554b161bd95b9.MonotonicRead(__obf_4450a2d1c70a6bed, __obf_8b246d7b3659af37[6:])
+		__obf_57cef2f010b4ce9a = __obf_b9b0ed2418aa36c1.MonotonicRead(__obf_b65816d8a2627aaa, __obf_413d3a76ff8ab79e[6:])
 	default:
-		_, __obf_37e8e388755917c0 = io.ReadFull(__obf_8b3554b161bd95b9, __obf_8b246d7b3659af37[6:])
+		_, __obf_57cef2f010b4ce9a = io.ReadFull(__obf_b9b0ed2418aa36c1, __obf_413d3a76ff8ab79e[6:])
 	}
 
-	return __obf_8b246d7b3659af37,
+	return __obf_413d3a76ff8ab79e,
 
 		// MustNew is a convenience function equivalent to New that panics on failure
 		// instead of returning an error.
-		__obf_37e8e388755917c0
+		__obf_57cef2f010b4ce9a
 }
 
-func MustNew(__obf_4450a2d1c70a6bed uint64, __obf_64686fca0f92edfe io.Reader) ULID {
-	__obf_8b246d7b3659af37, __obf_37e8e388755917c0 := New(__obf_4450a2d1c70a6bed, __obf_64686fca0f92edfe)
-	if __obf_37e8e388755917c0 != nil {
-		panic(__obf_37e8e388755917c0)
+func MustNew(__obf_b65816d8a2627aaa uint64, __obf_921ce66321acc48d io.Reader) ULID {
+	__obf_413d3a76ff8ab79e, __obf_57cef2f010b4ce9a := New(__obf_b65816d8a2627aaa, __obf_921ce66321acc48d)
+	if __obf_57cef2f010b4ce9a != nil {
+		panic(__obf_57cef2f010b4ce9a)
 	}
-	return __obf_8b246d7b3659af37
+	return __obf_413d3a76ff8ab79e
 }
 
 // Parse parses an encoded ULID, returning an error in case of failure.
@@ -114,8 +114,8 @@ func MustNew(__obf_4450a2d1c70a6bed uint64, __obf_64686fca0f92edfe io.Reader) UL
 // ErrDataSize is returned if the len(ulid) is different from an encoded
 // ULID's length. Invalid encodings produce undefined ULIDs. For a version that
 // returns an error instead, see ParseStrict.
-func Parse(__obf_ac3eac88e099349d string) (__obf_8b246d7b3659af37 ULID, __obf_37e8e388755917c0 error) {
-	return __obf_8b246d7b3659af37, __obf_c28a75a15814fc86([]byte(__obf_ac3eac88e099349d), false, &__obf_8b246d7b3659af37)
+func Parse(__obf_d0183ab9cd977f49 string) (__obf_413d3a76ff8ab79e ULID, __obf_57cef2f010b4ce9a error) {
+	return __obf_413d3a76ff8ab79e, __obf_2db033fe6028a6f6([]byte(__obf_d0183ab9cd977f49), false, &__obf_413d3a76ff8ab79e)
 }
 
 // ParseStrict parses an encoded ULID, returning an error in case of failure.
@@ -125,20 +125,20 @@ func Parse(__obf_ac3eac88e099349d string) (__obf_8b246d7b3659af37 ULID, __obf_37
 //
 // ErrDataSize is returned if the len(ulid) is different from an encoded
 // ULID's length. Invalid encodings return ErrInvalidCharacters.
-func ParseStrict(__obf_ac3eac88e099349d string) (__obf_8b246d7b3659af37 ULID, __obf_37e8e388755917c0 error) {
-	return __obf_8b246d7b3659af37, __obf_c28a75a15814fc86([]byte(__obf_ac3eac88e099349d), true, &__obf_8b246d7b3659af37)
+func ParseStrict(__obf_d0183ab9cd977f49 string) (__obf_413d3a76ff8ab79e ULID, __obf_57cef2f010b4ce9a error) {
+	return __obf_413d3a76ff8ab79e, __obf_2db033fe6028a6f6([]byte(__obf_d0183ab9cd977f49), true, &__obf_413d3a76ff8ab79e)
 }
 
-func __obf_c28a75a15814fc86(__obf_1caf1c7883b88b75 []byte, __obf_6eda45070955415e bool, __obf_8b246d7b3659af37 *ULID) error {
+func __obf_2db033fe6028a6f6(__obf_5ed0238ba74cbb91 []byte, __obf_85b3e483f779e7c9 bool, __obf_413d3a76ff8ab79e *ULID) error {
 	// Check if a base32 encoded ULID is the right length.
-	if len(__obf_1caf1c7883b88b75) != EncodedSize {
+	if len(__obf_5ed0238ba74cbb91) != EncodedSize {
 		return ErrDataSize
 	}
 
 	// Check if all the characters in a base32 encoded ULID are part of the
 	// expected base32 character set.
-	if __obf_6eda45070955415e &&
-		(__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[0]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[1]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[2]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[3]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[4]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[5]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[6]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[7]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[8]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[9]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[10]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[11]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[12]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[13]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[14]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[15]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[16]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[17]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[18]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[19]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[20]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[21]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[22]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[23]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[24]] == 0xFF || __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[25]] == 0xFF) {
+	if __obf_85b3e483f779e7c9 &&
+		(__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[0]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[1]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[2]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[3]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[4]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[5]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[6]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[7]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[8]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[9]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[10]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[11]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[12]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[13]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[14]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[15]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[16]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[17]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[18]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[19]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[20]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[21]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[22]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[23]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[24]] == 0xFF || __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[25]] == 0xFF) {
 		return ErrInvalidCharacters
 	}
 
@@ -147,7 +147,7 @@ func __obf_c28a75a15814fc86(__obf_1caf1c7883b88b75 []byte, __obf_6eda45070955415
 	// ULID is only 128 bits.
 	//
 	// See https://github.com/oklog/ulid/issues/9 for details.
-	if __obf_1caf1c7883b88b75[0] > '7' {
+	if __obf_5ed0238ba74cbb91[0] > '7' {
 		return ErrOverflow
 	}
 
@@ -155,89 +155,89 @@ func __obf_c28a75a15814fc86(__obf_1caf1c7883b88b75 []byte, __obf_6eda45070955415
 	// to decode a base32 ULID.
 
 	// 6 bytes timestamp (48 bits)
-	(*__obf_8b246d7b3659af37)[0] = (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[0]] << 5) | __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[1]]
-	(*__obf_8b246d7b3659af37)[1] = (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[2]] << 3) | (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[3]] >> 2)
-	(*__obf_8b246d7b3659af37)[2] = (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[3]] << 6) | (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[4]] << 1) | (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[5]] >> 4)
-	(*__obf_8b246d7b3659af37)[3] = (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[5]] << 4) | (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[6]] >> 1)
-	(*__obf_8b246d7b3659af37)[4] = (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[6]] << 7) | (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[7]] << 2) | (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[8]] >> 3)
-	(*__obf_8b246d7b3659af37)[5] = (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[8]] << 5) | __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[9]]
+	(*__obf_413d3a76ff8ab79e)[0] = (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[0]] << 5) | __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[1]]
+	(*__obf_413d3a76ff8ab79e)[1] = (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[2]] << 3) | (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[3]] >> 2)
+	(*__obf_413d3a76ff8ab79e)[2] = (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[3]] << 6) | (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[4]] << 1) | (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[5]] >> 4)
+	(*__obf_413d3a76ff8ab79e)[3] = (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[5]] << 4) | (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[6]] >> 1)
+	(*__obf_413d3a76ff8ab79e)[4] = (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[6]] << 7) | (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[7]] << 2) | (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[8]] >> 3)
+	(*__obf_413d3a76ff8ab79e)[5] = (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[8]] << 5) | __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[9]]
 
 	// 10 bytes of entropy (80 bits)
-	(*__obf_8b246d7b3659af37)[6] = (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[10]] << 3) | (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[11]] >> 2)
-	(*__obf_8b246d7b3659af37)[7] = (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[11]] << 6) | (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[12]] << 1) | (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[13]] >> 4)
-	(*__obf_8b246d7b3659af37)[8] = (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[13]] << 4) | (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[14]] >> 1)
-	(*__obf_8b246d7b3659af37)[9] = (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[14]] << 7) | (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[15]] << 2) | (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[16]] >> 3)
-	(*__obf_8b246d7b3659af37)[10] = (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[16]] << 5) | __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[17]]
-	(*__obf_8b246d7b3659af37)[11] = (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[18]] << 3) | __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[19]]>>2
-	(*__obf_8b246d7b3659af37)[12] = (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[19]] << 6) | (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[20]] << 1) | (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[21]] >> 4)
-	(*__obf_8b246d7b3659af37)[13] = (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[21]] << 4) | (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[22]] >> 1)
-	(*__obf_8b246d7b3659af37)[14] = (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[22]] << 7) | (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[23]] << 2) | (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[24]] >> 3)
-	(*__obf_8b246d7b3659af37)[15] = (__obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[24]] << 5) | __obf_c91e2f0f66e52747[__obf_1caf1c7883b88b75[25]]
+	(*__obf_413d3a76ff8ab79e)[6] = (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[10]] << 3) | (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[11]] >> 2)
+	(*__obf_413d3a76ff8ab79e)[7] = (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[11]] << 6) | (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[12]] << 1) | (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[13]] >> 4)
+	(*__obf_413d3a76ff8ab79e)[8] = (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[13]] << 4) | (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[14]] >> 1)
+	(*__obf_413d3a76ff8ab79e)[9] = (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[14]] << 7) | (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[15]] << 2) | (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[16]] >> 3)
+	(*__obf_413d3a76ff8ab79e)[10] = (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[16]] << 5) | __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[17]]
+	(*__obf_413d3a76ff8ab79e)[11] = (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[18]] << 3) | __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[19]]>>2
+	(*__obf_413d3a76ff8ab79e)[12] = (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[19]] << 6) | (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[20]] << 1) | (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[21]] >> 4)
+	(*__obf_413d3a76ff8ab79e)[13] = (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[21]] << 4) | (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[22]] >> 1)
+	(*__obf_413d3a76ff8ab79e)[14] = (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[22]] << 7) | (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[23]] << 2) | (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[24]] >> 3)
+	(*__obf_413d3a76ff8ab79e)[15] = (__obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[24]] << 5) | __obf_651dce1378d9c1c8[__obf_5ed0238ba74cbb91[25]]
 
 	return nil
 }
 
 // MustParse is a convenience function equivalent to Parse that panics on failure
 // instead of returning an error.
-func MustParse(__obf_ac3eac88e099349d string) ULID {
-	__obf_8b246d7b3659af37, __obf_37e8e388755917c0 := Parse(__obf_ac3eac88e099349d)
-	if __obf_37e8e388755917c0 != nil {
-		panic(__obf_37e8e388755917c0)
+func MustParse(__obf_d0183ab9cd977f49 string) ULID {
+	__obf_413d3a76ff8ab79e, __obf_57cef2f010b4ce9a := Parse(__obf_d0183ab9cd977f49)
+	if __obf_57cef2f010b4ce9a != nil {
+		panic(__obf_57cef2f010b4ce9a)
 	}
-	return __obf_8b246d7b3659af37
+	return __obf_413d3a76ff8ab79e
 }
 
 // MustParseStrict is a convenience function equivalent to ParseStrict that
 // panics on failure instead of returning an error.
-func MustParseStrict(__obf_ac3eac88e099349d string) ULID {
-	__obf_8b246d7b3659af37, __obf_37e8e388755917c0 := ParseStrict(__obf_ac3eac88e099349d)
-	if __obf_37e8e388755917c0 != nil {
-		panic(__obf_37e8e388755917c0)
+func MustParseStrict(__obf_d0183ab9cd977f49 string) ULID {
+	__obf_413d3a76ff8ab79e, __obf_57cef2f010b4ce9a := ParseStrict(__obf_d0183ab9cd977f49)
+	if __obf_57cef2f010b4ce9a != nil {
+		panic(__obf_57cef2f010b4ce9a)
 	}
-	return __obf_8b246d7b3659af37
+	return __obf_413d3a76ff8ab79e
 }
 
 // Bytes returns bytes slice representation of ULID.
-func (__obf_feb0d3963f34862a ULID) Bytes() []byte {
-	return __obf_feb0d3963f34862a[:]
+func (__obf_b4dcaafcadeeef58 ULID) Bytes() []byte {
+	return __obf_b4dcaafcadeeef58[:]
 }
 
 // String returns a lexicographically sortable string encoded ULID
 // (26 characters, non-standard base 32) e.g. 01AN4Z07BY79KA1307SR9X4MV3
 // Format: tttttttttteeeeeeeeeeeeeeee where t is time and e is entropy
-func (__obf_8b246d7b3659af37 ULID) String() string {
-	__obf_ac3eac88e099349d := make([]byte, EncodedSize)
-	_ = __obf_8b246d7b3659af37.MarshalTextTo(__obf_ac3eac88e099349d)
-	return string(__obf_ac3eac88e099349d)
+func (__obf_413d3a76ff8ab79e ULID) String() string {
+	__obf_d0183ab9cd977f49 := make([]byte, EncodedSize)
+	_ = __obf_413d3a76ff8ab79e.MarshalTextTo(__obf_d0183ab9cd977f49)
+	return string(__obf_d0183ab9cd977f49)
 }
 
 // MarshalBinary implements the encoding.BinaryMarshaler interface by
 // returning the ULID as a byte slice.
-func (__obf_8b246d7b3659af37 ULID) MarshalBinary() ([]byte, error) {
-	__obf_ac3eac88e099349d := make([]byte, len(__obf_8b246d7b3659af37))
-	return __obf_ac3eac88e099349d, __obf_8b246d7b3659af37.MarshalBinaryTo(__obf_ac3eac88e099349d)
+func (__obf_413d3a76ff8ab79e ULID) MarshalBinary() ([]byte, error) {
+	__obf_d0183ab9cd977f49 := make([]byte, len(__obf_413d3a76ff8ab79e))
+	return __obf_d0183ab9cd977f49, __obf_413d3a76ff8ab79e.MarshalBinaryTo(__obf_d0183ab9cd977f49)
 }
 
 // MarshalBinaryTo writes the binary encoding of the ULID to the given buffer.
 // ErrBufferSize is returned when the len(dst) != 16.
-func (__obf_8b246d7b3659af37 ULID) MarshalBinaryTo(__obf_db477556a08e916c []byte) error {
-	if len(__obf_db477556a08e916c) != len(__obf_8b246d7b3659af37) {
+func (__obf_413d3a76ff8ab79e ULID) MarshalBinaryTo(__obf_5018ed930160ab87 []byte) error {
+	if len(__obf_5018ed930160ab87) != len(__obf_413d3a76ff8ab79e) {
 		return ErrBufferSize
 	}
 
-	copy(__obf_db477556a08e916c, __obf_8b246d7b3659af37[:])
+	copy(__obf_5018ed930160ab87, __obf_413d3a76ff8ab79e[:])
 	return nil
 }
 
 // UnmarshalBinary implements the encoding.BinaryUnmarshaler interface by
 // copying the passed data and converting it to an ULID. ErrDataSize is
 // returned if the data length is different from ULID length.
-func (__obf_8b246d7b3659af37 *ULID) UnmarshalBinary(__obf_820f902ebc42d671 []byte) error {
-	if len(__obf_820f902ebc42d671) != len(*__obf_8b246d7b3659af37) {
+func (__obf_413d3a76ff8ab79e *ULID) UnmarshalBinary(__obf_bf3b3775c48456e5 []byte) error {
+	if len(__obf_bf3b3775c48456e5) != len(*__obf_413d3a76ff8ab79e) {
 		return ErrDataSize
 	}
 
-	copy((*__obf_8b246d7b3659af37)[:], __obf_820f902ebc42d671)
+	copy((*__obf_413d3a76ff8ab79e)[:], __obf_bf3b3775c48456e5)
 	return nil
 }
 
@@ -246,55 +246,55 @@ const Encoding = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"
 
 // MarshalText implements the encoding.TextMarshaler interface by
 // returning the string encoded ULID.
-func (__obf_8b246d7b3659af37 ULID) MarshalText() ([]byte, error) {
-	__obf_ac3eac88e099349d := make([]byte, EncodedSize)
-	return __obf_ac3eac88e099349d, __obf_8b246d7b3659af37.MarshalTextTo(__obf_ac3eac88e099349d)
+func (__obf_413d3a76ff8ab79e ULID) MarshalText() ([]byte, error) {
+	__obf_d0183ab9cd977f49 := make([]byte, EncodedSize)
+	return __obf_d0183ab9cd977f49, __obf_413d3a76ff8ab79e.MarshalTextTo(__obf_d0183ab9cd977f49)
 }
 
 // MarshalTextTo writes the ULID as a string to the given buffer.
 // ErrBufferSize is returned when the len(dst) != 26.
-func (__obf_8b246d7b3659af37 ULID) MarshalTextTo(__obf_db477556a08e916c []byte) error {
+func (__obf_413d3a76ff8ab79e ULID) MarshalTextTo(__obf_5018ed930160ab87 []byte) error {
 	// Optimized unrolled loop ahead.
 	// From https://github.com/RobThree/NUlid
 
-	if len(__obf_db477556a08e916c) != EncodedSize {
+	if len(__obf_5018ed930160ab87) != EncodedSize {
 		return ErrBufferSize
 	}
-	__obf_db477556a08e916c[ // 10 byte timestamp
-	0] = Encoding[(__obf_8b246d7b3659af37[0]&224)>>5]
-	__obf_db477556a08e916c[1] = Encoding[__obf_8b246d7b3659af37[0]&31]
-	__obf_db477556a08e916c[2] = Encoding[(__obf_8b246d7b3659af37[1]&248)>>3]
-	__obf_db477556a08e916c[3] = Encoding[((__obf_8b246d7b3659af37[1]&7)<<2)|((__obf_8b246d7b3659af37[2]&192)>>6)]
-	__obf_db477556a08e916c[4] = Encoding[(__obf_8b246d7b3659af37[2]&62)>>1]
-	__obf_db477556a08e916c[5] = Encoding[((__obf_8b246d7b3659af37[2]&1)<<4)|((__obf_8b246d7b3659af37[3]&240)>>4)]
-	__obf_db477556a08e916c[6] = Encoding[((__obf_8b246d7b3659af37[3]&15)<<1)|((__obf_8b246d7b3659af37[4]&128)>>7)]
-	__obf_db477556a08e916c[7] = Encoding[(__obf_8b246d7b3659af37[4]&124)>>2]
-	__obf_db477556a08e916c[8] = Encoding[((__obf_8b246d7b3659af37[4]&3)<<3)|((__obf_8b246d7b3659af37[5]&224)>>5)]
-	__obf_db477556a08e916c[9] = Encoding[__obf_8b246d7b3659af37[5]&31]
-	__obf_db477556a08e916c[ // 16 bytes of entropy
-	10] = Encoding[(__obf_8b246d7b3659af37[6]&248)>>3]
-	__obf_db477556a08e916c[11] = Encoding[((__obf_8b246d7b3659af37[6]&7)<<2)|((__obf_8b246d7b3659af37[7]&192)>>6)]
-	__obf_db477556a08e916c[12] = Encoding[(__obf_8b246d7b3659af37[7]&62)>>1]
-	__obf_db477556a08e916c[13] = Encoding[((__obf_8b246d7b3659af37[7]&1)<<4)|((__obf_8b246d7b3659af37[8]&240)>>4)]
-	__obf_db477556a08e916c[14] = Encoding[((__obf_8b246d7b3659af37[8]&15)<<1)|((__obf_8b246d7b3659af37[9]&128)>>7)]
-	__obf_db477556a08e916c[15] = Encoding[(__obf_8b246d7b3659af37[9]&124)>>2]
-	__obf_db477556a08e916c[16] = Encoding[((__obf_8b246d7b3659af37[9]&3)<<3)|((__obf_8b246d7b3659af37[10]&224)>>5)]
-	__obf_db477556a08e916c[17] = Encoding[__obf_8b246d7b3659af37[10]&31]
-	__obf_db477556a08e916c[18] = Encoding[(__obf_8b246d7b3659af37[11]&248)>>3]
-	__obf_db477556a08e916c[19] = Encoding[((__obf_8b246d7b3659af37[11]&7)<<2)|((__obf_8b246d7b3659af37[12]&192)>>6)]
-	__obf_db477556a08e916c[20] = Encoding[(__obf_8b246d7b3659af37[12]&62)>>1]
-	__obf_db477556a08e916c[21] = Encoding[((__obf_8b246d7b3659af37[12]&1)<<4)|((__obf_8b246d7b3659af37[13]&240)>>4)]
-	__obf_db477556a08e916c[22] = Encoding[((__obf_8b246d7b3659af37[13]&15)<<1)|((__obf_8b246d7b3659af37[14]&128)>>7)]
-	__obf_db477556a08e916c[23] = Encoding[(__obf_8b246d7b3659af37[14]&124)>>2]
-	__obf_db477556a08e916c[24] = Encoding[((__obf_8b246d7b3659af37[14]&3)<<3)|((__obf_8b246d7b3659af37[15]&224)>>5)]
-	__obf_db477556a08e916c[25] = Encoding[__obf_8b246d7b3659af37[15]&31]
+	__obf_5018ed930160ab87[ // 10 byte timestamp
+	0] = Encoding[(__obf_413d3a76ff8ab79e[0]&224)>>5]
+	__obf_5018ed930160ab87[1] = Encoding[__obf_413d3a76ff8ab79e[0]&31]
+	__obf_5018ed930160ab87[2] = Encoding[(__obf_413d3a76ff8ab79e[1]&248)>>3]
+	__obf_5018ed930160ab87[3] = Encoding[((__obf_413d3a76ff8ab79e[1]&7)<<2)|((__obf_413d3a76ff8ab79e[2]&192)>>6)]
+	__obf_5018ed930160ab87[4] = Encoding[(__obf_413d3a76ff8ab79e[2]&62)>>1]
+	__obf_5018ed930160ab87[5] = Encoding[((__obf_413d3a76ff8ab79e[2]&1)<<4)|((__obf_413d3a76ff8ab79e[3]&240)>>4)]
+	__obf_5018ed930160ab87[6] = Encoding[((__obf_413d3a76ff8ab79e[3]&15)<<1)|((__obf_413d3a76ff8ab79e[4]&128)>>7)]
+	__obf_5018ed930160ab87[7] = Encoding[(__obf_413d3a76ff8ab79e[4]&124)>>2]
+	__obf_5018ed930160ab87[8] = Encoding[((__obf_413d3a76ff8ab79e[4]&3)<<3)|((__obf_413d3a76ff8ab79e[5]&224)>>5)]
+	__obf_5018ed930160ab87[9] = Encoding[__obf_413d3a76ff8ab79e[5]&31]
+	__obf_5018ed930160ab87[ // 16 bytes of entropy
+	10] = Encoding[(__obf_413d3a76ff8ab79e[6]&248)>>3]
+	__obf_5018ed930160ab87[11] = Encoding[((__obf_413d3a76ff8ab79e[6]&7)<<2)|((__obf_413d3a76ff8ab79e[7]&192)>>6)]
+	__obf_5018ed930160ab87[12] = Encoding[(__obf_413d3a76ff8ab79e[7]&62)>>1]
+	__obf_5018ed930160ab87[13] = Encoding[((__obf_413d3a76ff8ab79e[7]&1)<<4)|((__obf_413d3a76ff8ab79e[8]&240)>>4)]
+	__obf_5018ed930160ab87[14] = Encoding[((__obf_413d3a76ff8ab79e[8]&15)<<1)|((__obf_413d3a76ff8ab79e[9]&128)>>7)]
+	__obf_5018ed930160ab87[15] = Encoding[(__obf_413d3a76ff8ab79e[9]&124)>>2]
+	__obf_5018ed930160ab87[16] = Encoding[((__obf_413d3a76ff8ab79e[9]&3)<<3)|((__obf_413d3a76ff8ab79e[10]&224)>>5)]
+	__obf_5018ed930160ab87[17] = Encoding[__obf_413d3a76ff8ab79e[10]&31]
+	__obf_5018ed930160ab87[18] = Encoding[(__obf_413d3a76ff8ab79e[11]&248)>>3]
+	__obf_5018ed930160ab87[19] = Encoding[((__obf_413d3a76ff8ab79e[11]&7)<<2)|((__obf_413d3a76ff8ab79e[12]&192)>>6)]
+	__obf_5018ed930160ab87[20] = Encoding[(__obf_413d3a76ff8ab79e[12]&62)>>1]
+	__obf_5018ed930160ab87[21] = Encoding[((__obf_413d3a76ff8ab79e[12]&1)<<4)|((__obf_413d3a76ff8ab79e[13]&240)>>4)]
+	__obf_5018ed930160ab87[22] = Encoding[((__obf_413d3a76ff8ab79e[13]&15)<<1)|((__obf_413d3a76ff8ab79e[14]&128)>>7)]
+	__obf_5018ed930160ab87[23] = Encoding[(__obf_413d3a76ff8ab79e[14]&124)>>2]
+	__obf_5018ed930160ab87[24] = Encoding[((__obf_413d3a76ff8ab79e[14]&3)<<3)|((__obf_413d3a76ff8ab79e[15]&224)>>5)]
+	__obf_5018ed930160ab87[25] = Encoding[__obf_413d3a76ff8ab79e[15]&31]
 
 	return nil
 }
 
 // Byte to index table for O(1) lookups when unmarshaling.
 // We use 0xFF as sentinel value for invalid indexes.
-var __obf_c91e2f0f66e52747 = [...]byte{
+var __obf_651dce1378d9c1c8 = [...]byte{
 	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
 	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
 	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
@@ -331,26 +331,26 @@ const EncodedSize = 26
 //
 // ErrDataSize is returned if the len(v) is different from an encoded
 // ULID's length. Invalid encodings produce undefined ULIDs.
-func (__obf_8b246d7b3659af37 *ULID) UnmarshalText(__obf_1caf1c7883b88b75 []byte) error {
-	return __obf_c28a75a15814fc86(__obf_1caf1c7883b88b75, false, __obf_8b246d7b3659af37)
+func (__obf_413d3a76ff8ab79e *ULID) UnmarshalText(__obf_5ed0238ba74cbb91 []byte) error {
+	return __obf_2db033fe6028a6f6(__obf_5ed0238ba74cbb91, false, __obf_413d3a76ff8ab79e)
 }
 
 // Time returns the Unix time in milliseconds encoded in the ULID.
 // Use the top level Time function to convert the returned value to
 // a time.Time.
-func (__obf_8b246d7b3659af37 ULID) Time() uint64 {
-	return uint64(__obf_8b246d7b3659af37[5]) | uint64(__obf_8b246d7b3659af37[4])<<8 |
-		uint64(__obf_8b246d7b3659af37[3])<<16 | uint64(__obf_8b246d7b3659af37[2])<<24 |
-		uint64(__obf_8b246d7b3659af37[1])<<32 | uint64(__obf_8b246d7b3659af37[0])<<40
+func (__obf_413d3a76ff8ab79e ULID) Time() uint64 {
+	return uint64(__obf_413d3a76ff8ab79e[5]) | uint64(__obf_413d3a76ff8ab79e[4])<<8 |
+		uint64(__obf_413d3a76ff8ab79e[3])<<16 | uint64(__obf_413d3a76ff8ab79e[2])<<24 |
+		uint64(__obf_413d3a76ff8ab79e[1])<<32 | uint64(__obf_413d3a76ff8ab79e[0])<<40
 }
 
 // maxTime is the maximum Unix time in milliseconds that can be
 // represented in an ULID.
-var __obf_ff744fe375e276cc = ULID{0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}.Time()
+var __obf_747edd5745186d02 = ULID{0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}.Time()
 
 // MaxTime returns the maximum Unix time in milliseconds that
 // can be encoded in an ULID.
-func MaxTime() uint64 { return __obf_ff744fe375e276cc }
+func MaxTime() uint64 { return __obf_747edd5745186d02 }
 
 // Now is a convenience function that returns the current
 // UTC time in Unix milliseconds. Equivalent to:
@@ -362,72 +362,72 @@ func Now() uint64 { return Timestamp(time.Now().UTC()) }
 //
 // Because of the way ULID stores time, times from the year
 // 10889 produces undefined results.
-func Timestamp(__obf_61139133e991449d time.Time) uint64 {
-	return uint64(__obf_61139133e991449d.Unix())*1000 +
-		uint64(__obf_61139133e991449d.Nanosecond()/int(time.Millisecond))
+func Timestamp(__obf_b5849d1d191d006d time.Time) uint64 {
+	return uint64(__obf_b5849d1d191d006d.Unix())*1000 +
+		uint64(__obf_b5849d1d191d006d.Nanosecond()/int(time.Millisecond))
 }
 
 // Time converts Unix milliseconds in the format
 // returned by the Timestamp function to a time.Time.
-func Time(__obf_4450a2d1c70a6bed uint64) time.Time {
-	__obf_80ba33a2bd7c6fc1 := int64(__obf_4450a2d1c70a6bed / 1e3)
-	__obf_42066fe5b74e2d37 := int64((__obf_4450a2d1c70a6bed % 1e3) * 1e6)
-	return time.Unix(__obf_80ba33a2bd7c6fc1,
+func Time(__obf_b65816d8a2627aaa uint64) time.Time {
+	__obf_37226e04c5d29f60 := int64(__obf_b65816d8a2627aaa / 1e3)
+	__obf_7fa0523073142870 := int64((__obf_b65816d8a2627aaa % 1e3) * 1e6)
+	return time.Unix(__obf_37226e04c5d29f60,
 
 		// SetTime sets the time component of the ULID to the given Unix time
 		// in milliseconds.
-		__obf_42066fe5b74e2d37)
+		__obf_7fa0523073142870)
 }
 
-func (__obf_8b246d7b3659af37 *ULID) SetTime(__obf_4450a2d1c70a6bed uint64) error {
-	if __obf_4450a2d1c70a6bed > __obf_ff744fe375e276cc {
+func (__obf_413d3a76ff8ab79e *ULID) SetTime(__obf_b65816d8a2627aaa uint64) error {
+	if __obf_b65816d8a2627aaa > __obf_747edd5745186d02 {
 		return ErrBigTime
 	}
 
-	(*__obf_8b246d7b3659af37)[0] = byte(__obf_4450a2d1c70a6bed >> 40)
-	(*__obf_8b246d7b3659af37)[1] = byte(__obf_4450a2d1c70a6bed >> 32)
-	(*__obf_8b246d7b3659af37)[2] = byte(__obf_4450a2d1c70a6bed >> 24)
-	(*__obf_8b246d7b3659af37)[3] = byte(__obf_4450a2d1c70a6bed >> 16)
-	(*__obf_8b246d7b3659af37)[4] = byte(__obf_4450a2d1c70a6bed >> 8)
-	(*__obf_8b246d7b3659af37)[5] = byte(__obf_4450a2d1c70a6bed)
+	(*__obf_413d3a76ff8ab79e)[0] = byte(__obf_b65816d8a2627aaa >> 40)
+	(*__obf_413d3a76ff8ab79e)[1] = byte(__obf_b65816d8a2627aaa >> 32)
+	(*__obf_413d3a76ff8ab79e)[2] = byte(__obf_b65816d8a2627aaa >> 24)
+	(*__obf_413d3a76ff8ab79e)[3] = byte(__obf_b65816d8a2627aaa >> 16)
+	(*__obf_413d3a76ff8ab79e)[4] = byte(__obf_b65816d8a2627aaa >> 8)
+	(*__obf_413d3a76ff8ab79e)[5] = byte(__obf_b65816d8a2627aaa)
 
 	return nil
 }
 
 // Entropy returns the entropy from the ULID.
-func (__obf_8b246d7b3659af37 ULID) Entropy() []byte {
-	__obf_8b3554b161bd95b9 := make([]byte, 10)
-	copy(__obf_8b3554b161bd95b9, __obf_8b246d7b3659af37[6:])
-	return __obf_8b3554b161bd95b9
+func (__obf_413d3a76ff8ab79e ULID) Entropy() []byte {
+	__obf_b9b0ed2418aa36c1 := make([]byte, 10)
+	copy(__obf_b9b0ed2418aa36c1, __obf_413d3a76ff8ab79e[6:])
+	return __obf_b9b0ed2418aa36c1
 }
 
 // SetEntropy sets the ULID entropy to the passed byte slice.
 // ErrDataSize is returned if len(e) != 10.
-func (__obf_8b246d7b3659af37 *ULID) SetEntropy(__obf_8b3554b161bd95b9 []byte) error {
-	if len(__obf_8b3554b161bd95b9) != 10 {
+func (__obf_413d3a76ff8ab79e *ULID) SetEntropy(__obf_b9b0ed2418aa36c1 []byte) error {
+	if len(__obf_b9b0ed2418aa36c1) != 10 {
 		return ErrDataSize
 	}
 
-	copy((*__obf_8b246d7b3659af37)[6:], __obf_8b3554b161bd95b9)
+	copy((*__obf_413d3a76ff8ab79e)[6:], __obf_b9b0ed2418aa36c1)
 	return nil
 }
 
 // Compare returns an integer comparing id and other lexicographically.
 // The result will be 0 if id==other, -1 if id < other, and +1 if id > other.
-func (__obf_8b246d7b3659af37 ULID) Compare(__obf_510d0067596555aa ULID) int {
-	return bytes.Compare(__obf_8b246d7b3659af37[:], __obf_510d0067596555aa[:])
+func (__obf_413d3a76ff8ab79e ULID) Compare(__obf_7fa65aa0966513bb ULID) int {
+	return bytes.Compare(__obf_413d3a76ff8ab79e[:], __obf_7fa65aa0966513bb[:])
 }
 
 // Scan implements the sql.Scanner interface. It supports scanning
 // a string or byte slice.
-func (__obf_8b246d7b3659af37 *ULID) Scan(__obf_ba9a29a8774d35c1 any) error {
-	switch __obf_caddb1840dda593a := __obf_ba9a29a8774d35c1.(type) {
+func (__obf_413d3a76ff8ab79e *ULID) Scan(__obf_3a1f6937fa218095 any) error {
+	switch __obf_d2ffb8381b91d2b8 := __obf_3a1f6937fa218095.(type) {
 	case nil:
 		return nil
 	case string:
-		return __obf_8b246d7b3659af37.UnmarshalText([]byte(__obf_caddb1840dda593a))
+		return __obf_413d3a76ff8ab79e.UnmarshalText([]byte(__obf_d2ffb8381b91d2b8))
 	case []byte:
-		return __obf_8b246d7b3659af37.UnmarshalBinary(__obf_caddb1840dda593a)
+		return __obf_413d3a76ff8ab79e.UnmarshalBinary(__obf_d2ffb8381b91d2b8)
 	}
 
 	return ErrScanValue
@@ -464,8 +464,8 @@ func (__obf_8b246d7b3659af37 *ULID) Scan(__obf_ba9a29a8774d35c1 any) error {
 //
 //	// Example usage.
 //	db.Exec("...", invalidZeroValuer(id))
-func (__obf_8b246d7b3659af37 ULID) Value() (driver.Value, error) {
-	return __obf_8b246d7b3659af37.MarshalBinary()
+func (__obf_413d3a76ff8ab79e ULID) Value() (driver.Value, error) {
+	return __obf_413d3a76ff8ab79e.MarshalBinary()
 }
 
 // Monotonic returns an entropy source that is guaranteed to yield
@@ -484,53 +484,53 @@ func (__obf_8b246d7b3659af37 ULID) Value() (driver.Value, error) {
 // what you're doing.
 //
 // The returned type isn't safe for concurrent use.
-func Monotonic(__obf_64686fca0f92edfe io.Reader, __obf_1259d0a556654a55 uint64) *MonotonicEntropy {
-	__obf_2088693844b40541 := MonotonicEntropy{
-		Reader: bufio.NewReader(__obf_64686fca0f92edfe), __obf_1259d0a556654a55: __obf_1259d0a556654a55,
+func Monotonic(__obf_921ce66321acc48d io.Reader, __obf_9616a04bb3f6fe65 uint64) *MonotonicEntropy {
+	__obf_17bcb19ef8ded267 := MonotonicEntropy{
+		Reader: bufio.NewReader(__obf_921ce66321acc48d), __obf_9616a04bb3f6fe65: __obf_9616a04bb3f6fe65,
 	}
 
-	if __obf_2088693844b40541.__obf_1259d0a556654a55 == 0 {
-		__obf_2088693844b40541.__obf_1259d0a556654a55 = math.MaxUint32
+	if __obf_17bcb19ef8ded267.__obf_9616a04bb3f6fe65 == 0 {
+		__obf_17bcb19ef8ded267.__obf_9616a04bb3f6fe65 = math.MaxUint32
 	}
 
-	if __obf_477df503d01c41d7, __obf_149b4fd56461a8a0 := __obf_64686fca0f92edfe.(*rand.Rand); __obf_149b4fd56461a8a0 {
-		__obf_2088693844b40541.__obf_477df503d01c41d7 = __obf_477df503d01c41d7
+	if __obf_52673c5d7080ff8a, __obf_0941b7586b921890 := __obf_921ce66321acc48d.(*rand.Rand); __obf_0941b7586b921890 {
+		__obf_17bcb19ef8ded267.__obf_52673c5d7080ff8a = __obf_52673c5d7080ff8a
 	}
 
-	return &__obf_2088693844b40541
+	return &__obf_17bcb19ef8ded267
 }
 
 // MonotonicEntropy is an opaque type that provides monotonic entropy.
 type MonotonicEntropy struct {
 	io.Reader
-	__obf_4450a2d1c70a6bed uint64
-	__obf_1259d0a556654a55 uint64
-	__obf_64686fca0f92edfe __obf_018656cd02300c4e
+	__obf_b65816d8a2627aaa uint64
+	__obf_9616a04bb3f6fe65 uint64
+	__obf_921ce66321acc48d __obf_e2c8dee1f909a32d
 
 	rand                   [8]byte
-	__obf_477df503d01c41d7 *rand.Rand
+	__obf_52673c5d7080ff8a *rand.Rand
 }
 
 // MonotonicRead implements the MonotonicReader interface.
-func (__obf_2088693844b40541 *MonotonicEntropy) MonotonicRead(__obf_4450a2d1c70a6bed uint64, __obf_64686fca0f92edfe []byte) (__obf_37e8e388755917c0 error) {
-	if !__obf_2088693844b40541.__obf_64686fca0f92edfe.IsZero() && __obf_2088693844b40541.__obf_4450a2d1c70a6bed == __obf_4450a2d1c70a6bed {
-		__obf_37e8e388755917c0 = __obf_2088693844b40541.__obf_73f0e7d4747a1ce2()
-		__obf_2088693844b40541.__obf_64686fca0f92edfe.
-			AppendTo(__obf_64686fca0f92edfe)
-	} else if _, __obf_37e8e388755917c0 = io.ReadFull(__obf_2088693844b40541.Reader, __obf_64686fca0f92edfe); __obf_37e8e388755917c0 == nil {
-		__obf_2088693844b40541.__obf_4450a2d1c70a6bed = __obf_4450a2d1c70a6bed
-		__obf_2088693844b40541.__obf_64686fca0f92edfe.
-			SetBytes(__obf_64686fca0f92edfe)
+func (__obf_17bcb19ef8ded267 *MonotonicEntropy) MonotonicRead(__obf_b65816d8a2627aaa uint64, __obf_921ce66321acc48d []byte) (__obf_57cef2f010b4ce9a error) {
+	if !__obf_17bcb19ef8ded267.__obf_921ce66321acc48d.IsZero() && __obf_17bcb19ef8ded267.__obf_b65816d8a2627aaa == __obf_b65816d8a2627aaa {
+		__obf_57cef2f010b4ce9a = __obf_17bcb19ef8ded267.__obf_12b1a81dd37525c7()
+		__obf_17bcb19ef8ded267.__obf_921ce66321acc48d.
+			AppendTo(__obf_921ce66321acc48d)
+	} else if _, __obf_57cef2f010b4ce9a = io.ReadFull(__obf_17bcb19ef8ded267.Reader, __obf_921ce66321acc48d); __obf_57cef2f010b4ce9a == nil {
+		__obf_17bcb19ef8ded267.__obf_b65816d8a2627aaa = __obf_b65816d8a2627aaa
+		__obf_17bcb19ef8ded267.__obf_921ce66321acc48d.
+			SetBytes(__obf_921ce66321acc48d)
 	}
-	return __obf_37e8e388755917c0
+	return __obf_57cef2f010b4ce9a
 }
 
 // increment the previous entropy number with a random number
 // of up to m.inc (inclusive).
-func (__obf_2088693844b40541 *MonotonicEntropy) __obf_73f0e7d4747a1ce2() error {
-	if __obf_1259d0a556654a55, __obf_37e8e388755917c0 := __obf_2088693844b40541.__obf_f64daf515aab3567(); __obf_37e8e388755917c0 != nil {
-		return __obf_37e8e388755917c0
-	} else if __obf_2088693844b40541.__obf_64686fca0f92edfe.Add(__obf_1259d0a556654a55) {
+func (__obf_17bcb19ef8ded267 *MonotonicEntropy) __obf_12b1a81dd37525c7() error {
+	if __obf_9616a04bb3f6fe65, __obf_57cef2f010b4ce9a := __obf_17bcb19ef8ded267.__obf_b0c0f88e772863b0(); __obf_57cef2f010b4ce9a != nil {
+		return __obf_57cef2f010b4ce9a
+	} else if __obf_17bcb19ef8ded267.__obf_921ce66321acc48d.Add(__obf_9616a04bb3f6fe65) {
 		return ErrMonotonicOverflow
 	}
 	return nil
@@ -539,86 +539,86 @@ func (__obf_2088693844b40541 *MonotonicEntropy) __obf_73f0e7d4747a1ce2() error {
 // random returns a uniform random value in [1, m.inc), reading entropy
 // from m.Reader. When m.inc == 0 || m.inc == 1, it returns 1.
 // Adapted from: https://golang.org/pkg/crypto/rand/#Int
-func (__obf_2088693844b40541 *MonotonicEntropy) __obf_f64daf515aab3567() (__obf_1259d0a556654a55 uint64, __obf_37e8e388755917c0 error) {
-	if __obf_2088693844b40541.__obf_1259d0a556654a55 <= 1 {
+func (__obf_17bcb19ef8ded267 *MonotonicEntropy) __obf_b0c0f88e772863b0() (__obf_9616a04bb3f6fe65 uint64, __obf_57cef2f010b4ce9a error) {
+	if __obf_17bcb19ef8ded267.__obf_9616a04bb3f6fe65 <= 1 {
 		return 1, nil
 	}
 
 	// Fast path for using a underlying rand.Rand directly.
-	if __obf_2088693844b40541.
+	if __obf_17bcb19ef8ded267.
 		// Range: [1, m.inc)
-		__obf_477df503d01c41d7 != nil {
+		__obf_52673c5d7080ff8a != nil {
 
-		return 1 + uint64(__obf_2088693844b40541.__obf_477df503d01c41d7.Int63n(int64(__obf_2088693844b40541.
+		return 1 + uint64(__obf_17bcb19ef8ded267.__obf_52673c5d7080ff8a.Int63n(int64(__obf_17bcb19ef8ded267.
 
 			// bitLen is the maximum bit length needed to encode a value < m.inc.
-			__obf_1259d0a556654a55))), nil
+			__obf_9616a04bb3f6fe65))), nil
 	}
-	__obf_bb4d522222052bcb := bits.Len64(__obf_2088693844b40541.
+	__obf_d17fcd4e80d87820 := bits.Len64(__obf_17bcb19ef8ded267.
 
 		// byteLen is the maximum byte length needed to encode a value < m.inc.
-		__obf_1259d0a556654a55)
-	__obf_8f980283ac42ad50 := uint(__obf_bb4d522222052bcb+7) / 8
-	__obf_9c48ec32fa656963 := // msbitLen is the number of bits in the most significant byte of m.inc-1.
-		uint(__obf_bb4d522222052bcb % 8)
-	if __obf_9c48ec32fa656963 == 0 {
-		__obf_9c48ec32fa656963 = 8
+		__obf_9616a04bb3f6fe65)
+	__obf_2272ec6fda939c17 := uint(__obf_d17fcd4e80d87820+7) / 8
+	__obf_2498c95fe7e151f8 := // msbitLen is the number of bits in the most significant byte of m.inc-1.
+		uint(__obf_d17fcd4e80d87820 % 8)
+	if __obf_2498c95fe7e151f8 == 0 {
+		__obf_2498c95fe7e151f8 = 8
 	}
 
-	for __obf_1259d0a556654a55 == 0 || __obf_1259d0a556654a55 >= __obf_2088693844b40541.__obf_1259d0a556654a55 {
-		if _, __obf_37e8e388755917c0 = io.ReadFull(__obf_2088693844b40541.Reader, __obf_2088693844b40541.rand[:__obf_8f980283ac42ad50]); __obf_37e8e388755917c0 != nil {
-			return 0, __obf_37e8e388755917c0
+	for __obf_9616a04bb3f6fe65 == 0 || __obf_9616a04bb3f6fe65 >= __obf_17bcb19ef8ded267.__obf_9616a04bb3f6fe65 {
+		if _, __obf_57cef2f010b4ce9a = io.ReadFull(__obf_17bcb19ef8ded267.Reader, __obf_17bcb19ef8ded267.rand[:__obf_2272ec6fda939c17]); __obf_57cef2f010b4ce9a != nil {
+			return 0, __obf_57cef2f010b4ce9a
 		}
-		__obf_2088693844b40541.
+		__obf_17bcb19ef8ded267.
 
 			// Clear bits in the first byte to increase the probability
 			// that the candidate is < m.inc.
-			rand[0] &= uint8(int(1<<__obf_9c48ec32fa656963) - 1)
+			rand[0] &= uint8(int(1<<__obf_2498c95fe7e151f8) - 1)
 
 		// Convert the read bytes into an uint64 with byteLen
 		// Optimized unrolled loop.
-		switch __obf_8f980283ac42ad50 {
+		switch __obf_2272ec6fda939c17 {
 		case 1:
-			__obf_1259d0a556654a55 = uint64(__obf_2088693844b40541.rand[0])
+			__obf_9616a04bb3f6fe65 = uint64(__obf_17bcb19ef8ded267.rand[0])
 		case 2:
-			__obf_1259d0a556654a55 = uint64(binary.LittleEndian.Uint16(__obf_2088693844b40541.rand[:2]))
+			__obf_9616a04bb3f6fe65 = uint64(binary.LittleEndian.Uint16(__obf_17bcb19ef8ded267.rand[:2]))
 		case 3, 4:
-			__obf_1259d0a556654a55 = uint64(binary.LittleEndian.Uint32(__obf_2088693844b40541.rand[:4]))
+			__obf_9616a04bb3f6fe65 = uint64(binary.LittleEndian.Uint32(__obf_17bcb19ef8ded267.rand[:4]))
 		case 5, 6, 7, 8:
-			__obf_1259d0a556654a55 = uint64(binary.LittleEndian.Uint64(__obf_2088693844b40541.rand[:8]))
+			__obf_9616a04bb3f6fe65 = uint64(binary.LittleEndian.Uint64(__obf_17bcb19ef8ded267.rand[:8]))
 		}
 	}
 
 	// Range: [1, m.inc)
-	return 1 + __obf_1259d0a556654a55, nil
+	return 1 + __obf_9616a04bb3f6fe65, nil
 }
 
-type __obf_018656cd02300c4e struct {
+type __obf_e2c8dee1f909a32d struct {
 	Hi uint16
 	Lo uint64
 }
 
-func (__obf_feb0d3963f34862a *__obf_018656cd02300c4e) SetBytes(__obf_7b61674af7e516fb []byte) {
-	__obf_feb0d3963f34862a.
-		Hi = binary.BigEndian.Uint16(__obf_7b61674af7e516fb[:2])
-	__obf_feb0d3963f34862a.
-		Lo = binary.BigEndian.Uint64(__obf_7b61674af7e516fb[2:])
+func (__obf_b4dcaafcadeeef58 *__obf_e2c8dee1f909a32d) SetBytes(__obf_01962d395bcb9642 []byte) {
+	__obf_b4dcaafcadeeef58.
+		Hi = binary.BigEndian.Uint16(__obf_01962d395bcb9642[:2])
+	__obf_b4dcaafcadeeef58.
+		Lo = binary.BigEndian.Uint64(__obf_01962d395bcb9642[2:])
 }
 
-func (__obf_feb0d3963f34862a *__obf_018656cd02300c4e) AppendTo(__obf_7b61674af7e516fb []byte) {
-	binary.BigEndian.PutUint16(__obf_7b61674af7e516fb[:2], __obf_feb0d3963f34862a.Hi)
-	binary.BigEndian.PutUint64(__obf_7b61674af7e516fb[2:], __obf_feb0d3963f34862a.Lo)
+func (__obf_b4dcaafcadeeef58 *__obf_e2c8dee1f909a32d) AppendTo(__obf_01962d395bcb9642 []byte) {
+	binary.BigEndian.PutUint16(__obf_01962d395bcb9642[:2], __obf_b4dcaafcadeeef58.Hi)
+	binary.BigEndian.PutUint64(__obf_01962d395bcb9642[2:], __obf_b4dcaafcadeeef58.Lo)
 }
 
-func (__obf_feb0d3963f34862a *__obf_018656cd02300c4e) Add(__obf_f88ad57451625a6d uint64) (__obf_c2ef1995f360a122 bool) {
-	__obf_741b485afc35cf32, __obf_6554b5a1c945bf01 := __obf_feb0d3963f34862a.Lo, __obf_feb0d3963f34862a.Hi
-	if __obf_feb0d3963f34862a.Lo += __obf_f88ad57451625a6d; __obf_feb0d3963f34862a.Lo < __obf_741b485afc35cf32 {
-		__obf_feb0d3963f34862a.
+func (__obf_b4dcaafcadeeef58 *__obf_e2c8dee1f909a32d) Add(__obf_368df23032f058d2 uint64) (__obf_774b6119dc7ccab3 bool) {
+	__obf_16003a1faba02566, __obf_292472b6f9a11213 := __obf_b4dcaafcadeeef58.Lo, __obf_b4dcaafcadeeef58.Hi
+	if __obf_b4dcaafcadeeef58.Lo += __obf_368df23032f058d2; __obf_b4dcaafcadeeef58.Lo < __obf_16003a1faba02566 {
+		__obf_b4dcaafcadeeef58.
 			Hi++
 	}
-	return __obf_feb0d3963f34862a.Hi < __obf_6554b5a1c945bf01
+	return __obf_b4dcaafcadeeef58.Hi < __obf_292472b6f9a11213
 }
 
-func (__obf_feb0d3963f34862a __obf_018656cd02300c4e) IsZero() bool {
-	return __obf_feb0d3963f34862a.Hi == 0 && __obf_feb0d3963f34862a.Lo == 0
+func (__obf_b4dcaafcadeeef58 __obf_e2c8dee1f909a32d) IsZero() bool {
+	return __obf_b4dcaafcadeeef58.Hi == 0 && __obf_b4dcaafcadeeef58.Lo == 0
 }

@@ -1,7 +1,7 @@
-package __obf_f075990603c6fd45
+package __obf_59290109f8ce9c8f
 
 // Default color list
-var __obf_21256905e3e9ffec = []string{
+var __obf_fa28e9463cf9775f = []string{
 	"#fde98e",
 	"#60c1ff",
 	"#fcb08e",
@@ -12,7 +12,7 @@ var __obf_21256905e3e9ffec = []string{
 }
 
 // // Default thumbnail color list
-var __obf_c16ce6571c50b663 = []string{
+var __obf_312459111d69d06c = []string{
 	"#1f55c4",
 	"#780592",
 	"#2f6b00",
@@ -23,4 +23,4 @@ var __obf_c16ce6571c50b663 = []string{
 }
 
 // // Default shadow color
-var __obf_e5fb09c4c592d9f0 = "#101010"
+var __obf_aa810c905dac1551 = "#101010"

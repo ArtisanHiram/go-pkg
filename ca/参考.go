@@ -14,7 +14,7 @@ import (
 )
 
 func Main() {
-	__obf_bd646ef02df2a803 := &x509.Certificate{
+	__obf_ec85745def2d4ae6 := &x509.Certificate{
 		SerialNumber: big.NewInt(1653),
 		Subject: pkix.Name{
 			Organization: []string{"Acme Co"},
@@ -27,9 +27,9 @@ func Main() {
 		ExtKeyUsage:           []x509.ExtKeyUsage{x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth},
 		KeyUsage:              x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign,
 	}
-	__obf_031842f1c2ed65a3, _ := rsa.GenerateKey(rand.Reader, 1024)
-	CreateCertificateFile("ca", __obf_bd646ef02df2a803, __obf_031842f1c2ed65a3, __obf_bd646ef02df2a803, nil)
-	__obf_441b7d9118c61425 := &x509.Certificate{
+	__obf_91759aa608c2ec39, _ := rsa.GenerateKey(rand.Reader, 1024)
+	CreateCertificateFile("ca", __obf_ec85745def2d4ae6, __obf_91759aa608c2ec39, __obf_ec85745def2d4ae6, nil)
+	__obf_e64c40cfb6bdad21 := &x509.Certificate{
 		SerialNumber: big.NewInt(1658),
 		Subject: pkix.Name{
 			Organization: []string{"SERVER"},
@@ -40,19 +40,19 @@ func Main() {
 		ExtKeyUsage:  []x509.ExtKeyUsage{x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth},
 		KeyUsage:     x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign,
 	}
-	__obf_0f57c4cf881d27c7 := []string{"localhost", "127.0.0.1"}
-	for _, __obf_64a53c251efc3cd6 := range __obf_0f57c4cf881d27c7 {
-		if __obf_663e92eef5c260d0 := net.ParseIP(__obf_64a53c251efc3cd6); __obf_663e92eef5c260d0 != nil {
-			__obf_441b7d9118c61425.
-				IPAddresses = append(__obf_441b7d9118c61425.IPAddresses, __obf_663e92eef5c260d0)
+	__obf_ad24a3c0621435b3 := []string{"localhost", "127.0.0.1"}
+	for _, __obf_07c3f9870a15fb0b := range __obf_ad24a3c0621435b3 {
+		if __obf_35fe568983671a61 := net.ParseIP(__obf_07c3f9870a15fb0b); __obf_35fe568983671a61 != nil {
+			__obf_e64c40cfb6bdad21.
+				IPAddresses = append(__obf_e64c40cfb6bdad21.IPAddresses, __obf_35fe568983671a61)
 		} else {
-			__obf_441b7d9118c61425.
-				DNSNames = append(__obf_441b7d9118c61425.DNSNames, __obf_64a53c251efc3cd6)
+			__obf_e64c40cfb6bdad21.
+				DNSNames = append(__obf_e64c40cfb6bdad21.DNSNames, __obf_07c3f9870a15fb0b)
 		}
 	}
-	__obf_f02f58ad7a9d0c1f, _ := rsa.GenerateKey(rand.Reader, 1024)
-	CreateCertificateFile("server", __obf_441b7d9118c61425, __obf_f02f58ad7a9d0c1f, __obf_bd646ef02df2a803, __obf_031842f1c2ed65a3)
-	__obf_15eb203631991e8f := &x509.Certificate{
+	__obf_34e7baa7d7852431, _ := rsa.GenerateKey(rand.Reader, 1024)
+	CreateCertificateFile("server", __obf_e64c40cfb6bdad21, __obf_34e7baa7d7852431, __obf_ec85745def2d4ae6, __obf_91759aa608c2ec39)
+	__obf_312e3abafc6822e1 := &x509.Certificate{
 		SerialNumber: big.NewInt(1658),
 		Subject: pkix.Name{
 			Organization: []string{"CLIENT"},
@@ -63,36 +63,36 @@ func Main() {
 		ExtKeyUsage:  []x509.ExtKeyUsage{x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth},
 		KeyUsage:     x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign,
 	}
-	__obf_a1788deecf5df7ee, _ := rsa.GenerateKey(rand.Reader, 1024)
-	CreateCertificateFile("client", __obf_15eb203631991e8f, __obf_a1788deecf5df7ee, __obf_bd646ef02df2a803, __obf_031842f1c2ed65a3)
+	__obf_6f6fbd67ae64bdcd, _ := rsa.GenerateKey(rand.Reader, 1024)
+	CreateCertificateFile("client", __obf_312e3abafc6822e1, __obf_6f6fbd67ae64bdcd, __obf_ec85745def2d4ae6, __obf_91759aa608c2ec39)
 }
 
-func CreateCertificateFile(__obf_94fa2b121e9208a2 string, __obf_89b937c04944cb2b *x509.Certificate, __obf_28a277ccea818a74 *rsa.PrivateKey, __obf_19492af16f0f666d *x509.Certificate, __obf_a74fc724d9a30e04 *rsa.PrivateKey) {
-	__obf_61e0a98f3b5bf932 := __obf_28a277ccea818a74
-	__obf_4e690447a56017a0 := &__obf_61e0a98f3b5bf932.PublicKey
-	__obf_f42003db463ece31 := __obf_61e0a98f3b5bf932
-	if __obf_a74fc724d9a30e04 != nil {
-		__obf_f42003db463ece31 = __obf_a74fc724d9a30e04
+func CreateCertificateFile(__obf_09d528286129fda4 string, __obf_1118abe6002652cf *x509.Certificate, __obf_d073cba656c62c18 *rsa.PrivateKey, __obf_d77ba6307d0c3956 *x509.Certificate, __obf_aff132c3a457e217 *rsa.PrivateKey) {
+	__obf_fe5ca72bb97c16b8 := __obf_d073cba656c62c18
+	__obf_fb675a630c70f7b6 := &__obf_fe5ca72bb97c16b8.PublicKey
+	__obf_291b188c843da91c := __obf_fe5ca72bb97c16b8
+	if __obf_aff132c3a457e217 != nil {
+		__obf_291b188c843da91c = __obf_aff132c3a457e217
 	}
-	__obf_cc085b2bdcc9bc80, __obf_8b98d286773a1eea := x509.CreateCertificate(rand.Reader, __obf_89b937c04944cb2b, __obf_19492af16f0f666d, __obf_4e690447a56017a0, __obf_f42003db463ece31)
-	if __obf_8b98d286773a1eea != nil {
-		log.Println("create failed", __obf_8b98d286773a1eea)
+	__obf_f52e4c0d1cc74eae, __obf_dd7d7edd66f39226 := x509.CreateCertificate(rand.Reader, __obf_1118abe6002652cf, __obf_d77ba6307d0c3956, __obf_fb675a630c70f7b6, __obf_291b188c843da91c)
+	if __obf_dd7d7edd66f39226 != nil {
+		log.Println("create failed", __obf_dd7d7edd66f39226)
 		return
 	}
-	__obf_feffd1b0b128641b := __obf_94fa2b121e9208a2 + ".pem"
-	log.Println("write to pem", __obf_feffd1b0b128641b)
-	var __obf_5a591975dd160c43 = &pem.Block{Type: "CERTIFICATE",
+	__obf_e301f165b8df7abf := __obf_09d528286129fda4 + ".pem"
+	log.Println("write to pem", __obf_e301f165b8df7abf)
+	var __obf_5a22a508efb90dc7 = &pem.Block{Type: "CERTIFICATE",
 		Headers: map[string]string{},
-		Bytes:   __obf_cc085b2bdcc9bc80}
-	__obf_f865972c5b507991 := pem.EncodeToMemory(__obf_5a591975dd160c43)
-	os.WriteFile(__obf_feffd1b0b128641b, __obf_f865972c5b507991, 0777)
-	__obf_e12ec171d75a87f7 := __obf_94fa2b121e9208a2 + ".key"
-	__obf_ae4fc2cbb7410041 := x509.MarshalPKCS1PrivateKey(__obf_61e0a98f3b5bf932)
-	log.Println("write to key", __obf_e12ec171d75a87f7)
-	os.WriteFile(__obf_e12ec171d75a87f7, __obf_ae4fc2cbb7410041, 0777)
-	var __obf_6779f1ca0a40a80b = &pem.Block{Type: "PRIVATE KEY",
+		Bytes:   __obf_f52e4c0d1cc74eae}
+	__obf_296c04406cfe0986 := pem.EncodeToMemory(__obf_5a22a508efb90dc7)
+	os.WriteFile(__obf_e301f165b8df7abf, __obf_296c04406cfe0986, 0777)
+	__obf_9ee54992a4bf0357 := __obf_09d528286129fda4 + ".key"
+	__obf_df3032d429e4c468 := x509.MarshalPKCS1PrivateKey(__obf_fe5ca72bb97c16b8)
+	log.Println("write to key", __obf_9ee54992a4bf0357)
+	os.WriteFile(__obf_9ee54992a4bf0357, __obf_df3032d429e4c468, 0777)
+	var __obf_459ea24ea7c288c4 = &pem.Block{Type: "PRIVATE KEY",
 		Headers: map[string]string{},
-		Bytes:   __obf_ae4fc2cbb7410041}
-	__obf_cf30594748a1412b := pem.EncodeToMemory(__obf_6779f1ca0a40a80b)
-	os.WriteFile(__obf_e12ec171d75a87f7, __obf_cf30594748a1412b, 0777)
+		Bytes:   __obf_df3032d429e4c468}
+	__obf_a47b9e6b4f4d8ea1 := pem.EncodeToMemory(__obf_459ea24ea7c288c4)
+	os.WriteFile(__obf_9ee54992a4bf0357, __obf_a47b9e6b4f4d8ea1, 0777)
 }

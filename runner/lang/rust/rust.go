@@ -1,15 +1,15 @@
-package __obf_363624866cfb4599
+package __obf_d129d68574ef26fa
 
 import (
 	cmd "github.com/ArtisanHiram/go-pkg/runner/cmd"
 )
 
-func Run(__obf_e0cd4cf8fbef9d72 string, __obf_c890c298f87796d7 string, __obf_8d104d86f3cee6d9 []string) (string, string, error) {
-	__obf_1e0618b53b89dc62 := "main.out"
-	__obf_7a3bb5644ad976eb, __obf_2cda03a3f7ebc86e, __obf_8b4ca127d95d1269 := cmd.Run(__obf_e0cd4cf8fbef9d72, "rustc", "-o", __obf_1e0618b53b89dc62, __obf_8d104d86f3cee6d9[0])
-	if __obf_8b4ca127d95d1269 != nil {
-		return __obf_7a3bb5644ad976eb, __obf_2cda03a3f7ebc86e, __obf_8b4ca127d95d1269
+func Run(__obf_5e71d9b09c994bc6 string, __obf_0a601d262683a805 string, __obf_55db9cd486ce9483 []string) (string, string, error) {
+	__obf_c9cd9a509e056e80 := "main.out"
+	__obf_3fb5dea88cf2ab30, __obf_a6f1e92d73c0d44f, __obf_421970c81b33469c := cmd.Run(__obf_5e71d9b09c994bc6, "rustc", "-o", __obf_c9cd9a509e056e80, __obf_55db9cd486ce9483[0])
+	if __obf_421970c81b33469c != nil {
+		return __obf_3fb5dea88cf2ab30, __obf_a6f1e92d73c0d44f, __obf_421970c81b33469c
 	}
 
-	return cmd.RunStdin(__obf_e0cd4cf8fbef9d72, __obf_c890c298f87796d7, __obf_1e0618b53b89dc62)
+	return cmd.RunStdin(__obf_5e71d9b09c994bc6, __obf_0a601d262683a805, __obf_c9cd9a509e056e80)
 }

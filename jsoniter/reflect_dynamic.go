@@ -1,4 +1,4 @@
-package __obf_5b802ce8d9ba56d6
+package __obf_703d23ba520c3295
 
 import (
 	"reflect"
@@ -7,71 +7,71 @@ import (
 	"github.com/modern-go/reflect2"
 )
 
-type __obf_cb5eb67b8b3d51d0 struct {
-	__obf_5e777ac7034ab220 reflect2.Type
+type __obf_7f31cdbc4d682d50 struct {
+	__obf_15da62f311934a45 reflect2.Type
 }
 
-func (__obf_29366c3ad76a8c51 *__obf_cb5eb67b8b3d51d0) Encode(__obf_d3c919547bf7e47a unsafe.Pointer, __obf_00fc491caa967a74 *Stream) {
-	__obf_f9b1526531f3c024 := __obf_29366c3ad76a8c51.__obf_5e777ac7034ab220.UnsafeIndirect(__obf_d3c919547bf7e47a)
-	__obf_00fc491caa967a74.
-		WriteVal(__obf_f9b1526531f3c024)
+func (__obf_cf840243a12ee308 *__obf_7f31cdbc4d682d50) Encode(__obf_47fa53f3d161f45c unsafe.Pointer, __obf_9a34f62857fb1d1d *Stream) {
+	__obf_02ba706f4f104d71 := __obf_cf840243a12ee308.__obf_15da62f311934a45.UnsafeIndirect(__obf_47fa53f3d161f45c)
+	__obf_9a34f62857fb1d1d.
+		WriteVal(__obf_02ba706f4f104d71)
 }
 
-func (__obf_29366c3ad76a8c51 *__obf_cb5eb67b8b3d51d0) IsEmpty(__obf_d3c919547bf7e47a unsafe.Pointer) bool {
-	return __obf_29366c3ad76a8c51.__obf_5e777ac7034ab220.UnsafeIndirect(__obf_d3c919547bf7e47a) == nil
+func (__obf_cf840243a12ee308 *__obf_7f31cdbc4d682d50) IsEmpty(__obf_47fa53f3d161f45c unsafe.Pointer) bool {
+	return __obf_cf840243a12ee308.__obf_15da62f311934a45.UnsafeIndirect(__obf_47fa53f3d161f45c) == nil
 }
 
-type __obf_7560826a5f4553cb struct {
+type __obf_a2ef1129a194d05a struct {
 }
 
-func (__obf_18f746d7b5b440ee *__obf_7560826a5f4553cb) Decode(__obf_d3c919547bf7e47a unsafe.Pointer, __obf_67008a6a9e5ba828 *Iterator) {
-	__obf_d7641db63caa0309 := (*any)(__obf_d3c919547bf7e47a)
-	__obf_f9b1526531f3c024 := *__obf_d7641db63caa0309
-	if __obf_f9b1526531f3c024 == nil {
-		*__obf_d7641db63caa0309 = __obf_67008a6a9e5ba828.Read()
+func (__obf_c9719e68325f7d44 *__obf_a2ef1129a194d05a) Decode(__obf_47fa53f3d161f45c unsafe.Pointer, __obf_47edab4c16a2d88d *Iterator) {
+	__obf_d8e151a9d1e22c71 := (*any)(__obf_47fa53f3d161f45c)
+	__obf_02ba706f4f104d71 := *__obf_d8e151a9d1e22c71
+	if __obf_02ba706f4f104d71 == nil {
+		*__obf_d8e151a9d1e22c71 = __obf_47edab4c16a2d88d.Read()
 		return
 	}
-	__obf_5efc66d8c338c133 := reflect2.TypeOf(__obf_f9b1526531f3c024)
-	if __obf_5efc66d8c338c133.Kind() != reflect.Ptr {
-		*__obf_d7641db63caa0309 = __obf_67008a6a9e5ba828.Read()
+	__obf_3b7f6abbae19451e := reflect2.TypeOf(__obf_02ba706f4f104d71)
+	if __obf_3b7f6abbae19451e.Kind() != reflect.Ptr {
+		*__obf_d8e151a9d1e22c71 = __obf_47edab4c16a2d88d.Read()
 		return
 	}
-	__obf_d0cac7bfcf0092ea := __obf_5efc66d8c338c133.(*reflect2.UnsafePtrType)
-	__obf_4f35ec98763f793f := __obf_d0cac7bfcf0092ea.Elem()
-	if __obf_67008a6a9e5ba828.WhatIsNext() == NilValue {
-		if __obf_4f35ec98763f793f.Kind() != reflect.Ptr {
-			__obf_67008a6a9e5ba828.__obf_acc74c95f4492ff8('n', 'u', 'l', 'l')
-			*__obf_d7641db63caa0309 = nil
+	__obf_95093efb9321684e := __obf_3b7f6abbae19451e.(*reflect2.UnsafePtrType)
+	__obf_1a739b127dbf2386 := __obf_95093efb9321684e.Elem()
+	if __obf_47edab4c16a2d88d.WhatIsNext() == NilValue {
+		if __obf_1a739b127dbf2386.Kind() != reflect.Ptr {
+			__obf_47edab4c16a2d88d.__obf_6f584222681dcca0('n', 'u', 'l', 'l')
+			*__obf_d8e151a9d1e22c71 = nil
 			return
 		}
 	}
-	if reflect2.IsNil(__obf_f9b1526531f3c024) {
-		__obf_f9b1526531f3c024 := __obf_4f35ec98763f793f.New()
-		__obf_67008a6a9e5ba828.
-			ReadVal(__obf_f9b1526531f3c024)
-		*__obf_d7641db63caa0309 = __obf_f9b1526531f3c024
+	if reflect2.IsNil(__obf_02ba706f4f104d71) {
+		__obf_02ba706f4f104d71 := __obf_1a739b127dbf2386.New()
+		__obf_47edab4c16a2d88d.
+			ReadVal(__obf_02ba706f4f104d71)
+		*__obf_d8e151a9d1e22c71 = __obf_02ba706f4f104d71
 		return
 	}
-	__obf_67008a6a9e5ba828.
-		ReadVal(__obf_f9b1526531f3c024)
+	__obf_47edab4c16a2d88d.
+		ReadVal(__obf_02ba706f4f104d71)
 }
 
-type __obf_acb33c4a1597a4a2 struct {
-	__obf_5e777ac7034ab220 *reflect2.UnsafeIFaceType
+type __obf_a2ad861d69c8a6ea struct {
+	__obf_15da62f311934a45 *reflect2.UnsafeIFaceType
 }
 
-func (__obf_18f746d7b5b440ee *__obf_acb33c4a1597a4a2) Decode(__obf_d3c919547bf7e47a unsafe.Pointer, __obf_67008a6a9e5ba828 *Iterator) {
-	if __obf_67008a6a9e5ba828.ReadNil() {
-		__obf_18f746d7b5b440ee.__obf_5e777ac7034ab220.
-			UnsafeSet(__obf_d3c919547bf7e47a, __obf_18f746d7b5b440ee.__obf_5e777ac7034ab220.UnsafeNew())
+func (__obf_c9719e68325f7d44 *__obf_a2ad861d69c8a6ea) Decode(__obf_47fa53f3d161f45c unsafe.Pointer, __obf_47edab4c16a2d88d *Iterator) {
+	if __obf_47edab4c16a2d88d.ReadNil() {
+		__obf_c9719e68325f7d44.__obf_15da62f311934a45.
+			UnsafeSet(__obf_47fa53f3d161f45c, __obf_c9719e68325f7d44.__obf_15da62f311934a45.UnsafeNew())
 		return
 	}
-	__obf_f9b1526531f3c024 := __obf_18f746d7b5b440ee.__obf_5e777ac7034ab220.UnsafeIndirect(__obf_d3c919547bf7e47a)
-	if reflect2.IsNil(__obf_f9b1526531f3c024) {
-		__obf_67008a6a9e5ba828.
+	__obf_02ba706f4f104d71 := __obf_c9719e68325f7d44.__obf_15da62f311934a45.UnsafeIndirect(__obf_47fa53f3d161f45c)
+	if reflect2.IsNil(__obf_02ba706f4f104d71) {
+		__obf_47edab4c16a2d88d.
 			ReportError("decode non empty interface", "can not unmarshal into nil")
 		return
 	}
-	__obf_67008a6a9e5ba828.
-		ReadVal(__obf_f9b1526531f3c024)
+	__obf_47edab4c16a2d88d.
+		ReadVal(__obf_02ba706f4f104d71)
 }

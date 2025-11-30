@@ -1,4 +1,4 @@
-package __obf_3a7793861edae94b
+package __obf_4e766de6f7fc6549
 
 import (
 	types "github.com/ArtisanHiram/go-pkg/captcha/types"
@@ -6,36 +6,36 @@ import (
 
 // CaptchaData is the concrete implementation of the CaptchaData interface
 type CaptchaData struct {
-	__obf_50419e50fd91db67 int
-	__obf_860f866a1a7270fa *types.PNGImage
-	__obf_ee543d5bbdc5b150 *types.PNGImage
+	__obf_720ba9ea19239003 int
+	__obf_38820526d0b312f0 *types.PNGImage
+	__obf_1e0e4b1d4069e3bb *types.PNGImage
 }
 
 // Ensure CaptchaData implements util.CaptchaData interface
 var _ types.CaptchaData = (*CaptchaData)(nil)
 
 // GetData gets the rotation angle
-func (__obf_801f980d9ae99a74 *CaptchaData) GetData() any {
-	return __obf_801f980d9ae99a74.
+func (__obf_598561cd40842fdf *CaptchaData) GetData() any {
+	return __obf_598561cd40842fdf.
 
 		// GetPrimary gets the main captcha image
 		// return: Main image as CaptchaImage interface
-		__obf_50419e50fd91db67
+		__obf_720ba9ea19239003
 }
 
-func (__obf_801f980d9ae99a74 *CaptchaData) GetPrimary() types.CaptchaImage {
-	return __obf_801f980d9ae99a74.
+func (__obf_598561cd40842fdf *CaptchaData) GetPrimary() types.CaptchaImage {
+	return __obf_598561cd40842fdf.
 
 		// GetSecondary gets the thumbnail image
 		// return: Thumbnail image as CaptchaImage interface
-		__obf_860f866a1a7270fa
+		__obf_38820526d0b312f0
 }
 
-func (__obf_801f980d9ae99a74 *CaptchaData) GetSecondary() types.CaptchaImage {
-	return __obf_801f980d9ae99a74.__obf_ee543d5bbdc5b150
+func (__obf_598561cd40842fdf *CaptchaData) GetSecondary() types.CaptchaImage {
+	return __obf_598561cd40842fdf.__obf_1e0e4b1d4069e3bb
 }
 
-func (__obf_801f980d9ae99a74 *CaptchaData) Type() types.CaptchaType {
+func (__obf_598561cd40842fdf *CaptchaData) Type() types.CaptchaType {
 	return types.RotateCaptchat
 }
 
@@ -43,7 +43,7 @@ func (__obf_801f980d9ae99a74 *CaptchaData) Type() types.CaptchaType {
 // userAngle: the angle rotated by user (0-360 degrees)
 // tolerance: allowed angle deviation in degrees
 // Returns true if the combined angle (userAngle + original angle) is close to 360 degrees
-func (__obf_801f980d9ae99a74 *CaptchaData) Verify(__obf_990fe709b877dd34 any, __obf_dccbdb9cb4de4b38 int) bool {
+func (__obf_598561cd40842fdf *CaptchaData) Verify(__obf_aafc95e91fb76432 any, __obf_a860fa928025ab8e int) bool {
 	// if angle, ok := input.(int); ok {
 	// 	// Normalize angles to 0-360 range
 	// 	totalAngle := (angle + c.angle) % 360
@@ -59,18 +59,18 @@ func (__obf_801f980d9ae99a74 *CaptchaData) Verify(__obf_990fe709b877dd34 any, __
 	// }
 	// return false
 
-	var __obf_50419e50fd91db67 int
+	var __obf_720ba9ea19239003 int
 	// 使用类型选择来处理不同的输入类型
-	switch __obf_d809e0aa6d4ba555 := __obf_990fe709b877dd34.(type) {
+	switch __obf_0408e687767ef3e2 := __obf_aafc95e91fb76432.(type) {
 	case int:
-		__obf_50419e50fd91db67 = __obf_d809e0aa6d4ba555
+		__obf_720ba9ea19239003 = __obf_0408e687767ef3e2
 	case float64:
-		__obf_50419e50fd91db67 = // JSON 默认解析为 float64，这里将其转回 int
-			int(__obf_d809e0aa6d4ba555)
+		__obf_720ba9ea19239003 = // JSON 默认解析为 float64，这里将其转回 int
+			int(__obf_0408e687767ef3e2)
 	case int64:
-		__obf_50419e50fd91db67 = int(__obf_d809e0aa6d4ba555)
+		__obf_720ba9ea19239003 = int(__obf_0408e687767ef3e2)
 	case float32:
-		__obf_50419e50fd91db67 = int(__obf_d809e0aa6d4ba555)
+		__obf_720ba9ea19239003 = int(__obf_0408e687767ef3e2)
 	case string:
 		// 如果前端传的是字符串 "90"，可能需要 strconv.Atoi 解析，视需求而定
 		return false
@@ -78,16 +78,16 @@ func (__obf_801f980d9ae99a74 *CaptchaData) Verify(__obf_990fe709b877dd34 any, __
 		// 类型不匹配，直接验证失败
 		return false
 	}
-	__obf_cdc510cb00fa21f6 := // Normalize angles to 0-360 range
-		(__obf_50419e50fd91db67 + __obf_801f980d9ae99a74.__obf_50419e50fd91db67) % 360
-	if __obf_cdc510cb00fa21f6 < 0 {
-		__obf_cdc510cb00fa21f6 += 360
+	__obf_147f95e9ccb6e045 := // Normalize angles to 0-360 range
+		(__obf_720ba9ea19239003 + __obf_598561cd40842fdf.__obf_720ba9ea19239003) % 360
+	if __obf_147f95e9ccb6e045 < 0 {
+		__obf_147f95e9ccb6e045 += 360
 	}
-	__obf_2dd5c353c43bd67f := // Check if total angle is close to 360 (or 0, which is equivalent)
-		360 - __obf_dccbdb9cb4de4b38
-	__obf_aa8160c337c70f26 := __obf_dccbdb9cb4de4b38
+	__obf_32ee2835ab7501cf := // Check if total angle is close to 360 (or 0, which is equivalent)
+		360 - __obf_a860fa928025ab8e
+	__obf_7836d7ea9062faff := __obf_a860fa928025ab8e
 
-	return __obf_cdc510cb00fa21f6 >= __obf_2dd5c353c43bd67f || __obf_cdc510cb00fa21f6 <= __obf_aa8160c337c70f26
+	return __obf_147f95e9ccb6e045 >= __obf_32ee2835ab7501cf || __obf_147f95e9ccb6e045 <= __obf_7836d7ea9062faff
 }
 
 // VerifyOld is the original verify method (commented out)

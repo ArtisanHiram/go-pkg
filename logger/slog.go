@@ -1,4 +1,4 @@
-package __obf_ad1b8b65c829ec46
+package __obf_10b299a6084cd5a7
 
 import (
 	"context"
@@ -9,67 +9,67 @@ import (
 )
 
 // 自定义处理器，用于添加行号信息
-type __obf_45cd2e574f62b00e struct {
-	__obf_0c6b4783ce3821ff slog.Handler
-	__obf_390c6921b97a1c75 int // 调用栈跳过的帧数
+type __obf_6e1c1d21fa758b20 struct {
+	__obf_18b9926912e0b30f slog.Handler
+	__obf_b7df722733c8ead7 int // 调用栈跳过的帧数
 }
 
 // 实现 Handle 方法
-func (__obf_355cf735d9869b78 *__obf_45cd2e574f62b00e) Handle(__obf_b6bc8945a2dfe1d4 context.Context, __obf_c2a0734b6ac4f901 slog.Record) error {
+func (__obf_bb4242b03591434e *__obf_6e1c1d21fa758b20) Handle(__obf_ce1fd7f3c3ead082 context.Context, __obf_1ccaeea252bff4c8 slog.Record) error {
 	// 获取调用者信息
-	_, __obf_f669dbd05fc7537a, __obf_635f726b27460257, __obf_8b7e75ba625d8c0e := runtime.Caller(__obf_355cf735d9869b78.
+	_, __obf_a142fe1a109f3f49, __obf_ea52975dcc892982, __obf_dddab163f3920dd1 := runtime.Caller(__obf_bb4242b03591434e.
 
 		// 只保留文件名，不需要完整路径
-		__obf_390c6921b97a1c75)
-	if __obf_8b7e75ba625d8c0e {
-		__obf_f669dbd05fc7537a = filepath.Base(__obf_f669dbd05fc7537a)
-		__obf_c2a0734b6ac4f901.
+		__obf_b7df722733c8ead7)
+	if __obf_dddab163f3920dd1 {
+		__obf_a142fe1a109f3f49 = filepath.Base(__obf_a142fe1a109f3f49)
+		__obf_1ccaeea252bff4c8.
 			// 添加源代码位置信息
-			AddAttrs(slog.String("file", __obf_f669dbd05fc7537a), slog.Int("line", __obf_635f726b27460257))
+			AddAttrs(slog.String("file", __obf_a142fe1a109f3f49), slog.Int("line", __obf_ea52975dcc892982))
 	}
 
 	// 将记录传递给底层处理器
-	return __obf_355cf735d9869b78.__obf_0c6b4783ce3821ff.Handle(__obf_b6bc8945a2dfe1d4,
+	return __obf_bb4242b03591434e.__obf_18b9926912e0b30f.Handle(__obf_ce1fd7f3c3ead082,
 
 		// 实现 WithAttrs 方法
-		__obf_c2a0734b6ac4f901)
+		__obf_1ccaeea252bff4c8)
 }
 
-func (__obf_355cf735d9869b78 *__obf_45cd2e574f62b00e) WithAttrs(__obf_5b78bfc45884c50a []slog.Attr) slog.Handler {
-	return &__obf_45cd2e574f62b00e{__obf_0c6b4783ce3821ff: __obf_355cf735d9869b78.__obf_0c6b4783ce3821ff.WithAttrs(__obf_5b78bfc45884c50a), __obf_390c6921b97a1c75: __obf_355cf735d9869b78.
+func (__obf_bb4242b03591434e *__obf_6e1c1d21fa758b20) WithAttrs(__obf_0d5feb7c145c6fcb []slog.Attr) slog.Handler {
+	return &__obf_6e1c1d21fa758b20{__obf_18b9926912e0b30f: __obf_bb4242b03591434e.__obf_18b9926912e0b30f.WithAttrs(__obf_0d5feb7c145c6fcb), __obf_b7df722733c8ead7: __obf_bb4242b03591434e.
 
 		// 实现 WithGroup 方法
-		__obf_390c6921b97a1c75,
+		__obf_b7df722733c8ead7,
 	}
 }
 
-func (__obf_355cf735d9869b78 *__obf_45cd2e574f62b00e) WithGroup(__obf_c35be3640bde6e62 string) slog.Handler {
-	return &__obf_45cd2e574f62b00e{__obf_0c6b4783ce3821ff: __obf_355cf735d9869b78.__obf_0c6b4783ce3821ff.WithGroup(__obf_c35be3640bde6e62), __obf_390c6921b97a1c75: __obf_355cf735d9869b78.
+func (__obf_bb4242b03591434e *__obf_6e1c1d21fa758b20) WithGroup(__obf_67032a27bbbf2a0e string) slog.Handler {
+	return &__obf_6e1c1d21fa758b20{__obf_18b9926912e0b30f: __obf_bb4242b03591434e.__obf_18b9926912e0b30f.WithGroup(__obf_67032a27bbbf2a0e), __obf_b7df722733c8ead7: __obf_bb4242b03591434e.
 
 		// 实现 Enabled 方法
-		__obf_390c6921b97a1c75,
+		__obf_b7df722733c8ead7,
 	}
 }
 
-func (__obf_355cf735d9869b78 *__obf_45cd2e574f62b00e) Enabled(__obf_b6bc8945a2dfe1d4 context.Context, __obf_5b43585b455c6b54 slog.Level) bool {
-	return __obf_355cf735d9869b78.__obf_0c6b4783ce3821ff.Enabled(__obf_b6bc8945a2dfe1d4,
+func (__obf_bb4242b03591434e *__obf_6e1c1d21fa758b20) Enabled(__obf_ce1fd7f3c3ead082 context.Context, __obf_a4fc493b1adbfe50 slog.Level) bool {
+	return __obf_bb4242b03591434e.__obf_18b9926912e0b30f.Enabled(__obf_ce1fd7f3c3ead082,
 
 		// 创建带有行追踪功能的 Logger
-		__obf_5b43585b455c6b54)
+		__obf_a4fc493b1adbfe50)
 }
 
-func NewSlogger(__obf_5b43585b455c6b54 slog.Leveler, __obf_025aab1df039d9be io.Writer) *slog.Logger {
-	return slog.New(&__obf_45cd2e574f62b00e{__obf_0c6b4783ce3821ff: slog.NewJSONHandler(__obf_025aab1df039d9be, &slog.HandlerOptions{
-		Level: __obf_5b43585b455c6b54,
+func NewSlogger(__obf_a4fc493b1adbfe50 slog.Leveler, __obf_314efd80329f0e2d io.Writer) *slog.Logger {
+	return slog.New(&__obf_6e1c1d21fa758b20{__obf_18b9926912e0b30f: slog.NewJSONHandler(__obf_314efd80329f0e2d, &slog.HandlerOptions{
+		Level: __obf_a4fc493b1adbfe50,
 		// 添加时间格式选项
-		ReplaceAttr: func(__obf_373a4a9d5baa1c8a []string, __obf_6f3cbaca302447ba slog.Attr) slog.Attr {
-			if __obf_6f3cbaca302447ba.Key == slog.TimeKey {
-				__obf_6f3cbaca302447ba.
-					Value = slog.StringValue(__obf_6f3cbaca302447ba.Value.Time().Format("2006-01-02 15:04:05.000"))
+		ReplaceAttr: func(__obf_3053adcdea8f13c1 []string, __obf_e534ea04415f78f7 slog.Attr) slog.Attr {
+			if __obf_e534ea04415f78f7.Key == slog.TimeKey {
+				__obf_e534ea04415f78f7.
+					Value = slog.StringValue(__obf_e534ea04415f78f7.Value.Time().Format("2006-01-02 15:04:05.000"))
 			}
-			return __obf_6f3cbaca302447ba
+			return __obf_e534ea04415f78f7
 		},
 	},
-	), __obf_390c6921b97a1c75: 3,
+	), __obf_b7df722733c8ead7: 3,
 	})
 }

@@ -1,45 +1,45 @@
-package __obf_5b802ce8d9ba56d6
+package __obf_703d23ba520c3295
 
 import (
 	"fmt"
 	"strconv"
 )
 
-type __obf_6ff1a29b3162ef37 struct {
-	__obf_fb75d4e4562132ae
-	__obf_5406b11e33b9d1d3 string
+type __obf_223737ac6afcb5d9 struct {
+	__obf_b2a2e31336581ab8
+	__obf_b924538fffe5fd64 string
 }
 
-func (any *__obf_6ff1a29b3162ef37) Get(__obf_c5d71353f4393b3c ...any) Any {
-	if len(__obf_c5d71353f4393b3c) == 0 {
+func (any *__obf_223737ac6afcb5d9) Get(__obf_267bdf615cb1b310 ...any) Any {
+	if len(__obf_267bdf615cb1b310) == 0 {
 		return any
 	}
-	return &__obf_00698f76feb93563{__obf_fb75d4e4562132ae{}, fmt.Errorf("GetIndex %v from simple value", __obf_c5d71353f4393b3c)}
+	return &__obf_5d650408c7f7f591{__obf_b2a2e31336581ab8{}, fmt.Errorf("GetIndex %v from simple value", __obf_267bdf615cb1b310)}
 }
 
-func (any *__obf_6ff1a29b3162ef37) Parse() *Iterator {
+func (any *__obf_223737ac6afcb5d9) Parse() *Iterator {
 	return nil
 }
 
-func (any *__obf_6ff1a29b3162ef37) ValueType() ValueType {
+func (any *__obf_223737ac6afcb5d9) ValueType() ValueType {
 	return StringValue
 }
 
-func (any *__obf_6ff1a29b3162ef37) MustBeValid() Any {
+func (any *__obf_223737ac6afcb5d9) MustBeValid() Any {
 	return any
 }
 
-func (any *__obf_6ff1a29b3162ef37) LastError() error {
+func (any *__obf_223737ac6afcb5d9) LastError() error {
 	return nil
 }
 
-func (any *__obf_6ff1a29b3162ef37) ToBool() bool {
-	__obf_12c21b79fa86dcba := any.ToString()
-	if __obf_12c21b79fa86dcba == "0" {
+func (any *__obf_223737ac6afcb5d9) ToBool() bool {
+	__obf_44b48c26051f8033 := any.ToString()
+	if __obf_44b48c26051f8033 == "0" {
 		return false
 	}
-	for _, __obf_dab9baaadfa7c8c2 := range __obf_12c21b79fa86dcba {
-		switch __obf_dab9baaadfa7c8c2 {
+	for _, __obf_bd08f5161fff294a := range __obf_44b48c26051f8033 {
+		switch __obf_bd08f5161fff294a {
 		case ' ', '\n', '\r', '\t':
 		default:
 			return true
@@ -48,115 +48,115 @@ func (any *__obf_6ff1a29b3162ef37) ToBool() bool {
 	return false
 }
 
-func (any *__obf_6ff1a29b3162ef37) ToInt() int {
+func (any *__obf_223737ac6afcb5d9) ToInt() int {
 	return int(any.ToInt64())
 
 }
 
-func (any *__obf_6ff1a29b3162ef37) ToInt32() int32 {
+func (any *__obf_223737ac6afcb5d9) ToInt32() int32 {
 	return int32(any.ToInt64())
 }
 
-func (any *__obf_6ff1a29b3162ef37) ToInt64() int64 {
-	if any.__obf_5406b11e33b9d1d3 == "" {
+func (any *__obf_223737ac6afcb5d9) ToInt64() int64 {
+	if any.__obf_b924538fffe5fd64 == "" {
 		return 0
 	}
-	__obf_f80c9cd13d76f191 := 1
-	__obf_579936615d21cf2c := 0
-	if any.__obf_5406b11e33b9d1d3[0] == '+' || any.__obf_5406b11e33b9d1d3[0] == '-' {
-		__obf_579936615d21cf2c = 1
+	__obf_ccfdd34190f74108 := 1
+	__obf_582069b57dfac5bb := 0
+	if any.__obf_b924538fffe5fd64[0] == '+' || any.__obf_b924538fffe5fd64[0] == '-' {
+		__obf_582069b57dfac5bb = 1
 	}
 
-	if any.__obf_5406b11e33b9d1d3[0] == '-' {
-		__obf_f80c9cd13d76f191 = -1
+	if any.__obf_b924538fffe5fd64[0] == '-' {
+		__obf_ccfdd34190f74108 = -1
 	}
-	__obf_b8fd060b0379b48e := __obf_579936615d21cf2c
-	for __obf_2deec7c38ffb6ae3 := __obf_579936615d21cf2c; __obf_2deec7c38ffb6ae3 < len(any.__obf_5406b11e33b9d1d3); __obf_2deec7c38ffb6ae3++ {
-		if any.__obf_5406b11e33b9d1d3[__obf_2deec7c38ffb6ae3] >= '0' && any.__obf_5406b11e33b9d1d3[__obf_2deec7c38ffb6ae3] <= '9' {
-			__obf_b8fd060b0379b48e = __obf_2deec7c38ffb6ae3 + 1
+	__obf_a7774b733c556f32 := __obf_582069b57dfac5bb
+	for __obf_b0a5d2bd48690f1d := __obf_582069b57dfac5bb; __obf_b0a5d2bd48690f1d < len(any.__obf_b924538fffe5fd64); __obf_b0a5d2bd48690f1d++ {
+		if any.__obf_b924538fffe5fd64[__obf_b0a5d2bd48690f1d] >= '0' && any.__obf_b924538fffe5fd64[__obf_b0a5d2bd48690f1d] <= '9' {
+			__obf_a7774b733c556f32 = __obf_b0a5d2bd48690f1d + 1
 		} else {
 			break
 		}
 	}
-	__obf_a7a6424513706965, _ := strconv.ParseInt(any.__obf_5406b11e33b9d1d3[__obf_579936615d21cf2c:__obf_b8fd060b0379b48e], 10, 64)
-	return int64(__obf_f80c9cd13d76f191) * __obf_a7a6424513706965
+	__obf_18a085c1869fd128, _ := strconv.ParseInt(any.__obf_b924538fffe5fd64[__obf_582069b57dfac5bb:__obf_a7774b733c556f32], 10, 64)
+	return int64(__obf_ccfdd34190f74108) * __obf_18a085c1869fd128
 }
 
-func (any *__obf_6ff1a29b3162ef37) ToUint() uint {
+func (any *__obf_223737ac6afcb5d9) ToUint() uint {
 	return uint(any.ToUint64())
 }
 
-func (any *__obf_6ff1a29b3162ef37) ToUint32() uint32 {
+func (any *__obf_223737ac6afcb5d9) ToUint32() uint32 {
 	return uint32(any.ToUint64())
 }
 
-func (any *__obf_6ff1a29b3162ef37) ToUint64() uint64 {
-	if any.__obf_5406b11e33b9d1d3 == "" {
+func (any *__obf_223737ac6afcb5d9) ToUint64() uint64 {
+	if any.__obf_b924538fffe5fd64 == "" {
 		return 0
 	}
-	__obf_579936615d21cf2c := 0
+	__obf_582069b57dfac5bb := 0
 
-	if any.__obf_5406b11e33b9d1d3[0] == '-' {
+	if any.__obf_b924538fffe5fd64[0] == '-' {
 		return 0
 	}
-	if any.__obf_5406b11e33b9d1d3[0] == '+' {
-		__obf_579936615d21cf2c = 1
+	if any.__obf_b924538fffe5fd64[0] == '+' {
+		__obf_582069b57dfac5bb = 1
 	}
-	__obf_b8fd060b0379b48e := __obf_579936615d21cf2c
-	for __obf_2deec7c38ffb6ae3 := __obf_579936615d21cf2c; __obf_2deec7c38ffb6ae3 < len(any.__obf_5406b11e33b9d1d3); __obf_2deec7c38ffb6ae3++ {
-		if any.__obf_5406b11e33b9d1d3[__obf_2deec7c38ffb6ae3] >= '0' && any.__obf_5406b11e33b9d1d3[__obf_2deec7c38ffb6ae3] <= '9' {
-			__obf_b8fd060b0379b48e = __obf_2deec7c38ffb6ae3 + 1
+	__obf_a7774b733c556f32 := __obf_582069b57dfac5bb
+	for __obf_b0a5d2bd48690f1d := __obf_582069b57dfac5bb; __obf_b0a5d2bd48690f1d < len(any.__obf_b924538fffe5fd64); __obf_b0a5d2bd48690f1d++ {
+		if any.__obf_b924538fffe5fd64[__obf_b0a5d2bd48690f1d] >= '0' && any.__obf_b924538fffe5fd64[__obf_b0a5d2bd48690f1d] <= '9' {
+			__obf_a7774b733c556f32 = __obf_b0a5d2bd48690f1d + 1
 		} else {
 			break
 		}
 	}
-	__obf_a7a6424513706965, _ := strconv.ParseUint(any.__obf_5406b11e33b9d1d3[__obf_579936615d21cf2c:__obf_b8fd060b0379b48e], 10, 64)
-	return __obf_a7a6424513706965
+	__obf_18a085c1869fd128, _ := strconv.ParseUint(any.__obf_b924538fffe5fd64[__obf_582069b57dfac5bb:__obf_a7774b733c556f32], 10, 64)
+	return __obf_18a085c1869fd128
 }
 
-func (any *__obf_6ff1a29b3162ef37) ToFloat32() float32 {
+func (any *__obf_223737ac6afcb5d9) ToFloat32() float32 {
 	return float32(any.ToFloat64())
 }
 
-func (any *__obf_6ff1a29b3162ef37) ToFloat64() float64 {
-	if len(any.__obf_5406b11e33b9d1d3) == 0 {
+func (any *__obf_223737ac6afcb5d9) ToFloat64() float64 {
+	if len(any.__obf_b924538fffe5fd64) == 0 {
 		return 0
 	}
 
 	// first char invalid
-	if any.__obf_5406b11e33b9d1d3[0] != '+' && any.__obf_5406b11e33b9d1d3[0] != '-' && (any.__obf_5406b11e33b9d1d3[0] > '9' || any.__obf_5406b11e33b9d1d3[0] < '0') {
+	if any.__obf_b924538fffe5fd64[0] != '+' && any.__obf_b924538fffe5fd64[0] != '-' && (any.__obf_b924538fffe5fd64[0] > '9' || any.__obf_b924538fffe5fd64[0] < '0') {
 		return 0
 	}
-	__obf_b8fd060b0379b48e := // extract valid num expression from string
+	__obf_a7774b733c556f32 := // extract valid num expression from string
 		// eg 123true => 123, -12.12xxa => -12.12
 		1
-	for __obf_2deec7c38ffb6ae3 := 1; __obf_2deec7c38ffb6ae3 < len(any.__obf_5406b11e33b9d1d3); __obf_2deec7c38ffb6ae3++ {
-		if any.__obf_5406b11e33b9d1d3[__obf_2deec7c38ffb6ae3] == '.' || any.__obf_5406b11e33b9d1d3[__obf_2deec7c38ffb6ae3] == 'e' || any.__obf_5406b11e33b9d1d3[__obf_2deec7c38ffb6ae3] == 'E' || any.__obf_5406b11e33b9d1d3[__obf_2deec7c38ffb6ae3] == '+' || any.__obf_5406b11e33b9d1d3[__obf_2deec7c38ffb6ae3] == '-' {
-			__obf_b8fd060b0379b48e = __obf_2deec7c38ffb6ae3 + 1
+	for __obf_b0a5d2bd48690f1d := 1; __obf_b0a5d2bd48690f1d < len(any.__obf_b924538fffe5fd64); __obf_b0a5d2bd48690f1d++ {
+		if any.__obf_b924538fffe5fd64[__obf_b0a5d2bd48690f1d] == '.' || any.__obf_b924538fffe5fd64[__obf_b0a5d2bd48690f1d] == 'e' || any.__obf_b924538fffe5fd64[__obf_b0a5d2bd48690f1d] == 'E' || any.__obf_b924538fffe5fd64[__obf_b0a5d2bd48690f1d] == '+' || any.__obf_b924538fffe5fd64[__obf_b0a5d2bd48690f1d] == '-' {
+			__obf_a7774b733c556f32 = __obf_b0a5d2bd48690f1d + 1
 			continue
 		}
 
 		// end position is the first char which is not digit
-		if any.__obf_5406b11e33b9d1d3[__obf_2deec7c38ffb6ae3] >= '0' && any.__obf_5406b11e33b9d1d3[__obf_2deec7c38ffb6ae3] <= '9' {
-			__obf_b8fd060b0379b48e = __obf_2deec7c38ffb6ae3 + 1
+		if any.__obf_b924538fffe5fd64[__obf_b0a5d2bd48690f1d] >= '0' && any.__obf_b924538fffe5fd64[__obf_b0a5d2bd48690f1d] <= '9' {
+			__obf_a7774b733c556f32 = __obf_b0a5d2bd48690f1d + 1
 		} else {
-			__obf_b8fd060b0379b48e = __obf_2deec7c38ffb6ae3
+			__obf_a7774b733c556f32 = __obf_b0a5d2bd48690f1d
 			break
 		}
 	}
-	__obf_a7a6424513706965, _ := strconv.ParseFloat(any.__obf_5406b11e33b9d1d3[:__obf_b8fd060b0379b48e], 64)
-	return __obf_a7a6424513706965
+	__obf_18a085c1869fd128, _ := strconv.ParseFloat(any.__obf_b924538fffe5fd64[:__obf_a7774b733c556f32], 64)
+	return __obf_18a085c1869fd128
 }
 
-func (any *__obf_6ff1a29b3162ef37) ToString() string {
-	return any.__obf_5406b11e33b9d1d3
+func (any *__obf_223737ac6afcb5d9) ToString() string {
+	return any.__obf_b924538fffe5fd64
 }
 
-func (any *__obf_6ff1a29b3162ef37) WriteTo(__obf_00fc491caa967a74 *Stream) {
-	__obf_00fc491caa967a74.
-		WriteString(any.__obf_5406b11e33b9d1d3)
+func (any *__obf_223737ac6afcb5d9) WriteTo(__obf_9a34f62857fb1d1d *Stream) {
+	__obf_9a34f62857fb1d1d.
+		WriteString(any.__obf_b924538fffe5fd64)
 }
 
-func (any *__obf_6ff1a29b3162ef37) GetInterface() any {
-	return any.__obf_5406b11e33b9d1d3
+func (any *__obf_223737ac6afcb5d9) GetInterface() any {
+	return any.__obf_b924538fffe5fd64
 }

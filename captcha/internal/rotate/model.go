@@ -1,4 +1,4 @@
-package __obf_3a7793861edae94b
+package __obf_4e766de6f7fc6549
 
 import (
 	types "github.com/ArtisanHiram/go-pkg/captcha/types"
@@ -21,23 +21,4 @@ type DrawCropCircleImageParams struct {
 	Alpha          float32
 }
 
-// Primary defines the main image configuration
-type Primary struct {
-	Size          int           // Image size
-	Alpha         float32       // Image alpha
-	AnglePosRange []types.Range // Angle position range
-}
-
-// Secondary defines the thumbnail image configuration
-type Secondary struct {
-	Alpha     float32 // Thumbnail alpha
-	SizeRange []int   // Thumbnail size range
-}
-
-// Options defines the configuration options for the captcha
-type Options struct {
-	Primary
-	Secondary
-}
-
-type Option func(*Options)
+type SetOption func(*types.RotateOption)

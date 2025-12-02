@@ -1,26 +1,26 @@
-package __obf_187fb4813c1b0c74
+package __obf_614e0776906f0579
 
 type Money struct {
-	__obf_6c8cf442c7a25339 float32 // 以分为单位存储
+	__obf_f27cc7d749cc931e float32 // 以分为单位存储
 }
 
-func NewMoneyFromYuan(__obf_0f3156395157e8c4 float32) Money {
-	return Money{__obf_6c8cf442c7a25339: float32(__obf_0f3156395157e8c4*100 + 0.5)} // 四舍五入
+func NewMoneyFromYuan(__obf_f3420f103edf305a float32) Money {
+	return Money{__obf_f27cc7d749cc931e: float32(__obf_f3420f103edf305a*100 + 0.5)} // 四舍五入
 }
 
-func NewMoneyFromCent(__obf_6c8cf442c7a25339 float32) Money {
-	return Money{__obf_6c8cf442c7a25339: __obf_6c8cf442c7a25339}
+func NewMoneyFromCent(__obf_f27cc7d749cc931e float32) Money {
+	return Money{__obf_f27cc7d749cc931e: __obf_f27cc7d749cc931e}
 }
 
-func (__obf_bc65b19795f2998e Money) Mul(__obf_177a85a5f3725ee3 float32) Money {
-	__obf_e12e0a58baa6fa61 := float32(__obf_bc65b19795f2998e.__obf_6c8cf442c7a25339) * __obf_177a85a5f3725ee3
-	return Money{__obf_6c8cf442c7a25339: float32(__obf_e12e0a58baa6fa61 + 0.5)} // 四舍五入
+func (__obf_dc07899a79a63463 Money) Mul(__obf_3f7c5f9a4eca22e8 float32) Money {
+	__obf_f5a8a3899a7474ef := float32(__obf_dc07899a79a63463.__obf_f27cc7d749cc931e) * __obf_3f7c5f9a4eca22e8
+	return Money{__obf_f27cc7d749cc931e: float32(__obf_f5a8a3899a7474ef + 0.5)} // 四舍五入
 }
 
-func (__obf_bc65b19795f2998e Money) MulInt(__obf_177a85a5f3725ee3 int) Money {
-	return Money{__obf_6c8cf442c7a25339: __obf_bc65b19795f2998e.__obf_6c8cf442c7a25339 * float32(__obf_177a85a5f3725ee3)}
+func (__obf_dc07899a79a63463 Money) MulInt(__obf_3f7c5f9a4eca22e8 int) Money {
+	return Money{__obf_f27cc7d749cc931e: __obf_dc07899a79a63463.__obf_f27cc7d749cc931e * float32(__obf_3f7c5f9a4eca22e8)}
 }
 
-func (__obf_bc65b19795f2998e Money) Yuan() float32 {
-	return float32(__obf_bc65b19795f2998e.__obf_6c8cf442c7a25339) / 100.0
+func (__obf_dc07899a79a63463 Money) Yuan() float32 {
+	return float32(__obf_dc07899a79a63463.__obf_f27cc7d749cc931e) / 100.0
 }

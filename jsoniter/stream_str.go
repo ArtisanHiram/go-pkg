@@ -1,4 +1,4 @@
-package __obf_030d39f7a8de96c6
+package __obf_c7b79b12b33d8238
 
 import (
 	"unicode/utf8"
@@ -11,7 +11,7 @@ import (
 // All values are true except for the ASCII control characters (0-31), the
 // double quote ("), the backslash character ("\"), HTML opening and closing
 // tags ("<" and ">"), and the ampersand ("&").
-var __obf_b01bba1694eaae6f = [utf8.RuneSelf]bool{
+var __obf_96e8abc9e8fb6ef8 = [utf8.RuneSelf]bool{
 	' ':      true,
 	'!':      true,
 	'"':      false,
@@ -116,7 +116,7 @@ var __obf_b01bba1694eaae6f = [utf8.RuneSelf]bool{
 //
 // All values are true except for the ASCII control characters (0-31), the
 // double quote ("), and the backslash character ("\").
-var __obf_a555af9a7c7d8eea = [utf8.RuneSelf]bool{
+var __obf_b7d1921dad40e65e = [utf8.RuneSelf]bool{
 	' ':      true,
 	'!':      true,
 	'"':      false,
@@ -215,76 +215,76 @@ var __obf_a555af9a7c7d8eea = [utf8.RuneSelf]bool{
 	'\u007f': true,
 }
 
-var __obf_09bb009dbfa0a3d4 = "0123456789abcdef"
+var __obf_0295be282ee06228 = "0123456789abcdef"
 
 // WriteStringWithHTMLEscaped write string to stream with html special characters escaped
-func (__obf_8a2c51fe22775655 *Stream) WriteStringWithHTMLEscaped(__obf_1d7ed4e74380ec76 string) {
-	__obf_51f269c3f31c8795 := len(__obf_1d7ed4e74380ec76)
-	__obf_8a2c51fe22775655.__obf_0b1656d7ef4bd9df = append(__obf_8a2c51fe22775655.
+func (__obf_d8f50bcfe87d8b47 *Stream) WriteStringWithHTMLEscaped(__obf_057e9641d10a1246 string) {
+	__obf_31ccee095dd054a8 := len(__obf_057e9641d10a1246)
+	__obf_d8f50bcfe87d8b47.__obf_684d738bc3ac851a = append(__obf_d8f50bcfe87d8b47.
 		// write string, the fast path, without utf8 and escape support
-		__obf_0b1656d7ef4bd9df, '"')
-	__obf_82c6e05b9d226c58 := 0
-	for ; __obf_82c6e05b9d226c58 < __obf_51f269c3f31c8795; __obf_82c6e05b9d226c58++ {
-		__obf_24309b3b0ff9ba22 := __obf_1d7ed4e74380ec76[__obf_82c6e05b9d226c58]
-		if __obf_24309b3b0ff9ba22 < utf8.RuneSelf && __obf_b01bba1694eaae6f[__obf_24309b3b0ff9ba22] {
-			__obf_8a2c51fe22775655.__obf_0b1656d7ef4bd9df = append(__obf_8a2c51fe22775655.__obf_0b1656d7ef4bd9df, __obf_24309b3b0ff9ba22)
+		__obf_684d738bc3ac851a, '"')
+	__obf_a051269af3a541bb := 0
+	for ; __obf_a051269af3a541bb < __obf_31ccee095dd054a8; __obf_a051269af3a541bb++ {
+		__obf_12577c03a12f0d2c := __obf_057e9641d10a1246[__obf_a051269af3a541bb]
+		if __obf_12577c03a12f0d2c < utf8.RuneSelf && __obf_96e8abc9e8fb6ef8[__obf_12577c03a12f0d2c] {
+			__obf_d8f50bcfe87d8b47.__obf_684d738bc3ac851a = append(__obf_d8f50bcfe87d8b47.__obf_684d738bc3ac851a, __obf_12577c03a12f0d2c)
 		} else {
 			break
 		}
 	}
-	if __obf_82c6e05b9d226c58 == __obf_51f269c3f31c8795 {
-		__obf_8a2c51fe22775655.__obf_0b1656d7ef4bd9df = append(__obf_8a2c51fe22775655.__obf_0b1656d7ef4bd9df, '"')
+	if __obf_a051269af3a541bb == __obf_31ccee095dd054a8 {
+		__obf_d8f50bcfe87d8b47.__obf_684d738bc3ac851a = append(__obf_d8f50bcfe87d8b47.__obf_684d738bc3ac851a, '"')
 		return
 	}
-	__obf_37db73f8c1f01c54(__obf_8a2c51fe22775655, __obf_82c6e05b9d226c58, __obf_1d7ed4e74380ec76, __obf_51f269c3f31c8795)
+	__obf_70fbb381f8712f64(__obf_d8f50bcfe87d8b47, __obf_a051269af3a541bb, __obf_057e9641d10a1246, __obf_31ccee095dd054a8)
 }
 
-func __obf_37db73f8c1f01c54(__obf_8a2c51fe22775655 *Stream, __obf_82c6e05b9d226c58 int, __obf_1d7ed4e74380ec76 string, __obf_51f269c3f31c8795 int) {
-	__obf_447a3399d55be0d6 := __obf_82c6e05b9d226c58
+func __obf_70fbb381f8712f64(__obf_d8f50bcfe87d8b47 *Stream, __obf_a051269af3a541bb int, __obf_057e9641d10a1246 string, __obf_31ccee095dd054a8 int) {
+	__obf_28e7d8a603535072 := __obf_a051269af3a541bb
 	// for the remaining parts, we process them char by char
-	for __obf_82c6e05b9d226c58 < __obf_51f269c3f31c8795 {
-		if __obf_ea107e11b66371dd := __obf_1d7ed4e74380ec76[__obf_82c6e05b9d226c58]; __obf_ea107e11b66371dd < utf8.RuneSelf {
-			if __obf_b01bba1694eaae6f[__obf_ea107e11b66371dd] {
-				__obf_82c6e05b9d226c58++
+	for __obf_a051269af3a541bb < __obf_31ccee095dd054a8 {
+		if __obf_fa8a3db302183a92 := __obf_057e9641d10a1246[__obf_a051269af3a541bb]; __obf_fa8a3db302183a92 < utf8.RuneSelf {
+			if __obf_96e8abc9e8fb6ef8[__obf_fa8a3db302183a92] {
+				__obf_a051269af3a541bb++
 				continue
 			}
-			if __obf_447a3399d55be0d6 < __obf_82c6e05b9d226c58 {
-				__obf_8a2c51fe22775655.
-					WriteRaw(__obf_1d7ed4e74380ec76[__obf_447a3399d55be0d6:__obf_82c6e05b9d226c58])
+			if __obf_28e7d8a603535072 < __obf_a051269af3a541bb {
+				__obf_d8f50bcfe87d8b47.
+					WriteRaw(__obf_057e9641d10a1246[__obf_28e7d8a603535072:__obf_a051269af3a541bb])
 			}
-			switch __obf_ea107e11b66371dd {
+			switch __obf_fa8a3db302183a92 {
 			case '\\', '"':
-				__obf_8a2c51fe22775655.__obf_3635bad429be5857('\\', __obf_ea107e11b66371dd)
+				__obf_d8f50bcfe87d8b47.__obf_99147f1a9b9d5ffc('\\', __obf_fa8a3db302183a92)
 			case '\n':
-				__obf_8a2c51fe22775655.__obf_3635bad429be5857('\\', 'n')
+				__obf_d8f50bcfe87d8b47.__obf_99147f1a9b9d5ffc('\\', 'n')
 			case '\r':
-				__obf_8a2c51fe22775655.__obf_3635bad429be5857('\\', 'r')
+				__obf_d8f50bcfe87d8b47.__obf_99147f1a9b9d5ffc('\\', 'r')
 			case '\t':
-				__obf_8a2c51fe22775655.__obf_3635bad429be5857('\\', 't')
+				__obf_d8f50bcfe87d8b47.__obf_99147f1a9b9d5ffc('\\', 't')
 			default:
-				__obf_8a2c51fe22775655.
+				__obf_d8f50bcfe87d8b47.
 					// This encodes bytes < 0x20 except for \t, \n and \r.
 					// If escapeHTML is set, it also escapes <, >, and &
 					// because they can lead to security holes when
 					// user-controlled strings are rendered into JSON
 					// and served to some browsers.
 					WriteRaw(`\u00`)
-				__obf_8a2c51fe22775655.__obf_3635bad429be5857(__obf_09bb009dbfa0a3d4[__obf_ea107e11b66371dd>>4], __obf_09bb009dbfa0a3d4[__obf_ea107e11b66371dd&0xF])
+				__obf_d8f50bcfe87d8b47.__obf_99147f1a9b9d5ffc(__obf_0295be282ee06228[__obf_fa8a3db302183a92>>4], __obf_0295be282ee06228[__obf_fa8a3db302183a92&0xF])
 			}
-			__obf_82c6e05b9d226c58++
-			__obf_447a3399d55be0d6 = __obf_82c6e05b9d226c58
+			__obf_a051269af3a541bb++
+			__obf_28e7d8a603535072 = __obf_a051269af3a541bb
 			continue
 		}
-		__obf_24309b3b0ff9ba22, __obf_452ca3698eb735a5 := utf8.DecodeRuneInString(__obf_1d7ed4e74380ec76[__obf_82c6e05b9d226c58:])
-		if __obf_24309b3b0ff9ba22 == utf8.RuneError && __obf_452ca3698eb735a5 == 1 {
-			if __obf_447a3399d55be0d6 < __obf_82c6e05b9d226c58 {
-				__obf_8a2c51fe22775655.
-					WriteRaw(__obf_1d7ed4e74380ec76[__obf_447a3399d55be0d6:__obf_82c6e05b9d226c58])
+		__obf_12577c03a12f0d2c, __obf_86901472dc2ab8e1 := utf8.DecodeRuneInString(__obf_057e9641d10a1246[__obf_a051269af3a541bb:])
+		if __obf_12577c03a12f0d2c == utf8.RuneError && __obf_86901472dc2ab8e1 == 1 {
+			if __obf_28e7d8a603535072 < __obf_a051269af3a541bb {
+				__obf_d8f50bcfe87d8b47.
+					WriteRaw(__obf_057e9641d10a1246[__obf_28e7d8a603535072:__obf_a051269af3a541bb])
 			}
-			__obf_8a2c51fe22775655.
+			__obf_d8f50bcfe87d8b47.
 				WriteRaw(`\ufffd`)
-			__obf_82c6e05b9d226c58++
-			__obf_447a3399d55be0d6 = __obf_82c6e05b9d226c58
+			__obf_a051269af3a541bb++
+			__obf_28e7d8a603535072 = __obf_a051269af3a541bb
 			continue
 		}
 		// U+2028 is LINE SEPARATOR.
@@ -294,91 +294,91 @@ func __obf_37db73f8c1f01c54(__obf_8a2c51fe22775655 *Stream, __obf_82c6e05b9d226c
 		// and can lead to security holes there. It is valid JSON to
 		// escape them, so we do so unconditionally.
 		// See http://timelessrepo.com/json-isnt-a-javascript-subset for discussion.
-		if __obf_24309b3b0ff9ba22 == '\u2028' || __obf_24309b3b0ff9ba22 == '\u2029' {
-			if __obf_447a3399d55be0d6 < __obf_82c6e05b9d226c58 {
-				__obf_8a2c51fe22775655.
-					WriteRaw(__obf_1d7ed4e74380ec76[__obf_447a3399d55be0d6:__obf_82c6e05b9d226c58])
+		if __obf_12577c03a12f0d2c == '\u2028' || __obf_12577c03a12f0d2c == '\u2029' {
+			if __obf_28e7d8a603535072 < __obf_a051269af3a541bb {
+				__obf_d8f50bcfe87d8b47.
+					WriteRaw(__obf_057e9641d10a1246[__obf_28e7d8a603535072:__obf_a051269af3a541bb])
 			}
-			__obf_8a2c51fe22775655.
+			__obf_d8f50bcfe87d8b47.
 				WriteRaw(`\u202`)
-			__obf_8a2c51fe22775655.__obf_41130daa346c0e53(__obf_09bb009dbfa0a3d4[__obf_24309b3b0ff9ba22&0xF])
-			__obf_82c6e05b9d226c58 += __obf_452ca3698eb735a5
-			__obf_447a3399d55be0d6 = __obf_82c6e05b9d226c58
+			__obf_d8f50bcfe87d8b47.__obf_7340077d41996822(__obf_0295be282ee06228[__obf_12577c03a12f0d2c&0xF])
+			__obf_a051269af3a541bb += __obf_86901472dc2ab8e1
+			__obf_28e7d8a603535072 = __obf_a051269af3a541bb
 			continue
 		}
-		__obf_82c6e05b9d226c58 += __obf_452ca3698eb735a5
+		__obf_a051269af3a541bb += __obf_86901472dc2ab8e1
 	}
-	if __obf_447a3399d55be0d6 < len(__obf_1d7ed4e74380ec76) {
-		__obf_8a2c51fe22775655.
-			WriteRaw(__obf_1d7ed4e74380ec76[__obf_447a3399d55be0d6:])
+	if __obf_28e7d8a603535072 < len(__obf_057e9641d10a1246) {
+		__obf_d8f50bcfe87d8b47.
+			WriteRaw(__obf_057e9641d10a1246[__obf_28e7d8a603535072:])
 	}
-	__obf_8a2c51fe22775655.__obf_41130daa346c0e53('"')
+	__obf_d8f50bcfe87d8b47.__obf_7340077d41996822('"')
 }
 
 // WriteString write string to stream without html escape
-func (__obf_8a2c51fe22775655 *Stream) WriteString(__obf_1d7ed4e74380ec76 string) {
-	__obf_51f269c3f31c8795 := len(__obf_1d7ed4e74380ec76)
-	__obf_8a2c51fe22775655.__obf_0b1656d7ef4bd9df = append(__obf_8a2c51fe22775655.
+func (__obf_d8f50bcfe87d8b47 *Stream) WriteString(__obf_057e9641d10a1246 string) {
+	__obf_31ccee095dd054a8 := len(__obf_057e9641d10a1246)
+	__obf_d8f50bcfe87d8b47.__obf_684d738bc3ac851a = append(__obf_d8f50bcfe87d8b47.
 		// write string, the fast path, without utf8 and escape support
-		__obf_0b1656d7ef4bd9df, '"')
-	__obf_82c6e05b9d226c58 := 0
-	for ; __obf_82c6e05b9d226c58 < __obf_51f269c3f31c8795; __obf_82c6e05b9d226c58++ {
-		__obf_24309b3b0ff9ba22 := __obf_1d7ed4e74380ec76[__obf_82c6e05b9d226c58]
-		if __obf_24309b3b0ff9ba22 > 31 && __obf_24309b3b0ff9ba22 != '"' && __obf_24309b3b0ff9ba22 != '\\' {
-			__obf_8a2c51fe22775655.__obf_0b1656d7ef4bd9df = append(__obf_8a2c51fe22775655.__obf_0b1656d7ef4bd9df, __obf_24309b3b0ff9ba22)
+		__obf_684d738bc3ac851a, '"')
+	__obf_a051269af3a541bb := 0
+	for ; __obf_a051269af3a541bb < __obf_31ccee095dd054a8; __obf_a051269af3a541bb++ {
+		__obf_12577c03a12f0d2c := __obf_057e9641d10a1246[__obf_a051269af3a541bb]
+		if __obf_12577c03a12f0d2c > 31 && __obf_12577c03a12f0d2c != '"' && __obf_12577c03a12f0d2c != '\\' {
+			__obf_d8f50bcfe87d8b47.__obf_684d738bc3ac851a = append(__obf_d8f50bcfe87d8b47.__obf_684d738bc3ac851a, __obf_12577c03a12f0d2c)
 		} else {
 			break
 		}
 	}
-	if __obf_82c6e05b9d226c58 == __obf_51f269c3f31c8795 {
-		__obf_8a2c51fe22775655.__obf_0b1656d7ef4bd9df = append(__obf_8a2c51fe22775655.__obf_0b1656d7ef4bd9df, '"')
+	if __obf_a051269af3a541bb == __obf_31ccee095dd054a8 {
+		__obf_d8f50bcfe87d8b47.__obf_684d738bc3ac851a = append(__obf_d8f50bcfe87d8b47.__obf_684d738bc3ac851a, '"')
 		return
 	}
-	__obf_d4d730ff20d6807b(__obf_8a2c51fe22775655, __obf_82c6e05b9d226c58, __obf_1d7ed4e74380ec76, __obf_51f269c3f31c8795)
+	__obf_52035bf0e0d0c96a(__obf_d8f50bcfe87d8b47, __obf_a051269af3a541bb, __obf_057e9641d10a1246, __obf_31ccee095dd054a8)
 }
 
-func __obf_d4d730ff20d6807b(__obf_8a2c51fe22775655 *Stream, __obf_82c6e05b9d226c58 int, __obf_1d7ed4e74380ec76 string, __obf_51f269c3f31c8795 int) {
-	__obf_447a3399d55be0d6 := __obf_82c6e05b9d226c58
+func __obf_52035bf0e0d0c96a(__obf_d8f50bcfe87d8b47 *Stream, __obf_a051269af3a541bb int, __obf_057e9641d10a1246 string, __obf_31ccee095dd054a8 int) {
+	__obf_28e7d8a603535072 := __obf_a051269af3a541bb
 	// for the remaining parts, we process them char by char
-	for __obf_82c6e05b9d226c58 < __obf_51f269c3f31c8795 {
-		if __obf_ea107e11b66371dd := __obf_1d7ed4e74380ec76[__obf_82c6e05b9d226c58]; __obf_ea107e11b66371dd < utf8.RuneSelf {
-			if __obf_a555af9a7c7d8eea[__obf_ea107e11b66371dd] {
-				__obf_82c6e05b9d226c58++
+	for __obf_a051269af3a541bb < __obf_31ccee095dd054a8 {
+		if __obf_fa8a3db302183a92 := __obf_057e9641d10a1246[__obf_a051269af3a541bb]; __obf_fa8a3db302183a92 < utf8.RuneSelf {
+			if __obf_b7d1921dad40e65e[__obf_fa8a3db302183a92] {
+				__obf_a051269af3a541bb++
 				continue
 			}
-			if __obf_447a3399d55be0d6 < __obf_82c6e05b9d226c58 {
-				__obf_8a2c51fe22775655.
-					WriteRaw(__obf_1d7ed4e74380ec76[__obf_447a3399d55be0d6:__obf_82c6e05b9d226c58])
+			if __obf_28e7d8a603535072 < __obf_a051269af3a541bb {
+				__obf_d8f50bcfe87d8b47.
+					WriteRaw(__obf_057e9641d10a1246[__obf_28e7d8a603535072:__obf_a051269af3a541bb])
 			}
-			switch __obf_ea107e11b66371dd {
+			switch __obf_fa8a3db302183a92 {
 			case '\\', '"':
-				__obf_8a2c51fe22775655.__obf_3635bad429be5857('\\', __obf_ea107e11b66371dd)
+				__obf_d8f50bcfe87d8b47.__obf_99147f1a9b9d5ffc('\\', __obf_fa8a3db302183a92)
 			case '\n':
-				__obf_8a2c51fe22775655.__obf_3635bad429be5857('\\', 'n')
+				__obf_d8f50bcfe87d8b47.__obf_99147f1a9b9d5ffc('\\', 'n')
 			case '\r':
-				__obf_8a2c51fe22775655.__obf_3635bad429be5857('\\', 'r')
+				__obf_d8f50bcfe87d8b47.__obf_99147f1a9b9d5ffc('\\', 'r')
 			case '\t':
-				__obf_8a2c51fe22775655.__obf_3635bad429be5857('\\', 't')
+				__obf_d8f50bcfe87d8b47.__obf_99147f1a9b9d5ffc('\\', 't')
 			default:
-				__obf_8a2c51fe22775655.
+				__obf_d8f50bcfe87d8b47.
 					// This encodes bytes < 0x20 except for \t, \n and \r.
 					// If escapeHTML is set, it also escapes <, >, and &
 					// because they can lead to security holes when
 					// user-controlled strings are rendered into JSON
 					// and served to some browsers.
 					WriteRaw(`\u00`)
-				__obf_8a2c51fe22775655.__obf_3635bad429be5857(__obf_09bb009dbfa0a3d4[__obf_ea107e11b66371dd>>4], __obf_09bb009dbfa0a3d4[__obf_ea107e11b66371dd&0xF])
+				__obf_d8f50bcfe87d8b47.__obf_99147f1a9b9d5ffc(__obf_0295be282ee06228[__obf_fa8a3db302183a92>>4], __obf_0295be282ee06228[__obf_fa8a3db302183a92&0xF])
 			}
-			__obf_82c6e05b9d226c58++
-			__obf_447a3399d55be0d6 = __obf_82c6e05b9d226c58
+			__obf_a051269af3a541bb++
+			__obf_28e7d8a603535072 = __obf_a051269af3a541bb
 			continue
 		}
-		__obf_82c6e05b9d226c58++
+		__obf_a051269af3a541bb++
 		continue
 	}
-	if __obf_447a3399d55be0d6 < len(__obf_1d7ed4e74380ec76) {
-		__obf_8a2c51fe22775655.
-			WriteRaw(__obf_1d7ed4e74380ec76[__obf_447a3399d55be0d6:])
+	if __obf_28e7d8a603535072 < len(__obf_057e9641d10a1246) {
+		__obf_d8f50bcfe87d8b47.
+			WriteRaw(__obf_057e9641d10a1246[__obf_28e7d8a603535072:])
 	}
-	__obf_8a2c51fe22775655.__obf_41130daa346c0e53('"')
+	__obf_d8f50bcfe87d8b47.__obf_7340077d41996822('"')
 }

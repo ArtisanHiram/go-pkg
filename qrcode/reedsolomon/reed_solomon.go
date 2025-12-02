@@ -8,7 +8,7 @@
 //
 // The generated RS codes are systematic, and consist of the input data with
 // error correction bytes appended.
-package __obf_eba3d68b9605015e
+package __obf_e1f3dcd8d719d52b
 
 import (
 	"log"
@@ -23,20 +23,20 @@ import (
 //
 // ISO/IEC 18004 table 9 specifies the numECBytes required. e.g. a 1-L code has
 // numECBytes=7.
-func Encode(__obf_4e04dfa10559e27c *bitset.Bitset, __obf_17c35e05e9dc2293 int) *bitset.Bitset {
-	__obf_df8fb7bcb0b7004f := // Create a polynomial representing |data|.
+func Encode(__obf_e84c8ad5f9fe4eba *bitset.Bitset, __obf_3ac76bf083414f56 int) *bitset.Bitset {
+	__obf_f515a4277019914c := // Create a polynomial representing |data|.
 		//
 		// The bytes are interpreted as the sequence of coefficients of a polynomial.
 		// The last byte's value becomes the x^0 coefficient, the second to last
 		// becomes the x^1 coefficient and so on.
-		__obf_f3a458a9c566d56a(__obf_4e04dfa10559e27c)
-	__obf_df8fb7bcb0b7004f = __obf_613fea38d6c97b2d(__obf_df8fb7bcb0b7004f, __obf_a2a64cfa09775cd0(__obf_dfd4e77e4658e35b,
+		__obf_8c8e622b7e5d1808(__obf_e84c8ad5f9fe4eba)
+	__obf_f515a4277019914c = __obf_64c6d4eebca914e2(__obf_f515a4277019914c, __obf_52f952075352cc74(__obf_98a3f50d23acf486,
 
 		// Pick the generator polynomial.
-		__obf_17c35e05e9dc2293))
-	__obf_b5231f3d7c46bd4a := __obf_e9e8efce04b892b3(__obf_17c35e05e9dc2293)
-	__obf_9c353bc1b664ae8f := // Generate the error correction bytes.
-		__obf_9b723898ea675104(__obf_df8fb7bcb0b7004f,
+		__obf_3ac76bf083414f56))
+	__obf_133515636299b453 := __obf_c6892ee1b96d137d(__obf_3ac76bf083414f56)
+	__obf_0fed35ba81544ce5 := // Generate the error correction bytes.
+		__obf_b38b77e4cdfbc62a(__obf_f515a4277019914c,
 
 			// Combine the data & error correcting bytes.
 			// The mathematically correct answer is:
@@ -47,28 +47,28 @@ func Encode(__obf_4e04dfa10559e27c *bitset.Bitset, __obf_17c35e05e9dc2293 int) *
 			// preserve the original |data| bit sequence exactly, the data and remainder
 			// are combined manually below. This ensures any most significant zero bits
 			// are preserved (and not optimised away).
-			__obf_b5231f3d7c46bd4a)
-	__obf_7fca30a86b604ba4 := bitset.Clone(__obf_4e04dfa10559e27c)
-	__obf_7fca30a86b604ba4.
-		AppendBytes(__obf_9c353bc1b664ae8f.__obf_4e04dfa10559e27c(__obf_17c35e05e9dc2293))
+			__obf_133515636299b453)
+	__obf_903beff2487e2326 := bitset.Clone(__obf_e84c8ad5f9fe4eba)
+	__obf_903beff2487e2326.
+		AppendBytes(__obf_0fed35ba81544ce5.__obf_e84c8ad5f9fe4eba(__obf_3ac76bf083414f56))
 
-	return __obf_7fca30a86b604ba4
+	return __obf_903beff2487e2326
 }
 
 // rsGeneratorPoly returns the Reed-Solomon generator polynomial with |degree|.
 //
 // The generator polynomial is calculated as:
 // (x + a^0)(x + a^1)...(x + a^degree-1)
-func __obf_e9e8efce04b892b3(__obf_bf07404dd6aeed84 int) __obf_71eb0882383cb0ef {
-	if __obf_bf07404dd6aeed84 < 2 {
+func __obf_c6892ee1b96d137d(__obf_eee26701a2608609 int) __obf_7f0a87df1252e0f1 {
+	if __obf_eee26701a2608609 < 2 {
 		log.Panic("degree < 2")
 	}
-	__obf_b5231f3d7c46bd4a := __obf_71eb0882383cb0ef{__obf_ea46b5761247c020: []__obf_dbf34f1740ee9966{1}}
+	__obf_133515636299b453 := __obf_7f0a87df1252e0f1{__obf_dc2d266987a80f84: []__obf_69935e5d788798dd{1}}
 
-	for __obf_a2ccc63c916c0db9 := 0; __obf_a2ccc63c916c0db9 < __obf_bf07404dd6aeed84; __obf_a2ccc63c916c0db9++ {
-		__obf_6d78e93227b888c2 := __obf_71eb0882383cb0ef{__obf_ea46b5761247c020: []__obf_dbf34f1740ee9966{__obf_4859dffeb395a9ff[__obf_a2ccc63c916c0db9], 1}}
-		__obf_b5231f3d7c46bd4a = __obf_613fea38d6c97b2d(__obf_b5231f3d7c46bd4a, __obf_6d78e93227b888c2)
+	for __obf_13b2631ac20e0422 := 0; __obf_13b2631ac20e0422 < __obf_eee26701a2608609; __obf_13b2631ac20e0422++ {
+		__obf_2b1b0b6f6f1d2f46 := __obf_7f0a87df1252e0f1{__obf_dc2d266987a80f84: []__obf_69935e5d788798dd{__obf_0548bc2533e0f272[__obf_13b2631ac20e0422], 1}}
+		__obf_133515636299b453 = __obf_64c6d4eebca914e2(__obf_133515636299b453, __obf_2b1b0b6f6f1d2f46)
 	}
 
-	return __obf_b5231f3d7c46bd4a
+	return __obf_133515636299b453
 }

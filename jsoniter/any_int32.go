@@ -1,75 +1,75 @@
-package __obf_030d39f7a8de96c6
+package __obf_c7b79b12b33d8238
 
 import (
 	"strconv"
 )
 
-type __obf_66e4549b4c63a1c1 struct {
-	__obf_7834a13a259af712
-	__obf_efaf2719b44ad8ac int32
+type __obf_67b34d104eef23fb struct {
+	__obf_3a44d9c5204c2e12
+	__obf_35accd096612ebe4 int32
 }
 
-func (any *__obf_66e4549b4c63a1c1) LastError() error {
+func (any *__obf_67b34d104eef23fb) LastError() error {
 	return nil
 }
 
-func (any *__obf_66e4549b4c63a1c1) ValueType() ValueType {
+func (any *__obf_67b34d104eef23fb) ValueType() ValueType {
 	return NumberValue
 }
 
-func (any *__obf_66e4549b4c63a1c1) MustBeValid() Any {
+func (any *__obf_67b34d104eef23fb) MustBeValid() Any {
 	return any
 }
 
-func (any *__obf_66e4549b4c63a1c1) ToBool() bool {
-	return any.__obf_efaf2719b44ad8ac != 0
+func (any *__obf_67b34d104eef23fb) ToBool() bool {
+	return any.__obf_35accd096612ebe4 != 0
 }
 
-func (any *__obf_66e4549b4c63a1c1) ToInt() int {
-	return int(any.__obf_efaf2719b44ad8ac)
+func (any *__obf_67b34d104eef23fb) ToInt() int {
+	return int(any.__obf_35accd096612ebe4)
 }
 
-func (any *__obf_66e4549b4c63a1c1) ToInt32() int32 {
-	return any.__obf_efaf2719b44ad8ac
+func (any *__obf_67b34d104eef23fb) ToInt32() int32 {
+	return any.__obf_35accd096612ebe4
 }
 
-func (any *__obf_66e4549b4c63a1c1) ToInt64() int64 {
-	return int64(any.__obf_efaf2719b44ad8ac)
+func (any *__obf_67b34d104eef23fb) ToInt64() int64 {
+	return int64(any.__obf_35accd096612ebe4)
 }
 
-func (any *__obf_66e4549b4c63a1c1) ToUint() uint {
-	return uint(any.__obf_efaf2719b44ad8ac)
+func (any *__obf_67b34d104eef23fb) ToUint() uint {
+	return uint(any.__obf_35accd096612ebe4)
 }
 
-func (any *__obf_66e4549b4c63a1c1) ToUint32() uint32 {
-	return uint32(any.__obf_efaf2719b44ad8ac)
+func (any *__obf_67b34d104eef23fb) ToUint32() uint32 {
+	return uint32(any.__obf_35accd096612ebe4)
 }
 
-func (any *__obf_66e4549b4c63a1c1) ToUint64() uint64 {
-	return uint64(any.__obf_efaf2719b44ad8ac)
+func (any *__obf_67b34d104eef23fb) ToUint64() uint64 {
+	return uint64(any.__obf_35accd096612ebe4)
 }
 
-func (any *__obf_66e4549b4c63a1c1) ToFloat32() float32 {
-	return float32(any.__obf_efaf2719b44ad8ac)
+func (any *__obf_67b34d104eef23fb) ToFloat32() float32 {
+	return float32(any.__obf_35accd096612ebe4)
 }
 
-func (any *__obf_66e4549b4c63a1c1) ToFloat64() float64 {
-	return float64(any.__obf_efaf2719b44ad8ac)
+func (any *__obf_67b34d104eef23fb) ToFloat64() float64 {
+	return float64(any.__obf_35accd096612ebe4)
 }
 
-func (any *__obf_66e4549b4c63a1c1) ToString() string {
-	return strconv.FormatInt(int64(any.__obf_efaf2719b44ad8ac), 10)
+func (any *__obf_67b34d104eef23fb) ToString() string {
+	return strconv.FormatInt(int64(any.__obf_35accd096612ebe4), 10)
 }
 
-func (any *__obf_66e4549b4c63a1c1) WriteTo(__obf_8a2c51fe22775655 *Stream) {
-	__obf_8a2c51fe22775655.
-		WriteInt32(any.__obf_efaf2719b44ad8ac)
+func (any *__obf_67b34d104eef23fb) WriteTo(__obf_d8f50bcfe87d8b47 *Stream) {
+	__obf_d8f50bcfe87d8b47.
+		WriteInt32(any.__obf_35accd096612ebe4)
 }
 
-func (any *__obf_66e4549b4c63a1c1) Parse() *Iterator {
+func (any *__obf_67b34d104eef23fb) Parse() *Iterator {
 	return nil
 }
 
-func (any *__obf_66e4549b4c63a1c1) GetInterface() any {
-	return any.__obf_efaf2719b44ad8ac
+func (any *__obf_67b34d104eef23fb) GetInterface() any {
+	return any.__obf_35accd096612ebe4
 }

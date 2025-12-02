@@ -1,4 +1,4 @@
-package __obf_030d39f7a8de96c6
+package __obf_c7b79b12b33d8238
 
 import (
 	"bytes"
@@ -12,44 +12,44 @@ type RawMessage []byte
 //
 // Unmarshal parses the JSON-encoded data and stores the result in the value pointed to by v.
 // Refer to https://godoc.org/encoding/json#Unmarshal for more information
-func Unmarshal(__obf_c28f0e30eceb6d4a []byte, __obf_41b184145cfea25b any) error {
-	return ConfigDefault.Unmarshal(__obf_c28f0e30eceb6d4a,
+func Unmarshal(__obf_1d34d01a9b83218a []byte, __obf_bc7196b82ffbf1d3 any) error {
+	return ConfigDefault.Unmarshal(__obf_1d34d01a9b83218a,
 
 		// UnmarshalFromString is a convenient method to read from string instead of []byte
-		__obf_41b184145cfea25b)
+		__obf_bc7196b82ffbf1d3)
 }
 
-func UnmarshalFromString(__obf_428c3b4a95725c4a string, __obf_41b184145cfea25b any) error {
-	return ConfigDefault.UnmarshalFromString(__obf_428c3b4a95725c4a,
+func UnmarshalFromString(__obf_a3eaafc22faf1644 string, __obf_bc7196b82ffbf1d3 any) error {
+	return ConfigDefault.UnmarshalFromString(__obf_a3eaafc22faf1644,
 
 		// Get quick method to get value from deeply nested JSON structure
-		__obf_41b184145cfea25b)
+		__obf_bc7196b82ffbf1d3)
 }
 
-func Get(__obf_c28f0e30eceb6d4a []byte, __obf_f77a9507782b919d ...any) Any {
-	return ConfigDefault.Get(__obf_c28f0e30eceb6d4a,
+func Get(__obf_1d34d01a9b83218a []byte, __obf_5dde9fb4007294d4 ...any) Any {
+	return ConfigDefault.Get(__obf_1d34d01a9b83218a,
 
 		// Marshal adapts to json/encoding Marshal API
 		//
 		// Marshal returns the JSON encoding of v, adapts to json/encoding Marshal API
 		// Refer to https://godoc.org/encoding/json#Marshal for more information
-		__obf_f77a9507782b919d...)
+		__obf_5dde9fb4007294d4...)
 }
 
-func Marshal(__obf_41b184145cfea25b any) ([]byte, error) {
-	return ConfigDefault.Marshal(__obf_41b184145cfea25b)
+func Marshal(__obf_bc7196b82ffbf1d3 any) ([]byte, error) {
+	return ConfigDefault.Marshal(__obf_bc7196b82ffbf1d3)
 }
 
 // MarshalIndent same as json.MarshalIndent. Prefix is not supported.
-func MarshalIndent(__obf_41b184145cfea25b any, __obf_834e1679b8081f46, __obf_2ee2bfac47d1636e string) ([]byte, error) {
-	return ConfigDefault.MarshalIndent(__obf_41b184145cfea25b,
+func MarshalIndent(__obf_bc7196b82ffbf1d3 any, __obf_5de9ece8fa3a16e3, __obf_be0b45c15e61f86b string) ([]byte, error) {
+	return ConfigDefault.MarshalIndent(__obf_bc7196b82ffbf1d3,
 
 		// MarshalToString convenient method to write as string instead of []byte
-		__obf_834e1679b8081f46, __obf_2ee2bfac47d1636e)
+		__obf_5de9ece8fa3a16e3, __obf_be0b45c15e61f86b)
 }
 
-func MarshalToString(__obf_41b184145cfea25b any) (string, error) {
-	return ConfigDefault.MarshalToString(__obf_41b184145cfea25b)
+func MarshalToString(__obf_bc7196b82ffbf1d3 any) (string, error) {
+	return ConfigDefault.MarshalToString(__obf_bc7196b82ffbf1d3)
 }
 
 // NewDecoder adapts to json/stream NewDecoder API.
@@ -58,119 +58,119 @@ func MarshalToString(__obf_41b184145cfea25b any) (string, error) {
 //
 // Instead of a json/encoding Decoder, an Decoder is returned
 // Refer to https://godoc.org/encoding/json#NewDecoder for more information
-func NewDecoder(__obf_7582c70e81d83895 io.Reader) *Decoder {
-	return ConfigDefault.NewDecoder(__obf_7582c70e81d83895)
+func NewDecoder(__obf_801a7eebc4303617 io.Reader) *Decoder {
+	return ConfigDefault.NewDecoder(__obf_801a7eebc4303617)
 }
 
 // Decoder reads and decodes JSON values from an input stream.
 // Decoder provides identical APIs with json/stream Decoder (Token() and UseNumber() are in progress)
 type Decoder struct {
-	__obf_4ab56a99965952e7 *Iterator
+	__obf_0da8c843dad13139 *Iterator
 }
 
 // Decode decode JSON into any
-func (__obf_95dec6f27d951053 *Decoder) Decode(__obf_eefa92392cc2442c any) error {
-	if __obf_95dec6f27d951053.__obf_4ab56a99965952e7.__obf_5e22d6270d27491f == __obf_95dec6f27d951053.__obf_4ab56a99965952e7.__obf_7c17042d9b4e73cc && __obf_95dec6f27d951053.__obf_4ab56a99965952e7.__obf_7582c70e81d83895 != nil {
-		if !__obf_95dec6f27d951053.__obf_4ab56a99965952e7.__obf_08a0b850abb3abbd() {
+func (__obf_2d6cfd588b796583 *Decoder) Decode(__obf_d6e2df4782353c64 any) error {
+	if __obf_2d6cfd588b796583.__obf_0da8c843dad13139.__obf_6a63c9ac34fe84e2 == __obf_2d6cfd588b796583.__obf_0da8c843dad13139.__obf_840246080559848c && __obf_2d6cfd588b796583.__obf_0da8c843dad13139.__obf_801a7eebc4303617 != nil {
+		if !__obf_2d6cfd588b796583.__obf_0da8c843dad13139.__obf_baaf768e13842431() {
 			return io.EOF
 		}
 	}
-	__obf_95dec6f27d951053.__obf_4ab56a99965952e7.
-		ReadVal(__obf_eefa92392cc2442c)
-	__obf_fcc907dd69879566 := __obf_95dec6f27d951053.__obf_4ab56a99965952e7.Error
-	if __obf_fcc907dd69879566 == io.EOF {
+	__obf_2d6cfd588b796583.__obf_0da8c843dad13139.
+		ReadVal(__obf_d6e2df4782353c64)
+	__obf_ea0680f8b461a85b := __obf_2d6cfd588b796583.__obf_0da8c843dad13139.Error
+	if __obf_ea0680f8b461a85b == io.EOF {
 		return nil
 	}
-	return __obf_95dec6f27d951053.__obf_4ab56a99965952e7.Error
+	return __obf_2d6cfd588b796583.__obf_0da8c843dad13139.Error
 }
 
 // More is there more?
-func (__obf_95dec6f27d951053 *Decoder) More() bool {
-	__obf_4ab56a99965952e7 := __obf_95dec6f27d951053.__obf_4ab56a99965952e7
-	if __obf_4ab56a99965952e7.Error != nil {
+func (__obf_2d6cfd588b796583 *Decoder) More() bool {
+	__obf_0da8c843dad13139 := __obf_2d6cfd588b796583.__obf_0da8c843dad13139
+	if __obf_0da8c843dad13139.Error != nil {
 		return false
 	}
-	__obf_24309b3b0ff9ba22 := __obf_4ab56a99965952e7.__obf_61df301d1f67ad73()
-	if __obf_24309b3b0ff9ba22 == 0 {
+	__obf_12577c03a12f0d2c := __obf_0da8c843dad13139.__obf_2b436fcb1c0ca36d()
+	if __obf_12577c03a12f0d2c == 0 {
 		return false
 	}
-	__obf_4ab56a99965952e7.__obf_ba6d0be9a7ab6ae4()
-	return __obf_24309b3b0ff9ba22 != ']' && __obf_24309b3b0ff9ba22 != '}'
+	__obf_0da8c843dad13139.__obf_a675366c80290b83()
+	return __obf_12577c03a12f0d2c != ']' && __obf_12577c03a12f0d2c != '}'
 }
 
 // Buffered remaining buffer
-func (__obf_95dec6f27d951053 *Decoder) Buffered() io.Reader {
-	__obf_2257b1725dfd65c5 := __obf_95dec6f27d951053.__obf_4ab56a99965952e7.__obf_0b1656d7ef4bd9df[__obf_95dec6f27d951053.__obf_4ab56a99965952e7.__obf_5e22d6270d27491f:__obf_95dec6f27d951053.
+func (__obf_2d6cfd588b796583 *Decoder) Buffered() io.Reader {
+	__obf_2565c9afb6012ebe := __obf_2d6cfd588b796583.__obf_0da8c843dad13139.__obf_684d738bc3ac851a[__obf_2d6cfd588b796583.__obf_0da8c843dad13139.__obf_6a63c9ac34fe84e2:__obf_2d6cfd588b796583.
 
 		// UseNumber causes the Decoder to unmarshal a number into an any as a
 		// Number instead of as a float64.
-		__obf_4ab56a99965952e7.__obf_7c17042d9b4e73cc]
-	return bytes.NewReader(__obf_2257b1725dfd65c5)
+		__obf_0da8c843dad13139.__obf_840246080559848c]
+	return bytes.NewReader(__obf_2565c9afb6012ebe)
 }
 
-func (__obf_95dec6f27d951053 *Decoder) UseNumber() {
-	__obf_679611dc56ff465b := __obf_95dec6f27d951053.__obf_4ab56a99965952e7.__obf_679611dc56ff465b.__obf_fb97917857c6c8da
-	__obf_679611dc56ff465b.
+func (__obf_2d6cfd588b796583 *Decoder) UseNumber() {
+	__obf_c52e0bcfad4b8b71 := __obf_2d6cfd588b796583.__obf_0da8c843dad13139.__obf_c52e0bcfad4b8b71.__obf_790a57f66978b3bc
+	__obf_c52e0bcfad4b8b71.
 		UseNumber = true
-	__obf_95dec6f27d951053.__obf_4ab56a99965952e7.__obf_679611dc56ff465b = __obf_679611dc56ff465b.__obf_38802709ddf21ec6(__obf_95dec6f27d951053.__obf_4ab56a99965952e7.
+	__obf_2d6cfd588b796583.__obf_0da8c843dad13139.__obf_c52e0bcfad4b8b71 = __obf_c52e0bcfad4b8b71.__obf_ec5a9b5887aa3ec6(__obf_2d6cfd588b796583.__obf_0da8c843dad13139.
 
 		// DisallowUnknownFields causes the Decoder to return an error when the destination
 		// is a struct and the input contains object keys which do not match any
 		// non-ignored, exported fields in the destination.
-		__obf_679611dc56ff465b.__obf_6621255bc1f80c8e)
+		__obf_c52e0bcfad4b8b71.__obf_3c82f4beb30882eb)
 }
 
-func (__obf_95dec6f27d951053 *Decoder) DisallowUnknownFields() {
-	__obf_679611dc56ff465b := __obf_95dec6f27d951053.__obf_4ab56a99965952e7.__obf_679611dc56ff465b.__obf_fb97917857c6c8da
-	__obf_679611dc56ff465b.
+func (__obf_2d6cfd588b796583 *Decoder) DisallowUnknownFields() {
+	__obf_c52e0bcfad4b8b71 := __obf_2d6cfd588b796583.__obf_0da8c843dad13139.__obf_c52e0bcfad4b8b71.__obf_790a57f66978b3bc
+	__obf_c52e0bcfad4b8b71.
 		DisallowUnknownFields = true
-	__obf_95dec6f27d951053.__obf_4ab56a99965952e7.__obf_679611dc56ff465b = __obf_679611dc56ff465b.__obf_38802709ddf21ec6(__obf_95dec6f27d951053.__obf_4ab56a99965952e7.
+	__obf_2d6cfd588b796583.__obf_0da8c843dad13139.__obf_c52e0bcfad4b8b71 = __obf_c52e0bcfad4b8b71.__obf_ec5a9b5887aa3ec6(__obf_2d6cfd588b796583.__obf_0da8c843dad13139.
 
 		// NewEncoder same as json.NewEncoder
-		__obf_679611dc56ff465b.__obf_6621255bc1f80c8e)
+		__obf_c52e0bcfad4b8b71.__obf_3c82f4beb30882eb)
 }
 
-func NewEncoder(__obf_ae48508e054620bd io.Writer) *Encoder {
-	return ConfigDefault.NewEncoder(__obf_ae48508e054620bd)
+func NewEncoder(__obf_29b48e4cc46aebd6 io.Writer) *Encoder {
+	return ConfigDefault.NewEncoder(__obf_29b48e4cc46aebd6)
 }
 
 // Encoder same as json.Encoder
 type Encoder struct {
-	__obf_8a2c51fe22775655 *Stream
+	__obf_d8f50bcfe87d8b47 *Stream
 }
 
 // Encode encode any as JSON to io.Writer
-func (__obf_95dec6f27d951053 *Encoder) Encode(__obf_efaf2719b44ad8ac any) error {
-	__obf_95dec6f27d951053.__obf_8a2c51fe22775655.
-		WriteVal(__obf_efaf2719b44ad8ac)
-	__obf_95dec6f27d951053.__obf_8a2c51fe22775655.
+func (__obf_2d6cfd588b796583 *Encoder) Encode(__obf_35accd096612ebe4 any) error {
+	__obf_2d6cfd588b796583.__obf_d8f50bcfe87d8b47.
+		WriteVal(__obf_35accd096612ebe4)
+	__obf_2d6cfd588b796583.__obf_d8f50bcfe87d8b47.
 		WriteRaw("\n")
-	__obf_95dec6f27d951053.__obf_8a2c51fe22775655.
+	__obf_2d6cfd588b796583.__obf_d8f50bcfe87d8b47.
 		Flush()
-	return __obf_95dec6f27d951053.__obf_8a2c51fe22775655.Error
+	return __obf_2d6cfd588b796583.__obf_d8f50bcfe87d8b47.Error
 }
 
 // SetIndent set the indention. Prefix is not supported
-func (__obf_95dec6f27d951053 *Encoder) SetIndent(__obf_834e1679b8081f46, __obf_2ee2bfac47d1636e string) {
-	__obf_aefc68b53b020259 := __obf_95dec6f27d951053.__obf_8a2c51fe22775655.__obf_679611dc56ff465b.__obf_fb97917857c6c8da
-	__obf_aefc68b53b020259.
-		IndentionStep = len(__obf_2ee2bfac47d1636e)
-	__obf_95dec6f27d951053.__obf_8a2c51fe22775655.__obf_679611dc56ff465b = __obf_aefc68b53b020259.__obf_38802709ddf21ec6(__obf_95dec6f27d951053.__obf_8a2c51fe22775655.
+func (__obf_2d6cfd588b796583 *Encoder) SetIndent(__obf_5de9ece8fa3a16e3, __obf_be0b45c15e61f86b string) {
+	__obf_ecb992e78814f9e4 := __obf_2d6cfd588b796583.__obf_d8f50bcfe87d8b47.__obf_c52e0bcfad4b8b71.__obf_790a57f66978b3bc
+	__obf_ecb992e78814f9e4.
+		IndentionStep = len(__obf_be0b45c15e61f86b)
+	__obf_2d6cfd588b796583.__obf_d8f50bcfe87d8b47.__obf_c52e0bcfad4b8b71 = __obf_ecb992e78814f9e4.__obf_ec5a9b5887aa3ec6(__obf_2d6cfd588b796583.__obf_d8f50bcfe87d8b47.
 
 		// SetEscapeHTML escape html by default, set to false to disable
-		__obf_679611dc56ff465b.__obf_6621255bc1f80c8e)
+		__obf_c52e0bcfad4b8b71.__obf_3c82f4beb30882eb)
 }
 
-func (__obf_95dec6f27d951053 *Encoder) SetEscapeHTML(__obf_ea893fc01ce71521 bool) {
-	__obf_aefc68b53b020259 := __obf_95dec6f27d951053.__obf_8a2c51fe22775655.__obf_679611dc56ff465b.__obf_fb97917857c6c8da
-	__obf_aefc68b53b020259.
-		EscapeHTML = __obf_ea893fc01ce71521
-	__obf_95dec6f27d951053.__obf_8a2c51fe22775655.__obf_679611dc56ff465b = __obf_aefc68b53b020259.__obf_38802709ddf21ec6(__obf_95dec6f27d951053.__obf_8a2c51fe22775655.
+func (__obf_2d6cfd588b796583 *Encoder) SetEscapeHTML(__obf_3f302bac9ebc5e76 bool) {
+	__obf_ecb992e78814f9e4 := __obf_2d6cfd588b796583.__obf_d8f50bcfe87d8b47.__obf_c52e0bcfad4b8b71.__obf_790a57f66978b3bc
+	__obf_ecb992e78814f9e4.
+		EscapeHTML = __obf_3f302bac9ebc5e76
+	__obf_2d6cfd588b796583.__obf_d8f50bcfe87d8b47.__obf_c52e0bcfad4b8b71 = __obf_ecb992e78814f9e4.__obf_ec5a9b5887aa3ec6(__obf_2d6cfd588b796583.__obf_d8f50bcfe87d8b47.
 
 		// Valid reports whether data is a valid JSON encoding.
-		__obf_679611dc56ff465b.__obf_6621255bc1f80c8e)
+		__obf_c52e0bcfad4b8b71.__obf_3c82f4beb30882eb)
 }
 
-func Valid(__obf_c28f0e30eceb6d4a []byte) bool {
-	return ConfigDefault.Valid(__obf_c28f0e30eceb6d4a)
+func Valid(__obf_1d34d01a9b83218a []byte) bool {
+	return ConfigDefault.Valid(__obf_1d34d01a9b83218a)
 }

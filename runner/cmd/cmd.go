@@ -1,4 +1,4 @@
-package __obf_9c4ed0a90dfb1114
+package __obf_1bd04ed9f422a876
 
 import (
 	"bytes"
@@ -9,44 +9,44 @@ import (
 	"time"
 )
 
-func Run(__obf_76f93db30ea31765 string, __obf_1190c99b8ba3f75d ...string) (string, string, error) {
-	return RunStdin(__obf_76f93db30ea31765, "", __obf_1190c99b8ba3f75d...)
+func Run(__obf_5016851075695cca string, __obf_417cbec5e9067df4 ...string) (string, string, error) {
+	return RunStdin(__obf_5016851075695cca, "", __obf_417cbec5e9067df4...)
 }
 
-func RunStdin(__obf_76f93db30ea31765, __obf_55272303f56b53e5 string, __obf_1190c99b8ba3f75d ...string) (string, string, error) {
-	__obf_b85ddb2aa7250899,
+func RunStdin(__obf_5016851075695cca, __obf_9e58244a7ab21eb9 string, __obf_417cbec5e9067df4 ...string) (string, string, error) {
+	__obf_3e1bad6838d6baed,
 		// 1. 使用带超时的 Context
-		__obf_5addb136bdad83c0 := context.WithTimeout(context.Background(), 15*time.Second)
-	defer __obf_5addb136bdad83c0()
-	__obf_9c4ed0a90dfb1114 := exec.CommandContext(__obf_b85ddb2aa7250899, __obf_1190c99b8ba3f75d[0], __obf_1190c99b8ba3f75d[1:]...)
+		__obf_1320091081408b73 := context.WithTimeout(context.Background(), 15*time.Second)
+	defer __obf_1320091081408b73()
+	__obf_1bd04ed9f422a876 := exec.CommandContext(__obf_3e1bad6838d6baed, __obf_417cbec5e9067df4[0], __obf_417cbec5e9067df4[1:]...)
 	// 2. 捕获输出，避免阻塞
-	var __obf_b52a496165c44620, __obf_2aaff9d86c6c2b18 bytes.Buffer
-	__obf_9c4ed0a90dfb1114.
-		Dir = __obf_76f93db30ea31765
-	if __obf_55272303f56b53e5 != "" {
-		__obf_9c4ed0a90dfb1114.
-			Stdin = strings.NewReader(__obf_55272303f56b53e5)
+	var __obf_c6712f35c652d90f, __obf_3493efd5e47ad38e bytes.Buffer
+	__obf_1bd04ed9f422a876.
+		Dir = __obf_5016851075695cca
+	if __obf_9e58244a7ab21eb9 != "" {
+		__obf_1bd04ed9f422a876.
+			Stdin = strings.NewReader(__obf_9e58244a7ab21eb9)
 	}
-	__obf_9c4ed0a90dfb1114.
-		Stdout = &__obf_b52a496165c44620
-	__obf_9c4ed0a90dfb1114.
-		Stderr = &__obf_2aaff9d86c6c2b18
+	__obf_1bd04ed9f422a876.
+		Stdout = &__obf_c6712f35c652d90f
+	__obf_1bd04ed9f422a876.
+		Stderr = &__obf_3493efd5e47ad38e
 
 	// 3. 启动并等待
-	__obf_9075b6abcdcc758d := __obf_9c4ed0a90dfb1114.Run()
+	__obf_447a758b235ca73f := __obf_1bd04ed9f422a876.Run()
 
 	// 4. 如果是超时，Context 会自动杀掉进程
-	if __obf_b85ddb2aa7250899.Err() == context.DeadlineExceeded {
-		return __obf_b52a496165c44620.String(), __obf_2aaff9d86c6c2b18.String(), fmt.Errorf("command timed out")
+	if __obf_3e1bad6838d6baed.Err() == context.DeadlineExceeded {
+		return __obf_c6712f35c652d90f.String(), __obf_3493efd5e47ad38e.String(), fmt.Errorf("command timed out")
 	}
 
-	return strings.TrimSpace(__obf_b52a496165c44620.String()), __obf_2aaff9d86c6c2b18.String(), __obf_9075b6abcdcc758d
+	return strings.TrimSpace(__obf_c6712f35c652d90f.String()), __obf_3493efd5e47ad38e.String(), __obf_447a758b235ca73f
 }
 
 // func RunBash(workDir, command string) (string, string, error) {
 // 	return Run(workDir, "bash", "-c", command)
 // }
 
-func RunBashStdin(__obf_76f93db30ea31765, __obf_72eac5437885a8f2, __obf_55272303f56b53e5 string) (string, string, error) {
-	return RunStdin(__obf_76f93db30ea31765, __obf_55272303f56b53e5, "bash", "-c", __obf_72eac5437885a8f2)
+func RunBashStdin(__obf_5016851075695cca, __obf_8a2b18c14a15b110, __obf_9e58244a7ab21eb9 string) (string, string, error) {
+	return RunStdin(__obf_5016851075695cca, __obf_9e58244a7ab21eb9, "bash", "-c", __obf_8a2b18c14a15b110)
 }

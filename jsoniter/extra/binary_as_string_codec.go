@@ -1,4 +1,4 @@
-package __obf_9a397ef96534ad45
+package __obf_eed9c5a643743c33
 
 import (
 	jsoniter "github.com/ArtisanHiram/go-pkg/jsoniter"
@@ -13,7 +13,7 @@ import (
 //
 // All values are true except for the ASCII control characters (0-31), the
 // double quote ("), and the backslash character ("\").
-var __obf_58eb06631e97639d = [utf8.RuneSelf]bool{
+var __obf_0eab2aa051a8dd12 = [utf8.RuneSelf]bool{
 	' ':      true,
 	'!':      true,
 	'"':      false,
@@ -112,132 +112,132 @@ var __obf_58eb06631e97639d = [utf8.RuneSelf]bool{
 	'\u007f': true,
 }
 
-var __obf_ed2a2840c6cd62ab = reflect2.TypeOfPtr((*[]byte)(nil)).Elem()
+var __obf_cda44835ddd97604 = reflect2.TypeOfPtr((*[]byte)(nil)).Elem()
 
 type BinaryAsStringExtension struct {
 	jsoniter.DummyExtension
 }
 
-func (__obf_454cba947156c7ed *BinaryAsStringExtension) CreateEncoder(__obf_36cc3da433275e85 reflect2.Type) jsoniter.ValEncoder {
-	if __obf_36cc3da433275e85 == __obf_ed2a2840c6cd62ab {
-		return &__obf_c9eac5c11bd33652{}
+func (__obf_7ab69ccfb0d084de *BinaryAsStringExtension) CreateEncoder(__obf_4db0904e845b7200 reflect2.Type) jsoniter.ValEncoder {
+	if __obf_4db0904e845b7200 == __obf_cda44835ddd97604 {
+		return &__obf_9bf279fe700a7152{}
 	}
 	return nil
 }
 
-func (__obf_454cba947156c7ed *BinaryAsStringExtension) CreateDecoder(__obf_36cc3da433275e85 reflect2.Type) jsoniter.ValDecoder {
-	if __obf_36cc3da433275e85 == __obf_ed2a2840c6cd62ab {
-		return &__obf_c9eac5c11bd33652{}
+func (__obf_7ab69ccfb0d084de *BinaryAsStringExtension) CreateDecoder(__obf_4db0904e845b7200 reflect2.Type) jsoniter.ValDecoder {
+	if __obf_4db0904e845b7200 == __obf_cda44835ddd97604 {
+		return &__obf_9bf279fe700a7152{}
 	}
 	return nil
 }
 
-type __obf_c9eac5c11bd33652 struct {
+type __obf_9bf279fe700a7152 struct {
 }
 
-func (__obf_d92fa10e8df80d33 *__obf_c9eac5c11bd33652) Decode(__obf_77e2593d34cc3a6a unsafe.Pointer, __obf_f2099f19d22a8175 *jsoniter.Iterator) {
-	__obf_b7707f86f1b244a2 := __obf_f2099f19d22a8175.ReadStringAsSlice()
-	__obf_73a7bbc094b11f03 := make([]byte, 0, len(__obf_b7707f86f1b244a2))
-	for __obf_47b4fcf90774658f := 0; __obf_47b4fcf90774658f < len(__obf_b7707f86f1b244a2); __obf_47b4fcf90774658f++ {
-		__obf_9f1019ba5c637808 := __obf_b7707f86f1b244a2[__obf_47b4fcf90774658f]
-		if __obf_9f1019ba5c637808 == '\\' {
-			__obf_a57242c44ace71f8 := __obf_b7707f86f1b244a2[__obf_47b4fcf90774658f+1]
-			if __obf_a57242c44ace71f8 != '\\' {
-				__obf_f2099f19d22a8175.
+func (__obf_ccd1a335201fc2ad *__obf_9bf279fe700a7152) Decode(__obf_e88eec03e62b77ec unsafe.Pointer, __obf_338eca60ccc15d82 *jsoniter.Iterator) {
+	__obf_a86e50dd7e44b5ab := __obf_338eca60ccc15d82.ReadStringAsSlice()
+	__obf_d1915e73b125d016 := make([]byte, 0, len(__obf_a86e50dd7e44b5ab))
+	for __obf_6db94c729874d6be := 0; __obf_6db94c729874d6be < len(__obf_a86e50dd7e44b5ab); __obf_6db94c729874d6be++ {
+		__obf_62966ecce30cc903 := __obf_a86e50dd7e44b5ab[__obf_6db94c729874d6be]
+		if __obf_62966ecce30cc903 == '\\' {
+			__obf_bcbf560b54c31236 := __obf_a86e50dd7e44b5ab[__obf_6db94c729874d6be+1]
+			if __obf_bcbf560b54c31236 != '\\' {
+				__obf_338eca60ccc15d82.
 					ReportError("decode binary as string", `\\x is only supported escape`)
 				return
 			}
-			__obf_cdf19b84dbf2691e := __obf_b7707f86f1b244a2[__obf_47b4fcf90774658f+2]
-			if __obf_cdf19b84dbf2691e != 'x' {
-				__obf_f2099f19d22a8175.
+			__obf_19eb7236a968298b := __obf_a86e50dd7e44b5ab[__obf_6db94c729874d6be+2]
+			if __obf_19eb7236a968298b != 'x' {
+				__obf_338eca60ccc15d82.
 					ReportError("decode binary as string", `\\x is only supported escape`)
 				return
 			}
-			__obf_c1d2bace8617c4de := __obf_b7707f86f1b244a2[__obf_47b4fcf90774658f+3]
-			__obf_7a16490fedca451b := __obf_b7707f86f1b244a2[__obf_47b4fcf90774658f+4]
-			__obf_47b4fcf90774658f += 4
-			__obf_9f1019ba5c637808 = __obf_2383d0e3f5968196(__obf_f2099f19d22a8175, __obf_c1d2bace8617c4de, __obf_7a16490fedca451b)
+			__obf_bcaa1044ca193d6d := __obf_a86e50dd7e44b5ab[__obf_6db94c729874d6be+3]
+			__obf_65feac19926b842b := __obf_a86e50dd7e44b5ab[__obf_6db94c729874d6be+4]
+			__obf_6db94c729874d6be += 4
+			__obf_62966ecce30cc903 = __obf_a027d487017539c2(__obf_338eca60ccc15d82, __obf_bcaa1044ca193d6d, __obf_65feac19926b842b)
 		}
-		__obf_73a7bbc094b11f03 = append(__obf_73a7bbc094b11f03, __obf_9f1019ba5c637808)
+		__obf_d1915e73b125d016 = append(__obf_d1915e73b125d016, __obf_62966ecce30cc903)
 	}
-	*(*[]byte)(__obf_77e2593d34cc3a6a) = __obf_73a7bbc094b11f03
+	*(*[]byte)(__obf_e88eec03e62b77ec) = __obf_d1915e73b125d016
 }
-func (__obf_d92fa10e8df80d33 *__obf_c9eac5c11bd33652) IsEmpty(__obf_77e2593d34cc3a6a unsafe.Pointer) bool {
-	return len(*((*[]byte)(__obf_77e2593d34cc3a6a))) == 0
+func (__obf_ccd1a335201fc2ad *__obf_9bf279fe700a7152) IsEmpty(__obf_e88eec03e62b77ec unsafe.Pointer) bool {
+	return len(*((*[]byte)(__obf_e88eec03e62b77ec))) == 0
 }
-func (__obf_d92fa10e8df80d33 *__obf_c9eac5c11bd33652) Encode(__obf_77e2593d34cc3a6a unsafe.Pointer, __obf_3b68bc41f53ae503 *jsoniter.Stream) {
-	__obf_7ecdc55c15da3dbf := __obf_804cf123d1338001(__obf_3b68bc41f53ae503.Buffer(), *(*[]byte)(__obf_77e2593d34cc3a6a))
-	__obf_3b68bc41f53ae503.
-		SetBuffer(__obf_7ecdc55c15da3dbf)
+func (__obf_ccd1a335201fc2ad *__obf_9bf279fe700a7152) Encode(__obf_e88eec03e62b77ec unsafe.Pointer, __obf_837be8d71267e11f *jsoniter.Stream) {
+	__obf_fcfc67ed7b00a86f := __obf_11fd5d7520265863(__obf_837be8d71267e11f.Buffer(), *(*[]byte)(__obf_e88eec03e62b77ec))
+	__obf_837be8d71267e11f.
+		SetBuffer(__obf_fcfc67ed7b00a86f)
 }
 
-func __obf_2383d0e3f5968196(__obf_f2099f19d22a8175 *jsoniter.Iterator, __obf_baf4d3921d40b5f8, __obf_a57242c44ace71f8 byte) byte {
-	var __obf_5d6932874351bc07 byte
-	if __obf_baf4d3921d40b5f8 >= '0' && __obf_baf4d3921d40b5f8 <= '9' {
-		__obf_5d6932874351bc07 = __obf_baf4d3921d40b5f8 - '0'
-	} else if __obf_baf4d3921d40b5f8 >= 'a' && __obf_baf4d3921d40b5f8 <= 'f' {
-		__obf_5d6932874351bc07 = __obf_baf4d3921d40b5f8 - 'a' + 10
+func __obf_a027d487017539c2(__obf_338eca60ccc15d82 *jsoniter.Iterator, __obf_7667ab75b6a91bb1, __obf_bcbf560b54c31236 byte) byte {
+	var __obf_c32acc8b9240981b byte
+	if __obf_7667ab75b6a91bb1 >= '0' && __obf_7667ab75b6a91bb1 <= '9' {
+		__obf_c32acc8b9240981b = __obf_7667ab75b6a91bb1 - '0'
+	} else if __obf_7667ab75b6a91bb1 >= 'a' && __obf_7667ab75b6a91bb1 <= 'f' {
+		__obf_c32acc8b9240981b = __obf_7667ab75b6a91bb1 - 'a' + 10
 	} else {
-		__obf_f2099f19d22a8175.
-			ReportError("read hex", "expects 0~9 or a~f, but found "+string([]byte{__obf_baf4d3921d40b5f8}))
+		__obf_338eca60ccc15d82.
+			ReportError("read hex", "expects 0~9 or a~f, but found "+string([]byte{__obf_7667ab75b6a91bb1}))
 		return 0
 	}
-	__obf_5d6932874351bc07 *= 16
-	if __obf_a57242c44ace71f8 >= '0' && __obf_a57242c44ace71f8 <= '9' {
-		__obf_5d6932874351bc07 += __obf_a57242c44ace71f8 - '0'
-	} else if __obf_a57242c44ace71f8 >= 'a' && __obf_a57242c44ace71f8 <= 'f' {
-		__obf_5d6932874351bc07 += __obf_a57242c44ace71f8 - 'a' + 10
+	__obf_c32acc8b9240981b *= 16
+	if __obf_bcbf560b54c31236 >= '0' && __obf_bcbf560b54c31236 <= '9' {
+		__obf_c32acc8b9240981b += __obf_bcbf560b54c31236 - '0'
+	} else if __obf_bcbf560b54c31236 >= 'a' && __obf_bcbf560b54c31236 <= 'f' {
+		__obf_c32acc8b9240981b += __obf_bcbf560b54c31236 - 'a' + 10
 	} else {
-		__obf_f2099f19d22a8175.
-			ReportError("read hex", "expects 0~9 or a~f, but found "+string([]byte{__obf_a57242c44ace71f8}))
+		__obf_338eca60ccc15d82.
+			ReportError("read hex", "expects 0~9 or a~f, but found "+string([]byte{__obf_bcbf560b54c31236}))
 		return 0
 	}
-	return __obf_5d6932874351bc07
+	return __obf_c32acc8b9240981b
 }
 
-var __obf_0d393f050940deba = "0123456789abcdef"
+var __obf_61ea456740bf5ed3 = "0123456789abcdef"
 
-func __obf_804cf123d1338001(__obf_6861139d86b12566 []byte, __obf_3c2a0b9a02fa76c3 []byte) []byte {
-	__obf_6861139d86b12566 = append(__obf_6861139d86b12566, '"')
+func __obf_11fd5d7520265863(__obf_e7f5496ce1c3e6b2 []byte, __obf_f9431224f9a648b3 []byte) []byte {
+	__obf_e7f5496ce1c3e6b2 = append(__obf_e7f5496ce1c3e6b2, '"')
 	// write string, the fast path, without utf8 and escape support
-	var __obf_47b4fcf90774658f int
-	var __obf_08774a099cab6503 byte
-	for __obf_47b4fcf90774658f, __obf_08774a099cab6503 = range __obf_3c2a0b9a02fa76c3 {
-		if __obf_08774a099cab6503 < utf8.RuneSelf && __obf_58eb06631e97639d[__obf_08774a099cab6503] {
-			__obf_6861139d86b12566 = append(__obf_6861139d86b12566, __obf_08774a099cab6503)
+	var __obf_6db94c729874d6be int
+	var __obf_d609c92bf973ccdd byte
+	for __obf_6db94c729874d6be, __obf_d609c92bf973ccdd = range __obf_f9431224f9a648b3 {
+		if __obf_d609c92bf973ccdd < utf8.RuneSelf && __obf_0eab2aa051a8dd12[__obf_d609c92bf973ccdd] {
+			__obf_e7f5496ce1c3e6b2 = append(__obf_e7f5496ce1c3e6b2, __obf_d609c92bf973ccdd)
 		} else {
 			break
 		}
 	}
-	if __obf_47b4fcf90774658f == len(__obf_3c2a0b9a02fa76c3)-1 {
-		__obf_6861139d86b12566 = append(__obf_6861139d86b12566, '"')
-		return __obf_6861139d86b12566
+	if __obf_6db94c729874d6be == len(__obf_f9431224f9a648b3)-1 {
+		__obf_e7f5496ce1c3e6b2 = append(__obf_e7f5496ce1c3e6b2, '"')
+		return __obf_e7f5496ce1c3e6b2
 	}
-	return __obf_90135c9cfc0bcfc1(__obf_6861139d86b12566, __obf_3c2a0b9a02fa76c3[__obf_47b4fcf90774658f:])
+	return __obf_b9c0c74a5bfbedb5(__obf_e7f5496ce1c3e6b2, __obf_f9431224f9a648b3[__obf_6db94c729874d6be:])
 }
 
-func __obf_90135c9cfc0bcfc1(__obf_6861139d86b12566 []byte, __obf_3c2a0b9a02fa76c3 []byte) []byte {
-	__obf_78d081b33808be6b := 0
+func __obf_b9c0c74a5bfbedb5(__obf_e7f5496ce1c3e6b2 []byte, __obf_f9431224f9a648b3 []byte) []byte {
+	__obf_6ba320e83b6b02fb := 0
 	// for the remaining parts, we process them char by char
-	var __obf_47b4fcf90774658f int
-	var __obf_9f1019ba5c637808 byte
-	for __obf_47b4fcf90774658f, __obf_9f1019ba5c637808 = range __obf_3c2a0b9a02fa76c3 {
-		if __obf_9f1019ba5c637808 >= utf8.RuneSelf {
-			__obf_6861139d86b12566 = append(__obf_6861139d86b12566, '\\', '\\', 'x', __obf_0d393f050940deba[__obf_9f1019ba5c637808>>4], __obf_0d393f050940deba[__obf_9f1019ba5c637808&0xF])
-			__obf_78d081b33808be6b = __obf_47b4fcf90774658f + 1
+	var __obf_6db94c729874d6be int
+	var __obf_62966ecce30cc903 byte
+	for __obf_6db94c729874d6be, __obf_62966ecce30cc903 = range __obf_f9431224f9a648b3 {
+		if __obf_62966ecce30cc903 >= utf8.RuneSelf {
+			__obf_e7f5496ce1c3e6b2 = append(__obf_e7f5496ce1c3e6b2, '\\', '\\', 'x', __obf_61ea456740bf5ed3[__obf_62966ecce30cc903>>4], __obf_61ea456740bf5ed3[__obf_62966ecce30cc903&0xF])
+			__obf_6ba320e83b6b02fb = __obf_6db94c729874d6be + 1
 			continue
 		}
-		if __obf_58eb06631e97639d[__obf_9f1019ba5c637808] {
+		if __obf_0eab2aa051a8dd12[__obf_62966ecce30cc903] {
 			continue
 		}
-		if __obf_78d081b33808be6b < __obf_47b4fcf90774658f {
-			__obf_6861139d86b12566 = append(__obf_6861139d86b12566, __obf_3c2a0b9a02fa76c3[__obf_78d081b33808be6b:__obf_47b4fcf90774658f]...)
+		if __obf_6ba320e83b6b02fb < __obf_6db94c729874d6be {
+			__obf_e7f5496ce1c3e6b2 = append(__obf_e7f5496ce1c3e6b2, __obf_f9431224f9a648b3[__obf_6ba320e83b6b02fb:__obf_6db94c729874d6be]...)
 		}
-		__obf_6861139d86b12566 = append(__obf_6861139d86b12566, '\\', '\\', 'x', __obf_0d393f050940deba[__obf_9f1019ba5c637808>>4], __obf_0d393f050940deba[__obf_9f1019ba5c637808&0xF])
-		__obf_78d081b33808be6b = __obf_47b4fcf90774658f + 1
+		__obf_e7f5496ce1c3e6b2 = append(__obf_e7f5496ce1c3e6b2, '\\', '\\', 'x', __obf_61ea456740bf5ed3[__obf_62966ecce30cc903>>4], __obf_61ea456740bf5ed3[__obf_62966ecce30cc903&0xF])
+		__obf_6ba320e83b6b02fb = __obf_6db94c729874d6be + 1
 	}
-	if __obf_78d081b33808be6b < len(__obf_3c2a0b9a02fa76c3) {
-		__obf_6861139d86b12566 = append(__obf_6861139d86b12566, __obf_3c2a0b9a02fa76c3[__obf_78d081b33808be6b:]...)
+	if __obf_6ba320e83b6b02fb < len(__obf_f9431224f9a648b3) {
+		__obf_e7f5496ce1c3e6b2 = append(__obf_e7f5496ce1c3e6b2, __obf_f9431224f9a648b3[__obf_6ba320e83b6b02fb:]...)
 	}
-	return append(__obf_6861139d86b12566, '"')
+	return append(__obf_e7f5496ce1c3e6b2, '"')
 }

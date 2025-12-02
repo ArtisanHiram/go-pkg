@@ -1,82 +1,82 @@
-package __obf_030d39f7a8de96c6
+package __obf_c7b79b12b33d8238
 
 import "fmt"
 
-type __obf_aa2610a72837656e struct {
-	__obf_7834a13a259af712
-	__obf_fcc907dd69879566 error
+type __obf_cb30187c64f44cee struct {
+	__obf_3a44d9c5204c2e12
+	__obf_ea0680f8b461a85b error
 }
 
-func __obf_0adb97f96f4a14bd(__obf_f77a9507782b919d []any) *__obf_aa2610a72837656e {
-	return &__obf_aa2610a72837656e{__obf_7834a13a259af712{}, fmt.Errorf("%v not found", __obf_f77a9507782b919d)}
+func __obf_5b62b1b9d47ae70b(__obf_5dde9fb4007294d4 []any) *__obf_cb30187c64f44cee {
+	return &__obf_cb30187c64f44cee{__obf_3a44d9c5204c2e12{}, fmt.Errorf("%v not found", __obf_5dde9fb4007294d4)}
 }
 
-func (any *__obf_aa2610a72837656e,) LastError() error {
-	return any.__obf_fcc907dd69879566
+func (any *__obf_cb30187c64f44cee,) LastError() error {
+	return any.__obf_ea0680f8b461a85b
 }
 
-func (any *__obf_aa2610a72837656e,) ValueType() ValueType {
+func (any *__obf_cb30187c64f44cee,) ValueType() ValueType {
 	return InvalidValue
 }
 
-func (any *__obf_aa2610a72837656e,) MustBeValid() Any {
-	panic(any.__obf_fcc907dd69879566)
+func (any *__obf_cb30187c64f44cee,) MustBeValid() Any {
+	panic(any.__obf_ea0680f8b461a85b)
 }
 
-func (any *__obf_aa2610a72837656e,) ToBool() bool {
+func (any *__obf_cb30187c64f44cee,) ToBool() bool {
 	return false
 }
 
-func (any *__obf_aa2610a72837656e,) ToInt() int {
+func (any *__obf_cb30187c64f44cee,) ToInt() int {
 	return 0
 }
 
-func (any *__obf_aa2610a72837656e,) ToInt32() int32 {
+func (any *__obf_cb30187c64f44cee,) ToInt32() int32 {
 	return 0
 }
 
-func (any *__obf_aa2610a72837656e,) ToInt64() int64 {
+func (any *__obf_cb30187c64f44cee,) ToInt64() int64 {
 	return 0
 }
 
-func (any *__obf_aa2610a72837656e,) ToUint() uint {
+func (any *__obf_cb30187c64f44cee,) ToUint() uint {
 	return 0
 }
 
-func (any *__obf_aa2610a72837656e,) ToUint32() uint32 {
+func (any *__obf_cb30187c64f44cee,) ToUint32() uint32 {
 	return 0
 }
 
-func (any *__obf_aa2610a72837656e,) ToUint64() uint64 {
+func (any *__obf_cb30187c64f44cee,) ToUint64() uint64 {
 	return 0
 }
 
-func (any *__obf_aa2610a72837656e,) ToFloat32() float32 {
+func (any *__obf_cb30187c64f44cee,) ToFloat32() float32 {
 	return 0
 }
 
-func (any *__obf_aa2610a72837656e,) ToFloat64() float64 {
+func (any *__obf_cb30187c64f44cee,) ToFloat64() float64 {
 	return 0
 }
 
-func (any *__obf_aa2610a72837656e,) ToString() string {
+func (any *__obf_cb30187c64f44cee,) ToString() string {
 	return ""
 }
 
-func (any *__obf_aa2610a72837656e,) WriteTo(__obf_8a2c51fe22775655 *Stream) {
+func (any *__obf_cb30187c64f44cee,) WriteTo(__obf_d8f50bcfe87d8b47 *Stream) {
 }
 
-func (any *__obf_aa2610a72837656e,) Get(__obf_f77a9507782b919d ...any) Any {
-	if any.__obf_fcc907dd69879566 == nil {
-		return &__obf_aa2610a72837656e{__obf_7834a13a259af712{}, fmt.Errorf("get %v from invalid", __obf_f77a9507782b919d)}
+func (any *__obf_cb30187c64f44cee,) Get(__obf_5dde9fb4007294d4 ...any) Any {
+	if any.__obf_ea0680f8b461a85b == nil {
+		return &__obf_cb30187c64f44cee{__obf_3a44d9c5204c2e12{}, fmt.Errorf("get %v from invalid", __obf_5dde9fb4007294d4)}
 	}
-	return &__obf_aa2610a72837656e{__obf_7834a13a259af712{}, fmt.Errorf("%v, get %v from invalid", any.__obf_fcc907dd69879566, __obf_f77a9507782b919d)}
+	return &__obf_cb30187c64f44cee{__obf_3a44d9c5204c2e12{}, fmt.Errorf("%v, get %v from invalid", any.__obf_ea0680f8b461a85b, __obf_5dde9fb4007294d4)}
 }
 
-func (any *__obf_aa2610a72837656e,) Parse() *Iterator {
+func (any *__obf_cb30187c64f44cee,) Parse() *Iterator {
 	return nil
 }
 
-func (any *__obf_aa2610a72837656e,) GetInterface() any {
+func (any *__obf_cb30187c64f44cee,) GetInterface() any {
 	return nil
 }

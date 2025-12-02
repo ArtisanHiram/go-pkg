@@ -1,4 +1,4 @@
-package __obf_030d39f7a8de96c6
+package __obf_c7b79b12b33d8238
 
 import (
 	"fmt"
@@ -6,227 +6,227 @@ import (
 )
 
 // ReadString read string from iterator
-func (__obf_4ab56a99965952e7 *Iterator) ReadString() (__obf_59c72400ec1a6110 string) {
-	__obf_24309b3b0ff9ba22 := __obf_4ab56a99965952e7.__obf_61df301d1f67ad73()
-	if __obf_24309b3b0ff9ba22 == '"' {
-		for __obf_82c6e05b9d226c58 := __obf_4ab56a99965952e7.__obf_5e22d6270d27491f; __obf_82c6e05b9d226c58 < __obf_4ab56a99965952e7.__obf_7c17042d9b4e73cc; __obf_82c6e05b9d226c58++ {
-			__obf_24309b3b0ff9ba22 := __obf_4ab56a99965952e7.__obf_0b1656d7ef4bd9df[__obf_82c6e05b9d226c58]
-			if __obf_24309b3b0ff9ba22 == '"' {
-				__obf_59c72400ec1a6110 = string(__obf_4ab56a99965952e7.__obf_0b1656d7ef4bd9df[__obf_4ab56a99965952e7.__obf_5e22d6270d27491f:__obf_82c6e05b9d226c58])
-				__obf_4ab56a99965952e7.__obf_5e22d6270d27491f = __obf_82c6e05b9d226c58 + 1
-				return __obf_59c72400ec1a6110
-			} else if __obf_24309b3b0ff9ba22 == '\\' {
+func (__obf_0da8c843dad13139 *Iterator) ReadString() (__obf_9a8638dac9e1c083 string) {
+	__obf_12577c03a12f0d2c := __obf_0da8c843dad13139.__obf_2b436fcb1c0ca36d()
+	if __obf_12577c03a12f0d2c == '"' {
+		for __obf_a051269af3a541bb := __obf_0da8c843dad13139.__obf_6a63c9ac34fe84e2; __obf_a051269af3a541bb < __obf_0da8c843dad13139.__obf_840246080559848c; __obf_a051269af3a541bb++ {
+			__obf_12577c03a12f0d2c := __obf_0da8c843dad13139.__obf_684d738bc3ac851a[__obf_a051269af3a541bb]
+			if __obf_12577c03a12f0d2c == '"' {
+				__obf_9a8638dac9e1c083 = string(__obf_0da8c843dad13139.__obf_684d738bc3ac851a[__obf_0da8c843dad13139.__obf_6a63c9ac34fe84e2:__obf_a051269af3a541bb])
+				__obf_0da8c843dad13139.__obf_6a63c9ac34fe84e2 = __obf_a051269af3a541bb + 1
+				return __obf_9a8638dac9e1c083
+			} else if __obf_12577c03a12f0d2c == '\\' {
 				break
-			} else if __obf_24309b3b0ff9ba22 < ' ' {
-				__obf_4ab56a99965952e7.
+			} else if __obf_12577c03a12f0d2c < ' ' {
+				__obf_0da8c843dad13139.
 					ReportError("ReadString",
-						fmt.Sprintf(`invalid control character found: %d`, __obf_24309b3b0ff9ba22))
+						fmt.Sprintf(`invalid control character found: %d`, __obf_12577c03a12f0d2c))
 				return
 			}
 		}
-		return __obf_4ab56a99965952e7.__obf_506d8d9b7d95ca67()
-	} else if __obf_24309b3b0ff9ba22 == 'n' {
-		__obf_4ab56a99965952e7.__obf_01038f7a5ba9ca56('u', 'l', 'l')
+		return __obf_0da8c843dad13139.__obf_22b06ef3645a8e41()
+	} else if __obf_12577c03a12f0d2c == 'n' {
+		__obf_0da8c843dad13139.__obf_5da8d54e7a1e782c('u', 'l', 'l')
 		return ""
 	}
-	__obf_4ab56a99965952e7.
-		ReportError("ReadString", `expects " or n, but found `+string([]byte{__obf_24309b3b0ff9ba22}))
+	__obf_0da8c843dad13139.
+		ReportError("ReadString", `expects " or n, but found `+string([]byte{__obf_12577c03a12f0d2c}))
 	return
 }
 
-func (__obf_4ab56a99965952e7 *Iterator) __obf_506d8d9b7d95ca67() (__obf_59c72400ec1a6110 string) {
-	var __obf_428c3b4a95725c4a []byte
-	var __obf_24309b3b0ff9ba22 byte
-	for __obf_4ab56a99965952e7.Error == nil {
-		__obf_24309b3b0ff9ba22 = __obf_4ab56a99965952e7.__obf_2b6cf70e8dd32b68()
-		if __obf_24309b3b0ff9ba22 == '"' {
-			return string(__obf_428c3b4a95725c4a)
+func (__obf_0da8c843dad13139 *Iterator) __obf_22b06ef3645a8e41() (__obf_9a8638dac9e1c083 string) {
+	var __obf_a3eaafc22faf1644 []byte
+	var __obf_12577c03a12f0d2c byte
+	for __obf_0da8c843dad13139.Error == nil {
+		__obf_12577c03a12f0d2c = __obf_0da8c843dad13139.__obf_fe749dd9dadf32f8()
+		if __obf_12577c03a12f0d2c == '"' {
+			return string(__obf_a3eaafc22faf1644)
 		}
-		if __obf_24309b3b0ff9ba22 == '\\' {
-			__obf_24309b3b0ff9ba22 = __obf_4ab56a99965952e7.__obf_2b6cf70e8dd32b68()
-			__obf_428c3b4a95725c4a = __obf_4ab56a99965952e7.__obf_4728db252a465f75(__obf_24309b3b0ff9ba22, __obf_428c3b4a95725c4a)
+		if __obf_12577c03a12f0d2c == '\\' {
+			__obf_12577c03a12f0d2c = __obf_0da8c843dad13139.__obf_fe749dd9dadf32f8()
+			__obf_a3eaafc22faf1644 = __obf_0da8c843dad13139.__obf_f951a1f38f8af71c(__obf_12577c03a12f0d2c, __obf_a3eaafc22faf1644)
 		} else {
-			__obf_428c3b4a95725c4a = append(__obf_428c3b4a95725c4a, __obf_24309b3b0ff9ba22)
+			__obf_a3eaafc22faf1644 = append(__obf_a3eaafc22faf1644, __obf_12577c03a12f0d2c)
 		}
 	}
-	__obf_4ab56a99965952e7.
+	__obf_0da8c843dad13139.
 		ReportError("readStringSlowPath", "unexpected end of input")
 	return
 }
 
-func (__obf_4ab56a99965952e7 *Iterator) __obf_4728db252a465f75(__obf_24309b3b0ff9ba22 byte, __obf_428c3b4a95725c4a []byte) []byte {
-	switch __obf_24309b3b0ff9ba22 {
+func (__obf_0da8c843dad13139 *Iterator) __obf_f951a1f38f8af71c(__obf_12577c03a12f0d2c byte, __obf_a3eaafc22faf1644 []byte) []byte {
+	switch __obf_12577c03a12f0d2c {
 	case 'u':
-		__obf_9aca26302d2c5887 := __obf_4ab56a99965952e7.__obf_4a65d6eac537eda8()
-		if utf16.IsSurrogate(__obf_9aca26302d2c5887) {
-			__obf_24309b3b0ff9ba22 = __obf_4ab56a99965952e7.__obf_2b6cf70e8dd32b68()
-			if __obf_4ab56a99965952e7.Error != nil {
+		__obf_464eaebd868bf0fe := __obf_0da8c843dad13139.__obf_feed2b8accd8926b()
+		if utf16.IsSurrogate(__obf_464eaebd868bf0fe) {
+			__obf_12577c03a12f0d2c = __obf_0da8c843dad13139.__obf_fe749dd9dadf32f8()
+			if __obf_0da8c843dad13139.Error != nil {
 				return nil
 			}
-			if __obf_24309b3b0ff9ba22 != '\\' {
-				__obf_4ab56a99965952e7.__obf_ba6d0be9a7ab6ae4()
-				__obf_428c3b4a95725c4a = __obf_f5dbf537a0450c02(__obf_428c3b4a95725c4a, __obf_9aca26302d2c5887)
-				return __obf_428c3b4a95725c4a
+			if __obf_12577c03a12f0d2c != '\\' {
+				__obf_0da8c843dad13139.__obf_a675366c80290b83()
+				__obf_a3eaafc22faf1644 = __obf_9bca19f1764e1c19(__obf_a3eaafc22faf1644, __obf_464eaebd868bf0fe)
+				return __obf_a3eaafc22faf1644
 			}
-			__obf_24309b3b0ff9ba22 = __obf_4ab56a99965952e7.__obf_2b6cf70e8dd32b68()
-			if __obf_4ab56a99965952e7.Error != nil {
+			__obf_12577c03a12f0d2c = __obf_0da8c843dad13139.__obf_fe749dd9dadf32f8()
+			if __obf_0da8c843dad13139.Error != nil {
 				return nil
 			}
-			if __obf_24309b3b0ff9ba22 != 'u' {
-				__obf_428c3b4a95725c4a = __obf_f5dbf537a0450c02(__obf_428c3b4a95725c4a, __obf_9aca26302d2c5887)
-				return __obf_4ab56a99965952e7.__obf_4728db252a465f75(__obf_24309b3b0ff9ba22, __obf_428c3b4a95725c4a)
+			if __obf_12577c03a12f0d2c != 'u' {
+				__obf_a3eaafc22faf1644 = __obf_9bca19f1764e1c19(__obf_a3eaafc22faf1644, __obf_464eaebd868bf0fe)
+				return __obf_0da8c843dad13139.__obf_f951a1f38f8af71c(__obf_12577c03a12f0d2c, __obf_a3eaafc22faf1644)
 			}
-			__obf_12837937a8e321f5 := __obf_4ab56a99965952e7.__obf_4a65d6eac537eda8()
-			if __obf_4ab56a99965952e7.Error != nil {
+			__obf_a818cce3414b2179 := __obf_0da8c843dad13139.__obf_feed2b8accd8926b()
+			if __obf_0da8c843dad13139.Error != nil {
 				return nil
 			}
-			__obf_fde97cbb580f6f76 := utf16.DecodeRune(__obf_9aca26302d2c5887, __obf_12837937a8e321f5)
-			if __obf_fde97cbb580f6f76 == '\uFFFD' {
-				__obf_428c3b4a95725c4a = __obf_f5dbf537a0450c02(__obf_428c3b4a95725c4a, __obf_9aca26302d2c5887)
-				__obf_428c3b4a95725c4a = __obf_f5dbf537a0450c02(__obf_428c3b4a95725c4a, __obf_12837937a8e321f5)
+			__obf_a672e99b6aa86630 := utf16.DecodeRune(__obf_464eaebd868bf0fe, __obf_a818cce3414b2179)
+			if __obf_a672e99b6aa86630 == '\uFFFD' {
+				__obf_a3eaafc22faf1644 = __obf_9bca19f1764e1c19(__obf_a3eaafc22faf1644, __obf_464eaebd868bf0fe)
+				__obf_a3eaafc22faf1644 = __obf_9bca19f1764e1c19(__obf_a3eaafc22faf1644, __obf_a818cce3414b2179)
 			} else {
-				__obf_428c3b4a95725c4a = __obf_f5dbf537a0450c02(__obf_428c3b4a95725c4a, __obf_fde97cbb580f6f76)
+				__obf_a3eaafc22faf1644 = __obf_9bca19f1764e1c19(__obf_a3eaafc22faf1644, __obf_a672e99b6aa86630)
 			}
 		} else {
-			__obf_428c3b4a95725c4a = __obf_f5dbf537a0450c02(__obf_428c3b4a95725c4a, __obf_9aca26302d2c5887)
+			__obf_a3eaafc22faf1644 = __obf_9bca19f1764e1c19(__obf_a3eaafc22faf1644, __obf_464eaebd868bf0fe)
 		}
 	case '"':
-		__obf_428c3b4a95725c4a = append(__obf_428c3b4a95725c4a, '"')
+		__obf_a3eaafc22faf1644 = append(__obf_a3eaafc22faf1644, '"')
 	case '\\':
-		__obf_428c3b4a95725c4a = append(__obf_428c3b4a95725c4a, '\\')
+		__obf_a3eaafc22faf1644 = append(__obf_a3eaafc22faf1644, '\\')
 	case '/':
-		__obf_428c3b4a95725c4a = append(__obf_428c3b4a95725c4a, '/')
+		__obf_a3eaafc22faf1644 = append(__obf_a3eaafc22faf1644, '/')
 	case 'b':
-		__obf_428c3b4a95725c4a = append(__obf_428c3b4a95725c4a, '\b')
+		__obf_a3eaafc22faf1644 = append(__obf_a3eaafc22faf1644, '\b')
 	case 'f':
-		__obf_428c3b4a95725c4a = append(__obf_428c3b4a95725c4a, '\f')
+		__obf_a3eaafc22faf1644 = append(__obf_a3eaafc22faf1644, '\f')
 	case 'n':
-		__obf_428c3b4a95725c4a = append(__obf_428c3b4a95725c4a, '\n')
+		__obf_a3eaafc22faf1644 = append(__obf_a3eaafc22faf1644, '\n')
 	case 'r':
-		__obf_428c3b4a95725c4a = append(__obf_428c3b4a95725c4a, '\r')
+		__obf_a3eaafc22faf1644 = append(__obf_a3eaafc22faf1644, '\r')
 	case 't':
-		__obf_428c3b4a95725c4a = append(__obf_428c3b4a95725c4a, '\t')
+		__obf_a3eaafc22faf1644 = append(__obf_a3eaafc22faf1644, '\t')
 	default:
-		__obf_4ab56a99965952e7.
+		__obf_0da8c843dad13139.
 			ReportError("readEscapedChar",
 				`invalid escape char after \`)
 		return nil
 	}
-	return __obf_428c3b4a95725c4a
+	return __obf_a3eaafc22faf1644
 }
 
 // ReadStringAsSlice read string from iterator without copying into string form.
 // The []byte can not be kept, as it will change after next iterator call.
-func (__obf_4ab56a99965952e7 *Iterator) ReadStringAsSlice() (__obf_59c72400ec1a6110 []byte) {
-	__obf_24309b3b0ff9ba22 := __obf_4ab56a99965952e7.__obf_61df301d1f67ad73()
-	if __obf_24309b3b0ff9ba22 == '"' {
-		for __obf_82c6e05b9d226c58 := __obf_4ab56a99965952e7.__obf_5e22d6270d27491f;
+func (__obf_0da8c843dad13139 *Iterator) ReadStringAsSlice() (__obf_9a8638dac9e1c083 []byte) {
+	__obf_12577c03a12f0d2c := __obf_0da8c843dad13139.__obf_2b436fcb1c0ca36d()
+	if __obf_12577c03a12f0d2c == '"' {
+		for __obf_a051269af3a541bb := __obf_0da8c843dad13139.__obf_6a63c9ac34fe84e2;
 		// require ascii string and no escape
 		// for: field name, base64, number
-		__obf_82c6e05b9d226c58 < __obf_4ab56a99965952e7.__obf_7c17042d9b4e73cc; __obf_82c6e05b9d226c58++ {
+		__obf_a051269af3a541bb < __obf_0da8c843dad13139.__obf_840246080559848c; __obf_a051269af3a541bb++ {
 
-			if __obf_4ab56a99965952e7.__obf_0b1656d7ef4bd9df[__obf_82c6e05b9d226c58] == '"' {
-				__obf_59c72400ec1a6110 = // fast path: reuse the underlying buffer
-					__obf_4ab56a99965952e7.__obf_0b1656d7ef4bd9df[__obf_4ab56a99965952e7.__obf_5e22d6270d27491f:__obf_82c6e05b9d226c58]
-				__obf_4ab56a99965952e7.__obf_5e22d6270d27491f = __obf_82c6e05b9d226c58 + 1
-				return __obf_59c72400ec1a6110
+			if __obf_0da8c843dad13139.__obf_684d738bc3ac851a[__obf_a051269af3a541bb] == '"' {
+				__obf_9a8638dac9e1c083 = // fast path: reuse the underlying buffer
+					__obf_0da8c843dad13139.__obf_684d738bc3ac851a[__obf_0da8c843dad13139.__obf_6a63c9ac34fe84e2:__obf_a051269af3a541bb]
+				__obf_0da8c843dad13139.__obf_6a63c9ac34fe84e2 = __obf_a051269af3a541bb + 1
+				return __obf_9a8638dac9e1c083
 			}
 		}
-		__obf_8324ba83052af51f := __obf_4ab56a99965952e7.__obf_7c17042d9b4e73cc - __obf_4ab56a99965952e7.__obf_5e22d6270d27491f
-		__obf_390a561ab5257f8f := make([]byte, __obf_8324ba83052af51f, __obf_8324ba83052af51f*2)
-		copy(__obf_390a561ab5257f8f, __obf_4ab56a99965952e7.__obf_0b1656d7ef4bd9df[__obf_4ab56a99965952e7.__obf_5e22d6270d27491f:__obf_4ab56a99965952e7.__obf_7c17042d9b4e73cc])
-		__obf_4ab56a99965952e7.__obf_5e22d6270d27491f = __obf_4ab56a99965952e7.__obf_7c17042d9b4e73cc
-		for __obf_4ab56a99965952e7.Error == nil {
-			__obf_24309b3b0ff9ba22 := __obf_4ab56a99965952e7.__obf_2b6cf70e8dd32b68()
-			if __obf_24309b3b0ff9ba22 == '"' {
-				return __obf_390a561ab5257f8f
+		__obf_29e70b787e35d945 := __obf_0da8c843dad13139.__obf_840246080559848c - __obf_0da8c843dad13139.__obf_6a63c9ac34fe84e2
+		__obf_a3c6c71d32db2eb1 := make([]byte, __obf_29e70b787e35d945, __obf_29e70b787e35d945*2)
+		copy(__obf_a3c6c71d32db2eb1, __obf_0da8c843dad13139.__obf_684d738bc3ac851a[__obf_0da8c843dad13139.__obf_6a63c9ac34fe84e2:__obf_0da8c843dad13139.__obf_840246080559848c])
+		__obf_0da8c843dad13139.__obf_6a63c9ac34fe84e2 = __obf_0da8c843dad13139.__obf_840246080559848c
+		for __obf_0da8c843dad13139.Error == nil {
+			__obf_12577c03a12f0d2c := __obf_0da8c843dad13139.__obf_fe749dd9dadf32f8()
+			if __obf_12577c03a12f0d2c == '"' {
+				return __obf_a3c6c71d32db2eb1
 			}
-			__obf_390a561ab5257f8f = append(__obf_390a561ab5257f8f, __obf_24309b3b0ff9ba22)
+			__obf_a3c6c71d32db2eb1 = append(__obf_a3c6c71d32db2eb1, __obf_12577c03a12f0d2c)
 		}
-		return __obf_390a561ab5257f8f
+		return __obf_a3c6c71d32db2eb1
 	}
-	__obf_4ab56a99965952e7.
-		ReportError("ReadStringAsSlice", `expects " or n, but found `+string([]byte{__obf_24309b3b0ff9ba22}))
+	__obf_0da8c843dad13139.
+		ReportError("ReadStringAsSlice", `expects " or n, but found `+string([]byte{__obf_12577c03a12f0d2c}))
 	return
 }
 
-func (__obf_4ab56a99965952e7 *Iterator) __obf_4a65d6eac537eda8() (__obf_59c72400ec1a6110 rune) {
-	for __obf_82c6e05b9d226c58 := 0; __obf_82c6e05b9d226c58 < 4; __obf_82c6e05b9d226c58++ {
-		__obf_24309b3b0ff9ba22 := __obf_4ab56a99965952e7.__obf_2b6cf70e8dd32b68()
-		if __obf_4ab56a99965952e7.Error != nil {
+func (__obf_0da8c843dad13139 *Iterator) __obf_feed2b8accd8926b() (__obf_9a8638dac9e1c083 rune) {
+	for __obf_a051269af3a541bb := 0; __obf_a051269af3a541bb < 4; __obf_a051269af3a541bb++ {
+		__obf_12577c03a12f0d2c := __obf_0da8c843dad13139.__obf_fe749dd9dadf32f8()
+		if __obf_0da8c843dad13139.Error != nil {
 			return
 		}
-		if __obf_24309b3b0ff9ba22 >= '0' && __obf_24309b3b0ff9ba22 <= '9' {
-			__obf_59c72400ec1a6110 = __obf_59c72400ec1a6110*16 + rune(__obf_24309b3b0ff9ba22-'0')
-		} else if __obf_24309b3b0ff9ba22 >= 'a' && __obf_24309b3b0ff9ba22 <= 'f' {
-			__obf_59c72400ec1a6110 = __obf_59c72400ec1a6110*16 + rune(__obf_24309b3b0ff9ba22-'a'+10)
-		} else if __obf_24309b3b0ff9ba22 >= 'A' && __obf_24309b3b0ff9ba22 <= 'F' {
-			__obf_59c72400ec1a6110 = __obf_59c72400ec1a6110*16 + rune(__obf_24309b3b0ff9ba22-'A'+10)
+		if __obf_12577c03a12f0d2c >= '0' && __obf_12577c03a12f0d2c <= '9' {
+			__obf_9a8638dac9e1c083 = __obf_9a8638dac9e1c083*16 + rune(__obf_12577c03a12f0d2c-'0')
+		} else if __obf_12577c03a12f0d2c >= 'a' && __obf_12577c03a12f0d2c <= 'f' {
+			__obf_9a8638dac9e1c083 = __obf_9a8638dac9e1c083*16 + rune(__obf_12577c03a12f0d2c-'a'+10)
+		} else if __obf_12577c03a12f0d2c >= 'A' && __obf_12577c03a12f0d2c <= 'F' {
+			__obf_9a8638dac9e1c083 = __obf_9a8638dac9e1c083*16 + rune(__obf_12577c03a12f0d2c-'A'+10)
 		} else {
-			__obf_4ab56a99965952e7.
-				ReportError("readU4", "expects 0~9 or a~f, but found "+string([]byte{__obf_24309b3b0ff9ba22}))
+			__obf_0da8c843dad13139.
+				ReportError("readU4", "expects 0~9 or a~f, but found "+string([]byte{__obf_12577c03a12f0d2c}))
 			return
 		}
 	}
-	return __obf_59c72400ec1a6110
+	return __obf_9a8638dac9e1c083
 }
 
 const (
-	__obf_81f43c3c813b206f = 0x00
-	__obf_0d0247a16a02da0b = // 0000 0000
+	__obf_bd94ee5b39180582 = 0x00
+	__obf_c80d46f677b920cc = // 0000 0000
 	0x80
-	__obf_018a11d730e8bc93 = // 1000 0000
+	__obf_6a7093331d3c1ead = // 1000 0000
 	0xC0
-	__obf_deecb1247ccb1b8a = // 1100 0000
+	__obf_6ae418366c514de3 = // 1100 0000
 	0xE0
-	__obf_0d0f92458d170a7e = // 1110 0000
+	__obf_a3e07c5094670ee7 = // 1110 0000
 	0xF0
-	__obf_a34e46079bd3b052 = // 1111 0000
+	__obf_d41446154cb4c77d = // 1111 0000
 	0xF8
-	__obf_14f92024c8f90caa = // 1111 1000
+	__obf_39db8b683ce0ed16 = // 1111 1000
 
 	0x3F
-	__obf_ea60cf3105384bb0 = // 0011 1111
+	__obf_53a88abbe79362e9 = // 0011 1111
 	0x1F
-	__obf_1bf25876f19a8f85 = // 0001 1111
+	__obf_227486b942a45954 = // 0001 1111
 	0x0F
-	__obf_8591faf540b04df3 = // 0000 1111
+	__obf_339dddd1c85f3166 = // 0000 1111
 	0x07
-	__obf_5f0b81f102df35cd = // 0000 0111
+	__obf_fec31f5058f7df5d = // 0000 0111
 
 	1<<7 - 1
-	__obf_7ebc883351e09b33 = 1<<11 - 1
-	__obf_1185685a6a537cc6 = 1<<16 - 1
-	__obf_bef5b78babc69b6c = 0xD800
-	__obf_ab55c6faf11600cb = 0xDFFF
-	__obf_430bcade1f2409ef = '\U0010FFFF'
-	__obf_8e8ee390f2f3d4e4 = // Maximum valid Unicode code point.
+	__obf_d14b321e9a2b2243 = 1<<11 - 1
+	__obf_1eb40c5ecd81a2a0 = 1<<16 - 1
+	__obf_e429a7eaa6ce06a3 = 0xD800
+	__obf_f76a17621d63e3f2 = 0xDFFF
+	__obf_9d6764936962d565 = '\U0010FFFF'
+	__obf_dfdf034f7ead814b = // Maximum valid Unicode code point.
 	'\uFFFD'                 // the "error" Rune or "Unicode replacement character"
 )
 
-func __obf_f5dbf537a0450c02(__obf_23ceea01a3d73f6a []byte, __obf_9aca26302d2c5887 rune) []byte {
+func __obf_9bca19f1764e1c19(__obf_c03fbc322c1a9109 []byte, __obf_464eaebd868bf0fe rune) []byte {
 	// Negative values are erroneous. Making it unsigned addresses the problem.
-	switch __obf_82c6e05b9d226c58 := uint32(__obf_9aca26302d2c5887); {
-	case __obf_82c6e05b9d226c58 <= __obf_5f0b81f102df35cd:
-		__obf_23ceea01a3d73f6a = append(__obf_23ceea01a3d73f6a, byte(__obf_9aca26302d2c5887))
-		return __obf_23ceea01a3d73f6a
-	case __obf_82c6e05b9d226c58 <= __obf_7ebc883351e09b33:
-		__obf_23ceea01a3d73f6a = append(__obf_23ceea01a3d73f6a, __obf_018a11d730e8bc93|byte(__obf_9aca26302d2c5887>>6))
-		__obf_23ceea01a3d73f6a = append(__obf_23ceea01a3d73f6a, __obf_0d0247a16a02da0b|byte(__obf_9aca26302d2c5887)&__obf_14f92024c8f90caa)
-		return __obf_23ceea01a3d73f6a
-	case __obf_82c6e05b9d226c58 > __obf_430bcade1f2409ef, __obf_bef5b78babc69b6c <= __obf_82c6e05b9d226c58 && __obf_82c6e05b9d226c58 <= __obf_ab55c6faf11600cb:
-		__obf_9aca26302d2c5887 = __obf_8e8ee390f2f3d4e4
+	switch __obf_a051269af3a541bb := uint32(__obf_464eaebd868bf0fe); {
+	case __obf_a051269af3a541bb <= __obf_fec31f5058f7df5d:
+		__obf_c03fbc322c1a9109 = append(__obf_c03fbc322c1a9109, byte(__obf_464eaebd868bf0fe))
+		return __obf_c03fbc322c1a9109
+	case __obf_a051269af3a541bb <= __obf_d14b321e9a2b2243:
+		__obf_c03fbc322c1a9109 = append(__obf_c03fbc322c1a9109, __obf_6a7093331d3c1ead|byte(__obf_464eaebd868bf0fe>>6))
+		__obf_c03fbc322c1a9109 = append(__obf_c03fbc322c1a9109, __obf_c80d46f677b920cc|byte(__obf_464eaebd868bf0fe)&__obf_39db8b683ce0ed16)
+		return __obf_c03fbc322c1a9109
+	case __obf_a051269af3a541bb > __obf_9d6764936962d565, __obf_e429a7eaa6ce06a3 <= __obf_a051269af3a541bb && __obf_a051269af3a541bb <= __obf_f76a17621d63e3f2:
+		__obf_464eaebd868bf0fe = __obf_dfdf034f7ead814b
 		fallthrough
-	case __obf_82c6e05b9d226c58 <= __obf_1185685a6a537cc6:
-		__obf_23ceea01a3d73f6a = append(__obf_23ceea01a3d73f6a, __obf_deecb1247ccb1b8a|byte(__obf_9aca26302d2c5887>>12))
-		__obf_23ceea01a3d73f6a = append(__obf_23ceea01a3d73f6a, __obf_0d0247a16a02da0b|byte(__obf_9aca26302d2c5887>>6)&__obf_14f92024c8f90caa)
-		__obf_23ceea01a3d73f6a = append(__obf_23ceea01a3d73f6a, __obf_0d0247a16a02da0b|byte(__obf_9aca26302d2c5887)&__obf_14f92024c8f90caa)
-		return __obf_23ceea01a3d73f6a
+	case __obf_a051269af3a541bb <= __obf_1eb40c5ecd81a2a0:
+		__obf_c03fbc322c1a9109 = append(__obf_c03fbc322c1a9109, __obf_6ae418366c514de3|byte(__obf_464eaebd868bf0fe>>12))
+		__obf_c03fbc322c1a9109 = append(__obf_c03fbc322c1a9109, __obf_c80d46f677b920cc|byte(__obf_464eaebd868bf0fe>>6)&__obf_39db8b683ce0ed16)
+		__obf_c03fbc322c1a9109 = append(__obf_c03fbc322c1a9109, __obf_c80d46f677b920cc|byte(__obf_464eaebd868bf0fe)&__obf_39db8b683ce0ed16)
+		return __obf_c03fbc322c1a9109
 	default:
-		__obf_23ceea01a3d73f6a = append(__obf_23ceea01a3d73f6a, __obf_0d0f92458d170a7e|byte(__obf_9aca26302d2c5887>>18))
-		__obf_23ceea01a3d73f6a = append(__obf_23ceea01a3d73f6a, __obf_0d0247a16a02da0b|byte(__obf_9aca26302d2c5887>>12)&__obf_14f92024c8f90caa)
-		__obf_23ceea01a3d73f6a = append(__obf_23ceea01a3d73f6a, __obf_0d0247a16a02da0b|byte(__obf_9aca26302d2c5887>>6)&__obf_14f92024c8f90caa)
-		__obf_23ceea01a3d73f6a = append(__obf_23ceea01a3d73f6a, __obf_0d0247a16a02da0b|byte(__obf_9aca26302d2c5887)&__obf_14f92024c8f90caa)
-		return __obf_23ceea01a3d73f6a
+		__obf_c03fbc322c1a9109 = append(__obf_c03fbc322c1a9109, __obf_a3e07c5094670ee7|byte(__obf_464eaebd868bf0fe>>18))
+		__obf_c03fbc322c1a9109 = append(__obf_c03fbc322c1a9109, __obf_c80d46f677b920cc|byte(__obf_464eaebd868bf0fe>>12)&__obf_39db8b683ce0ed16)
+		__obf_c03fbc322c1a9109 = append(__obf_c03fbc322c1a9109, __obf_c80d46f677b920cc|byte(__obf_464eaebd868bf0fe>>6)&__obf_39db8b683ce0ed16)
+		__obf_c03fbc322c1a9109 = append(__obf_c03fbc322c1a9109, __obf_c80d46f677b920cc|byte(__obf_464eaebd868bf0fe)&__obf_39db8b683ce0ed16)
+		return __obf_c03fbc322c1a9109
 	}
 }

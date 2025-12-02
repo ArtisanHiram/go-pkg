@@ -1,7 +1,7 @@
 // go-qrcode
 // Copyright 2014 Tom Harwood
 
-package __obf_63dc7f87a7750084
+package __obf_48b3d686b985a20b
 
 // symbol is a 2D array of bits representing a QR Code symbol.
 //
@@ -20,95 +20,95 @@ package __obf_63dc7f87a7750084
 // For ease of implementation, the functions to set/get bits ignore the border,
 // so (0,0)=a, (0,1)=b, (1,0)=c, and (1,1)=d. The entire symbol (including the
 // border) is returned by bitmap().
-type __obf_a9c08ca051c7e6c3 struct {
-	__obf_6992edcaa16b67fa [// Value of module at [y][x]. True is set.
+type __obf_14306cbbf0004950 struct {
+	__obf_8ade07d880d3e6f3 [// Value of module at [y][x]. True is set.
 	][]bool
-	__obf_c79239acbf74f51f [// True if the module at [y][x] is used (to either true or false).
+	__obf_b0362872b0bcdee4 [// True if the module at [y][x] is used (to either true or false).
 	// Used to identify unused modules.
 	][]bool
-	__obf_80f4ab6d4332abb9 int// Combined width/height of the symbol and quiet zones.
+	__obf_311d29b1744e83e0 int// Combined width/height of the symbol and quiet zones.
 	//
 	// size = symbolSize + 2*quietZoneSize.
-	__obf_f2408f5081085d49 int// Width/height of the symbol only.
-	__obf_33b2b94fa59e1169 int// Width/height of a single quiet zone.
+	__obf_934aef36207d3467 int// Width/height of the symbol only.
+	__obf_dcb53264a169b9b1 int// Width/height of a single quiet zone.
 
 }
 
 // newSymbol constructs a symbol of size size*size, with a border of
 // quietZoneSize.
-func __obf_1236b406b8a6e2f9(__obf_80f4ab6d4332abb9 int, __obf_33b2b94fa59e1169 int) *__obf_a9c08ca051c7e6c3 {
-	var __obf_6c3057b1bb15c1d0 __obf_a9c08ca051c7e6c3
-	__obf_6c3057b1bb15c1d0.__obf_6992edcaa16b67fa = make([][]bool, __obf_80f4ab6d4332abb9+2*__obf_33b2b94fa59e1169)
-	__obf_6c3057b1bb15c1d0.__obf_c79239acbf74f51f = make([][]bool, __obf_80f4ab6d4332abb9+2*__obf_33b2b94fa59e1169)
+func __obf_c86c0a5bb103d5b0(__obf_311d29b1744e83e0 int, __obf_dcb53264a169b9b1 int) *__obf_14306cbbf0004950 {
+	var __obf_7b9309ca6f3e8da2 __obf_14306cbbf0004950
+	__obf_7b9309ca6f3e8da2.__obf_8ade07d880d3e6f3 = make([][]bool, __obf_311d29b1744e83e0+2*__obf_dcb53264a169b9b1)
+	__obf_7b9309ca6f3e8da2.__obf_b0362872b0bcdee4 = make([][]bool, __obf_311d29b1744e83e0+2*__obf_dcb53264a169b9b1)
 
-	for __obf_b39cd0fd88eaf53c := range __obf_6c3057b1bb15c1d0.__obf_6992edcaa16b67fa {
-		__obf_6c3057b1bb15c1d0.__obf_6992edcaa16b67fa[__obf_b39cd0fd88eaf53c] = make([]bool, __obf_80f4ab6d4332abb9+2*__obf_33b2b94fa59e1169)
-		__obf_6c3057b1bb15c1d0.__obf_c79239acbf74f51f[__obf_b39cd0fd88eaf53c] = make([]bool, __obf_80f4ab6d4332abb9+2*__obf_33b2b94fa59e1169)
+	for __obf_8715c27aa2bf2586 := range __obf_7b9309ca6f3e8da2.__obf_8ade07d880d3e6f3 {
+		__obf_7b9309ca6f3e8da2.__obf_8ade07d880d3e6f3[__obf_8715c27aa2bf2586] = make([]bool, __obf_311d29b1744e83e0+2*__obf_dcb53264a169b9b1)
+		__obf_7b9309ca6f3e8da2.__obf_b0362872b0bcdee4[__obf_8715c27aa2bf2586] = make([]bool, __obf_311d29b1744e83e0+2*__obf_dcb53264a169b9b1)
 	}
-	__obf_6c3057b1bb15c1d0.__obf_80f4ab6d4332abb9 = __obf_80f4ab6d4332abb9 + 2*__obf_33b2b94fa59e1169
-	__obf_6c3057b1bb15c1d0.__obf_f2408f5081085d49 = __obf_80f4ab6d4332abb9
-	__obf_6c3057b1bb15c1d0.__obf_33b2b94fa59e1169 = __obf_33b2b94fa59e1169
+	__obf_7b9309ca6f3e8da2.__obf_311d29b1744e83e0 = __obf_311d29b1744e83e0 + 2*__obf_dcb53264a169b9b1
+	__obf_7b9309ca6f3e8da2.__obf_934aef36207d3467 = __obf_311d29b1744e83e0
+	__obf_7b9309ca6f3e8da2.__obf_dcb53264a169b9b1 = __obf_dcb53264a169b9b1
 
-	return &__obf_6c3057b1bb15c1d0
+	return &__obf_7b9309ca6f3e8da2
 }
 
 // get returns the module value at (x, y).
-func (__obf_6c3057b1bb15c1d0 *__obf_a9c08ca051c7e6c3,) __obf_472ab334bb09a22a(__obf_7529943f67ee44cb int, __obf_16bfdfd36c335382 int) (__obf_d3308b8b9ec8593a bool) {
-	__obf_d3308b8b9ec8593a = __obf_6c3057b1bb15c1d0.__obf_6992edcaa16b67fa[__obf_16bfdfd36c335382+__obf_6c3057b1bb15c1d0.__obf_33b2b94fa59e1169][__obf_7529943f67ee44cb+__obf_6c3057b1bb15c1d0.__obf_33b2b94fa59e1169]
+func (__obf_7b9309ca6f3e8da2 *__obf_14306cbbf0004950,) __obf_55397a5408a37425(__obf_cf967a75716d8446 int, __obf_8650f6fe673c98a1 int) (__obf_f85dcc6c0aea860b bool) {
+	__obf_f85dcc6c0aea860b = __obf_7b9309ca6f3e8da2.__obf_8ade07d880d3e6f3[__obf_8650f6fe673c98a1+__obf_7b9309ca6f3e8da2.__obf_dcb53264a169b9b1][__obf_cf967a75716d8446+__obf_7b9309ca6f3e8da2.__obf_dcb53264a169b9b1]
 	return
 }
 
 // empty returns true if the module at (x, y) has not been set (to either true
 // or false).
-func (__obf_6c3057b1bb15c1d0 *__obf_a9c08ca051c7e6c3,) __obf_497c9b705268f269(__obf_7529943f67ee44cb int, __obf_16bfdfd36c335382 int) bool {
-	return !__obf_6c3057b1bb15c1d0.__obf_c79239acbf74f51f[__obf_16bfdfd36c335382+__obf_6c3057b1bb15c1d0.__obf_33b2b94fa59e1169][__obf_7529943f67ee44cb+__obf_6c3057b1bb15c1d0.
+func (__obf_7b9309ca6f3e8da2 *__obf_14306cbbf0004950,) __obf_64c163370054c2c2(__obf_cf967a75716d8446 int, __obf_8650f6fe673c98a1 int) bool {
+	return !__obf_7b9309ca6f3e8da2.__obf_b0362872b0bcdee4[__obf_8650f6fe673c98a1+__obf_7b9309ca6f3e8da2.__obf_dcb53264a169b9b1][__obf_cf967a75716d8446+__obf_7b9309ca6f3e8da2.
 
 	// numEmptyModules returns the number of empty modules.
 	//
 	// Initially numEmptyModules is symbolSize * symbolSize. After every module has
 	// been set (to either true or false), the number of empty modules is zero.
-	__obf_33b2b94fa59e1169]
+	__obf_dcb53264a169b9b1]
 }
 
-func (__obf_6c3057b1bb15c1d0 *__obf_a9c08ca051c7e6c3,) __obf_955c9aaf43109184() int {
-	var __obf_475706a6f788d1e6 int
-	for __obf_16bfdfd36c335382 := 0; __obf_16bfdfd36c335382 < __obf_6c3057b1bb15c1d0.__obf_f2408f5081085d49; __obf_16bfdfd36c335382++ {
-		for __obf_7529943f67ee44cb := 0; __obf_7529943f67ee44cb < __obf_6c3057b1bb15c1d0.__obf_f2408f5081085d49; __obf_7529943f67ee44cb++ {
-			if !__obf_6c3057b1bb15c1d0.__obf_c79239acbf74f51f[__obf_16bfdfd36c335382+__obf_6c3057b1bb15c1d0.__obf_33b2b94fa59e1169][__obf_7529943f67ee44cb+__obf_6c3057b1bb15c1d0.__obf_33b2b94fa59e1169] {
-				__obf_475706a6f788d1e6++
+func (__obf_7b9309ca6f3e8da2 *__obf_14306cbbf0004950,) __obf_2a27c02f01243dcc() int {
+	var __obf_65b7827e8fd2993e int
+	for __obf_8650f6fe673c98a1 := 0; __obf_8650f6fe673c98a1 < __obf_7b9309ca6f3e8da2.__obf_934aef36207d3467; __obf_8650f6fe673c98a1++ {
+		for __obf_cf967a75716d8446 := 0; __obf_cf967a75716d8446 < __obf_7b9309ca6f3e8da2.__obf_934aef36207d3467; __obf_cf967a75716d8446++ {
+			if !__obf_7b9309ca6f3e8da2.__obf_b0362872b0bcdee4[__obf_8650f6fe673c98a1+__obf_7b9309ca6f3e8da2.__obf_dcb53264a169b9b1][__obf_cf967a75716d8446+__obf_7b9309ca6f3e8da2.__obf_dcb53264a169b9b1] {
+				__obf_65b7827e8fd2993e++
 			}
 		}
 	}
 
-	return __obf_475706a6f788d1e6
+	return __obf_65b7827e8fd2993e
 }
 
 // set sets the module at (x, y) to v.
-func (__obf_6c3057b1bb15c1d0 *__obf_a9c08ca051c7e6c3,) __obf_f621c41973e6ce2f(__obf_7529943f67ee44cb int, __obf_16bfdfd36c335382 int, __obf_d3308b8b9ec8593a bool) {
-	__obf_6c3057b1bb15c1d0.__obf_6992edcaa16b67fa[__obf_16bfdfd36c335382+__obf_6c3057b1bb15c1d0.__obf_33b2b94fa59e1169][__obf_7529943f67ee44cb+__obf_6c3057b1bb15c1d0.__obf_33b2b94fa59e1169] = __obf_d3308b8b9ec8593a
-	__obf_6c3057b1bb15c1d0.__obf_c79239acbf74f51f[__obf_16bfdfd36c335382+__obf_6c3057b1bb15c1d0.__obf_33b2b94fa59e1169][__obf_7529943f67ee44cb+__obf_6c3057b1bb15c1d0.__obf_33b2b94fa59e1169] = true
+func (__obf_7b9309ca6f3e8da2 *__obf_14306cbbf0004950,) __obf_5f29f833d6c91939(__obf_cf967a75716d8446 int, __obf_8650f6fe673c98a1 int, __obf_f85dcc6c0aea860b bool) {
+	__obf_7b9309ca6f3e8da2.__obf_8ade07d880d3e6f3[__obf_8650f6fe673c98a1+__obf_7b9309ca6f3e8da2.__obf_dcb53264a169b9b1][__obf_cf967a75716d8446+__obf_7b9309ca6f3e8da2.__obf_dcb53264a169b9b1] = __obf_f85dcc6c0aea860b
+	__obf_7b9309ca6f3e8da2.__obf_b0362872b0bcdee4[__obf_8650f6fe673c98a1+__obf_7b9309ca6f3e8da2.__obf_dcb53264a169b9b1][__obf_cf967a75716d8446+__obf_7b9309ca6f3e8da2.__obf_dcb53264a169b9b1] = true
 }
 
 // set2dPattern sets a 2D array of modules, starting at (x, y).
-func (__obf_6c3057b1bb15c1d0 *__obf_a9c08ca051c7e6c3,) __obf_5a8662f11dc82931(__obf_7529943f67ee44cb int, __obf_16bfdfd36c335382 int, __obf_d3308b8b9ec8593a [][]bool) {
-	for __obf_0d2b5442049f8295, __obf_79f6304f07a3b57b := range __obf_d3308b8b9ec8593a {
-		for __obf_b39cd0fd88eaf53c, __obf_85088f87763437a5 := range __obf_79f6304f07a3b57b {
-			__obf_6c3057b1bb15c1d0.__obf_f621c41973e6ce2f(__obf_7529943f67ee44cb+__obf_b39cd0fd88eaf53c, __obf_16bfdfd36c335382+__obf_0d2b5442049f8295,
+func (__obf_7b9309ca6f3e8da2 *__obf_14306cbbf0004950,) __obf_b795da39576b2a49(__obf_cf967a75716d8446 int, __obf_8650f6fe673c98a1 int, __obf_f85dcc6c0aea860b [][]bool) {
+	for __obf_02acc1a50ace36fe, __obf_52dfea4eee5f731a := range __obf_f85dcc6c0aea860b {
+		for __obf_8715c27aa2bf2586, __obf_04a7a2ca242933f3 := range __obf_52dfea4eee5f731a {
+			__obf_7b9309ca6f3e8da2.__obf_5f29f833d6c91939(__obf_cf967a75716d8446+__obf_8715c27aa2bf2586, __obf_8650f6fe673c98a1+__obf_02acc1a50ace36fe,
 
 			// bitmap returns the entire symbol, including the quiet zone.
-			__obf_85088f87763437a5)
+			__obf_04a7a2ca242933f3)
 		}
 	}
 }
 
-func (__obf_6c3057b1bb15c1d0 *__obf_a9c08ca051c7e6c3,) __obf_94902da22ea0120e() [][]bool {
-	__obf_6992edcaa16b67fa := make([][]bool, len(__obf_6c3057b1bb15c1d0.__obf_6992edcaa16b67fa))
+func (__obf_7b9309ca6f3e8da2 *__obf_14306cbbf0004950,) __obf_d7ceef4be5069a61() [][]bool {
+	__obf_8ade07d880d3e6f3 := make([][]bool, len(__obf_7b9309ca6f3e8da2.__obf_8ade07d880d3e6f3))
 
-	for __obf_b39cd0fd88eaf53c := range __obf_6c3057b1bb15c1d0.__obf_6992edcaa16b67fa {
-		__obf_6992edcaa16b67fa[__obf_b39cd0fd88eaf53c] = __obf_6c3057b1bb15c1d0.__obf_6992edcaa16b67fa[__obf_b39cd0fd88eaf53c][:]
+	for __obf_8715c27aa2bf2586 := range __obf_7b9309ca6f3e8da2.__obf_8ade07d880d3e6f3 {
+		__obf_8ade07d880d3e6f3[__obf_8715c27aa2bf2586] = __obf_7b9309ca6f3e8da2.__obf_8ade07d880d3e6f3[__obf_8715c27aa2bf2586][:]
 	}
 
-	return __obf_6992edcaa16b67fa
+	return __obf_8ade07d880d3e6f3
 }
 
 // string returns a pictorial representation of the symbol, suitable for
@@ -135,16 +135,16 @@ func (__obf_6c3057b1bb15c1d0 *__obf_a9c08ca051c7e6c3,) __obf_94902da22ea0120e() 
 // Constants used to weight penalty calculations. Specified by ISO/IEC
 // 18004:2006.
 const (
-	__obf_f180bfad19d9bd74 = 3
-	__obf_402994f787875ea1 = 3
-	__obf_cb529b4a7c83e52b = 40
-	__obf_46d45806ce719fd3 = 10
+	__obf_4ac9a4de04c75e28 = 3
+	__obf_316225081b7ee3c9 = 3
+	__obf_10754466dc8aa8d5 = 40
+	__obf_65cb610837fbfcfc = 10
 )
 
 // penaltyScore returns the penalty score of the symbol. The penalty score
 // consists of the sum of the four individual penalty types.
-func (__obf_6c3057b1bb15c1d0 *__obf_a9c08ca051c7e6c3,) __obf_9dab437c9fcdbe57() int {
-	return __obf_6c3057b1bb15c1d0.__obf_43f20d23e3f212f5() + __obf_6c3057b1bb15c1d0.__obf_b14db37818c24e1f() + __obf_6c3057b1bb15c1d0.__obf_e7c21d47ac986035() + __obf_6c3057b1bb15c1d0.
+func (__obf_7b9309ca6f3e8da2 *__obf_14306cbbf0004950,) __obf_0a829429859f1a12() int {
+	return __obf_7b9309ca6f3e8da2.__obf_60ace556ccc30342() + __obf_7b9309ca6f3e8da2.__obf_4b928cf0b4f52d58() + __obf_7b9309ca6f3e8da2.__obf_209814b7d34c47b3() + __obf_7b9309ca6f3e8da2.
 
 	// penalty1 returns the penalty score for "adjacent modules in row/column with
 	// same colour".
@@ -152,77 +152,77 @@ func (__obf_6c3057b1bb15c1d0 *__obf_a9c08ca051c7e6c3,) __obf_9dab437c9fcdbe57() 
 	// The numbers of adjacent matching modules and scores are:
 	// 0-5: score = 0
 	// 6+ : score = penaltyWeight1 + (numAdjacentModules - 5)
-	__obf_32c0dd100702ac4b()
+	__obf_2afa6e59c7c10319()
 }
 
-func (__obf_6c3057b1bb15c1d0 *__obf_a9c08ca051c7e6c3,) __obf_43f20d23e3f212f5() int {
-	__obf_a1a2e98604fc16f7 := 0
+func (__obf_7b9309ca6f3e8da2 *__obf_14306cbbf0004950,) __obf_60ace556ccc30342() int {
+	__obf_d5cbfb4fd6fc4841 := 0
 
-	for __obf_7529943f67ee44cb := 0; __obf_7529943f67ee44cb < __obf_6c3057b1bb15c1d0.__obf_f2408f5081085d49; __obf_7529943f67ee44cb++ {
-		__obf_d69f92fc79c57b10 := __obf_6c3057b1bb15c1d0.__obf_472ab334bb09a22a(__obf_7529943f67ee44cb, 0)
-		__obf_475706a6f788d1e6 := 1
+	for __obf_cf967a75716d8446 := 0; __obf_cf967a75716d8446 < __obf_7b9309ca6f3e8da2.__obf_934aef36207d3467; __obf_cf967a75716d8446++ {
+		__obf_f9c860f3bae8f954 := __obf_7b9309ca6f3e8da2.__obf_55397a5408a37425(__obf_cf967a75716d8446, 0)
+		__obf_65b7827e8fd2993e := 1
 
-		for __obf_16bfdfd36c335382 := 1; __obf_16bfdfd36c335382 < __obf_6c3057b1bb15c1d0.__obf_f2408f5081085d49; __obf_16bfdfd36c335382++ {
-			__obf_d3308b8b9ec8593a := __obf_6c3057b1bb15c1d0.__obf_472ab334bb09a22a(__obf_7529943f67ee44cb, __obf_16bfdfd36c335382)
+		for __obf_8650f6fe673c98a1 := 1; __obf_8650f6fe673c98a1 < __obf_7b9309ca6f3e8da2.__obf_934aef36207d3467; __obf_8650f6fe673c98a1++ {
+			__obf_f85dcc6c0aea860b := __obf_7b9309ca6f3e8da2.__obf_55397a5408a37425(__obf_cf967a75716d8446, __obf_8650f6fe673c98a1)
 
-			if __obf_d3308b8b9ec8593a != __obf_d69f92fc79c57b10 {
-				__obf_475706a6f788d1e6 = 1
-				__obf_d69f92fc79c57b10 = __obf_d3308b8b9ec8593a
+			if __obf_f85dcc6c0aea860b != __obf_f9c860f3bae8f954 {
+				__obf_65b7827e8fd2993e = 1
+				__obf_f9c860f3bae8f954 = __obf_f85dcc6c0aea860b
 			} else {
-				__obf_475706a6f788d1e6++
-				if __obf_475706a6f788d1e6 == 6 {
-					__obf_a1a2e98604fc16f7 += __obf_f180bfad19d9bd74 + 1
-				} else if __obf_475706a6f788d1e6 > 6 {
-					__obf_a1a2e98604fc16f7++
+				__obf_65b7827e8fd2993e++
+				if __obf_65b7827e8fd2993e == 6 {
+					__obf_d5cbfb4fd6fc4841 += __obf_4ac9a4de04c75e28 + 1
+				} else if __obf_65b7827e8fd2993e > 6 {
+					__obf_d5cbfb4fd6fc4841++
 				}
 			}
 		}
 	}
 
-	for __obf_16bfdfd36c335382 := 0; __obf_16bfdfd36c335382 < __obf_6c3057b1bb15c1d0.__obf_f2408f5081085d49; __obf_16bfdfd36c335382++ {
-		__obf_d69f92fc79c57b10 := __obf_6c3057b1bb15c1d0.__obf_472ab334bb09a22a(0, __obf_16bfdfd36c335382)
-		__obf_475706a6f788d1e6 := 1
+	for __obf_8650f6fe673c98a1 := 0; __obf_8650f6fe673c98a1 < __obf_7b9309ca6f3e8da2.__obf_934aef36207d3467; __obf_8650f6fe673c98a1++ {
+		__obf_f9c860f3bae8f954 := __obf_7b9309ca6f3e8da2.__obf_55397a5408a37425(0, __obf_8650f6fe673c98a1)
+		__obf_65b7827e8fd2993e := 1
 
-		for __obf_7529943f67ee44cb := 1; __obf_7529943f67ee44cb < __obf_6c3057b1bb15c1d0.__obf_f2408f5081085d49; __obf_7529943f67ee44cb++ {
-			__obf_d3308b8b9ec8593a := __obf_6c3057b1bb15c1d0.__obf_472ab334bb09a22a(__obf_7529943f67ee44cb, __obf_16bfdfd36c335382)
+		for __obf_cf967a75716d8446 := 1; __obf_cf967a75716d8446 < __obf_7b9309ca6f3e8da2.__obf_934aef36207d3467; __obf_cf967a75716d8446++ {
+			__obf_f85dcc6c0aea860b := __obf_7b9309ca6f3e8da2.__obf_55397a5408a37425(__obf_cf967a75716d8446, __obf_8650f6fe673c98a1)
 
-			if __obf_d3308b8b9ec8593a != __obf_d69f92fc79c57b10 {
-				__obf_475706a6f788d1e6 = 1
-				__obf_d69f92fc79c57b10 = __obf_d3308b8b9ec8593a
+			if __obf_f85dcc6c0aea860b != __obf_f9c860f3bae8f954 {
+				__obf_65b7827e8fd2993e = 1
+				__obf_f9c860f3bae8f954 = __obf_f85dcc6c0aea860b
 			} else {
-				__obf_475706a6f788d1e6++
-				if __obf_475706a6f788d1e6 == 6 {
-					__obf_a1a2e98604fc16f7 += __obf_f180bfad19d9bd74 + 1
-				} else if __obf_475706a6f788d1e6 > 6 {
-					__obf_a1a2e98604fc16f7++
+				__obf_65b7827e8fd2993e++
+				if __obf_65b7827e8fd2993e == 6 {
+					__obf_d5cbfb4fd6fc4841 += __obf_4ac9a4de04c75e28 + 1
+				} else if __obf_65b7827e8fd2993e > 6 {
+					__obf_d5cbfb4fd6fc4841++
 				}
 			}
 		}
 	}
 
-	return __obf_a1a2e98604fc16f7
+	return __obf_d5cbfb4fd6fc4841
 }
 
 // penalty2 returns the penalty score for "block of modules in the same colour".
 //
 // m*n: score = penaltyWeight2 * (m-1) * (n-1).
-func (__obf_6c3057b1bb15c1d0 *__obf_a9c08ca051c7e6c3,) __obf_b14db37818c24e1f() int {
-	__obf_a1a2e98604fc16f7 := 0
+func (__obf_7b9309ca6f3e8da2 *__obf_14306cbbf0004950,) __obf_4b928cf0b4f52d58() int {
+	__obf_d5cbfb4fd6fc4841 := 0
 
-	for __obf_16bfdfd36c335382 := 1; __obf_16bfdfd36c335382 < __obf_6c3057b1bb15c1d0.__obf_f2408f5081085d49; __obf_16bfdfd36c335382++ {
-		for __obf_7529943f67ee44cb := 1; __obf_7529943f67ee44cb < __obf_6c3057b1bb15c1d0.__obf_f2408f5081085d49; __obf_7529943f67ee44cb++ {
-			__obf_e04a45ac50c97f36 := __obf_6c3057b1bb15c1d0.__obf_472ab334bb09a22a(__obf_7529943f67ee44cb-1, __obf_16bfdfd36c335382-1)
-			__obf_68dad60da097db07 := __obf_6c3057b1bb15c1d0.__obf_472ab334bb09a22a(__obf_7529943f67ee44cb, __obf_16bfdfd36c335382-1)
-			__obf_86db66dd953a19c4 := __obf_6c3057b1bb15c1d0.__obf_472ab334bb09a22a(__obf_7529943f67ee44cb-1, __obf_16bfdfd36c335382)
-			__obf_4fad8740b4d5bfaf := __obf_6c3057b1bb15c1d0.__obf_472ab334bb09a22a(__obf_7529943f67ee44cb, __obf_16bfdfd36c335382)
+	for __obf_8650f6fe673c98a1 := 1; __obf_8650f6fe673c98a1 < __obf_7b9309ca6f3e8da2.__obf_934aef36207d3467; __obf_8650f6fe673c98a1++ {
+		for __obf_cf967a75716d8446 := 1; __obf_cf967a75716d8446 < __obf_7b9309ca6f3e8da2.__obf_934aef36207d3467; __obf_cf967a75716d8446++ {
+			__obf_c2f50cd59688b5fe := __obf_7b9309ca6f3e8da2.__obf_55397a5408a37425(__obf_cf967a75716d8446-1, __obf_8650f6fe673c98a1-1)
+			__obf_6aa5daf7f92e0fc7 := __obf_7b9309ca6f3e8da2.__obf_55397a5408a37425(__obf_cf967a75716d8446, __obf_8650f6fe673c98a1-1)
+			__obf_06a4c2e162b50098 := __obf_7b9309ca6f3e8da2.__obf_55397a5408a37425(__obf_cf967a75716d8446-1, __obf_8650f6fe673c98a1)
+			__obf_c539d4dea3888ab5 := __obf_7b9309ca6f3e8da2.__obf_55397a5408a37425(__obf_cf967a75716d8446, __obf_8650f6fe673c98a1)
 
-			if __obf_4fad8740b4d5bfaf == __obf_86db66dd953a19c4 && __obf_4fad8740b4d5bfaf == __obf_68dad60da097db07 && __obf_4fad8740b4d5bfaf == __obf_e04a45ac50c97f36 {
-				__obf_a1a2e98604fc16f7++
+			if __obf_c539d4dea3888ab5 == __obf_06a4c2e162b50098 && __obf_c539d4dea3888ab5 == __obf_6aa5daf7f92e0fc7 && __obf_c539d4dea3888ab5 == __obf_c2f50cd59688b5fe {
+				__obf_d5cbfb4fd6fc4841++
 			}
 		}
 	}
 
-	return __obf_a1a2e98604fc16f7 * __obf_402994f787875ea1
+	return __obf_d5cbfb4fd6fc4841 * __obf_316225081b7ee3c9
 }
 
 // penalty3 returns the penalty score for "1:1:3:1:1 ratio
@@ -230,76 +230,76 @@ func (__obf_6c3057b1bb15c1d0 *__obf_a9c08ca051c7e6c3,) __obf_b14db37818c24e1f() 
 // light area 4 modules wide".
 //
 // Existence of the pattern scores penaltyWeight3.
-func (__obf_6c3057b1bb15c1d0 *__obf_a9c08ca051c7e6c3,) __obf_e7c21d47ac986035() int {
-	__obf_a1a2e98604fc16f7 := 0
+func (__obf_7b9309ca6f3e8da2 *__obf_14306cbbf0004950,) __obf_209814b7d34c47b3() int {
+	__obf_d5cbfb4fd6fc4841 := 0
 
-	for __obf_16bfdfd36c335382 := 0; __obf_16bfdfd36c335382 < __obf_6c3057b1bb15c1d0.__obf_f2408f5081085d49; __obf_16bfdfd36c335382++ {
-		var __obf_4c5d7fd40a283ec0 int16 = 0x00
+	for __obf_8650f6fe673c98a1 := 0; __obf_8650f6fe673c98a1 < __obf_7b9309ca6f3e8da2.__obf_934aef36207d3467; __obf_8650f6fe673c98a1++ {
+		var __obf_3fb560de43842fbf int16 = 0x00
 
-		for __obf_7529943f67ee44cb := 0; __obf_7529943f67ee44cb < __obf_6c3057b1bb15c1d0.__obf_f2408f5081085d49; __obf_7529943f67ee44cb++ {
-			__obf_4c5d7fd40a283ec0 <<= 1
-			if __obf_d3308b8b9ec8593a := __obf_6c3057b1bb15c1d0.__obf_472ab334bb09a22a(__obf_7529943f67ee44cb, __obf_16bfdfd36c335382); __obf_d3308b8b9ec8593a {
-				__obf_4c5d7fd40a283ec0 |= 1
+		for __obf_cf967a75716d8446 := 0; __obf_cf967a75716d8446 < __obf_7b9309ca6f3e8da2.__obf_934aef36207d3467; __obf_cf967a75716d8446++ {
+			__obf_3fb560de43842fbf <<= 1
+			if __obf_f85dcc6c0aea860b := __obf_7b9309ca6f3e8da2.__obf_55397a5408a37425(__obf_cf967a75716d8446, __obf_8650f6fe673c98a1); __obf_f85dcc6c0aea860b {
+				__obf_3fb560de43842fbf |= 1
 			}
 
-			switch __obf_4c5d7fd40a283ec0 & 0x7ff {
+			switch __obf_3fb560de43842fbf & 0x7ff {
 			// 0b000 0101 1101 or 0b10111010000
 			// 0x05d           or 0x5d0
 			case 0x05d, 0x5d0:
-				__obf_a1a2e98604fc16f7 += __obf_cb529b4a7c83e52b
-				__obf_4c5d7fd40a283ec0 = 0xFF
+				__obf_d5cbfb4fd6fc4841 += __obf_10754466dc8aa8d5
+				__obf_3fb560de43842fbf = 0xFF
 			default:
-				if __obf_7529943f67ee44cb == __obf_6c3057b1bb15c1d0.__obf_f2408f5081085d49-1 && (__obf_4c5d7fd40a283ec0&0x7f) == 0x5d {
-					__obf_a1a2e98604fc16f7 += __obf_cb529b4a7c83e52b
-					__obf_4c5d7fd40a283ec0 = 0xFF
+				if __obf_cf967a75716d8446 == __obf_7b9309ca6f3e8da2.__obf_934aef36207d3467-1 && (__obf_3fb560de43842fbf&0x7f) == 0x5d {
+					__obf_d5cbfb4fd6fc4841 += __obf_10754466dc8aa8d5
+					__obf_3fb560de43842fbf = 0xFF
 				}
 			}
 		}
 	}
 
-	for __obf_7529943f67ee44cb := 0; __obf_7529943f67ee44cb < __obf_6c3057b1bb15c1d0.__obf_f2408f5081085d49; __obf_7529943f67ee44cb++ {
-		var __obf_4c5d7fd40a283ec0 int16 = 0x00
+	for __obf_cf967a75716d8446 := 0; __obf_cf967a75716d8446 < __obf_7b9309ca6f3e8da2.__obf_934aef36207d3467; __obf_cf967a75716d8446++ {
+		var __obf_3fb560de43842fbf int16 = 0x00
 
-		for __obf_16bfdfd36c335382 := 0; __obf_16bfdfd36c335382 < __obf_6c3057b1bb15c1d0.__obf_f2408f5081085d49; __obf_16bfdfd36c335382++ {
-			__obf_4c5d7fd40a283ec0 <<= 1
-			if __obf_d3308b8b9ec8593a := __obf_6c3057b1bb15c1d0.__obf_472ab334bb09a22a(__obf_7529943f67ee44cb, __obf_16bfdfd36c335382); __obf_d3308b8b9ec8593a {
-				__obf_4c5d7fd40a283ec0 |= 1
+		for __obf_8650f6fe673c98a1 := 0; __obf_8650f6fe673c98a1 < __obf_7b9309ca6f3e8da2.__obf_934aef36207d3467; __obf_8650f6fe673c98a1++ {
+			__obf_3fb560de43842fbf <<= 1
+			if __obf_f85dcc6c0aea860b := __obf_7b9309ca6f3e8da2.__obf_55397a5408a37425(__obf_cf967a75716d8446, __obf_8650f6fe673c98a1); __obf_f85dcc6c0aea860b {
+				__obf_3fb560de43842fbf |= 1
 			}
 
-			switch __obf_4c5d7fd40a283ec0 & 0x7ff {
+			switch __obf_3fb560de43842fbf & 0x7ff {
 			// 0b000 0101 1101 or 0b10111010000
 			// 0x05d           or 0x5d0
 			case 0x05d, 0x5d0:
-				__obf_a1a2e98604fc16f7 += __obf_cb529b4a7c83e52b
-				__obf_4c5d7fd40a283ec0 = 0xFF
+				__obf_d5cbfb4fd6fc4841 += __obf_10754466dc8aa8d5
+				__obf_3fb560de43842fbf = 0xFF
 			default:
-				if __obf_16bfdfd36c335382 == __obf_6c3057b1bb15c1d0.__obf_f2408f5081085d49-1 && (__obf_4c5d7fd40a283ec0&0x7f) == 0x5d {
-					__obf_a1a2e98604fc16f7 += __obf_cb529b4a7c83e52b
-					__obf_4c5d7fd40a283ec0 = 0xFF
+				if __obf_8650f6fe673c98a1 == __obf_7b9309ca6f3e8da2.__obf_934aef36207d3467-1 && (__obf_3fb560de43842fbf&0x7f) == 0x5d {
+					__obf_d5cbfb4fd6fc4841 += __obf_10754466dc8aa8d5
+					__obf_3fb560de43842fbf = 0xFF
 				}
 			}
 		}
 	}
 
-	return __obf_a1a2e98604fc16f7
+	return __obf_d5cbfb4fd6fc4841
 }
 
 // penalty4 returns the penalty score...
-func (__obf_6c3057b1bb15c1d0 *__obf_a9c08ca051c7e6c3,) __obf_32c0dd100702ac4b() int {
-	__obf_6cb102c55684aa44 := __obf_6c3057b1bb15c1d0.__obf_f2408f5081085d49 * __obf_6c3057b1bb15c1d0.__obf_f2408f5081085d49
-	__obf_767baccaacb54189 := 0
+func (__obf_7b9309ca6f3e8da2 *__obf_14306cbbf0004950,) __obf_2afa6e59c7c10319() int {
+	__obf_412c3ba2c9c51436 := __obf_7b9309ca6f3e8da2.__obf_934aef36207d3467 * __obf_7b9309ca6f3e8da2.__obf_934aef36207d3467
+	__obf_0ac09e0b14d833b8 := 0
 
-	for __obf_7529943f67ee44cb := 0; __obf_7529943f67ee44cb < __obf_6c3057b1bb15c1d0.__obf_f2408f5081085d49; __obf_7529943f67ee44cb++ {
-		for __obf_16bfdfd36c335382 := 0; __obf_16bfdfd36c335382 < __obf_6c3057b1bb15c1d0.__obf_f2408f5081085d49; __obf_16bfdfd36c335382++ {
-			if __obf_d3308b8b9ec8593a := __obf_6c3057b1bb15c1d0.__obf_472ab334bb09a22a(__obf_7529943f67ee44cb, __obf_16bfdfd36c335382); __obf_d3308b8b9ec8593a {
-				__obf_767baccaacb54189++
+	for __obf_cf967a75716d8446 := 0; __obf_cf967a75716d8446 < __obf_7b9309ca6f3e8da2.__obf_934aef36207d3467; __obf_cf967a75716d8446++ {
+		for __obf_8650f6fe673c98a1 := 0; __obf_8650f6fe673c98a1 < __obf_7b9309ca6f3e8da2.__obf_934aef36207d3467; __obf_8650f6fe673c98a1++ {
+			if __obf_f85dcc6c0aea860b := __obf_7b9309ca6f3e8da2.__obf_55397a5408a37425(__obf_cf967a75716d8446, __obf_8650f6fe673c98a1); __obf_f85dcc6c0aea860b {
+				__obf_0ac09e0b14d833b8++
 			}
 		}
 	}
-	__obf_65fcaa3ea11d5a03 := __obf_6cb102c55684aa44/2 - __obf_767baccaacb54189
-	if __obf_65fcaa3ea11d5a03 < 0 {
-		__obf_65fcaa3ea11d5a03 *= -1
+	__obf_b37ad646960fda55 := __obf_412c3ba2c9c51436/2 - __obf_0ac09e0b14d833b8
+	if __obf_b37ad646960fda55 < 0 {
+		__obf_b37ad646960fda55 *= -1
 	}
 
-	return __obf_46d45806ce719fd3 * (__obf_65fcaa3ea11d5a03 / (__obf_6cb102c55684aa44 / 20))
+	return __obf_65cb610837fbfcfc * (__obf_b37ad646960fda55 / (__obf_412c3ba2c9c51436 / 20))
 }

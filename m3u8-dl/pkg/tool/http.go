@@ -1,4 +1,4 @@
-package __obf_6f9b75fc21ef8ef6
+package __obf_67ff2b45a2ee7325
 
 import (
 	"fmt"
@@ -7,16 +7,16 @@ import (
 	"time"
 )
 
-func Get(__obf_2213dcf7603e240c string) (io.ReadCloser, error) {
-	__obf_5e64f9c11624866e := http.Client{
+func Get(__obf_56184c3598d8fda1 string) (io.ReadCloser, error) {
+	__obf_29c54fad08b62fb3 := http.Client{
 		Timeout: time.Duration(60) * time.Second,
 	}
-	__obf_6a7b6dc310450e5d, __obf_8eefb2cd18f480f3 := __obf_5e64f9c11624866e.Get(__obf_2213dcf7603e240c)
-	if __obf_8eefb2cd18f480f3 != nil {
-		return nil, __obf_8eefb2cd18f480f3
+	__obf_1316815cf6b65a5b, __obf_3d6b93bb4b532726 := __obf_29c54fad08b62fb3.Get(__obf_56184c3598d8fda1)
+	if __obf_3d6b93bb4b532726 != nil {
+		return nil, __obf_3d6b93bb4b532726
 	}
-	if __obf_6a7b6dc310450e5d.StatusCode != 200 {
-		return nil, fmt.Errorf("http error: status code %d", __obf_6a7b6dc310450e5d.StatusCode)
+	if __obf_1316815cf6b65a5b.StatusCode != 200 {
+		return nil, fmt.Errorf("http error: status code %d", __obf_1316815cf6b65a5b.StatusCode)
 	}
-	return __obf_6a7b6dc310450e5d.Body, nil
+	return __obf_1316815cf6b65a5b.Body, nil
 }

@@ -1,4 +1,4 @@
-package __obf_a51a64e21f311927
+package __obf_34ce7ee87a5aa6b7
 
 import (
 	"errors"
@@ -10,12 +10,12 @@ import (
 )
 
 type UniqueRand struct {
-	__obf_7017cfd2525a0d6a sync.Mutex
-	__obf_e33a08c1807f922c map[string]struct{}
-	__obf_2f0dd74324bcccf3 * // 追踪已经生成过的
+	__obf_ca950ed529feb0aa sync.Mutex
+	__obf_1fcf58928447e389 map[string]struct{}
+	__obf_427e7770a91e7063 * // 追踪已经生成过的
 	rand.Rand
-	__obf_dbf91e26a7514edb string // 基础随机数
-	__obf_b4a2c4aa6e7b7d78 int    // ID 格式
+	__obf_614ea3d51a4c4b66 string // 基础随机数
+	__obf_765fa9d15dbef551 int    // ID 格式
 	// 有效ID数
 }
 
@@ -24,52 +24,52 @@ var (
 	ErrInvalidIDLength = errors.New("ID length is invalid")
 )
 
-func NewUniqueRand(__obf_41f853eb812daa0f int, __obf_55f91dc5d963eb6f []string) (*UniqueRand, error) {
-	if __obf_41f853eb812daa0f > 19 || __obf_41f853eb812daa0f < 0 {
+func NewUniqueRand(__obf_6007fa86825567e7 int, __obf_4519e2d5d5d14c6f []string) (*UniqueRand, error) {
+	if __obf_6007fa86825567e7 > 19 || __obf_6007fa86825567e7 < 0 {
 		return nil, ErrInvalidIDLength
 	}
-	__obf_0ed5f7a88929d5ab := rand.New(rand.NewSource(time.Now().UnixNano()))
-	__obf_b4a2c4aa6e7b7d78, __obf_1ab4380c3e72b1b0 := stats.IntPow(9, __obf_41f853eb812daa0f), len(__obf_55f91dc5d963eb6f)
+	__obf_915d69697aec0ced := rand.New(rand.NewSource(time.Now().UnixNano()))
+	__obf_765fa9d15dbef551, __obf_70dbcd262cb8b14f := stats.IntPow(9, __obf_6007fa86825567e7), len(__obf_4519e2d5d5d14c6f)
 
-	if __obf_b4a2c4aa6e7b7d78 <= __obf_1ab4380c3e72b1b0 {
+	if __obf_765fa9d15dbef551 <= __obf_70dbcd262cb8b14f {
 		return nil, ErrIDExhaustied
 	}
-	__obf_e33a08c1807f922c := make(map[string]struct{}, __obf_1ab4380c3e72b1b0)
-	for _, __obf_8c882dce5ca83eeb := range __obf_55f91dc5d963eb6f {
-		if len(__obf_8c882dce5ca83eeb) == __obf_41f853eb812daa0f {
-			__obf_e33a08c1807f922c[__obf_8c882dce5ca83eeb] = struct{}{}
+	__obf_1fcf58928447e389 := make(map[string]struct{}, __obf_70dbcd262cb8b14f)
+	for _, __obf_29b927ea91ca599d := range __obf_4519e2d5d5d14c6f {
+		if len(__obf_29b927ea91ca599d) == __obf_6007fa86825567e7 {
+			__obf_1fcf58928447e389[__obf_29b927ea91ca599d] = struct{}{}
 		}
 	}
-	return &UniqueRand{__obf_e33a08c1807f922c: __obf_e33a08c1807f922c, __obf_2f0dd74324bcccf3: __obf_0ed5f7a88929d5ab, __obf_b4a2c4aa6e7b7d78: __obf_b4a2c4aa6e7b7d78, __obf_dbf91e26a7514edb: fmt.Sprintf("%%0%dd", __obf_41f853eb812daa0f)}, nil
+	return &UniqueRand{__obf_1fcf58928447e389: __obf_1fcf58928447e389, __obf_427e7770a91e7063: __obf_915d69697aec0ced, __obf_765fa9d15dbef551: __obf_765fa9d15dbef551, __obf_614ea3d51a4c4b66: fmt.Sprintf("%%0%dd", __obf_6007fa86825567e7)}, nil
 }
 
-func (__obf_d5f5a3a4687208bc *UniqueRand) Generate() string {
-	__obf_d5f5a3a4687208bc.__obf_7017cfd2525a0d6a.
+func (__obf_e722acd2b7e3a316 *UniqueRand) Generate() string {
+	__obf_e722acd2b7e3a316.__obf_ca950ed529feb0aa.
 		Lock()
-	defer __obf_d5f5a3a4687208bc.__obf_7017cfd2525a0d6a.Unlock()
+	defer __obf_e722acd2b7e3a316.__obf_ca950ed529feb0aa.Unlock()
 
-	if __obf_d5f5a3a4687208bc.__obf_b4a2c4aa6e7b7d78 > 0 && len(__obf_d5f5a3a4687208bc.__obf_e33a08c1807f922c) >= __obf_d5f5a3a4687208bc.__obf_b4a2c4aa6e7b7d78 {
+	if __obf_e722acd2b7e3a316.__obf_765fa9d15dbef551 > 0 && len(__obf_e722acd2b7e3a316.__obf_1fcf58928447e389) >= __obf_e722acd2b7e3a316.__obf_765fa9d15dbef551 {
 		return ""
 	}
 
-	var __obf_80eec96aa83c2efa bool
-	var __obf_c022f98255ac9ddc string
+	var __obf_04415e5e48fee761 bool
+	var __obf_5c1ed62ff2bd2f1a string
 	for {
-		__obf_c022f98255ac9ddc = fmt.Sprintf(__obf_d5f5a3a4687208bc.__obf_dbf91e26a7514edb, __obf_d5f5a3a4687208bc.__obf_2f0dd74324bcccf3.Int()%__obf_d5f5a3a4687208bc.__obf_b4a2c4aa6e7b7d78)
+		__obf_5c1ed62ff2bd2f1a = fmt.Sprintf(__obf_e722acd2b7e3a316.__obf_614ea3d51a4c4b66, __obf_e722acd2b7e3a316.__obf_427e7770a91e7063.Int()%__obf_e722acd2b7e3a316.__obf_765fa9d15dbef551)
 
-		if _, __obf_80eec96aa83c2efa = __obf_d5f5a3a4687208bc.__obf_e33a08c1807f922c[__obf_c022f98255ac9ddc]; !__obf_80eec96aa83c2efa {
-			__obf_d5f5a3a4687208bc.__obf_e33a08c1807f922c[__obf_c022f98255ac9ddc] = struct{}{}
-			return __obf_c022f98255ac9ddc
+		if _, __obf_04415e5e48fee761 = __obf_e722acd2b7e3a316.__obf_1fcf58928447e389[__obf_5c1ed62ff2bd2f1a]; !__obf_04415e5e48fee761 {
+			__obf_e722acd2b7e3a316.__obf_1fcf58928447e389[__obf_5c1ed62ff2bd2f1a] = struct{}{}
+			return __obf_5c1ed62ff2bd2f1a
 		}
 	}
 }
 
 // Drop 对释放的元素也在generated中销毁
-func (__obf_d5f5a3a4687208bc *UniqueRand) Drop(__obf_f609cc0264590f39 ...string) {
-	__obf_d5f5a3a4687208bc.__obf_7017cfd2525a0d6a.
+func (__obf_e722acd2b7e3a316 *UniqueRand) Drop(__obf_1c7bcf8738840124 ...string) {
+	__obf_e722acd2b7e3a316.__obf_ca950ed529feb0aa.
 		Lock()
-	defer __obf_d5f5a3a4687208bc.__obf_7017cfd2525a0d6a.Unlock()
-	for _, __obf_8c882dce5ca83eeb := range __obf_f609cc0264590f39 {
-		delete(__obf_d5f5a3a4687208bc.__obf_e33a08c1807f922c, __obf_8c882dce5ca83eeb)
+	defer __obf_e722acd2b7e3a316.__obf_ca950ed529feb0aa.Unlock()
+	for _, __obf_29b927ea91ca599d := range __obf_1c7bcf8738840124 {
+		delete(__obf_e722acd2b7e3a316.__obf_1fcf58928447e389, __obf_29b927ea91ca599d)
 	}
 }

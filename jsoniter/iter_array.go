@@ -1,16 +1,16 @@
-package __obf_030d39f7a8de96c6
+package __obf_c7b79b12b33d8238
 
 // ReadArray read array element, tells if the array has more element to read.
-func (__obf_4ab56a99965952e7 *Iterator) ReadArray() (__obf_59c72400ec1a6110 bool) {
-	__obf_24309b3b0ff9ba22 := __obf_4ab56a99965952e7.__obf_61df301d1f67ad73()
-	switch __obf_24309b3b0ff9ba22 {
+func (__obf_0da8c843dad13139 *Iterator) ReadArray() (__obf_9a8638dac9e1c083 bool) {
+	__obf_12577c03a12f0d2c := __obf_0da8c843dad13139.__obf_2b436fcb1c0ca36d()
+	switch __obf_12577c03a12f0d2c {
 	case 'n':
-		__obf_4ab56a99965952e7.__obf_01038f7a5ba9ca56('u', 'l', 'l')
+		__obf_0da8c843dad13139.__obf_5da8d54e7a1e782c('u', 'l', 'l')
 		return false // null
 	case '[':
-		__obf_24309b3b0ff9ba22 = __obf_4ab56a99965952e7.__obf_61df301d1f67ad73()
-		if __obf_24309b3b0ff9ba22 != ']' {
-			__obf_4ab56a99965952e7.__obf_ba6d0be9a7ab6ae4()
+		__obf_12577c03a12f0d2c = __obf_0da8c843dad13139.__obf_2b436fcb1c0ca36d()
+		if __obf_12577c03a12f0d2c != ']' {
+			__obf_0da8c843dad13139.__obf_a675366c80290b83()
 			return true
 		}
 		return false
@@ -19,49 +19,49 @@ func (__obf_4ab56a99965952e7 *Iterator) ReadArray() (__obf_59c72400ec1a6110 bool
 	case ',':
 		return true
 	default:
-		__obf_4ab56a99965952e7.
-			ReportError("ReadArray", "expect [ or , or ] or n, but found "+string([]byte{__obf_24309b3b0ff9ba22}))
+		__obf_0da8c843dad13139.
+			ReportError("ReadArray", "expect [ or , or ] or n, but found "+string([]byte{__obf_12577c03a12f0d2c}))
 		return
 	}
 }
 
 // ReadArrayCB read array with callback
-func (__obf_4ab56a99965952e7 *Iterator) ReadArrayCB(__obf_a2c838c9bdc87499 func(*Iterator) bool) (__obf_59c72400ec1a6110 bool) {
-	__obf_24309b3b0ff9ba22 := __obf_4ab56a99965952e7.__obf_61df301d1f67ad73()
-	if __obf_24309b3b0ff9ba22 == '[' {
-		if !__obf_4ab56a99965952e7.__obf_9cff3330bd1a56ea() {
+func (__obf_0da8c843dad13139 *Iterator) ReadArrayCB(__obf_5aafb4f722a58e01 func(*Iterator) bool) (__obf_9a8638dac9e1c083 bool) {
+	__obf_12577c03a12f0d2c := __obf_0da8c843dad13139.__obf_2b436fcb1c0ca36d()
+	if __obf_12577c03a12f0d2c == '[' {
+		if !__obf_0da8c843dad13139.__obf_b638f6394ae6a28c() {
 			return false
 		}
-		__obf_24309b3b0ff9ba22 = __obf_4ab56a99965952e7.__obf_61df301d1f67ad73()
-		if __obf_24309b3b0ff9ba22 != ']' {
-			__obf_4ab56a99965952e7.__obf_ba6d0be9a7ab6ae4()
-			if !__obf_a2c838c9bdc87499(__obf_4ab56a99965952e7) {
-				__obf_4ab56a99965952e7.__obf_6502e8959d5f85cf()
+		__obf_12577c03a12f0d2c = __obf_0da8c843dad13139.__obf_2b436fcb1c0ca36d()
+		if __obf_12577c03a12f0d2c != ']' {
+			__obf_0da8c843dad13139.__obf_a675366c80290b83()
+			if !__obf_5aafb4f722a58e01(__obf_0da8c843dad13139) {
+				__obf_0da8c843dad13139.__obf_aed83e308a23ff9c()
 				return false
 			}
-			__obf_24309b3b0ff9ba22 = __obf_4ab56a99965952e7.__obf_61df301d1f67ad73()
-			for __obf_24309b3b0ff9ba22 == ',' {
-				if !__obf_a2c838c9bdc87499(__obf_4ab56a99965952e7) {
-					__obf_4ab56a99965952e7.__obf_6502e8959d5f85cf()
+			__obf_12577c03a12f0d2c = __obf_0da8c843dad13139.__obf_2b436fcb1c0ca36d()
+			for __obf_12577c03a12f0d2c == ',' {
+				if !__obf_5aafb4f722a58e01(__obf_0da8c843dad13139) {
+					__obf_0da8c843dad13139.__obf_aed83e308a23ff9c()
 					return false
 				}
-				__obf_24309b3b0ff9ba22 = __obf_4ab56a99965952e7.__obf_61df301d1f67ad73()
+				__obf_12577c03a12f0d2c = __obf_0da8c843dad13139.__obf_2b436fcb1c0ca36d()
 			}
-			if __obf_24309b3b0ff9ba22 != ']' {
-				__obf_4ab56a99965952e7.
-					ReportError("ReadArrayCB", "expect ] in the end, but found "+string([]byte{__obf_24309b3b0ff9ba22}))
-				__obf_4ab56a99965952e7.__obf_6502e8959d5f85cf()
+			if __obf_12577c03a12f0d2c != ']' {
+				__obf_0da8c843dad13139.
+					ReportError("ReadArrayCB", "expect ] in the end, but found "+string([]byte{__obf_12577c03a12f0d2c}))
+				__obf_0da8c843dad13139.__obf_aed83e308a23ff9c()
 				return false
 			}
-			return __obf_4ab56a99965952e7.__obf_6502e8959d5f85cf()
+			return __obf_0da8c843dad13139.__obf_aed83e308a23ff9c()
 		}
-		return __obf_4ab56a99965952e7.__obf_6502e8959d5f85cf()
+		return __obf_0da8c843dad13139.__obf_aed83e308a23ff9c()
 	}
-	if __obf_24309b3b0ff9ba22 == 'n' {
-		__obf_4ab56a99965952e7.__obf_01038f7a5ba9ca56('u', 'l', 'l')
+	if __obf_12577c03a12f0d2c == 'n' {
+		__obf_0da8c843dad13139.__obf_5da8d54e7a1e782c('u', 'l', 'l')
 		return true // null
 	}
-	__obf_4ab56a99965952e7.
-		ReportError("ReadArrayCB", "expect [ or n, but found "+string([]byte{__obf_24309b3b0ff9ba22}))
+	__obf_0da8c843dad13139.
+		ReportError("ReadArrayCB", "expect [ or n, but found "+string([]byte{__obf_12577c03a12f0d2c}))
 	return false
 }

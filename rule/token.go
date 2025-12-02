@@ -1,4 +1,4 @@
-package __obf_da2d8c26779e1ac8
+package __obf_d3be831d1774c7b9
 
 import (
 	"errors"
@@ -7,55 +7,55 @@ import (
 	"reflect"
 )
 
-func __obf_5f98a3add70ee4cc(__obf_8d1c7d6c4b72dec7, __obf_22eaa72847d00940 any, __obf_cc73fd613fcc4064 token.Token) (any, error) {
-	__obf_761f92f380e69e60 := reflect.ValueOf(__obf_8d1c7d6c4b72dec7)
-	__obf_25bae469ca95ff05 := reflect.ValueOf(__obf_22eaa72847d00940)
-	switch __obf_cc73fd613fcc4064 {
+func __obf_4a4ddbfa6fc0ec8e(__obf_ca275d416555ddd0, __obf_84db90cea1ee5669 any, __obf_4bbe6d91a49b9474 token.Token) (any, error) {
+	__obf_a8793cf5a96cd7bb := reflect.ValueOf(__obf_ca275d416555ddd0)
+	__obf_5132e961e446dfb8 := reflect.ValueOf(__obf_84db90cea1ee5669)
+	switch __obf_4bbe6d91a49b9474 {
 	case token.ADD, token.SUB, token.MUL, token.QUO, token.LSS, token.GTR, token.LEQ, token.GEQ, token.EQL, token.NEQ:
-		var __obf_2f6590e78095cb9b, __obf_40dee8321fd779d9 float64
-		var __obf_5a128dc949259d7a error
-		if __obf_2f6590e78095cb9b, __obf_5a128dc949259d7a = __obf_9e412df46e486a0b(__obf_761f92f380e69e60); __obf_5a128dc949259d7a != nil {
-			return nil, __obf_5a128dc949259d7a
+		var __obf_cf1e08e94279a589, __obf_3b73e3235cb8d0f9 float64
+		var __obf_df5f028324461f18 error
+		if __obf_cf1e08e94279a589, __obf_df5f028324461f18 = __obf_55b9fda27ba97528(__obf_a8793cf5a96cd7bb); __obf_df5f028324461f18 != nil {
+			return nil, __obf_df5f028324461f18
 		}
-		if __obf_40dee8321fd779d9, __obf_5a128dc949259d7a = __obf_9e412df46e486a0b(__obf_25bae469ca95ff05); __obf_5a128dc949259d7a != nil {
-			return nil, __obf_5a128dc949259d7a
+		if __obf_3b73e3235cb8d0f9, __obf_df5f028324461f18 = __obf_55b9fda27ba97528(__obf_5132e961e446dfb8); __obf_df5f028324461f18 != nil {
+			return nil, __obf_df5f028324461f18
 		}
-		switch __obf_cc73fd613fcc4064 {
+		switch __obf_4bbe6d91a49b9474 {
 		case token.ADD:
-			return decimal.NewFromFloat(__obf_2f6590e78095cb9b).Add(decimal.NewFromFloat(__obf_40dee8321fd779d9)), nil
+			return decimal.NewFromFloat(__obf_cf1e08e94279a589).Add(decimal.NewFromFloat(__obf_3b73e3235cb8d0f9)), nil
 		case token.SUB:
-			return decimal.NewFromFloat(__obf_2f6590e78095cb9b).Sub(decimal.NewFromFloat(__obf_40dee8321fd779d9)), nil
+			return decimal.NewFromFloat(__obf_cf1e08e94279a589).Sub(decimal.NewFromFloat(__obf_3b73e3235cb8d0f9)), nil
 		case token.MUL:
-			return decimal.NewFromFloat(__obf_2f6590e78095cb9b).Mul(decimal.NewFromFloat(__obf_40dee8321fd779d9)), nil
+			return decimal.NewFromFloat(__obf_cf1e08e94279a589).Mul(decimal.NewFromFloat(__obf_3b73e3235cb8d0f9)), nil
 		case token.QUO:
-			if __obf_40dee8321fd779d9 == 0 {
+			if __obf_3b73e3235cb8d0f9 == 0 {
 				return 0, errors.New("x/0 error")
 			}
-			return __obf_2f6590e78095cb9b / __obf_40dee8321fd779d9, nil
+			return __obf_cf1e08e94279a589 / __obf_3b73e3235cb8d0f9, nil
 		case token.LSS:
-			return __obf_2f6590e78095cb9b < __obf_40dee8321fd779d9, nil
+			return __obf_cf1e08e94279a589 < __obf_3b73e3235cb8d0f9, nil
 		case token.GTR:
-			return __obf_2f6590e78095cb9b > __obf_40dee8321fd779d9, nil
+			return __obf_cf1e08e94279a589 > __obf_3b73e3235cb8d0f9, nil
 		case token.LEQ:
-			return __obf_2f6590e78095cb9b <= __obf_40dee8321fd779d9, nil
+			return __obf_cf1e08e94279a589 <= __obf_3b73e3235cb8d0f9, nil
 		case token.GEQ:
-			return __obf_2f6590e78095cb9b >= __obf_40dee8321fd779d9, nil
+			return __obf_cf1e08e94279a589 >= __obf_3b73e3235cb8d0f9, nil
 		case token.EQL:
-			return __obf_2f6590e78095cb9b == __obf_40dee8321fd779d9, nil
+			return __obf_cf1e08e94279a589 == __obf_3b73e3235cb8d0f9, nil
 		case token.NEQ:
-			return __obf_2f6590e78095cb9b != __obf_40dee8321fd779d9, nil
+			return __obf_cf1e08e94279a589 != __obf_3b73e3235cb8d0f9, nil
 		default:
 			return 0, ErrUnsupportToken
 		}
 	case token.LAND, token.LOR:
-		if __obf_761f92f380e69e60.Kind() != reflect.Bool || __obf_25bae469ca95ff05.Kind() != reflect.Bool {
+		if __obf_a8793cf5a96cd7bb.Kind() != reflect.Bool || __obf_5132e961e446dfb8.Kind() != reflect.Bool {
 			return false, ErrNotBool
 		}
-		switch __obf_cc73fd613fcc4064 {
+		switch __obf_4bbe6d91a49b9474 {
 		case token.LAND:
-			return __obf_761f92f380e69e60.Bool() && __obf_25bae469ca95ff05.Bool(), nil
+			return __obf_a8793cf5a96cd7bb.Bool() && __obf_5132e961e446dfb8.Bool(), nil
 		case token.LOR:
-			return __obf_761f92f380e69e60.Bool() || __obf_25bae469ca95ff05.Bool(), nil
+			return __obf_a8793cf5a96cd7bb.Bool() || __obf_5132e961e446dfb8.Bool(), nil
 		default:
 			return false, ErrUnsupportToken
 		}
@@ -64,17 +64,17 @@ func __obf_5f98a3add70ee4cc(__obf_8d1c7d6c4b72dec7, __obf_22eaa72847d00940 any, 
 	}
 }
 
-func __obf_9e412df46e486a0b(__obf_8d1c7d6c4b72dec7 reflect.Value) (float64, error) {
-	switch __obf_8d1c7d6c4b72dec7.Kind() {
+func __obf_55b9fda27ba97528(__obf_ca275d416555ddd0 reflect.Value) (float64, error) {
+	switch __obf_ca275d416555ddd0.Kind() {
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
-		return float64(__obf_8d1c7d6c4b72dec7.Int()), nil
+		return float64(__obf_ca275d416555ddd0.Int()), nil
 	case reflect.Float32, reflect.Float64:
-		return __obf_8d1c7d6c4b72dec7.Float(), nil
+		return __obf_ca275d416555ddd0.Float(), nil
 	default:
 		return 0, ErrNotNumber
 	}
 }
 
-func __obf_eea7f74ec374b001(__obf_8d1c7d6c4b72dec7 reflect.Value) {
+func __obf_8b99141d6a04d090(__obf_ca275d416555ddd0 reflect.Value) {
 
 }

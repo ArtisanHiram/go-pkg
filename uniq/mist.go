@@ -16,7 +16,7 @@
 * 编号上限为百万亿级，上限值计算为 140737488355327 即 int64(1 << 47 - 1)，假设每天取值 10 亿，能使用 385+ 年
  */
 
-package __obf_a51a64e21f311927
+package __obf_34ce7ee87a5aa6b7
 
 import (
 	"crypto/rand"
@@ -24,41 +24,41 @@ import (
 	"sync"
 )
 
-const __obf_96487cda11ef49ee = uint(8)                                         // 随机因子二进制位数
-const __obf_071bed805a6fbd07 = uint(8)                                         // 随机因子移位数
-const __obf_02030bf8121e2ff4 = __obf_96487cda11ef49ee + __obf_071bed805a6fbd07 // 自增数移位数
+const __obf_dd022c6af3ef1400 = uint(8)                                         // 随机因子二进制位数
+const __obf_9ebd0ca46fa5ef74 = uint(8)                                         // 随机因子移位数
+const __obf_0ad3ef4c2f5adc6d = __obf_dd022c6af3ef1400 + __obf_9ebd0ca46fa5ef74 // 自增数移位数
 
 type Mist struct {
 	sync.Mutex
-	__obf_5876679f517beca4 int64 // 互斥锁
-	__obf_f8c2a310b39d9ec5 int64 // 自增数
-	__obf_97921e76b1c1ea56 int64 // 随机因子一
+	__obf_7eb1cfd52b425b32 int64 // 互斥锁
+	__obf_3862b136142cf80c int64 // 自增数
+	__obf_0b4db9eb87354ff8 int64 // 随机因子一
 	// 随机因子二
 }
 
 /* 初始化 Mist 结构体*/
-func NewMist(__obf_5876679f517beca4 int64) *Mist {
-	__obf_5092acf7edc003bf := Mist{__obf_5876679f517beca4: __obf_5876679f517beca4}
-	return &__obf_5092acf7edc003bf
+func NewMist(__obf_7eb1cfd52b425b32 int64) *Mist {
+	__obf_0a77b1482a5f3b17 := Mist{__obf_7eb1cfd52b425b32: __obf_7eb1cfd52b425b32}
+	return &__obf_0a77b1482a5f3b17
 }
 
 /* 生成唯一编号 */
-func (__obf_8931c216d973ece1 *Mist) Generate() int64 {
-	__obf_8931c216d973ece1.
+func (__obf_ec84b9ba40ae72c7 *Mist) Generate() int64 {
+	__obf_ec84b9ba40ae72c7.
 		Lock()
-	__obf_8931c216d973ece1.
+	__obf_ec84b9ba40ae72c7.
 
 		// 获取随机因子数值 ｜ 使用真随机函数提高性能
-		__obf_5876679f517beca4++
-	__obf_d406a3b8d94cb2a1, _ := rand.Int(rand.Reader, big.NewInt(255))
-	__obf_8931c216d973ece1.__obf_f8c2a310b39d9ec5 = __obf_d406a3b8d94cb2a1.Int64()
-	__obf_8256665a03878275, _ := rand.Int(rand.Reader, big.NewInt(255))
-	__obf_8931c216d973ece1.__obf_97921e76b1c1ea56 = __obf_8256665a03878275.Int64()
-	__obf_5092acf7edc003bf := // 通过位运算实现自动占位
-		int64((__obf_8931c216d973ece1.__obf_5876679f517beca4 << __obf_02030bf8121e2ff4) | (__obf_8931c216d973ece1.__obf_f8c2a310b39d9ec5 << __obf_071bed805a6fbd07) | __obf_8931c216d973ece1.__obf_97921e76b1c1ea56)
-	__obf_8931c216d973ece1.
+		__obf_7eb1cfd52b425b32++
+	__obf_b7482ccc53f96a43, _ := rand.Int(rand.Reader, big.NewInt(255))
+	__obf_ec84b9ba40ae72c7.__obf_3862b136142cf80c = __obf_b7482ccc53f96a43.Int64()
+	__obf_05d9a63be494b445, _ := rand.Int(rand.Reader, big.NewInt(255))
+	__obf_ec84b9ba40ae72c7.__obf_0b4db9eb87354ff8 = __obf_05d9a63be494b445.Int64()
+	__obf_0a77b1482a5f3b17 := // 通过位运算实现自动占位
+		int64((__obf_ec84b9ba40ae72c7.__obf_7eb1cfd52b425b32 << __obf_0ad3ef4c2f5adc6d) | (__obf_ec84b9ba40ae72c7.__obf_3862b136142cf80c << __obf_9ebd0ca46fa5ef74) | __obf_ec84b9ba40ae72c7.__obf_0b4db9eb87354ff8)
+	__obf_ec84b9ba40ae72c7.
 		Unlock()
-	return __obf_5092acf7edc003bf
+	return __obf_0a77b1482a5f3b17
 }
 
 // func main() {

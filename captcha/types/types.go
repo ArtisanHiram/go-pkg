@@ -1,12 +1,13 @@
-package __obf_738b46210fdb4199
+package __obf_89363901d8df63bc
 
 import (
 	"errors"
-	"image"
-	"image/color"
-
+	mapstructure "github.com/ArtisanHiram/go-pkg/mapstructure"
+	msgpack "github.com/ArtisanHiram/go-pkg/msgpack"
 	"golang.org/x/image/font"
 	"golang.org/x/image/font/opentype"
+	"image"
+	"image/color"
 )
 
 var (
@@ -28,8 +29,7 @@ type CaptchaType int
 const (
 	ClickCaptchat CaptchaType = iota
 	RotateCaptchat
-	MoveCaptchat
-	DragCaptchat
+	SlideCaptchat
 )
 
 const (
@@ -51,12 +51,137 @@ type CaptchaImage interface {
 var _ CaptchaImage = (*JPEGImage)(nil)
 var _ CaptchaImage = (*PNGImage)(nil)
 
+type CaptchaPayload struct {
+	Type    CaptchaType
+	Payload msgpack.RawMessage
+}
+
+func (__obf_8f1cd35f635f319d *CaptchaPayload) Verify(__obf_4a2d5e0db11864c5 any, __obf_35fc2be18bf12d23 int) bool {
+	switch __obf_8f1cd35f635f319d.Type {
+	case ClickCaptchat:
+		// if len(clicks) != len(c.dots)*2 {
+		// 	return false
+		// }
+		var __obf_2ab21b0572bef5b4 []*Dot
+		__obf_2db4312e05b7f062 := // 配置 mapstructure
+			&mapstructure.DecoderConfig{
+				Result:           &__obf_2ab21b0572bef5b4,
+				TagName:          "json",
+				WeaklyTypedInput: true, // 关键：允许弱类型转换（如 float64 -> int）
+			}
+		__obf_28831695a0ffa90c, __obf_7b78cb8578d9f1c2 := mapstructure.NewDecoder(__obf_2db4312e05b7f062)
+		if __obf_7b78cb8578d9f1c2 != nil {
+			return false
+		}
+
+		if __obf_7b78cb8578d9f1c2 := __obf_28831695a0ffa90c.Decode(__obf_4a2d5e0db11864c5); __obf_7b78cb8578d9f1c2 != nil {
+			return false
+		}
+
+		var __obf_ac1dfd7b84f6891c []*Dot
+		if __obf_7b78cb8578d9f1c2 := msgpack.Unmarshal(__obf_8f1cd35f635f319d.Payload, &__obf_ac1dfd7b84f6891c); __obf_7b78cb8578d9f1c2 != nil {
+			return false
+		}
+
+		if len(__obf_2ab21b0572bef5b4) != len(__obf_ac1dfd7b84f6891c) {
+			return false
+		}
+		for __obf_1798a6750028be5f, __obf_b6881153086fd877 := range __obf_ac1dfd7b84f6891c {
+			__obf_559cf55aa7e568ea := __obf_2ab21b0572bef5b4[__obf_1798a6750028be5f].X
+			__obf_bd7620b16a5800e6 := __obf_2ab21b0572bef5b4[__obf_1798a6750028be5f].Y
+
+			if __obf_559cf55aa7e568ea < __obf_b6881153086fd877.X-__obf_35fc2be18bf12d23 || __obf_559cf55aa7e568ea > __obf_b6881153086fd877.X+__obf_35fc2be18bf12d23 || __obf_bd7620b16a5800e6 < __obf_b6881153086fd877.Y-__obf_35fc2be18bf12d23 || __obf_bd7620b16a5800e6 > __obf_b6881153086fd877.Y+__obf_35fc2be18bf12d23 {
+				return false
+			}
+		}
+		return true
+	case RotateCaptchat:
+		// if angle, ok := input.(int); ok {
+		// 	// Normalize angles to 0-360 range
+		// 	totalAngle := (angle + c.angle) % 360
+		// 	if totalAngle < 0 {
+		// 		totalAngle += 360
+		// 	}
+
+		// 	// Check if total angle is close to 360 (or 0, which is equivalent)
+		// 	minAngle := 360 - tolerance
+		// 	maxAngle := tolerance
+
+		// 	return totalAngle >= minAngle || totalAngle <= maxAngle
+		// }
+		// return false
+
+		var __obf_1f7091190512fbb8 int
+		// 使用类型选择来处理不同的输入类型
+		switch __obf_9b2883182ebeb493 := __obf_4a2d5e0db11864c5.(type) {
+		case int:
+			__obf_1f7091190512fbb8 = __obf_9b2883182ebeb493
+		case float64:
+			__obf_1f7091190512fbb8 = // JSON 默认解析为 float64，这里将其转回 int
+				int(__obf_9b2883182ebeb493)
+		case int64:
+			__obf_1f7091190512fbb8 = int(__obf_9b2883182ebeb493)
+		case float32:
+			__obf_1f7091190512fbb8 = int(__obf_9b2883182ebeb493)
+		case string:
+			// 如果前端传的是字符串 "90"，可能需要 strconv.Atoi 解析，视需求而定
+			return false
+		default:
+			// 类型不匹配，直接验证失败
+			return false
+		}
+
+		var __obf_5d98df60222101c3 int
+		if __obf_7b78cb8578d9f1c2 := msgpack.Unmarshal(__obf_8f1cd35f635f319d.Payload, &__obf_5d98df60222101c3); __obf_7b78cb8578d9f1c2 != nil {
+			return false
+		}
+		__obf_a349ab58f3b2fb7b := // Normalize angles to 0-360 range
+			(__obf_1f7091190512fbb8 + __obf_5d98df60222101c3) % 360
+		if __obf_a349ab58f3b2fb7b < 0 {
+			__obf_a349ab58f3b2fb7b += 360
+		}
+		__obf_ac7981845901a6a8 := // Check if total angle is close to 360 (or 0, which is equivalent)
+			360 - __obf_35fc2be18bf12d23
+		__obf_4231cac591f2732d := __obf_35fc2be18bf12d23
+
+		return __obf_a349ab58f3b2fb7b >= __obf_ac7981845901a6a8 || __obf_a349ab58f3b2fb7b <= __obf_4231cac591f2732d
+	case SlideCaptchat:
+		var __obf_df50034604593752 Point
+		__obf_2db4312e05b7f062 := // 配置 mapstructure
+			&mapstructure.DecoderConfig{
+				Result:           &__obf_df50034604593752,
+				TagName:          "json",
+				WeaklyTypedInput: true, // 关键：允许弱类型转换（如 float64 -> int）
+			}
+		__obf_28831695a0ffa90c, __obf_7b78cb8578d9f1c2 := mapstructure.NewDecoder(__obf_2db4312e05b7f062)
+		if __obf_7b78cb8578d9f1c2 != nil {
+			return false
+		}
+
+		if __obf_7b78cb8578d9f1c2 := __obf_28831695a0ffa90c.Decode(__obf_4a2d5e0db11864c5); __obf_7b78cb8578d9f1c2 != nil {
+			return false
+		}
+
+		var __obf_ed0636a5b9e4caee Point
+		if __obf_7b78cb8578d9f1c2 := msgpack.Unmarshal(__obf_8f1cd35f635f319d.Payload, &__obf_ed0636a5b9e4caee); __obf_7b78cb8578d9f1c2 != nil {
+			return false
+		}
+		__obf_ef02f5aef30dfa3c := __obf_ed0636a5b9e4caee.X - __obf_35fc2be18bf12d23
+		__obf_014a5112e2c2a925 := __obf_ed0636a5b9e4caee.X + __obf_35fc2be18bf12d23
+		__obf_081a97e9258e5ee5 := __obf_ed0636a5b9e4caee.Y - __obf_35fc2be18bf12d23
+		__obf_f14c1ac944ab90a0 := __obf_ed0636a5b9e4caee.Y + __obf_35fc2be18bf12d23
+
+		return __obf_df50034604593752.X >= __obf_ef02f5aef30dfa3c && __obf_df50034604593752.X <= __obf_014a5112e2c2a925 && __obf_df50034604593752.
+			Y >= __obf_081a97e9258e5ee5 && __obf_df50034604593752.Y <= __obf_f14c1ac944ab90a0
+	default:
+		return false
+	}
+}
+
 type CaptchaData interface {
 	GetPrimary() CaptchaImage
 	GetSecondary() CaptchaImage
-	GetData() any
-	GetType() CaptchaType
-	Verify(__obf_c854ce257b40197f any, __obf_377c147efff2e04c int) bool
+	GetPayload() CaptchaPayload
 }
 
 type Captcha interface {
@@ -70,7 +195,8 @@ type Range struct {
 
 // Point .
 type Point struct {
-	X, Y int
+	X int `json:"x"`
+	Y int `json:"y"`
 }
 
 // AreaRect struct for defining a rectangular area
@@ -79,12 +205,12 @@ type AreaRect struct {
 }
 
 // MakeAreaRect creates an area rectangle
-func MakeAreaRect(__obf_279baf318ad2817d, __obf_dc086f8670012e48, __obf_b8e1a0234b6ecdda, __obf_450f1724cb9ed007 int) *AreaRect {
+func MakeAreaRect(__obf_081278319d4e8cbe, __obf_33020a883a9dc248, __obf_b3c292d03e4be02c, __obf_598f7b6bbc0cc3cd int) *AreaRect {
 	return &AreaRect{
-		MinX: __obf_279baf318ad2817d,
-		MaxX: __obf_b8e1a0234b6ecdda,
-		MinY: __obf_dc086f8670012e48,
-		MaxY: __obf_450f1724cb9ed007,
+		MinX: __obf_081278319d4e8cbe,
+		MaxX: __obf_b3c292d03e4be02c,
+		MinY: __obf_33020a883a9dc248,
+		MaxY: __obf_598f7b6bbc0cc3cd,
 	}
 }
 
@@ -94,12 +220,12 @@ type PositionRect struct {
 }
 
 // MakePositionRect creates a position rectangle
-func MakePositionRect(__obf_bd372f9dc9e16d75, __obf_a69b4d01937bfbfc, __obf_90a966c355c00010, __obf_ccd0c8ac1f16e3bd int) *PositionRect {
+func MakePositionRect(__obf_4d548ce157fe2d7b, __obf_e5fce044456d5b92, __obf_64febf9a6792142f, __obf_672a1e7045b302e8 int) *PositionRect {
 	return &PositionRect{
-		X:      __obf_bd372f9dc9e16d75,
-		Y:      __obf_a69b4d01937bfbfc,
-		Height: __obf_90a966c355c00010,
-		Width:  __obf_ccd0c8ac1f16e3bd,
+		X:      __obf_4d548ce157fe2d7b,
+		Y:      __obf_e5fce044456d5b92,
+		Height: __obf_64febf9a6792142f,
+		Width:  __obf_672a1e7045b302e8,
 	}
 }
 
@@ -130,24 +256,13 @@ type Dot struct {
 
 // Block defines the block data for the slide CAPTCHA
 type Block struct {
-	X int `json:"x"`
-	Y int `json:"y"`
-	// Display x,y
-	DX     int         `json:"dx"`
-	DY     int         `json:"dy"`
+	X      int         `json:"x"`
+	Y      int         `json:"y"`
 	Width  int         `json:"width" msgpack:"-"`
 	Height int         `json:"height" msgpack:"-"`
 	Angle  int         `json:"angle" msgpack:"-"`
 	Shape  image.Image `json:"shape" msgpack:"-"`
 }
-
-// Mode defines the slide CAPTCHA mode
-type SlideType int
-
-const (
-	MoveSlide SlideType = iota // Move mode - slide to left
-	DragSlide                  // Drag mode - drag to any direction
-)
 
 // DeadZoneDirectionType defines the dead zone direction
 type DeadZoneDirectionType int
@@ -179,7 +294,6 @@ type SlideSecondary struct {
 type SlideOption struct {
 	Primary   SlidePrimary
 	Secondary SlideSecondary
-	Type      SlideType
 }
 
 // Primary defines the main image configuration

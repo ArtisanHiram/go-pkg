@@ -1,4 +1,4 @@
-package __obf_9a397ef96534ad45
+package __obf_eed9c5a643743c33
 
 import (
 	jsoniter "github.com/ArtisanHiram/go-pkg/jsoniter"
@@ -7,26 +7,26 @@ import (
 )
 
 // RegisterTimeAsInt64Codec encode/decode time since number of unit since epoch. the precision is the unit.
-func RegisterTimeAsInt64Codec(__obf_e5b1bb3f3d4c2831 time.Duration) {
-	jsoniter.RegisterTypeEncoder("time.Time", &__obf_dca5baa5fd1c59c2{__obf_e5b1bb3f3d4c2831})
-	jsoniter.RegisterTypeDecoder("time.Time", &__obf_dca5baa5fd1c59c2{__obf_e5b1bb3f3d4c2831})
+func RegisterTimeAsInt64Codec(__obf_ef8b6d1d2137b069 time.Duration) {
+	jsoniter.RegisterTypeEncoder("time.Time", &__obf_4a792a261e45d925{__obf_ef8b6d1d2137b069})
+	jsoniter.RegisterTypeDecoder("time.Time", &__obf_4a792a261e45d925{__obf_ef8b6d1d2137b069})
 }
 
-type __obf_dca5baa5fd1c59c2 struct {
-	__obf_e5b1bb3f3d4c2831 time.Duration
+type __obf_4a792a261e45d925 struct {
+	__obf_ef8b6d1d2137b069 time.Duration
 }
 
-func (__obf_d92fa10e8df80d33 *__obf_dca5baa5fd1c59c2) Decode(__obf_77e2593d34cc3a6a unsafe.Pointer, __obf_f2099f19d22a8175 *jsoniter.Iterator) {
-	__obf_c7b6fd571be56d0d := __obf_f2099f19d22a8175.ReadInt64() * __obf_d92fa10e8df80d33.__obf_e5b1bb3f3d4c2831.Nanoseconds()
-	*((*time.Time)(__obf_77e2593d34cc3a6a)) = time.Unix(0, __obf_c7b6fd571be56d0d)
+func (__obf_ccd1a335201fc2ad *__obf_4a792a261e45d925) Decode(__obf_e88eec03e62b77ec unsafe.Pointer, __obf_338eca60ccc15d82 *jsoniter.Iterator) {
+	__obf_2fbe99b69404672f := __obf_338eca60ccc15d82.ReadInt64() * __obf_ccd1a335201fc2ad.__obf_ef8b6d1d2137b069.Nanoseconds()
+	*((*time.Time)(__obf_e88eec03e62b77ec)) = time.Unix(0, __obf_2fbe99b69404672f)
 }
 
-func (__obf_d92fa10e8df80d33 *__obf_dca5baa5fd1c59c2) IsEmpty(__obf_77e2593d34cc3a6a unsafe.Pointer) bool {
-	__obf_bec20bf2067d0605 := *((*time.Time)(__obf_77e2593d34cc3a6a))
-	return __obf_bec20bf2067d0605.UnixNano() == 0
+func (__obf_ccd1a335201fc2ad *__obf_4a792a261e45d925) IsEmpty(__obf_e88eec03e62b77ec unsafe.Pointer) bool {
+	__obf_a5f0b01ad4ee5d7c := *((*time.Time)(__obf_e88eec03e62b77ec))
+	return __obf_a5f0b01ad4ee5d7c.UnixNano() == 0
 }
-func (__obf_d92fa10e8df80d33 *__obf_dca5baa5fd1c59c2) Encode(__obf_77e2593d34cc3a6a unsafe.Pointer, __obf_3b68bc41f53ae503 *jsoniter.Stream) {
-	__obf_bec20bf2067d0605 := *((*time.Time)(__obf_77e2593d34cc3a6a))
-	__obf_3b68bc41f53ae503.
-		WriteInt64(__obf_bec20bf2067d0605.UnixNano() / __obf_d92fa10e8df80d33.__obf_e5b1bb3f3d4c2831.Nanoseconds())
+func (__obf_ccd1a335201fc2ad *__obf_4a792a261e45d925) Encode(__obf_e88eec03e62b77ec unsafe.Pointer, __obf_837be8d71267e11f *jsoniter.Stream) {
+	__obf_a5f0b01ad4ee5d7c := *((*time.Time)(__obf_e88eec03e62b77ec))
+	__obf_837be8d71267e11f.
+		WriteInt64(__obf_a5f0b01ad4ee5d7c.UnixNano() / __obf_ccd1a335201fc2ad.__obf_ef8b6d1d2137b069.Nanoseconds())
 }

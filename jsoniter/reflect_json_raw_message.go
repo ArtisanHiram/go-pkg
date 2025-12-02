@@ -1,4 +1,4 @@
-package __obf_030d39f7a8de96c6
+package __obf_c7b79b12b33d8238
 
 import (
 	"encoding/json"
@@ -7,75 +7,75 @@ import (
 	"github.com/modern-go/reflect2"
 )
 
-var __obf_4ae27c40a2fad41c = reflect2.TypeOfPtr((*json.RawMessage)(nil)).Elem()
-var __obf_243dc45a11f19155 = reflect2.TypeOfPtr((*RawMessage)(nil)).Elem()
+var __obf_1c2de5de21e87b65 = reflect2.TypeOfPtr((*json.RawMessage)(nil)).Elem()
+var __obf_5c3046a12fdb76f5 = reflect2.TypeOfPtr((*RawMessage)(nil)).Elem()
 
-func __obf_8a2ee1f3ca9358c1(__obf_8744d0b8c80ccdc1 reflect2.Type) ValEncoder {
-	if __obf_8744d0b8c80ccdc1 == __obf_4ae27c40a2fad41c {
-		return &__obf_d9b7e027154b2a2d{}
+func __obf_f49908b292adac72(__obf_edcded11af6ebc4c reflect2.Type) ValEncoder {
+	if __obf_edcded11af6ebc4c == __obf_1c2de5de21e87b65 {
+		return &__obf_0c7b7acd5d922c87{}
 	}
-	if __obf_8744d0b8c80ccdc1 == __obf_243dc45a11f19155 {
-		return &__obf_a4917da526b99f67{}
-	}
-	return nil
-}
-
-func __obf_3d1edc0e2c1c1e07(__obf_8744d0b8c80ccdc1 reflect2.Type) ValDecoder {
-	if __obf_8744d0b8c80ccdc1 == __obf_4ae27c40a2fad41c {
-		return &__obf_d9b7e027154b2a2d{}
-	}
-	if __obf_8744d0b8c80ccdc1 == __obf_243dc45a11f19155 {
-		return &__obf_a4917da526b99f67{}
+	if __obf_edcded11af6ebc4c == __obf_5c3046a12fdb76f5 {
+		return &__obf_a9584e35b79c3dfe{}
 	}
 	return nil
 }
 
-type __obf_d9b7e027154b2a2d struct {
+func __obf_4360c3949f7a6e97(__obf_edcded11af6ebc4c reflect2.Type) ValDecoder {
+	if __obf_edcded11af6ebc4c == __obf_1c2de5de21e87b65 {
+		return &__obf_0c7b7acd5d922c87{}
+	}
+	if __obf_edcded11af6ebc4c == __obf_5c3046a12fdb76f5 {
+		return &__obf_a9584e35b79c3dfe{}
+	}
+	return nil
 }
 
-func (__obf_7bfaa2f467491ab9 *__obf_d9b7e027154b2a2d) Decode(__obf_dbbf371b91136494 unsafe.Pointer, __obf_4ab56a99965952e7 *Iterator) {
-	if __obf_4ab56a99965952e7.ReadNil() {
-		*((*json.RawMessage)(__obf_dbbf371b91136494)) = nil
+type __obf_0c7b7acd5d922c87 struct {
+}
+
+func (__obf_26e7ab1d7cef55d9 *__obf_0c7b7acd5d922c87) Decode(__obf_575c04f2b9d91315 unsafe.Pointer, __obf_0da8c843dad13139 *Iterator) {
+	if __obf_0da8c843dad13139.ReadNil() {
+		*((*json.RawMessage)(__obf_575c04f2b9d91315)) = nil
 	} else {
-		*((*json.RawMessage)(__obf_dbbf371b91136494)) = __obf_4ab56a99965952e7.SkipAndReturnBytes()
+		*((*json.RawMessage)(__obf_575c04f2b9d91315)) = __obf_0da8c843dad13139.SkipAndReturnBytes()
 	}
 }
 
-func (__obf_7bfaa2f467491ab9 *__obf_d9b7e027154b2a2d) Encode(__obf_dbbf371b91136494 unsafe.Pointer, __obf_8a2c51fe22775655 *Stream) {
-	if *((*json.RawMessage)(__obf_dbbf371b91136494)) == nil {
-		__obf_8a2c51fe22775655.
+func (__obf_26e7ab1d7cef55d9 *__obf_0c7b7acd5d922c87) Encode(__obf_575c04f2b9d91315 unsafe.Pointer, __obf_d8f50bcfe87d8b47 *Stream) {
+	if *((*json.RawMessage)(__obf_575c04f2b9d91315)) == nil {
+		__obf_d8f50bcfe87d8b47.
 			WriteNil()
 	} else {
-		__obf_8a2c51fe22775655.
-			WriteRaw(string(*((*json.RawMessage)(__obf_dbbf371b91136494))))
+		__obf_d8f50bcfe87d8b47.
+			WriteRaw(string(*((*json.RawMessage)(__obf_575c04f2b9d91315))))
 	}
 }
 
-func (__obf_7bfaa2f467491ab9 *__obf_d9b7e027154b2a2d) IsEmpty(__obf_dbbf371b91136494 unsafe.Pointer) bool {
-	return len(*((*json.RawMessage)(__obf_dbbf371b91136494))) == 0
+func (__obf_26e7ab1d7cef55d9 *__obf_0c7b7acd5d922c87) IsEmpty(__obf_575c04f2b9d91315 unsafe.Pointer) bool {
+	return len(*((*json.RawMessage)(__obf_575c04f2b9d91315))) == 0
 }
 
-type __obf_a4917da526b99f67 struct {
+type __obf_a9584e35b79c3dfe struct {
 }
 
-func (__obf_7bfaa2f467491ab9 *__obf_a4917da526b99f67) Decode(__obf_dbbf371b91136494 unsafe.Pointer, __obf_4ab56a99965952e7 *Iterator) {
-	if __obf_4ab56a99965952e7.ReadNil() {
-		*((*RawMessage)(__obf_dbbf371b91136494)) = nil
+func (__obf_26e7ab1d7cef55d9 *__obf_a9584e35b79c3dfe) Decode(__obf_575c04f2b9d91315 unsafe.Pointer, __obf_0da8c843dad13139 *Iterator) {
+	if __obf_0da8c843dad13139.ReadNil() {
+		*((*RawMessage)(__obf_575c04f2b9d91315)) = nil
 	} else {
-		*((*RawMessage)(__obf_dbbf371b91136494)) = __obf_4ab56a99965952e7.SkipAndReturnBytes()
+		*((*RawMessage)(__obf_575c04f2b9d91315)) = __obf_0da8c843dad13139.SkipAndReturnBytes()
 	}
 }
 
-func (__obf_7bfaa2f467491ab9 *__obf_a4917da526b99f67) Encode(__obf_dbbf371b91136494 unsafe.Pointer, __obf_8a2c51fe22775655 *Stream) {
-	if *((*RawMessage)(__obf_dbbf371b91136494)) == nil {
-		__obf_8a2c51fe22775655.
+func (__obf_26e7ab1d7cef55d9 *__obf_a9584e35b79c3dfe) Encode(__obf_575c04f2b9d91315 unsafe.Pointer, __obf_d8f50bcfe87d8b47 *Stream) {
+	if *((*RawMessage)(__obf_575c04f2b9d91315)) == nil {
+		__obf_d8f50bcfe87d8b47.
 			WriteNil()
 	} else {
-		__obf_8a2c51fe22775655.
-			WriteRaw(string(*((*RawMessage)(__obf_dbbf371b91136494))))
+		__obf_d8f50bcfe87d8b47.
+			WriteRaw(string(*((*RawMessage)(__obf_575c04f2b9d91315))))
 	}
 }
 
-func (__obf_7bfaa2f467491ab9 *__obf_a4917da526b99f67) IsEmpty(__obf_dbbf371b91136494 unsafe.Pointer) bool {
-	return len(*((*RawMessage)(__obf_dbbf371b91136494))) == 0
+func (__obf_26e7ab1d7cef55d9 *__obf_a9584e35b79c3dfe) IsEmpty(__obf_575c04f2b9d91315 unsafe.Pointer) bool {
+	return len(*((*RawMessage)(__obf_575c04f2b9d91315))) == 0
 }

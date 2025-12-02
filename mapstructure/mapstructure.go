@@ -1,4 +1,4 @@
-package __obf_ec2f65f16fa88470
+package __obf_8873749254e9e83f
 
 import (
 	"encoding/json"
@@ -36,7 +36,7 @@ type DecodeHookFuncKind func(reflect.Kind, reflect.Kind, any) (any, error)
 
 // DecodeHookFuncValue is a DecodeHookFunc which has complete access to both the source and target
 // values.
-type DecodeHookFuncValue func(__obf_3a8aa8877b053f0b reflect.Value, __obf_6dd945bb01fb3b32 reflect.Value) (any, error)
+type DecodeHookFuncValue func(__obf_9498a1e77e30674f reflect.Value, __obf_aef128244080a96d reflect.Value) (any, error)
 
 // DecoderConfig is the configuration that is used to create a new decoder
 // and allows customization of various aspects of decoding.
@@ -114,7 +114,7 @@ type DecoderConfig struct {
 	// MatchName is the function used to match the map key to the struct
 	// field name or tag. Defaults to `strings.EqualFold`. This can be used
 	// to implement case-sensitive tag values, support snake casing, etc.
-	MatchName func(__obf_667ff40abd218181, __obf_1cc7b5d4481b301c string) bool
+	MatchName func(__obf_2cca0ec99f95efa8, __obf_87f0d44838486dbb string) bool
 }
 
 // A Decoder takes a raw interface value and turns it into structured
@@ -124,7 +124,7 @@ type DecoderConfig struct {
 // structure. The top-level Decode method is just a convenience that sets
 // up the most basic Decoder.
 type Decoder struct {
-	__obf_da116ef5edc24797 *DecoderConfig
+	__obf_9413fb8c4aa2a800 *DecoderConfig
 }
 
 // Metadata contains information about decoding a structure that
@@ -145,629 +145,629 @@ type Metadata struct {
 
 // Decode takes an input structure and uses reflection to translate it to
 // the output structure. output must be a pointer to a map or struct.
-func Decode(__obf_d8521da8ec1eda3b any, __obf_79635ef79c313f29 any) error {
-	__obf_da116ef5edc24797 := &DecoderConfig{
+func Decode(__obf_4d1394874cd54c98 any, __obf_8150817c27b926a9 any) error {
+	__obf_9413fb8c4aa2a800 := &DecoderConfig{
 		Metadata: nil,
-		Result:   __obf_79635ef79c313f29,
+		Result:   __obf_8150817c27b926a9,
 	}
-	__obf_d18b2e6d691ba699, __obf_6d8ef670b0943b3c := NewDecoder(__obf_da116ef5edc24797)
-	if __obf_6d8ef670b0943b3c != nil {
-		return __obf_6d8ef670b0943b3c
+	__obf_95de370ca4bb3299, __obf_ce3ada6ea4dc41de := NewDecoder(__obf_9413fb8c4aa2a800)
+	if __obf_ce3ada6ea4dc41de != nil {
+		return __obf_ce3ada6ea4dc41de
 	}
 
-	return __obf_d18b2e6d691ba699.Decode(__obf_d8521da8ec1eda3b)
+	return __obf_95de370ca4bb3299.Decode(__obf_4d1394874cd54c98)
 }
 
 // WeakDecode is the same as Decode but is shorthand to enable
 // WeaklyTypedInput. See DecoderConfig for more info.
-func WeakDecode(__obf_d8521da8ec1eda3b, __obf_79635ef79c313f29 any) error {
-	__obf_da116ef5edc24797 := &DecoderConfig{
+func WeakDecode(__obf_4d1394874cd54c98, __obf_8150817c27b926a9 any) error {
+	__obf_9413fb8c4aa2a800 := &DecoderConfig{
 		Metadata:         nil,
-		Result:           __obf_79635ef79c313f29,
+		Result:           __obf_8150817c27b926a9,
 		WeaklyTypedInput: true,
 	}
-	__obf_d18b2e6d691ba699, __obf_6d8ef670b0943b3c := NewDecoder(__obf_da116ef5edc24797)
-	if __obf_6d8ef670b0943b3c != nil {
-		return __obf_6d8ef670b0943b3c
+	__obf_95de370ca4bb3299, __obf_ce3ada6ea4dc41de := NewDecoder(__obf_9413fb8c4aa2a800)
+	if __obf_ce3ada6ea4dc41de != nil {
+		return __obf_ce3ada6ea4dc41de
 	}
 
-	return __obf_d18b2e6d691ba699.Decode(__obf_d8521da8ec1eda3b)
+	return __obf_95de370ca4bb3299.Decode(__obf_4d1394874cd54c98)
 }
 
 // DecodeMetadata is the same as Decode, but is shorthand to
 // enable metadata collection. See DecoderConfig for more info.
-func DecodeMetadata(__obf_d8521da8ec1eda3b any, __obf_79635ef79c313f29 any, __obf_075bd489d9865302 *Metadata) error {
-	__obf_da116ef5edc24797 := &DecoderConfig{
-		Metadata: __obf_075bd489d9865302,
-		Result:   __obf_79635ef79c313f29,
+func DecodeMetadata(__obf_4d1394874cd54c98 any, __obf_8150817c27b926a9 any, __obf_76639a058ba13e2c *Metadata) error {
+	__obf_9413fb8c4aa2a800 := &DecoderConfig{
+		Metadata: __obf_76639a058ba13e2c,
+		Result:   __obf_8150817c27b926a9,
 	}
-	__obf_d18b2e6d691ba699, __obf_6d8ef670b0943b3c := NewDecoder(__obf_da116ef5edc24797)
-	if __obf_6d8ef670b0943b3c != nil {
-		return __obf_6d8ef670b0943b3c
+	__obf_95de370ca4bb3299, __obf_ce3ada6ea4dc41de := NewDecoder(__obf_9413fb8c4aa2a800)
+	if __obf_ce3ada6ea4dc41de != nil {
+		return __obf_ce3ada6ea4dc41de
 	}
 
-	return __obf_d18b2e6d691ba699.Decode(__obf_d8521da8ec1eda3b)
+	return __obf_95de370ca4bb3299.Decode(__obf_4d1394874cd54c98)
 }
 
 // WeakDecodeMetadata is the same as Decode, but is shorthand to
 // enable both WeaklyTypedInput and metadata collection. See
 // DecoderConfig for more info.
-func WeakDecodeMetadata(__obf_d8521da8ec1eda3b any, __obf_79635ef79c313f29 any, __obf_075bd489d9865302 *Metadata) error {
-	__obf_da116ef5edc24797 := &DecoderConfig{
-		Metadata:         __obf_075bd489d9865302,
-		Result:           __obf_79635ef79c313f29,
+func WeakDecodeMetadata(__obf_4d1394874cd54c98 any, __obf_8150817c27b926a9 any, __obf_76639a058ba13e2c *Metadata) error {
+	__obf_9413fb8c4aa2a800 := &DecoderConfig{
+		Metadata:         __obf_76639a058ba13e2c,
+		Result:           __obf_8150817c27b926a9,
 		WeaklyTypedInput: true,
 	}
-	__obf_d18b2e6d691ba699, __obf_6d8ef670b0943b3c := NewDecoder(__obf_da116ef5edc24797)
-	if __obf_6d8ef670b0943b3c != nil {
-		return __obf_6d8ef670b0943b3c
+	__obf_95de370ca4bb3299, __obf_ce3ada6ea4dc41de := NewDecoder(__obf_9413fb8c4aa2a800)
+	if __obf_ce3ada6ea4dc41de != nil {
+		return __obf_ce3ada6ea4dc41de
 	}
 
-	return __obf_d18b2e6d691ba699.Decode(__obf_d8521da8ec1eda3b)
+	return __obf_95de370ca4bb3299.Decode(__obf_4d1394874cd54c98)
 }
 
 // NewDecoder returns a new decoder for the given configuration. Once
 // a decoder has been returned, the same configuration must not be used
 // again.
-func NewDecoder(__obf_da116ef5edc24797 *DecoderConfig) (*Decoder, error) {
-	__obf_cd65ed68b120e383 := reflect.ValueOf(__obf_da116ef5edc24797.Result)
-	if __obf_cd65ed68b120e383.Kind() != reflect.Ptr {
+func NewDecoder(__obf_9413fb8c4aa2a800 *DecoderConfig) (*Decoder, error) {
+	__obf_b7dec3cc8a6aba3c := reflect.ValueOf(__obf_9413fb8c4aa2a800.Result)
+	if __obf_b7dec3cc8a6aba3c.Kind() != reflect.Ptr {
 		return nil, errors.New("result must be a pointer")
 	}
-	__obf_cd65ed68b120e383 = __obf_cd65ed68b120e383.Elem()
-	if !__obf_cd65ed68b120e383.CanAddr() {
+	__obf_b7dec3cc8a6aba3c = __obf_b7dec3cc8a6aba3c.Elem()
+	if !__obf_b7dec3cc8a6aba3c.CanAddr() {
 		return nil, errors.New("result must be addressable (a pointer)")
 	}
 
-	if __obf_da116ef5edc24797.Metadata != nil {
-		if __obf_da116ef5edc24797.Metadata.Keys == nil {
-			__obf_da116ef5edc24797.
+	if __obf_9413fb8c4aa2a800.Metadata != nil {
+		if __obf_9413fb8c4aa2a800.Metadata.Keys == nil {
+			__obf_9413fb8c4aa2a800.
 				Metadata.Keys = make([]string, 0)
 		}
 
-		if __obf_da116ef5edc24797.Metadata.Unused == nil {
-			__obf_da116ef5edc24797.
+		if __obf_9413fb8c4aa2a800.Metadata.Unused == nil {
+			__obf_9413fb8c4aa2a800.
 				Metadata.Unused = make([]string, 0)
 		}
 
-		if __obf_da116ef5edc24797.Metadata.Unset == nil {
-			__obf_da116ef5edc24797.
+		if __obf_9413fb8c4aa2a800.Metadata.Unset == nil {
+			__obf_9413fb8c4aa2a800.
 				Metadata.Unset = make([]string, 0)
 		}
 	}
 
-	if __obf_da116ef5edc24797.TagName == "" {
-		__obf_da116ef5edc24797.
+	if __obf_9413fb8c4aa2a800.TagName == "" {
+		__obf_9413fb8c4aa2a800.
 			TagName = "mapstructure"
 	}
 
-	if __obf_da116ef5edc24797.MatchName == nil {
-		__obf_da116ef5edc24797.
+	if __obf_9413fb8c4aa2a800.MatchName == nil {
+		__obf_9413fb8c4aa2a800.
 			MatchName = strings.EqualFold
 	}
-	__obf_bb9d1909c7b1c125 := &Decoder{__obf_da116ef5edc24797: __obf_da116ef5edc24797}
+	__obf_a9459758946d2eaa := &Decoder{__obf_9413fb8c4aa2a800: __obf_9413fb8c4aa2a800}
 
-	return __obf_bb9d1909c7b1c125, nil
+	return __obf_a9459758946d2eaa, nil
 }
 
 // Decode decodes the given raw interface to the target pointer specified
 // by the configuration.
-func (__obf_15070727b144cc26 *Decoder) Decode(__obf_d8521da8ec1eda3b any) error {
-	return __obf_15070727b144cc26.__obf_54e09d10fb5e308c("", __obf_d8521da8ec1eda3b, reflect.ValueOf(__obf_15070727b144cc26.__obf_da116ef5edc24797.Result).Elem())
+func (__obf_b6d13e44c74c2560 *Decoder) Decode(__obf_4d1394874cd54c98 any) error {
+	return __obf_b6d13e44c74c2560.__obf_eea77241dc8adb35("", __obf_4d1394874cd54c98, reflect.ValueOf(__obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.Result).Elem())
 }
 
 // Decodes an unknown data type into a specific reflection value.
-func (__obf_15070727b144cc26 *Decoder) __obf_54e09d10fb5e308c(__obf_97d979f40f648bde string, __obf_d8521da8ec1eda3b any, __obf_e679a50f9ef83ba5 reflect.Value) error {
-	var __obf_45e310d47988c135 reflect.Value
-	if __obf_d8521da8ec1eda3b != nil {
-		__obf_45e310d47988c135 = reflect.ValueOf(__obf_d8521da8ec1eda3b)
+func (__obf_b6d13e44c74c2560 *Decoder) __obf_eea77241dc8adb35(__obf_91e38c6481387fc0 string, __obf_4d1394874cd54c98 any, __obf_c1d382d8ffd17367 reflect.Value) error {
+	var __obf_a1045a48a94db2e1 reflect.Value
+	if __obf_4d1394874cd54c98 != nil {
+		__obf_a1045a48a94db2e1 = reflect.ValueOf(__obf_4d1394874cd54c98)
 
 		// We need to check here if input is a typed nil. Typed nils won't
 		// match the "input == nil" below so we check that here.
-		if __obf_45e310d47988c135.Kind() == reflect.Ptr && __obf_45e310d47988c135.IsNil() {
-			__obf_d8521da8ec1eda3b = nil
+		if __obf_a1045a48a94db2e1.Kind() == reflect.Ptr && __obf_a1045a48a94db2e1.IsNil() {
+			__obf_4d1394874cd54c98 = nil
 		}
 	}
 
-	if __obf_d8521da8ec1eda3b == nil {
+	if __obf_4d1394874cd54c98 == nil {
 		// If the data is nil, then we don't set anything, unless ZeroFields is set
 		// to true.
-		if __obf_15070727b144cc26.__obf_da116ef5edc24797.ZeroFields {
-			__obf_e679a50f9ef83ba5.
-				Set(reflect.Zero(__obf_e679a50f9ef83ba5.Type()))
+		if __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.ZeroFields {
+			__obf_c1d382d8ffd17367.
+				Set(reflect.Zero(__obf_c1d382d8ffd17367.Type()))
 
-			if __obf_15070727b144cc26.__obf_da116ef5edc24797.Metadata != nil && __obf_97d979f40f648bde != "" {
-				__obf_15070727b144cc26.__obf_da116ef5edc24797.
-					Metadata.Keys = append(__obf_15070727b144cc26.__obf_da116ef5edc24797.Metadata.Keys, __obf_97d979f40f648bde)
+			if __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.Metadata != nil && __obf_91e38c6481387fc0 != "" {
+				__obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.
+					Metadata.Keys = append(__obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.Metadata.Keys, __obf_91e38c6481387fc0)
 			}
 		}
 		return nil
 	}
 
-	if !__obf_45e310d47988c135.IsValid() {
-		__obf_e679a50f9ef83ba5.
+	if !__obf_a1045a48a94db2e1.IsValid() {
+		__obf_c1d382d8ffd17367.
 			// If the input value is invalid, then we just set the value
 			// to be the zero value.
-			Set(reflect.Zero(__obf_e679a50f9ef83ba5.Type()))
-		if __obf_15070727b144cc26.__obf_da116ef5edc24797.Metadata != nil && __obf_97d979f40f648bde != "" {
-			__obf_15070727b144cc26.__obf_da116ef5edc24797.
-				Metadata.Keys = append(__obf_15070727b144cc26.__obf_da116ef5edc24797.Metadata.Keys, __obf_97d979f40f648bde)
+			Set(reflect.Zero(__obf_c1d382d8ffd17367.Type()))
+		if __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.Metadata != nil && __obf_91e38c6481387fc0 != "" {
+			__obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.
+				Metadata.Keys = append(__obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.Metadata.Keys, __obf_91e38c6481387fc0)
 		}
 		return nil
 	}
 
-	if __obf_15070727b144cc26.__obf_da116ef5edc24797.DecodeHook != nil {
+	if __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.DecodeHook != nil {
 		// We have a DecodeHook, so let's pre-process the input.
-		var __obf_6d8ef670b0943b3c error
-		__obf_d8521da8ec1eda3b, __obf_6d8ef670b0943b3c = DecodeHookExec(__obf_15070727b144cc26.__obf_da116ef5edc24797.DecodeHook, __obf_45e310d47988c135, __obf_e679a50f9ef83ba5)
-		if __obf_6d8ef670b0943b3c != nil {
-			return fmt.Errorf("error decoding '%s': %w", __obf_97d979f40f648bde, __obf_6d8ef670b0943b3c)
+		var __obf_ce3ada6ea4dc41de error
+		__obf_4d1394874cd54c98, __obf_ce3ada6ea4dc41de = DecodeHookExec(__obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.DecodeHook, __obf_a1045a48a94db2e1, __obf_c1d382d8ffd17367)
+		if __obf_ce3ada6ea4dc41de != nil {
+			return fmt.Errorf("error decoding '%s': %w", __obf_91e38c6481387fc0, __obf_ce3ada6ea4dc41de)
 		}
 	}
 
-	var __obf_6d8ef670b0943b3c error
-	__obf_17bcee0eac4391c4 := __obf_ed31af980b14987e(__obf_e679a50f9ef83ba5)
-	__obf_7c38737190903e34 := true
-	switch __obf_17bcee0eac4391c4 {
+	var __obf_ce3ada6ea4dc41de error
+	__obf_e0d6c8e6f9160067 := __obf_32f26d0d12491636(__obf_c1d382d8ffd17367)
+	__obf_124c651114f017c7 := true
+	switch __obf_e0d6c8e6f9160067 {
 	case reflect.Bool:
-		__obf_6d8ef670b0943b3c = __obf_15070727b144cc26.__obf_bd1426afee26ea4f(__obf_97d979f40f648bde, __obf_d8521da8ec1eda3b, __obf_e679a50f9ef83ba5)
+		__obf_ce3ada6ea4dc41de = __obf_b6d13e44c74c2560.__obf_aceb27a842250df2(__obf_91e38c6481387fc0, __obf_4d1394874cd54c98, __obf_c1d382d8ffd17367)
 	case reflect.Interface:
-		__obf_6d8ef670b0943b3c = __obf_15070727b144cc26.__obf_8e5d3c59d3711c73(__obf_97d979f40f648bde, __obf_d8521da8ec1eda3b, __obf_e679a50f9ef83ba5)
+		__obf_ce3ada6ea4dc41de = __obf_b6d13e44c74c2560.__obf_c9179d101ce685cf(__obf_91e38c6481387fc0, __obf_4d1394874cd54c98, __obf_c1d382d8ffd17367)
 	case reflect.String:
-		__obf_6d8ef670b0943b3c = __obf_15070727b144cc26.__obf_09e78b174dc93b15(__obf_97d979f40f648bde, __obf_d8521da8ec1eda3b, __obf_e679a50f9ef83ba5)
+		__obf_ce3ada6ea4dc41de = __obf_b6d13e44c74c2560.__obf_aa0f8fa85e2621fc(__obf_91e38c6481387fc0, __obf_4d1394874cd54c98, __obf_c1d382d8ffd17367)
 	case reflect.Int:
-		__obf_6d8ef670b0943b3c = __obf_15070727b144cc26.__obf_3bb51fd5d1a2bffd(__obf_97d979f40f648bde, __obf_d8521da8ec1eda3b, __obf_e679a50f9ef83ba5)
+		__obf_ce3ada6ea4dc41de = __obf_b6d13e44c74c2560.__obf_7e3deca40624a63e(__obf_91e38c6481387fc0, __obf_4d1394874cd54c98, __obf_c1d382d8ffd17367)
 	case reflect.Uint:
-		__obf_6d8ef670b0943b3c = __obf_15070727b144cc26.__obf_7c63467fdcb0d6ec(__obf_97d979f40f648bde, __obf_d8521da8ec1eda3b, __obf_e679a50f9ef83ba5)
+		__obf_ce3ada6ea4dc41de = __obf_b6d13e44c74c2560.__obf_c7f3188f58bad066(__obf_91e38c6481387fc0, __obf_4d1394874cd54c98, __obf_c1d382d8ffd17367)
 	case reflect.Float32:
-		__obf_6d8ef670b0943b3c = __obf_15070727b144cc26.__obf_02660e9348752825(__obf_97d979f40f648bde, __obf_d8521da8ec1eda3b, __obf_e679a50f9ef83ba5)
+		__obf_ce3ada6ea4dc41de = __obf_b6d13e44c74c2560.__obf_139c2209e3bd3273(__obf_91e38c6481387fc0, __obf_4d1394874cd54c98, __obf_c1d382d8ffd17367)
 	case reflect.Struct:
-		__obf_6d8ef670b0943b3c = __obf_15070727b144cc26.__obf_577e93fa4008dcd6(__obf_97d979f40f648bde, __obf_d8521da8ec1eda3b, __obf_e679a50f9ef83ba5)
+		__obf_ce3ada6ea4dc41de = __obf_b6d13e44c74c2560.__obf_0ea7f7e628e7a170(__obf_91e38c6481387fc0, __obf_4d1394874cd54c98, __obf_c1d382d8ffd17367)
 	case reflect.Map:
-		__obf_6d8ef670b0943b3c = __obf_15070727b144cc26.__obf_d20c19b1598726f2(__obf_97d979f40f648bde, __obf_d8521da8ec1eda3b, __obf_e679a50f9ef83ba5)
+		__obf_ce3ada6ea4dc41de = __obf_b6d13e44c74c2560.__obf_e0b8cf654a653244(__obf_91e38c6481387fc0, __obf_4d1394874cd54c98, __obf_c1d382d8ffd17367)
 	case reflect.Ptr:
-		__obf_7c38737190903e34, __obf_6d8ef670b0943b3c = __obf_15070727b144cc26.__obf_6b92db91c5345245(__obf_97d979f40f648bde, __obf_d8521da8ec1eda3b, __obf_e679a50f9ef83ba5)
+		__obf_124c651114f017c7, __obf_ce3ada6ea4dc41de = __obf_b6d13e44c74c2560.__obf_5e29a4de20dbe76f(__obf_91e38c6481387fc0, __obf_4d1394874cd54c98, __obf_c1d382d8ffd17367)
 	case reflect.Slice:
-		__obf_6d8ef670b0943b3c = __obf_15070727b144cc26.__obf_a1d958c6ee649900(__obf_97d979f40f648bde, __obf_d8521da8ec1eda3b, __obf_e679a50f9ef83ba5)
+		__obf_ce3ada6ea4dc41de = __obf_b6d13e44c74c2560.__obf_5830e3d709c533b9(__obf_91e38c6481387fc0, __obf_4d1394874cd54c98, __obf_c1d382d8ffd17367)
 	case reflect.Array:
-		__obf_6d8ef670b0943b3c = __obf_15070727b144cc26.__obf_912e64085a8c4c83(__obf_97d979f40f648bde, __obf_d8521da8ec1eda3b, __obf_e679a50f9ef83ba5)
+		__obf_ce3ada6ea4dc41de = __obf_b6d13e44c74c2560.__obf_4efb141f47e352d3(__obf_91e38c6481387fc0, __obf_4d1394874cd54c98, __obf_c1d382d8ffd17367)
 	case reflect.Func:
-		__obf_6d8ef670b0943b3c = __obf_15070727b144cc26.__obf_d4a936768e419fa1(__obf_97d979f40f648bde, __obf_d8521da8ec1eda3b,
+		__obf_ce3ada6ea4dc41de = __obf_b6d13e44c74c2560.__obf_03a933e715babe51(__obf_91e38c6481387fc0, __obf_4d1394874cd54c98,
 
 			// If we reached this point then we weren't able to decode it
-			__obf_e679a50f9ef83ba5)
+			__obf_c1d382d8ffd17367)
 	default:
 
-		return fmt.Errorf("%s: unsupported type: %s", __obf_97d979f40f648bde, __obf_17bcee0eac4391c4)
+		return fmt.Errorf("%s: unsupported type: %s", __obf_91e38c6481387fc0, __obf_e0d6c8e6f9160067)
 	}
 
 	// If we reached here, then we successfully decoded SOMETHING, so
 	// mark the key as used if we're tracking metainput.
-	if __obf_7c38737190903e34 && __obf_15070727b144cc26.__obf_da116ef5edc24797.Metadata != nil && __obf_97d979f40f648bde != "" {
-		__obf_15070727b144cc26.__obf_da116ef5edc24797.
-			Metadata.Keys = append(__obf_15070727b144cc26.__obf_da116ef5edc24797.Metadata.Keys, __obf_97d979f40f648bde)
+	if __obf_124c651114f017c7 && __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.Metadata != nil && __obf_91e38c6481387fc0 != "" {
+		__obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.
+			Metadata.Keys = append(__obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.Metadata.Keys, __obf_91e38c6481387fc0)
 	}
 
-	return __obf_6d8ef670b0943b3c
+	return __obf_ce3ada6ea4dc41de
 }
 
 // This decodes a basic type (bool, int, string, etc.) and sets the
 // value to "data" of that type.
-func (__obf_15070727b144cc26 *Decoder) __obf_8e5d3c59d3711c73(__obf_97d979f40f648bde string, __obf_e428e8b18837f120 any, __obf_cd65ed68b120e383 reflect.Value) error {
-	if __obf_cd65ed68b120e383.IsValid() && __obf_cd65ed68b120e383.Elem().IsValid() {
-		__obf_a985093c55e986f9 := __obf_cd65ed68b120e383.Elem()
-		__obf_2199e12b729261a2 := // If we can't address this element, then its not writable. Instead,
+func (__obf_b6d13e44c74c2560 *Decoder) __obf_c9179d101ce685cf(__obf_91e38c6481387fc0 string, __obf_4bc7fc453056091b any, __obf_b7dec3cc8a6aba3c reflect.Value) error {
+	if __obf_b7dec3cc8a6aba3c.IsValid() && __obf_b7dec3cc8a6aba3c.Elem().IsValid() {
+		__obf_340beb890b8df74f := __obf_b7dec3cc8a6aba3c.Elem()
+		__obf_9969d7b0333bcb09 := // If we can't address this element, then its not writable. Instead,
 			// we make a copy of the value (which is a pointer and therefore
 			// writable), decode into that, and replace the whole value.
 			false
-		if !__obf_a985093c55e986f9.CanAddr() {
-			__obf_2199e12b729261a2 = true
+		if !__obf_340beb890b8df74f.CanAddr() {
+			__obf_9969d7b0333bcb09 = true
 
 			// Make *T
-			copy := reflect.New(__obf_a985093c55e986f9.Type())
+			copy := reflect.New(__obf_340beb890b8df74f.Type())
 
 			// *T = elem
-			copy.Elem().Set(__obf_a985093c55e986f9)
-			__obf_a985093c55e986f9 = // Set elem so we decode into it
+			copy.Elem().Set(__obf_340beb890b8df74f)
+			__obf_340beb890b8df74f = // Set elem so we decode into it
 				copy
 		}
 
 		// Decode. If we have an error then return. We also return right
 		// away if we're not a copy because that means we decoded directly.
-		if __obf_6d8ef670b0943b3c := __obf_15070727b144cc26.__obf_54e09d10fb5e308c(__obf_97d979f40f648bde, __obf_e428e8b18837f120, __obf_a985093c55e986f9); __obf_6d8ef670b0943b3c != nil || !__obf_2199e12b729261a2 {
-			return __obf_6d8ef670b0943b3c
+		if __obf_ce3ada6ea4dc41de := __obf_b6d13e44c74c2560.__obf_eea77241dc8adb35(__obf_91e38c6481387fc0, __obf_4bc7fc453056091b, __obf_340beb890b8df74f); __obf_ce3ada6ea4dc41de != nil || !__obf_9969d7b0333bcb09 {
+			return __obf_ce3ada6ea4dc41de
 		}
-		__obf_cd65ed68b120e383.
+		__obf_b7dec3cc8a6aba3c.
 
 			// If we're a copy, we need to set te final result
-			Set(__obf_a985093c55e986f9.Elem())
+			Set(__obf_340beb890b8df74f.Elem())
 		return nil
 	}
-	__obf_a30e8e069ebf8d56 := reflect.ValueOf(__obf_e428e8b18837f120)
+	__obf_0bfc5beb6a20600c := reflect.ValueOf(__obf_4bc7fc453056091b)
 
 	// If the input data is a pointer, and the assigned type is the dereference
 	// of that exact pointer, then indirect it so that we can assign it.
 	// Example: *string to string
-	if __obf_a30e8e069ebf8d56.Kind() == reflect.Ptr && __obf_a30e8e069ebf8d56.Type().Elem() == __obf_cd65ed68b120e383.Type() {
-		__obf_a30e8e069ebf8d56 = reflect.Indirect(__obf_a30e8e069ebf8d56)
+	if __obf_0bfc5beb6a20600c.Kind() == reflect.Ptr && __obf_0bfc5beb6a20600c.Type().Elem() == __obf_b7dec3cc8a6aba3c.Type() {
+		__obf_0bfc5beb6a20600c = reflect.Indirect(__obf_0bfc5beb6a20600c)
 	}
 
-	if !__obf_a30e8e069ebf8d56.IsValid() {
-		__obf_a30e8e069ebf8d56 = reflect.Zero(__obf_cd65ed68b120e383.Type())
+	if !__obf_0bfc5beb6a20600c.IsValid() {
+		__obf_0bfc5beb6a20600c = reflect.Zero(__obf_b7dec3cc8a6aba3c.Type())
 	}
-	__obf_8d4acaad13f3fa10 := __obf_a30e8e069ebf8d56.Type()
-	if !__obf_8d4acaad13f3fa10.AssignableTo(__obf_cd65ed68b120e383.Type()) {
+	__obf_ccfb61cfb66ec1f2 := __obf_0bfc5beb6a20600c.Type()
+	if !__obf_ccfb61cfb66ec1f2.AssignableTo(__obf_b7dec3cc8a6aba3c.Type()) {
 		return fmt.Errorf(
-			"'%s' expected type '%s', got '%s'", __obf_97d979f40f648bde, __obf_cd65ed68b120e383.
-				Type(), __obf_8d4acaad13f3fa10)
+			"'%s' expected type '%s', got '%s'", __obf_91e38c6481387fc0, __obf_b7dec3cc8a6aba3c.
+				Type(), __obf_ccfb61cfb66ec1f2)
 	}
-	__obf_cd65ed68b120e383.
-		Set(__obf_a30e8e069ebf8d56)
+	__obf_b7dec3cc8a6aba3c.
+		Set(__obf_0bfc5beb6a20600c)
 	return nil
 }
 
-func (__obf_15070727b144cc26 *Decoder) __obf_09e78b174dc93b15(__obf_97d979f40f648bde string, __obf_e428e8b18837f120 any, __obf_cd65ed68b120e383 reflect.Value) error {
-	__obf_a30e8e069ebf8d56 := reflect.Indirect(reflect.ValueOf(__obf_e428e8b18837f120))
-	__obf_8c8f659ba1d013f1 := __obf_ed31af980b14987e(__obf_a30e8e069ebf8d56)
-	__obf_c90541f4a19cc78a := true
+func (__obf_b6d13e44c74c2560 *Decoder) __obf_aa0f8fa85e2621fc(__obf_91e38c6481387fc0 string, __obf_4bc7fc453056091b any, __obf_b7dec3cc8a6aba3c reflect.Value) error {
+	__obf_0bfc5beb6a20600c := reflect.Indirect(reflect.ValueOf(__obf_4bc7fc453056091b))
+	__obf_4681297d649eea44 := __obf_32f26d0d12491636(__obf_0bfc5beb6a20600c)
+	__obf_5e0accca5a88f1fa := true
 	switch {
-	case __obf_8c8f659ba1d013f1 == reflect.String:
-		__obf_cd65ed68b120e383.
-			SetString(__obf_a30e8e069ebf8d56.String())
-	case __obf_8c8f659ba1d013f1 == reflect.Bool && __obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput:
-		if __obf_a30e8e069ebf8d56.Bool() {
-			__obf_cd65ed68b120e383.
+	case __obf_4681297d649eea44 == reflect.String:
+		__obf_b7dec3cc8a6aba3c.
+			SetString(__obf_0bfc5beb6a20600c.String())
+	case __obf_4681297d649eea44 == reflect.Bool && __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput:
+		if __obf_0bfc5beb6a20600c.Bool() {
+			__obf_b7dec3cc8a6aba3c.
 				SetString("1")
 		} else {
-			__obf_cd65ed68b120e383.
+			__obf_b7dec3cc8a6aba3c.
 				SetString("0")
 		}
-	case __obf_8c8f659ba1d013f1 == reflect.Int && __obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput:
-		__obf_cd65ed68b120e383.
-			SetString(strconv.FormatInt(__obf_a30e8e069ebf8d56.Int(), 10))
-	case __obf_8c8f659ba1d013f1 == reflect.Uint && __obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput:
-		__obf_cd65ed68b120e383.
-			SetString(strconv.FormatUint(__obf_a30e8e069ebf8d56.Uint(), 10))
-	case __obf_8c8f659ba1d013f1 == reflect.Float32 && __obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput:
-		__obf_cd65ed68b120e383.
-			SetString(strconv.FormatFloat(__obf_a30e8e069ebf8d56.Float(), 'f', -1, 64))
-	case __obf_8c8f659ba1d013f1 == reflect.Slice && __obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput, __obf_8c8f659ba1d013f1 ==
-		reflect.Array && __obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput:
-		__obf_9dd014252313d6cd := __obf_a30e8e069ebf8d56.Type()
-		__obf_0673273cce64670d := __obf_9dd014252313d6cd.Elem().Kind()
-		switch __obf_0673273cce64670d {
+	case __obf_4681297d649eea44 == reflect.Int && __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput:
+		__obf_b7dec3cc8a6aba3c.
+			SetString(strconv.FormatInt(__obf_0bfc5beb6a20600c.Int(), 10))
+	case __obf_4681297d649eea44 == reflect.Uint && __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput:
+		__obf_b7dec3cc8a6aba3c.
+			SetString(strconv.FormatUint(__obf_0bfc5beb6a20600c.Uint(), 10))
+	case __obf_4681297d649eea44 == reflect.Float32 && __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput:
+		__obf_b7dec3cc8a6aba3c.
+			SetString(strconv.FormatFloat(__obf_0bfc5beb6a20600c.Float(), 'f', -1, 64))
+	case __obf_4681297d649eea44 == reflect.Slice && __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput, __obf_4681297d649eea44 ==
+		reflect.Array && __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput:
+		__obf_cb1be79795600114 := __obf_0bfc5beb6a20600c.Type()
+		__obf_55286990c7ae804f := __obf_cb1be79795600114.Elem().Kind()
+		switch __obf_55286990c7ae804f {
 		case reflect.Uint8:
-			var __obf_90be5f4e9a63d34c []uint8
-			if __obf_8c8f659ba1d013f1 == reflect.Array {
-				__obf_90be5f4e9a63d34c = make([]uint8, __obf_a30e8e069ebf8d56.Len())
-				for __obf_6cbf6487a01daf31 := range __obf_90be5f4e9a63d34c {
-					__obf_90be5f4e9a63d34c[__obf_6cbf6487a01daf31] = __obf_a30e8e069ebf8d56.Index(__obf_6cbf6487a01daf31).Interface().(uint8)
+			var __obf_689b9a8c4a647489 []uint8
+			if __obf_4681297d649eea44 == reflect.Array {
+				__obf_689b9a8c4a647489 = make([]uint8, __obf_0bfc5beb6a20600c.Len())
+				for __obf_4e5b08e68a148355 := range __obf_689b9a8c4a647489 {
+					__obf_689b9a8c4a647489[__obf_4e5b08e68a148355] = __obf_0bfc5beb6a20600c.Index(__obf_4e5b08e68a148355).Interface().(uint8)
 				}
 			} else {
-				__obf_90be5f4e9a63d34c = __obf_a30e8e069ebf8d56.Interface().([]uint8)
+				__obf_689b9a8c4a647489 = __obf_0bfc5beb6a20600c.Interface().([]uint8)
 			}
-			__obf_cd65ed68b120e383.
-				SetString(string(__obf_90be5f4e9a63d34c))
+			__obf_b7dec3cc8a6aba3c.
+				SetString(string(__obf_689b9a8c4a647489))
 		default:
-			__obf_c90541f4a19cc78a = false
+			__obf_5e0accca5a88f1fa = false
 		}
 	default:
-		__obf_c90541f4a19cc78a = false
+		__obf_5e0accca5a88f1fa = false
 	}
 
-	if !__obf_c90541f4a19cc78a {
+	if !__obf_5e0accca5a88f1fa {
 		return fmt.Errorf(
-			"'%s' expected type '%s', got unconvertible type '%s', value: '%v'", __obf_97d979f40f648bde, __obf_cd65ed68b120e383.
-				Type(), __obf_a30e8e069ebf8d56.Type(), __obf_e428e8b18837f120)
+			"'%s' expected type '%s', got unconvertible type '%s', value: '%v'", __obf_91e38c6481387fc0, __obf_b7dec3cc8a6aba3c.
+				Type(), __obf_0bfc5beb6a20600c.Type(), __obf_4bc7fc453056091b)
 	}
 
 	return nil
 }
 
-func (__obf_15070727b144cc26 *Decoder) __obf_3bb51fd5d1a2bffd(__obf_97d979f40f648bde string, __obf_e428e8b18837f120 any, __obf_cd65ed68b120e383 reflect.Value) error {
-	__obf_a30e8e069ebf8d56 := reflect.Indirect(reflect.ValueOf(__obf_e428e8b18837f120))
-	__obf_8c8f659ba1d013f1 := __obf_ed31af980b14987e(__obf_a30e8e069ebf8d56)
-	__obf_9dd014252313d6cd := __obf_a30e8e069ebf8d56.Type()
+func (__obf_b6d13e44c74c2560 *Decoder) __obf_7e3deca40624a63e(__obf_91e38c6481387fc0 string, __obf_4bc7fc453056091b any, __obf_b7dec3cc8a6aba3c reflect.Value) error {
+	__obf_0bfc5beb6a20600c := reflect.Indirect(reflect.ValueOf(__obf_4bc7fc453056091b))
+	__obf_4681297d649eea44 := __obf_32f26d0d12491636(__obf_0bfc5beb6a20600c)
+	__obf_cb1be79795600114 := __obf_0bfc5beb6a20600c.Type()
 
 	switch {
-	case __obf_8c8f659ba1d013f1 == reflect.Int:
-		__obf_cd65ed68b120e383.
-			SetInt(__obf_a30e8e069ebf8d56.Int())
-	case __obf_8c8f659ba1d013f1 == reflect.Uint:
-		__obf_cd65ed68b120e383.
-			SetInt(int64(__obf_a30e8e069ebf8d56.Uint()))
-	case __obf_8c8f659ba1d013f1 == reflect.Float32:
-		__obf_cd65ed68b120e383.
-			SetInt(int64(__obf_a30e8e069ebf8d56.Float()))
-	case __obf_8c8f659ba1d013f1 == reflect.Bool && __obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput:
-		if __obf_a30e8e069ebf8d56.Bool() {
-			__obf_cd65ed68b120e383.
+	case __obf_4681297d649eea44 == reflect.Int:
+		__obf_b7dec3cc8a6aba3c.
+			SetInt(__obf_0bfc5beb6a20600c.Int())
+	case __obf_4681297d649eea44 == reflect.Uint:
+		__obf_b7dec3cc8a6aba3c.
+			SetInt(int64(__obf_0bfc5beb6a20600c.Uint()))
+	case __obf_4681297d649eea44 == reflect.Float32:
+		__obf_b7dec3cc8a6aba3c.
+			SetInt(int64(__obf_0bfc5beb6a20600c.Float()))
+	case __obf_4681297d649eea44 == reflect.Bool && __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput:
+		if __obf_0bfc5beb6a20600c.Bool() {
+			__obf_b7dec3cc8a6aba3c.
 				SetInt(1)
 		} else {
-			__obf_cd65ed68b120e383.
+			__obf_b7dec3cc8a6aba3c.
 				SetInt(0)
 		}
-	case __obf_8c8f659ba1d013f1 == reflect.String && __obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput:
-		__obf_ae7e7e9fd3e1b096 := __obf_a30e8e069ebf8d56.String()
-		if __obf_ae7e7e9fd3e1b096 == "" {
-			__obf_ae7e7e9fd3e1b096 = "0"
+	case __obf_4681297d649eea44 == reflect.String && __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput:
+		__obf_288b09ee2b024465 := __obf_0bfc5beb6a20600c.String()
+		if __obf_288b09ee2b024465 == "" {
+			__obf_288b09ee2b024465 = "0"
 		}
-		__obf_6cbf6487a01daf31, __obf_6d8ef670b0943b3c := strconv.ParseInt(__obf_ae7e7e9fd3e1b096, 0, __obf_cd65ed68b120e383.Type().Bits())
-		if __obf_6d8ef670b0943b3c == nil {
-			__obf_cd65ed68b120e383.
-				SetInt(__obf_6cbf6487a01daf31)
+		__obf_4e5b08e68a148355, __obf_ce3ada6ea4dc41de := strconv.ParseInt(__obf_288b09ee2b024465, 0, __obf_b7dec3cc8a6aba3c.Type().Bits())
+		if __obf_ce3ada6ea4dc41de == nil {
+			__obf_b7dec3cc8a6aba3c.
+				SetInt(__obf_4e5b08e68a148355)
 		} else {
-			return fmt.Errorf("cannot parse '%s' as int: %s", __obf_97d979f40f648bde, __obf_6d8ef670b0943b3c)
+			return fmt.Errorf("cannot parse '%s' as int: %s", __obf_91e38c6481387fc0, __obf_ce3ada6ea4dc41de)
 		}
-	case __obf_9dd014252313d6cd.PkgPath() == "encoding/json" && __obf_9dd014252313d6cd.Name() == "Number":
-		__obf_f52aeda9f67e10ec := __obf_e428e8b18837f120.(json.Number)
-		__obf_6cbf6487a01daf31, __obf_6d8ef670b0943b3c := __obf_f52aeda9f67e10ec.Int64()
-		if __obf_6d8ef670b0943b3c != nil {
+	case __obf_cb1be79795600114.PkgPath() == "encoding/json" && __obf_cb1be79795600114.Name() == "Number":
+		__obf_5e82faecd5a1fa26 := __obf_4bc7fc453056091b.(json.Number)
+		__obf_4e5b08e68a148355, __obf_ce3ada6ea4dc41de := __obf_5e82faecd5a1fa26.Int64()
+		if __obf_ce3ada6ea4dc41de != nil {
 			return fmt.Errorf(
-				"error decoding json.Number into %s: %s", __obf_97d979f40f648bde, __obf_6d8ef670b0943b3c)
+				"error decoding json.Number into %s: %s", __obf_91e38c6481387fc0, __obf_ce3ada6ea4dc41de)
 		}
-		__obf_cd65ed68b120e383.
-			SetInt(__obf_6cbf6487a01daf31)
+		__obf_b7dec3cc8a6aba3c.
+			SetInt(__obf_4e5b08e68a148355)
 	default:
 		return fmt.Errorf(
-			"'%s' expected type '%s', got unconvertible type '%s', value: '%v'", __obf_97d979f40f648bde, __obf_cd65ed68b120e383.
-				Type(), __obf_a30e8e069ebf8d56.Type(), __obf_e428e8b18837f120)
+			"'%s' expected type '%s', got unconvertible type '%s', value: '%v'", __obf_91e38c6481387fc0, __obf_b7dec3cc8a6aba3c.
+				Type(), __obf_0bfc5beb6a20600c.Type(), __obf_4bc7fc453056091b)
 	}
 
 	return nil
 }
 
-func (__obf_15070727b144cc26 *Decoder) __obf_7c63467fdcb0d6ec(__obf_97d979f40f648bde string, __obf_e428e8b18837f120 any, __obf_cd65ed68b120e383 reflect.Value) error {
-	__obf_a30e8e069ebf8d56 := reflect.Indirect(reflect.ValueOf(__obf_e428e8b18837f120))
-	__obf_8c8f659ba1d013f1 := __obf_ed31af980b14987e(__obf_a30e8e069ebf8d56)
-	__obf_9dd014252313d6cd := __obf_a30e8e069ebf8d56.Type()
+func (__obf_b6d13e44c74c2560 *Decoder) __obf_c7f3188f58bad066(__obf_91e38c6481387fc0 string, __obf_4bc7fc453056091b any, __obf_b7dec3cc8a6aba3c reflect.Value) error {
+	__obf_0bfc5beb6a20600c := reflect.Indirect(reflect.ValueOf(__obf_4bc7fc453056091b))
+	__obf_4681297d649eea44 := __obf_32f26d0d12491636(__obf_0bfc5beb6a20600c)
+	__obf_cb1be79795600114 := __obf_0bfc5beb6a20600c.Type()
 
 	switch {
-	case __obf_8c8f659ba1d013f1 == reflect.Int:
-		__obf_6cbf6487a01daf31 := __obf_a30e8e069ebf8d56.Int()
-		if __obf_6cbf6487a01daf31 < 0 && !__obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput {
-			return fmt.Errorf("cannot parse '%s', %d overflows uint", __obf_97d979f40f648bde, __obf_6cbf6487a01daf31)
+	case __obf_4681297d649eea44 == reflect.Int:
+		__obf_4e5b08e68a148355 := __obf_0bfc5beb6a20600c.Int()
+		if __obf_4e5b08e68a148355 < 0 && !__obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput {
+			return fmt.Errorf("cannot parse '%s', %d overflows uint", __obf_91e38c6481387fc0, __obf_4e5b08e68a148355)
 		}
-		__obf_cd65ed68b120e383.
-			SetUint(uint64(__obf_6cbf6487a01daf31))
-	case __obf_8c8f659ba1d013f1 == reflect.Uint:
-		__obf_cd65ed68b120e383.
-			SetUint(__obf_a30e8e069ebf8d56.Uint())
-	case __obf_8c8f659ba1d013f1 == reflect.Float32:
-		__obf_502bda9c3cc67a99 := __obf_a30e8e069ebf8d56.Float()
-		if __obf_502bda9c3cc67a99 < 0 && !__obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput {
-			return fmt.Errorf("cannot parse '%s', %f overflows uint", __obf_97d979f40f648bde, __obf_502bda9c3cc67a99)
+		__obf_b7dec3cc8a6aba3c.
+			SetUint(uint64(__obf_4e5b08e68a148355))
+	case __obf_4681297d649eea44 == reflect.Uint:
+		__obf_b7dec3cc8a6aba3c.
+			SetUint(__obf_0bfc5beb6a20600c.Uint())
+	case __obf_4681297d649eea44 == reflect.Float32:
+		__obf_7bfc349763f12493 := __obf_0bfc5beb6a20600c.Float()
+		if __obf_7bfc349763f12493 < 0 && !__obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput {
+			return fmt.Errorf("cannot parse '%s', %f overflows uint", __obf_91e38c6481387fc0, __obf_7bfc349763f12493)
 		}
-		__obf_cd65ed68b120e383.
-			SetUint(uint64(__obf_502bda9c3cc67a99))
-	case __obf_8c8f659ba1d013f1 == reflect.Bool && __obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput:
-		if __obf_a30e8e069ebf8d56.Bool() {
-			__obf_cd65ed68b120e383.
+		__obf_b7dec3cc8a6aba3c.
+			SetUint(uint64(__obf_7bfc349763f12493))
+	case __obf_4681297d649eea44 == reflect.Bool && __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput:
+		if __obf_0bfc5beb6a20600c.Bool() {
+			__obf_b7dec3cc8a6aba3c.
 				SetUint(1)
 		} else {
-			__obf_cd65ed68b120e383.
+			__obf_b7dec3cc8a6aba3c.
 				SetUint(0)
 		}
-	case __obf_8c8f659ba1d013f1 == reflect.String && __obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput:
-		__obf_ae7e7e9fd3e1b096 := __obf_a30e8e069ebf8d56.String()
-		if __obf_ae7e7e9fd3e1b096 == "" {
-			__obf_ae7e7e9fd3e1b096 = "0"
+	case __obf_4681297d649eea44 == reflect.String && __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput:
+		__obf_288b09ee2b024465 := __obf_0bfc5beb6a20600c.String()
+		if __obf_288b09ee2b024465 == "" {
+			__obf_288b09ee2b024465 = "0"
 		}
-		__obf_6cbf6487a01daf31, __obf_6d8ef670b0943b3c := strconv.ParseUint(__obf_ae7e7e9fd3e1b096, 0, __obf_cd65ed68b120e383.Type().Bits())
-		if __obf_6d8ef670b0943b3c == nil {
-			__obf_cd65ed68b120e383.
-				SetUint(__obf_6cbf6487a01daf31)
+		__obf_4e5b08e68a148355, __obf_ce3ada6ea4dc41de := strconv.ParseUint(__obf_288b09ee2b024465, 0, __obf_b7dec3cc8a6aba3c.Type().Bits())
+		if __obf_ce3ada6ea4dc41de == nil {
+			__obf_b7dec3cc8a6aba3c.
+				SetUint(__obf_4e5b08e68a148355)
 		} else {
-			return fmt.Errorf("cannot parse '%s' as uint: %s", __obf_97d979f40f648bde, __obf_6d8ef670b0943b3c)
+			return fmt.Errorf("cannot parse '%s' as uint: %s", __obf_91e38c6481387fc0, __obf_ce3ada6ea4dc41de)
 		}
-	case __obf_9dd014252313d6cd.PkgPath() == "encoding/json" && __obf_9dd014252313d6cd.Name() == "Number":
-		__obf_f52aeda9f67e10ec := __obf_e428e8b18837f120.(json.Number)
-		__obf_6cbf6487a01daf31, __obf_6d8ef670b0943b3c := strconv.ParseUint(string(__obf_f52aeda9f67e10ec), 0, 64)
-		if __obf_6d8ef670b0943b3c != nil {
+	case __obf_cb1be79795600114.PkgPath() == "encoding/json" && __obf_cb1be79795600114.Name() == "Number":
+		__obf_5e82faecd5a1fa26 := __obf_4bc7fc453056091b.(json.Number)
+		__obf_4e5b08e68a148355, __obf_ce3ada6ea4dc41de := strconv.ParseUint(string(__obf_5e82faecd5a1fa26), 0, 64)
+		if __obf_ce3ada6ea4dc41de != nil {
 			return fmt.Errorf(
-				"error decoding json.Number into %s: %s", __obf_97d979f40f648bde, __obf_6d8ef670b0943b3c)
+				"error decoding json.Number into %s: %s", __obf_91e38c6481387fc0, __obf_ce3ada6ea4dc41de)
 		}
-		__obf_cd65ed68b120e383.
-			SetUint(__obf_6cbf6487a01daf31)
+		__obf_b7dec3cc8a6aba3c.
+			SetUint(__obf_4e5b08e68a148355)
 	default:
 		return fmt.Errorf(
-			"'%s' expected type '%s', got unconvertible type '%s', value: '%v'", __obf_97d979f40f648bde, __obf_cd65ed68b120e383.
-				Type(), __obf_a30e8e069ebf8d56.Type(), __obf_e428e8b18837f120)
+			"'%s' expected type '%s', got unconvertible type '%s', value: '%v'", __obf_91e38c6481387fc0, __obf_b7dec3cc8a6aba3c.
+				Type(), __obf_0bfc5beb6a20600c.Type(), __obf_4bc7fc453056091b)
 	}
 
 	return nil
 }
 
-func (__obf_15070727b144cc26 *Decoder) __obf_bd1426afee26ea4f(__obf_97d979f40f648bde string, __obf_e428e8b18837f120 any, __obf_cd65ed68b120e383 reflect.Value) error {
-	__obf_a30e8e069ebf8d56 := reflect.Indirect(reflect.ValueOf(__obf_e428e8b18837f120))
-	__obf_8c8f659ba1d013f1 := __obf_ed31af980b14987e(__obf_a30e8e069ebf8d56)
+func (__obf_b6d13e44c74c2560 *Decoder) __obf_aceb27a842250df2(__obf_91e38c6481387fc0 string, __obf_4bc7fc453056091b any, __obf_b7dec3cc8a6aba3c reflect.Value) error {
+	__obf_0bfc5beb6a20600c := reflect.Indirect(reflect.ValueOf(__obf_4bc7fc453056091b))
+	__obf_4681297d649eea44 := __obf_32f26d0d12491636(__obf_0bfc5beb6a20600c)
 
 	switch {
-	case __obf_8c8f659ba1d013f1 == reflect.Bool:
-		__obf_cd65ed68b120e383.
-			SetBool(__obf_a30e8e069ebf8d56.Bool())
-	case __obf_8c8f659ba1d013f1 == reflect.Int && __obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput:
-		__obf_cd65ed68b120e383.
-			SetBool(__obf_a30e8e069ebf8d56.Int() != 0)
-	case __obf_8c8f659ba1d013f1 == reflect.Uint && __obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput:
-		__obf_cd65ed68b120e383.
-			SetBool(__obf_a30e8e069ebf8d56.Uint() != 0)
-	case __obf_8c8f659ba1d013f1 == reflect.Float32 && __obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput:
-		__obf_cd65ed68b120e383.
-			SetBool(__obf_a30e8e069ebf8d56.Float() != 0)
-	case __obf_8c8f659ba1d013f1 == reflect.String && __obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput:
-		__obf_ed3004c91f084575, __obf_6d8ef670b0943b3c := strconv.ParseBool(__obf_a30e8e069ebf8d56.String())
-		if __obf_6d8ef670b0943b3c == nil {
-			__obf_cd65ed68b120e383.
-				SetBool(__obf_ed3004c91f084575)
-		} else if __obf_a30e8e069ebf8d56.String() == "" {
-			__obf_cd65ed68b120e383.
+	case __obf_4681297d649eea44 == reflect.Bool:
+		__obf_b7dec3cc8a6aba3c.
+			SetBool(__obf_0bfc5beb6a20600c.Bool())
+	case __obf_4681297d649eea44 == reflect.Int && __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput:
+		__obf_b7dec3cc8a6aba3c.
+			SetBool(__obf_0bfc5beb6a20600c.Int() != 0)
+	case __obf_4681297d649eea44 == reflect.Uint && __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput:
+		__obf_b7dec3cc8a6aba3c.
+			SetBool(__obf_0bfc5beb6a20600c.Uint() != 0)
+	case __obf_4681297d649eea44 == reflect.Float32 && __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput:
+		__obf_b7dec3cc8a6aba3c.
+			SetBool(__obf_0bfc5beb6a20600c.Float() != 0)
+	case __obf_4681297d649eea44 == reflect.String && __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput:
+		__obf_2509c56426afe825, __obf_ce3ada6ea4dc41de := strconv.ParseBool(__obf_0bfc5beb6a20600c.String())
+		if __obf_ce3ada6ea4dc41de == nil {
+			__obf_b7dec3cc8a6aba3c.
+				SetBool(__obf_2509c56426afe825)
+		} else if __obf_0bfc5beb6a20600c.String() == "" {
+			__obf_b7dec3cc8a6aba3c.
 				SetBool(false)
 		} else {
-			return fmt.Errorf("cannot parse '%s' as bool: %s", __obf_97d979f40f648bde, __obf_6d8ef670b0943b3c)
+			return fmt.Errorf("cannot parse '%s' as bool: %s", __obf_91e38c6481387fc0, __obf_ce3ada6ea4dc41de)
 		}
 	default:
 		return fmt.Errorf(
-			"'%s' expected type '%s', got unconvertible type '%s', value: '%v'", __obf_97d979f40f648bde, __obf_cd65ed68b120e383.
-				Type(), __obf_a30e8e069ebf8d56.Type(), __obf_e428e8b18837f120)
+			"'%s' expected type '%s', got unconvertible type '%s', value: '%v'", __obf_91e38c6481387fc0, __obf_b7dec3cc8a6aba3c.
+				Type(), __obf_0bfc5beb6a20600c.Type(), __obf_4bc7fc453056091b)
 	}
 
 	return nil
 }
 
-func (__obf_15070727b144cc26 *Decoder) __obf_02660e9348752825(__obf_97d979f40f648bde string, __obf_e428e8b18837f120 any, __obf_cd65ed68b120e383 reflect.Value) error {
-	__obf_a30e8e069ebf8d56 := reflect.Indirect(reflect.ValueOf(__obf_e428e8b18837f120))
-	__obf_8c8f659ba1d013f1 := __obf_ed31af980b14987e(__obf_a30e8e069ebf8d56)
-	__obf_9dd014252313d6cd := __obf_a30e8e069ebf8d56.Type()
+func (__obf_b6d13e44c74c2560 *Decoder) __obf_139c2209e3bd3273(__obf_91e38c6481387fc0 string, __obf_4bc7fc453056091b any, __obf_b7dec3cc8a6aba3c reflect.Value) error {
+	__obf_0bfc5beb6a20600c := reflect.Indirect(reflect.ValueOf(__obf_4bc7fc453056091b))
+	__obf_4681297d649eea44 := __obf_32f26d0d12491636(__obf_0bfc5beb6a20600c)
+	__obf_cb1be79795600114 := __obf_0bfc5beb6a20600c.Type()
 
 	switch {
-	case __obf_8c8f659ba1d013f1 == reflect.Int:
-		__obf_cd65ed68b120e383.
-			SetFloat(float64(__obf_a30e8e069ebf8d56.Int()))
-	case __obf_8c8f659ba1d013f1 == reflect.Uint:
-		__obf_cd65ed68b120e383.
-			SetFloat(float64(__obf_a30e8e069ebf8d56.Uint()))
-	case __obf_8c8f659ba1d013f1 == reflect.Float32:
-		__obf_cd65ed68b120e383.
-			SetFloat(__obf_a30e8e069ebf8d56.Float())
-	case __obf_8c8f659ba1d013f1 == reflect.Bool && __obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput:
-		if __obf_a30e8e069ebf8d56.Bool() {
-			__obf_cd65ed68b120e383.
+	case __obf_4681297d649eea44 == reflect.Int:
+		__obf_b7dec3cc8a6aba3c.
+			SetFloat(float64(__obf_0bfc5beb6a20600c.Int()))
+	case __obf_4681297d649eea44 == reflect.Uint:
+		__obf_b7dec3cc8a6aba3c.
+			SetFloat(float64(__obf_0bfc5beb6a20600c.Uint()))
+	case __obf_4681297d649eea44 == reflect.Float32:
+		__obf_b7dec3cc8a6aba3c.
+			SetFloat(__obf_0bfc5beb6a20600c.Float())
+	case __obf_4681297d649eea44 == reflect.Bool && __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput:
+		if __obf_0bfc5beb6a20600c.Bool() {
+			__obf_b7dec3cc8a6aba3c.
 				SetFloat(1)
 		} else {
-			__obf_cd65ed68b120e383.
+			__obf_b7dec3cc8a6aba3c.
 				SetFloat(0)
 		}
-	case __obf_8c8f659ba1d013f1 == reflect.String && __obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput:
-		__obf_ae7e7e9fd3e1b096 := __obf_a30e8e069ebf8d56.String()
-		if __obf_ae7e7e9fd3e1b096 == "" {
-			__obf_ae7e7e9fd3e1b096 = "0"
+	case __obf_4681297d649eea44 == reflect.String && __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput:
+		__obf_288b09ee2b024465 := __obf_0bfc5beb6a20600c.String()
+		if __obf_288b09ee2b024465 == "" {
+			__obf_288b09ee2b024465 = "0"
 		}
-		__obf_502bda9c3cc67a99, __obf_6d8ef670b0943b3c := strconv.ParseFloat(__obf_ae7e7e9fd3e1b096, __obf_cd65ed68b120e383.Type().Bits())
-		if __obf_6d8ef670b0943b3c == nil {
-			__obf_cd65ed68b120e383.
-				SetFloat(__obf_502bda9c3cc67a99)
+		__obf_7bfc349763f12493, __obf_ce3ada6ea4dc41de := strconv.ParseFloat(__obf_288b09ee2b024465, __obf_b7dec3cc8a6aba3c.Type().Bits())
+		if __obf_ce3ada6ea4dc41de == nil {
+			__obf_b7dec3cc8a6aba3c.
+				SetFloat(__obf_7bfc349763f12493)
 		} else {
-			return fmt.Errorf("cannot parse '%s' as float: %s", __obf_97d979f40f648bde, __obf_6d8ef670b0943b3c)
+			return fmt.Errorf("cannot parse '%s' as float: %s", __obf_91e38c6481387fc0, __obf_ce3ada6ea4dc41de)
 		}
-	case __obf_9dd014252313d6cd.PkgPath() == "encoding/json" && __obf_9dd014252313d6cd.Name() == "Number":
-		__obf_f52aeda9f67e10ec := __obf_e428e8b18837f120.(json.Number)
-		__obf_6cbf6487a01daf31, __obf_6d8ef670b0943b3c := __obf_f52aeda9f67e10ec.Float64()
-		if __obf_6d8ef670b0943b3c != nil {
+	case __obf_cb1be79795600114.PkgPath() == "encoding/json" && __obf_cb1be79795600114.Name() == "Number":
+		__obf_5e82faecd5a1fa26 := __obf_4bc7fc453056091b.(json.Number)
+		__obf_4e5b08e68a148355, __obf_ce3ada6ea4dc41de := __obf_5e82faecd5a1fa26.Float64()
+		if __obf_ce3ada6ea4dc41de != nil {
 			return fmt.Errorf(
-				"error decoding json.Number into %s: %s", __obf_97d979f40f648bde, __obf_6d8ef670b0943b3c)
+				"error decoding json.Number into %s: %s", __obf_91e38c6481387fc0, __obf_ce3ada6ea4dc41de)
 		}
-		__obf_cd65ed68b120e383.
-			SetFloat(__obf_6cbf6487a01daf31)
+		__obf_b7dec3cc8a6aba3c.
+			SetFloat(__obf_4e5b08e68a148355)
 	default:
 		return fmt.Errorf(
-			"'%s' expected type '%s', got unconvertible type '%s', value: '%v'", __obf_97d979f40f648bde, __obf_cd65ed68b120e383.
-				Type(), __obf_a30e8e069ebf8d56.Type(), __obf_e428e8b18837f120)
+			"'%s' expected type '%s', got unconvertible type '%s', value: '%v'", __obf_91e38c6481387fc0, __obf_b7dec3cc8a6aba3c.
+				Type(), __obf_0bfc5beb6a20600c.Type(), __obf_4bc7fc453056091b)
 	}
 
 	return nil
 }
 
-func (__obf_15070727b144cc26 *Decoder) __obf_d20c19b1598726f2(__obf_97d979f40f648bde string, __obf_e428e8b18837f120 any, __obf_cd65ed68b120e383 reflect.Value) error {
-	__obf_d438fc1373de555c := __obf_cd65ed68b120e383.Type()
-	__obf_b4220ef79b7777b4 := __obf_d438fc1373de555c.Key()
-	__obf_672842fe2f3a868a := __obf_d438fc1373de555c.Elem()
-	__obf_8cf6c124f55656c2 := // By default we overwrite keys in the current map
-		__obf_cd65ed68b120e383
+func (__obf_b6d13e44c74c2560 *Decoder) __obf_e0b8cf654a653244(__obf_91e38c6481387fc0 string, __obf_4bc7fc453056091b any, __obf_b7dec3cc8a6aba3c reflect.Value) error {
+	__obf_ff3a378dc2f0e275 := __obf_b7dec3cc8a6aba3c.Type()
+	__obf_342201c2a86c923f := __obf_ff3a378dc2f0e275.Key()
+	__obf_6117515577845688 := __obf_ff3a378dc2f0e275.Elem()
+	__obf_0f1a01daa73e7a35 := // By default we overwrite keys in the current map
+		__obf_b7dec3cc8a6aba3c
 
 	// If the map is nil or we're purposely zeroing fields, make a new map
-	if __obf_8cf6c124f55656c2.IsNil() || __obf_15070727b144cc26.__obf_da116ef5edc24797.ZeroFields {
-		__obf_00862f74a2b44518 := // Make a new map to hold our result
-			reflect.MapOf(__obf_b4220ef79b7777b4, __obf_672842fe2f3a868a)
-		__obf_8cf6c124f55656c2 = reflect.MakeMap(__obf_00862f74a2b44518)
+	if __obf_0f1a01daa73e7a35.IsNil() || __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.ZeroFields {
+		__obf_c134280a495c4576 := // Make a new map to hold our result
+			reflect.MapOf(__obf_342201c2a86c923f, __obf_6117515577845688)
+		__obf_0f1a01daa73e7a35 = reflect.MakeMap(__obf_c134280a495c4576)
 	}
-	__obf_a30e8e069ebf8d56 := // Check input type and based on the input type jump to the proper func
-		reflect.Indirect(reflect.ValueOf(__obf_e428e8b18837f120))
-	switch __obf_a30e8e069ebf8d56.Kind() {
+	__obf_0bfc5beb6a20600c := // Check input type and based on the input type jump to the proper func
+		reflect.Indirect(reflect.ValueOf(__obf_4bc7fc453056091b))
+	switch __obf_0bfc5beb6a20600c.Kind() {
 	case reflect.Map:
-		return __obf_15070727b144cc26.__obf_2c810e860cf3aead(__obf_97d979f40f648bde, __obf_a30e8e069ebf8d56, __obf_cd65ed68b120e383, __obf_8cf6c124f55656c2)
+		return __obf_b6d13e44c74c2560.__obf_48991e54d94b3725(__obf_91e38c6481387fc0, __obf_0bfc5beb6a20600c, __obf_b7dec3cc8a6aba3c, __obf_0f1a01daa73e7a35)
 
 	case reflect.Struct:
-		return __obf_15070727b144cc26.__obf_612b7a47c762a7ba(__obf_a30e8e069ebf8d56, __obf_cd65ed68b120e383, __obf_8cf6c124f55656c2)
+		return __obf_b6d13e44c74c2560.__obf_9b1e964eafe7b32e(__obf_0bfc5beb6a20600c, __obf_b7dec3cc8a6aba3c, __obf_0f1a01daa73e7a35)
 
 	case reflect.Array, reflect.Slice:
-		if __obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput {
-			return __obf_15070727b144cc26.__obf_1c4af7f1d55174d8(__obf_97d979f40f648bde, __obf_a30e8e069ebf8d56, __obf_cd65ed68b120e383, __obf_8cf6c124f55656c2)
+		if __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput {
+			return __obf_b6d13e44c74c2560.__obf_03fe305b5722e018(__obf_91e38c6481387fc0, __obf_0bfc5beb6a20600c, __obf_b7dec3cc8a6aba3c, __obf_0f1a01daa73e7a35)
 		}
 
 		fallthrough
 
 	default:
-		return fmt.Errorf("'%s' expected a map, got '%s'", __obf_97d979f40f648bde, __obf_a30e8e069ebf8d56.Kind())
+		return fmt.Errorf("'%s' expected a map, got '%s'", __obf_91e38c6481387fc0, __obf_0bfc5beb6a20600c.Kind())
 	}
 }
 
-func (__obf_15070727b144cc26 *Decoder) __obf_1c4af7f1d55174d8(__obf_97d979f40f648bde string, __obf_a30e8e069ebf8d56 reflect.Value, __obf_cd65ed68b120e383 reflect.Value, __obf_8cf6c124f55656c2 reflect.Value) error {
+func (__obf_b6d13e44c74c2560 *Decoder) __obf_03fe305b5722e018(__obf_91e38c6481387fc0 string, __obf_0bfc5beb6a20600c reflect.Value, __obf_b7dec3cc8a6aba3c reflect.Value, __obf_0f1a01daa73e7a35 reflect.Value) error {
 	// Special case for BC reasons (covered by tests)
-	if __obf_a30e8e069ebf8d56.Len() == 0 {
-		__obf_cd65ed68b120e383.
-			Set(__obf_8cf6c124f55656c2)
+	if __obf_0bfc5beb6a20600c.Len() == 0 {
+		__obf_b7dec3cc8a6aba3c.
+			Set(__obf_0f1a01daa73e7a35)
 		return nil
 	}
 
-	for __obf_6cbf6487a01daf31 := 0; __obf_6cbf6487a01daf31 < __obf_a30e8e069ebf8d56.Len(); __obf_6cbf6487a01daf31++ {
-		__obf_6d8ef670b0943b3c := __obf_15070727b144cc26.__obf_54e09d10fb5e308c(__obf_97d979f40f648bde+
-			"["+strconv.Itoa(__obf_6cbf6487a01daf31)+"]", __obf_a30e8e069ebf8d56.
-			Index(__obf_6cbf6487a01daf31).Interface(), __obf_cd65ed68b120e383)
-		if __obf_6d8ef670b0943b3c != nil {
-			return __obf_6d8ef670b0943b3c
+	for __obf_4e5b08e68a148355 := 0; __obf_4e5b08e68a148355 < __obf_0bfc5beb6a20600c.Len(); __obf_4e5b08e68a148355++ {
+		__obf_ce3ada6ea4dc41de := __obf_b6d13e44c74c2560.__obf_eea77241dc8adb35(__obf_91e38c6481387fc0+
+			"["+strconv.Itoa(__obf_4e5b08e68a148355)+"]", __obf_0bfc5beb6a20600c.
+			Index(__obf_4e5b08e68a148355).Interface(), __obf_b7dec3cc8a6aba3c)
+		if __obf_ce3ada6ea4dc41de != nil {
+			return __obf_ce3ada6ea4dc41de
 		}
 	}
 
 	return nil
 }
 
-func (__obf_15070727b144cc26 *Decoder) __obf_2c810e860cf3aead(__obf_97d979f40f648bde string, __obf_a30e8e069ebf8d56 reflect.Value, __obf_cd65ed68b120e383 reflect.Value, __obf_8cf6c124f55656c2 reflect.Value) error {
-	__obf_d438fc1373de555c := __obf_cd65ed68b120e383.Type()
-	__obf_b4220ef79b7777b4 := __obf_d438fc1373de555c.Key()
-	__obf_672842fe2f3a868a := __obf_d438fc1373de555c.Elem()
+func (__obf_b6d13e44c74c2560 *Decoder) __obf_48991e54d94b3725(__obf_91e38c6481387fc0 string, __obf_0bfc5beb6a20600c reflect.Value, __obf_b7dec3cc8a6aba3c reflect.Value, __obf_0f1a01daa73e7a35 reflect.Value) error {
+	__obf_ff3a378dc2f0e275 := __obf_b7dec3cc8a6aba3c.Type()
+	__obf_342201c2a86c923f := __obf_ff3a378dc2f0e275.Key()
+	__obf_6117515577845688 := __obf_ff3a378dc2f0e275.Elem()
 
 	// Accumulate errors
 	errors := make([]string, 0)
 
 	// If the input data is empty, then we just match what the input data is.
-	if __obf_a30e8e069ebf8d56.Len() == 0 {
-		if __obf_a30e8e069ebf8d56.IsNil() {
-			if !__obf_cd65ed68b120e383.IsNil() {
-				__obf_cd65ed68b120e383.
-					Set(__obf_a30e8e069ebf8d56)
+	if __obf_0bfc5beb6a20600c.Len() == 0 {
+		if __obf_0bfc5beb6a20600c.IsNil() {
+			if !__obf_b7dec3cc8a6aba3c.IsNil() {
+				__obf_b7dec3cc8a6aba3c.
+					Set(__obf_0bfc5beb6a20600c)
 			}
 		} else {
-			__obf_cd65ed68b120e383.
+			__obf_b7dec3cc8a6aba3c.
 				// Set to empty allocated value
-				Set(__obf_8cf6c124f55656c2)
+				Set(__obf_0f1a01daa73e7a35)
 		}
 
 		return nil
 	}
 
-	for _, __obf_4386f256ac305461 := range __obf_a30e8e069ebf8d56.MapKeys() {
-		__obf_1cc7b5d4481b301c := __obf_97d979f40f648bde + "[" + __obf_4386f256ac305461.String() + "]"
-		__obf_ec6027ba208eccaa := // First decode the key into the proper type
-			reflect.Indirect(reflect.New(__obf_b4220ef79b7777b4))
-		if __obf_6d8ef670b0943b3c := __obf_15070727b144cc26.__obf_54e09d10fb5e308c(__obf_1cc7b5d4481b301c, __obf_4386f256ac305461.Interface(), __obf_ec6027ba208eccaa); __obf_6d8ef670b0943b3c != nil {
-			errors = __obf_9ddf59feabf88c65(errors, __obf_6d8ef670b0943b3c)
+	for _, __obf_cbac51807b02f04b := range __obf_0bfc5beb6a20600c.MapKeys() {
+		__obf_87f0d44838486dbb := __obf_91e38c6481387fc0 + "[" + __obf_cbac51807b02f04b.String() + "]"
+		__obf_75be26611dfc5936 := // First decode the key into the proper type
+			reflect.Indirect(reflect.New(__obf_342201c2a86c923f))
+		if __obf_ce3ada6ea4dc41de := __obf_b6d13e44c74c2560.__obf_eea77241dc8adb35(__obf_87f0d44838486dbb, __obf_cbac51807b02f04b.Interface(), __obf_75be26611dfc5936); __obf_ce3ada6ea4dc41de != nil {
+			errors = __obf_8cd4c4c9f4ceb7f3(errors, __obf_ce3ada6ea4dc41de)
 			continue
 		}
-		__obf_7646bc0f4c5c46a0 := // Next decode the data into the proper type
-			__obf_a30e8e069ebf8d56.MapIndex(__obf_4386f256ac305461).Interface()
-		__obf_856bd6b000743bde := reflect.Indirect(reflect.New(__obf_672842fe2f3a868a))
-		if __obf_6d8ef670b0943b3c := __obf_15070727b144cc26.__obf_54e09d10fb5e308c(__obf_1cc7b5d4481b301c, __obf_7646bc0f4c5c46a0, __obf_856bd6b000743bde); __obf_6d8ef670b0943b3c != nil {
-			errors = __obf_9ddf59feabf88c65(errors, __obf_6d8ef670b0943b3c)
+		__obf_40a0aa2002a96053 := // Next decode the data into the proper type
+			__obf_0bfc5beb6a20600c.MapIndex(__obf_cbac51807b02f04b).Interface()
+		__obf_2d3a329b8189a532 := reflect.Indirect(reflect.New(__obf_6117515577845688))
+		if __obf_ce3ada6ea4dc41de := __obf_b6d13e44c74c2560.__obf_eea77241dc8adb35(__obf_87f0d44838486dbb, __obf_40a0aa2002a96053, __obf_2d3a329b8189a532); __obf_ce3ada6ea4dc41de != nil {
+			errors = __obf_8cd4c4c9f4ceb7f3(errors, __obf_ce3ada6ea4dc41de)
 			continue
 		}
-		__obf_8cf6c124f55656c2.
-			SetMapIndex(__obf_ec6027ba208eccaa, __obf_856bd6b000743bde)
+		__obf_0f1a01daa73e7a35.
+			SetMapIndex(__obf_75be26611dfc5936, __obf_2d3a329b8189a532)
 	}
-	__obf_cd65ed68b120e383.
+	__obf_b7dec3cc8a6aba3c.
 
 		// Set the built up map to the value
-		Set(__obf_8cf6c124f55656c2)
+		Set(__obf_0f1a01daa73e7a35)
 
 	// If we had errors, return those
 	if len(errors) > 0 {
@@ -777,245 +777,245 @@ func (__obf_15070727b144cc26 *Decoder) __obf_2c810e860cf3aead(__obf_97d979f40f64
 	return nil
 }
 
-func (__obf_15070727b144cc26 *Decoder) __obf_612b7a47c762a7ba(__obf_a30e8e069ebf8d56 reflect.Value, __obf_cd65ed68b120e383 reflect.Value, __obf_8cf6c124f55656c2 reflect.Value) error {
-	__obf_db92856142f658a1 := __obf_a30e8e069ebf8d56.Type()
-	for __obf_6cbf6487a01daf31 := 0; __obf_6cbf6487a01daf31 < __obf_db92856142f658a1.NumField(); __obf_6cbf6487a01daf31++ {
-		__obf_502bda9c3cc67a99 := // Get the StructField first since this is a cheap operation. If the
+func (__obf_b6d13e44c74c2560 *Decoder) __obf_9b1e964eafe7b32e(__obf_0bfc5beb6a20600c reflect.Value, __obf_b7dec3cc8a6aba3c reflect.Value, __obf_0f1a01daa73e7a35 reflect.Value) error {
+	__obf_b923d4b5912f1d6f := __obf_0bfc5beb6a20600c.Type()
+	for __obf_4e5b08e68a148355 := 0; __obf_4e5b08e68a148355 < __obf_b923d4b5912f1d6f.NumField(); __obf_4e5b08e68a148355++ {
+		__obf_7bfc349763f12493 := // Get the StructField first since this is a cheap operation. If the
 			// field is unexported, then ignore it.
-			__obf_db92856142f658a1.Field(__obf_6cbf6487a01daf31)
-		if __obf_502bda9c3cc67a99.PkgPath != "" {
+			__obf_b923d4b5912f1d6f.Field(__obf_4e5b08e68a148355)
+		if __obf_7bfc349763f12493.PkgPath != "" {
 			continue
 		}
-		__obf_7646bc0f4c5c46a0 := // Next get the actual value of this field and verify it is assignable
+		__obf_40a0aa2002a96053 := // Next get the actual value of this field and verify it is assignable
 			// to the map value.
-			__obf_a30e8e069ebf8d56.Field(__obf_6cbf6487a01daf31)
-		if !__obf_7646bc0f4c5c46a0.Type().AssignableTo(__obf_8cf6c124f55656c2.Type().Elem()) {
-			return fmt.Errorf("cannot assign type '%s' to map value field of type '%s'", __obf_7646bc0f4c5c46a0.Type(), __obf_8cf6c124f55656c2.Type().Elem())
+			__obf_0bfc5beb6a20600c.Field(__obf_4e5b08e68a148355)
+		if !__obf_40a0aa2002a96053.Type().AssignableTo(__obf_0f1a01daa73e7a35.Type().Elem()) {
+			return fmt.Errorf("cannot assign type '%s' to map value field of type '%s'", __obf_40a0aa2002a96053.Type(), __obf_0f1a01daa73e7a35.Type().Elem())
 		}
-		__obf_e17241ba1062a03c := __obf_502bda9c3cc67a99.Tag.Get(__obf_15070727b144cc26.__obf_da116ef5edc24797.TagName)
-		__obf_5d6685223a3ba1df := __obf_502bda9c3cc67a99.Name
+		__obf_6f0cf29468f87f16 := __obf_7bfc349763f12493.Tag.Get(__obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.TagName)
+		__obf_a22eb71eb7839c93 := __obf_7bfc349763f12493.Name
 
-		if __obf_e17241ba1062a03c == "" && __obf_15070727b144cc26.__obf_da116ef5edc24797.IgnoreUntaggedFields {
+		if __obf_6f0cf29468f87f16 == "" && __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.IgnoreUntaggedFields {
 			continue
 		}
-		__obf_d1f207c6142a9a90 := // If Squash is set in the config, we squash the field down.
-			__obf_15070727b144cc26.__obf_da116ef5edc24797.Squash && __obf_7646bc0f4c5c46a0.Kind() == reflect.Struct && __obf_502bda9c3cc67a99.Anonymous
-		__obf_7646bc0f4c5c46a0 = __obf_dfbab38f747ff8d8(__obf_7646bc0f4c5c46a0, __obf_15070727b144cc26.
+		__obf_b55c7cfdc0f1b9d0 := // If Squash is set in the config, we squash the field down.
+			__obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.Squash && __obf_40a0aa2002a96053.Kind() == reflect.Struct && __obf_7bfc349763f12493.Anonymous
+		__obf_40a0aa2002a96053 = __obf_6a72a1d5381f9484(__obf_40a0aa2002a96053, __obf_b6d13e44c74c2560.
 
 			// Determine the name of the key in the map
-			__obf_da116ef5edc24797.TagName)
+			__obf_9413fb8c4aa2a800.TagName)
 
-		if __obf_e10c6f5a852ef775 := strings.Index(__obf_e17241ba1062a03c, ","); __obf_e10c6f5a852ef775 != -1 {
-			if __obf_e17241ba1062a03c[:__obf_e10c6f5a852ef775] == "-" {
+		if __obf_49c2d697afa0d5e9 := strings.Index(__obf_6f0cf29468f87f16, ","); __obf_49c2d697afa0d5e9 != -1 {
+			if __obf_6f0cf29468f87f16[:__obf_49c2d697afa0d5e9] == "-" {
 				continue
 			}
 			// If "omitempty" is specified in the tag, it ignores empty values.
-			if strings.Contains(__obf_e17241ba1062a03c[__obf_e10c6f5a852ef775+1:], "omitempty") && __obf_84bf21308b86c1c2(__obf_7646bc0f4c5c46a0) {
+			if strings.Contains(__obf_6f0cf29468f87f16[__obf_49c2d697afa0d5e9+1:], "omitempty") && __obf_ab306ff92a59bd1a(__obf_40a0aa2002a96053) {
 				continue
 			}
-			__obf_d1f207c6142a9a90 = // If "squash" is specified in the tag, we squash the field down.
-				__obf_d1f207c6142a9a90 || strings.Contains(__obf_e17241ba1062a03c[__obf_e10c6f5a852ef775+1:], "squash")
-			if __obf_d1f207c6142a9a90 {
+			__obf_b55c7cfdc0f1b9d0 = // If "squash" is specified in the tag, we squash the field down.
+				__obf_b55c7cfdc0f1b9d0 || strings.Contains(__obf_6f0cf29468f87f16[__obf_49c2d697afa0d5e9+1:], "squash")
+			if __obf_b55c7cfdc0f1b9d0 {
 				// When squashing, the embedded type can be a pointer to a struct.
-				if __obf_7646bc0f4c5c46a0.Kind() == reflect.Ptr && __obf_7646bc0f4c5c46a0.Elem().Kind() == reflect.Struct {
-					__obf_7646bc0f4c5c46a0 = __obf_7646bc0f4c5c46a0.Elem()
+				if __obf_40a0aa2002a96053.Kind() == reflect.Ptr && __obf_40a0aa2002a96053.Elem().Kind() == reflect.Struct {
+					__obf_40a0aa2002a96053 = __obf_40a0aa2002a96053.Elem()
 				}
 
 				// The final type must be a struct
-				if __obf_7646bc0f4c5c46a0.Kind() != reflect.Struct {
-					return fmt.Errorf("cannot squash non-struct type '%s'", __obf_7646bc0f4c5c46a0.Type())
+				if __obf_40a0aa2002a96053.Kind() != reflect.Struct {
+					return fmt.Errorf("cannot squash non-struct type '%s'", __obf_40a0aa2002a96053.Type())
 				}
 			}
-			if __obf_6611791189124fa7 := __obf_e17241ba1062a03c[:__obf_e10c6f5a852ef775]; __obf_6611791189124fa7 != "" {
-				__obf_5d6685223a3ba1df = __obf_6611791189124fa7
+			if __obf_e45a30a3c52938ef := __obf_6f0cf29468f87f16[:__obf_49c2d697afa0d5e9]; __obf_e45a30a3c52938ef != "" {
+				__obf_a22eb71eb7839c93 = __obf_e45a30a3c52938ef
 			}
-		} else if len(__obf_e17241ba1062a03c) > 0 {
-			if __obf_e17241ba1062a03c == "-" {
+		} else if len(__obf_6f0cf29468f87f16) > 0 {
+			if __obf_6f0cf29468f87f16 == "-" {
 				continue
 			}
-			__obf_5d6685223a3ba1df = __obf_e17241ba1062a03c
+			__obf_a22eb71eb7839c93 = __obf_6f0cf29468f87f16
 		}
 
-		switch __obf_7646bc0f4c5c46a0.Kind() {
+		switch __obf_40a0aa2002a96053.Kind() {
 		// this is an embedded struct, so handle it differently
 		case reflect.Struct:
-			__obf_9ae550bfb49def15 := reflect.New(__obf_7646bc0f4c5c46a0.Type())
-			__obf_9ae550bfb49def15.
-				Elem().Set(__obf_7646bc0f4c5c46a0)
-			__obf_9dac2155a9eeb452 := __obf_8cf6c124f55656c2.Type()
-			__obf_a90c3542f1f338cc := __obf_9dac2155a9eeb452.Key()
-			__obf_a697434ed18a5975 := __obf_9dac2155a9eeb452.Elem()
-			__obf_78ccc4952eb5b2b7 := reflect.MapOf(__obf_a90c3542f1f338cc, __obf_a697434ed18a5975)
-			__obf_fb5b6a3d64627b10 := reflect.MakeMap(__obf_78ccc4952eb5b2b7)
-			__obf_3776f89115922937 := // Creating a pointer to a map so that other methods can completely
+			__obf_b142638dfac3d013 := reflect.New(__obf_40a0aa2002a96053.Type())
+			__obf_b142638dfac3d013.
+				Elem().Set(__obf_40a0aa2002a96053)
+			__obf_863562a74f402b0f := __obf_0f1a01daa73e7a35.Type()
+			__obf_6c86852a8e09de7c := __obf_863562a74f402b0f.Key()
+			__obf_1fe948a83100544b := __obf_863562a74f402b0f.Elem()
+			__obf_3f58ce45e5ea278a := reflect.MapOf(__obf_6c86852a8e09de7c, __obf_1fe948a83100544b)
+			__obf_cc76fec0ce35db9f := reflect.MakeMap(__obf_3f58ce45e5ea278a)
+			__obf_3cc2790bca22b671 := // Creating a pointer to a map so that other methods can completely
 				// overwrite the map if need be (looking at you decodeMapFromMap). The
 				// indirection allows the underlying map to be settable (CanSet() == true)
 				// where as reflect.MakeMap returns an unsettable map.
-				reflect.New(__obf_fb5b6a3d64627b10.Type())
-			reflect.Indirect(__obf_3776f89115922937).Set(__obf_fb5b6a3d64627b10)
-			__obf_6d8ef670b0943b3c := __obf_15070727b144cc26.__obf_54e09d10fb5e308c(__obf_5d6685223a3ba1df, __obf_9ae550bfb49def15.Interface(), reflect.Indirect(__obf_3776f89115922937))
-			if __obf_6d8ef670b0943b3c != nil {
-				return __obf_6d8ef670b0943b3c
+				reflect.New(__obf_cc76fec0ce35db9f.Type())
+			reflect.Indirect(__obf_3cc2790bca22b671).Set(__obf_cc76fec0ce35db9f)
+			__obf_ce3ada6ea4dc41de := __obf_b6d13e44c74c2560.__obf_eea77241dc8adb35(__obf_a22eb71eb7839c93, __obf_b142638dfac3d013.Interface(), reflect.Indirect(__obf_3cc2790bca22b671))
+			if __obf_ce3ada6ea4dc41de != nil {
+				return __obf_ce3ada6ea4dc41de
 			}
-			__obf_fb5b6a3d64627b10 = // the underlying map may have been completely overwritten so pull
+			__obf_cc76fec0ce35db9f = // the underlying map may have been completely overwritten so pull
 				// it indirectly out of the enclosing value.
-				reflect.Indirect(__obf_3776f89115922937)
+				reflect.Indirect(__obf_3cc2790bca22b671)
 
-			if __obf_d1f207c6142a9a90 {
-				for _, __obf_4386f256ac305461 := range __obf_fb5b6a3d64627b10.MapKeys() {
-					__obf_8cf6c124f55656c2.
-						SetMapIndex(__obf_4386f256ac305461, __obf_fb5b6a3d64627b10.MapIndex(__obf_4386f256ac305461))
+			if __obf_b55c7cfdc0f1b9d0 {
+				for _, __obf_cbac51807b02f04b := range __obf_cc76fec0ce35db9f.MapKeys() {
+					__obf_0f1a01daa73e7a35.
+						SetMapIndex(__obf_cbac51807b02f04b, __obf_cc76fec0ce35db9f.MapIndex(__obf_cbac51807b02f04b))
 				}
 			} else {
-				__obf_8cf6c124f55656c2.
-					SetMapIndex(reflect.ValueOf(__obf_5d6685223a3ba1df), __obf_fb5b6a3d64627b10)
+				__obf_0f1a01daa73e7a35.
+					SetMapIndex(reflect.ValueOf(__obf_a22eb71eb7839c93), __obf_cc76fec0ce35db9f)
 			}
 
 		default:
-			__obf_8cf6c124f55656c2.
-				SetMapIndex(reflect.ValueOf(__obf_5d6685223a3ba1df), __obf_7646bc0f4c5c46a0)
+			__obf_0f1a01daa73e7a35.
+				SetMapIndex(reflect.ValueOf(__obf_a22eb71eb7839c93), __obf_40a0aa2002a96053)
 		}
 	}
 
-	if __obf_cd65ed68b120e383.CanAddr() {
-		__obf_cd65ed68b120e383.
-			Set(__obf_8cf6c124f55656c2)
+	if __obf_b7dec3cc8a6aba3c.CanAddr() {
+		__obf_b7dec3cc8a6aba3c.
+			Set(__obf_0f1a01daa73e7a35)
 	}
 
 	return nil
 }
 
-func (__obf_15070727b144cc26 *Decoder) __obf_6b92db91c5345245(__obf_97d979f40f648bde string, __obf_e428e8b18837f120 any, __obf_cd65ed68b120e383 reflect.Value) (bool, error) {
-	__obf_97e25d22577459ba := // If the input data is nil, then we want to just set the output
+func (__obf_b6d13e44c74c2560 *Decoder) __obf_5e29a4de20dbe76f(__obf_91e38c6481387fc0 string, __obf_4bc7fc453056091b any, __obf_b7dec3cc8a6aba3c reflect.Value) (bool, error) {
+	__obf_0bb843803aa02291 := // If the input data is nil, then we want to just set the output
 		// pointer to be nil as well.
-		__obf_e428e8b18837f120 == nil
-	if !__obf_97e25d22577459ba {
-		switch __obf_7646bc0f4c5c46a0 := reflect.Indirect(reflect.ValueOf(__obf_e428e8b18837f120)); __obf_7646bc0f4c5c46a0.Kind() {
+		__obf_4bc7fc453056091b == nil
+	if !__obf_0bb843803aa02291 {
+		switch __obf_40a0aa2002a96053 := reflect.Indirect(reflect.ValueOf(__obf_4bc7fc453056091b)); __obf_40a0aa2002a96053.Kind() {
 		case reflect.Chan,
 			reflect.Func,
 			reflect.Interface,
 			reflect.Map,
 			reflect.Ptr,
 			reflect.Slice:
-			__obf_97e25d22577459ba = __obf_7646bc0f4c5c46a0.IsNil()
+			__obf_0bb843803aa02291 = __obf_40a0aa2002a96053.IsNil()
 		}
 	}
-	if __obf_97e25d22577459ba {
-		if !__obf_cd65ed68b120e383.IsNil() && __obf_cd65ed68b120e383.CanSet() {
-			__obf_7058c0df19dd7f12 := reflect.New(__obf_cd65ed68b120e383.Type()).Elem()
-			__obf_cd65ed68b120e383.
-				Set(__obf_7058c0df19dd7f12)
+	if __obf_0bb843803aa02291 {
+		if !__obf_b7dec3cc8a6aba3c.IsNil() && __obf_b7dec3cc8a6aba3c.CanSet() {
+			__obf_d6ce16d271686428 := reflect.New(__obf_b7dec3cc8a6aba3c.Type()).Elem()
+			__obf_b7dec3cc8a6aba3c.
+				Set(__obf_d6ce16d271686428)
 		}
 
 		return true, nil
 	}
-	__obf_d438fc1373de555c := // Create an element of the concrete (non pointer) type and decode
+	__obf_ff3a378dc2f0e275 := // Create an element of the concrete (non pointer) type and decode
 		// into that. Then set the value of the pointer to this type.
-		__obf_cd65ed68b120e383.Type()
-	__obf_672842fe2f3a868a := __obf_d438fc1373de555c.Elem()
-	if __obf_cd65ed68b120e383.CanSet() {
-		__obf_fc37f2cc1e72fc7c := __obf_cd65ed68b120e383
-		if __obf_fc37f2cc1e72fc7c.IsNil() || __obf_15070727b144cc26.__obf_da116ef5edc24797.ZeroFields {
-			__obf_fc37f2cc1e72fc7c = reflect.New(__obf_672842fe2f3a868a)
+		__obf_b7dec3cc8a6aba3c.Type()
+	__obf_6117515577845688 := __obf_ff3a378dc2f0e275.Elem()
+	if __obf_b7dec3cc8a6aba3c.CanSet() {
+		__obf_5b1513df52ac39f3 := __obf_b7dec3cc8a6aba3c
+		if __obf_5b1513df52ac39f3.IsNil() || __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.ZeroFields {
+			__obf_5b1513df52ac39f3 = reflect.New(__obf_6117515577845688)
 		}
 
-		if __obf_6d8ef670b0943b3c := __obf_15070727b144cc26.__obf_54e09d10fb5e308c(__obf_97d979f40f648bde, __obf_e428e8b18837f120, reflect.Indirect(__obf_fc37f2cc1e72fc7c)); __obf_6d8ef670b0943b3c != nil {
-			return false, __obf_6d8ef670b0943b3c
+		if __obf_ce3ada6ea4dc41de := __obf_b6d13e44c74c2560.__obf_eea77241dc8adb35(__obf_91e38c6481387fc0, __obf_4bc7fc453056091b, reflect.Indirect(__obf_5b1513df52ac39f3)); __obf_ce3ada6ea4dc41de != nil {
+			return false, __obf_ce3ada6ea4dc41de
 		}
-		__obf_cd65ed68b120e383.
-			Set(__obf_fc37f2cc1e72fc7c)
+		__obf_b7dec3cc8a6aba3c.
+			Set(__obf_5b1513df52ac39f3)
 	} else {
-		if __obf_6d8ef670b0943b3c := __obf_15070727b144cc26.__obf_54e09d10fb5e308c(__obf_97d979f40f648bde, __obf_e428e8b18837f120, reflect.Indirect(__obf_cd65ed68b120e383)); __obf_6d8ef670b0943b3c != nil {
-			return false, __obf_6d8ef670b0943b3c
+		if __obf_ce3ada6ea4dc41de := __obf_b6d13e44c74c2560.__obf_eea77241dc8adb35(__obf_91e38c6481387fc0, __obf_4bc7fc453056091b, reflect.Indirect(__obf_b7dec3cc8a6aba3c)); __obf_ce3ada6ea4dc41de != nil {
+			return false, __obf_ce3ada6ea4dc41de
 		}
 	}
 	return false, nil
 }
 
-func (__obf_15070727b144cc26 *Decoder) __obf_d4a936768e419fa1(__obf_97d979f40f648bde string, __obf_e428e8b18837f120 any, __obf_cd65ed68b120e383 reflect.Value) error {
-	__obf_a30e8e069ebf8d56 := // Create an element of the concrete (non pointer) type and decode
+func (__obf_b6d13e44c74c2560 *Decoder) __obf_03a933e715babe51(__obf_91e38c6481387fc0 string, __obf_4bc7fc453056091b any, __obf_b7dec3cc8a6aba3c reflect.Value) error {
+	__obf_0bfc5beb6a20600c := // Create an element of the concrete (non pointer) type and decode
 		// into that. Then set the value of the pointer to this type.
-		reflect.Indirect(reflect.ValueOf(__obf_e428e8b18837f120))
-	if __obf_cd65ed68b120e383.Type() != __obf_a30e8e069ebf8d56.Type() {
+		reflect.Indirect(reflect.ValueOf(__obf_4bc7fc453056091b))
+	if __obf_b7dec3cc8a6aba3c.Type() != __obf_0bfc5beb6a20600c.Type() {
 		return fmt.Errorf(
-			"'%s' expected type '%s', got unconvertible type '%s', value: '%v'", __obf_97d979f40f648bde, __obf_cd65ed68b120e383.
-				Type(), __obf_a30e8e069ebf8d56.Type(), __obf_e428e8b18837f120)
+			"'%s' expected type '%s', got unconvertible type '%s', value: '%v'", __obf_91e38c6481387fc0, __obf_b7dec3cc8a6aba3c.
+				Type(), __obf_0bfc5beb6a20600c.Type(), __obf_4bc7fc453056091b)
 	}
-	__obf_cd65ed68b120e383.
-		Set(__obf_a30e8e069ebf8d56)
+	__obf_b7dec3cc8a6aba3c.
+		Set(__obf_0bfc5beb6a20600c)
 	return nil
 }
 
-func (__obf_15070727b144cc26 *Decoder) __obf_a1d958c6ee649900(__obf_97d979f40f648bde string, __obf_e428e8b18837f120 any, __obf_cd65ed68b120e383 reflect.Value) error {
-	__obf_a30e8e069ebf8d56 := reflect.Indirect(reflect.ValueOf(__obf_e428e8b18837f120))
-	__obf_8579ec0b420909df := __obf_a30e8e069ebf8d56.Kind()
-	__obf_d438fc1373de555c := __obf_cd65ed68b120e383.Type()
-	__obf_672842fe2f3a868a := __obf_d438fc1373de555c.Elem()
-	__obf_34ea561b47bbb0dc := reflect.SliceOf(__obf_672842fe2f3a868a)
+func (__obf_b6d13e44c74c2560 *Decoder) __obf_5830e3d709c533b9(__obf_91e38c6481387fc0 string, __obf_4bc7fc453056091b any, __obf_b7dec3cc8a6aba3c reflect.Value) error {
+	__obf_0bfc5beb6a20600c := reflect.Indirect(reflect.ValueOf(__obf_4bc7fc453056091b))
+	__obf_22e7b1e2803215a9 := __obf_0bfc5beb6a20600c.Kind()
+	__obf_ff3a378dc2f0e275 := __obf_b7dec3cc8a6aba3c.Type()
+	__obf_6117515577845688 := __obf_ff3a378dc2f0e275.Elem()
+	__obf_8a207f060f0969bb := reflect.SliceOf(__obf_6117515577845688)
 
 	// If we have a non array/slice type then we first attempt to convert.
-	if __obf_8579ec0b420909df != reflect.Array && __obf_8579ec0b420909df != reflect.Slice {
-		if __obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput {
+	if __obf_22e7b1e2803215a9 != reflect.Array && __obf_22e7b1e2803215a9 != reflect.Slice {
+		if __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput {
 			switch {
 			// Slice and array we use the normal logic
-			case __obf_8579ec0b420909df == reflect.Slice, __obf_8579ec0b420909df == reflect.Array:
+			case __obf_22e7b1e2803215a9 == reflect.Slice, __obf_22e7b1e2803215a9 == reflect.Array:
 				break
 
 			// Empty maps turn into empty slices
-			case __obf_8579ec0b420909df == reflect.Map:
-				if __obf_a30e8e069ebf8d56.Len() == 0 {
-					__obf_cd65ed68b120e383.
-						Set(reflect.MakeSlice(__obf_34ea561b47bbb0dc, 0, 0))
+			case __obf_22e7b1e2803215a9 == reflect.Map:
+				if __obf_0bfc5beb6a20600c.Len() == 0 {
+					__obf_b7dec3cc8a6aba3c.
+						Set(reflect.MakeSlice(__obf_8a207f060f0969bb, 0, 0))
 					return nil
 				}
 				// Create slice of maps of other sizes
-				return __obf_15070727b144cc26.__obf_a1d958c6ee649900(__obf_97d979f40f648bde, []any{__obf_e428e8b18837f120}, __obf_cd65ed68b120e383)
+				return __obf_b6d13e44c74c2560.__obf_5830e3d709c533b9(__obf_91e38c6481387fc0, []any{__obf_4bc7fc453056091b}, __obf_b7dec3cc8a6aba3c)
 
-			case __obf_8579ec0b420909df == reflect.String && __obf_672842fe2f3a868a.Kind() == reflect.Uint8:
-				return __obf_15070727b144cc26.__obf_a1d958c6ee649900(__obf_97d979f40f648bde, []byte(__obf_a30e8e069ebf8d56.String()), __obf_cd65ed68b120e383)
+			case __obf_22e7b1e2803215a9 == reflect.String && __obf_6117515577845688.Kind() == reflect.Uint8:
+				return __obf_b6d13e44c74c2560.__obf_5830e3d709c533b9(__obf_91e38c6481387fc0, []byte(__obf_0bfc5beb6a20600c.String()), __obf_b7dec3cc8a6aba3c)
 
 			// All other types we try to convert to the slice type
 			// and "lift" it into it. i.e. a string becomes a string slice.
 			default:
 				// Just re-try this function with data as a slice.
-				return __obf_15070727b144cc26.__obf_a1d958c6ee649900(__obf_97d979f40f648bde, []any{__obf_e428e8b18837f120}, __obf_cd65ed68b120e383)
+				return __obf_b6d13e44c74c2560.__obf_5830e3d709c533b9(__obf_91e38c6481387fc0, []any{__obf_4bc7fc453056091b}, __obf_b7dec3cc8a6aba3c)
 			}
 		}
 
 		return fmt.Errorf(
-			"'%s': source data must be an array or slice, got %s", __obf_97d979f40f648bde, __obf_8579ec0b420909df)
+			"'%s': source data must be an array or slice, got %s", __obf_91e38c6481387fc0, __obf_22e7b1e2803215a9)
 	}
 
 	// If the input value is nil, then don't allocate since empty != nil
-	if __obf_8579ec0b420909df != reflect.Array && __obf_a30e8e069ebf8d56.IsNil() {
+	if __obf_22e7b1e2803215a9 != reflect.Array && __obf_0bfc5beb6a20600c.IsNil() {
 		return nil
 	}
-	__obf_5bec2e3cdc1f320e := __obf_cd65ed68b120e383
-	if __obf_5bec2e3cdc1f320e.IsNil() || __obf_15070727b144cc26.__obf_da116ef5edc24797.ZeroFields {
-		__obf_5bec2e3cdc1f320e = // Make a new slice to hold our result, same size as the original data.
-			reflect.MakeSlice(__obf_34ea561b47bbb0dc, __obf_a30e8e069ebf8d56.Len(), __obf_a30e8e069ebf8d56.Len())
-	} else if __obf_5bec2e3cdc1f320e.Len() > __obf_a30e8e069ebf8d56.Len() {
-		__obf_5bec2e3cdc1f320e = __obf_5bec2e3cdc1f320e.Slice(0, __obf_a30e8e069ebf8d56.Len())
+	__obf_8db1509f1a548a01 := __obf_b7dec3cc8a6aba3c
+	if __obf_8db1509f1a548a01.IsNil() || __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.ZeroFields {
+		__obf_8db1509f1a548a01 = // Make a new slice to hold our result, same size as the original data.
+			reflect.MakeSlice(__obf_8a207f060f0969bb, __obf_0bfc5beb6a20600c.Len(), __obf_0bfc5beb6a20600c.Len())
+	} else if __obf_8db1509f1a548a01.Len() > __obf_0bfc5beb6a20600c.Len() {
+		__obf_8db1509f1a548a01 = __obf_8db1509f1a548a01.Slice(0, __obf_0bfc5beb6a20600c.Len())
 	}
 
 	// Accumulate any errors
 	errors := make([]string, 0)
 
-	for __obf_6cbf6487a01daf31 := 0; __obf_6cbf6487a01daf31 < __obf_a30e8e069ebf8d56.Len(); __obf_6cbf6487a01daf31++ {
-		__obf_5c777374effb5543 := __obf_a30e8e069ebf8d56.Index(__obf_6cbf6487a01daf31).Interface()
-		for __obf_5bec2e3cdc1f320e.Len() <= __obf_6cbf6487a01daf31 {
-			__obf_5bec2e3cdc1f320e = reflect.Append(__obf_5bec2e3cdc1f320e, reflect.Zero(__obf_672842fe2f3a868a))
+	for __obf_4e5b08e68a148355 := 0; __obf_4e5b08e68a148355 < __obf_0bfc5beb6a20600c.Len(); __obf_4e5b08e68a148355++ {
+		__obf_c1d57c0ecd71e4da := __obf_0bfc5beb6a20600c.Index(__obf_4e5b08e68a148355).Interface()
+		for __obf_8db1509f1a548a01.Len() <= __obf_4e5b08e68a148355 {
+			__obf_8db1509f1a548a01 = reflect.Append(__obf_8db1509f1a548a01, reflect.Zero(__obf_6117515577845688))
 		}
-		__obf_f88502ed8d5261eb := __obf_5bec2e3cdc1f320e.Index(__obf_6cbf6487a01daf31)
-		__obf_1cc7b5d4481b301c := __obf_97d979f40f648bde + "[" + strconv.Itoa(__obf_6cbf6487a01daf31) + "]"
-		if __obf_6d8ef670b0943b3c := __obf_15070727b144cc26.__obf_54e09d10fb5e308c(__obf_1cc7b5d4481b301c, __obf_5c777374effb5543, __obf_f88502ed8d5261eb); __obf_6d8ef670b0943b3c != nil {
-			errors = __obf_9ddf59feabf88c65(errors, __obf_6d8ef670b0943b3c)
+		__obf_7c7580d5bba4812d := __obf_8db1509f1a548a01.Index(__obf_4e5b08e68a148355)
+		__obf_87f0d44838486dbb := __obf_91e38c6481387fc0 + "[" + strconv.Itoa(__obf_4e5b08e68a148355) + "]"
+		if __obf_ce3ada6ea4dc41de := __obf_b6d13e44c74c2560.__obf_eea77241dc8adb35(__obf_87f0d44838486dbb, __obf_c1d57c0ecd71e4da, __obf_7c7580d5bba4812d); __obf_ce3ada6ea4dc41de != nil {
+			errors = __obf_8cd4c4c9f4ceb7f3(errors, __obf_ce3ada6ea4dc41de)
 		}
 	}
-	__obf_cd65ed68b120e383.
+	__obf_b7dec3cc8a6aba3c.
 
 		// Finally, set the value to the slice we built up
-		Set(__obf_5bec2e3cdc1f320e)
+		Set(__obf_8db1509f1a548a01)
 
 	// If there were errors, we return those
 	if len(errors) > 0 {
@@ -1025,24 +1025,24 @@ func (__obf_15070727b144cc26 *Decoder) __obf_a1d958c6ee649900(__obf_97d979f40f64
 	return nil
 }
 
-func (__obf_15070727b144cc26 *Decoder) __obf_912e64085a8c4c83(__obf_97d979f40f648bde string, __obf_e428e8b18837f120 any, __obf_cd65ed68b120e383 reflect.Value) error {
-	__obf_a30e8e069ebf8d56 := reflect.Indirect(reflect.ValueOf(__obf_e428e8b18837f120))
-	__obf_8579ec0b420909df := __obf_a30e8e069ebf8d56.Kind()
-	__obf_d438fc1373de555c := __obf_cd65ed68b120e383.Type()
-	__obf_672842fe2f3a868a := __obf_d438fc1373de555c.Elem()
-	__obf_ecc57b2debdd7e29 := reflect.ArrayOf(__obf_d438fc1373de555c.Len(), __obf_672842fe2f3a868a)
-	__obf_17a36d0e350f9611 := __obf_cd65ed68b120e383
+func (__obf_b6d13e44c74c2560 *Decoder) __obf_4efb141f47e352d3(__obf_91e38c6481387fc0 string, __obf_4bc7fc453056091b any, __obf_b7dec3cc8a6aba3c reflect.Value) error {
+	__obf_0bfc5beb6a20600c := reflect.Indirect(reflect.ValueOf(__obf_4bc7fc453056091b))
+	__obf_22e7b1e2803215a9 := __obf_0bfc5beb6a20600c.Kind()
+	__obf_ff3a378dc2f0e275 := __obf_b7dec3cc8a6aba3c.Type()
+	__obf_6117515577845688 := __obf_ff3a378dc2f0e275.Elem()
+	__obf_a53ae4bc6e17a0f1 := reflect.ArrayOf(__obf_ff3a378dc2f0e275.Len(), __obf_6117515577845688)
+	__obf_c586c435150030a0 := __obf_b7dec3cc8a6aba3c
 
-	if __obf_17a36d0e350f9611.Interface() == reflect.Zero(__obf_17a36d0e350f9611.Type()).Interface() || __obf_15070727b144cc26.__obf_da116ef5edc24797.ZeroFields {
+	if __obf_c586c435150030a0.Interface() == reflect.Zero(__obf_c586c435150030a0.Type()).Interface() || __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.ZeroFields {
 		// Check input type
-		if __obf_8579ec0b420909df != reflect.Array && __obf_8579ec0b420909df != reflect.Slice {
-			if __obf_15070727b144cc26.__obf_da116ef5edc24797.WeaklyTypedInput {
-				switch __obf_8579ec0b420909df {
+		if __obf_22e7b1e2803215a9 != reflect.Array && __obf_22e7b1e2803215a9 != reflect.Slice {
+			if __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.WeaklyTypedInput {
+				switch __obf_22e7b1e2803215a9 {
 				// Empty maps turn into empty arrays
 				case reflect.Map:
-					if __obf_a30e8e069ebf8d56.Len() == 0 {
-						__obf_cd65ed68b120e383.
-							Set(reflect.Zero(__obf_ecc57b2debdd7e29))
+					if __obf_0bfc5beb6a20600c.Len() == 0 {
+						__obf_b7dec3cc8a6aba3c.
+							Set(reflect.Zero(__obf_a53ae4bc6e17a0f1))
 						return nil
 					}
 
@@ -1050,38 +1050,38 @@ func (__obf_15070727b144cc26 *Decoder) __obf_912e64085a8c4c83(__obf_97d979f40f64
 				// and "lift" it into it. i.e. a string becomes a string array.
 				default:
 					// Just re-try this function with data as a slice.
-					return __obf_15070727b144cc26.__obf_912e64085a8c4c83(__obf_97d979f40f648bde, []any{__obf_e428e8b18837f120}, __obf_cd65ed68b120e383)
+					return __obf_b6d13e44c74c2560.__obf_4efb141f47e352d3(__obf_91e38c6481387fc0, []any{__obf_4bc7fc453056091b}, __obf_b7dec3cc8a6aba3c)
 				}
 			}
 
 			return fmt.Errorf(
-				"'%s': source data must be an array or slice, got %s", __obf_97d979f40f648bde, __obf_8579ec0b420909df)
+				"'%s': source data must be an array or slice, got %s", __obf_91e38c6481387fc0, __obf_22e7b1e2803215a9)
 
 		}
-		if __obf_a30e8e069ebf8d56.Len() > __obf_ecc57b2debdd7e29.Len() {
+		if __obf_0bfc5beb6a20600c.Len() > __obf_a53ae4bc6e17a0f1.Len() {
 			return fmt.Errorf(
-				"'%s': expected source data to have length less or equal to %d, got %d", __obf_97d979f40f648bde, __obf_ecc57b2debdd7e29.Len(), __obf_a30e8e069ebf8d56.Len())
+				"'%s': expected source data to have length less or equal to %d, got %d", __obf_91e38c6481387fc0, __obf_a53ae4bc6e17a0f1.Len(), __obf_0bfc5beb6a20600c.Len())
 
 		}
-		__obf_17a36d0e350f9611 = // Make a new array to hold our result, same size as the original data.
-			reflect.New(__obf_ecc57b2debdd7e29).Elem()
+		__obf_c586c435150030a0 = // Make a new array to hold our result, same size as the original data.
+			reflect.New(__obf_a53ae4bc6e17a0f1).Elem()
 	}
 
 	// Accumulate any errors
 	errors := make([]string, 0)
 
-	for __obf_6cbf6487a01daf31 := 0; __obf_6cbf6487a01daf31 < __obf_a30e8e069ebf8d56.Len(); __obf_6cbf6487a01daf31++ {
-		__obf_5c777374effb5543 := __obf_a30e8e069ebf8d56.Index(__obf_6cbf6487a01daf31).Interface()
-		__obf_f88502ed8d5261eb := __obf_17a36d0e350f9611.Index(__obf_6cbf6487a01daf31)
-		__obf_1cc7b5d4481b301c := __obf_97d979f40f648bde + "[" + strconv.Itoa(__obf_6cbf6487a01daf31) + "]"
-		if __obf_6d8ef670b0943b3c := __obf_15070727b144cc26.__obf_54e09d10fb5e308c(__obf_1cc7b5d4481b301c, __obf_5c777374effb5543, __obf_f88502ed8d5261eb); __obf_6d8ef670b0943b3c != nil {
-			errors = __obf_9ddf59feabf88c65(errors, __obf_6d8ef670b0943b3c)
+	for __obf_4e5b08e68a148355 := 0; __obf_4e5b08e68a148355 < __obf_0bfc5beb6a20600c.Len(); __obf_4e5b08e68a148355++ {
+		__obf_c1d57c0ecd71e4da := __obf_0bfc5beb6a20600c.Index(__obf_4e5b08e68a148355).Interface()
+		__obf_7c7580d5bba4812d := __obf_c586c435150030a0.Index(__obf_4e5b08e68a148355)
+		__obf_87f0d44838486dbb := __obf_91e38c6481387fc0 + "[" + strconv.Itoa(__obf_4e5b08e68a148355) + "]"
+		if __obf_ce3ada6ea4dc41de := __obf_b6d13e44c74c2560.__obf_eea77241dc8adb35(__obf_87f0d44838486dbb, __obf_c1d57c0ecd71e4da, __obf_7c7580d5bba4812d); __obf_ce3ada6ea4dc41de != nil {
+			errors = __obf_8cd4c4c9f4ceb7f3(errors, __obf_ce3ada6ea4dc41de)
 		}
 	}
-	__obf_cd65ed68b120e383.
+	__obf_b7dec3cc8a6aba3c.
 
 		// Finally, set the value to the array we built up
-		Set(__obf_17a36d0e350f9611)
+		Set(__obf_c586c435150030a0)
 
 	// If there were errors, we return those
 	if len(errors) > 0 {
@@ -1091,226 +1091,226 @@ func (__obf_15070727b144cc26 *Decoder) __obf_912e64085a8c4c83(__obf_97d979f40f64
 	return nil
 }
 
-func (__obf_15070727b144cc26 *Decoder) __obf_577e93fa4008dcd6(__obf_97d979f40f648bde string, __obf_e428e8b18837f120 any, __obf_cd65ed68b120e383 reflect.Value) error {
-	__obf_a30e8e069ebf8d56 := reflect.Indirect(reflect.ValueOf(__obf_e428e8b18837f120))
+func (__obf_b6d13e44c74c2560 *Decoder) __obf_0ea7f7e628e7a170(__obf_91e38c6481387fc0 string, __obf_4bc7fc453056091b any, __obf_b7dec3cc8a6aba3c reflect.Value) error {
+	__obf_0bfc5beb6a20600c := reflect.Indirect(reflect.ValueOf(__obf_4bc7fc453056091b))
 
 	// If the type of the value to write to and the data match directly,
 	// then we just set it directly instead of recursing into the structure.
-	if __obf_a30e8e069ebf8d56.Type() == __obf_cd65ed68b120e383.Type() {
-		__obf_cd65ed68b120e383.
-			Set(__obf_a30e8e069ebf8d56)
+	if __obf_0bfc5beb6a20600c.Type() == __obf_b7dec3cc8a6aba3c.Type() {
+		__obf_b7dec3cc8a6aba3c.
+			Set(__obf_0bfc5beb6a20600c)
 		return nil
 	}
-	__obf_8579ec0b420909df := __obf_a30e8e069ebf8d56.Kind()
-	switch __obf_8579ec0b420909df {
+	__obf_22e7b1e2803215a9 := __obf_0bfc5beb6a20600c.Kind()
+	switch __obf_22e7b1e2803215a9 {
 	case reflect.Map:
-		return __obf_15070727b144cc26.__obf_d53ca9cc93fd7474(__obf_97d979f40f648bde, __obf_a30e8e069ebf8d56,
+		return __obf_b6d13e44c74c2560.__obf_b5507488e5ee3429(__obf_91e38c6481387fc0, __obf_0bfc5beb6a20600c,
 
 			// Not the most efficient way to do this but we can optimize later if
 			// we want to. To convert from struct to struct we go to map first
 			// as an intermediary.
-			__obf_cd65ed68b120e383)
+			__obf_b7dec3cc8a6aba3c)
 
 	case reflect.Struct:
-		__obf_00862f74a2b44518 := // Make a new map to hold our result
+		__obf_c134280a495c4576 := // Make a new map to hold our result
 			reflect.TypeOf((map[string]any)(nil))
-		__obf_f9cf6792d44638d4 := reflect.MakeMap(__obf_00862f74a2b44518)
-		__obf_3776f89115922937 := // Creating a pointer to a map so that other methods can completely
+		__obf_24b2139adb5ba068 := reflect.MakeMap(__obf_c134280a495c4576)
+		__obf_3cc2790bca22b671 := // Creating a pointer to a map so that other methods can completely
 			// overwrite the map if need be (looking at you decodeMapFromMap). The
 			// indirection allows the underlying map to be settable (CanSet() == true)
 			// where as reflect.MakeMap returns an unsettable map.
-			reflect.New(__obf_f9cf6792d44638d4.Type())
+			reflect.New(__obf_24b2139adb5ba068.Type())
 
-		reflect.Indirect(__obf_3776f89115922937).Set(__obf_f9cf6792d44638d4)
-		if __obf_6d8ef670b0943b3c := __obf_15070727b144cc26.__obf_612b7a47c762a7ba(__obf_a30e8e069ebf8d56, reflect.Indirect(__obf_3776f89115922937), __obf_f9cf6792d44638d4); __obf_6d8ef670b0943b3c != nil {
-			return __obf_6d8ef670b0943b3c
+		reflect.Indirect(__obf_3cc2790bca22b671).Set(__obf_24b2139adb5ba068)
+		if __obf_ce3ada6ea4dc41de := __obf_b6d13e44c74c2560.__obf_9b1e964eafe7b32e(__obf_0bfc5beb6a20600c, reflect.Indirect(__obf_3cc2790bca22b671), __obf_24b2139adb5ba068); __obf_ce3ada6ea4dc41de != nil {
+			return __obf_ce3ada6ea4dc41de
 		}
-		__obf_bb9d1909c7b1c125 := __obf_15070727b144cc26.__obf_d53ca9cc93fd7474(__obf_97d979f40f648bde, reflect.Indirect(__obf_3776f89115922937), __obf_cd65ed68b120e383)
-		return __obf_bb9d1909c7b1c125
+		__obf_a9459758946d2eaa := __obf_b6d13e44c74c2560.__obf_b5507488e5ee3429(__obf_91e38c6481387fc0, reflect.Indirect(__obf_3cc2790bca22b671), __obf_b7dec3cc8a6aba3c)
+		return __obf_a9459758946d2eaa
 
 	default:
-		return fmt.Errorf("'%s' expected a map, got '%s'", __obf_97d979f40f648bde, __obf_a30e8e069ebf8d56.Kind())
+		return fmt.Errorf("'%s' expected a map, got '%s'", __obf_91e38c6481387fc0, __obf_0bfc5beb6a20600c.Kind())
 	}
 }
 
-func (__obf_15070727b144cc26 *Decoder) __obf_d53ca9cc93fd7474(__obf_97d979f40f648bde string, __obf_a30e8e069ebf8d56, __obf_cd65ed68b120e383 reflect.Value) error {
-	__obf_8d4acaad13f3fa10 := __obf_a30e8e069ebf8d56.Type()
-	if __obf_165b367257420d62 := __obf_8d4acaad13f3fa10.Key().Kind(); __obf_165b367257420d62 != reflect.String && __obf_165b367257420d62 != reflect.Interface {
+func (__obf_b6d13e44c74c2560 *Decoder) __obf_b5507488e5ee3429(__obf_91e38c6481387fc0 string, __obf_0bfc5beb6a20600c, __obf_b7dec3cc8a6aba3c reflect.Value) error {
+	__obf_ccfb61cfb66ec1f2 := __obf_0bfc5beb6a20600c.Type()
+	if __obf_ab0df9454f2e3d74 := __obf_ccfb61cfb66ec1f2.Key().Kind(); __obf_ab0df9454f2e3d74 != reflect.String && __obf_ab0df9454f2e3d74 != reflect.Interface {
 		return fmt.Errorf(
-			"'%s' needs a map with string keys, has '%s' keys", __obf_97d979f40f648bde, __obf_8d4acaad13f3fa10.
+			"'%s' needs a map with string keys, has '%s' keys", __obf_91e38c6481387fc0, __obf_ccfb61cfb66ec1f2.
 				Key().Kind())
 	}
-	__obf_22b6d54822b48b0a := make(map[reflect.Value]struct{})
-	__obf_f0ba9b1aa666a7d3 := make(map[any]struct{})
-	for _, __obf_f84959325360dc86 := range __obf_a30e8e069ebf8d56.MapKeys() {
-		__obf_22b6d54822b48b0a[__obf_f84959325360dc86] = struct{}{}
-		__obf_f0ba9b1aa666a7d3[__obf_f84959325360dc86.Interface()] = struct{}{}
+	__obf_7a4440f446a4589f := make(map[reflect.Value]struct{})
+	__obf_80839d986b68289f := make(map[any]struct{})
+	for _, __obf_3bf9ca1dbf187d0a := range __obf_0bfc5beb6a20600c.MapKeys() {
+		__obf_7a4440f446a4589f[__obf_3bf9ca1dbf187d0a] = struct{}{}
+		__obf_80839d986b68289f[__obf_3bf9ca1dbf187d0a.Interface()] = struct{}{}
 	}
-	__obf_53a61ba0f0b5bc0e := make(map[any]struct{})
+	__obf_8b65c5d114b8b9cf := make(map[any]struct{})
 	errors := make([]string, 0)
-	__obf_a25f0c212c30d176 := // This slice will keep track of all the structs we'll be decoding.
+	__obf_be7fa424c964dadc := // This slice will keep track of all the structs we'll be decoding.
 		// There can be more than one struct if there are embedded structs
 		// that are squashed.
 		make([]reflect.Value, 1, 5)
-	__obf_a25f0c212c30d176[0] = __obf_cd65ed68b120e383
+	__obf_be7fa424c964dadc[0] = __obf_b7dec3cc8a6aba3c
 
 	// Compile the list of all the fields that we're going to be decoding
 	// from all the structs.
-	type __obf_ae6c7d28571e7800 struct {
-		__obf_ae6c7d28571e7800 reflect.StructField
-		__obf_cd65ed68b120e383 reflect.Value
+	type __obf_7dde8e9af4dbb643 struct {
+		__obf_7dde8e9af4dbb643 reflect.StructField
+		__obf_b7dec3cc8a6aba3c reflect.Value
 	}
 
 	// remainField is set to a valid field set with the "remain" tag if
 	// we are keeping track of remaining values.
-	var __obf_7a5fdf08eefe7903 *__obf_ae6c7d28571e7800
-	__obf_854397262555beb2 := []__obf_ae6c7d28571e7800{}
-	for len(__obf_a25f0c212c30d176) > 0 {
-		__obf_a4e23eee89aea029 := __obf_a25f0c212c30d176[0]
-		__obf_a25f0c212c30d176 = __obf_a25f0c212c30d176[1:]
-		__obf_fb57b7d8bda927e0 := __obf_a4e23eee89aea029.Type()
+	var __obf_b6f11cd0fb030f21 *__obf_7dde8e9af4dbb643
+	__obf_66381feacf472cc9 := []__obf_7dde8e9af4dbb643{}
+	for len(__obf_be7fa424c964dadc) > 0 {
+		__obf_3a79a889b3305ae3 := __obf_be7fa424c964dadc[0]
+		__obf_be7fa424c964dadc = __obf_be7fa424c964dadc[1:]
+		__obf_27bdb95bef79cd84 := __obf_3a79a889b3305ae3.Type()
 
-		for __obf_6cbf6487a01daf31 := 0; __obf_6cbf6487a01daf31 < __obf_fb57b7d8bda927e0.NumField(); __obf_6cbf6487a01daf31++ {
-			__obf_01a55dda7e04907b := __obf_fb57b7d8bda927e0.Field(__obf_6cbf6487a01daf31)
-			__obf_3a8d69c90600142d := __obf_a4e23eee89aea029.Field(__obf_6cbf6487a01daf31)
-			if __obf_3a8d69c90600142d.Kind() == reflect.Pointer && __obf_3a8d69c90600142d.Elem().Kind() == reflect.Struct {
-				__obf_3a8d69c90600142d = // Handle embedded struct pointers as embedded structs.
-					__obf_3a8d69c90600142d.Elem()
+		for __obf_4e5b08e68a148355 := 0; __obf_4e5b08e68a148355 < __obf_27bdb95bef79cd84.NumField(); __obf_4e5b08e68a148355++ {
+			__obf_66820d1d17760105 := __obf_27bdb95bef79cd84.Field(__obf_4e5b08e68a148355)
+			__obf_eed1d158ce0191d7 := __obf_3a79a889b3305ae3.Field(__obf_4e5b08e68a148355)
+			if __obf_eed1d158ce0191d7.Kind() == reflect.Pointer && __obf_eed1d158ce0191d7.Elem().Kind() == reflect.Struct {
+				__obf_eed1d158ce0191d7 = // Handle embedded struct pointers as embedded structs.
+					__obf_eed1d158ce0191d7.Elem()
 			}
-			__obf_d1f207c6142a9a90 := // If "squash" is specified in the tag, we squash the field down.
-				__obf_15070727b144cc26.__obf_da116ef5edc24797.Squash && __obf_3a8d69c90600142d.Kind() == reflect.Struct && __obf_01a55dda7e04907b.Anonymous
-			__obf_a4e48e694db32ca8 := false
-			__obf_5692049e9329b25a := // We always parse the tags cause we're looking for other tags too
-				strings.Split(__obf_01a55dda7e04907b.Tag.Get(__obf_15070727b144cc26.__obf_da116ef5edc24797.TagName), ",")
-			for _, __obf_33a47078edbe9a33 := range __obf_5692049e9329b25a[1:] {
-				if __obf_33a47078edbe9a33 == "squash" {
-					__obf_d1f207c6142a9a90 = true
+			__obf_b55c7cfdc0f1b9d0 := // If "squash" is specified in the tag, we squash the field down.
+				__obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.Squash && __obf_eed1d158ce0191d7.Kind() == reflect.Struct && __obf_66820d1d17760105.Anonymous
+			__obf_5edc804f1fa565ef := false
+			__obf_7a700357c560dc78 := // We always parse the tags cause we're looking for other tags too
+				strings.Split(__obf_66820d1d17760105.Tag.Get(__obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.TagName), ",")
+			for _, __obf_84f128febf9cad68 := range __obf_7a700357c560dc78[1:] {
+				if __obf_84f128febf9cad68 == "squash" {
+					__obf_b55c7cfdc0f1b9d0 = true
 					break
 				}
 
-				if __obf_33a47078edbe9a33 == "remain" {
-					__obf_a4e48e694db32ca8 = true
+				if __obf_84f128febf9cad68 == "remain" {
+					__obf_5edc804f1fa565ef = true
 					break
 				}
 			}
 
-			if __obf_d1f207c6142a9a90 {
-				if __obf_3a8d69c90600142d.Kind() != reflect.Struct {
-					errors = __obf_9ddf59feabf88c65(errors,
-						fmt.Errorf("%s: unsupported type for squash: %s", __obf_01a55dda7e04907b.Name, __obf_3a8d69c90600142d.Kind()))
+			if __obf_b55c7cfdc0f1b9d0 {
+				if __obf_eed1d158ce0191d7.Kind() != reflect.Struct {
+					errors = __obf_8cd4c4c9f4ceb7f3(errors,
+						fmt.Errorf("%s: unsupported type for squash: %s", __obf_66820d1d17760105.Name, __obf_eed1d158ce0191d7.Kind()))
 				} else {
-					__obf_a25f0c212c30d176 = append(__obf_a25f0c212c30d176, __obf_3a8d69c90600142d)
+					__obf_be7fa424c964dadc = append(__obf_be7fa424c964dadc, __obf_eed1d158ce0191d7)
 				}
 				continue
 			}
 
 			// Build our field
-			if __obf_a4e48e694db32ca8 {
-				__obf_7a5fdf08eefe7903 = &__obf_ae6c7d28571e7800{__obf_01a55dda7e04907b, __obf_3a8d69c90600142d}
+			if __obf_5edc804f1fa565ef {
+				__obf_b6f11cd0fb030f21 = &__obf_7dde8e9af4dbb643{__obf_66820d1d17760105, __obf_eed1d158ce0191d7}
 			} else {
-				__obf_854397262555beb2 = // Normal struct field, store it away
-					append(__obf_854397262555beb2, __obf_ae6c7d28571e7800{__obf_01a55dda7e04907b, __obf_3a8d69c90600142d})
+				__obf_66381feacf472cc9 = // Normal struct field, store it away
+					append(__obf_66381feacf472cc9, __obf_7dde8e9af4dbb643{__obf_66820d1d17760105, __obf_eed1d158ce0191d7})
 			}
 		}
 	}
 
 	// for fieldType, field := range fields {
-	for _, __obf_502bda9c3cc67a99 := range __obf_854397262555beb2 {
-		__obf_ae6c7d28571e7800, __obf_c86b228d22ad2b75 := __obf_502bda9c3cc67a99.__obf_ae6c7d28571e7800, __obf_502bda9c3cc67a99.__obf_cd65ed68b120e383
-		__obf_1cc7b5d4481b301c := __obf_ae6c7d28571e7800.Name
-		__obf_e17241ba1062a03c := __obf_ae6c7d28571e7800.Tag.Get(__obf_15070727b144cc26.__obf_da116ef5edc24797.TagName)
-		__obf_e17241ba1062a03c = strings.SplitN(__obf_e17241ba1062a03c, ",", 2)[0]
-		if __obf_e17241ba1062a03c != "" {
-			__obf_1cc7b5d4481b301c = __obf_e17241ba1062a03c
+	for _, __obf_7bfc349763f12493 := range __obf_66381feacf472cc9 {
+		__obf_7dde8e9af4dbb643, __obf_a31a3d4797680790 := __obf_7bfc349763f12493.__obf_7dde8e9af4dbb643, __obf_7bfc349763f12493.__obf_b7dec3cc8a6aba3c
+		__obf_87f0d44838486dbb := __obf_7dde8e9af4dbb643.Name
+		__obf_6f0cf29468f87f16 := __obf_7dde8e9af4dbb643.Tag.Get(__obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.TagName)
+		__obf_6f0cf29468f87f16 = strings.SplitN(__obf_6f0cf29468f87f16, ",", 2)[0]
+		if __obf_6f0cf29468f87f16 != "" {
+			__obf_87f0d44838486dbb = __obf_6f0cf29468f87f16
 		}
-		__obf_d7967926eb7245f6 := reflect.ValueOf(__obf_1cc7b5d4481b301c)
-		__obf_78765ef1a15ffab1 := __obf_a30e8e069ebf8d56.MapIndex(__obf_d7967926eb7245f6)
-		if !__obf_78765ef1a15ffab1.IsValid() {
+		__obf_d3e8630dee20bb46 := reflect.ValueOf(__obf_87f0d44838486dbb)
+		__obf_2cabc602fbcf7a2c := __obf_0bfc5beb6a20600c.MapIndex(__obf_d3e8630dee20bb46)
+		if !__obf_2cabc602fbcf7a2c.IsValid() {
 			// Do a slower search by iterating over each key and
 			// doing case-insensitive search.
-			for __obf_f84959325360dc86 := range __obf_22b6d54822b48b0a {
-				__obf_4ec00d5b7d6ad4cc, __obf_8a9bb3ba25fa94bd := __obf_f84959325360dc86.Interface().(string)
-				if !__obf_8a9bb3ba25fa94bd {
+			for __obf_3bf9ca1dbf187d0a := range __obf_7a4440f446a4589f {
+				__obf_a16878cc1b6ba613, __obf_5006c1b1bc16f11d := __obf_3bf9ca1dbf187d0a.Interface().(string)
+				if !__obf_5006c1b1bc16f11d {
 					// Not a string key
 					continue
 				}
 
-				if __obf_15070727b144cc26.__obf_da116ef5edc24797.MatchName(__obf_4ec00d5b7d6ad4cc, __obf_1cc7b5d4481b301c) {
-					__obf_d7967926eb7245f6 = __obf_f84959325360dc86
-					__obf_78765ef1a15ffab1 = __obf_a30e8e069ebf8d56.MapIndex(__obf_f84959325360dc86)
+				if __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.MatchName(__obf_a16878cc1b6ba613, __obf_87f0d44838486dbb) {
+					__obf_d3e8630dee20bb46 = __obf_3bf9ca1dbf187d0a
+					__obf_2cabc602fbcf7a2c = __obf_0bfc5beb6a20600c.MapIndex(__obf_3bf9ca1dbf187d0a)
 					break
 				}
 			}
 
-			if !__obf_78765ef1a15ffab1.IsValid() {
-				__obf_53a61ba0f0b5bc0e[ // There was no matching key in the map for the value in
+			if !__obf_2cabc602fbcf7a2c.IsValid() {
+				__obf_8b65c5d114b8b9cf[ // There was no matching key in the map for the value in
 				// the struct. Remember it for potential errors and metadata.
-				__obf_1cc7b5d4481b301c] = struct{}{}
+				__obf_87f0d44838486dbb] = struct{}{}
 				continue
 			}
 		}
 
-		if !__obf_c86b228d22ad2b75.IsValid() {
+		if !__obf_a31a3d4797680790.IsValid() {
 			// This should never happen
 			panic("field is not valid")
 		}
 
 		// If we can't set the field, then it is unexported or something,
 		// and we just continue onwards.
-		if !__obf_c86b228d22ad2b75.CanSet() {
+		if !__obf_a31a3d4797680790.CanSet() {
 			continue
 		}
 
 		// Delete the key we're using from the unused map so we stop tracking
-		delete(__obf_f0ba9b1aa666a7d3, __obf_d7967926eb7245f6.Interface())
+		delete(__obf_80839d986b68289f, __obf_d3e8630dee20bb46.Interface())
 
 		// If the name is empty string, then we're at the root, and we
 		// don't dot-join the fields.
-		if __obf_97d979f40f648bde != "" {
-			__obf_1cc7b5d4481b301c = __obf_97d979f40f648bde + "." + __obf_1cc7b5d4481b301c
+		if __obf_91e38c6481387fc0 != "" {
+			__obf_87f0d44838486dbb = __obf_91e38c6481387fc0 + "." + __obf_87f0d44838486dbb
 		}
 
-		if __obf_6d8ef670b0943b3c := __obf_15070727b144cc26.__obf_54e09d10fb5e308c(__obf_1cc7b5d4481b301c, __obf_78765ef1a15ffab1.Interface(), __obf_c86b228d22ad2b75); __obf_6d8ef670b0943b3c != nil {
-			errors = __obf_9ddf59feabf88c65(errors, __obf_6d8ef670b0943b3c)
+		if __obf_ce3ada6ea4dc41de := __obf_b6d13e44c74c2560.__obf_eea77241dc8adb35(__obf_87f0d44838486dbb, __obf_2cabc602fbcf7a2c.Interface(), __obf_a31a3d4797680790); __obf_ce3ada6ea4dc41de != nil {
+			errors = __obf_8cd4c4c9f4ceb7f3(errors, __obf_ce3ada6ea4dc41de)
 		}
 	}
 
 	// If we have a "remain"-tagged field and we have unused keys then
 	// we put the unused keys directly into the remain field.
-	if __obf_7a5fdf08eefe7903 != nil && len(__obf_f0ba9b1aa666a7d3) > 0 {
-		__obf_a4e48e694db32ca8 := // Build a map of only the unused values
+	if __obf_b6f11cd0fb030f21 != nil && len(__obf_80839d986b68289f) > 0 {
+		__obf_5edc804f1fa565ef := // Build a map of only the unused values
 			map[any]any{}
-		for __obf_a3663ecd8f9727ce := range __obf_f0ba9b1aa666a7d3 {
-			__obf_a4e48e694db32ca8[__obf_a3663ecd8f9727ce] = __obf_a30e8e069ebf8d56.MapIndex(reflect.ValueOf(__obf_a3663ecd8f9727ce)).Interface()
+		for __obf_517fee4efca8b611 := range __obf_80839d986b68289f {
+			__obf_5edc804f1fa565ef[__obf_517fee4efca8b611] = __obf_0bfc5beb6a20600c.MapIndex(reflect.ValueOf(__obf_517fee4efca8b611)).Interface()
 		}
 
 		// Decode it as-if we were just decoding this map onto our map.
-		if __obf_6d8ef670b0943b3c := __obf_15070727b144cc26.__obf_d20c19b1598726f2(__obf_97d979f40f648bde, __obf_a4e48e694db32ca8, __obf_7a5fdf08eefe7903.__obf_cd65ed68b120e383); __obf_6d8ef670b0943b3c != nil {
-			errors = __obf_9ddf59feabf88c65(errors, __obf_6d8ef670b0943b3c)
+		if __obf_ce3ada6ea4dc41de := __obf_b6d13e44c74c2560.__obf_e0b8cf654a653244(__obf_91e38c6481387fc0, __obf_5edc804f1fa565ef, __obf_b6f11cd0fb030f21.__obf_b7dec3cc8a6aba3c); __obf_ce3ada6ea4dc41de != nil {
+			errors = __obf_8cd4c4c9f4ceb7f3(errors, __obf_ce3ada6ea4dc41de)
 		}
-		__obf_f0ba9b1aa666a7d3 = // Set the map to nil so we have none so that the next check will
+		__obf_80839d986b68289f = // Set the map to nil so we have none so that the next check will
 			// not error (ErrorUnused)
 			nil
 	}
 
-	if __obf_15070727b144cc26.__obf_da116ef5edc24797.ErrorUnused && len(__obf_f0ba9b1aa666a7d3) > 0 {
-		__obf_b6647af23b047f3b := make([]string, 0, len(__obf_f0ba9b1aa666a7d3))
-		for __obf_c1eaee865d5276cb := range __obf_f0ba9b1aa666a7d3 {
-			__obf_b6647af23b047f3b = append(__obf_b6647af23b047f3b, __obf_c1eaee865d5276cb.(string))
+	if __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.ErrorUnused && len(__obf_80839d986b68289f) > 0 {
+		__obf_942a68f95456b784 := make([]string, 0, len(__obf_80839d986b68289f))
+		for __obf_76bafb611bbadaac := range __obf_80839d986b68289f {
+			__obf_942a68f95456b784 = append(__obf_942a68f95456b784, __obf_76bafb611bbadaac.(string))
 		}
-		sort.Strings(__obf_b6647af23b047f3b)
-		__obf_6d8ef670b0943b3c := fmt.Errorf("'%s' has invalid keys: %s", __obf_97d979f40f648bde, strings.Join(__obf_b6647af23b047f3b, ", "))
-		errors = __obf_9ddf59feabf88c65(errors, __obf_6d8ef670b0943b3c)
+		sort.Strings(__obf_942a68f95456b784)
+		__obf_ce3ada6ea4dc41de := fmt.Errorf("'%s' has invalid keys: %s", __obf_91e38c6481387fc0, strings.Join(__obf_942a68f95456b784, ", "))
+		errors = __obf_8cd4c4c9f4ceb7f3(errors, __obf_ce3ada6ea4dc41de)
 	}
 
-	if __obf_15070727b144cc26.__obf_da116ef5edc24797.ErrorUnset && len(__obf_53a61ba0f0b5bc0e) > 0 {
-		__obf_b6647af23b047f3b := make([]string, 0, len(__obf_53a61ba0f0b5bc0e))
-		for __obf_c1eaee865d5276cb := range __obf_53a61ba0f0b5bc0e {
-			__obf_b6647af23b047f3b = append(__obf_b6647af23b047f3b, __obf_c1eaee865d5276cb.(string))
+	if __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.ErrorUnset && len(__obf_8b65c5d114b8b9cf) > 0 {
+		__obf_942a68f95456b784 := make([]string, 0, len(__obf_8b65c5d114b8b9cf))
+		for __obf_76bafb611bbadaac := range __obf_8b65c5d114b8b9cf {
+			__obf_942a68f95456b784 = append(__obf_942a68f95456b784, __obf_76bafb611bbadaac.(string))
 		}
-		sort.Strings(__obf_b6647af23b047f3b)
-		__obf_6d8ef670b0943b3c := fmt.Errorf("'%s' has unset fields: %s", __obf_97d979f40f648bde, strings.Join(__obf_b6647af23b047f3b, ", "))
-		errors = __obf_9ddf59feabf88c65(errors, __obf_6d8ef670b0943b3c)
+		sort.Strings(__obf_942a68f95456b784)
+		__obf_ce3ada6ea4dc41de := fmt.Errorf("'%s' has unset fields: %s", __obf_91e38c6481387fc0, strings.Join(__obf_942a68f95456b784, ", "))
+		errors = __obf_8cd4c4c9f4ceb7f3(errors, __obf_ce3ada6ea4dc41de)
 	}
 
 	if len(errors) > 0 {
@@ -1318,82 +1318,82 @@ func (__obf_15070727b144cc26 *Decoder) __obf_d53ca9cc93fd7474(__obf_97d979f40f64
 	}
 
 	// Add the unused keys to the list of unused keys if we're tracking metadata
-	if __obf_15070727b144cc26.__obf_da116ef5edc24797.Metadata != nil {
-		for __obf_c1eaee865d5276cb := range __obf_f0ba9b1aa666a7d3 {
-			__obf_a3663ecd8f9727ce := __obf_c1eaee865d5276cb.(string)
-			if __obf_97d979f40f648bde != "" {
-				__obf_a3663ecd8f9727ce = __obf_97d979f40f648bde + "." + __obf_a3663ecd8f9727ce
+	if __obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.Metadata != nil {
+		for __obf_76bafb611bbadaac := range __obf_80839d986b68289f {
+			__obf_517fee4efca8b611 := __obf_76bafb611bbadaac.(string)
+			if __obf_91e38c6481387fc0 != "" {
+				__obf_517fee4efca8b611 = __obf_91e38c6481387fc0 + "." + __obf_517fee4efca8b611
 			}
-			__obf_15070727b144cc26.__obf_da116ef5edc24797.
-				Metadata.Unused = append(__obf_15070727b144cc26.__obf_da116ef5edc24797.Metadata.Unused, __obf_a3663ecd8f9727ce)
+			__obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.
+				Metadata.Unused = append(__obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.Metadata.Unused, __obf_517fee4efca8b611)
 		}
-		for __obf_c1eaee865d5276cb := range __obf_53a61ba0f0b5bc0e {
-			__obf_a3663ecd8f9727ce := __obf_c1eaee865d5276cb.(string)
-			if __obf_97d979f40f648bde != "" {
-				__obf_a3663ecd8f9727ce = __obf_97d979f40f648bde + "." + __obf_a3663ecd8f9727ce
+		for __obf_76bafb611bbadaac := range __obf_8b65c5d114b8b9cf {
+			__obf_517fee4efca8b611 := __obf_76bafb611bbadaac.(string)
+			if __obf_91e38c6481387fc0 != "" {
+				__obf_517fee4efca8b611 = __obf_91e38c6481387fc0 + "." + __obf_517fee4efca8b611
 			}
-			__obf_15070727b144cc26.__obf_da116ef5edc24797.
-				Metadata.Unset = append(__obf_15070727b144cc26.__obf_da116ef5edc24797.Metadata.Unset, __obf_a3663ecd8f9727ce)
+			__obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.
+				Metadata.Unset = append(__obf_b6d13e44c74c2560.__obf_9413fb8c4aa2a800.Metadata.Unset, __obf_517fee4efca8b611)
 		}
 	}
 
 	return nil
 }
 
-func __obf_84bf21308b86c1c2(__obf_7646bc0f4c5c46a0 reflect.Value) bool {
-	switch __obf_ed31af980b14987e(__obf_7646bc0f4c5c46a0) {
+func __obf_ab306ff92a59bd1a(__obf_40a0aa2002a96053 reflect.Value) bool {
+	switch __obf_32f26d0d12491636(__obf_40a0aa2002a96053) {
 	case reflect.Array, reflect.Map, reflect.Slice, reflect.String:
-		return __obf_7646bc0f4c5c46a0.Len() == 0
+		return __obf_40a0aa2002a96053.Len() == 0
 	case reflect.Bool:
-		return !__obf_7646bc0f4c5c46a0.Bool()
+		return !__obf_40a0aa2002a96053.Bool()
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
-		return __obf_7646bc0f4c5c46a0.Int() == 0
+		return __obf_40a0aa2002a96053.Int() == 0
 	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64, reflect.Uintptr:
-		return __obf_7646bc0f4c5c46a0.Uint() == 0
+		return __obf_40a0aa2002a96053.Uint() == 0
 	case reflect.Float32, reflect.Float64:
-		return __obf_7646bc0f4c5c46a0.Float() == 0
+		return __obf_40a0aa2002a96053.Float() == 0
 	case reflect.Interface, reflect.Pointer:
-		return __obf_7646bc0f4c5c46a0.IsNil()
+		return __obf_40a0aa2002a96053.IsNil()
 	}
 	return false
 }
 
-func __obf_ed31af980b14987e(__obf_cd65ed68b120e383 reflect.Value) reflect.Kind {
-	__obf_165b367257420d62 := __obf_cd65ed68b120e383.Kind()
+func __obf_32f26d0d12491636(__obf_b7dec3cc8a6aba3c reflect.Value) reflect.Kind {
+	__obf_ab0df9454f2e3d74 := __obf_b7dec3cc8a6aba3c.Kind()
 
 	switch {
-	case __obf_165b367257420d62 >= reflect.Int && __obf_165b367257420d62 <= reflect.Int64:
+	case __obf_ab0df9454f2e3d74 >= reflect.Int && __obf_ab0df9454f2e3d74 <= reflect.Int64:
 		return reflect.Int
-	case __obf_165b367257420d62 >= reflect.Uint && __obf_165b367257420d62 <= reflect.Uint64:
+	case __obf_ab0df9454f2e3d74 >= reflect.Uint && __obf_ab0df9454f2e3d74 <= reflect.Uint64:
 		return reflect.Uint
-	case __obf_165b367257420d62 >= reflect.Float32 && __obf_165b367257420d62 <= reflect.Float64:
+	case __obf_ab0df9454f2e3d74 >= reflect.Float32 && __obf_ab0df9454f2e3d74 <= reflect.Float64:
 		return reflect.Float32
 	default:
-		return __obf_165b367257420d62
+		return __obf_ab0df9454f2e3d74
 	}
 }
 
-func __obf_d896a2373c16e434(__obf_db92856142f658a1 reflect.Type, __obf_dba5bc1b87e57f30 bool, __obf_8c4c3caad8c4e1b2 string) bool {
-	for __obf_6cbf6487a01daf31 := 0; __obf_6cbf6487a01daf31 < __obf_db92856142f658a1.NumField(); __obf_6cbf6487a01daf31++ {
-		__obf_502bda9c3cc67a99 := __obf_db92856142f658a1.Field(__obf_6cbf6487a01daf31)
-		if __obf_502bda9c3cc67a99.PkgPath == "" && !__obf_dba5bc1b87e57f30 { // check for unexported fields
+func __obf_86db9ef32de43776(__obf_b923d4b5912f1d6f reflect.Type, __obf_091363c566e0ae44 bool, __obf_5b1733e4a1118e05 string) bool {
+	for __obf_4e5b08e68a148355 := 0; __obf_4e5b08e68a148355 < __obf_b923d4b5912f1d6f.NumField(); __obf_4e5b08e68a148355++ {
+		__obf_7bfc349763f12493 := __obf_b923d4b5912f1d6f.Field(__obf_4e5b08e68a148355)
+		if __obf_7bfc349763f12493.PkgPath == "" && !__obf_091363c566e0ae44 { // check for unexported fields
 			return true
 		}
-		if __obf_dba5bc1b87e57f30 && __obf_502bda9c3cc67a99.Tag.Get(__obf_8c4c3caad8c4e1b2) != "" { // check for mapstructure tags inside
+		if __obf_091363c566e0ae44 && __obf_7bfc349763f12493.Tag.Get(__obf_5b1733e4a1118e05) != "" { // check for mapstructure tags inside
 			return true
 		}
 	}
 	return false
 }
 
-func __obf_dfbab38f747ff8d8(__obf_7646bc0f4c5c46a0 reflect.Value, __obf_8c4c3caad8c4e1b2 string) reflect.Value {
-	if __obf_7646bc0f4c5c46a0.Kind() != reflect.Ptr || __obf_7646bc0f4c5c46a0.Elem().Kind() != reflect.Struct {
-		return __obf_7646bc0f4c5c46a0
+func __obf_6a72a1d5381f9484(__obf_40a0aa2002a96053 reflect.Value, __obf_5b1733e4a1118e05 string) reflect.Value {
+	if __obf_40a0aa2002a96053.Kind() != reflect.Ptr || __obf_40a0aa2002a96053.Elem().Kind() != reflect.Struct {
+		return __obf_40a0aa2002a96053
 	}
-	__obf_98a6f478e2260f40 := __obf_7646bc0f4c5c46a0.Elem()
-	__obf_e6f41069f0fe28a7 := __obf_98a6f478e2260f40.Type()
-	if __obf_d896a2373c16e434(__obf_e6f41069f0fe28a7, true, __obf_8c4c3caad8c4e1b2) {
-		return __obf_98a6f478e2260f40
+	__obf_e20aec6ec3723ceb := __obf_40a0aa2002a96053.Elem()
+	__obf_05a81edf07e8c513 := __obf_e20aec6ec3723ceb.Type()
+	if __obf_86db9ef32de43776(__obf_05a81edf07e8c513, true, __obf_5b1733e4a1118e05) {
+		return __obf_e20aec6ec3723ceb
 	}
-	return __obf_7646bc0f4c5c46a0
+	return __obf_40a0aa2002a96053
 }

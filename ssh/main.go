@@ -14,61 +14,61 @@ import (
 
 // DefaultKnownHostsPath returns default user knows hosts file.
 func DefaultKnownHostsPath() (string, error) {
-	__obf_9efc7b77e0fb7039, __obf_fe854faece812b24 := os.UserHomeDir()
-	if __obf_fe854faece812b24 != nil {
-		return "", __obf_fe854faece812b24
+	__obf_ed10ec24520a2f2d, __obf_3e865493244170fc := os.UserHomeDir()
+	if __obf_3e865493244170fc != nil {
+		return "", __obf_3e865493244170fc
 	}
 
-	return fmt.Sprintf("%s/.ssh/known_hosts", __obf_9efc7b77e0fb7039), __obf_fe854faece812b24
+	return fmt.Sprintf("%s/.ssh/known_hosts", __obf_ed10ec24520a2f2d), __obf_3e865493244170fc
 }
 
 // DefaultKnownHosts returns host key callback from default known hosts path, and error if some.
 func DefaultKnownHosts() (ssh.HostKeyCallback, error) {
-	__obf_00d6aa5c6f1a3f83, __obf_fe854faece812b24 := DefaultKnownHostsPath()
-	if __obf_fe854faece812b24 != nil {
-		return nil, __obf_fe854faece812b24
+	__obf_264e38acc73f43ba, __obf_3e865493244170fc := DefaultKnownHostsPath()
+	if __obf_3e865493244170fc != nil {
+		return nil, __obf_3e865493244170fc
 	}
 
-	return knownhosts.New(__obf_00d6aa5c6f1a3f83)
+	return knownhosts.New(__obf_264e38acc73f43ba)
 }
 
 // CheckKnownHost checks is host in known hosts file.
 // it returns is the host found in known_hosts file and error, if the host found in
 // known_hosts file and error not nil that means public key mismatch, maybe MAN IN THE MIDDLE ATTACK! you should not handshake.
-func CheckKnownHost(__obf_b32f9ae2b92fa9c4 string, __obf_4dea84270d4357ce net.Addr, __obf_34a6760e4823bcc4 ssh.PublicKey, __obf_7d93f0370fdc9c0d string) (__obf_5b02867880f68f70 bool, __obf_fe854faece812b24 error) {
+func CheckKnownHost(__obf_2556aa0107f64466 string, __obf_e57dcd828c002c43 net.Addr, __obf_de9b141b8ad27cf5 ssh.PublicKey, __obf_24b7155ec0cc2d6f string) (__obf_bcc189c391308c3f bool, __obf_3e865493244170fc error) {
 
-	var __obf_937dc6d0e2235461 *knownhosts.KeyError
+	var __obf_19e88dd2d6a57d10 *knownhosts.KeyError
 
 	// Fallback to default known_hosts file
-	if __obf_7d93f0370fdc9c0d == "" {
-		__obf_00d6aa5c6f1a3f83, __obf_fe854faece812b24 := DefaultKnownHostsPath()
-		if __obf_fe854faece812b24 != nil {
-			return false, __obf_fe854faece812b24
+	if __obf_24b7155ec0cc2d6f == "" {
+		__obf_264e38acc73f43ba, __obf_3e865493244170fc := DefaultKnownHostsPath()
+		if __obf_3e865493244170fc != nil {
+			return false, __obf_3e865493244170fc
 		}
-		__obf_7d93f0370fdc9c0d = __obf_00d6aa5c6f1a3f83
+		__obf_24b7155ec0cc2d6f = __obf_264e38acc73f43ba
 	}
-	__obf_8a489fd67f4fd8b7,
+	__obf_a9052eb0f53f9e9d,
 
 		// Get host key callback
-		__obf_fe854faece812b24 := knownhosts.New(__obf_7d93f0370fdc9c0d)
+		__obf_3e865493244170fc := knownhosts.New(__obf_24b7155ec0cc2d6f)
 
-	if __obf_fe854faece812b24 != nil {
-		return false, __obf_fe854faece812b24
+	if __obf_3e865493244170fc != nil {
+		return false, __obf_3e865493244170fc
 	}
-	__obf_fe854faece812b24 = // check if host already exists.
-		__obf_8a489fd67f4fd8b7(__obf_b32f9ae2b92fa9c4, __obf_4dea84270d4357ce,
+	__obf_3e865493244170fc = // check if host already exists.
+		__obf_a9052eb0f53f9e9d(__obf_2556aa0107f64466, __obf_e57dcd828c002c43,
 
 			// Known host already exists.
-			__obf_34a6760e4823bcc4)
+			__obf_de9b141b8ad27cf5)
 
-	if __obf_fe854faece812b24 == nil {
+	if __obf_3e865493244170fc == nil {
 		return true, nil
 	}
 
 	// Make sure that the error returned from the callback is host not in file error.
 	// If keyErr.Want is greater than 0 length, that means host is in file with different key.
-	if errors.As(__obf_fe854faece812b24, &__obf_937dc6d0e2235461) && len(__obf_937dc6d0e2235461.Want) > 0 {
-		return true, __obf_937dc6d0e2235461
+	if errors.As(__obf_3e865493244170fc, &__obf_19e88dd2d6a57d10) && len(__obf_19e88dd2d6a57d10.Want) > 0 {
+		return true, __obf_19e88dd2d6a57d10
 	}
 
 	// Key is not trusted because it is not in the file.
@@ -76,116 +76,116 @@ func CheckKnownHost(__obf_b32f9ae2b92fa9c4 string, __obf_4dea84270d4357ce net.Ad
 }
 
 // AddKnownHost add a a host to known hosts file.
-func AddKnownHost(__obf_b32f9ae2b92fa9c4 string, __obf_4dea84270d4357ce net.Addr, __obf_34a6760e4823bcc4 ssh.PublicKey, __obf_7d93f0370fdc9c0d string) (__obf_fe854faece812b24 error) {
+func AddKnownHost(__obf_2556aa0107f64466 string, __obf_e57dcd828c002c43 net.Addr, __obf_de9b141b8ad27cf5 ssh.PublicKey, __obf_24b7155ec0cc2d6f string) (__obf_3e865493244170fc error) {
 
 	// Fallback to default known_hosts file
-	if __obf_7d93f0370fdc9c0d == "" {
-		__obf_00d6aa5c6f1a3f83, __obf_fe854faece812b24 := DefaultKnownHostsPath()
-		if __obf_fe854faece812b24 != nil {
-			return __obf_fe854faece812b24
+	if __obf_24b7155ec0cc2d6f == "" {
+		__obf_264e38acc73f43ba, __obf_3e865493244170fc := DefaultKnownHostsPath()
+		if __obf_3e865493244170fc != nil {
+			return __obf_3e865493244170fc
 		}
-		__obf_7d93f0370fdc9c0d = __obf_00d6aa5c6f1a3f83
+		__obf_24b7155ec0cc2d6f = __obf_264e38acc73f43ba
 	}
-	__obf_160f003b48872623, __obf_fe854faece812b24 := os.OpenFile(__obf_7d93f0370fdc9c0d, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0600)
-	if __obf_fe854faece812b24 != nil {
-		return __obf_fe854faece812b24
-	}
-
-	defer __obf_160f003b48872623.Close()
-	__obf_0218e39a5da60977 := knownhosts.Normalize(__obf_4dea84270d4357ce.String())
-	__obf_2e4397fafe88a57e := knownhosts.Normalize(__obf_b32f9ae2b92fa9c4)
-	__obf_2661b8d352a1b3d4 := []string{__obf_0218e39a5da60977}
-
-	if __obf_2e4397fafe88a57e != __obf_0218e39a5da60977 {
-		__obf_2661b8d352a1b3d4 = append(__obf_2661b8d352a1b3d4, __obf_2e4397fafe88a57e)
+	__obf_2c85d146ccd0f71d, __obf_3e865493244170fc := os.OpenFile(__obf_24b7155ec0cc2d6f, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0600)
+	if __obf_3e865493244170fc != nil {
+		return __obf_3e865493244170fc
 	}
 
-	_, __obf_fe854faece812b24 = __obf_160f003b48872623.WriteString(knownhosts.Line(__obf_2661b8d352a1b3d4, __obf_34a6760e4823bcc4) + "\n")
+	defer __obf_2c85d146ccd0f71d.Close()
+	__obf_ee90cee872c8fdfc := knownhosts.Normalize(__obf_e57dcd828c002c43.String())
+	__obf_91cc51cc75203140 := knownhosts.Normalize(__obf_2556aa0107f64466)
+	__obf_9619f54a841785fb := []string{__obf_ee90cee872c8fdfc}
 
-	return __obf_fe854faece812b24
+	if __obf_91cc51cc75203140 != __obf_ee90cee872c8fdfc {
+		__obf_9619f54a841785fb = append(__obf_9619f54a841785fb, __obf_91cc51cc75203140)
+	}
+
+	_, __obf_3e865493244170fc = __obf_2c85d146ccd0f71d.WriteString(knownhosts.Line(__obf_9619f54a841785fb, __obf_de9b141b8ad27cf5) + "\n")
+
+	return __obf_3e865493244170fc
 }
 
 // PrivateKey Loads a private and public key from "path" and returns a SSH ClientConfig to authenticate with the server
-func PrivateKey(__obf_0a38f9669a1e0be7 string, __obf_00d6aa5c6f1a3f83 string, __obf_9f302ccafea5dbad int) (*ssh.ClientConfig, error) {
-	__obf_9fbc51d32a918c61, __obf_fe854faece812b24 := os.ReadFile(__obf_00d6aa5c6f1a3f83)
+func PrivateKey(__obf_2165d058b86aaacb string, __obf_264e38acc73f43ba string, __obf_5860b615d409de6d int) (*ssh.ClientConfig, error) {
+	__obf_bf09a4d3c36cc1cf, __obf_3e865493244170fc := os.ReadFile(__obf_264e38acc73f43ba)
 
-	if __obf_fe854faece812b24 != nil {
-		return nil, __obf_fe854faece812b24
+	if __obf_3e865493244170fc != nil {
+		return nil, __obf_3e865493244170fc
 	}
-	__obf_b2c2b1cf02bb1176, __obf_fe854faece812b24 := ssh.ParsePrivateKey(__obf_9fbc51d32a918c61)
+	__obf_06f77d7cc665b7e7, __obf_3e865493244170fc := ssh.ParsePrivateKey(__obf_bf09a4d3c36cc1cf)
 
-	if __obf_fe854faece812b24 != nil {
-		return nil, __obf_fe854faece812b24
+	if __obf_3e865493244170fc != nil {
+		return nil, __obf_3e865493244170fc
 	}
-	__obf_8a489fd67f4fd8b7, __obf_fe854faece812b24 := DefaultKnownHosts()
-	if __obf_fe854faece812b24 != nil {
-		return nil, __obf_fe854faece812b24
+	__obf_a9052eb0f53f9e9d, __obf_3e865493244170fc := DefaultKnownHosts()
+	if __obf_3e865493244170fc != nil {
+		return nil, __obf_3e865493244170fc
 	}
 
 	return &ssh.ClientConfig{
-		User:    __obf_0a38f9669a1e0be7,
-		Timeout: time.Duration(__obf_9f302ccafea5dbad) * time.Second,
+		User:    __obf_2165d058b86aaacb,
+		Timeout: time.Duration(__obf_5860b615d409de6d) * time.Second,
 		Auth: []ssh.AuthMethod{
-			ssh.PublicKeys(__obf_b2c2b1cf02bb1176),
+			ssh.PublicKeys(__obf_06f77d7cc665b7e7),
 		},
-		HostKeyCallback: __obf_8a489fd67f4fd8b7,
+		HostKeyCallback: __obf_a9052eb0f53f9e9d,
 	}, nil
 }
 
 // Creates the configuration for a client that authenticates with a password protected private key
-func PrivateKeyWithPassphrase(__obf_0a38f9669a1e0be7 string, __obf_9f302ccafea5dbad int, __obf_3de1c879794c2fe1 []byte, __obf_00d6aa5c6f1a3f83 string) (*ssh.ClientConfig, error) {
-	__obf_9fbc51d32a918c61, __obf_fe854faece812b24 := os.ReadFile(__obf_00d6aa5c6f1a3f83)
+func PrivateKeyWithPassphrase(__obf_2165d058b86aaacb string, __obf_5860b615d409de6d int, __obf_8740b45df33f8298 []byte, __obf_264e38acc73f43ba string) (*ssh.ClientConfig, error) {
+	__obf_bf09a4d3c36cc1cf, __obf_3e865493244170fc := os.ReadFile(__obf_264e38acc73f43ba)
 
-	if __obf_fe854faece812b24 != nil {
-		return nil, __obf_fe854faece812b24
+	if __obf_3e865493244170fc != nil {
+		return nil, __obf_3e865493244170fc
 	}
-	__obf_b2c2b1cf02bb1176, __obf_fe854faece812b24 := ssh.ParsePrivateKeyWithPassphrase(__obf_9fbc51d32a918c61, __obf_3de1c879794c2fe1)
+	__obf_06f77d7cc665b7e7, __obf_3e865493244170fc := ssh.ParsePrivateKeyWithPassphrase(__obf_bf09a4d3c36cc1cf, __obf_8740b45df33f8298)
 
-	if __obf_fe854faece812b24 != nil {
-		return nil, __obf_fe854faece812b24
+	if __obf_3e865493244170fc != nil {
+		return nil, __obf_3e865493244170fc
 	}
-	__obf_8a489fd67f4fd8b7, __obf_fe854faece812b24 := DefaultKnownHosts()
-	if __obf_fe854faece812b24 != nil {
-		return nil, __obf_fe854faece812b24
+	__obf_a9052eb0f53f9e9d, __obf_3e865493244170fc := DefaultKnownHosts()
+	if __obf_3e865493244170fc != nil {
+		return nil, __obf_3e865493244170fc
 	}
 
 	return &ssh.ClientConfig{
-		User:    __obf_0a38f9669a1e0be7,
-		Timeout: time.Duration(__obf_9f302ccafea5dbad) * time.Second,
+		User:    __obf_2165d058b86aaacb,
+		Timeout: time.Duration(__obf_5860b615d409de6d) * time.Second,
 		Auth: []ssh.AuthMethod{
-			ssh.PublicKeys(__obf_b2c2b1cf02bb1176),
+			ssh.PublicKeys(__obf_06f77d7cc665b7e7),
 		},
-		HostKeyCallback: __obf_8a489fd67f4fd8b7,
+		HostKeyCallback: __obf_a9052eb0f53f9e9d,
 	}, nil
 }
 
 // Creates a configuration for a client that fetches public-private key from the SSH agent for authentication
-func SSHAgent(__obf_0a38f9669a1e0be7 string, __obf_9f302ccafea5dbad int, __obf_51ff25ff488838c3 ssh.HostKeyCallback) (*ssh.ClientConfig, error) {
-	__obf_d9d768c7f56be1ba := os.Getenv("SSH_AUTH_SOCK")
-	__obf_bb04ef02d54f927c, __obf_fe854faece812b24 := net.Dial("unix", __obf_d9d768c7f56be1ba)
-	if __obf_fe854faece812b24 != nil {
+func SSHAgent(__obf_2165d058b86aaacb string, __obf_5860b615d409de6d int, __obf_d592d89209c87c9e ssh.HostKeyCallback) (*ssh.ClientConfig, error) {
+	__obf_796120a9f8aa93b4 := os.Getenv("SSH_AUTH_SOCK")
+	__obf_0e550c109abcd5f0, __obf_3e865493244170fc := net.Dial("unix", __obf_796120a9f8aa93b4)
+	if __obf_3e865493244170fc != nil {
 		return &ssh.ClientConfig{
-			Timeout: time.Duration(__obf_9f302ccafea5dbad) * time.Second,
-		}, __obf_fe854faece812b24
+			Timeout: time.Duration(__obf_5860b615d409de6d) * time.Second,
+		}, __obf_3e865493244170fc
 	}
 
 	return &ssh.ClientConfig{
-		User:    __obf_0a38f9669a1e0be7,
-		Timeout: time.Duration(__obf_9f302ccafea5dbad) * time.Second,
+		User:    __obf_2165d058b86aaacb,
+		Timeout: time.Duration(__obf_5860b615d409de6d) * time.Second,
 		Auth: []ssh.AuthMethod{
-			ssh.PublicKeysCallback(agent.NewClient(__obf_bb04ef02d54f927c).Signers),
+			ssh.PublicKeysCallback(agent.NewClient(__obf_0e550c109abcd5f0).Signers),
 		},
-		HostKeyCallback: __obf_51ff25ff488838c3,
+		HostKeyCallback: __obf_d592d89209c87c9e,
 	}, nil
 }
 
 // Creates a configuration for a client that authenticates using username and password
-func PasswordKey(__obf_0a38f9669a1e0be7 string, __obf_17f15b8197ad1ece string, __obf_9f302ccafea5dbad int) *ssh.ClientConfig {
+func PasswordKey(__obf_2165d058b86aaacb string, __obf_c574efec501a9d88 string, __obf_5860b615d409de6d int) *ssh.ClientConfig {
 	return &ssh.ClientConfig{
-		User:    __obf_0a38f9669a1e0be7,
-		Timeout: time.Duration(__obf_9f302ccafea5dbad) * time.Second,
+		User:    __obf_2165d058b86aaacb,
+		Timeout: time.Duration(__obf_5860b615d409de6d) * time.Second,
 		Auth: []ssh.AuthMethod{
-			ssh.Password(__obf_17f15b8197ad1ece),
+			ssh.Password(__obf_c574efec501a9d88),
 		},
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 	}
@@ -195,10 +195,10 @@ type WriteCounter struct {
 	Total int64 // Total # of bytes written
 }
 
-func (__obf_4e563c90eae509e7 *WriteCounter) Write(__obf_e7bff70265c42906 []byte) (int, error) {
-	__obf_4ffd377394debb36 := len(__obf_e7bff70265c42906)
-	__obf_4e563c90eae509e7.
-		Total += int64(__obf_4ffd377394debb36)
-	fmt.Fprintf(os.Stdout, "%.2f kb transferred\n", float64(__obf_4e563c90eae509e7.Total/1024))
-	return __obf_4ffd377394debb36, nil
+func (__obf_a12ea930fe78455b *WriteCounter) Write(__obf_b695807ca5d8ea85 []byte) (int, error) {
+	__obf_063ac61e0a1a8818 := len(__obf_b695807ca5d8ea85)
+	__obf_a12ea930fe78455b.
+		Total += int64(__obf_063ac61e0a1a8818)
+	fmt.Fprintf(os.Stdout, "%.2f kb transferred\n", float64(__obf_a12ea930fe78455b.Total/1024))
+	return __obf_063ac61e0a1a8818, nil
 }

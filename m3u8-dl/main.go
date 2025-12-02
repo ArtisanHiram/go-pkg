@@ -7,44 +7,44 @@ import (
 )
 
 var (
-	__obf_cbdb4071e572fbe6 string
-	__obf_6050b974c19fc9b9 string
-	__obf_449e4cbc4b0f25a9 int = 10
+	__obf_7179f2bbaa5772e8 string
+	__obf_7b98c3dafb8ea7fa string
+	__obf_0dacba26c1c15211 int = 10
 )
 
 func init() {
-	flag.StringVar(&__obf_cbdb4071e572fbe6, "u", __obf_cbdb4071e572fbe6, "M3U8 URL, required")
-	flag.IntVar(&__obf_449e4cbc4b0f25a9, "c", __obf_449e4cbc4b0f25a9, "Maximum number of occurrences")
-	flag.StringVar(&__obf_6050b974c19fc9b9, "o", "./", "Output folder, required")
+	flag.StringVar(&__obf_7179f2bbaa5772e8, "u", __obf_7179f2bbaa5772e8, "M3U8 URL, required")
+	flag.IntVar(&__obf_0dacba26c1c15211, "c", __obf_0dacba26c1c15211, "Maximum number of occurrences")
+	flag.StringVar(&__obf_7b98c3dafb8ea7fa, "o", "./", "Output folder, required")
 }
 
 func main() {
 	flag.Parse()
 	defer func() {
-		if __obf_53476594443889ef := recover(); __obf_53476594443889ef != nil {
-			fmt.Println("[error]", __obf_53476594443889ef)
+		if __obf_536c6d3cfc5cc1fa := recover(); __obf_536c6d3cfc5cc1fa != nil {
+			fmt.Println("[error]", __obf_536c6d3cfc5cc1fa)
 			os.Exit(-1)
 		}
 	}()
-	if __obf_cbdb4071e572fbe6 == "" {
-		__obf_0937e5a2e790b8fa("u")
+	if __obf_7179f2bbaa5772e8 == "" {
+		__obf_f2d455bb9aa90cda("u")
 	}
-	if __obf_6050b974c19fc9b9 == "" {
-		__obf_0937e5a2e790b8fa("o")
+	if __obf_7b98c3dafb8ea7fa == "" {
+		__obf_f2d455bb9aa90cda("o")
 	}
-	if __obf_449e4cbc4b0f25a9 <= 0 {
+	if __obf_0dacba26c1c15211 <= 0 {
 		panic("parameter 'c' must be greater than 0")
 	}
-	__obf_bf0d9ac08dec47a9, __obf_31a042aea6f8bcd2 := NewTask(__obf_6050b974c19fc9b9, __obf_cbdb4071e572fbe6)
-	if __obf_31a042aea6f8bcd2 != nil {
-		panic(__obf_31a042aea6f8bcd2)
+	__obf_cc334175f963ac2d, __obf_66cc3fda1d4448dc := NewTask(__obf_7b98c3dafb8ea7fa, __obf_7179f2bbaa5772e8)
+	if __obf_66cc3fda1d4448dc != nil {
+		panic(__obf_66cc3fda1d4448dc)
 	}
-	if __obf_31a042aea6f8bcd2 := __obf_bf0d9ac08dec47a9.Start(__obf_449e4cbc4b0f25a9); __obf_31a042aea6f8bcd2 != nil {
-		panic(__obf_31a042aea6f8bcd2)
+	if __obf_66cc3fda1d4448dc := __obf_cc334175f963ac2d.Start(__obf_0dacba26c1c15211); __obf_66cc3fda1d4448dc != nil {
+		panic(__obf_66cc3fda1d4448dc)
 	}
 	fmt.Println("Done!")
 }
 
-func __obf_0937e5a2e790b8fa(__obf_6a11eaa81afb1fdd string) {
-	panic("parameter '" + __obf_6a11eaa81afb1fdd + "' is required")
+func __obf_f2d455bb9aa90cda(__obf_80531b6d187ff2ea string) {
+	panic("parameter '" + __obf_80531b6d187ff2ea + "' is required")
 }

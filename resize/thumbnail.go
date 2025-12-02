@@ -14,7 +14,7 @@ TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF
 THIS SOFTWARE.
 */
 
-package __obf_42b2ccbdafaee9c3
+package __obf_4f71249d3f545aa0
 
 import (
 	"image"
@@ -24,26 +24,26 @@ import (
 // original aspect ratio and using the interpolation function interp.
 // It will return original image, without processing it, if original sizes
 // are already smaller than provided constraints.
-func Thumbnail(__obf_56d06c6cd95c30a4, __obf_340e826815fe3163 uint, __obf_99d54e4a80501ee0 image.Image, __obf_f1c487ecb00e0380 InterpolationFunction) image.Image {
-	__obf_5db009bf616c12da := __obf_99d54e4a80501ee0.Bounds()
-	__obf_2afa3344815e639f := uint(__obf_5db009bf616c12da.Dx())
-	__obf_fe92c904738f23c0 := uint(__obf_5db009bf616c12da.Dy())
-	__obf_d3d37d3ab1a814bd, __obf_5270a1e11aa3b663 := __obf_2afa3344815e639f, __obf_fe92c904738f23c0
+func Thumbnail(__obf_934294700eb8e8a3, __obf_fa7c1ad284ee6499 uint, __obf_cb2c55730faeb3f0 image.Image, __obf_f617084106645ca0 InterpolationFunction) image.Image {
+	__obf_af1af6eb6b5f32fa := __obf_cb2c55730faeb3f0.Bounds()
+	__obf_b3cb0e4c438cc52f := uint(__obf_af1af6eb6b5f32fa.Dx())
+	__obf_921c79a400c1db4e := uint(__obf_af1af6eb6b5f32fa.Dy())
+	__obf_16857a4f655b360b, __obf_e95837b55e318ab2 := __obf_b3cb0e4c438cc52f, __obf_921c79a400c1db4e
 
 	// Return original image if it have same or smaller size as constraints
-	if __obf_56d06c6cd95c30a4 >= __obf_2afa3344815e639f && __obf_340e826815fe3163 >= __obf_fe92c904738f23c0 {
-		return __obf_99d54e4a80501ee0
+	if __obf_934294700eb8e8a3 >= __obf_b3cb0e4c438cc52f && __obf_fa7c1ad284ee6499 >= __obf_921c79a400c1db4e {
+		return __obf_cb2c55730faeb3f0
 	}
 
 	// Preserve aspect ratio
-	if __obf_2afa3344815e639f > __obf_56d06c6cd95c30a4 {
-		__obf_5270a1e11aa3b663 = max(uint(__obf_fe92c904738f23c0*__obf_56d06c6cd95c30a4/__obf_2afa3344815e639f), 1)
-		__obf_d3d37d3ab1a814bd = __obf_56d06c6cd95c30a4
+	if __obf_b3cb0e4c438cc52f > __obf_934294700eb8e8a3 {
+		__obf_e95837b55e318ab2 = max(uint(__obf_921c79a400c1db4e*__obf_934294700eb8e8a3/__obf_b3cb0e4c438cc52f), 1)
+		__obf_16857a4f655b360b = __obf_934294700eb8e8a3
 	}
 
-	if __obf_5270a1e11aa3b663 > __obf_340e826815fe3163 {
-		__obf_d3d37d3ab1a814bd = max(uint(__obf_d3d37d3ab1a814bd*__obf_340e826815fe3163/__obf_5270a1e11aa3b663), 1)
-		__obf_5270a1e11aa3b663 = __obf_340e826815fe3163
+	if __obf_e95837b55e318ab2 > __obf_fa7c1ad284ee6499 {
+		__obf_16857a4f655b360b = max(uint(__obf_16857a4f655b360b*__obf_fa7c1ad284ee6499/__obf_e95837b55e318ab2), 1)
+		__obf_e95837b55e318ab2 = __obf_fa7c1ad284ee6499
 	}
-	return Resize(__obf_d3d37d3ab1a814bd, __obf_5270a1e11aa3b663, __obf_99d54e4a80501ee0, __obf_f1c487ecb00e0380)
+	return Resize(__obf_16857a4f655b360b, __obf_e95837b55e318ab2, __obf_cb2c55730faeb3f0, __obf_f617084106645ca0)
 }

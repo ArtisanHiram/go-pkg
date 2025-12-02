@@ -1,4 +1,4 @@
-package __obf_e79e1b0b12d02d0b
+package __obf_dfacbdcb930f08e7
 
 import (
 	"bytes"
@@ -11,37 +11,37 @@ import (
 )
 
 // PKCS7UnPadding 对数据进行PKCS7 unpadding
-func PKCS7UnPadding(__obf_33aa7f9c2f85db51 []byte) []byte {
-	__obf_049fadfb61efc62d := len(__obf_33aa7f9c2f85db51)
-	__obf_20e5de2f9a1b103c := int(__obf_33aa7f9c2f85db51[__obf_049fadfb61efc62d-1])
-	return __obf_33aa7f9c2f85db51[:(__obf_049fadfb61efc62d - __obf_20e5de2f9a1b103c)]
+func PKCS7UnPadding(__obf_2c586f5f2ca8bee1 []byte) []byte {
+	__obf_703404ed2aca900b := len(__obf_2c586f5f2ca8bee1)
+	__obf_fb100789d9a6817c := int(__obf_2c586f5f2ca8bee1[__obf_703404ed2aca900b-1])
+	return __obf_2c586f5f2ca8bee1[:(__obf_703404ed2aca900b - __obf_fb100789d9a6817c)]
 }
 
 // decrypt 对称解密
 // key：AES密钥，必须是16、24或32字节
 // iv：初始向量，必须是16字节
 // cipherText：待解密的密文
-func __obf_cab19e5f923709f6(__obf_7dca2452dd625e20, __obf_5efde0b6b0fdb3bf, __obf_ce83151b9faba101 []byte) ([]byte, error) {
-	__obf_78c51e8a1f2ea866, __obf_d6bcde9761346c61 := aes.NewCipher(__obf_7dca2452dd625e20)
-	if __obf_d6bcde9761346c61 != nil {
-		return nil, fmt.Errorf("create AES cipher failed: %w", __obf_d6bcde9761346c61)
+func __obf_e222655f42972299(__obf_fdb60bda187c670a, __obf_05f2287c726298aa, __obf_1270a095a72eb45b []byte) ([]byte, error) {
+	__obf_e0eb1010f1f53051, __obf_f304d4a353574273 := aes.NewCipher(__obf_fdb60bda187c670a)
+	if __obf_f304d4a353574273 != nil {
+		return nil, fmt.Errorf("create AES cipher failed: %w", __obf_f304d4a353574273)
 	}
-	__obf_54456233e1e810b5 := __obf_78c51e8a1f2ea866.BlockSize()
-	if len(__obf_5efde0b6b0fdb3bf) != __obf_54456233e1e810b5 {
-		return nil, fmt.Errorf("iv length must be %d bytes", __obf_54456233e1e810b5)
+	__obf_58facc9d1938574a := __obf_e0eb1010f1f53051.BlockSize()
+	if len(__obf_05f2287c726298aa) != __obf_58facc9d1938574a {
+		return nil, fmt.Errorf("iv length must be %d bytes", __obf_58facc9d1938574a)
 	}
 
 	// 密文长度必须是分组的整数倍
-	if len(__obf_ce83151b9faba101)%__obf_54456233e1e810b5 != 0 {
+	if len(__obf_1270a095a72eb45b)%__obf_58facc9d1938574a != 0 {
 		return nil, errors.New("ciphertext is not a multiple of the block size")
 	}
-	__obf_d1c1856f65d2b413 := cipher.NewCBCDecrypter(__obf_78c51e8a1f2ea866, __obf_5efde0b6b0fdb3bf)
-	__obf_9724283c5275c86f := make([]byte, len(__obf_ce83151b9faba101))
-	__obf_d1c1856f65d2b413.
-		CryptBlocks(__obf_9724283c5275c86f, __obf_ce83151b9faba101)
-	__obf_9724283c5275c86f = PKCS7UnPadding(__obf_9724283c5275c86f)
+	__obf_05d971a2026e6251 := cipher.NewCBCDecrypter(__obf_e0eb1010f1f53051, __obf_05f2287c726298aa)
+	__obf_4aa802fb79b22d06 := make([]byte, len(__obf_1270a095a72eb45b))
+	__obf_05d971a2026e6251.
+		CryptBlocks(__obf_4aa802fb79b22d06, __obf_1270a095a72eb45b)
+	__obf_4aa802fb79b22d06 = PKCS7UnPadding(__obf_4aa802fb79b22d06)
 
-	return __obf_9724283c5275c86f, nil
+	return __obf_4aa802fb79b22d06, nil
 }
 
 // DecryptedData 微信加密数据解密后通用结构体
@@ -60,44 +60,44 @@ type DecryptedData struct {
 // encryptedData: 微信加密数据
 // iv: 加密算法的初始向量
 // appId: 小程序或公众号的AppID (用于验证水印)
-func DecryptWXData(__obf_fc9b95b3a345670c, __obf_2891de108da26cfb, __obf_5efde0b6b0fdb3bf, __obf_dfc8020f36b460b6 string) (*DecryptedData, error) {
-	__obf_5acbf3d8a3ba0df9, __obf_d6bcde9761346c61 := base64.StdEncoding.DecodeString(__obf_fc9b95b3a345670c)
-	if __obf_d6bcde9761346c61 != nil {
-		return nil, fmt.Errorf("decode sessionKey failed: %w", __obf_d6bcde9761346c61)
+func DecryptWXData(__obf_13df57b2735cdb90, __obf_e2400235f067ee6a, __obf_05f2287c726298aa, __obf_f20438a20f203203 string) (*DecryptedData, error) {
+	__obf_6f281e496e3314f6, __obf_f304d4a353574273 := base64.StdEncoding.DecodeString(__obf_13df57b2735cdb90)
+	if __obf_f304d4a353574273 != nil {
+		return nil, fmt.Errorf("decode sessionKey failed: %w", __obf_f304d4a353574273)
 	}
-	__obf_b8a3f7b79b7752b6, __obf_d6bcde9761346c61 := base64.StdEncoding.DecodeString(__obf_2891de108da26cfb)
-	if __obf_d6bcde9761346c61 != nil {
-		return nil, fmt.Errorf("decode encryptedData failed: %w", __obf_d6bcde9761346c61)
+	__obf_0234040eccf5ae1b, __obf_f304d4a353574273 := base64.StdEncoding.DecodeString(__obf_e2400235f067ee6a)
+	if __obf_f304d4a353574273 != nil {
+		return nil, fmt.Errorf("decode encryptedData failed: %w", __obf_f304d4a353574273)
 	}
-	IV, __obf_d6bcde9761346c61 := base64.StdEncoding.DecodeString(__obf_5efde0b6b0fdb3bf)
-	if __obf_d6bcde9761346c61 != nil {
-		return nil, fmt.Errorf("decode iv failed: %w", __obf_d6bcde9761346c61)
+	IV, __obf_f304d4a353574273 := base64.StdEncoding.DecodeString(__obf_05f2287c726298aa)
+	if __obf_f304d4a353574273 != nil {
+		return nil, fmt.Errorf("decode iv failed: %w", __obf_f304d4a353574273)
 	}
-	__obf_7b7020626e455cbf,
+	__obf_5f92794eda895576,
 
 		// 调用解密函数
-		__obf_d6bcde9761346c61 := __obf_cab19e5f923709f6(__obf_5acbf3d8a3ba0df9, IV, __obf_b8a3f7b79b7752b6)
-	if __obf_d6bcde9761346c61 != nil {
-		return nil, fmt.Errorf("decrypt data failed: %w", __obf_d6bcde9761346c61)
+		__obf_f304d4a353574273 := __obf_e222655f42972299(__obf_6f281e496e3314f6, IV, __obf_0234040eccf5ae1b)
+	if __obf_f304d4a353574273 != nil {
+		return nil, fmt.Errorf("decrypt data failed: %w", __obf_f304d4a353574273)
 	}
 
-	var __obf_e8c254e95f1ffc9e DecryptedData
-	__obf_d6bcde9761346c61 = json.Unmarshal(__obf_7b7020626e455cbf, &__obf_e8c254e95f1ffc9e)
-	if __obf_d6bcde9761346c61 != nil {
-		return nil, fmt.Errorf("unmarshal decrypted data failed: %w", __obf_d6bcde9761346c61)
+	var __obf_87f37beff62d945f DecryptedData
+	__obf_f304d4a353574273 = json.Unmarshal(__obf_5f92794eda895576, &__obf_87f37beff62d945f)
+	if __obf_f304d4a353574273 != nil {
+		return nil, fmt.Errorf("unmarshal decrypted data failed: %w", __obf_f304d4a353574273)
 	}
 
 	// 验证AppID是否一致，防止恶意攻击或数据错用
-	if __obf_e8c254e95f1ffc9e.Watermark.AppID != __obf_dfc8020f36b460b6 {
+	if __obf_87f37beff62d945f.Watermark.AppID != __obf_f20438a20f203203 {
 		return nil, errors.New("app_id in watermark does not match current app_id")
 	}
 
-	return &__obf_e8c254e95f1ffc9e, nil
+	return &__obf_87f37beff62d945f, nil
 }
 
 // PKCS7Padding PKCS7填充
-func PKCS7Padding(__obf_a7ede658d77da976 []byte, __obf_54456233e1e810b5 int) []byte {
-	__obf_bae42abe81aceb0b := __obf_54456233e1e810b5 - len(__obf_a7ede658d77da976)%__obf_54456233e1e810b5
-	__obf_0cd0df1e94d3065a := bytes.Repeat([]byte{byte(__obf_bae42abe81aceb0b)}, __obf_bae42abe81aceb0b)
-	return append(__obf_a7ede658d77da976, __obf_0cd0df1e94d3065a...)
+func PKCS7Padding(__obf_918e5a8ab8b15df6 []byte, __obf_58facc9d1938574a int) []byte {
+	__obf_a785f0f107d065e7 := __obf_58facc9d1938574a - len(__obf_918e5a8ab8b15df6)%__obf_58facc9d1938574a
+	__obf_d92b6781cb40a4f5 := bytes.Repeat([]byte{byte(__obf_a785f0f107d065e7)}, __obf_a785f0f107d065e7)
+	return append(__obf_918e5a8ab8b15df6, __obf_d92b6781cb40a4f5...)
 }

@@ -1,4 +1,4 @@
-package __obf_63dc7f87a7750084
+package __obf_48b3d686b985a20b
 
 import (
 	"bytes"
@@ -22,15 +22,15 @@ import (
 // variable sized image to be returned: See the documentation for Image().
 //
 // To serve over HTTP, remember to send a Content-Type: image/png header.
-func Encode(__obf_e41866e579426802 string, __obf_47158df92f26b0f4 RecoveryLevel, __obf_80f4ab6d4332abb9 int) ([]byte, error) {
-	var __obf_5b0073c32b55ab92 *QRCode
-	__obf_5b0073c32b55ab92, __obf_b59cbf05240604a0 := New(__obf_e41866e579426802, __obf_47158df92f26b0f4)
+func Encode(__obf_42ae8f69ca3d94e4 string, __obf_28ff6edf33e2b2ce RecoveryLevel, __obf_311d29b1744e83e0 int) ([]byte, error) {
+	var __obf_9c281bbbde209bea *QRCode
+	__obf_9c281bbbde209bea, __obf_3f84ccce09b63a68 := New(__obf_42ae8f69ca3d94e4, __obf_28ff6edf33e2b2ce)
 
-	if __obf_b59cbf05240604a0 != nil {
-		return nil, __obf_b59cbf05240604a0
+	if __obf_3f84ccce09b63a68 != nil {
+		return nil, __obf_3f84ccce09b63a68
 	}
 
-	return __obf_5b0073c32b55ab92.PNG(__obf_80f4ab6d4332abb9)
+	return __obf_9c281bbbde209bea.PNG(__obf_311d29b1744e83e0)
 }
 
 // WriteFile encodes, then writes a QR Code to the given filename in PNG format.
@@ -38,15 +38,15 @@ func Encode(__obf_e41866e579426802 string, __obf_47158df92f26b0f4 RecoveryLevel,
 // size is both the image width and height in pixels. If size is too small then
 // a larger image is silently written. Negative values for size cause a variable
 // sized image to be written: See the documentation for Image().
-func WriteFile(__obf_e41866e579426802 string, __obf_47158df92f26b0f4 RecoveryLevel, __obf_80f4ab6d4332abb9 int, __obf_52c631b3d40eb87e string) error {
-	var __obf_5b0073c32b55ab92 *QRCode
-	__obf_5b0073c32b55ab92, __obf_b59cbf05240604a0 := New(__obf_e41866e579426802, __obf_47158df92f26b0f4)
+func WriteFile(__obf_42ae8f69ca3d94e4 string, __obf_28ff6edf33e2b2ce RecoveryLevel, __obf_311d29b1744e83e0 int, __obf_ffac0de5194f7875 string) error {
+	var __obf_9c281bbbde209bea *QRCode
+	__obf_9c281bbbde209bea, __obf_3f84ccce09b63a68 := New(__obf_42ae8f69ca3d94e4, __obf_28ff6edf33e2b2ce)
 
-	if __obf_b59cbf05240604a0 != nil {
-		return __obf_b59cbf05240604a0
+	if __obf_3f84ccce09b63a68 != nil {
+		return __obf_3f84ccce09b63a68
 	}
 
-	return __obf_5b0073c32b55ab92.WriteFile(__obf_80f4ab6d4332abb9,
+	return __obf_9c281bbbde209bea.WriteFile(__obf_311d29b1744e83e0,
 
 		// WriteColorFile encodes, then writes a QR Code to the given filename in PNG format.
 		// With WriteColorFile you can also specify the colors you want to use.
@@ -54,26 +54,26 @@ func WriteFile(__obf_e41866e579426802 string, __obf_47158df92f26b0f4 RecoveryLev
 		// size is both the image width and height in pixels. If size is too small then
 		// a larger image is silently written. Negative values for size cause a variable
 		// sized image to be written: See the documentation for Image().
-		__obf_52c631b3d40eb87e)
+		__obf_ffac0de5194f7875)
 }
 
-func WriteColorFile(__obf_e41866e579426802 string, __obf_47158df92f26b0f4 RecoveryLevel, __obf_80f4ab6d4332abb9 int, __obf_835d47f4d838864b, __obf_c267ce7d0e11b5fd color.Color, __obf_52c631b3d40eb87e string) error {
+func WriteColorFile(__obf_42ae8f69ca3d94e4 string, __obf_28ff6edf33e2b2ce RecoveryLevel, __obf_311d29b1744e83e0 int, __obf_ed1a26991796b7ee, __obf_6d9997cb21d52d96 color.Color, __obf_ffac0de5194f7875 string) error {
 
-	var __obf_5b0073c32b55ab92 *QRCode
-	__obf_5b0073c32b55ab92, __obf_b59cbf05240604a0 := New(__obf_e41866e579426802, __obf_47158df92f26b0f4)
-	__obf_5b0073c32b55ab92.
-		BackgroundColor = __obf_835d47f4d838864b
-	__obf_5b0073c32b55ab92.
-		ForegroundColor = __obf_c267ce7d0e11b5fd
+	var __obf_9c281bbbde209bea *QRCode
+	__obf_9c281bbbde209bea, __obf_3f84ccce09b63a68 := New(__obf_42ae8f69ca3d94e4, __obf_28ff6edf33e2b2ce)
+	__obf_9c281bbbde209bea.
+		BackgroundColor = __obf_ed1a26991796b7ee
+	__obf_9c281bbbde209bea.
+		ForegroundColor = __obf_6d9997cb21d52d96
 
-	if __obf_b59cbf05240604a0 != nil {
-		return __obf_b59cbf05240604a0
+	if __obf_3f84ccce09b63a68 != nil {
+		return __obf_3f84ccce09b63a68
 	}
 
-	return __obf_5b0073c32b55ab92.WriteFile(__obf_80f4ab6d4332abb9,
+	return __obf_9c281bbbde209bea.WriteFile(__obf_311d29b1744e83e0,
 
 		// A QRCode represents a valid encoded QRCode.
-		__obf_52c631b3d40eb87e)
+		__obf_ffac0de5194f7875)
 }
 
 type QRCode struct {
@@ -90,11 +90,11 @@ type QRCode struct {
 
 	// Disable the QR Code border.
 	Borderless             bool
-	__obf_2753e87a957b69f8 *__obf_3ee8d058dd75e4b0
-	__obf_2066e640e4e50f14 __obf_987afc77278a1676
-	__obf_eb8b3f015415859a *bitset.Bitset
-	__obf_a9c08ca051c7e6c3 *__obf_a9c08ca051c7e6c3
-	__obf_3a54d62911a3bcfb int
+	__obf_af5b88a292691c3c *__obf_5a535fd3d1104862
+	__obf_4f23b6c0c8a29b07 __obf_166f0ff41181b0b8
+	__obf_e4df198c6616985f *bitset.Bitset
+	__obf_14306cbbf0004950 *__obf_14306cbbf0004950
+	__obf_0bb74c1e8aa906af int
 }
 
 // New constructs a QRCode.
@@ -103,44 +103,44 @@ type QRCode struct {
 //	q, err := qrcode.New("my content", qrcode.Medium)
 //
 // An error occurs if the content is too long.
-func New(__obf_e41866e579426802 string, __obf_47158df92f26b0f4 RecoveryLevel) (*QRCode, error) {
-	__obf_be2613891f4b1b32 := []__obf_40700b751bbe7fa9{__obf_4ef346b16a795892, __obf_e891267bd1bcc38a, __obf_054184439c33471a}
+func New(__obf_42ae8f69ca3d94e4 string, __obf_28ff6edf33e2b2ce RecoveryLevel) (*QRCode, error) {
+	__obf_82b8685d9fc05f5c := []__obf_2818b04b6d379c6a{__obf_2ddbe5e0d50f3fdb, __obf_d4c11dce5ccd0394, __obf_e21e9a063b84f8a4}
 
-	var __obf_2753e87a957b69f8 *__obf_3ee8d058dd75e4b0
-	var __obf_175ed6e946c14a9b *bitset.Bitset
-	var __obf_1d6b91b9673acb44 *__obf_987afc77278a1676
-	var __obf_b59cbf05240604a0 error
+	var __obf_af5b88a292691c3c *__obf_5a535fd3d1104862
+	var __obf_ba2373eb7d967534 *bitset.Bitset
+	var __obf_fb47b7063cd80a24 *__obf_166f0ff41181b0b8
+	var __obf_3f84ccce09b63a68 error
 
-	for _, __obf_494cef4b0d092224 := range __obf_be2613891f4b1b32 {
-		__obf_2753e87a957b69f8 = __obf_d8bb8ebef294bcff(__obf_494cef4b0d092224)
-		__obf_175ed6e946c14a9b, __obf_b59cbf05240604a0 = __obf_2753e87a957b69f8.__obf_395c063b7326115c([]byte(__obf_e41866e579426802))
+	for _, __obf_05af1e63275cf6cc := range __obf_82b8685d9fc05f5c {
+		__obf_af5b88a292691c3c = __obf_fccacc671db5d5f3(__obf_05af1e63275cf6cc)
+		__obf_ba2373eb7d967534, __obf_3f84ccce09b63a68 = __obf_af5b88a292691c3c.__obf_5fa94477cdc64b8f([]byte(__obf_42ae8f69ca3d94e4))
 
-		if __obf_b59cbf05240604a0 != nil {
+		if __obf_3f84ccce09b63a68 != nil {
 			continue
 		}
-		__obf_1d6b91b9673acb44 = __obf_361e6bfddb7983f8(__obf_47158df92f26b0f4, __obf_2753e87a957b69f8, __obf_175ed6e946c14a9b.Len())
+		__obf_fb47b7063cd80a24 = __obf_d50edf8706752281(__obf_28ff6edf33e2b2ce, __obf_af5b88a292691c3c, __obf_ba2373eb7d967534.Len())
 
-		if __obf_1d6b91b9673acb44 != nil {
+		if __obf_fb47b7063cd80a24 != nil {
 			break
 		}
 	}
 
-	if __obf_b59cbf05240604a0 != nil {
-		return nil, __obf_b59cbf05240604a0
-	} else if __obf_1d6b91b9673acb44 == nil {
+	if __obf_3f84ccce09b63a68 != nil {
+		return nil, __obf_3f84ccce09b63a68
+	} else if __obf_fb47b7063cd80a24 == nil {
 		return nil, errors.New("content too long to encode")
 	}
-	__obf_5b0073c32b55ab92 := &QRCode{
-		Content: __obf_e41866e579426802,
+	__obf_9c281bbbde209bea := &QRCode{
+		Content: __obf_42ae8f69ca3d94e4,
 
-		Level:         __obf_47158df92f26b0f4,
-		VersionNumber: __obf_1d6b91b9673acb44.__obf_2066e640e4e50f14,
+		Level:         __obf_28ff6edf33e2b2ce,
+		VersionNumber: __obf_fb47b7063cd80a24.__obf_4f23b6c0c8a29b07,
 
 		ForegroundColor: color.Black,
-		BackgroundColor: color.White, __obf_2753e87a957b69f8: __obf_2753e87a957b69f8, __obf_eb8b3f015415859a: __obf_175ed6e946c14a9b, __obf_2066e640e4e50f14: *__obf_1d6b91b9673acb44,
+		BackgroundColor: color.White, __obf_af5b88a292691c3c: __obf_af5b88a292691c3c, __obf_e4df198c6616985f: __obf_ba2373eb7d967534, __obf_4f23b6c0c8a29b07: *__obf_fb47b7063cd80a24,
 	}
 
-	return __obf_5b0073c32b55ab92, nil
+	return __obf_9c281bbbde209bea, nil
 }
 
 // NewWithForcedVersion constructs a QRCode of a specific version.
@@ -149,47 +149,47 @@ func New(__obf_e41866e579426802 string, __obf_47158df92f26b0f4 RecoveryLevel) (*
 //	q, err := qrcode.NewWithForcedVersion("my content", 25, qrcode.Medium)
 //
 // An error occurs in case of invalid version.
-func NewWithForcedVersion(__obf_e41866e579426802 string, __obf_2066e640e4e50f14 int, __obf_47158df92f26b0f4 RecoveryLevel) (*QRCode, error) {
-	var __obf_2753e87a957b69f8 *__obf_3ee8d058dd75e4b0
+func NewWithForcedVersion(__obf_42ae8f69ca3d94e4 string, __obf_4f23b6c0c8a29b07 int, __obf_28ff6edf33e2b2ce RecoveryLevel) (*QRCode, error) {
+	var __obf_af5b88a292691c3c *__obf_5a535fd3d1104862
 
 	switch {
-	case __obf_2066e640e4e50f14 >= 1 && __obf_2066e640e4e50f14 <= 9:
-		__obf_2753e87a957b69f8 = __obf_d8bb8ebef294bcff(__obf_4ef346b16a795892)
-	case __obf_2066e640e4e50f14 >= 10 && __obf_2066e640e4e50f14 <= 26:
-		__obf_2753e87a957b69f8 = __obf_d8bb8ebef294bcff(__obf_e891267bd1bcc38a)
-	case __obf_2066e640e4e50f14 >= 27 && __obf_2066e640e4e50f14 <= 40:
-		__obf_2753e87a957b69f8 = __obf_d8bb8ebef294bcff(__obf_054184439c33471a)
+	case __obf_4f23b6c0c8a29b07 >= 1 && __obf_4f23b6c0c8a29b07 <= 9:
+		__obf_af5b88a292691c3c = __obf_fccacc671db5d5f3(__obf_2ddbe5e0d50f3fdb)
+	case __obf_4f23b6c0c8a29b07 >= 10 && __obf_4f23b6c0c8a29b07 <= 26:
+		__obf_af5b88a292691c3c = __obf_fccacc671db5d5f3(__obf_d4c11dce5ccd0394)
+	case __obf_4f23b6c0c8a29b07 >= 27 && __obf_4f23b6c0c8a29b07 <= 40:
+		__obf_af5b88a292691c3c = __obf_fccacc671db5d5f3(__obf_e21e9a063b84f8a4)
 	default:
-		return nil, fmt.Errorf("invalid version %d (expected 1-40 inclusive)", __obf_2066e640e4e50f14)
+		return nil, fmt.Errorf("invalid version %d (expected 1-40 inclusive)", __obf_4f23b6c0c8a29b07)
 	}
 
-	var __obf_175ed6e946c14a9b *bitset.Bitset
-	__obf_175ed6e946c14a9b, __obf_b59cbf05240604a0 := __obf_2753e87a957b69f8.__obf_395c063b7326115c([]byte(__obf_e41866e579426802))
+	var __obf_ba2373eb7d967534 *bitset.Bitset
+	__obf_ba2373eb7d967534, __obf_3f84ccce09b63a68 := __obf_af5b88a292691c3c.__obf_5fa94477cdc64b8f([]byte(__obf_42ae8f69ca3d94e4))
 
-	if __obf_b59cbf05240604a0 != nil {
-		return nil, __obf_b59cbf05240604a0
+	if __obf_3f84ccce09b63a68 != nil {
+		return nil, __obf_3f84ccce09b63a68
 	}
-	__obf_1d6b91b9673acb44 := __obf_7704d615d7f75575(__obf_47158df92f26b0f4, __obf_2066e640e4e50f14)
+	__obf_fb47b7063cd80a24 := __obf_d2e0f70b27ca0e9a(__obf_28ff6edf33e2b2ce, __obf_4f23b6c0c8a29b07)
 
-	if __obf_1d6b91b9673acb44 == nil {
+	if __obf_fb47b7063cd80a24 == nil {
 		return nil, errors.New("cannot find QR Code version")
 	}
 
-	if __obf_175ed6e946c14a9b.Len() > __obf_1d6b91b9673acb44.__obf_6ca1f14a38153ca1() {
-		return nil, fmt.Errorf("cannot encode QR code: content too large for fixed size QR Code version %d (encoded length is %d bits, maximum length is %d bits)", __obf_2066e640e4e50f14, __obf_175ed6e946c14a9b.
-			Len(), __obf_1d6b91b9673acb44.__obf_6ca1f14a38153ca1())
+	if __obf_ba2373eb7d967534.Len() > __obf_fb47b7063cd80a24.__obf_17d316c470f598b7() {
+		return nil, fmt.Errorf("cannot encode QR code: content too large for fixed size QR Code version %d (encoded length is %d bits, maximum length is %d bits)", __obf_4f23b6c0c8a29b07, __obf_ba2373eb7d967534.
+			Len(), __obf_fb47b7063cd80a24.__obf_17d316c470f598b7())
 	}
-	__obf_5b0073c32b55ab92 := &QRCode{
-		Content: __obf_e41866e579426802,
+	__obf_9c281bbbde209bea := &QRCode{
+		Content: __obf_42ae8f69ca3d94e4,
 
-		Level:         __obf_47158df92f26b0f4,
-		VersionNumber: __obf_1d6b91b9673acb44.__obf_2066e640e4e50f14,
+		Level:         __obf_28ff6edf33e2b2ce,
+		VersionNumber: __obf_fb47b7063cd80a24.__obf_4f23b6c0c8a29b07,
 
 		ForegroundColor: color.Black,
-		BackgroundColor: color.White, __obf_2753e87a957b69f8: __obf_2753e87a957b69f8, __obf_eb8b3f015415859a: __obf_175ed6e946c14a9b, __obf_2066e640e4e50f14: *__obf_1d6b91b9673acb44,
+		BackgroundColor: color.White, __obf_af5b88a292691c3c: __obf_af5b88a292691c3c, __obf_e4df198c6616985f: __obf_ba2373eb7d967534, __obf_4f23b6c0c8a29b07: *__obf_fb47b7063cd80a24,
 	}
 
-	return __obf_5b0073c32b55ab92, nil
+	return __obf_9c281bbbde209bea, nil
 }
 
 // Bitmap returns the QR Code as a 2D array of 1-bit pixels.
@@ -198,12 +198,12 @@ func NewWithForcedVersion(__obf_e41866e579426802 string, __obf_2066e640e4e50f14 
 //
 // The bitmap includes the required "quiet zone" around the QR Code to aid
 // decoding.
-func (__obf_5b0073c32b55ab92 *QRCode) Bitmap() [][]bool {
-	__obf_5b0073c32b55ab92.
+func (__obf_9c281bbbde209bea *QRCode) Bitmap() [][]bool {
+	__obf_9c281bbbde209bea.
 		// Build QR code.
-		__obf_395c063b7326115c()
+		__obf_5fa94477cdc64b8f()
 
-	return __obf_5b0073c32b55ab92.
+	return __obf_9c281bbbde209bea.
 
 		// Image returns the QR Code as an image.Image.
 		//
@@ -218,57 +218,57 @@ func (__obf_5b0073c32b55ab92 *QRCode) Bitmap() [][]bool {
 		// returned is the minimum size required for the QR Code. Choose a larger
 		// negative number to increase the scale of the image. e.g. a size of -5 causes
 		// each module (QR Code "pixel") to be 5px in size.
-		__obf_a9c08ca051c7e6c3.__obf_94902da22ea0120e()
+		__obf_14306cbbf0004950.__obf_d7ceef4be5069a61()
 }
 
-func (__obf_5b0073c32b55ab92 *QRCode) Image(__obf_80f4ab6d4332abb9 int) image.Image {
-	__obf_5b0073c32b55ab92.
+func (__obf_9c281bbbde209bea *QRCode) Image(__obf_311d29b1744e83e0 int) image.Image {
+	__obf_9c281bbbde209bea.
 		// Build QR code.
-		__obf_395c063b7326115c()
-	__obf_e3d393e0900b18ef := // Minimum pixels (both width and height) required.
-		__obf_5b0073c32b55ab92.
+		__obf_5fa94477cdc64b8f()
+	__obf_15a556eb60c6115e := // Minimum pixels (both width and height) required.
+		__obf_9c281bbbde209bea.
 
 			// Variable size support.
-			__obf_a9c08ca051c7e6c3.__obf_80f4ab6d4332abb9
+			__obf_14306cbbf0004950.__obf_311d29b1744e83e0
 
-	if __obf_80f4ab6d4332abb9 < 0 {
-		__obf_80f4ab6d4332abb9 = __obf_80f4ab6d4332abb9 * -1 * __obf_e3d393e0900b18ef
+	if __obf_311d29b1744e83e0 < 0 {
+		__obf_311d29b1744e83e0 = __obf_311d29b1744e83e0 * -1 * __obf_15a556eb60c6115e
 	}
 
 	// Actual pixels available to draw the symbol. Automatically increase the
 	// image size if it's not large enough.
-	if __obf_80f4ab6d4332abb9 < __obf_e3d393e0900b18ef {
-		__obf_80f4ab6d4332abb9 = __obf_e3d393e0900b18ef
+	if __obf_311d29b1744e83e0 < __obf_15a556eb60c6115e {
+		__obf_311d29b1744e83e0 = __obf_15a556eb60c6115e
 	}
-	__obf_081a6c25fe653dd2 := // Output image.
-		image.Rectangle{Min: image.Point{0, 0}, Max: image.Point{__obf_80f4ab6d4332abb9,
+	__obf_0ea6ba11e00dc609 := // Output image.
+		image.Rectangle{Min: image.Point{0, 0}, Max: image.Point{__obf_311d29b1744e83e0,
 
 			// Saves a few bytes to have them in this order
-			__obf_80f4ab6d4332abb9}}
-	__obf_012d6cea24c783cf := color.Palette([]color.Color{__obf_5b0073c32b55ab92.BackgroundColor, __obf_5b0073c32b55ab92.ForegroundColor})
-	__obf_73ee74cf74079256 := image.NewPaletted(__obf_081a6c25fe653dd2, __obf_012d6cea24c783cf)
-	__obf_1940ca6767f73b49 := uint8(__obf_73ee74cf74079256.Palette.Index(__obf_5b0073c32b55ab92.ForegroundColor))
-	__obf_94902da22ea0120e := // QR code bitmap.
-		__obf_5b0073c32b55ab92.
+			__obf_311d29b1744e83e0}}
+	__obf_8af79729b34fbe30 := color.Palette([]color.Color{__obf_9c281bbbde209bea.BackgroundColor, __obf_9c281bbbde209bea.ForegroundColor})
+	__obf_1f15c3284581f61d := image.NewPaletted(__obf_0ea6ba11e00dc609, __obf_8af79729b34fbe30)
+	__obf_3d78340bf032213a := uint8(__obf_1f15c3284581f61d.Palette.Index(__obf_9c281bbbde209bea.ForegroundColor))
+	__obf_d7ceef4be5069a61 := // QR code bitmap.
+		__obf_9c281bbbde209bea.
 
 			// Map each image pixel to the nearest QR code module.
-			__obf_a9c08ca051c7e6c3.__obf_94902da22ea0120e()
-	__obf_4d3c5e1b247f5406 := float64(__obf_e3d393e0900b18ef) / float64(__obf_80f4ab6d4332abb9)
-	for __obf_16bfdfd36c335382 := 0; __obf_16bfdfd36c335382 < __obf_80f4ab6d4332abb9; __obf_16bfdfd36c335382++ {
-		__obf_08b0d7a65e9bf07f := int(float64(__obf_16bfdfd36c335382) * __obf_4d3c5e1b247f5406)
-		for __obf_7529943f67ee44cb := 0; __obf_7529943f67ee44cb < __obf_80f4ab6d4332abb9; __obf_7529943f67ee44cb++ {
-			__obf_dfeeae06784a6756 := int(float64(__obf_7529943f67ee44cb) * __obf_4d3c5e1b247f5406)
-			__obf_d3308b8b9ec8593a := __obf_94902da22ea0120e[__obf_08b0d7a65e9bf07f][__obf_dfeeae06784a6756]
+			__obf_14306cbbf0004950.__obf_d7ceef4be5069a61()
+	__obf_ade5f2c1e365f7b8 := float64(__obf_15a556eb60c6115e) / float64(__obf_311d29b1744e83e0)
+	for __obf_8650f6fe673c98a1 := 0; __obf_8650f6fe673c98a1 < __obf_311d29b1744e83e0; __obf_8650f6fe673c98a1++ {
+		__obf_7dd81ce83bf63772 := int(float64(__obf_8650f6fe673c98a1) * __obf_ade5f2c1e365f7b8)
+		for __obf_cf967a75716d8446 := 0; __obf_cf967a75716d8446 < __obf_311d29b1744e83e0; __obf_cf967a75716d8446++ {
+			__obf_ff6736d3df8961f5 := int(float64(__obf_cf967a75716d8446) * __obf_ade5f2c1e365f7b8)
+			__obf_f85dcc6c0aea860b := __obf_d7ceef4be5069a61[__obf_7dd81ce83bf63772][__obf_ff6736d3df8961f5]
 
-			if __obf_d3308b8b9ec8593a {
-				__obf_f9234edaec51b37e := __obf_73ee74cf74079256.PixOffset(__obf_7529943f67ee44cb, __obf_16bfdfd36c335382)
-				__obf_73ee74cf74079256.
-					Pix[__obf_f9234edaec51b37e] = __obf_1940ca6767f73b49
+			if __obf_f85dcc6c0aea860b {
+				__obf_33ab3a0f563da5d7 := __obf_1f15c3284581f61d.PixOffset(__obf_cf967a75716d8446, __obf_8650f6fe673c98a1)
+				__obf_1f15c3284581f61d.
+					Pix[__obf_33ab3a0f563da5d7] = __obf_3d78340bf032213a
 			}
 		}
 	}
 
-	return __obf_73ee74cf74079256
+	return __obf_1f15c3284581f61d
 }
 
 // PNG returns the QR Code as a PNG image.
@@ -276,18 +276,18 @@ func (__obf_5b0073c32b55ab92 *QRCode) Image(__obf_80f4ab6d4332abb9 int) image.Im
 // size is both the image width and height in pixels. If size is too small then
 // a larger image is silently returned. Negative values for size cause a
 // variable sized image to be returned: See the documentation for Image().
-func (__obf_5b0073c32b55ab92 *QRCode) PNG(__obf_80f4ab6d4332abb9 int) ([]byte, error) {
-	__obf_73ee74cf74079256 := __obf_5b0073c32b55ab92.Image(__obf_80f4ab6d4332abb9)
-	__obf_2753e87a957b69f8 := png.Encoder{CompressionLevel: png.BestCompression}
+func (__obf_9c281bbbde209bea *QRCode) PNG(__obf_311d29b1744e83e0 int) ([]byte, error) {
+	__obf_1f15c3284581f61d := __obf_9c281bbbde209bea.Image(__obf_311d29b1744e83e0)
+	__obf_af5b88a292691c3c := png.Encoder{CompressionLevel: png.BestCompression}
 
-	var __obf_0de44d307506fdeb bytes.Buffer
-	__obf_b59cbf05240604a0 := __obf_2753e87a957b69f8.Encode(&__obf_0de44d307506fdeb, __obf_73ee74cf74079256)
+	var __obf_21b947e29586a23f bytes.Buffer
+	__obf_3f84ccce09b63a68 := __obf_af5b88a292691c3c.Encode(&__obf_21b947e29586a23f, __obf_1f15c3284581f61d)
 
-	if __obf_b59cbf05240604a0 != nil {
-		return nil, __obf_b59cbf05240604a0
+	if __obf_3f84ccce09b63a68 != nil {
+		return nil, __obf_3f84ccce09b63a68
 	}
 
-	return __obf_0de44d307506fdeb.Bytes(), nil
+	return __obf_21b947e29586a23f.Bytes(), nil
 }
 
 // Write writes the QR Code as a PNG image to io.Writer.
@@ -295,16 +295,16 @@ func (__obf_5b0073c32b55ab92 *QRCode) PNG(__obf_80f4ab6d4332abb9 int) ([]byte, e
 // size is both the image width and height in pixels. If size is too small then
 // a larger image is silently written. Negative values for size cause a
 // variable sized image to be written: See the documentation for Image().
-func (__obf_5b0073c32b55ab92 *QRCode) Write(__obf_80f4ab6d4332abb9 int, __obf_f603e57a51325f8b io.Writer) error {
+func (__obf_9c281bbbde209bea *QRCode) Write(__obf_311d29b1744e83e0 int, __obf_0bdb8847c4477e94 io.Writer) error {
 	var png []byte
 
-	png, __obf_b59cbf05240604a0 := __obf_5b0073c32b55ab92.PNG(__obf_80f4ab6d4332abb9)
+	png, __obf_3f84ccce09b63a68 := __obf_9c281bbbde209bea.PNG(__obf_311d29b1744e83e0)
 
-	if __obf_b59cbf05240604a0 != nil {
-		return __obf_b59cbf05240604a0
+	if __obf_3f84ccce09b63a68 != nil {
+		return __obf_3f84ccce09b63a68
 	}
-	_, __obf_b59cbf05240604a0 = __obf_f603e57a51325f8b.Write(png)
-	return __obf_b59cbf05240604a0
+	_, __obf_3f84ccce09b63a68 = __obf_0bdb8847c4477e94.Write(png)
+	return __obf_3f84ccce09b63a68
 }
 
 // WriteFile writes the QR Code as a PNG image to the specified file.
@@ -312,52 +312,52 @@ func (__obf_5b0073c32b55ab92 *QRCode) Write(__obf_80f4ab6d4332abb9 int, __obf_f6
 // size is both the image width and height in pixels. If size is too small then
 // a larger image is silently written. Negative values for size cause a
 // variable sized image to be written: See the documentation for Image().
-func (__obf_5b0073c32b55ab92 *QRCode) WriteFile(__obf_80f4ab6d4332abb9 int, __obf_52c631b3d40eb87e string) error {
+func (__obf_9c281bbbde209bea *QRCode) WriteFile(__obf_311d29b1744e83e0 int, __obf_ffac0de5194f7875 string) error {
 	var png []byte
 
-	png, __obf_b59cbf05240604a0 := __obf_5b0073c32b55ab92.PNG(__obf_80f4ab6d4332abb9)
+	png, __obf_3f84ccce09b63a68 := __obf_9c281bbbde209bea.PNG(__obf_311d29b1744e83e0)
 
-	if __obf_b59cbf05240604a0 != nil {
-		return __obf_b59cbf05240604a0
+	if __obf_3f84ccce09b63a68 != nil {
+		return __obf_3f84ccce09b63a68
 	}
 
-	return os.WriteFile(__obf_52c631b3d40eb87e, png, os.FileMode(0644))
+	return os.WriteFile(__obf_ffac0de5194f7875, png, os.FileMode(0644))
 }
 
 // encode completes the steps required to encode the QR Code. These include
 // adding the terminator bits and padding, splitting the data into blocks and
 // applying the error correction, and selecting the best data mask.
-func (__obf_5b0073c32b55ab92 *QRCode) __obf_395c063b7326115c() {
-	__obf_1d07d10e4aa75fd1 := __obf_5b0073c32b55ab92.__obf_2066e640e4e50f14.__obf_3955f9cbbeb36b7e(__obf_5b0073c32b55ab92.__obf_eb8b3f015415859a.Len())
-	__obf_5b0073c32b55ab92.__obf_e2cb4eb9375cceea(__obf_1d07d10e4aa75fd1)
-	__obf_5b0073c32b55ab92.__obf_53d37d46577398d2()
-	__obf_175ed6e946c14a9b := __obf_5b0073c32b55ab92.__obf_0ec45dbc5e632011()
+func (__obf_9c281bbbde209bea *QRCode) __obf_5fa94477cdc64b8f() {
+	__obf_e1aceb419eb8b230 := __obf_9c281bbbde209bea.__obf_4f23b6c0c8a29b07.__obf_7ea55d54ea75607a(__obf_9c281bbbde209bea.__obf_e4df198c6616985f.Len())
+	__obf_9c281bbbde209bea.__obf_4f04a66c29623c8b(__obf_e1aceb419eb8b230)
+	__obf_9c281bbbde209bea.__obf_9e8f828ad9c392e5()
+	__obf_ba2373eb7d967534 := __obf_9c281bbbde209bea.__obf_9bccde5759463161()
 
-	const __obf_09b2c99454666af6 int = 8
-	__obf_a1a2e98604fc16f7 := 0
+	const __obf_82a4f6a200c355ef int = 8
+	__obf_d5cbfb4fd6fc4841 := 0
 
-	for __obf_3a54d62911a3bcfb := 0; __obf_3a54d62911a3bcfb < __obf_09b2c99454666af6; __obf_3a54d62911a3bcfb++ {
-		var __obf_ab8d068af1cb47d6 *__obf_a9c08ca051c7e6c3
-		var __obf_b59cbf05240604a0 error
-		__obf_ab8d068af1cb47d6, __obf_b59cbf05240604a0 = __obf_3e8c0b7890083010(__obf_5b0073c32b55ab92.__obf_2066e640e4e50f14, __obf_3a54d62911a3bcfb, __obf_175ed6e946c14a9b, !__obf_5b0073c32b55ab92.Borderless)
+	for __obf_0bb74c1e8aa906af := 0; __obf_0bb74c1e8aa906af < __obf_82a4f6a200c355ef; __obf_0bb74c1e8aa906af++ {
+		var __obf_d73c540e0bdff21b *__obf_14306cbbf0004950
+		var __obf_3f84ccce09b63a68 error
+		__obf_d73c540e0bdff21b, __obf_3f84ccce09b63a68 = __obf_38396e56554d9d40(__obf_9c281bbbde209bea.__obf_4f23b6c0c8a29b07, __obf_0bb74c1e8aa906af, __obf_ba2373eb7d967534, !__obf_9c281bbbde209bea.Borderless)
 
-		if __obf_b59cbf05240604a0 != nil {
-			log.Panic(__obf_b59cbf05240604a0.Error())
+		if __obf_3f84ccce09b63a68 != nil {
+			log.Panic(__obf_3f84ccce09b63a68.Error())
 		}
-		__obf_955c9aaf43109184 := __obf_ab8d068af1cb47d6.__obf_955c9aaf43109184()
-		if __obf_955c9aaf43109184 != 0 {
-			log.Panicf("bug: numEmptyModules is %d (expected 0) (version=%d)", __obf_955c9aaf43109184, __obf_5b0073c32b55ab92.
+		__obf_2a27c02f01243dcc := __obf_d73c540e0bdff21b.__obf_2a27c02f01243dcc()
+		if __obf_2a27c02f01243dcc != 0 {
+			log.Panicf("bug: numEmptyModules is %d (expected 0) (version=%d)", __obf_2a27c02f01243dcc, __obf_9c281bbbde209bea.
 				VersionNumber)
 		}
-		__obf_012d6cea24c783cf := __obf_ab8d068af1cb47d6.
+		__obf_8af79729b34fbe30 := __obf_d73c540e0bdff21b.
 
 			//log.Printf("mask=%d p=%3d p1=%3d p2=%3d p3=%3d p4=%d\n", mask, p, s.penalty1(), s.penalty2(), s.penalty3(), s.penalty4())
-			__obf_9dab437c9fcdbe57()
+			__obf_0a829429859f1a12()
 
-		if __obf_5b0073c32b55ab92.__obf_a9c08ca051c7e6c3 == nil || __obf_012d6cea24c783cf < __obf_a1a2e98604fc16f7 {
-			__obf_5b0073c32b55ab92.__obf_a9c08ca051c7e6c3 = __obf_ab8d068af1cb47d6
-			__obf_5b0073c32b55ab92.__obf_3a54d62911a3bcfb = __obf_3a54d62911a3bcfb
-			__obf_a1a2e98604fc16f7 = __obf_012d6cea24c783cf
+		if __obf_9c281bbbde209bea.__obf_14306cbbf0004950 == nil || __obf_8af79729b34fbe30 < __obf_d5cbfb4fd6fc4841 {
+			__obf_9c281bbbde209bea.__obf_14306cbbf0004950 = __obf_d73c540e0bdff21b
+			__obf_9c281bbbde209bea.__obf_0bb74c1e8aa906af = __obf_0bb74c1e8aa906af
+			__obf_d5cbfb4fd6fc4841 = __obf_8af79729b34fbe30
 		}
 	}
 }
@@ -368,9 +368,9 @@ func (__obf_5b0073c32b55ab92 *QRCode) __obf_395c063b7326115c() {
 // is chosen (which itself depends on the length of the data encoded). The
 // terminator bits are thus added after the QR Code version
 // is chosen, rather than at the data encoding stage.
-func (__obf_5b0073c32b55ab92 *QRCode) __obf_e2cb4eb9375cceea(__obf_1d07d10e4aa75fd1 int) {
-	__obf_5b0073c32b55ab92.__obf_eb8b3f015415859a.
-		AppendNumBools(__obf_1d07d10e4aa75fd1, false)
+func (__obf_9c281bbbde209bea *QRCode) __obf_4f04a66c29623c8b(__obf_e1aceb419eb8b230 int) {
+	__obf_9c281bbbde209bea.__obf_e4df198c6616985f.
+		AppendNumBools(__obf_e1aceb419eb8b230, false)
 }
 
 // encodeBlocks takes the completed (terminated & padded) encoded data, splits
@@ -378,161 +378,161 @@ func (__obf_5b0073c32b55ab92 *QRCode) __obf_e2cb4eb9375cceea(__obf_1d07d10e4aa75
 // correction to each block, then interleaves the blocks together.
 //
 // The QR Code's final data sequence is returned.
-func (__obf_5b0073c32b55ab92 *QRCode) __obf_0ec45dbc5e632011() *bitset.Bitset {
+func (__obf_9c281bbbde209bea *QRCode) __obf_9bccde5759463161() *bitset.Bitset {
 	// Split into blocks.
-	type __obf_95a0aeaac032c66b struct {
-		__obf_eb8b3f015415859a *bitset.Bitset
-		__obf_4ec9daef443b36d0 int
+	type __obf_af3ec74d9b6a805d struct {
+		__obf_e4df198c6616985f *bitset.Bitset
+		__obf_33bc61986d34301f int
 	}
-	__obf_497bb62bbd9ebbf5 := make([]__obf_95a0aeaac032c66b, __obf_5b0073c32b55ab92.__obf_2066e640e4e50f14.__obf_211dc13f80ab3495())
-	__obf_3a15471c26131738 := 0
-	__obf_a9837c7e909f1665 := 0
-	__obf_a0846be02695f75b := 0
+	__obf_f51213722f02a78f := make([]__obf_af3ec74d9b6a805d, __obf_9c281bbbde209bea.__obf_4f23b6c0c8a29b07.__obf_86dcf07e23f37f95())
+	__obf_b1d9b56dd18d11cd := 0
+	__obf_ced3f69a482bda05 := 0
+	__obf_9944eaf319105499 := 0
 
-	for _, __obf_0de44d307506fdeb := range __obf_5b0073c32b55ab92.__obf_2066e640e4e50f14.__obf_497bb62bbd9ebbf5 {
-		for __obf_0d2b5442049f8295 := 0; __obf_0d2b5442049f8295 < __obf_0de44d307506fdeb.__obf_211dc13f80ab3495; __obf_0d2b5442049f8295++ {
-			__obf_3a15471c26131738 = __obf_a9837c7e909f1665
-			__obf_a9837c7e909f1665 = __obf_3a15471c26131738 + __obf_0de44d307506fdeb.__obf_d1b26b395ae776d9*8
-			__obf_c881148aff49931d := // Apply error correction to each block.
-				__obf_0de44d307506fdeb.__obf_cd96a3f45948faa6 - __obf_0de44d307506fdeb.__obf_d1b26b395ae776d9
-			__obf_497bb62bbd9ebbf5[__obf_a0846be02695f75b].__obf_eb8b3f015415859a = reedsolomon.Encode(__obf_5b0073c32b55ab92.__obf_eb8b3f015415859a.Substr(__obf_3a15471c26131738, __obf_a9837c7e909f1665), __obf_c881148aff49931d)
-			__obf_497bb62bbd9ebbf5[__obf_a0846be02695f75b].__obf_4ec9daef443b36d0 = __obf_a9837c7e909f1665 - __obf_3a15471c26131738
-			__obf_a0846be02695f75b++
+	for _, __obf_21b947e29586a23f := range __obf_9c281bbbde209bea.__obf_4f23b6c0c8a29b07.__obf_f51213722f02a78f {
+		for __obf_02acc1a50ace36fe := 0; __obf_02acc1a50ace36fe < __obf_21b947e29586a23f.__obf_86dcf07e23f37f95; __obf_02acc1a50ace36fe++ {
+			__obf_b1d9b56dd18d11cd = __obf_ced3f69a482bda05
+			__obf_ced3f69a482bda05 = __obf_b1d9b56dd18d11cd + __obf_21b947e29586a23f.__obf_b3e075c2526905ef*8
+			__obf_6dece183843f8a54 := // Apply error correction to each block.
+				__obf_21b947e29586a23f.__obf_e27ceaf2974832d2 - __obf_21b947e29586a23f.__obf_b3e075c2526905ef
+			__obf_f51213722f02a78f[__obf_9944eaf319105499].__obf_e4df198c6616985f = reedsolomon.Encode(__obf_9c281bbbde209bea.__obf_e4df198c6616985f.Substr(__obf_b1d9b56dd18d11cd, __obf_ced3f69a482bda05), __obf_6dece183843f8a54)
+			__obf_f51213722f02a78f[__obf_9944eaf319105499].__obf_33bc61986d34301f = __obf_ced3f69a482bda05 - __obf_b1d9b56dd18d11cd
+			__obf_9944eaf319105499++
 		}
 	}
-	__obf_5f9887ab3541002d := // Interleave the blocks.
+	__obf_a425e7f63b42864b := // Interleave the blocks.
 
 		bitset.New()
-	__obf_b35f8d156abe5ba0 := // Combine data blocks.
+	__obf_be901b0ce3b1f6cf := // Combine data blocks.
 		true
-	for __obf_b39cd0fd88eaf53c := 0; __obf_b35f8d156abe5ba0; __obf_b39cd0fd88eaf53c += 8 {
-		__obf_b35f8d156abe5ba0 = false
+	for __obf_8715c27aa2bf2586 := 0; __obf_be901b0ce3b1f6cf; __obf_8715c27aa2bf2586 += 8 {
+		__obf_be901b0ce3b1f6cf = false
 
-		for __obf_0d2b5442049f8295, __obf_0de44d307506fdeb := range __obf_497bb62bbd9ebbf5 {
-			if __obf_b39cd0fd88eaf53c >= __obf_497bb62bbd9ebbf5[__obf_0d2b5442049f8295].__obf_4ec9daef443b36d0 {
+		for __obf_02acc1a50ace36fe, __obf_21b947e29586a23f := range __obf_f51213722f02a78f {
+			if __obf_8715c27aa2bf2586 >= __obf_f51213722f02a78f[__obf_02acc1a50ace36fe].__obf_33bc61986d34301f {
 				continue
 			}
-			__obf_5f9887ab3541002d.
-				Append(__obf_0de44d307506fdeb.__obf_eb8b3f015415859a.Substr(__obf_b39cd0fd88eaf53c, __obf_b39cd0fd88eaf53c+8))
-			__obf_b35f8d156abe5ba0 = true
+			__obf_a425e7f63b42864b.
+				Append(__obf_21b947e29586a23f.__obf_e4df198c6616985f.Substr(__obf_8715c27aa2bf2586, __obf_8715c27aa2bf2586+8))
+			__obf_be901b0ce3b1f6cf = true
 		}
 	}
-	__obf_b35f8d156abe5ba0 = // Combine error correction blocks.
+	__obf_be901b0ce3b1f6cf = // Combine error correction blocks.
 		true
-	for __obf_b39cd0fd88eaf53c := 0; __obf_b35f8d156abe5ba0; __obf_b39cd0fd88eaf53c += 8 {
-		__obf_b35f8d156abe5ba0 = false
+	for __obf_8715c27aa2bf2586 := 0; __obf_be901b0ce3b1f6cf; __obf_8715c27aa2bf2586 += 8 {
+		__obf_be901b0ce3b1f6cf = false
 
-		for __obf_0d2b5442049f8295, __obf_0de44d307506fdeb := range __obf_497bb62bbd9ebbf5 {
-			__obf_8d7e72d2b9ea39cd := __obf_b39cd0fd88eaf53c + __obf_497bb62bbd9ebbf5[__obf_0d2b5442049f8295].__obf_4ec9daef443b36d0
-			if __obf_8d7e72d2b9ea39cd >= __obf_497bb62bbd9ebbf5[__obf_0d2b5442049f8295].__obf_eb8b3f015415859a.Len() {
+		for __obf_02acc1a50ace36fe, __obf_21b947e29586a23f := range __obf_f51213722f02a78f {
+			__obf_7fa183b6bdaac3f6 := __obf_8715c27aa2bf2586 + __obf_f51213722f02a78f[__obf_02acc1a50ace36fe].__obf_33bc61986d34301f
+			if __obf_7fa183b6bdaac3f6 >= __obf_f51213722f02a78f[__obf_02acc1a50ace36fe].__obf_e4df198c6616985f.Len() {
 				continue
 			}
-			__obf_5f9887ab3541002d.
-				Append(__obf_0de44d307506fdeb.__obf_eb8b3f015415859a.Substr(__obf_8d7e72d2b9ea39cd, __obf_8d7e72d2b9ea39cd+8))
-			__obf_b35f8d156abe5ba0 = true
+			__obf_a425e7f63b42864b.
+				Append(__obf_21b947e29586a23f.__obf_e4df198c6616985f.Substr(__obf_7fa183b6bdaac3f6, __obf_7fa183b6bdaac3f6+8))
+			__obf_be901b0ce3b1f6cf = true
 		}
 	}
-	__obf_5f9887ab3541002d.
+	__obf_a425e7f63b42864b.
 
 		// Append remainder bits.
-		AppendNumBools(__obf_5b0073c32b55ab92.__obf_2066e640e4e50f14.__obf_4bd5e5d599d53519, false)
+		AppendNumBools(__obf_9c281bbbde209bea.__obf_4f23b6c0c8a29b07.__obf_1818e415f9ac87f1, false)
 
-	return __obf_5f9887ab3541002d
+	return __obf_a425e7f63b42864b
 }
 
 // addPadding pads the encoded data upto the full length required.
-func (__obf_5b0073c32b55ab92 *QRCode) __obf_53d37d46577398d2() {
-	__obf_6ca1f14a38153ca1 := __obf_5b0073c32b55ab92.__obf_2066e640e4e50f14.__obf_6ca1f14a38153ca1()
+func (__obf_9c281bbbde209bea *QRCode) __obf_9e8f828ad9c392e5() {
+	__obf_17d316c470f598b7 := __obf_9c281bbbde209bea.__obf_4f23b6c0c8a29b07.__obf_17d316c470f598b7()
 
-	if __obf_5b0073c32b55ab92.__obf_eb8b3f015415859a.Len() == __obf_6ca1f14a38153ca1 {
+	if __obf_9c281bbbde209bea.__obf_e4df198c6616985f.Len() == __obf_17d316c470f598b7 {
 		return
 	}
-	__obf_5b0073c32b55ab92.
+	__obf_9c281bbbde209bea.
 
 		// Pad to the nearest codeword boundary.
-		__obf_eb8b3f015415859a.
-		AppendNumBools(__obf_5b0073c32b55ab92.__obf_2066e640e4e50f14.__obf_8f66da0487eb5a9c(__obf_5b0073c32b55ab92.__obf_eb8b3f015415859a.Len()), false)
-	__obf_3ae6fc7621d929fa := // Pad codewords 0b11101100 and 0b00010001.
+		__obf_e4df198c6616985f.
+		AppendNumBools(__obf_9c281bbbde209bea.__obf_4f23b6c0c8a29b07.__obf_4ec92ab3f8e0bcb4(__obf_9c281bbbde209bea.__obf_e4df198c6616985f.Len()), false)
+	__obf_0f5b22a68e2e6497 := // Pad codewords 0b11101100 and 0b00010001.
 		[2]*bitset.Bitset{
 			bitset.New(true, true, true, false, true, true, false, false),
 			bitset.New(false, false, false, true, false, false, false, true),
 		}
-	__obf_b39cd0fd88eaf53c := // Insert pad codewords alternately.
+	__obf_8715c27aa2bf2586 := // Insert pad codewords alternately.
 		0
-	for __obf_6ca1f14a38153ca1-__obf_5b0073c32b55ab92.__obf_eb8b3f015415859a.Len() >= 8 {
-		__obf_5b0073c32b55ab92.__obf_eb8b3f015415859a.
-			Append(__obf_3ae6fc7621d929fa[__obf_b39cd0fd88eaf53c])
-		__obf_b39cd0fd88eaf53c = 1 - __obf_b39cd0fd88eaf53c // Alternate between 0 and 1.
+	for __obf_17d316c470f598b7-__obf_9c281bbbde209bea.__obf_e4df198c6616985f.Len() >= 8 {
+		__obf_9c281bbbde209bea.__obf_e4df198c6616985f.
+			Append(__obf_0f5b22a68e2e6497[__obf_8715c27aa2bf2586])
+		__obf_8715c27aa2bf2586 = 1 - __obf_8715c27aa2bf2586 // Alternate between 0 and 1.
 	}
 
-	if __obf_5b0073c32b55ab92.__obf_eb8b3f015415859a.Len() != __obf_6ca1f14a38153ca1 {
-		log.Panicf("BUG: got len %d, expected %d", __obf_5b0073c32b55ab92.__obf_eb8b3f015415859a.Len(), __obf_6ca1f14a38153ca1)
+	if __obf_9c281bbbde209bea.__obf_e4df198c6616985f.Len() != __obf_17d316c470f598b7 {
+		log.Panicf("BUG: got len %d, expected %d", __obf_9c281bbbde209bea.__obf_e4df198c6616985f.Len(), __obf_17d316c470f598b7)
 	}
 }
 
 // ToString produces a multi-line string that forms a QR-code image.
-func (__obf_5b0073c32b55ab92 *QRCode) ToString(__obf_04e5e601afeee63b bool) string {
-	__obf_09f55376f1035355 := __obf_5b0073c32b55ab92.Bitmap()
-	var __obf_6ff0ba134ee1a062 bytes.Buffer
-	for __obf_16bfdfd36c335382 := range __obf_09f55376f1035355 {
-		for __obf_7529943f67ee44cb := range __obf_09f55376f1035355[__obf_16bfdfd36c335382] {
-			if __obf_09f55376f1035355[__obf_16bfdfd36c335382][__obf_7529943f67ee44cb] != __obf_04e5e601afeee63b {
-				__obf_6ff0ba134ee1a062.
+func (__obf_9c281bbbde209bea *QRCode) ToString(__obf_ff4d721f04307bde bool) string {
+	__obf_6a9faca8b54d2a16 := __obf_9c281bbbde209bea.Bitmap()
+	var __obf_e08b0a12f63f2f60 bytes.Buffer
+	for __obf_8650f6fe673c98a1 := range __obf_6a9faca8b54d2a16 {
+		for __obf_cf967a75716d8446 := range __obf_6a9faca8b54d2a16[__obf_8650f6fe673c98a1] {
+			if __obf_6a9faca8b54d2a16[__obf_8650f6fe673c98a1][__obf_cf967a75716d8446] != __obf_ff4d721f04307bde {
+				__obf_e08b0a12f63f2f60.
 					WriteString("  ")
 			} else {
-				__obf_6ff0ba134ee1a062.
+				__obf_e08b0a12f63f2f60.
 					WriteString("██")
 			}
 		}
-		__obf_6ff0ba134ee1a062.
+		__obf_e08b0a12f63f2f60.
 			WriteString("\n")
 	}
-	return __obf_6ff0ba134ee1a062.String()
+	return __obf_e08b0a12f63f2f60.String()
 }
 
 // ToSmallString produces a multi-line string that forms a QR-code image, a
 // factor two smaller in x and y then ToString.
-func (__obf_5b0073c32b55ab92 *QRCode) ToSmallString(__obf_04e5e601afeee63b bool) string {
-	__obf_09f55376f1035355 := __obf_5b0073c32b55ab92.Bitmap()
-	var __obf_6ff0ba134ee1a062 bytes.Buffer
+func (__obf_9c281bbbde209bea *QRCode) ToSmallString(__obf_ff4d721f04307bde bool) string {
+	__obf_6a9faca8b54d2a16 := __obf_9c281bbbde209bea.Bitmap()
+	var __obf_e08b0a12f63f2f60 bytes.Buffer
 	// if there is an odd number of rows, the last one needs special treatment
-	for __obf_16bfdfd36c335382 := 0; __obf_16bfdfd36c335382 < len(__obf_09f55376f1035355)-1; __obf_16bfdfd36c335382 += 2 {
-		for __obf_7529943f67ee44cb := range __obf_09f55376f1035355[__obf_16bfdfd36c335382] {
-			if __obf_09f55376f1035355[__obf_16bfdfd36c335382][__obf_7529943f67ee44cb] == __obf_09f55376f1035355[__obf_16bfdfd36c335382+1][__obf_7529943f67ee44cb] {
-				if __obf_09f55376f1035355[__obf_16bfdfd36c335382][__obf_7529943f67ee44cb] != __obf_04e5e601afeee63b {
-					__obf_6ff0ba134ee1a062.
+	for __obf_8650f6fe673c98a1 := 0; __obf_8650f6fe673c98a1 < len(__obf_6a9faca8b54d2a16)-1; __obf_8650f6fe673c98a1 += 2 {
+		for __obf_cf967a75716d8446 := range __obf_6a9faca8b54d2a16[__obf_8650f6fe673c98a1] {
+			if __obf_6a9faca8b54d2a16[__obf_8650f6fe673c98a1][__obf_cf967a75716d8446] == __obf_6a9faca8b54d2a16[__obf_8650f6fe673c98a1+1][__obf_cf967a75716d8446] {
+				if __obf_6a9faca8b54d2a16[__obf_8650f6fe673c98a1][__obf_cf967a75716d8446] != __obf_ff4d721f04307bde {
+					__obf_e08b0a12f63f2f60.
 						WriteString(" ")
 				} else {
-					__obf_6ff0ba134ee1a062.
+					__obf_e08b0a12f63f2f60.
 						WriteString("█")
 				}
 			} else {
-				if __obf_09f55376f1035355[__obf_16bfdfd36c335382][__obf_7529943f67ee44cb] != __obf_04e5e601afeee63b {
-					__obf_6ff0ba134ee1a062.
+				if __obf_6a9faca8b54d2a16[__obf_8650f6fe673c98a1][__obf_cf967a75716d8446] != __obf_ff4d721f04307bde {
+					__obf_e08b0a12f63f2f60.
 						WriteString("▄")
 				} else {
-					__obf_6ff0ba134ee1a062.
+					__obf_e08b0a12f63f2f60.
 						WriteString("▀")
 				}
 			}
 		}
-		__obf_6ff0ba134ee1a062.
+		__obf_e08b0a12f63f2f60.
 			WriteString("\n")
 	}
 	// special treatment for the last row if odd
-	if len(__obf_09f55376f1035355)%2 == 1 {
-		__obf_16bfdfd36c335382 := len(__obf_09f55376f1035355) - 1
-		for __obf_7529943f67ee44cb := range __obf_09f55376f1035355[__obf_16bfdfd36c335382] {
-			if __obf_09f55376f1035355[__obf_16bfdfd36c335382][__obf_7529943f67ee44cb] != __obf_04e5e601afeee63b {
-				__obf_6ff0ba134ee1a062.
+	if len(__obf_6a9faca8b54d2a16)%2 == 1 {
+		__obf_8650f6fe673c98a1 := len(__obf_6a9faca8b54d2a16) - 1
+		for __obf_cf967a75716d8446 := range __obf_6a9faca8b54d2a16[__obf_8650f6fe673c98a1] {
+			if __obf_6a9faca8b54d2a16[__obf_8650f6fe673c98a1][__obf_cf967a75716d8446] != __obf_ff4d721f04307bde {
+				__obf_e08b0a12f63f2f60.
 					WriteString(" ")
 			} else {
-				__obf_6ff0ba134ee1a062.
+				__obf_e08b0a12f63f2f60.
 					WriteString("▀")
 			}
 		}
-		__obf_6ff0ba134ee1a062.
+		__obf_e08b0a12f63f2f60.
 			WriteString("\n")
 	}
-	return __obf_6ff0ba134ee1a062.String()
+	return __obf_e08b0a12f63f2f60.String()
 }

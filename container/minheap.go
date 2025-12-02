@@ -1,4 +1,4 @@
-package __obf_9004b47202f9204b
+package __obf_4a16ef421fb74992
 
 import (
 	"container/heap"
@@ -10,55 +10,55 @@ type Heap struct {
 	K     uint32
 }
 
-func NewHeap(__obf_cc18ca82ac13013e uint32) *Heap {
-	__obf_e64b3bb2d46916d3 := Nodes{}
-	heap.Init(&__obf_e64b3bb2d46916d3)
-	return &Heap{Nodes: __obf_e64b3bb2d46916d3, K: __obf_cc18ca82ac13013e}
+func NewHeap(__obf_91fb3c93595a08ac uint32) *Heap {
+	__obf_55fe93b5d3e19f79 := Nodes{}
+	heap.Init(&__obf_55fe93b5d3e19f79)
+	return &Heap{Nodes: __obf_55fe93b5d3e19f79, K: __obf_91fb3c93595a08ac}
 }
 
-func (__obf_e64b3bb2d46916d3 *Heap) Add(__obf_903725be6b5384b7 *Node) *Node {
-	if __obf_e64b3bb2d46916d3.K > uint32(len(__obf_e64b3bb2d46916d3.Nodes)) {
-		heap.Push(&__obf_e64b3bb2d46916d3.Nodes, __obf_903725be6b5384b7)
-	} else if __obf_903725be6b5384b7.Count > __obf_e64b3bb2d46916d3.Nodes[0].Count {
-		__obf_f64984ee664470d5 := heap.Pop(&__obf_e64b3bb2d46916d3.Nodes)
-		heap.Push(&__obf_e64b3bb2d46916d3.Nodes, __obf_903725be6b5384b7)
-		__obf_c0dad0405e4a8dfe := __obf_f64984ee664470d5.(*Node)
-		return __obf_c0dad0405e4a8dfe
+func (__obf_55fe93b5d3e19f79 *Heap) Add(__obf_db7248ecee87d860 *Node) *Node {
+	if __obf_55fe93b5d3e19f79.K > uint32(len(__obf_55fe93b5d3e19f79.Nodes)) {
+		heap.Push(&__obf_55fe93b5d3e19f79.Nodes, __obf_db7248ecee87d860)
+	} else if __obf_db7248ecee87d860.Count > __obf_55fe93b5d3e19f79.Nodes[0].Count {
+		__obf_db9b39bdb3b44923 := heap.Pop(&__obf_55fe93b5d3e19f79.Nodes)
+		heap.Push(&__obf_55fe93b5d3e19f79.Nodes, __obf_db7248ecee87d860)
+		__obf_cb94efc111ad4220 := __obf_db9b39bdb3b44923.(*Node)
+		return __obf_cb94efc111ad4220
 	}
 	return nil
 }
 
-func (__obf_e64b3bb2d46916d3 *Heap) Pop() *Node {
-	__obf_f64984ee664470d5 := heap.Pop(&__obf_e64b3bb2d46916d3.Nodes)
-	return __obf_f64984ee664470d5.(*Node)
+func (__obf_55fe93b5d3e19f79 *Heap) Pop() *Node {
+	__obf_db9b39bdb3b44923 := heap.Pop(&__obf_55fe93b5d3e19f79.Nodes)
+	return __obf_db9b39bdb3b44923.(*Node)
 }
 
-func (__obf_e64b3bb2d46916d3 *Heap) Fix(__obf_095e96d6bfc7baf7 int, __obf_4dd2f2e7ef923bcc uint32) {
-	__obf_e64b3bb2d46916d3.
-		Nodes[__obf_095e96d6bfc7baf7].Count = __obf_4dd2f2e7ef923bcc
-	heap.Fix(&__obf_e64b3bb2d46916d3.Nodes, __obf_095e96d6bfc7baf7)
+func (__obf_55fe93b5d3e19f79 *Heap) Fix(__obf_a0811e0731ad212a int, __obf_1d7629104d39aeed uint32) {
+	__obf_55fe93b5d3e19f79.
+		Nodes[__obf_a0811e0731ad212a].Count = __obf_1d7629104d39aeed
+	heap.Fix(&__obf_55fe93b5d3e19f79.Nodes, __obf_a0811e0731ad212a)
 }
 
-func (__obf_e64b3bb2d46916d3 *Heap) Min() uint32 {
-	if len(__obf_e64b3bb2d46916d3.Nodes) == 0 {
+func (__obf_55fe93b5d3e19f79 *Heap) Min() uint32 {
+	if len(__obf_55fe93b5d3e19f79.Nodes) == 0 {
 		return 0
 	}
-	return __obf_e64b3bb2d46916d3.Nodes[0].Count
+	return __obf_55fe93b5d3e19f79.Nodes[0].Count
 }
 
-func (__obf_e64b3bb2d46916d3 *Heap) Find(__obf_355e7c922e433678 string) (int, bool) {
-	for __obf_c97cf0c2d79c5ab6 := range __obf_e64b3bb2d46916d3.Nodes {
-		if __obf_e64b3bb2d46916d3.Nodes[__obf_c97cf0c2d79c5ab6].Key == __obf_355e7c922e433678 {
-			return __obf_c97cf0c2d79c5ab6, true
+func (__obf_55fe93b5d3e19f79 *Heap) Find(__obf_d1a1f98ae0fb119e string) (int, bool) {
+	for __obf_79cf1c44489eaf01 := range __obf_55fe93b5d3e19f79.Nodes {
+		if __obf_55fe93b5d3e19f79.Nodes[__obf_79cf1c44489eaf01].Key == __obf_d1a1f98ae0fb119e {
+			return __obf_79cf1c44489eaf01, true
 		}
 	}
 	return 0, false
 }
 
-func (__obf_e64b3bb2d46916d3 *Heap) Sorted() Nodes {
-	__obf_2395646c7467f8c0 := append([]*Node(nil), __obf_e64b3bb2d46916d3.Nodes...)
-	sort.Sort(sort.Reverse(Nodes(__obf_2395646c7467f8c0)))
-	return __obf_2395646c7467f8c0
+func (__obf_55fe93b5d3e19f79 *Heap) Sorted() Nodes {
+	__obf_aad976bcca520eb3 := append([]*Node(nil), __obf_55fe93b5d3e19f79.Nodes...)
+	sort.Sort(sort.Reverse(Nodes(__obf_aad976bcca520eb3)))
+	return __obf_aad976bcca520eb3
 }
 
 type Nodes []*Node
@@ -68,24 +68,24 @@ type Node struct {
 	Count uint32
 }
 
-func (__obf_d2d1bdfa577ba7e8 Nodes) Len() int {
-	return len(__obf_d2d1bdfa577ba7e8)
+func (__obf_41509bed52f90987 Nodes) Len() int {
+	return len(__obf_41509bed52f90987)
 }
 
-func (__obf_d2d1bdfa577ba7e8 Nodes) Less(__obf_c97cf0c2d79c5ab6, __obf_e0db4519fdc27298 int) bool {
-	return (__obf_d2d1bdfa577ba7e8[__obf_c97cf0c2d79c5ab6].Count < __obf_d2d1bdfa577ba7e8[__obf_e0db4519fdc27298].Count) || (__obf_d2d1bdfa577ba7e8[__obf_c97cf0c2d79c5ab6].Count == __obf_d2d1bdfa577ba7e8[__obf_e0db4519fdc27298].Count && __obf_d2d1bdfa577ba7e8[__obf_c97cf0c2d79c5ab6].Key > __obf_d2d1bdfa577ba7e8[__obf_e0db4519fdc27298].Key)
+func (__obf_41509bed52f90987 Nodes) Less(__obf_79cf1c44489eaf01, __obf_aed15258f3705fd9 int) bool {
+	return (__obf_41509bed52f90987[__obf_79cf1c44489eaf01].Count < __obf_41509bed52f90987[__obf_aed15258f3705fd9].Count) || (__obf_41509bed52f90987[__obf_79cf1c44489eaf01].Count == __obf_41509bed52f90987[__obf_aed15258f3705fd9].Count && __obf_41509bed52f90987[__obf_79cf1c44489eaf01].Key > __obf_41509bed52f90987[__obf_aed15258f3705fd9].Key)
 }
 
-func (__obf_d2d1bdfa577ba7e8 Nodes) Swap(__obf_c97cf0c2d79c5ab6, __obf_e0db4519fdc27298 int) {
-	__obf_d2d1bdfa577ba7e8[__obf_c97cf0c2d79c5ab6], __obf_d2d1bdfa577ba7e8[__obf_e0db4519fdc27298] = __obf_d2d1bdfa577ba7e8[__obf_e0db4519fdc27298], __obf_d2d1bdfa577ba7e8[__obf_c97cf0c2d79c5ab6]
+func (__obf_41509bed52f90987 Nodes) Swap(__obf_79cf1c44489eaf01, __obf_aed15258f3705fd9 int) {
+	__obf_41509bed52f90987[__obf_79cf1c44489eaf01], __obf_41509bed52f90987[__obf_aed15258f3705fd9] = __obf_41509bed52f90987[__obf_aed15258f3705fd9], __obf_41509bed52f90987[__obf_79cf1c44489eaf01]
 }
 
-func (__obf_d2d1bdfa577ba7e8 *Nodes) Push(__obf_903725be6b5384b7 any) {
-	*__obf_d2d1bdfa577ba7e8 = append(*__obf_d2d1bdfa577ba7e8, __obf_903725be6b5384b7.(*Node))
+func (__obf_41509bed52f90987 *Nodes) Push(__obf_db7248ecee87d860 any) {
+	*__obf_41509bed52f90987 = append(*__obf_41509bed52f90987, __obf_db7248ecee87d860.(*Node))
 }
 
-func (__obf_d2d1bdfa577ba7e8 *Nodes) Pop() any {
-	var __obf_903725be6b5384b7 *Node
-	__obf_903725be6b5384b7, *__obf_d2d1bdfa577ba7e8 = (*__obf_d2d1bdfa577ba7e8)[len((*__obf_d2d1bdfa577ba7e8))-1], (*__obf_d2d1bdfa577ba7e8)[:len((*__obf_d2d1bdfa577ba7e8))-1]
-	return __obf_903725be6b5384b7
+func (__obf_41509bed52f90987 *Nodes) Pop() any {
+	var __obf_db7248ecee87d860 *Node
+	__obf_db7248ecee87d860, *__obf_41509bed52f90987 = (*__obf_41509bed52f90987)[len((*__obf_41509bed52f90987))-1], (*__obf_41509bed52f90987)[:len((*__obf_41509bed52f90987))-1]
+	return __obf_db7248ecee87d860
 }

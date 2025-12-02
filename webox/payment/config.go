@@ -1,4 +1,4 @@
-package __obf_f29d7e05a679e5dd
+package __obf_db5b065626995a13
 
 import (
 	"crypto/rsa"
@@ -25,30 +25,30 @@ type Config struct {
 	TLSCert   tls.Certificate   `json:"-" yaml:"-"`
 }
 
-func (__obf_49210106f9486dae *Config) LoadAPICert() (__obf_6f39b3cabee75d7d error) {
-	if __obf_49210106f9486dae.P12Path == "" || __obf_49210106f9486dae.P12Key == "" {
+func (__obf_cd21f26c6b42bb94 *Config) LoadAPICert() (__obf_48e3d1ffda112f63 error) {
+	if __obf_cd21f26c6b42bb94.P12Path == "" || __obf_cd21f26c6b42bb94.P12Key == "" {
 		return errors.New("p12 path or p12 key is not set")
 	}
-	__obf_b4e679bb86f9eff9, __obf_6f39b3cabee75d7d := os.ReadFile(__obf_49210106f9486dae.P12Path)
-	if __obf_6f39b3cabee75d7d != nil {
-		return fmt.Errorf("p12 read failed: %w", __obf_6f39b3cabee75d7d)
+	__obf_fea579977a6f3ac3, __obf_48e3d1ffda112f63 := os.ReadFile(__obf_cd21f26c6b42bb94.P12Path)
+	if __obf_48e3d1ffda112f63 != nil {
+		return fmt.Errorf("p12 read failed: %w", __obf_48e3d1ffda112f63)
 	}
-	__obf_1b4ae4a97c7e5e9a, __obf_06be8909a786dc50, __obf_6f39b3cabee75d7d := pkcs12.Decode(__obf_b4e679bb86f9eff9, __obf_49210106f9486dae.P12Key)
-	if __obf_6f39b3cabee75d7d != nil {
-		return fmt.Errorf("p12 decode failed: %w", __obf_6f39b3cabee75d7d)
+	__obf_bf6232f46ec5b753, __obf_5af637088f0b615b, __obf_48e3d1ffda112f63 := pkcs12.Decode(__obf_fea579977a6f3ac3, __obf_cd21f26c6b42bb94.P12Key)
+	if __obf_48e3d1ffda112f63 != nil {
+		return fmt.Errorf("p12 decode failed: %w", __obf_48e3d1ffda112f63)
 	}
-	__obf_49210106f9486dae.
-		TLSCert, __obf_6f39b3cabee75d7d = tls.X509KeyPair(
+	__obf_cd21f26c6b42bb94.
+		TLSCert, __obf_48e3d1ffda112f63 = tls.X509KeyPair(
 		pem.EncodeToMemory(
 			&pem.Block{
 				Type:  "CERTIFICATE",
-				Bytes: __obf_06be8909a786dc50.Raw,
+				Bytes: __obf_5af637088f0b615b.Raw,
 			},
 		),
 		pem.EncodeToMemory(
 			&pem.Block{
 				Type:  "PRIVATE KEY",
-				Bytes: x509.MarshalPKCS1PrivateKey(__obf_1b4ae4a97c7e5e9a.(*rsa.PrivateKey)),
+				Bytes: x509.MarshalPKCS1PrivateKey(__obf_bf6232f46ec5b753.(*rsa.PrivateKey)),
 			},
 		),
 	)
